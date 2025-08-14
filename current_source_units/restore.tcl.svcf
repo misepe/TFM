@@ -1,0 +1,191 @@
+# SimVision Command Script (Thu Aug 14 20:51:06 CEST 2025)
+#
+# Version 24.03.s004
+#
+# You can restore this configuration with:
+#
+#      xrun -f xrun.f -input restore.tcl
+#
+
+
+#
+# Preferences
+#
+preferences set plugin-enable-svdatabrowser-new 1
+preferences set plugin-enable-groupscope 0
+preferences set plugin-enable-interleaveandcompare 0
+preferences set plugin-enable-waveformfrequencyplot 0
+
+#
+# Simulator
+#
+database require simulator -hints {
+	simulator "xrun -f xrun.f -input restore.tcl"
+}
+#
+# Groups
+#
+catch {group new -name inputs -overlay 0}
+catch {group new -name outputs -overlay 0}
+group using inputs
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.iref_500ua}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.pdb}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.atb_ena[1:0]}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.vddana_0p8}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.vddana_1p8}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.vssana}]} ]
+group using outputs
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them[16:0]}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_5}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_4}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_3}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_2}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_1}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_0}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_0_red}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.atb1}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.atb0}]} ]
+
+#
+# Mnemonic Maps
+#
+mmap new  -reuse -name {Boolean as Logic} -radix %b -contents {{%c=FALSE -edgepriority 1 -shape low}
+{%c=TRUE -edgepriority 1 -shape high}}
+mmap new  -reuse -name {Example Map} -radix %x -contents {{%b=11???? -bgcolor orange -label REG:%x -linecolor yellow -shape bus}
+{%x=1F -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=2C -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=* -label %x -linecolor gray -shape bus}}
+
+#
+# Design Browser windows
+#
+if {[catch {window new WatchList -name "Design Browser 1" -geometry 730x500+261+33}] != ""} {
+    window geometry "Design Browser 1" 730x500+261+33
+}
+window target "Design Browser 1" on
+browser using {Design Browser 1}
+browser set -scope [subst  {simulator::[format {currentSourceUnits_tb.dut}]} ]
+browser set \
+    -showassertions 0 \
+    -showfibers 0 \
+    -showinternals 0 \
+    -signalsort name
+browser yview see [subst  {simulator::[format {currentSourceUnits_tb.dut}]} ]
+browser timecontrol set -lock 0
+
+#
+# Waveform windows
+#
+if {[catch {window new WaveWindow -name "Waveform 1" -geometry 1920x1016+-1+26}] != ""} {
+    window geometry "Waveform 1" 1920x1016+-1+26
+}
+window target "Waveform 1" on
+waveform using {Waveform 1}
+waveform sidebar visibility partial
+waveform set \
+    -primarycursor TimeA \
+    -signalnames name \
+    -signalwidth 175 \
+    -units ps \
+    -valuewidth 75
+waveform baseline set -time 0
+
+
+set groupId0 [waveform add -groups inputs]
+set gpGlist0 [waveform hierarchy contents $groupId0]
+set gpID0 [lindex $gpGlist0 0]
+foreach {name attrs} [subst  {
+    {simulator::[format {currentSourceUnits_tb.dut.iref_500ua}]} {-trace analogSampleAndHold -color #ffc300}
+    {simulator::[format {currentSourceUnits_tb.dut.pdb}]} {}
+    {simulator::[format {currentSourceUnits_tb.dut.atb_ena[1:0]}]} {}
+    {simulator::[format {currentSourceUnits_tb.dut.vddana_0p8}]} {-trace analogSampleAndHold -color #78ff00}
+    {simulator::[format {currentSourceUnits_tb.dut.vddana_1p8}]} {-trace analogSampleAndHold -color #00ff4a}
+    {simulator::[format {currentSourceUnits_tb.dut.vssana}]} {-trace analogLinear -color #00f1ff}
+}] childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID0] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID0 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist0 [lrange $gpGlist0 1 end]
+    set gpID0 [lindex $gpGlist0 0]
+}
+
+
+set groupId0 [waveform add -groups outputs]
+set gpGlist0 [waveform hierarchy contents $groupId0]
+set gpID0 [lindex $gpGlist0 0]
+foreach {name attrs} [subst  {
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them[16:0]}]} {}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_5}]} {-trace analogSampleAndHold -color #9500ff}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_4}]} {-trace analogSampleAndHold -color #002eff}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_3}]} {-trace analogSampleAndHold -color #00f1ff}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_2}]} {-trace analogSampleAndHold -color #00ff4a}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_1}]} {-trace analogSampleAndHold -color #78ff00}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_0}]} {-trace analogSampleAndHold -color #ff0000}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_0_red}]} {-trace analogSampleAndHold -color #ffc300}
+    {simulator::[format {currentSourceUnits_tb.dut.atb1}]} {-trace analogSampleAndHold -color #ff0000}
+    {simulator::[format {currentSourceUnits_tb.dut.atb0}]} {-trace analogSampleAndHold -color #ff00a6}
+}] childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID0] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID0 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist0 [lrange $gpGlist0 1 end]
+    set gpID0 [lindex $gpGlist0 0]
+}
+
+
+waveform xview limits 0 500ps
+
+#
+# Waveform Window Links
+#
+
+#
+# Console windows
+#
+console set -windowname Console
+window geometry Console 730x250+261+564
+
+#
+# Layout selection
+#
+

@@ -1,0 +1,70 @@
+*** Message Type: info ***
+When: Thu Aug 14 20:01:59 CEST 2025
+SimVision started.
+Version: TOOL:  simvision(64)   24.03-s004
+User: msegper
+Host: cdm2.cc.upv.es
+Platform: Linux/x86_64/4.18.0-553.36.1.el8_10.x86_64
+Started: Thu Aug 14 20:01:59 CEST 2025
+Command: /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools.lnx86/simvision/bin/64bit/simvision.exe -connect dc:cdm2.cc.upv.es:58137 -64BIT -nocopyright
+Work Directory: /home/msegper/Documents/TFM/current_source_units
+ 
+*** Message Type: info ***
+When: Thu Aug 14 20:02:00 CEST 2025
+Create browser window: "Design Browser 1"
+ 
+*** Message Type: info ***
+When: Thu Aug 14 20:02:10 CEST 2025
+Create console window: "Console"
+ 
+*** Message Type: info ***
+When: Thu Aug 14 20:02:15 CEST 2025
+Connect to Simulator
+      Design: worklib.currentSourceUnits_tb:sv
+   Languages: verilog assertion
+   Simulator: XM-Sim
+     Version: TOOL: xmsim(64)       24.03-s004
+        User: msegper
+        Host: cdm2.cc.upv.es
+Time Started: Thu Aug 14 20:01:57 CEST 2025
+  Process ID: 1805153
+   Directory: /home/msegper/Documents/TFM/current_source_units
+     Command: xrun -f xrun.f
+
+ 
+*** Message Type: info ***
+When: Thu Aug 14 20:02:16 CEST 2025
+Create utility window: "Properties"
+ 
+*** Message Type: error ***
+When: Thu Aug 14 20:02:42 CEST 2025
+can't find field "-container"  in node "110
+    while executing
+"$_tree get $id -container"
+    ("double" arm line 7)
+    invoked from within
+"switch -- $modifier {
+       shift - control {
+          set _selection(action) range
+           set _noAction 1
+    }
+      motion {
+           $_dndTracker motionTo $x $y
+        }
+      rele..."
+    (object "::.watchList0.work.user.tab.sl.tbl" method "::dad::ObjectTable::_buttonCallback" body line 26)
+    invoked from within
+"::.watchList0.work.user.tab.sl.tbl _buttonCallback .watchList0.work.user.tab.sl.tbl.worksp.scol.signallist double"
+    (in namespace inscope "::dad::ObjectTable" script line 1)
+    invoked from within
+"namespace inscope ::dad::ObjectTable {::.watchList0.work.user.tab.sl.tbl _buttonCallback .watchList0.work.user.tab.sl.tbl.worksp.scol.signallist doubl..."
+    (command bound to event)
+ 
+*** Message Type: info ***
+When: Thu Aug 14 20:02:49 CEST 2025
+Create waveform window: "Waveform 1"
+ 
+*** Message Type: info ***
+When: Thu Aug 14 20:08:50 CEST 2025
+SimVision Exit.
+ 

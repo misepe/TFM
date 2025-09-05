@@ -7,7 +7,23 @@ module currentSourceUnits import cds_rnm_pkg::*;(
     input real vddana_1p8, //power supply for the block (vsupply)
     input real vddana_0p8, //power supply for the block (vsupply)
     input real vssana, //gound connection for the block (ground)
-    output real Iout_them[16:0], // 17 output currents that are the scaled version of the input current, one of them is redundant (analog current)
+    output real Iout_them_16, // Output current (analog current)
+    output real Iout_them_15, // Output current (analog current)
+    output real Iout_them_14, // Output current (analog current)
+    output real Iout_them_13, // Output current (analog current)
+    output real Iout_them_12, // Output current (analog current)
+    output real Iout_them_11, // Output current (analog current)
+    output real Iout_them_10, // Output current (analog current)
+    output real Iout_them_9,  // Output current (analog current)
+    output real Iout_them_8,  // Output current (analog current)
+    output real Iout_them_7,  // Output current (analog current)
+    output real Iout_them_6,  // Output current (analog current)
+    output real Iout_them_5,  // Output current (analog current)
+    output real Iout_them_4,  // Output current (analog current)
+    output real Iout_them_3,  // Output current (analog current)
+    output real Iout_them_2,  // Output current (analog current)
+    output real Iout_them_1,  // Output current (analog current)
+    output real Iout_them_0,  // Output current (analog current)
     output real Iout_binary_5, //output current MSB (analog current)
     output real Iout_binary_4, //output current MSB-1 (analog current)
     output real Iout_binary_3, //output current MSB-2 (analog current)
@@ -60,13 +76,15 @@ module currentSourceUnits import cds_rnm_pkg::*;(
 
     //to check that vssana voltage is within the boundaries +/-5%
     parameter real VSSANA_REF = 0.0; // 0.0 V
+    parameter real VSSANA_MIN = VSSANA_REF -0.05; // -0.05 V
+    parameter real VSSANA_MAX = VSSANA_REF +0.05; // 0.05 V
     always @(vssana) begin
-        if(vssana >= VSSANA_REF*0.95 && vssana <= VSSANA_REF*1.05) begin
+        if(vssana >= VSSANA_MIN && vssana <= VSSANA_MAX) begin
             vssana_check = 1;
         end else begin
             vssana_check = 0;
         end
-        vssana_boundaries: assert (vssana >= VSSANA_REF*0.95 && vssana <= VSSANA_REF*1.05) else $error("Input voltge vssana is out of bounds: %0.2f V", vssana);//TODO DUDA COMO PONER LOS BOUNDRIES
+        vssana_boundaries: assert (vssana >= VSSANA_MIN && vssana <= VSSANA_MAX) else $error("Input voltge vssana is out of bounds: %0.2f V", vssana);
     end
 
     always_comb begin
@@ -80,6 +98,24 @@ module currentSourceUnits import cds_rnm_pkg::*;(
 
         if(pdb == 1 && input_check == 1) begin
             //Generate Iout_16..0: TODO no se muy bien como manejar el array y sus valores
+
+            Iout_them_16 = iref_500ua / 2.5;
+            Iout_them_15 = iref_500ua / 2.5;
+            Iout_them_14 = iref_500ua / 2.5;
+            Iout_them_13 = iref_500ua / 2.5;
+            Iout_them_12 = iref_500ua / 2.5;
+            Iout_them_11 = iref_500ua / 2.5;
+            Iout_them_10 = iref_500ua / 2.5;
+            Iout_them_9  = iref_500ua / 2.5;
+            Iout_them_8  = iref_500ua / 2.5;
+            Iout_them_7  = iref_500ua / 2.5;
+            Iout_them_6  = iref_500ua / 2.5;
+            Iout_them_5  = iref_500ua / 2.5;
+            Iout_them_4  = iref_500ua / 2.5;
+            Iout_them_3  = iref_500ua / 2.5;
+            Iout_them_2  = iref_500ua / 2.5;
+            Iout_them_1  = iref_500ua / 2.5;
+            Iout_them_0  = iref_500ua / 2.5;
 
             Iout_binary_5 = iref_500ua / (2.5 * 2); 
             Iout_binary_4 = iref_500ua / (2.5 * 4);
@@ -100,7 +136,7 @@ module currentSourceUnits import cds_rnm_pkg::*;(
             end
             2'b10: begin
                 atb1 = vddana_0p8; // Analog testbus 1 connected to vddana_0p8
-                atb0 = Iout_them[16]; // Analog testbus 0 connected to Iout_them[16]
+                atb0 = Iout_them_16; // Analog testbus 0 connected to Iout_them_16
             end
             2'b11: begin
                 atb1 = iref_500ua; // Analog testbus 1 connected to iref_500ua
@@ -110,23 +146,23 @@ module currentSourceUnits import cds_rnm_pkg::*;(
 
         endcase
         end else if(pdb == 0 && input_check == 1) begin
-            Iout_them[16] = 'z; // High impedance state
-            Iout_them[15] = 'z; // High impedance state
-            Iout_them[14] = 'z; // High impedance state
-            Iout_them[13] = 'z; // High impedance state
-            Iout_them[12] = 'z; // High impedance state
-            Iout_them[11] = 'z; // High impedance state
-            Iout_them[10] = 'z; // High impedance state
-            Iout_them[9] = 'z; // High impedance state
-            Iout_them[8] = 'z; // High impedance state
-            Iout_them[7] = 'z; // High impedance state
-            Iout_them[6] = 'z; // High impedance state
-            Iout_them[5] = 'z; // High impedance state
-            Iout_them[4] = 'z; // High impedance state
-            Iout_them[3] = 'z; // High impedance state          
-            Iout_them[2] = 'z; // High impedance state
-            Iout_them[1] = 'z; // High impedance state
-            Iout_them[0] = 'z; // High impedance state
+            Iout_them_16 = 'z; // High impedance state
+            Iout_them_15 = 'z; // High impedance state
+            Iout_them_14 = 'z; // High impedance state
+            Iout_them_13 = 'z; // High impedance state
+            Iout_them_12 = 'z; // High impedance state
+            Iout_them_11 = 'z; // High impedance state
+            Iout_them_10 = 'z; // High impedance state
+            Iout_them_9  = 'z; // High impedance state
+            Iout_them_8  = 'z; // High impedance state
+            Iout_them_7  = 'z; // High impedance state
+            Iout_them_6  = 'z; // High impedance state
+            Iout_them_5  = 'z; // High impedance state
+            Iout_them_4  = 'z; // High impedance state
+            Iout_them_3  = 'z; // High impedance state
+            Iout_them_2  = 'z; // High impedance state
+            Iout_them_1  = 'z; // High impedance state
+            Iout_them_0  = 'z; // High impedance state
             Iout_binary_5 = 'z; // High impedance state
             Iout_binary_4 = 'z; // High impedance state
             Iout_binary_3 = 'z; // High impedance state

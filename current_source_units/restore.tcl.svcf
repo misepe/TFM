@@ -1,10 +1,10 @@
-# SimVision Command Script (Thu Aug 14 20:51:06 CEST 2025)
+# SimVision Command Script (Fri Sep 05 14:18:18 CEST 2025)
 #
 # Version 24.03.s004
 #
 # You can restore this configuration with:
 #
-#      xrun -f xrun.f -input restore.tcl
+#      xrun -f xrun.f -input /home/msegper/Documents/TFM/current_source_units/restore.tcl
 #
 
 
@@ -27,6 +27,7 @@ database require simulator -hints {
 #
 catch {group new -name inputs -overlay 0}
 catch {group new -name outputs -overlay 0}
+catch {group new -name Iout_them -overlay 0}
 group using inputs
 group set -overlay 0
 group set -comment {}
@@ -45,7 +46,7 @@ group set -comment {}
 group clear 0 end
 
 group insert \
-    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them[16:0]}]} ] \
+    Iout_them \
     [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_5}]} ] \
     [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_4}]} ] \
     [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_3}]} ] \
@@ -55,6 +56,29 @@ group insert \
     [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_0_red}]} ] \
     [subst  {simulator::[format {currentSourceUnits_tb.dut.atb1}]} ] \
     [subst  {simulator::[format {currentSourceUnits_tb.dut.atb0}]} ]
+group using Iout_them
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_0}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_1}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_2}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_3}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_4}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_5}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_6}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_7}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_8}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_9}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_10}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_11}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_12}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_13}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_14}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_15}]} ] \
+    [subst  {simulator::[format {currentSourceUnits_tb.dut.Iout_them_16}]} ]
 
 #
 # Mnemonic Maps
@@ -134,10 +158,65 @@ foreach {name attrs} [subst  {
 
 
 set groupId0 [waveform add -groups outputs]
+
+set groupId1 [waveform find -name Iout_them]
+set gpGlist1 [waveform hierarchy contents $groupId1]
+set gpID1 [lindex $gpGlist1 0]
+foreach {name attrs} [subst  {
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_0}]} {-trace analogSampleAndHold -color #ff00a6}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_1}]} {-trace analogSampleAndHold -color #ff0000}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_2}]} {-trace analogSampleAndHold -color #ffc300}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_3}]} {-trace analogSampleAndHold -color #78ff00}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_4}]} {-trace analogSampleAndHold -color #00ff4a}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_5}]} {-trace analogSampleAndHold -color #00f1ff}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_6}]} {-trace analogSampleAndHold -color #002eff}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_7}]} {-trace analogSampleAndHold -color #9500ff}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_8}]} {-trace analogSampleAndHold -color #ff00a6}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_9}]} {-trace analogSampleAndHold -color #ff0000}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_10}]} {-trace analogSampleAndHold -color #ffc300}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_11}]} {-trace analogSampleAndHold -color #78ff00}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_12}]} {-trace analogSampleAndHold -color #00ff4a}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_13}]} {-trace analogSampleAndHold -color #00f1ff}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_14}]} {-trace analogSampleAndHold -color #002eff}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_15}]} {-trace analogSampleAndHold -color #9500ff}
+    {simulator::[format {currentSourceUnits_tb.dut.Iout_them_16}]} {-trace analogSampleAndHold -color #ff00a6}
+}] childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID1] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID1 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist1 [lrange $gpGlist1 1 end]
+    set gpID1 [lindex $gpGlist1 0]
+}
+waveform hierarchy collapse $groupId1
+
 set gpGlist0 [waveform hierarchy contents $groupId0]
 set gpID0 [lindex $gpGlist0 0]
 foreach {name attrs} [subst  {
-    {simulator::[format {currentSourceUnits_tb.dut.Iout_them[16:0]}]} {}
+    groupId53 {}
     {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_5}]} {-trace analogSampleAndHold -color #9500ff}
     {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_4}]} {-trace analogSampleAndHold -color #002eff}
     {simulator::[format {currentSourceUnits_tb.dut.Iout_binary_3}]} {-trace analogSampleAndHold -color #00f1ff}
@@ -148,7 +227,6 @@ foreach {name attrs} [subst  {
     {simulator::[format {currentSourceUnits_tb.dut.atb1}]} {-trace analogSampleAndHold -color #ff0000}
     {simulator::[format {currentSourceUnits_tb.dut.atb0}]} {-trace analogSampleAndHold -color #ff00a6}
 }] childcmds {
-    {}
     {}
     {}
     {}

@@ -11,11 +11,10 @@ module currentSourceUnits_tb;
     real vssana;           // Conexión a tierra
 
     // Señales de salida
-    /*real Iout_them_16, Iout_them_15, Iout_them_14, Iout_them_13, Iout_them_12;
+    real Iout_them_16, Iout_them_15, Iout_them_14, Iout_them_13, Iout_them_12;
     real Iout_them_11, Iout_them_10, Iout_them_9, Iout_them_8, Iout_them_7;
     real Iout_them_6, Iout_them_5, Iout_them_4, Iout_them_3, Iout_them_2;
-    real Iout_them_1, Iout_them_0;*/
-    real Iout_them[16:0]; // Array de 17 señales reales
+    real Iout_them_1, Iout_them_0;
     real Iout_binary_5, Iout_binary_4, Iout_binary_3, Iout_binary_2;
     real Iout_binary_1, Iout_binary_0, Iout_binary_0_red;
     real atb1, atb0;
@@ -28,7 +27,23 @@ module currentSourceUnits_tb;
         .vddana_1p8(vddana_1p8),
         .vddana_0p8(vddana_0p8),
         .vssana(vssana),
-        .Iout_them(Iout_them),
+        .Iout_them_16(Iout_them_16),
+        .Iout_them_15(Iout_them_15),
+        .Iout_them_14(Iout_them_14),
+        .Iout_them_13(Iout_them_13),
+        .Iout_them_12(Iout_them_12),
+        .Iout_them_11(Iout_them_11),
+        .Iout_them_10(Iout_them_10),
+        .Iout_them_9(Iout_them_9),
+        .Iout_them_8(Iout_them_8),
+        .Iout_them_7(Iout_them_7),
+        .Iout_them_6(Iout_them_6),
+        .Iout_them_5(Iout_them_5),
+        .Iout_them_4(Iout_them_4),
+        .Iout_them_3(Iout_them_3),
+        .Iout_them_2(Iout_them_2),
+        .Iout_them_1(Iout_them_1),
+        .Iout_them_0(Iout_them_0),
         .Iout_binary_5(Iout_binary_5), .Iout_binary_4(Iout_binary_4), .Iout_binary_3(Iout_binary_3),
         .Iout_binary_2(Iout_binary_2), .Iout_binary_1(Iout_binary_1), .Iout_binary_0(Iout_binary_0),
         .Iout_binary_0_red(Iout_binary_0_red),

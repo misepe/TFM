@@ -5,7 +5,7 @@
 #
 # You can restore this configuration with:
 #
-#      xrun -f xrun.f -input restore.tcl
+#      xrun -f xrun.f -input /home/msegper/Documents/TFM/current_source_units/restore.tcl
 #
 
 set tcl_prompt1 {puts -nonewline "xcelium> "}
@@ -55,6 +55,7 @@ alias . run
 alias indago verisium
 alias quit exit
 database -open -shm -into waves.shm waves -default
-probe -create -database waves currentSourceUnits_tb.dut.vssana currentSourceUnits_tb.dut.vddana_1p8 currentSourceUnits_tb.dut.vddana_0p8 currentSourceUnits_tb.dut.pdb currentSourceUnits_tb.dut.iref_500ua currentSourceUnits_tb.dut.atb_ena currentSourceUnits_tb.dut.atb1 currentSourceUnits_tb.dut.atb0 currentSourceUnits_tb.dut.Iout_them currentSourceUnits_tb.dut.Iout_binary_5 currentSourceUnits_tb.dut.Iout_binary_4 currentSourceUnits_tb.dut.Iout_binary_3 currentSourceUnits_tb.dut.Iout_binary_2 currentSourceUnits_tb.dut.Iout_binary_1 currentSourceUnits_tb.dut.Iout_binary_0_red currentSourceUnits_tb.dut.Iout_binary_0
+probe -create -database waves currentSourceUnits_tb.dut.vssana currentSourceUnits_tb.dut.vddana_1p8 currentSourceUnits_tb.dut.vddana_0p8 currentSourceUnits_tb.dut.pdb currentSourceUnits_tb.dut.iref_500ua currentSourceUnits_tb.dut.atb_ena currentSourceUnits_tb.dut.atb1 currentSourceUnits_tb.dut.atb0 currentSourceUnits_tb.dut.Iout_binary_5 currentSourceUnits_tb.dut.Iout_binary_4 currentSourceUnits_tb.dut.Iout_binary_3 currentSourceUnits_tb.dut.Iout_binary_2 currentSourceUnits_tb.dut.Iout_binary_1 currentSourceUnits_tb.dut.Iout_binary_0_red currentSourceUnits_tb.dut.Iout_binary_0
+probe -create -database waves currentSourceUnits_tb.dut.Iout_them_0 currentSourceUnits_tb.dut.Iout_them_1 currentSourceUnits_tb.dut.Iout_them_2 currentSourceUnits_tb.dut.Iout_them_3 currentSourceUnits_tb.dut.Iout_them_4 currentSourceUnits_tb.dut.Iout_them_5 currentSourceUnits_tb.dut.Iout_them_6 currentSourceUnits_tb.dut.Iout_them_7 currentSourceUnits_tb.dut.Iout_them_8 currentSourceUnits_tb.dut.Iout_them_9 currentSourceUnits_tb.dut.Iout_them_10 currentSourceUnits_tb.dut.Iout_them_11 currentSourceUnits_tb.dut.Iout_them_12 currentSourceUnits_tb.dut.Iout_them_13 currentSourceUnits_tb.dut.Iout_them_14 currentSourceUnits_tb.dut.Iout_them_15 currentSourceUnits_tb.dut.Iout_them_16
 
 simvision -input restore.tcl.svcf

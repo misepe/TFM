@@ -1,0 +1,578 @@
+xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	24.03-s004: Started on Sep 09, 2025 at 14:49:48 CEST
+xrun
+	-f xrun.f
+		-clean
+		./models/resistor_load.sv
+		./tb/resistor_load_tb.sv
+		-access +rw
+		-gui
+		-s
+		-input /home/msegper/Documents/TFM/resistor_load/restore.tcl
+xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
+file: ./models/resistor_load.sv
+	module worklib.resistor_load:sv
+		errors: 0, warnings: 0
+file: ./tb/resistor_load_tb.sv
+	module worklib.resistor_load_tb:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		cds_rnm_pkg
+		resistor_load_tb
+	Building instance overlay tables: .................... Done
+	Using implicit TMP libraries; associated with library worklib
+	Generating native compiled code:
+		worklib.resistor_load:sv <0x19c9f1b8>
+			streams:   4, words:  2809
+		worklib.resistor_load_tb:sv <0x2dd6f419>
+			streams:   6, words:  8201
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 2       2
+		Verilog packages:        1       1
+		Registers:              12      12
+		Scalar wires:            7       -
+		Always blocks:           1       1
+		Initial blocks:          2       2
+		Cont. assignments:       2       2
+		Pseudo assignments:      5       -
+		Assertions:              1       1
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.resistor_load_tb:sv
+xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
+xcelium> 
+xcelium> # XM-Sim Command File
+xcelium> # TOOL:	xmsim(64)	24.03-s004
+xcelium> #
+xcelium> #
+xcelium> # You can restore this configuration with:
+xcelium> #
+xcelium> #      xrun -f xrun.f -input restore.tcl
+xcelium> #
+xcelium> 
+xcelium> set tcl_prompt1 {puts -nonewline "xcelium> "}
+puts -nonewline "xcelium> "
+xcelium> set tcl_prompt2 {puts -nonewline "> "}
+puts -nonewline "> "
+xcelium> set vlog_format %h
+%h
+xcelium> set vhdl_format %v
+%v
+xcelium> set real_precision 6
+6
+xcelium> set display_unit auto
+auto
+xcelium> set time_unit module
+module
+xcelium> set heap_garbage_size -200
+-200
+xcelium> set heap_garbage_time 0
+0
+xcelium> set assert_report_level note
+note
+xcelium> set assert_stop_level error
+error
+xcelium> set autoscope yes
+yes
+xcelium> set assert_1164_warnings yes
+yes
+xcelium> set pack_assert_off {}
+xcelium> set severity_pack_assert_off {note warning}
+note warning
+xcelium> set assert_output_stop_level failed
+failed
+xcelium> set tcl_debug_level 0
+0
+xcelium> set relax_path_name 1
+1
+xcelium> set vhdl_vcdmap XX01ZX01X
+XX01ZX01X
+xcelium> set intovf_severity_level ERROR
+ERROR
+xcelium> set probe_screen_format 0
+0
+xcelium> set rangecnst_severity_level ERROR
+ERROR
+xcelium> set textio_severity_level ERROR
+ERROR
+xcelium> set vital_timing_checks_on 1
+1
+xcelium> set vlog_code_show_force 0
+0
+xcelium> set assert_count_attempts 1
+1
+xcelium> set tcl_all64 false
+false
+xcelium> set tcl_runerror_exit false
+false
+xcelium> set assert_report_incompletes 0
+0
+xcelium> set show_force 1
+1
+xcelium> set force_reset_by_reinvoke 0
+0
+xcelium> set tcl_relaxed_literal 0
+0
+xcelium> set probe_exclude_patterns {}
+xcelium> set probe_packed_limit 4k
+4k
+xcelium> set probe_unpacked_limit 16k
+16k
+xcelium> set assert_internal_msg no
+no
+xcelium> set svseed 1
+1
+xcelium> set assert_reporting_mode 0
+0
+xcelium> set vcd_compact_mode 0
+0
+xcelium> set vhdl_forgen_loopindex_enum_pos 0
+0
+xcelium> set xmreplay_dc_debug 0
+0
+xcelium> set tcl_runcmd_interrupt next_command
+next_command
+xcelium> set tcl_sigval_prefix {#}
+#
+xcelium> alias . run
+xcelium> alias indago verisium
+xcelium> alias quit exit
+xcelium> database -open -shm -into waves.shm waves -default
+Created default SHM database waves
+xcelium> probe -create -database waves resistor_load_tb.dut.Iin resistor_load_tb.dut.Iinb resistor_load_tb.dut.vout resistor_load_tb.dut.voutb resistor_load_tb.dut.vssana
+Created probe 1
+xcelium> probe -create -database waves resistor_load_tb.dut.vssana_check
+Created probe 2
+xcelium> 
+xcelium> simvision -input restore.tcl.svcf
+xcelium> run
+Iniciando barrido de seÃ±ales...
+Barrido de Iin e Iinb:
+Iin = -0.001000 A, Iinb = -0.001000 A, vout = -0.100000 V, voutb = -0.100000 V
+Iin = -0.001000 A, Iinb = -0.000900 A, vout = -0.100000 V, voutb = -0.090000 V
+Iin = -0.001000 A, Iinb = -0.000800 A, vout = -0.100000 V, voutb = -0.080000 V
+Iin = -0.001000 A, Iinb = -0.000700 A, vout = -0.100000 V, voutb = -0.070000 V
+Iin = -0.001000 A, Iinb = -0.000600 A, vout = -0.100000 V, voutb = -0.060000 V
+Iin = -0.001000 A, Iinb = -0.000500 A, vout = -0.100000 V, voutb = -0.050000 V
+Iin = -0.001000 A, Iinb = -0.000400 A, vout = -0.100000 V, voutb = -0.040000 V
+Iin = -0.001000 A, Iinb = -0.000300 A, vout = -0.100000 V, voutb = -0.030000 V
+Iin = -0.001000 A, Iinb = -0.000200 A, vout = -0.100000 V, voutb = -0.020000 V
+Iin = -0.001000 A, Iinb = -0.000100 A, vout = -0.100000 V, voutb = -0.010000 V
+Iin = -0.001000 A, Iinb = 0.000000 A, vout = -0.100000 V, voutb = 0.000000 V
+Iin = -0.001000 A, Iinb = 0.000100 A, vout = -0.100000 V, voutb = 0.010000 V
+Iin = -0.001000 A, Iinb = 0.000200 A, vout = -0.100000 V, voutb = 0.020000 V
+Iin = -0.001000 A, Iinb = 0.000300 A, vout = -0.100000 V, voutb = 0.030000 V
+Iin = -0.001000 A, Iinb = 0.000400 A, vout = -0.100000 V, voutb = 0.040000 V
+Iin = -0.001000 A, Iinb = 0.000500 A, vout = -0.100000 V, voutb = 0.050000 V
+Iin = -0.001000 A, Iinb = 0.000600 A, vout = -0.100000 V, voutb = 0.060000 V
+Iin = -0.001000 A, Iinb = 0.000700 A, vout = -0.100000 V, voutb = 0.070000 V
+Iin = -0.001000 A, Iinb = 0.000800 A, vout = -0.100000 V, voutb = 0.080000 V
+Iin = -0.001000 A, Iinb = 0.000900 A, vout = -0.100000 V, voutb = 0.090000 V
+Iin = -0.000900 A, Iinb = -0.001000 A, vout = -0.090000 V, voutb = -0.100000 V
+Iin = -0.000900 A, Iinb = -0.000900 A, vout = -0.090000 V, voutb = -0.090000 V
+Iin = -0.000900 A, Iinb = -0.000800 A, vout = -0.090000 V, voutb = -0.080000 V
+Iin = -0.000900 A, Iinb = -0.000700 A, vout = -0.090000 V, voutb = -0.070000 V
+Iin = -0.000900 A, Iinb = -0.000600 A, vout = -0.090000 V, voutb = -0.060000 V
+Iin = -0.000900 A, Iinb = -0.000500 A, vout = -0.090000 V, voutb = -0.050000 V
+Iin = -0.000900 A, Iinb = -0.000400 A, vout = -0.090000 V, voutb = -0.040000 V
+Iin = -0.000900 A, Iinb = -0.000300 A, vout = -0.090000 V, voutb = -0.030000 V
+Iin = -0.000900 A, Iinb = -0.000200 A, vout = -0.090000 V, voutb = -0.020000 V
+Iin = -0.000900 A, Iinb = -0.000100 A, vout = -0.090000 V, voutb = -0.010000 V
+Iin = -0.000900 A, Iinb = 0.000000 A, vout = -0.090000 V, voutb = 0.000000 V
+Iin = -0.000900 A, Iinb = 0.000100 A, vout = -0.090000 V, voutb = 0.010000 V
+Iin = -0.000900 A, Iinb = 0.000200 A, vout = -0.090000 V, voutb = 0.020000 V
+Iin = -0.000900 A, Iinb = 0.000300 A, vout = -0.090000 V, voutb = 0.030000 V
+Iin = -0.000900 A, Iinb = 0.000400 A, vout = -0.090000 V, voutb = 0.040000 V
+Iin = -0.000900 A, Iinb = 0.000500 A, vout = -0.090000 V, voutb = 0.050000 V
+Iin = -0.000900 A, Iinb = 0.000600 A, vout = -0.090000 V, voutb = 0.060000 V
+Iin = -0.000900 A, Iinb = 0.000700 A, vout = -0.090000 V, voutb = 0.070000 V
+Iin = -0.000900 A, Iinb = 0.000800 A, vout = -0.090000 V, voutb = 0.080000 V
+Iin = -0.000900 A, Iinb = 0.000900 A, vout = -0.090000 V, voutb = 0.090000 V
+Iin = -0.000800 A, Iinb = -0.001000 A, vout = -0.080000 V, voutb = -0.100000 V
+Iin = -0.000800 A, Iinb = -0.000900 A, vout = -0.080000 V, voutb = -0.090000 V
+Iin = -0.000800 A, Iinb = -0.000800 A, vout = -0.080000 V, voutb = -0.080000 V
+Iin = -0.000800 A, Iinb = -0.000700 A, vout = -0.080000 V, voutb = -0.070000 V
+Iin = -0.000800 A, Iinb = -0.000600 A, vout = -0.080000 V, voutb = -0.060000 V
+Iin = -0.000800 A, Iinb = -0.000500 A, vout = -0.080000 V, voutb = -0.050000 V
+Iin = -0.000800 A, Iinb = -0.000400 A, vout = -0.080000 V, voutb = -0.040000 V
+Iin = -0.000800 A, Iinb = -0.000300 A, vout = -0.080000 V, voutb = -0.030000 V
+Iin = -0.000800 A, Iinb = -0.000200 A, vout = -0.080000 V, voutb = -0.020000 V
+Iin = -0.000800 A, Iinb = -0.000100 A, vout = -0.080000 V, voutb = -0.010000 V
+Iin = -0.000800 A, Iinb = 0.000000 A, vout = -0.080000 V, voutb = 0.000000 V
+Iin = -0.000800 A, Iinb = 0.000100 A, vout = -0.080000 V, voutb = 0.010000 V
+Iin = -0.000800 A, Iinb = 0.000200 A, vout = -0.080000 V, voutb = 0.020000 V
+Iin = -0.000800 A, Iinb = 0.000300 A, vout = -0.080000 V, voutb = 0.030000 V
+Iin = -0.000800 A, Iinb = 0.000400 A, vout = -0.080000 V, voutb = 0.040000 V
+Iin = -0.000800 A, Iinb = 0.000500 A, vout = -0.080000 V, voutb = 0.050000 V
+Iin = -0.000800 A, Iinb = 0.000600 A, vout = -0.080000 V, voutb = 0.060000 V
+Iin = -0.000800 A, Iinb = 0.000700 A, vout = -0.080000 V, voutb = 0.070000 V
+Iin = -0.000800 A, Iinb = 0.000800 A, vout = -0.080000 V, voutb = 0.080000 V
+Iin = -0.000800 A, Iinb = 0.000900 A, vout = -0.080000 V, voutb = 0.090000 V
+Iin = -0.000700 A, Iinb = -0.001000 A, vout = -0.070000 V, voutb = -0.100000 V
+Iin = -0.000700 A, Iinb = -0.000900 A, vout = -0.070000 V, voutb = -0.090000 V
+Iin = -0.000700 A, Iinb = -0.000800 A, vout = -0.070000 V, voutb = -0.080000 V
+Iin = -0.000700 A, Iinb = -0.000700 A, vout = -0.070000 V, voutb = -0.070000 V
+Iin = -0.000700 A, Iinb = -0.000600 A, vout = -0.070000 V, voutb = -0.060000 V
+Iin = -0.000700 A, Iinb = -0.000500 A, vout = -0.070000 V, voutb = -0.050000 V
+Iin = -0.000700 A, Iinb = -0.000400 A, vout = -0.070000 V, voutb = -0.040000 V
+Iin = -0.000700 A, Iinb = -0.000300 A, vout = -0.070000 V, voutb = -0.030000 V
+Iin = -0.000700 A, Iinb = -0.000200 A, vout = -0.070000 V, voutb = -0.020000 V
+Iin = -0.000700 A, Iinb = -0.000100 A, vout = -0.070000 V, voutb = -0.010000 V
+Iin = -0.000700 A, Iinb = 0.000000 A, vout = -0.070000 V, voutb = 0.000000 V
+Iin = -0.000700 A, Iinb = 0.000100 A, vout = -0.070000 V, voutb = 0.010000 V
+Iin = -0.000700 A, Iinb = 0.000200 A, vout = -0.070000 V, voutb = 0.020000 V
+Iin = -0.000700 A, Iinb = 0.000300 A, vout = -0.070000 V, voutb = 0.030000 V
+Iin = -0.000700 A, Iinb = 0.000400 A, vout = -0.070000 V, voutb = 0.040000 V
+Iin = -0.000700 A, Iinb = 0.000500 A, vout = -0.070000 V, voutb = 0.050000 V
+Iin = -0.000700 A, Iinb = 0.000600 A, vout = -0.070000 V, voutb = 0.060000 V
+Iin = -0.000700 A, Iinb = 0.000700 A, vout = -0.070000 V, voutb = 0.070000 V
+Iin = -0.000700 A, Iinb = 0.000800 A, vout = -0.070000 V, voutb = 0.080000 V
+Iin = -0.000700 A, Iinb = 0.000900 A, vout = -0.070000 V, voutb = 0.090000 V
+Iin = -0.000600 A, Iinb = -0.001000 A, vout = -0.060000 V, voutb = -0.100000 V
+Iin = -0.000600 A, Iinb = -0.000900 A, vout = -0.060000 V, voutb = -0.090000 V
+Iin = -0.000600 A, Iinb = -0.000800 A, vout = -0.060000 V, voutb = -0.080000 V
+Iin = -0.000600 A, Iinb = -0.000700 A, vout = -0.060000 V, voutb = -0.070000 V
+Iin = -0.000600 A, Iinb = -0.000600 A, vout = -0.060000 V, voutb = -0.060000 V
+Iin = -0.000600 A, Iinb = -0.000500 A, vout = -0.060000 V, voutb = -0.050000 V
+Iin = -0.000600 A, Iinb = -0.000400 A, vout = -0.060000 V, voutb = -0.040000 V
+Iin = -0.000600 A, Iinb = -0.000300 A, vout = -0.060000 V, voutb = -0.030000 V
+Iin = -0.000600 A, Iinb = -0.000200 A, vout = -0.060000 V, voutb = -0.020000 V
+Iin = -0.000600 A, Iinb = -0.000100 A, vout = -0.060000 V, voutb = -0.010000 V
+Iin = -0.000600 A, Iinb = 0.000000 A, vout = -0.060000 V, voutb = 0.000000 V
+Iin = -0.000600 A, Iinb = 0.000100 A, vout = -0.060000 V, voutb = 0.010000 V
+Iin = -0.000600 A, Iinb = 0.000200 A, vout = -0.060000 V, voutb = 0.020000 V
+Iin = -0.000600 A, Iinb = 0.000300 A, vout = -0.060000 V, voutb = 0.030000 V
+Iin = -0.000600 A, Iinb = 0.000400 A, vout = -0.060000 V, voutb = 0.040000 V
+Iin = -0.000600 A, Iinb = 0.000500 A, vout = -0.060000 V, voutb = 0.050000 V
+Iin = -0.000600 A, Iinb = 0.000600 A, vout = -0.060000 V, voutb = 0.060000 V
+Iin = -0.000600 A, Iinb = 0.000700 A, vout = -0.060000 V, voutb = 0.070000 V
+Iin = -0.000600 A, Iinb = 0.000800 A, vout = -0.060000 V, voutb = 0.080000 V
+Iin = -0.000600 A, Iinb = 0.000900 A, vout = -0.060000 V, voutb = 0.090000 V
+Iin = -0.000500 A, Iinb = -0.001000 A, vout = -0.050000 V, voutb = -0.100000 V
+Iin = -0.000500 A, Iinb = -0.000900 A, vout = -0.050000 V, voutb = -0.090000 V
+Iin = -0.000500 A, Iinb = -0.000800 A, vout = -0.050000 V, voutb = -0.080000 V
+Iin = -0.000500 A, Iinb = -0.000700 A, vout = -0.050000 V, voutb = -0.070000 V
+Iin = -0.000500 A, Iinb = -0.000600 A, vout = -0.050000 V, voutb = -0.060000 V
+Iin = -0.000500 A, Iinb = -0.000500 A, vout = -0.050000 V, voutb = -0.050000 V
+Iin = -0.000500 A, Iinb = -0.000400 A, vout = -0.050000 V, voutb = -0.040000 V
+Iin = -0.000500 A, Iinb = -0.000300 A, vout = -0.050000 V, voutb = -0.030000 V
+Iin = -0.000500 A, Iinb = -0.000200 A, vout = -0.050000 V, voutb = -0.020000 V
+Iin = -0.000500 A, Iinb = -0.000100 A, vout = -0.050000 V, voutb = -0.010000 V
+Iin = -0.000500 A, Iinb = 0.000000 A, vout = -0.050000 V, voutb = 0.000000 V
+Iin = -0.000500 A, Iinb = 0.000100 A, vout = -0.050000 V, voutb = 0.010000 V
+Iin = -0.000500 A, Iinb = 0.000200 A, vout = -0.050000 V, voutb = 0.020000 V
+Iin = -0.000500 A, Iinb = 0.000300 A, vout = -0.050000 V, voutb = 0.030000 V
+Iin = -0.000500 A, Iinb = 0.000400 A, vout = -0.050000 V, voutb = 0.040000 V
+Iin = -0.000500 A, Iinb = 0.000500 A, vout = -0.050000 V, voutb = 0.050000 V
+Iin = -0.000500 A, Iinb = 0.000600 A, vout = -0.050000 V, voutb = 0.060000 V
+Iin = -0.000500 A, Iinb = 0.000700 A, vout = -0.050000 V, voutb = 0.070000 V
+Iin = -0.000500 A, Iinb = 0.000800 A, vout = -0.050000 V, voutb = 0.080000 V
+Iin = -0.000500 A, Iinb = 0.000900 A, vout = -0.050000 V, voutb = 0.090000 V
+Iin = -0.000400 A, Iinb = -0.001000 A, vout = -0.040000 V, voutb = -0.100000 V
+Iin = -0.000400 A, Iinb = -0.000900 A, vout = -0.040000 V, voutb = -0.090000 V
+Iin = -0.000400 A, Iinb = -0.000800 A, vout = -0.040000 V, voutb = -0.080000 V
+Iin = -0.000400 A, Iinb = -0.000700 A, vout = -0.040000 V, voutb = -0.070000 V
+Iin = -0.000400 A, Iinb = -0.000600 A, vout = -0.040000 V, voutb = -0.060000 V
+Iin = -0.000400 A, Iinb = -0.000500 A, vout = -0.040000 V, voutb = -0.050000 V
+Iin = -0.000400 A, Iinb = -0.000400 A, vout = -0.040000 V, voutb = -0.040000 V
+Iin = -0.000400 A, Iinb = -0.000300 A, vout = -0.040000 V, voutb = -0.030000 V
+Iin = -0.000400 A, Iinb = -0.000200 A, vout = -0.040000 V, voutb = -0.020000 V
+Iin = -0.000400 A, Iinb = -0.000100 A, vout = -0.040000 V, voutb = -0.010000 V
+Iin = -0.000400 A, Iinb = 0.000000 A, vout = -0.040000 V, voutb = 0.000000 V
+Iin = -0.000400 A, Iinb = 0.000100 A, vout = -0.040000 V, voutb = 0.010000 V
+Iin = -0.000400 A, Iinb = 0.000200 A, vout = -0.040000 V, voutb = 0.020000 V
+Iin = -0.000400 A, Iinb = 0.000300 A, vout = -0.040000 V, voutb = 0.030000 V
+Iin = -0.000400 A, Iinb = 0.000400 A, vout = -0.040000 V, voutb = 0.040000 V
+Iin = -0.000400 A, Iinb = 0.000500 A, vout = -0.040000 V, voutb = 0.050000 V
+Iin = -0.000400 A, Iinb = 0.000600 A, vout = -0.040000 V, voutb = 0.060000 V
+Iin = -0.000400 A, Iinb = 0.000700 A, vout = -0.040000 V, voutb = 0.070000 V
+Iin = -0.000400 A, Iinb = 0.000800 A, vout = -0.040000 V, voutb = 0.080000 V
+Iin = -0.000400 A, Iinb = 0.000900 A, vout = -0.040000 V, voutb = 0.090000 V
+Iin = -0.000300 A, Iinb = -0.001000 A, vout = -0.030000 V, voutb = -0.100000 V
+Iin = -0.000300 A, Iinb = -0.000900 A, vout = -0.030000 V, voutb = -0.090000 V
+Iin = -0.000300 A, Iinb = -0.000800 A, vout = -0.030000 V, voutb = -0.080000 V
+Iin = -0.000300 A, Iinb = -0.000700 A, vout = -0.030000 V, voutb = -0.070000 V
+Iin = -0.000300 A, Iinb = -0.000600 A, vout = -0.030000 V, voutb = -0.060000 V
+Iin = -0.000300 A, Iinb = -0.000500 A, vout = -0.030000 V, voutb = -0.050000 V
+Iin = -0.000300 A, Iinb = -0.000400 A, vout = -0.030000 V, voutb = -0.040000 V
+Iin = -0.000300 A, Iinb = -0.000300 A, vout = -0.030000 V, voutb = -0.030000 V
+Iin = -0.000300 A, Iinb = -0.000200 A, vout = -0.030000 V, voutb = -0.020000 V
+Iin = -0.000300 A, Iinb = -0.000100 A, vout = -0.030000 V, voutb = -0.010000 V
+Iin = -0.000300 A, Iinb = 0.000000 A, vout = -0.030000 V, voutb = 0.000000 V
+Iin = -0.000300 A, Iinb = 0.000100 A, vout = -0.030000 V, voutb = 0.010000 V
+Iin = -0.000300 A, Iinb = 0.000200 A, vout = -0.030000 V, voutb = 0.020000 V
+Iin = -0.000300 A, Iinb = 0.000300 A, vout = -0.030000 V, voutb = 0.030000 V
+Iin = -0.000300 A, Iinb = 0.000400 A, vout = -0.030000 V, voutb = 0.040000 V
+Iin = -0.000300 A, Iinb = 0.000500 A, vout = -0.030000 V, voutb = 0.050000 V
+Iin = -0.000300 A, Iinb = 0.000600 A, vout = -0.030000 V, voutb = 0.060000 V
+Iin = -0.000300 A, Iinb = 0.000700 A, vout = -0.030000 V, voutb = 0.070000 V
+Iin = -0.000300 A, Iinb = 0.000800 A, vout = -0.030000 V, voutb = 0.080000 V
+Iin = -0.000300 A, Iinb = 0.000900 A, vout = -0.030000 V, voutb = 0.090000 V
+Iin = -0.000200 A, Iinb = -0.001000 A, vout = -0.020000 V, voutb = -0.100000 V
+Iin = -0.000200 A, Iinb = -0.000900 A, vout = -0.020000 V, voutb = -0.090000 V
+Iin = -0.000200 A, Iinb = -0.000800 A, vout = -0.020000 V, voutb = -0.080000 V
+Iin = -0.000200 A, Iinb = -0.000700 A, vout = -0.020000 V, voutb = -0.070000 V
+Iin = -0.000200 A, Iinb = -0.000600 A, vout = -0.020000 V, voutb = -0.060000 V
+Iin = -0.000200 A, Iinb = -0.000500 A, vout = -0.020000 V, voutb = -0.050000 V
+Iin = -0.000200 A, Iinb = -0.000400 A, vout = -0.020000 V, voutb = -0.040000 V
+Iin = -0.000200 A, Iinb = -0.000300 A, vout = -0.020000 V, voutb = -0.030000 V
+Iin = -0.000200 A, Iinb = -0.000200 A, vout = -0.020000 V, voutb = -0.020000 V
+Iin = -0.000200 A, Iinb = -0.000100 A, vout = -0.020000 V, voutb = -0.010000 V
+Iin = -0.000200 A, Iinb = 0.000000 A, vout = -0.020000 V, voutb = 0.000000 V
+Iin = -0.000200 A, Iinb = 0.000100 A, vout = -0.020000 V, voutb = 0.010000 V
+Iin = -0.000200 A, Iinb = 0.000200 A, vout = -0.020000 V, voutb = 0.020000 V
+Iin = -0.000200 A, Iinb = 0.000300 A, vout = -0.020000 V, voutb = 0.030000 V
+Iin = -0.000200 A, Iinb = 0.000400 A, vout = -0.020000 V, voutb = 0.040000 V
+Iin = -0.000200 A, Iinb = 0.000500 A, vout = -0.020000 V, voutb = 0.050000 V
+Iin = -0.000200 A, Iinb = 0.000600 A, vout = -0.020000 V, voutb = 0.060000 V
+Iin = -0.000200 A, Iinb = 0.000700 A, vout = -0.020000 V, voutb = 0.070000 V
+Iin = -0.000200 A, Iinb = 0.000800 A, vout = -0.020000 V, voutb = 0.080000 V
+Iin = -0.000200 A, Iinb = 0.000900 A, vout = -0.020000 V, voutb = 0.090000 V
+Iin = -0.000100 A, Iinb = -0.001000 A, vout = -0.010000 V, voutb = -0.100000 V
+Iin = -0.000100 A, Iinb = -0.000900 A, vout = -0.010000 V, voutb = -0.090000 V
+Iin = -0.000100 A, Iinb = -0.000800 A, vout = -0.010000 V, voutb = -0.080000 V
+Iin = -0.000100 A, Iinb = -0.000700 A, vout = -0.010000 V, voutb = -0.070000 V
+Iin = -0.000100 A, Iinb = -0.000600 A, vout = -0.010000 V, voutb = -0.060000 V
+Iin = -0.000100 A, Iinb = -0.000500 A, vout = -0.010000 V, voutb = -0.050000 V
+Iin = -0.000100 A, Iinb = -0.000400 A, vout = -0.010000 V, voutb = -0.040000 V
+Iin = -0.000100 A, Iinb = -0.000300 A, vout = -0.010000 V, voutb = -0.030000 V
+Iin = -0.000100 A, Iinb = -0.000200 A, vout = -0.010000 V, voutb = -0.020000 V
+Iin = -0.000100 A, Iinb = -0.000100 A, vout = -0.010000 V, voutb = -0.010000 V
+Iin = -0.000100 A, Iinb = 0.000000 A, vout = -0.010000 V, voutb = 0.000000 V
+Iin = -0.000100 A, Iinb = 0.000100 A, vout = -0.010000 V, voutb = 0.010000 V
+Iin = -0.000100 A, Iinb = 0.000200 A, vout = -0.010000 V, voutb = 0.020000 V
+Iin = -0.000100 A, Iinb = 0.000300 A, vout = -0.010000 V, voutb = 0.030000 V
+Iin = -0.000100 A, Iinb = 0.000400 A, vout = -0.010000 V, voutb = 0.040000 V
+Iin = -0.000100 A, Iinb = 0.000500 A, vout = -0.010000 V, voutb = 0.050000 V
+Iin = -0.000100 A, Iinb = 0.000600 A, vout = -0.010000 V, voutb = 0.060000 V
+Iin = -0.000100 A, Iinb = 0.000700 A, vout = -0.010000 V, voutb = 0.070000 V
+Iin = -0.000100 A, Iinb = 0.000800 A, vout = -0.010000 V, voutb = 0.080000 V
+Iin = -0.000100 A, Iinb = 0.000900 A, vout = -0.010000 V, voutb = 0.090000 V
+Iin = 0.000000 A, Iinb = -0.001000 A, vout = 0.000000 V, voutb = -0.100000 V
+Iin = 0.000000 A, Iinb = -0.000900 A, vout = 0.000000 V, voutb = -0.090000 V
+Iin = 0.000000 A, Iinb = -0.000800 A, vout = 0.000000 V, voutb = -0.080000 V
+Iin = 0.000000 A, Iinb = -0.000700 A, vout = 0.000000 V, voutb = -0.070000 V
+Iin = 0.000000 A, Iinb = -0.000600 A, vout = 0.000000 V, voutb = -0.060000 V
+Iin = 0.000000 A, Iinb = -0.000500 A, vout = 0.000000 V, voutb = -0.050000 V
+Iin = 0.000000 A, Iinb = -0.000400 A, vout = 0.000000 V, voutb = -0.040000 V
+Iin = 0.000000 A, Iinb = -0.000300 A, vout = 0.000000 V, voutb = -0.030000 V
+Iin = 0.000000 A, Iinb = -0.000200 A, vout = 0.000000 V, voutb = -0.020000 V
+Iin = 0.000000 A, Iinb = -0.000100 A, vout = 0.000000 V, voutb = -0.010000 V
+Iin = 0.000000 A, Iinb = 0.000000 A, vout = 0.000000 V, voutb = 0.000000 V
+Iin = 0.000000 A, Iinb = 0.000100 A, vout = 0.000000 V, voutb = 0.010000 V
+Iin = 0.000000 A, Iinb = 0.000200 A, vout = 0.000000 V, voutb = 0.020000 V
+Iin = 0.000000 A, Iinb = 0.000300 A, vout = 0.000000 V, voutb = 0.030000 V
+Iin = 0.000000 A, Iinb = 0.000400 A, vout = 0.000000 V, voutb = 0.040000 V
+Iin = 0.000000 A, Iinb = 0.000500 A, vout = 0.000000 V, voutb = 0.050000 V
+Iin = 0.000000 A, Iinb = 0.000600 A, vout = 0.000000 V, voutb = 0.060000 V
+Iin = 0.000000 A, Iinb = 0.000700 A, vout = 0.000000 V, voutb = 0.070000 V
+Iin = 0.000000 A, Iinb = 0.000800 A, vout = 0.000000 V, voutb = 0.080000 V
+Iin = 0.000000 A, Iinb = 0.000900 A, vout = 0.000000 V, voutb = 0.090000 V
+Iin = 0.000100 A, Iinb = -0.001000 A, vout = 0.010000 V, voutb = -0.100000 V
+Iin = 0.000100 A, Iinb = -0.000900 A, vout = 0.010000 V, voutb = -0.090000 V
+Iin = 0.000100 A, Iinb = -0.000800 A, vout = 0.010000 V, voutb = -0.080000 V
+Iin = 0.000100 A, Iinb = -0.000700 A, vout = 0.010000 V, voutb = -0.070000 V
+Iin = 0.000100 A, Iinb = -0.000600 A, vout = 0.010000 V, voutb = -0.060000 V
+Iin = 0.000100 A, Iinb = -0.000500 A, vout = 0.010000 V, voutb = -0.050000 V
+Iin = 0.000100 A, Iinb = -0.000400 A, vout = 0.010000 V, voutb = -0.040000 V
+Iin = 0.000100 A, Iinb = -0.000300 A, vout = 0.010000 V, voutb = -0.030000 V
+Iin = 0.000100 A, Iinb = -0.000200 A, vout = 0.010000 V, voutb = -0.020000 V
+Iin = 0.000100 A, Iinb = -0.000100 A, vout = 0.010000 V, voutb = -0.010000 V
+Iin = 0.000100 A, Iinb = 0.000000 A, vout = 0.010000 V, voutb = 0.000000 V
+Iin = 0.000100 A, Iinb = 0.000100 A, vout = 0.010000 V, voutb = 0.010000 V
+Iin = 0.000100 A, Iinb = 0.000200 A, vout = 0.010000 V, voutb = 0.020000 V
+Iin = 0.000100 A, Iinb = 0.000300 A, vout = 0.010000 V, voutb = 0.030000 V
+Iin = 0.000100 A, Iinb = 0.000400 A, vout = 0.010000 V, voutb = 0.040000 V
+Iin = 0.000100 A, Iinb = 0.000500 A, vout = 0.010000 V, voutb = 0.050000 V
+Iin = 0.000100 A, Iinb = 0.000600 A, vout = 0.010000 V, voutb = 0.060000 V
+Iin = 0.000100 A, Iinb = 0.000700 A, vout = 0.010000 V, voutb = 0.070000 V
+Iin = 0.000100 A, Iinb = 0.000800 A, vout = 0.010000 V, voutb = 0.080000 V
+Iin = 0.000100 A, Iinb = 0.000900 A, vout = 0.010000 V, voutb = 0.090000 V
+Iin = 0.000200 A, Iinb = -0.001000 A, vout = 0.020000 V, voutb = -0.100000 V
+Iin = 0.000200 A, Iinb = -0.000900 A, vout = 0.020000 V, voutb = -0.090000 V
+Iin = 0.000200 A, Iinb = -0.000800 A, vout = 0.020000 V, voutb = -0.080000 V
+Iin = 0.000200 A, Iinb = -0.000700 A, vout = 0.020000 V, voutb = -0.070000 V
+Iin = 0.000200 A, Iinb = -0.000600 A, vout = 0.020000 V, voutb = -0.060000 V
+Iin = 0.000200 A, Iinb = -0.000500 A, vout = 0.020000 V, voutb = -0.050000 V
+Iin = 0.000200 A, Iinb = -0.000400 A, vout = 0.020000 V, voutb = -0.040000 V
+Iin = 0.000200 A, Iinb = -0.000300 A, vout = 0.020000 V, voutb = -0.030000 V
+Iin = 0.000200 A, Iinb = -0.000200 A, vout = 0.020000 V, voutb = -0.020000 V
+Iin = 0.000200 A, Iinb = -0.000100 A, vout = 0.020000 V, voutb = -0.010000 V
+Iin = 0.000200 A, Iinb = 0.000000 A, vout = 0.020000 V, voutb = 0.000000 V
+Iin = 0.000200 A, Iinb = 0.000100 A, vout = 0.020000 V, voutb = 0.010000 V
+Iin = 0.000200 A, Iinb = 0.000200 A, vout = 0.020000 V, voutb = 0.020000 V
+Iin = 0.000200 A, Iinb = 0.000300 A, vout = 0.020000 V, voutb = 0.030000 V
+Iin = 0.000200 A, Iinb = 0.000400 A, vout = 0.020000 V, voutb = 0.040000 V
+Iin = 0.000200 A, Iinb = 0.000500 A, vout = 0.020000 V, voutb = 0.050000 V
+Iin = 0.000200 A, Iinb = 0.000600 A, vout = 0.020000 V, voutb = 0.060000 V
+Iin = 0.000200 A, Iinb = 0.000700 A, vout = 0.020000 V, voutb = 0.070000 V
+Iin = 0.000200 A, Iinb = 0.000800 A, vout = 0.020000 V, voutb = 0.080000 V
+Iin = 0.000200 A, Iinb = 0.000900 A, vout = 0.020000 V, voutb = 0.090000 V
+Iin = 0.000300 A, Iinb = -0.001000 A, vout = 0.030000 V, voutb = -0.100000 V
+Iin = 0.000300 A, Iinb = -0.000900 A, vout = 0.030000 V, voutb = -0.090000 V
+Iin = 0.000300 A, Iinb = -0.000800 A, vout = 0.030000 V, voutb = -0.080000 V
+Iin = 0.000300 A, Iinb = -0.000700 A, vout = 0.030000 V, voutb = -0.070000 V
+Iin = 0.000300 A, Iinb = -0.000600 A, vout = 0.030000 V, voutb = -0.060000 V
+Iin = 0.000300 A, Iinb = -0.000500 A, vout = 0.030000 V, voutb = -0.050000 V
+Iin = 0.000300 A, Iinb = -0.000400 A, vout = 0.030000 V, voutb = -0.040000 V
+Iin = 0.000300 A, Iinb = -0.000300 A, vout = 0.030000 V, voutb = -0.030000 V
+Iin = 0.000300 A, Iinb = -0.000200 A, vout = 0.030000 V, voutb = -0.020000 V
+Iin = 0.000300 A, Iinb = -0.000100 A, vout = 0.030000 V, voutb = -0.010000 V
+Iin = 0.000300 A, Iinb = 0.000000 A, vout = 0.030000 V, voutb = 0.000000 V
+Iin = 0.000300 A, Iinb = 0.000100 A, vout = 0.030000 V, voutb = 0.010000 V
+Iin = 0.000300 A, Iinb = 0.000200 A, vout = 0.030000 V, voutb = 0.020000 V
+Iin = 0.000300 A, Iinb = 0.000300 A, vout = 0.030000 V, voutb = 0.030000 V
+Iin = 0.000300 A, Iinb = 0.000400 A, vout = 0.030000 V, voutb = 0.040000 V
+Iin = 0.000300 A, Iinb = 0.000500 A, vout = 0.030000 V, voutb = 0.050000 V
+Iin = 0.000300 A, Iinb = 0.000600 A, vout = 0.030000 V, voutb = 0.060000 V
+Iin = 0.000300 A, Iinb = 0.000700 A, vout = 0.030000 V, voutb = 0.070000 V
+Iin = 0.000300 A, Iinb = 0.000800 A, vout = 0.030000 V, voutb = 0.080000 V
+Iin = 0.000300 A, Iinb = 0.000900 A, vout = 0.030000 V, voutb = 0.090000 V
+Iin = 0.000400 A, Iinb = -0.001000 A, vout = 0.040000 V, voutb = -0.100000 V
+Iin = 0.000400 A, Iinb = -0.000900 A, vout = 0.040000 V, voutb = -0.090000 V
+Iin = 0.000400 A, Iinb = -0.000800 A, vout = 0.040000 V, voutb = -0.080000 V
+Iin = 0.000400 A, Iinb = -0.000700 A, vout = 0.040000 V, voutb = -0.070000 V
+Iin = 0.000400 A, Iinb = -0.000600 A, vout = 0.040000 V, voutb = -0.060000 V
+Iin = 0.000400 A, Iinb = -0.000500 A, vout = 0.040000 V, voutb = -0.050000 V
+Iin = 0.000400 A, Iinb = -0.000400 A, vout = 0.040000 V, voutb = -0.040000 V
+Iin = 0.000400 A, Iinb = -0.000300 A, vout = 0.040000 V, voutb = -0.030000 V
+Iin = 0.000400 A, Iinb = -0.000200 A, vout = 0.040000 V, voutb = -0.020000 V
+Iin = 0.000400 A, Iinb = -0.000100 A, vout = 0.040000 V, voutb = -0.010000 V
+Iin = 0.000400 A, Iinb = 0.000000 A, vout = 0.040000 V, voutb = 0.000000 V
+Iin = 0.000400 A, Iinb = 0.000100 A, vout = 0.040000 V, voutb = 0.010000 V
+Iin = 0.000400 A, Iinb = 0.000200 A, vout = 0.040000 V, voutb = 0.020000 V
+Iin = 0.000400 A, Iinb = 0.000300 A, vout = 0.040000 V, voutb = 0.030000 V
+Iin = 0.000400 A, Iinb = 0.000400 A, vout = 0.040000 V, voutb = 0.040000 V
+Iin = 0.000400 A, Iinb = 0.000500 A, vout = 0.040000 V, voutb = 0.050000 V
+Iin = 0.000400 A, Iinb = 0.000600 A, vout = 0.040000 V, voutb = 0.060000 V
+Iin = 0.000400 A, Iinb = 0.000700 A, vout = 0.040000 V, voutb = 0.070000 V
+Iin = 0.000400 A, Iinb = 0.000800 A, vout = 0.040000 V, voutb = 0.080000 V
+Iin = 0.000400 A, Iinb = 0.000900 A, vout = 0.040000 V, voutb = 0.090000 V
+Iin = 0.000500 A, Iinb = -0.001000 A, vout = 0.050000 V, voutb = -0.100000 V
+Iin = 0.000500 A, Iinb = -0.000900 A, vout = 0.050000 V, voutb = -0.090000 V
+Iin = 0.000500 A, Iinb = -0.000800 A, vout = 0.050000 V, voutb = -0.080000 V
+Iin = 0.000500 A, Iinb = -0.000700 A, vout = 0.050000 V, voutb = -0.070000 V
+Iin = 0.000500 A, Iinb = -0.000600 A, vout = 0.050000 V, voutb = -0.060000 V
+Iin = 0.000500 A, Iinb = -0.000500 A, vout = 0.050000 V, voutb = -0.050000 V
+Iin = 0.000500 A, Iinb = -0.000400 A, vout = 0.050000 V, voutb = -0.040000 V
+Iin = 0.000500 A, Iinb = -0.000300 A, vout = 0.050000 V, voutb = -0.030000 V
+Iin = 0.000500 A, Iinb = -0.000200 A, vout = 0.050000 V, voutb = -0.020000 V
+Iin = 0.000500 A, Iinb = -0.000100 A, vout = 0.050000 V, voutb = -0.010000 V
+Iin = 0.000500 A, Iinb = 0.000000 A, vout = 0.050000 V, voutb = 0.000000 V
+Iin = 0.000500 A, Iinb = 0.000100 A, vout = 0.050000 V, voutb = 0.010000 V
+Iin = 0.000500 A, Iinb = 0.000200 A, vout = 0.050000 V, voutb = 0.020000 V
+Iin = 0.000500 A, Iinb = 0.000300 A, vout = 0.050000 V, voutb = 0.030000 V
+Iin = 0.000500 A, Iinb = 0.000400 A, vout = 0.050000 V, voutb = 0.040000 V
+Iin = 0.000500 A, Iinb = 0.000500 A, vout = 0.050000 V, voutb = 0.050000 V
+Iin = 0.000500 A, Iinb = 0.000600 A, vout = 0.050000 V, voutb = 0.060000 V
+Iin = 0.000500 A, Iinb = 0.000700 A, vout = 0.050000 V, voutb = 0.070000 V
+Iin = 0.000500 A, Iinb = 0.000800 A, vout = 0.050000 V, voutb = 0.080000 V
+Iin = 0.000500 A, Iinb = 0.000900 A, vout = 0.050000 V, voutb = 0.090000 V
+Iin = 0.000600 A, Iinb = -0.001000 A, vout = 0.060000 V, voutb = -0.100000 V
+Iin = 0.000600 A, Iinb = -0.000900 A, vout = 0.060000 V, voutb = -0.090000 V
+Iin = 0.000600 A, Iinb = -0.000800 A, vout = 0.060000 V, voutb = -0.080000 V
+Iin = 0.000600 A, Iinb = -0.000700 A, vout = 0.060000 V, voutb = -0.070000 V
+Iin = 0.000600 A, Iinb = -0.000600 A, vout = 0.060000 V, voutb = -0.060000 V
+Iin = 0.000600 A, Iinb = -0.000500 A, vout = 0.060000 V, voutb = -0.050000 V
+Iin = 0.000600 A, Iinb = -0.000400 A, vout = 0.060000 V, voutb = -0.040000 V
+Iin = 0.000600 A, Iinb = -0.000300 A, vout = 0.060000 V, voutb = -0.030000 V
+Iin = 0.000600 A, Iinb = -0.000200 A, vout = 0.060000 V, voutb = -0.020000 V
+Iin = 0.000600 A, Iinb = -0.000100 A, vout = 0.060000 V, voutb = -0.010000 V
+Iin = 0.000600 A, Iinb = 0.000000 A, vout = 0.060000 V, voutb = 0.000000 V
+Iin = 0.000600 A, Iinb = 0.000100 A, vout = 0.060000 V, voutb = 0.010000 V
+Iin = 0.000600 A, Iinb = 0.000200 A, vout = 0.060000 V, voutb = 0.020000 V
+Iin = 0.000600 A, Iinb = 0.000300 A, vout = 0.060000 V, voutb = 0.030000 V
+Iin = 0.000600 A, Iinb = 0.000400 A, vout = 0.060000 V, voutb = 0.040000 V
+Iin = 0.000600 A, Iinb = 0.000500 A, vout = 0.060000 V, voutb = 0.050000 V
+Iin = 0.000600 A, Iinb = 0.000600 A, vout = 0.060000 V, voutb = 0.060000 V
+Iin = 0.000600 A, Iinb = 0.000700 A, vout = 0.060000 V, voutb = 0.070000 V
+Iin = 0.000600 A, Iinb = 0.000800 A, vout = 0.060000 V, voutb = 0.080000 V
+Iin = 0.000600 A, Iinb = 0.000900 A, vout = 0.060000 V, voutb = 0.090000 V
+Iin = 0.000700 A, Iinb = -0.001000 A, vout = 0.070000 V, voutb = -0.100000 V
+Iin = 0.000700 A, Iinb = -0.000900 A, vout = 0.070000 V, voutb = -0.090000 V
+Iin = 0.000700 A, Iinb = -0.000800 A, vout = 0.070000 V, voutb = -0.080000 V
+Iin = 0.000700 A, Iinb = -0.000700 A, vout = 0.070000 V, voutb = -0.070000 V
+Iin = 0.000700 A, Iinb = -0.000600 A, vout = 0.070000 V, voutb = -0.060000 V
+Iin = 0.000700 A, Iinb = -0.000500 A, vout = 0.070000 V, voutb = -0.050000 V
+Iin = 0.000700 A, Iinb = -0.000400 A, vout = 0.070000 V, voutb = -0.040000 V
+Iin = 0.000700 A, Iinb = -0.000300 A, vout = 0.070000 V, voutb = -0.030000 V
+Iin = 0.000700 A, Iinb = -0.000200 A, vout = 0.070000 V, voutb = -0.020000 V
+Iin = 0.000700 A, Iinb = -0.000100 A, vout = 0.070000 V, voutb = -0.010000 V
+Iin = 0.000700 A, Iinb = 0.000000 A, vout = 0.070000 V, voutb = 0.000000 V
+Iin = 0.000700 A, Iinb = 0.000100 A, vout = 0.070000 V, voutb = 0.010000 V
+Iin = 0.000700 A, Iinb = 0.000200 A, vout = 0.070000 V, voutb = 0.020000 V
+Iin = 0.000700 A, Iinb = 0.000300 A, vout = 0.070000 V, voutb = 0.030000 V
+Iin = 0.000700 A, Iinb = 0.000400 A, vout = 0.070000 V, voutb = 0.040000 V
+Iin = 0.000700 A, Iinb = 0.000500 A, vout = 0.070000 V, voutb = 0.050000 V
+Iin = 0.000700 A, Iinb = 0.000600 A, vout = 0.070000 V, voutb = 0.060000 V
+Iin = 0.000700 A, Iinb = 0.000700 A, vout = 0.070000 V, voutb = 0.070000 V
+Iin = 0.000700 A, Iinb = 0.000800 A, vout = 0.070000 V, voutb = 0.080000 V
+Iin = 0.000700 A, Iinb = 0.000900 A, vout = 0.070000 V, voutb = 0.090000 V
+Iin = 0.000800 A, Iinb = -0.001000 A, vout = 0.080000 V, voutb = -0.100000 V
+Iin = 0.000800 A, Iinb = -0.000900 A, vout = 0.080000 V, voutb = -0.090000 V
+Iin = 0.000800 A, Iinb = -0.000800 A, vout = 0.080000 V, voutb = -0.080000 V
+Iin = 0.000800 A, Iinb = -0.000700 A, vout = 0.080000 V, voutb = -0.070000 V
+Iin = 0.000800 A, Iinb = -0.000600 A, vout = 0.080000 V, voutb = -0.060000 V
+Iin = 0.000800 A, Iinb = -0.000500 A, vout = 0.080000 V, voutb = -0.050000 V
+Iin = 0.000800 A, Iinb = -0.000400 A, vout = 0.080000 V, voutb = -0.040000 V
+Iin = 0.000800 A, Iinb = -0.000300 A, vout = 0.080000 V, voutb = -0.030000 V
+Iin = 0.000800 A, Iinb = -0.000200 A, vout = 0.080000 V, voutb = -0.020000 V
+Iin = 0.000800 A, Iinb = -0.000100 A, vout = 0.080000 V, voutb = -0.010000 V
+Iin = 0.000800 A, Iinb = 0.000000 A, vout = 0.080000 V, voutb = 0.000000 V
+Iin = 0.000800 A, Iinb = 0.000100 A, vout = 0.080000 V, voutb = 0.010000 V
+Iin = 0.000800 A, Iinb = 0.000200 A, vout = 0.080000 V, voutb = 0.020000 V
+Iin = 0.000800 A, Iinb = 0.000300 A, vout = 0.080000 V, voutb = 0.030000 V
+Iin = 0.000800 A, Iinb = 0.000400 A, vout = 0.080000 V, voutb = 0.040000 V
+Iin = 0.000800 A, Iinb = 0.000500 A, vout = 0.080000 V, voutb = 0.050000 V
+Iin = 0.000800 A, Iinb = 0.000600 A, vout = 0.080000 V, voutb = 0.060000 V
+Iin = 0.000800 A, Iinb = 0.000700 A, vout = 0.080000 V, voutb = 0.070000 V
+Iin = 0.000800 A, Iinb = 0.000800 A, vout = 0.080000 V, voutb = 0.080000 V
+Iin = 0.000800 A, Iinb = 0.000900 A, vout = 0.080000 V, voutb = 0.090000 V
+Iin = 0.000900 A, Iinb = -0.001000 A, vout = 0.090000 V, voutb = -0.100000 V
+Iin = 0.000900 A, Iinb = -0.000900 A, vout = 0.090000 V, voutb = -0.090000 V
+Iin = 0.000900 A, Iinb = -0.000800 A, vout = 0.090000 V, voutb = -0.080000 V
+Iin = 0.000900 A, Iinb = -0.000700 A, vout = 0.090000 V, voutb = -0.070000 V
+Iin = 0.000900 A, Iinb = -0.000600 A, vout = 0.090000 V, voutb = -0.060000 V
+Iin = 0.000900 A, Iinb = -0.000500 A, vout = 0.090000 V, voutb = -0.050000 V
+Iin = 0.000900 A, Iinb = -0.000400 A, vout = 0.090000 V, voutb = -0.040000 V
+Iin = 0.000900 A, Iinb = -0.000300 A, vout = 0.090000 V, voutb = -0.030000 V
+Iin = 0.000900 A, Iinb = -0.000200 A, vout = 0.090000 V, voutb = -0.020000 V
+Iin = 0.000900 A, Iinb = -0.000100 A, vout = 0.090000 V, voutb = -0.010000 V
+Iin = 0.000900 A, Iinb = 0.000000 A, vout = 0.090000 V, voutb = 0.000000 V
+Iin = 0.000900 A, Iinb = 0.000100 A, vout = 0.090000 V, voutb = 0.010000 V
+Iin = 0.000900 A, Iinb = 0.000200 A, vout = 0.090000 V, voutb = 0.020000 V
+Iin = 0.000900 A, Iinb = 0.000300 A, vout = 0.090000 V, voutb = 0.030000 V
+Iin = 0.000900 A, Iinb = 0.000400 A, vout = 0.090000 V, voutb = 0.040000 V
+Iin = 0.000900 A, Iinb = 0.000500 A, vout = 0.090000 V, voutb = 0.050000 V
+Iin = 0.000900 A, Iinb = 0.000600 A, vout = 0.090000 V, voutb = 0.060000 V
+Iin = 0.000900 A, Iinb = 0.000700 A, vout = 0.090000 V, voutb = 0.070000 V
+Iin = 0.000900 A, Iinb = 0.000800 A, vout = 0.090000 V, voutb = 0.080000 V
+Iin = 0.000900 A, Iinb = 0.000900 A, vout = 0.090000 V, voutb = 0.090000 V
+Barrido de vssana:
+vssana = -0.05 V, vout = 0.100000 V, voutb = 0.100000 V
+vssana = -0.04 V, vout = 0.100000 V, voutb = 0.100000 V
+vssana = -0.03 V, vout = 0.100000 V, voutb = 0.100000 V
+vssana = -0.02 V, vout = 0.100000 V, voutb = 0.100000 V
+vssana = -0.01 V, vout = 0.100000 V, voutb = 0.100000 V
+vssana = 0.00 V, vout = 0.100000 V, voutb = 0.100000 V
+vssana = 0.01 V, vout = 0.100000 V, voutb = 0.100000 V
+vssana = 0.02 V, vout = 0.100000 V, voutb = 0.100000 V
+vssana = 0.03 V, vout = 0.100000 V, voutb = 0.100000 V
+vssana = 0.04 V, vout = 0.100000 V, voutb = 0.100000 V
+Barrido completado.
+Simulation complete via $finish(1) at time 4100 PS + 0
+./tb/resistor_load_tb.sv:48         $finish; // Finalizar la simulación
+xcelium> ...Regained control from SimVision
+-------------------------------------
+
+xcelium> exit
+TOOL:	xrun(64)	24.03-s004: Exiting on Sep 09, 2025 at 14:56:15 CEST  (total: 00:06:27)

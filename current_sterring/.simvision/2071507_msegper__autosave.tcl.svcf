@@ -1,0 +1,310 @@
+
+#
+# Preferences
+#
+preferences set plugin-enable-svdatabrowser-new 1
+preferences set plugin-enable-groupscope 0
+preferences set plugin-enable-interleaveandcompare 0
+preferences set plugin-enable-waveformfrequencyplot 0
+#
+# Groups
+#
+catch {group new -name Iout_binary -overlay 0}
+catch {group new -name Iout_them -overlay 0}
+catch {group new -name {Group 1} -overlay 1}
+catch {group new -name {Analog overlay} -overlay 1}
+group using Iout_binary
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    {Analog overlay} \
+    simulator::currentSterring_tb.dut.Iout_binary_0 \
+    simulator::currentSterring_tb.dut.Iout_binary_0_red \
+    simulator::currentSterring_tb.dut.Iout_binary_1 \
+    simulator::currentSterring_tb.dut.Iout_binary_2 \
+    simulator::currentSterring_tb.dut.Iout_binary_3 \
+    simulator::currentSterring_tb.dut.Iout_binary_4 \
+    simulator::currentSterring_tb.dut.Iout_binary_5
+group using Iout_them
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    simulator::currentSterring_tb.dut.Iout_them_0 \
+    simulator::currentSterring_tb.dut.Iout_them_1 \
+    simulator::currentSterring_tb.dut.Iout_them_2 \
+    simulator::currentSterring_tb.dut.Iout_them_3 \
+    simulator::currentSterring_tb.dut.Iout_them_4 \
+    simulator::currentSterring_tb.dut.Iout_them_5 \
+    simulator::currentSterring_tb.dut.Iout_them_6 \
+    simulator::currentSterring_tb.dut.Iout_them_7 \
+    simulator::currentSterring_tb.dut.Iout_them_8 \
+    simulator::currentSterring_tb.dut.Iout_them_9 \
+    simulator::currentSterring_tb.dut.Iout_them_10 \
+    simulator::currentSterring_tb.dut.Iout_them_11 \
+    simulator::currentSterring_tb.dut.Iout_them_12 \
+    simulator::currentSterring_tb.dut.Iout_them_13 \
+    simulator::currentSterring_tb.dut.Iout_them_14 \
+    simulator::currentSterring_tb.dut.Iout_them_15 \
+    simulator::currentSterring_tb.dut.Iout_them_16
+group using {Group 1}
+group set -overlay 1
+group set -comment {}
+group clear 0 end
+
+group using {Analog overlay}
+group set -overlay 1
+group set -comment {}
+group clear 0 end
+
+group insert \
+    continuous(simulator::currentSterring_tb.dut.Iout_binary_0) \
+    continuous(simulator::currentSterring_tb.dut.Iout_binary_0_red) \
+    continuous(simulator::currentSterring_tb.dut.Iout_binary_1) \
+    continuous(simulator::currentSterring_tb.dut.Iout_binary_2) \
+    continuous(simulator::currentSterring_tb.dut.Iout_binary_3) \
+    continuous(simulator::currentSterring_tb.dut.Iout_binary_4) \
+    continuous(simulator::currentSterring_tb.dut.Iout_binary_5)
+
+#
+# Mnemonic Maps
+#
+mmap new  -reuse -name {Boolean as Logic} -radix %b -contents {{%c=FALSE -edgepriority 1 -shape low}
+{%c=TRUE -edgepriority 1 -shape high}}
+mmap new  -reuse -name {Example Map} -radix %x -contents {{%b=11???? -bgcolor orange -label REG:%x -linecolor yellow -shape bus}
+{%x=1F -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=2C -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=* -label %x -linecolor gray -shape bus}}
+
+#
+# Design Browser windows
+#
+if {[catch {window new WatchList -name "Design Browser 1" -geometry 730x500+775+150}] != ""} {
+    window geometry "Design Browser 1" 730x500+775+150
+}
+window target "Design Browser 1" on
+browser using {Design Browser 1}
+browser set -scope  simulator::currentSterring_tb.dut 
+browser set \
+    -showinouts 0 \
+    -showinputs 0 \
+    -showoutputs 0 \
+    -signalsort name
+browser yview see  simulator::currentSterring_tb.dut 
+browser timecontrol set -lock 0
+
+#
+# Waveform windows
+#
+if {[catch {window new WaveWindow -name "Waveform 1" -geometry 1920x1016+-1+26}] != ""} {
+    window geometry "Waveform 1" 1920x1016+-1+26
+}
+window target "Waveform 1" on
+waveform using {Waveform 1}
+waveform sidebar visibility partial
+waveform set \
+    -primarycursor TimeA \
+    -signalnames name \
+    -signalwidth 175 \
+    -units ps \
+    -valuewidth 81
+waveform baseline set -time 0
+
+set id [waveform add -signals  {
+	simulator::currentSterring_tb.dut.iref_500ua
+	} ]
+waveform format $id -trace analogSampleAndHold -color #00ff4a
+waveform axis range $id -for default -min 0.00045000000000000004 -max 0.00055000000000000003 -scale linear
+set id [waveform add -signals  {
+	simulator::currentSterring_tb.dut.pdb
+	} ]
+set id [waveform add -signals  {
+	{simulator::currentSterring_tb.dut.atb_ena[1:0]}
+	} ]
+set id [waveform add -signals  {
+	simulator::currentSterring_tb.dut.vddana_1p8
+	} ]
+waveform format $id -trace analogSampleAndHold -color #ffc300
+waveform axis range $id -for default -min 1.6200000000000001 -max 1.9800000000000002 -scale linear
+set id [waveform add -signals  {
+	simulator::currentSterring_tb.dut.vddana_0p8
+	} ]
+waveform format $id -trace analogSampleAndHold -color #78ff00
+waveform axis range $id -for default -min 0.72000000000000008 -max 0.88000000000000012 -scale linear
+
+set groupId0 [waveform add -groups Iout_them]
+set gpGlist0 [waveform hierarchy contents $groupId0]
+set gpID0 [lindex $gpGlist0 0]
+foreach {name attrs}  {
+    simulator::currentSterring_tb.dut.Iout_them_0 {-trace analogLinear -color #ff0000}
+    simulator::currentSterring_tb.dut.Iout_them_1 {-trace analogLinear -color #ff00a6}
+    simulator::currentSterring_tb.dut.Iout_them_2 {-trace analogLinear -color #9500ff}
+    simulator::currentSterring_tb.dut.Iout_them_3 {-trace analogLinear -color #002eff}
+    simulator::currentSterring_tb.dut.Iout_them_4 {-trace analogLinear -color #00f1ff}
+    simulator::currentSterring_tb.dut.Iout_them_5 {-trace analogLinear -color #00ff4a}
+    simulator::currentSterring_tb.dut.Iout_them_6 {-trace analogLinear -color #78ff00}
+    simulator::currentSterring_tb.dut.Iout_them_7 {-trace analogLinear -color #ffc300}
+    simulator::currentSterring_tb.dut.Iout_them_8 {-trace analogLinear -color #ff0000}
+    simulator::currentSterring_tb.dut.Iout_them_9 {-trace analogLinear -color #ff00a6}
+    simulator::currentSterring_tb.dut.Iout_them_10 {-trace analogLinear -color #9500ff}
+    simulator::currentSterring_tb.dut.Iout_them_11 {-trace analogLinear -color #002eff}
+    simulator::currentSterring_tb.dut.Iout_them_12 {-trace analogLinear -color #00f1ff}
+    simulator::currentSterring_tb.dut.Iout_them_13 {-trace analogLinear -color #00ff4a}
+    simulator::currentSterring_tb.dut.Iout_them_14 {-trace analogLinear -color #78ff00}
+    simulator::currentSterring_tb.dut.Iout_them_15 {-trace analogLinear -color #ffc300}
+    simulator::currentSterring_tb.dut.Iout_them_16 {-trace analogLinear -color #ff0000}
+} childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID0] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID0 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist0 [lrange $gpGlist0 1 end]
+    set gpID0 [lindex $gpGlist0 0]
+}
+waveform hierarchy collapse $groupId0
+
+
+set groupId0 [waveform add -groups Iout_binary]
+set gpGlist0 [waveform hierarchy contents $groupId0]
+set gpID0 [lindex $gpGlist0 0]
+foreach {name attrs}  {
+    simulator::currentSterring_tb.dut.Iout_binary_0 {-trace analogLinear -color #ff00a6}
+    simulator::currentSterring_tb.dut.Iout_binary_0_red {-trace analogLinear -color #9500ff}
+    simulator::currentSterring_tb.dut.Iout_binary_1 {-trace analogLinear -color #002eff}
+    simulator::currentSterring_tb.dut.Iout_binary_2 {-trace analogLinear -color #00f1ff}
+    simulator::currentSterring_tb.dut.Iout_binary_3 {-trace analogLinear -color #00ff4a}
+    simulator::currentSterring_tb.dut.Iout_binary_4 {-trace analogLinear -color #78ff00}
+    simulator::currentSterring_tb.dut.Iout_binary_5 {-trace analogLinear -color #ffc300}
+} childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID0] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID0 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist0 [lrange $gpGlist0 1 end]
+    set gpID0 [lindex $gpGlist0 0]
+}
+waveform hierarchy collapse $groupId0
+
+set id [waveform add -signals  {
+	{simulator::currentSterring_tb.dut.datain[6:0]}
+	} ]
+waveform format $id -radix %b
+waveform hierarchy collapse $id
+set id [waveform add -signals  {
+	{simulator::currentSterring_tb.dut.datainb[6:0]}
+	} ]
+waveform format $id -radix %b
+waveform hierarchy collapse $id
+set id [waveform add -signals  {
+	{simulator::currentSterring_tb.dut.datatherm[16:0]}
+	} ]
+waveform format $id -radix %b
+waveform hierarchy collapse $id
+set id [waveform add -signals  {
+	{simulator::currentSterring_tb.dut.datathermb[16:0]}
+	} ]
+waveform format $id -radix %b
+waveform hierarchy collapse $id
+set id [waveform add -signals  {
+	{simulator::currentSterring_tb.dut.dataical[4:0]}
+	} ]
+waveform format $id -radix %d
+set id [waveform add -signals  {
+	simulator::currentSterring_tb.dut.atest_ena
+	} ]
+set id [waveform add -signals  {
+	simulator::currentSterring_tb.dut.Vcas
+	} ]
+waveform format $id -trace analogSampleAndHold -color #9500ff
+waveform axis range $id -for default -min 0.72000000000000008 -max 0.88000000000000012 -scale linear
+set id [waveform add -signals  {
+	simulator::currentSterring_tb.dut.vssana
+	} ]
+waveform format $id -trace analogSampleAndHold -color #ff0000
+waveform axis range $id -for default -min -1 -max 1 -scale linear
+set id [waveform add -signals  {
+	simulator::currentSterring_tb.dut.Iout
+	} ]
+waveform format $id -trace analogSampleAndHold -color #ff0000
+waveform axis range $id -for default -min 0 -max 0.00020000000000000001 -scale linear
+set id [waveform add -signals  {
+	simulator::currentSterring_tb.dut.Ioutb
+	} ]
+waveform format $id -trace analogSampleAndHold -color #ff00a6
+waveform axis range $id -for default -min 0 -max 0.0036000000000000012 -scale linear
+set id [waveform add -signals  {
+	simulator::currentSterring_tb.dut.Ical
+	} ]
+waveform format $id -trace analogSampleAndHold -color #ffc300
+waveform axis range $id -for default -min -1 -max 1 -scale linear
+set id [waveform add -signals  {
+	simulator::currentSterring_tb.dut.atb0
+	} ]
+waveform format $id -trace analogSampleAndHold -color #002eff
+waveform axis range $id -for default -min 0 -max 0.80000000000000004 -scale linear
+set id [waveform add -signals  {
+	simulator::currentSterring_tb.dut.atb1
+	} ]
+waveform format $id -trace analogSampleAndHold -color #00f1ff
+waveform axis range $id -for default -min 0 -max 1.8 -scale linear
+set id [waveform add -signals  {
+	simulator::currentSterring_tb.dut.enable_funcionality
+	} ]
+set id [waveform add -signals  {
+	simulator::currentSterring_tb.dut.input_check
+	} ]
+
+waveform xview limits 0 64ps
+
+#
+# Waveform Window Links
+#
+
+#
+# Console windows
+#
+console set -windowname Console
+window geometry Console 1920x1016+-1+26
+
+#
+# Layout selection
+#

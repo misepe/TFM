@@ -1,0 +1,91 @@
+xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	24.03-s004: Started on Oct 20, 2025 at 16:08:33 CEST
+xrun
+	-f xrun.f
+		-clean
+		./models/driver_cell.sv
+		./tb/driver_cell_tb.sv
+		-access +rw
+		-gui
+xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
+file: ./models/driver_cell.sv
+	module worklib.driver_cell:sv
+		errors: 0, warnings: 0
+file: ./tb/driver_cell_tb.sv
+	module worklib.driver_cell_tb:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		cds_rnm_pkg
+		driver_cell_tb
+	Building instance overlay tables: .................... Done
+	Using implicit TMP libraries; associated with library worklib
+	Generating native compiled code:
+		worklib.driver_cell:sv <0x1d01059c>
+			streams:   7, words:  9437
+		worklib.driver_cell_tb:sv <0x1f050545>
+			streams:   9, words: 16218
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 2       2
+		Verilog packages:        1       1
+		Registers:              22      22
+		Scalar wires:            4       -
+		Vectored wires:          8       -
+		Always blocks:           4       4
+		Initial blocks:          4       4
+		Pseudo assignments:      8       -
+		Assertions:              3       3
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.driver_cell_tb:sv
+xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create -shm driver_cell_tb.dut.databinout driver_cell_tb.dut.vssana driver_cell_tb.dut.vddana_1p8 driver_cell_tb.dut.vddana_0p8 driver_cell_tb.dut.pdb driver_cell_tb.dut.datathermoutb driver_cell_tb.dut.datathermout driver_cell_tb.dut.datathermb driver_cell_tb.dut.datatherm driver_cell_tb.dut.datainb driver_cell_tb.dut.datain driver_cell_tb.dut.databinoutb
+Created probe 1
+xcelium> run
+Iniciando tests...
+Test 1: Verificación de límites de alimentación
+10 NS + 0 (Assertion output stop: driver_cell_tb.dut.vddana_1p8_boundaries = failed)
+xcelium> run
+xmsim: *E,ASRTST (./models/driver_cell.sv,30): (time 10 NS) Assertion driver_cell_tb.dut.vddana_1p8_boundaries has failed
+Input voltge vddana_1p8 is out of bounds: 1.90 V
+xmsim: *E,ERRSEV (./models/driver_cell.sv,63): (time 10 NS).
+driver_cell_tb.dut
+Input signals boundaries are not correct: vddana_1p8_check=0, vddana_0p8_check=1, vssana_check=1,
+20 NS + 0 (Assertion output stop: driver_cell_tb.dut.vddana_0p8_boundaries = failed)
+xcelium> run
+xmsim: *E,ASRTST (./models/driver_cell.sv,41): (time 20 NS) Assertion driver_cell_tb.dut.vddana_0p8_boundaries has failed
+Input voltge vddana_0p8 is out of bounds: 0.70 V
+xmsim: *E,ERRSEV (./models/driver_cell.sv,63): (time 20 NS).
+driver_cell_tb.dut
+Input signals boundaries are not correct: vddana_1p8_check=1, vddana_0p8_check=0, vssana_check=1,
+30 NS + 0 (Assertion output stop: driver_cell_tb.dut.vssana_boundaries = failed)
+xcelium> run
+xmsim: *E,ASRTST (./models/driver_cell.sv,54): (time 30 NS) Assertion driver_cell_tb.dut.vssana_boundaries has failed
+Input voltge vssana is out of bounds: -0.10 V
+xmsim: *E,ERRSEV (./models/driver_cell.sv,63): (time 30 NS).
+driver_cell_tb.dut
+Input signals boundaries are not correct: vddana_1p8_check=1, vddana_0p8_check=1, vssana_check=0,
+Test 2: Estado apagado (pdb = 0)
+databinout = xxxxxxxx, databinoutb = xxxxxxxx, datathermout = xxxxxxxxxxxxxxxxx, datathermoutb = xxxxxxxxxxxxxxxxx
+Test 3: Estado encendido (pdb = 1)
+databinout = 11001100, databinoutb = 00110011, datathermout = 11110000111100001, datathermoutb = 00001111000011110
+Test 5: Propagación de datos binarios
+databinout = 10101010, databinoutb = 01010101
+Test 6: Propagación de datos termométricos
+datathermout = 10101010101010101, datathermoutb = 01010101010101010
+Tests completados.
+Simulation complete via $finish(1) at time 80 NS + 0
+./tb/driver_cell_tb.sv:85         $finish;
+xcelium> ^C
+xcelium> exit
+TOOL:	xrun(64)	24.03-s004: Exiting on Oct 20, 2025 at 16:38:59 CEST  (total: 00:30:26)

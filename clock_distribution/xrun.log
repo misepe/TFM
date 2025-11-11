@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Oct 28, 2025 at 17:02:50 CET
+TOOL:	xrun(64)	24.03-s004: Started on Nov 11, 2025 at 16:21:33 CET
 xrun
 	-f xrun.f
 		-clean
@@ -25,7 +25,7 @@ file: ./tb/clock_distribution_tb.sv
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
 		worklib.clock_distribution:sv <0x16f02fb7>
-			streams:  10, words: 31453
+			streams:  10, words: 29540
 		worklib.clock_distribution_tb:sv <0x58a8fd6f>
 			streams:  12, words: 13543
 	Building instance specific data structures.
@@ -157,26 +157,7 @@ xcelium> simvision -input restore.tcl.svcf
 xcelium> run
 Iniciando tests...
 Test 1: Estado apagado
-clkout_therm_16 = z, clkoutb_therm_16 = z
-Test 2: Estado encendido con atb_ena = 2'b00
-atb1 = `wrealZState, atb0 = `wrealZState
-Test 3: Estado encendido con atb_ena = 2'b01
-atb1 = 0.80, atb0 = 0.00
-Test 4: Estado encendido con atb_ena = 2'b10
-atb1 = 0.80, atb0 = 0.00
-Test 5: Estado encendido con atb_ena = 2'b11
-atb1 = 0.00, atb0 = 0.00
-Tests completados.
-Simulation complete via $finish(1) at time 3 US + 0
-./tb/clock_distribution_tb.sv:144         $finish;
-xcelium> probe -create -shm clock_distribution_tb.dut.clkout_binary_0_aux
-Created probe 2
-xcelium> reset
-Loaded snapshot worklib.clock_distribution_tb:sv
-xcelium> run
-Iniciando tests...
-Test 1: Estado apagado
-clkout_therm_16 = z, clkoutb_therm_16 = z
+clkout_therm_16 = 0, clkoutb_therm_16 = 0
 Test 2: Estado encendido con atb_ena = 2'b00
 atb1 = `wrealZState, atb0 = `wrealZState
 Test 3: Estado encendido con atb_ena = 2'b01
@@ -190,4 +171,4 @@ Simulation complete via $finish(1) at time 3 US + 0
 ./tb/clock_distribution_tb.sv:144         $finish;
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Oct 28, 2025 at 17:12:31 CET  (total: 00:09:41)
+TOOL:	xrun(64)	24.03-s004: Exiting on Nov 11, 2025 at 16:26:19 CET  (total: 00:04:46)

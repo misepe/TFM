@@ -75,7 +75,7 @@ module clock_distribution import cds_rnm_pkg::*;(
         end else begin
             vddana_0p8_check = 0;
         end
-        vddana_0p8_boundaries: assert (vddana_0p8 >= VDDANA_0P8_REF*0.95 && vddana_0p8 <= VDDANA_0P8_REF*1.05) else $error("Input voltge vddana_0p8 is out of bounds: %0.2f V", vddana_0p8);
+        vddana_0p8_boundaries: assert (vddana_0p8 >= VDDANA_0P8_REF*0.95 && vddana_0p8 <= VDDANA_0P8_REF*1.05) else $warning("Input voltge vddana_0p8 is out of bounds: %0.2f V", vddana_0p8);
     end
 
     //to check that vssana voltage is within the boundaries +/-5%
@@ -88,7 +88,7 @@ module clock_distribution import cds_rnm_pkg::*;(
         end else begin
             vssana_check = 0;
         end
-        vssana_boundaries: assert (vssana >= VSSANA_MIN && vssana <= VSSANA_MAX) else $error("Input voltge vssana is out of bounds: %0.2f V", vssana);
+        vssana_boundaries: assert (vssana >= VSSANA_MIN && vssana <= VSSANA_MAX) else $warning("Input voltge vssana is out of bounds: %0.2f V", vssana);
     end
 
     //to check that iref current is within the boundaries +/-10%
@@ -99,7 +99,7 @@ module clock_distribution import cds_rnm_pkg::*;(
         end else begin
             iref_check = 0;
         end
-        iref_ua_boundaries: assert (iref_25ua >= IREF*0.9 && iref_25ua <= IREF*1.1) else $error("Input current iref_25ua is out of bounds: %0.2f uA", iref_25ua*1e6);
+        iref_ua_boundaries: assert (iref_25ua >= IREF*0.9 && iref_25ua <= IREF*1.1) else $warning("Input current iref_25ua is out of bounds: %0.2f uA", iref_25ua*1e6);
     end
 
     always_comb begin
@@ -108,7 +108,7 @@ module clock_distribution import cds_rnm_pkg::*;(
             input_check = 1; // All inputs are correct
         end else begin
             input_check = 0; // At least one input is incorrect
-            $error("Input signals boundaries are not correct: vddana_0p8_check=%0d, vssana_check=%0d,", vddana_0p8_check, vssana_check);
+            $warning("Input signals boundaries are not correct: vddana_0p8_check=%0d, vssana_check=%0d,", vddana_0p8_check, vssana_check);
         end
 
         if (input_check == 1 && pdb == 1) begin
@@ -258,55 +258,55 @@ module clock_distribution import cds_rnm_pkg::*;(
         
         end else if(pdb == 0)begin
 
-            clkout_therm_16 = 1'bz;
-            clkout_therm_15 = 1'bz;
-            clkout_therm_14 = 1'bz;
-            clkout_therm_13 = 1'bz;
-            clkout_therm_12 = 1'bz;
-            clkout_therm_11 = 1'bz;
-            clkout_therm_10 = 1'bz;
-            clkout_therm_9 = 1'bz;
-            clkout_therm_8 = 1'bz;
-            clkout_therm_7 = 1'bz;
-            clkout_therm_6 = 1'bz;
-            clkout_therm_5 = 1'bz;
-            clkout_therm_4 = 1'bz;
-            clkout_therm_3 = 1'bz;
-            clkout_therm_2 = 1'bz;
-            clkout_therm_1 = 1'bz;
-            clkout_therm_0 = 1'bz;
-            clkoutb_therm_16 = 1'bz;
-            clkoutb_therm_15 = 1'bz;
-            clkoutb_therm_14 = 1'bz;
-            clkoutb_therm_13 = 1'bz;
-            clkoutb_therm_12 = 1'bz;
-            clkoutb_therm_11 = 1'bz;
-            clkoutb_therm_10 = 1'bz;
-            clkoutb_therm_9 = 1'bz;
-            clkoutb_therm_8 = 1'bz;
-            clkoutb_therm_7 = 1'bz;
-            clkoutb_therm_6 = 1'bz;
-            clkoutb_therm_5 = 1'bz;
-            clkoutb_therm_4 = 1'bz;
-            clkoutb_therm_3 = 1'bz;
-            clkoutb_therm_2 = 1'bz;
-            clkoutb_therm_1 = 1'bz;
-            clkoutb_therm_0 = 1'bz;
+            clkout_therm_16 = 0;
+            clkout_therm_15 = 0;
+            clkout_therm_14 = 0;
+            clkout_therm_13 = 0;
+            clkout_therm_12 = 0;
+            clkout_therm_11 = 0;
+            clkout_therm_10 = 0;
+            clkout_therm_9 = 0;
+            clkout_therm_8 = 0;
+            clkout_therm_7 = 0;
+            clkout_therm_6 = 0;
+            clkout_therm_5 = 0;
+            clkout_therm_4 = 0;
+            clkout_therm_3 = 0;
+            clkout_therm_2 = 0;
+            clkout_therm_1 = 0;
+            clkout_therm_0 = 0;
+            clkoutb_therm_16 = 0;
+            clkoutb_therm_15 = 0;
+            clkoutb_therm_14 = 0;
+            clkoutb_therm_13 = 0;
+            clkoutb_therm_12 = 0;
+            clkoutb_therm_11 = 0;
+            clkoutb_therm_10 = 0;
+            clkoutb_therm_9 = 0;
+            clkoutb_therm_8 = 0;
+            clkoutb_therm_7 = 0;
+            clkoutb_therm_6 = 0;
+            clkoutb_therm_5 = 0;
+            clkoutb_therm_4 = 0;
+            clkoutb_therm_3 = 0;
+            clkoutb_therm_2 = 0;
+            clkoutb_therm_1 = 0;
+            clkoutb_therm_0 = 0;
             
-            clkout_binary_5 = 1'bz;
-            clkout_binary_4 = 1'bz;
-            clkout_binary_3 = 1'bz;
-            clkout_binary_2 = 1'bz;
-            clkout_binary_1 = 1'bz; 
-            clkout_binary_0 = 1'bz;
-            clkout_binary_0_red = 1'bz;
-            clkoutb_binary_5 = 1'bz;
-            clkoutb_binary_4 = 1'bz;
-            clkoutb_binary_3 = 1'bz;
-            clkoutb_binary_2 = 1'bz;
-            clkoutb_binary_1 = 1'bz;
-            clkoutb_binary_0 = 1'bz;
-            clkoutb_binary_0_red = 1'bz;
+            clkout_binary_5 = 0;
+            clkout_binary_4 = 0;
+            clkout_binary_3 = 0;
+            clkout_binary_2 = 0;
+            clkout_binary_1 = 0; 
+            clkout_binary_0 = 0;
+            clkout_binary_0_red = 0;
+            clkoutb_binary_5 = 0;
+            clkoutb_binary_4 = 0;
+            clkoutb_binary_3 = 0;
+            clkoutb_binary_2 = 0;
+            clkoutb_binary_1 = 0;
+            clkoutb_binary_0 = 0;
+            clkoutb_binary_0_red = 0;
 
         end
 

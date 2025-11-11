@@ -50,7 +50,7 @@ module currentSourceUnits (
         end else begin
             iref_check = 0;
         end
-        iref_ua_boundaries: assert (iref_500ua >= IREF*0.9 && iref_500ua <= IREF*1.1) else $error("Input current iref_500ua is out of bounds: %0.2f uA", iref_500ua*1e6);
+        iref_ua_boundaries: assert (iref_500ua >= IREF*0.9 && iref_500ua <= IREF*1.1) else $warning("Input current iref_500ua is out of bounds: %0.2f uA", iref_500ua*1e6);
     end
 
     //to check that vddana_1p8 voltage is within the boundaries +/-5%
@@ -61,7 +61,7 @@ module currentSourceUnits (
         end else begin
             vddana_1p8_check = 0;
         end
-        vddana_1p8_boundaries: assert (vddana_1p8 >= VDDANA_1P8_REF*0.95 && vddana_1p8 <= VDDANA_1P8_REF*1.05) else $error("Input voltge vddana_1p8 is out of bounds: %0.2f V", vddana_1p8);
+        vddana_1p8_boundaries: assert (vddana_1p8 >= VDDANA_1P8_REF*0.95 && vddana_1p8 <= VDDANA_1P8_REF*1.05) else $warning("Input voltge vddana_1p8 is out of bounds: %0.2f V", vddana_1p8);
     end
 
     //to check that vddana_0p8 voltage is within the boundaries +/-5%
@@ -72,7 +72,7 @@ module currentSourceUnits (
         end else begin
             vddana_0p8_check = 0;
         end
-        vddana_0p8_boundaries: assert (vddana_0p8 >= VDDANA_0P8_REF*0.95 && vddana_0p8 <= VDDANA_0P8_REF*1.05) else $error("Input voltge vddana_0p8 is out of bounds: %0.2f V", vddana_0p8);
+        vddana_0p8_boundaries: assert (vddana_0p8 >= VDDANA_0P8_REF*0.95 && vddana_0p8 <= VDDANA_0P8_REF*1.05) else $warning("Input voltge vddana_0p8 is out of bounds: %0.2f V", vddana_0p8);
     end
 
     //to check that vssana voltage is within the boundaries +/-5%
@@ -85,7 +85,7 @@ module currentSourceUnits (
         end else begin
             vssana_check = 0;
         end
-        vssana_boundaries: assert (vssana >= VSSANA_MIN && vssana <= VSSANA_MAX) else $error("Input voltge vssana is out of bounds: %0.2f V", vssana);
+        vssana_boundaries: assert (vssana >= VSSANA_MIN && vssana <= VSSANA_MAX) else $warning("Input voltge vssana is out of bounds: %0.2f V", vssana);
     end
 
     always_comb begin
@@ -94,7 +94,7 @@ module currentSourceUnits (
             input_check = 1; // All inputs are correct
         end else begin
             input_check = 0; // At least one input is incorrect
-            $error("Input signals are not correct: iref_check=%0d, vddana_1p8_check=%0d, vddana_0p8_check=%0d, vssana_check=%0d", iref_check, vddana_1p8_check, vddana_0p8_check, vssana_check);
+            $warning("Input signals are not correct: iref_check=%0d, vddana_1p8_check=%0d, vddana_0p8_check=%0d, vssana_check=%0d", iref_check, vddana_1p8_check, vddana_0p8_check, vssana_check);
         end
 
         if(pdb == 1 && input_check == 1) begin

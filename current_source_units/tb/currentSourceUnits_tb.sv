@@ -77,7 +77,7 @@ module currentSourceUnits_tb;
 
         // Barrido de iref_500ua
         $display("Barrido de iref_500ua:");
-        for (iref_500ua = IREF_MIN; iref_500ua <= IREF_MAX; iref_500ua = iref_500ua + 100e-6) begin
+        for (iref_500ua = IREF_MIN; iref_500ua <= IREF_MAX; iref_500ua = iref_500ua + 50e-6) begin
             #10; // Esperar 10 unidades de tiempo
             $display("iref_500ua = %0.6f A", iref_500ua);
         end

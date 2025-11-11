@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Sep 05, 2025 at 12:44:27 CEST
+TOOL:	xrun(64)	24.03-s004: Started on Nov 11, 2025 at 12:13:20 CET
 xrun
 	-f xrun.f
 		-clean
@@ -20,13 +20,14 @@ file: ./tb/currentSourceUnits_tb.sv
 	Elaborating the design hierarchy:
 	Top level design units:
 		cds_rnm_pkg
+		$unit_0x1e9d2cb2
 		currentSourceUnits_tb
 	Building instance overlay tables: .................... Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.currentSourceUnits:sv <0x0d277653>
+		worklib.currentSourceUnits:sv <0x3a5d1505>
 			streams:   9, words: 28573
-		worklib.currentSourceUnits_tb:sv <0x3e5a1b6f>
+		worklib.currentSourceUnits_tb:sv <0x3c92c148>
 			streams:  34, words: 26473
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
@@ -41,9 +42,11 @@ file: ./tb/currentSourceUnits_tb.sv
 		Initial blocks:          6       6
 		Pseudo assignments:     32       -
 		Assertions:              4       4
+		Compilation units:       1       1
 		Simulation timescale:  1ps
 	Writing initial simulation snapshot: worklib.currentSourceUnits_tb:sv
 xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
+[DMSINFO] Simulating with Xcelium Mixed-Signal App...
 
 -------------------------------------
 Relinquished control to SimVision...
@@ -56,7 +59,7 @@ xcelium> #
 xcelium> #
 xcelium> # You can restore this configuration with:
 xcelium> #
-xcelium> #      xrun -f xrun.f -input restore.tcl
+xcelium> #      xrun -f xrun.f -input /home/msegper/Documents/TFM/current_source_units/restore.tcl
 xcelium> #
 xcelium> 
 xcelium> set tcl_prompt1 {puts -nonewline "xcelium> "}
@@ -148,14 +151,16 @@ xcelium> alias indago verisium
 xcelium> alias quit exit
 xcelium> database -open -shm -into waves.shm waves -default
 Created default SHM database waves
-xcelium> probe -create -database waves currentSourceUnits_tb.dut.vssana currentSourceUnits_tb.dut.vddana_1p8 currentSourceUnits_tb.dut.vddana_0p8 currentSourceUnits_tb.dut.pdb currentSourceUnits_tb.dut.iref_500ua currentSourceUnits_tb.dut.atb_ena currentSourceUnits_tb.dut.atb1 currentSourceUnits_tb.dut.atb0 currentSourceUnits_tb.dut.Iout_them currentSourceUnits_tb.dut.Iout_binary_5 currentSourceUnits_tb.dut.Iout_binary_4 currentSourceUnits_tb.dut.Iout_binary_3 currentSourceUnits_tb.dut.Iout_binary_2 currentSourceUnits_tb.dut.Iout_binary_1 currentSourceUnits_tb.dut.Iout_binary_0_red currentSourceUnits_tb.dut.Iout_binary_0
-xmsim: *SE,PNOOBJ: Path element could not be found: Iout_them.
+xcelium> probe -create -database waves currentSourceUnits_tb.dut.vssana currentSourceUnits_tb.dut.vddana_1p8 currentSourceUnits_tb.dut.vddana_0p8 currentSourceUnits_tb.dut.pdb currentSourceUnits_tb.dut.iref_500ua currentSourceUnits_tb.dut.atb_ena currentSourceUnits_tb.dut.atb1 currentSourceUnits_tb.dut.atb0 currentSourceUnits_tb.dut.Iout_binary_5 currentSourceUnits_tb.dut.Iout_binary_4 currentSourceUnits_tb.dut.Iout_binary_3 currentSourceUnits_tb.dut.Iout_binary_2 currentSourceUnits_tb.dut.Iout_binary_1 currentSourceUnits_tb.dut.Iout_binary_0_red currentSourceUnits_tb.dut.Iout_binary_0
 Created probe 1
+xcelium> probe -create -database waves currentSourceUnits_tb.dut.Iout_them_0 currentSourceUnits_tb.dut.Iout_them_1 currentSourceUnits_tb.dut.Iout_them_2 currentSourceUnits_tb.dut.Iout_them_3 currentSourceUnits_tb.dut.Iout_them_4 currentSourceUnits_tb.dut.Iout_them_5 currentSourceUnits_tb.dut.Iout_them_6 currentSourceUnits_tb.dut.Iout_them_7 currentSourceUnits_tb.dut.Iout_them_8 currentSourceUnits_tb.dut.Iout_them_9 currentSourceUnits_tb.dut.Iout_them_10 currentSourceUnits_tb.dut.Iout_them_11 currentSourceUnits_tb.dut.Iout_them_12 currentSourceUnits_tb.dut.Iout_them_13 currentSourceUnits_tb.dut.Iout_them_14 currentSourceUnits_tb.dut.Iout_them_15 currentSourceUnits_tb.dut.Iout_them_16
+Created probe 2
 xcelium> 
 xcelium> simvision -input restore.tcl.svcf
 xcelium> run
 Barrido de iref_500ua:
 iref_500ua = 0.000450 A
+iref_500ua = 0.000500 A
 iref_500ua = 0.000550 A
 Barrido de vddana_1p8:
 vddana_1p8 = 1.71 V
@@ -195,58 +200,8 @@ atb_ena = 11
 Barrido de pdb:
 pdb = 0
 pdb = 1
-Simulation complete via $finish(1) at time 500 PS + 0
-./tb/currentSourceUnits_tb.sv:134         $finish;
-xcelium> probe -create -shm currentSourceUnits_tb.dut.Iout_them_0 currentSourceUnits_tb.dut.Iout_them_1 currentSourceUnits_tb.dut.Iout_them_2 currentSourceUnits_tb.dut.Iout_them_3 currentSourceUnits_tb.dut.Iout_them_4 currentSourceUnits_tb.dut.Iout_them_5 currentSourceUnits_tb.dut.Iout_them_6 currentSourceUnits_tb.dut.Iout_them_7 currentSourceUnits_tb.dut.Iout_them_8 currentSourceUnits_tb.dut.Iout_them_9 currentSourceUnits_tb.dut.Iout_them_10 currentSourceUnits_tb.dut.Iout_them_11 currentSourceUnits_tb.dut.Iout_them_12 currentSourceUnits_tb.dut.Iout_them_13 currentSourceUnits_tb.dut.Iout_them_14 currentSourceUnits_tb.dut.Iout_them_15 currentSourceUnits_tb.dut.Iout_them_16
-Created probe 2
-xcelium> reset
-Loaded snapshot worklib.currentSourceUnits_tb:sv
-xcelium> run
-Barrido de iref_500ua:
-iref_500ua = 0.000450 A
-iref_500ua = 0.000550 A
-Barrido de vddana_1p8:
-vddana_1p8 = 1.71 V
-vddana_1p8 = 1.72 V
-vddana_1p8 = 1.73 V
-vddana_1p8 = 1.74 V
-vddana_1p8 = 1.75 V
-vddana_1p8 = 1.76 V
-vddana_1p8 = 1.77 V
-vddana_1p8 = 1.78 V
-vddana_1p8 = 1.79 V
-vddana_1p8 = 1.80 V
-vddana_1p8 = 1.81 V
-vddana_1p8 = 1.82 V
-vddana_1p8 = 1.83 V
-vddana_1p8 = 1.84 V
-vddana_1p8 = 1.85 V
-vddana_1p8 = 1.86 V
-vddana_1p8 = 1.87 V
-vddana_1p8 = 1.88 V
-vddana_1p8 = 1.89 V
-Barrido de vddana_0p8:
-vddana_0p8 = 0.76 V
-vddana_0p8 = 0.77 V
-vddana_0p8 = 0.78 V
-vddana_0p8 = 0.79 V
-vddana_0p8 = 0.80 V
-vddana_0p8 = 0.81 V
-vddana_0p8 = 0.82 V
-vddana_0p8 = 0.83 V
-vddana_0p8 = 0.84 V
-Barrido de atb_ena:
-atb_ena = 00
-atb_ena = 01
-atb_ena = 10
-atb_ena = 11
-Barrido de pdb:
-pdb = 0
-pdb = 1
-Simulation complete via $finish(1) at time 500 PS + 0
+Simulation complete via $finish(1) at time 510 PS + 0
 ./tb/currentSourceUnits_tb.sv:134         $finish;
 xcelium> ^C
 xcelium> exit
-...Regained control from SimVision
--------------------------------------
-TOOL:	xrun(64)	24.03-s004: Exiting on Sep 05, 2025 at 14:18:34 CEST  (total: 01:34:07)
+TOOL:	xrun(64)	24.03-s004: Exiting on Nov 11, 2025 at 12:17:46 CET  (total: 00:04:26)

@@ -1,6 +1,7 @@
 `timescale 1ps/1ps
+import cds_rnm_pkg::*; // Importing the Cadence RNM package
 
-module currentSourceUnits import cds_rnm_pkg::*;(
+module currentSourceUnits (
     input real iref_500ua, // input reference current(analog signal)
     input pdb, //power down negate signal (digital signal)
     input [1:0] atb_ena, //stablish the output of the differential testbus (digital signal)
@@ -127,8 +128,8 @@ module currentSourceUnits import cds_rnm_pkg::*;(
 
             case(atb_ena)
             2'b00: begin
-                atb1 = 'z; // High impedance state
-                atb0 = 'z; // High impedance state
+                atb1 = `wrealZState; // High impedance state
+                atb0 = `wrealZState; // High impedance state
             end
             2'b01: begin
                 atb1 = vddana_1p8; // Analog testbus 1 connected to vddana_1p8
@@ -146,32 +147,32 @@ module currentSourceUnits import cds_rnm_pkg::*;(
 
         endcase
         end else if(pdb == 0 && input_check == 1) begin
-            Iout_them_16 = 'z; // High impedance state
-            Iout_them_15 = 'z; // High impedance state
-            Iout_them_14 = 'z; // High impedance state
-            Iout_them_13 = 'z; // High impedance state
-            Iout_them_12 = 'z; // High impedance state
-            Iout_them_11 = 'z; // High impedance state
-            Iout_them_10 = 'z; // High impedance state
-            Iout_them_9  = 'z; // High impedance state
-            Iout_them_8  = 'z; // High impedance state
-            Iout_them_7  = 'z; // High impedance state
-            Iout_them_6  = 'z; // High impedance state
-            Iout_them_5  = 'z; // High impedance state
-            Iout_them_4  = 'z; // High impedance state
-            Iout_them_3  = 'z; // High impedance state
-            Iout_them_2  = 'z; // High impedance state
-            Iout_them_1  = 'z; // High impedance state
-            Iout_them_0  = 'z; // High impedance state
-            Iout_binary_5 = 'z; // High impedance state
-            Iout_binary_4 = 'z; // High impedance state
-            Iout_binary_3 = 'z; // High impedance state
-            Iout_binary_2 = 'z; // High impedance state
-            Iout_binary_1 = 'z; // High impedance state
-            Iout_binary_0 = 'z; // High impedance state
-            Iout_binary_0_red = 'z; // High impedance state
-            atb1 = 'z; // High impedance state
-            atb0 = 'z; // High impedance state
+            Iout_them_16 = `wrealZState; // High impedance state
+            Iout_them_15 = `wrealZState; // High impedance state
+            Iout_them_14 = `wrealZState; // High impedance state
+            Iout_them_13 = `wrealZState; // High impedance state
+            Iout_them_12 = `wrealZState; // High impedance state
+            Iout_them_11 = `wrealZState; // High impedance state
+            Iout_them_10 = `wrealZState; // High impedance state
+            Iout_them_9  = `wrealZState; // High impedance state
+            Iout_them_8  = `wrealZState; // High impedance state
+            Iout_them_7  = `wrealZState; // High impedance state
+            Iout_them_6  = `wrealZState; // High impedance state
+            Iout_them_5  = `wrealZState; // High impedance state
+            Iout_them_4  = `wrealZState; // High impedance state
+            Iout_them_3  = `wrealZState; // High impedance state
+            Iout_them_2  = `wrealZState; // High impedance state
+            Iout_them_1  = `wrealZState; // High impedance state
+            Iout_them_0  = `wrealZState; // High impedance state
+            Iout_binary_5 = `wrealZState; // High impedance state
+            Iout_binary_4 = `wrealZState; // High impedance state
+            Iout_binary_3 = `wrealZState; // High impedance state
+            Iout_binary_2 = `wrealZState; // High impedance state
+            Iout_binary_1 = `wrealZState; // High impedance state
+            Iout_binary_0 = `wrealZState; // High impedance state
+            Iout_binary_0_red = `wrealZState; // High impedance state
+            atb1 = `wrealZState; // High impedance state
+            atb0 = `wrealZState; // High impedance state
         end 
 
     end

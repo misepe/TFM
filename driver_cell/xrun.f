@@ -3,5 +3,5 @@
 ./tb/driver_cell_tb.sv             // Testbench
 -access +rw                 // Turn on read/write object access 
 -gui                        // Performs simulation in graphical mode
--s -input /home/msegper/Documents/TFM/current_sterring/restore.tcl // Restore the simulation state
+-s -input /home/msegper/Documents/TFM/driver_cell/restore.tcl // Restore the simulation state
  

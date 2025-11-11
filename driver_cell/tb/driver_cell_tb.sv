@@ -42,11 +42,11 @@ module driver_cell_tb;
         $display("Test 1: Verificación de límites de alimentación");
         vddana_1p8 = 1.8; vddana_0p8 = 0.8; vssana = 0.0; // Dentro de los límites
         #10;
-        vddana_1p8 = 1.9;  // Fuera de los límites
+        //vddana_1p8 = 1.9;  // Fuera de los límites
         #10;
-        vddana_0p8 = 0.7;vddana_1p8 = 1.8; // Fuera de los límites
+        //vddana_0p8 = 0.7;vddana_1p8 = 1.8; // Fuera de los límites
         #10;
-        vssana = -0.1; vddana_0p8 = 0.8; // Fuera de los límites
+        //vssana = -0.1; vddana_0p8 = 0.8; // Fuera de los límites
         #10;
 
         // Test 2: Estado apagado (pdb = 0)

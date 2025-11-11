@@ -1,5 +1,6 @@
 `timescale 1ns/1ps
-module driver_cell import cds_rnm_pkg::*; (
+import cds_rnm_pkg::*; // Importing the Cadence RNM package
+module driver_cell (
     input [7:0] datain,      // Digital binary control of the converter
     input [7:0] datainb,      // Digital binary control of the converter negate
     input [16:0] datatherm,      // Digital thermometrical control of the converter
@@ -68,7 +69,7 @@ module driver_cell import cds_rnm_pkg::*; (
             databinoutb = datainb;
             datathermout = datatherm;
             datathermoutb = datathermb;
-        end else if(input_check == 0 && pdb ==0) begin
+        end else if(input_check == 1 && pdb ==0) begin
             databinout = 'z;
             databinoutb = 'z;
             datathermout = 'z;

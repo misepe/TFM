@@ -127,10 +127,14 @@ module currentSterring_tb;
         $display("Test 3: Código medio y máximo");
         datain = 7'b0111111; // Código medio
         datainb = ~datain;
+        datatherm = 17'b01111111111111111;
+        datathermb = ~datatherm;
         #10;
         $display("Código medio: Iout = %0.6f A, Ioutb = %0.6f A", Iout, Ioutb);
         datain = 7'b1111111; // Código máximo
         datainb = ~datain;
+        datatherm = 17'b11111111111111111;
+        datathermb = ~datatherm;
         #10;
         $display("Código máximo: Iout = %0.6f A, Ioutb = %0.6f A", Iout, Ioutb);
 
@@ -163,7 +167,7 @@ module currentSterring_tb;
 
         // Test 7: Calibrador (Ical y dataical)
         $display("Test 7: Calibrador (Ical y dataical)");
-        for (int i = 0; i < 32; i++) begin
+        for (int i = 0; i < 23; i++) begin
             dataical = i;
             #10;
             $display("dataical = %b, Ical = %0.6f A", dataical, Ical);

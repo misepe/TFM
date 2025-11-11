@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Sep 24, 2025 at 15:53:05 CEST
+TOOL:	xrun(64)	24.03-s004: Started on Nov 11, 2025 at 16:11:13 CET
 xrun
 	-f xrun.f
 		-clean
@@ -24,10 +24,10 @@ file: ./tb/current_sterring_tb.sv
 	Building instance overlay tables: .................... Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.currentSterring:sv <0x326f1dd5>
-			streams:  27, words: 95526
+		worklib.currentSterring:sv <0x38d96f6f>
+			streams:  27, words: 94100
 		worklib.currentSterring_tb:sv <0x31563e87>
-			streams:  43, words: 43474
+			streams:  43, words: 44510
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
@@ -44,6 +44,7 @@ file: ./tb/current_sterring_tb.sv
 		Simulation timescale:  1ps
 	Writing initial simulation snapshot: worklib.currentSterring_tb:sv
 xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
+[DMSINFO] Simulating with Xcelium Mixed-Signal App...
 
 -------------------------------------
 Relinquished control to SimVision...
@@ -150,173 +151,175 @@ xcelium> database -open -shm -into waves.shm waves -default
 Created default SHM database waves
 xcelium> probe -create -database waves currentSterring_tb.dut.Ical currentSterring_tb.dut.Iout currentSterring_tb.dut.Iout_binary_0 currentSterring_tb.dut.Iout_binary_0_red currentSterring_tb.dut.Iout_binary_1 currentSterring_tb.dut.Iout_binary_2 currentSterring_tb.dut.Iout_binary_3 currentSterring_tb.dut.Iout_binary_4 currentSterring_tb.dut.Iout_binary_5 currentSterring_tb.dut.Iout_them_0 currentSterring_tb.dut.Iout_them_1 currentSterring_tb.dut.Iout_them_2 currentSterring_tb.dut.Iout_them_3 currentSterring_tb.dut.Iout_them_4 currentSterring_tb.dut.Iout_them_5 currentSterring_tb.dut.Iout_them_6 currentSterring_tb.dut.Iout_them_7 currentSterring_tb.dut.Iout_them_8 currentSterring_tb.dut.Iout_them_9 currentSterring_tb.dut.Iout_them_10 currentSterring_tb.dut.Iout_them_11 currentSterring_tb.dut.Iout_them_12 currentSterring_tb.dut.Iout_them_13 currentSterring_tb.dut.Iout_them_14 currentSterring_tb.dut.Iout_them_15 currentSterring_tb.dut.Iout_them_16 currentSterring_tb.dut.Ioutb currentSterring_tb.dut.Vcas currentSterring_tb.dut.atb0 currentSterring_tb.dut.atb1 currentSterring_tb.dut.atb_ena currentSterring_tb.dut.atest_ena currentSterring_tb.dut.dataical currentSterring_tb.dut.datain currentSterring_tb.dut.datainb currentSterring_tb.dut.datatherm currentSterring_tb.dut.datathermb currentSterring_tb.dut.iref_500ua currentSterring_tb.dut.pdb currentSterring_tb.dut.vddana_0p8 currentSterring_tb.dut.vddana_1p8 currentSterring_tb.dut.vssana
 Created probe 1
+xcelium> probe -create -database waves currentSterring_tb.dut.enable_funcionality currentSterring_tb.dut.input_check
+Created probe 2
 xcelium> 
 xcelium> simvision -input restore.tcl.svcf
 xcelium> run
 Iniciando tests...
 Test 1: Estado apagado (Power-Down)
-Iout = 0.000000 A, Ioutb = 0.000000 A, Ical = 0.000000 A, atb0 = 0.000000 V, atb1 = 0.000000 V
+Iout = `wrealZState A, Ioutb = `wrealZState A, Ical = `wrealZState A, atb0 = `wrealZState V, atb1 = `wrealZState V
 Test 2: Encendido y salida mínima
-Iout = 0.000000 A, Ioutb = 0.003600 A, Ical = 0.000000 A, atb0 = 0.000000 V, atb1 = 0.000000 V
+Iout = 0.003600 A, Ioutb = 0.000000 A, Ical = `wrealZState A, atb0 = `wrealZState V, atb1 = `wrealZState V
 Test 3: Código medio y máximo
 Código medio: Iout = 0.000200 A, Ioutb = 0.003400 A
-Código máximo: Iout = 0.000200 A, Ioutb = 0.003400 A
+Código máximo: Iout = 0.000000 A, Ioutb = 0.003600 A
 Test 4: Complementariedad (iout vs ioutb)
-datain = 0000000, Iout = 0.000000 A, Ioutb = 0.003600 A, Iout + Ioutb = 0.003600 A
-datain = 0000001, Iout = 0.000006 A, Ioutb = 0.003594 A, Iout + Ioutb = 0.003600 A
-datain = 0000010, Iout = 0.000006 A, Ioutb = 0.003594 A, Iout + Ioutb = 0.003600 A
-datain = 0000011, Iout = 0.000013 A, Ioutb = 0.003588 A, Iout + Ioutb = 0.003600 A
-datain = 0000100, Iout = 0.000013 A, Ioutb = 0.003588 A, Iout + Ioutb = 0.003600 A
-datain = 0000101, Iout = 0.000019 A, Ioutb = 0.003581 A, Iout + Ioutb = 0.003600 A
-datain = 0000110, Iout = 0.000019 A, Ioutb = 0.003581 A, Iout + Ioutb = 0.003600 A
-datain = 0000111, Iout = 0.000025 A, Ioutb = 0.003575 A, Iout + Ioutb = 0.003600 A
-datain = 0001000, Iout = 0.000025 A, Ioutb = 0.003575 A, Iout + Ioutb = 0.003600 A
-datain = 0001001, Iout = 0.000031 A, Ioutb = 0.003569 A, Iout + Ioutb = 0.003600 A
-datain = 0001010, Iout = 0.000031 A, Ioutb = 0.003569 A, Iout + Ioutb = 0.003600 A
-datain = 0001011, Iout = 0.000038 A, Ioutb = 0.003563 A, Iout + Ioutb = 0.003600 A
-datain = 0001100, Iout = 0.000038 A, Ioutb = 0.003563 A, Iout + Ioutb = 0.003600 A
-datain = 0001101, Iout = 0.000044 A, Ioutb = 0.003556 A, Iout + Ioutb = 0.003600 A
-datain = 0001110, Iout = 0.000044 A, Ioutb = 0.003556 A, Iout + Ioutb = 0.003600 A
-datain = 0001111, Iout = 0.000050 A, Ioutb = 0.003550 A, Iout + Ioutb = 0.003600 A
-datain = 0010000, Iout = 0.000050 A, Ioutb = 0.003550 A, Iout + Ioutb = 0.003600 A
-datain = 0010001, Iout = 0.000056 A, Ioutb = 0.003544 A, Iout + Ioutb = 0.003600 A
-datain = 0010010, Iout = 0.000056 A, Ioutb = 0.003544 A, Iout + Ioutb = 0.003600 A
-datain = 0010011, Iout = 0.000063 A, Ioutb = 0.003538 A, Iout + Ioutb = 0.003600 A
-datain = 0010100, Iout = 0.000063 A, Ioutb = 0.003538 A, Iout + Ioutb = 0.003600 A
-datain = 0010101, Iout = 0.000069 A, Ioutb = 0.003531 A, Iout + Ioutb = 0.003600 A
-datain = 0010110, Iout = 0.000069 A, Ioutb = 0.003531 A, Iout + Ioutb = 0.003600 A
-datain = 0010111, Iout = 0.000075 A, Ioutb = 0.003525 A, Iout + Ioutb = 0.003600 A
-datain = 0011000, Iout = 0.000075 A, Ioutb = 0.003525 A, Iout + Ioutb = 0.003600 A
-datain = 0011001, Iout = 0.000081 A, Ioutb = 0.003519 A, Iout + Ioutb = 0.003600 A
-datain = 0011010, Iout = 0.000081 A, Ioutb = 0.003519 A, Iout + Ioutb = 0.003600 A
-datain = 0011011, Iout = 0.000088 A, Ioutb = 0.003513 A, Iout + Ioutb = 0.003600 A
-datain = 0011100, Iout = 0.000088 A, Ioutb = 0.003513 A, Iout + Ioutb = 0.003600 A
-datain = 0011101, Iout = 0.000094 A, Ioutb = 0.003506 A, Iout + Ioutb = 0.003600 A
-datain = 0011110, Iout = 0.000094 A, Ioutb = 0.003506 A, Iout + Ioutb = 0.003600 A
+datain = 0000000, Iout = 0.000200 A, Ioutb = 0.003400 A, Iout + Ioutb = 0.003600 A
+datain = 0000001, Iout = 0.000194 A, Ioutb = 0.003406 A, Iout + Ioutb = 0.003600 A
+datain = 0000010, Iout = 0.000194 A, Ioutb = 0.003406 A, Iout + Ioutb = 0.003600 A
+datain = 0000011, Iout = 0.000188 A, Ioutb = 0.003413 A, Iout + Ioutb = 0.003600 A
+datain = 0000100, Iout = 0.000188 A, Ioutb = 0.003413 A, Iout + Ioutb = 0.003600 A
+datain = 0000101, Iout = 0.000181 A, Ioutb = 0.003419 A, Iout + Ioutb = 0.003600 A
+datain = 0000110, Iout = 0.000181 A, Ioutb = 0.003419 A, Iout + Ioutb = 0.003600 A
+datain = 0000111, Iout = 0.000175 A, Ioutb = 0.003425 A, Iout + Ioutb = 0.003600 A
+datain = 0001000, Iout = 0.000175 A, Ioutb = 0.003425 A, Iout + Ioutb = 0.003600 A
+datain = 0001001, Iout = 0.000169 A, Ioutb = 0.003431 A, Iout + Ioutb = 0.003600 A
+datain = 0001010, Iout = 0.000169 A, Ioutb = 0.003431 A, Iout + Ioutb = 0.003600 A
+datain = 0001011, Iout = 0.000162 A, Ioutb = 0.003438 A, Iout + Ioutb = 0.003600 A
+datain = 0001100, Iout = 0.000162 A, Ioutb = 0.003438 A, Iout + Ioutb = 0.003600 A
+datain = 0001101, Iout = 0.000156 A, Ioutb = 0.003444 A, Iout + Ioutb = 0.003600 A
+datain = 0001110, Iout = 0.000156 A, Ioutb = 0.003444 A, Iout + Ioutb = 0.003600 A
+datain = 0001111, Iout = 0.000150 A, Ioutb = 0.003450 A, Iout + Ioutb = 0.003600 A
+datain = 0010000, Iout = 0.000150 A, Ioutb = 0.003450 A, Iout + Ioutb = 0.003600 A
+datain = 0010001, Iout = 0.000144 A, Ioutb = 0.003456 A, Iout + Ioutb = 0.003600 A
+datain = 0010010, Iout = 0.000144 A, Ioutb = 0.003456 A, Iout + Ioutb = 0.003600 A
+datain = 0010011, Iout = 0.000138 A, Ioutb = 0.003463 A, Iout + Ioutb = 0.003600 A
+datain = 0010100, Iout = 0.000138 A, Ioutb = 0.003463 A, Iout + Ioutb = 0.003600 A
+datain = 0010101, Iout = 0.000131 A, Ioutb = 0.003469 A, Iout + Ioutb = 0.003600 A
+datain = 0010110, Iout = 0.000131 A, Ioutb = 0.003469 A, Iout + Ioutb = 0.003600 A
+datain = 0010111, Iout = 0.000125 A, Ioutb = 0.003475 A, Iout + Ioutb = 0.003600 A
+datain = 0011000, Iout = 0.000125 A, Ioutb = 0.003475 A, Iout + Ioutb = 0.003600 A
+datain = 0011001, Iout = 0.000119 A, Ioutb = 0.003481 A, Iout + Ioutb = 0.003600 A
+datain = 0011010, Iout = 0.000119 A, Ioutb = 0.003481 A, Iout + Ioutb = 0.003600 A
+datain = 0011011, Iout = 0.000113 A, Ioutb = 0.003488 A, Iout + Ioutb = 0.003600 A
+datain = 0011100, Iout = 0.000113 A, Ioutb = 0.003488 A, Iout + Ioutb = 0.003600 A
+datain = 0011101, Iout = 0.000106 A, Ioutb = 0.003494 A, Iout + Ioutb = 0.003600 A
+datain = 0011110, Iout = 0.000106 A, Ioutb = 0.003494 A, Iout + Ioutb = 0.003600 A
 datain = 0011111, Iout = 0.000100 A, Ioutb = 0.003500 A, Iout + Ioutb = 0.003600 A
 datain = 0100000, Iout = 0.000100 A, Ioutb = 0.003500 A, Iout + Ioutb = 0.003600 A
-datain = 0100001, Iout = 0.000106 A, Ioutb = 0.003494 A, Iout + Ioutb = 0.003600 A
-datain = 0100010, Iout = 0.000106 A, Ioutb = 0.003494 A, Iout + Ioutb = 0.003600 A
-datain = 0100011, Iout = 0.000113 A, Ioutb = 0.003488 A, Iout + Ioutb = 0.003600 A
-datain = 0100100, Iout = 0.000113 A, Ioutb = 0.003488 A, Iout + Ioutb = 0.003600 A
-datain = 0100101, Iout = 0.000119 A, Ioutb = 0.003481 A, Iout + Ioutb = 0.003600 A
-datain = 0100110, Iout = 0.000119 A, Ioutb = 0.003481 A, Iout + Ioutb = 0.003600 A
-datain = 0100111, Iout = 0.000125 A, Ioutb = 0.003475 A, Iout + Ioutb = 0.003600 A
-datain = 0101000, Iout = 0.000125 A, Ioutb = 0.003475 A, Iout + Ioutb = 0.003600 A
-datain = 0101001, Iout = 0.000131 A, Ioutb = 0.003469 A, Iout + Ioutb = 0.003600 A
-datain = 0101010, Iout = 0.000131 A, Ioutb = 0.003469 A, Iout + Ioutb = 0.003600 A
-datain = 0101011, Iout = 0.000138 A, Ioutb = 0.003463 A, Iout + Ioutb = 0.003600 A
-datain = 0101100, Iout = 0.000138 A, Ioutb = 0.003463 A, Iout + Ioutb = 0.003600 A
-datain = 0101101, Iout = 0.000144 A, Ioutb = 0.003456 A, Iout + Ioutb = 0.003600 A
-datain = 0101110, Iout = 0.000144 A, Ioutb = 0.003456 A, Iout + Ioutb = 0.003600 A
-datain = 0101111, Iout = 0.000150 A, Ioutb = 0.003450 A, Iout + Ioutb = 0.003600 A
-datain = 0110000, Iout = 0.000150 A, Ioutb = 0.003450 A, Iout + Ioutb = 0.003600 A
-datain = 0110001, Iout = 0.000156 A, Ioutb = 0.003444 A, Iout + Ioutb = 0.003600 A
-datain = 0110010, Iout = 0.000156 A, Ioutb = 0.003444 A, Iout + Ioutb = 0.003600 A
-datain = 0110011, Iout = 0.000162 A, Ioutb = 0.003438 A, Iout + Ioutb = 0.003600 A
-datain = 0110100, Iout = 0.000162 A, Ioutb = 0.003438 A, Iout + Ioutb = 0.003600 A
-datain = 0110101, Iout = 0.000169 A, Ioutb = 0.003431 A, Iout + Ioutb = 0.003600 A
-datain = 0110110, Iout = 0.000169 A, Ioutb = 0.003431 A, Iout + Ioutb = 0.003600 A
-datain = 0110111, Iout = 0.000175 A, Ioutb = 0.003425 A, Iout + Ioutb = 0.003600 A
-datain = 0111000, Iout = 0.000175 A, Ioutb = 0.003425 A, Iout + Ioutb = 0.003600 A
-datain = 0111001, Iout = 0.000181 A, Ioutb = 0.003419 A, Iout + Ioutb = 0.003600 A
-datain = 0111010, Iout = 0.000181 A, Ioutb = 0.003419 A, Iout + Ioutb = 0.003600 A
-datain = 0111011, Iout = 0.000188 A, Ioutb = 0.003413 A, Iout + Ioutb = 0.003600 A
-datain = 0111100, Iout = 0.000188 A, Ioutb = 0.003413 A, Iout + Ioutb = 0.003600 A
-datain = 0111101, Iout = 0.000194 A, Ioutb = 0.003406 A, Iout + Ioutb = 0.003600 A
-datain = 0111110, Iout = 0.000194 A, Ioutb = 0.003406 A, Iout + Ioutb = 0.003600 A
-datain = 0111111, Iout = 0.000200 A, Ioutb = 0.003400 A, Iout + Ioutb = 0.003600 A
-datain = 1000000, Iout = 0.000000 A, Ioutb = 0.003600 A, Iout + Ioutb = 0.003600 A
-datain = 1000001, Iout = 0.000006 A, Ioutb = 0.003594 A, Iout + Ioutb = 0.003600 A
-datain = 1000010, Iout = 0.000006 A, Ioutb = 0.003594 A, Iout + Ioutb = 0.003600 A
-datain = 1000011, Iout = 0.000013 A, Ioutb = 0.003588 A, Iout + Ioutb = 0.003600 A
-datain = 1000100, Iout = 0.000013 A, Ioutb = 0.003588 A, Iout + Ioutb = 0.003600 A
-datain = 1000101, Iout = 0.000019 A, Ioutb = 0.003581 A, Iout + Ioutb = 0.003600 A
-datain = 1000110, Iout = 0.000019 A, Ioutb = 0.003581 A, Iout + Ioutb = 0.003600 A
-datain = 1000111, Iout = 0.000025 A, Ioutb = 0.003575 A, Iout + Ioutb = 0.003600 A
-datain = 1001000, Iout = 0.000025 A, Ioutb = 0.003575 A, Iout + Ioutb = 0.003600 A
-datain = 1001001, Iout = 0.000031 A, Ioutb = 0.003569 A, Iout + Ioutb = 0.003600 A
-datain = 1001010, Iout = 0.000031 A, Ioutb = 0.003569 A, Iout + Ioutb = 0.003600 A
-datain = 1001011, Iout = 0.000038 A, Ioutb = 0.003563 A, Iout + Ioutb = 0.003600 A
-datain = 1001100, Iout = 0.000038 A, Ioutb = 0.003563 A, Iout + Ioutb = 0.003600 A
-datain = 1001101, Iout = 0.000044 A, Ioutb = 0.003556 A, Iout + Ioutb = 0.003600 A
-datain = 1001110, Iout = 0.000044 A, Ioutb = 0.003556 A, Iout + Ioutb = 0.003600 A
-datain = 1001111, Iout = 0.000050 A, Ioutb = 0.003550 A, Iout + Ioutb = 0.003600 A
-datain = 1010000, Iout = 0.000050 A, Ioutb = 0.003550 A, Iout + Ioutb = 0.003600 A
-datain = 1010001, Iout = 0.000056 A, Ioutb = 0.003544 A, Iout + Ioutb = 0.003600 A
-datain = 1010010, Iout = 0.000056 A, Ioutb = 0.003544 A, Iout + Ioutb = 0.003600 A
-datain = 1010011, Iout = 0.000063 A, Ioutb = 0.003538 A, Iout + Ioutb = 0.003600 A
-datain = 1010100, Iout = 0.000063 A, Ioutb = 0.003538 A, Iout + Ioutb = 0.003600 A
-datain = 1010101, Iout = 0.000069 A, Ioutb = 0.003531 A, Iout + Ioutb = 0.003600 A
-datain = 1010110, Iout = 0.000069 A, Ioutb = 0.003531 A, Iout + Ioutb = 0.003600 A
-datain = 1010111, Iout = 0.000075 A, Ioutb = 0.003525 A, Iout + Ioutb = 0.003600 A
-datain = 1011000, Iout = 0.000075 A, Ioutb = 0.003525 A, Iout + Ioutb = 0.003600 A
-datain = 1011001, Iout = 0.000081 A, Ioutb = 0.003519 A, Iout + Ioutb = 0.003600 A
-datain = 1011010, Iout = 0.000081 A, Ioutb = 0.003519 A, Iout + Ioutb = 0.003600 A
-datain = 1011011, Iout = 0.000088 A, Ioutb = 0.003513 A, Iout + Ioutb = 0.003600 A
-datain = 1011100, Iout = 0.000088 A, Ioutb = 0.003513 A, Iout + Ioutb = 0.003600 A
-datain = 1011101, Iout = 0.000094 A, Ioutb = 0.003506 A, Iout + Ioutb = 0.003600 A
-datain = 1011110, Iout = 0.000094 A, Ioutb = 0.003506 A, Iout + Ioutb = 0.003600 A
+datain = 0100001, Iout = 0.000094 A, Ioutb = 0.003506 A, Iout + Ioutb = 0.003600 A
+datain = 0100010, Iout = 0.000094 A, Ioutb = 0.003506 A, Iout + Ioutb = 0.003600 A
+datain = 0100011, Iout = 0.000088 A, Ioutb = 0.003513 A, Iout + Ioutb = 0.003600 A
+datain = 0100100, Iout = 0.000088 A, Ioutb = 0.003513 A, Iout + Ioutb = 0.003600 A
+datain = 0100101, Iout = 0.000081 A, Ioutb = 0.003519 A, Iout + Ioutb = 0.003600 A
+datain = 0100110, Iout = 0.000081 A, Ioutb = 0.003519 A, Iout + Ioutb = 0.003600 A
+datain = 0100111, Iout = 0.000075 A, Ioutb = 0.003525 A, Iout + Ioutb = 0.003600 A
+datain = 0101000, Iout = 0.000075 A, Ioutb = 0.003525 A, Iout + Ioutb = 0.003600 A
+datain = 0101001, Iout = 0.000069 A, Ioutb = 0.003531 A, Iout + Ioutb = 0.003600 A
+datain = 0101010, Iout = 0.000069 A, Ioutb = 0.003531 A, Iout + Ioutb = 0.003600 A
+datain = 0101011, Iout = 0.000063 A, Ioutb = 0.003538 A, Iout + Ioutb = 0.003600 A
+datain = 0101100, Iout = 0.000063 A, Ioutb = 0.003538 A, Iout + Ioutb = 0.003600 A
+datain = 0101101, Iout = 0.000056 A, Ioutb = 0.003544 A, Iout + Ioutb = 0.003600 A
+datain = 0101110, Iout = 0.000056 A, Ioutb = 0.003544 A, Iout + Ioutb = 0.003600 A
+datain = 0101111, Iout = 0.000050 A, Ioutb = 0.003550 A, Iout + Ioutb = 0.003600 A
+datain = 0110000, Iout = 0.000050 A, Ioutb = 0.003550 A, Iout + Ioutb = 0.003600 A
+datain = 0110001, Iout = 0.000044 A, Ioutb = 0.003556 A, Iout + Ioutb = 0.003600 A
+datain = 0110010, Iout = 0.000044 A, Ioutb = 0.003556 A, Iout + Ioutb = 0.003600 A
+datain = 0110011, Iout = 0.000038 A, Ioutb = 0.003563 A, Iout + Ioutb = 0.003600 A
+datain = 0110100, Iout = 0.000038 A, Ioutb = 0.003563 A, Iout + Ioutb = 0.003600 A
+datain = 0110101, Iout = 0.000031 A, Ioutb = 0.003569 A, Iout + Ioutb = 0.003600 A
+datain = 0110110, Iout = 0.000031 A, Ioutb = 0.003569 A, Iout + Ioutb = 0.003600 A
+datain = 0110111, Iout = 0.000025 A, Ioutb = 0.003575 A, Iout + Ioutb = 0.003600 A
+datain = 0111000, Iout = 0.000025 A, Ioutb = 0.003575 A, Iout + Ioutb = 0.003600 A
+datain = 0111001, Iout = 0.000019 A, Ioutb = 0.003581 A, Iout + Ioutb = 0.003600 A
+datain = 0111010, Iout = 0.000019 A, Ioutb = 0.003581 A, Iout + Ioutb = 0.003600 A
+datain = 0111011, Iout = 0.000013 A, Ioutb = 0.003588 A, Iout + Ioutb = 0.003600 A
+datain = 0111100, Iout = 0.000013 A, Ioutb = 0.003588 A, Iout + Ioutb = 0.003600 A
+datain = 0111101, Iout = 0.000006 A, Ioutb = 0.003594 A, Iout + Ioutb = 0.003600 A
+datain = 0111110, Iout = 0.000006 A, Ioutb = 0.003594 A, Iout + Ioutb = 0.003600 A
+datain = 0111111, Iout = 0.000000 A, Ioutb = 0.003600 A, Iout + Ioutb = 0.003600 A
+datain = 1000000, Iout = 0.000200 A, Ioutb = 0.003400 A, Iout + Ioutb = 0.003600 A
+datain = 1000001, Iout = 0.000194 A, Ioutb = 0.003406 A, Iout + Ioutb = 0.003600 A
+datain = 1000010, Iout = 0.000194 A, Ioutb = 0.003406 A, Iout + Ioutb = 0.003600 A
+datain = 1000011, Iout = 0.000188 A, Ioutb = 0.003413 A, Iout + Ioutb = 0.003600 A
+datain = 1000100, Iout = 0.000188 A, Ioutb = 0.003413 A, Iout + Ioutb = 0.003600 A
+datain = 1000101, Iout = 0.000181 A, Ioutb = 0.003419 A, Iout + Ioutb = 0.003600 A
+datain = 1000110, Iout = 0.000181 A, Ioutb = 0.003419 A, Iout + Ioutb = 0.003600 A
+datain = 1000111, Iout = 0.000175 A, Ioutb = 0.003425 A, Iout + Ioutb = 0.003600 A
+datain = 1001000, Iout = 0.000175 A, Ioutb = 0.003425 A, Iout + Ioutb = 0.003600 A
+datain = 1001001, Iout = 0.000169 A, Ioutb = 0.003431 A, Iout + Ioutb = 0.003600 A
+datain = 1001010, Iout = 0.000169 A, Ioutb = 0.003431 A, Iout + Ioutb = 0.003600 A
+datain = 1001011, Iout = 0.000162 A, Ioutb = 0.003438 A, Iout + Ioutb = 0.003600 A
+datain = 1001100, Iout = 0.000162 A, Ioutb = 0.003438 A, Iout + Ioutb = 0.003600 A
+datain = 1001101, Iout = 0.000156 A, Ioutb = 0.003444 A, Iout + Ioutb = 0.003600 A
+datain = 1001110, Iout = 0.000156 A, Ioutb = 0.003444 A, Iout + Ioutb = 0.003600 A
+datain = 1001111, Iout = 0.000150 A, Ioutb = 0.003450 A, Iout + Ioutb = 0.003600 A
+datain = 1010000, Iout = 0.000150 A, Ioutb = 0.003450 A, Iout + Ioutb = 0.003600 A
+datain = 1010001, Iout = 0.000144 A, Ioutb = 0.003456 A, Iout + Ioutb = 0.003600 A
+datain = 1010010, Iout = 0.000144 A, Ioutb = 0.003456 A, Iout + Ioutb = 0.003600 A
+datain = 1010011, Iout = 0.000138 A, Ioutb = 0.003463 A, Iout + Ioutb = 0.003600 A
+datain = 1010100, Iout = 0.000138 A, Ioutb = 0.003463 A, Iout + Ioutb = 0.003600 A
+datain = 1010101, Iout = 0.000131 A, Ioutb = 0.003469 A, Iout + Ioutb = 0.003600 A
+datain = 1010110, Iout = 0.000131 A, Ioutb = 0.003469 A, Iout + Ioutb = 0.003600 A
+datain = 1010111, Iout = 0.000125 A, Ioutb = 0.003475 A, Iout + Ioutb = 0.003600 A
+datain = 1011000, Iout = 0.000125 A, Ioutb = 0.003475 A, Iout + Ioutb = 0.003600 A
+datain = 1011001, Iout = 0.000119 A, Ioutb = 0.003481 A, Iout + Ioutb = 0.003600 A
+datain = 1011010, Iout = 0.000119 A, Ioutb = 0.003481 A, Iout + Ioutb = 0.003600 A
+datain = 1011011, Iout = 0.000113 A, Ioutb = 0.003488 A, Iout + Ioutb = 0.003600 A
+datain = 1011100, Iout = 0.000113 A, Ioutb = 0.003488 A, Iout + Ioutb = 0.003600 A
+datain = 1011101, Iout = 0.000106 A, Ioutb = 0.003494 A, Iout + Ioutb = 0.003600 A
+datain = 1011110, Iout = 0.000106 A, Ioutb = 0.003494 A, Iout + Ioutb = 0.003600 A
 datain = 1011111, Iout = 0.000100 A, Ioutb = 0.003500 A, Iout + Ioutb = 0.003600 A
 datain = 1100000, Iout = 0.000100 A, Ioutb = 0.003500 A, Iout + Ioutb = 0.003600 A
-datain = 1100001, Iout = 0.000106 A, Ioutb = 0.003494 A, Iout + Ioutb = 0.003600 A
-datain = 1100010, Iout = 0.000106 A, Ioutb = 0.003494 A, Iout + Ioutb = 0.003600 A
-datain = 1100011, Iout = 0.000113 A, Ioutb = 0.003488 A, Iout + Ioutb = 0.003600 A
-datain = 1100100, Iout = 0.000113 A, Ioutb = 0.003488 A, Iout + Ioutb = 0.003600 A
-datain = 1100101, Iout = 0.000119 A, Ioutb = 0.003481 A, Iout + Ioutb = 0.003600 A
-datain = 1100110, Iout = 0.000119 A, Ioutb = 0.003481 A, Iout + Ioutb = 0.003600 A
-datain = 1100111, Iout = 0.000125 A, Ioutb = 0.003475 A, Iout + Ioutb = 0.003600 A
-datain = 1101000, Iout = 0.000125 A, Ioutb = 0.003475 A, Iout + Ioutb = 0.003600 A
-datain = 1101001, Iout = 0.000131 A, Ioutb = 0.003469 A, Iout + Ioutb = 0.003600 A
-datain = 1101010, Iout = 0.000131 A, Ioutb = 0.003469 A, Iout + Ioutb = 0.003600 A
-datain = 1101011, Iout = 0.000138 A, Ioutb = 0.003463 A, Iout + Ioutb = 0.003600 A
-datain = 1101100, Iout = 0.000138 A, Ioutb = 0.003463 A, Iout + Ioutb = 0.003600 A
-datain = 1101101, Iout = 0.000144 A, Ioutb = 0.003456 A, Iout + Ioutb = 0.003600 A
-datain = 1101110, Iout = 0.000144 A, Ioutb = 0.003456 A, Iout + Ioutb = 0.003600 A
-datain = 1101111, Iout = 0.000150 A, Ioutb = 0.003450 A, Iout + Ioutb = 0.003600 A
-datain = 1110000, Iout = 0.000150 A, Ioutb = 0.003450 A, Iout + Ioutb = 0.003600 A
-datain = 1110001, Iout = 0.000156 A, Ioutb = 0.003444 A, Iout + Ioutb = 0.003600 A
-datain = 1110010, Iout = 0.000156 A, Ioutb = 0.003444 A, Iout + Ioutb = 0.003600 A
-datain = 1110011, Iout = 0.000162 A, Ioutb = 0.003438 A, Iout + Ioutb = 0.003600 A
-datain = 1110100, Iout = 0.000162 A, Ioutb = 0.003438 A, Iout + Ioutb = 0.003600 A
-datain = 1110101, Iout = 0.000169 A, Ioutb = 0.003431 A, Iout + Ioutb = 0.003600 A
-datain = 1110110, Iout = 0.000169 A, Ioutb = 0.003431 A, Iout + Ioutb = 0.003600 A
-datain = 1110111, Iout = 0.000175 A, Ioutb = 0.003425 A, Iout + Ioutb = 0.003600 A
-datain = 1111000, Iout = 0.000175 A, Ioutb = 0.003425 A, Iout + Ioutb = 0.003600 A
-datain = 1111001, Iout = 0.000181 A, Ioutb = 0.003419 A, Iout + Ioutb = 0.003600 A
-datain = 1111010, Iout = 0.000181 A, Ioutb = 0.003419 A, Iout + Ioutb = 0.003600 A
-datain = 1111011, Iout = 0.000188 A, Ioutb = 0.003413 A, Iout + Ioutb = 0.003600 A
-datain = 1111100, Iout = 0.000188 A, Ioutb = 0.003413 A, Iout + Ioutb = 0.003600 A
-datain = 1111101, Iout = 0.000194 A, Ioutb = 0.003406 A, Iout + Ioutb = 0.003600 A
-datain = 1111110, Iout = 0.000194 A, Ioutb = 0.003406 A, Iout + Ioutb = 0.003600 A
-datain = 1111111, Iout = 0.000200 A, Ioutb = 0.003400 A, Iout + Ioutb = 0.003600 A
+datain = 1100001, Iout = 0.000094 A, Ioutb = 0.003506 A, Iout + Ioutb = 0.003600 A
+datain = 1100010, Iout = 0.000094 A, Ioutb = 0.003506 A, Iout + Ioutb = 0.003600 A
+datain = 1100011, Iout = 0.000088 A, Ioutb = 0.003513 A, Iout + Ioutb = 0.003600 A
+datain = 1100100, Iout = 0.000088 A, Ioutb = 0.003513 A, Iout + Ioutb = 0.003600 A
+datain = 1100101, Iout = 0.000081 A, Ioutb = 0.003519 A, Iout + Ioutb = 0.003600 A
+datain = 1100110, Iout = 0.000081 A, Ioutb = 0.003519 A, Iout + Ioutb = 0.003600 A
+datain = 1100111, Iout = 0.000075 A, Ioutb = 0.003525 A, Iout + Ioutb = 0.003600 A
+datain = 1101000, Iout = 0.000075 A, Ioutb = 0.003525 A, Iout + Ioutb = 0.003600 A
+datain = 1101001, Iout = 0.000069 A, Ioutb = 0.003531 A, Iout + Ioutb = 0.003600 A
+datain = 1101010, Iout = 0.000069 A, Ioutb = 0.003531 A, Iout + Ioutb = 0.003600 A
+datain = 1101011, Iout = 0.000063 A, Ioutb = 0.003538 A, Iout + Ioutb = 0.003600 A
+datain = 1101100, Iout = 0.000063 A, Ioutb = 0.003538 A, Iout + Ioutb = 0.003600 A
+datain = 1101101, Iout = 0.000056 A, Ioutb = 0.003544 A, Iout + Ioutb = 0.003600 A
+datain = 1101110, Iout = 0.000056 A, Ioutb = 0.003544 A, Iout + Ioutb = 0.003600 A
+datain = 1101111, Iout = 0.000050 A, Ioutb = 0.003550 A, Iout + Ioutb = 0.003600 A
+datain = 1110000, Iout = 0.000050 A, Ioutb = 0.003550 A, Iout + Ioutb = 0.003600 A
+datain = 1110001, Iout = 0.000044 A, Ioutb = 0.003556 A, Iout + Ioutb = 0.003600 A
+datain = 1110010, Iout = 0.000044 A, Ioutb = 0.003556 A, Iout + Ioutb = 0.003600 A
+datain = 1110011, Iout = 0.000038 A, Ioutb = 0.003563 A, Iout + Ioutb = 0.003600 A
+datain = 1110100, Iout = 0.000038 A, Ioutb = 0.003563 A, Iout + Ioutb = 0.003600 A
+datain = 1110101, Iout = 0.000031 A, Ioutb = 0.003569 A, Iout + Ioutb = 0.003600 A
+datain = 1110110, Iout = 0.000031 A, Ioutb = 0.003569 A, Iout + Ioutb = 0.003600 A
+datain = 1110111, Iout = 0.000025 A, Ioutb = 0.003575 A, Iout + Ioutb = 0.003600 A
+datain = 1111000, Iout = 0.000025 A, Ioutb = 0.003575 A, Iout + Ioutb = 0.003600 A
+datain = 1111001, Iout = 0.000019 A, Ioutb = 0.003581 A, Iout + Ioutb = 0.003600 A
+datain = 1111010, Iout = 0.000019 A, Ioutb = 0.003581 A, Iout + Ioutb = 0.003600 A
+datain = 1111011, Iout = 0.000013 A, Ioutb = 0.003588 A, Iout + Ioutb = 0.003600 A
+datain = 1111100, Iout = 0.000013 A, Ioutb = 0.003588 A, Iout + Ioutb = 0.003600 A
+datain = 1111101, Iout = 0.000006 A, Ioutb = 0.003594 A, Iout + Ioutb = 0.003600 A
+datain = 1111110, Iout = 0.000006 A, Ioutb = 0.003594 A, Iout + Ioutb = 0.003600 A
+datain = 1111111, Iout = 0.000000 A, Ioutb = 0.003600 A, Iout + Ioutb = 0.003600 A
 Test 5: Modo térmico (thermometer code)
-datatherm = 00000000000000000, Iout = 0.000200 A
-datatherm = 00000000000000001, Iout = 0.000400 A
-datatherm = 00000000000000011, Iout = 0.000600 A
-datatherm = 00000000000000111, Iout = 0.000800 A
-datatherm = 00000000000001111, Iout = 0.001000 A
-datatherm = 00000000000011111, Iout = 0.001200 A
-datatherm = 00000000000111111, Iout = 0.001400 A
-datatherm = 00000000001111111, Iout = 0.001600 A
+datatherm = 00000000000000000, Iout = 0.003400 A
+datatherm = 00000000000000001, Iout = 0.003200 A
+datatherm = 00000000000000011, Iout = 0.003000 A
+datatherm = 00000000000000111, Iout = 0.002800 A
+datatherm = 00000000000001111, Iout = 0.002600 A
+datatherm = 00000000000011111, Iout = 0.002400 A
+datatherm = 00000000000111111, Iout = 0.002200 A
+datatherm = 00000000001111111, Iout = 0.002000 A
 datatherm = 00000000011111111, Iout = 0.001800 A
-datatherm = 00000000111111111, Iout = 0.002000 A
-datatherm = 00000001111111111, Iout = 0.002200 A
-datatherm = 00000011111111111, Iout = 0.002400 A
-datatherm = 00000111111111111, Iout = 0.002600 A
-datatherm = 00001111111111111, Iout = 0.002800 A
-datatherm = 00011111111111111, Iout = 0.003000 A
-datatherm = 00111111111111111, Iout = 0.003200 A
-datatherm = 01111111111111111, Iout = 0.003400 A
+datatherm = 00000000111111111, Iout = 0.001600 A
+datatherm = 00000001111111111, Iout = 0.001400 A
+datatherm = 00000011111111111, Iout = 0.001200 A
+datatherm = 00000111111111111, Iout = 0.001000 A
+datatherm = 00001111111111111, Iout = 0.000800 A
+datatherm = 00011111111111111, Iout = 0.000600 A
+datatherm = 00111111111111111, Iout = 0.000400 A
+datatherm = 01111111111111111, Iout = 0.000200 A
 Test 6: Modo binario (Iout_binary_*)
-datain = 0000001, Iout = 0.003206 A
-datain = 0000010, Iout = 0.003206 A
-datain = 0000100, Iout = 0.003213 A
-datain = 0001000, Iout = 0.003225 A
-datain = 0010000, Iout = 0.003250 A
-datain = 0100000, Iout = 0.003300 A
+datain = 0000001, Iout = 0.000394 A
+datain = 0000010, Iout = 0.000394 A
+datain = 0000100, Iout = 0.000388 A
+datain = 0001000, Iout = 0.000375 A
+datain = 0010000, Iout = 0.000350 A
+datain = 0100000, Iout = 0.000300 A
 Test 7: Calibrador (Ical y dataical)
-dataical = 00000, Ical = 0.000000 A
+dataical = 00000, Ical = `wrealZState A
 dataical = 00001, Ical = 0.000003 A
 dataical = 00010, Ical = 0.000006 A
 dataical = 00011, Ical = 0.000013 A
@@ -339,20 +342,11 @@ dataical = 10011, Ical = 0.000200 A
 dataical = 10100, Ical = 0.000200 A
 dataical = 10101, Ical = 0.000200 A
 dataical = 10110, Ical = 0.000200 A
-dataical = 10111, Ical = 0.000200 A
-dataical = 11000, Ical = 0.000200 A
-dataical = 11001, Ical = 0.000200 A
-dataical = 11010, Ical = 0.000200 A
-dataical = 11011, Ical = 0.000200 A
-dataical = 11100, Ical = 0.000200 A
-dataical = 11101, Ical = 0.000200 A
-dataical = 11110, Ical = 0.000200 A
-dataical = 11111, Ical = 0.000200 A
 Test 8: Señales de test (atest_ena, atb_ena, atb0, atb1)
-atb_ena = 00, atb0 = 0.000000 V, atb1 = 0.000000 V
+atb_ena = 00, atb0 = `wrealZState V, atb1 = `wrealZState V
 atb_ena = 01, atb0 = 0.000000 V, atb1 = 1.800000 V
 atb_ena = 10, atb0 = 0.800000 V, atb1 = 0.800000 V
-atb_ena = 11, atb0 = 0.000000 V, atb1 = 0.000200 V
+atb_ena = 11, atb0 = `wrealZState V, atb1 = 0.000200 V
 Barrido de vddana_1p8:
 vddana_1p8 = 1.71 V
 vddana_1p8 = 1.72 V
@@ -384,248 +378,8 @@ vddana_0p8 = 0.82 V
 vddana_0p8 = 0.83 V
 vddana_0p8 = 0.84 V
 Tests completados.
-Simulation complete via $finish(1) at time 2210 PS + 0
-./tb/current_sterring_tb.sv:201         $finish;
-xcelium> probe -create -shm currentSterring_tb.dut.enable_funcionality currentSterring_tb.dut.input_check
-Created probe 2
-xcelium> reset
-Loaded snapshot worklib.currentSterring_tb:sv
-xcelium> run
-Iniciando tests...
-Test 1: Estado apagado (Power-Down)
-Iout = 0.000000 A, Ioutb = 0.000000 A, Ical = 0.000000 A, atb0 = 0.000000 V, atb1 = 0.000000 V
-Test 2: Encendido y salida mínima
-Iout = 0.000000 A, Ioutb = 0.003600 A, Ical = 0.000000 A, atb0 = 0.000000 V, atb1 = 0.000000 V
-Test 3: Código medio y máximo
-Código medio: Iout = 0.000200 A, Ioutb = 0.003400 A
-Código máximo: Iout = 0.000200 A, Ioutb = 0.003400 A
-Test 4: Complementariedad (iout vs ioutb)
-datain = 0000000, Iout = 0.000000 A, Ioutb = 0.003600 A, Iout + Ioutb = 0.003600 A
-datain = 0000001, Iout = 0.000006 A, Ioutb = 0.003594 A, Iout + Ioutb = 0.003600 A
-datain = 0000010, Iout = 0.000006 A, Ioutb = 0.003594 A, Iout + Ioutb = 0.003600 A
-datain = 0000011, Iout = 0.000013 A, Ioutb = 0.003588 A, Iout + Ioutb = 0.003600 A
-datain = 0000100, Iout = 0.000013 A, Ioutb = 0.003588 A, Iout + Ioutb = 0.003600 A
-datain = 0000101, Iout = 0.000019 A, Ioutb = 0.003581 A, Iout + Ioutb = 0.003600 A
-datain = 0000110, Iout = 0.000019 A, Ioutb = 0.003581 A, Iout + Ioutb = 0.003600 A
-datain = 0000111, Iout = 0.000025 A, Ioutb = 0.003575 A, Iout + Ioutb = 0.003600 A
-datain = 0001000, Iout = 0.000025 A, Ioutb = 0.003575 A, Iout + Ioutb = 0.003600 A
-datain = 0001001, Iout = 0.000031 A, Ioutb = 0.003569 A, Iout + Ioutb = 0.003600 A
-datain = 0001010, Iout = 0.000031 A, Ioutb = 0.003569 A, Iout + Ioutb = 0.003600 A
-datain = 0001011, Iout = 0.000038 A, Ioutb = 0.003563 A, Iout + Ioutb = 0.003600 A
-datain = 0001100, Iout = 0.000038 A, Ioutb = 0.003563 A, Iout + Ioutb = 0.003600 A
-datain = 0001101, Iout = 0.000044 A, Ioutb = 0.003556 A, Iout + Ioutb = 0.003600 A
-datain = 0001110, Iout = 0.000044 A, Ioutb = 0.003556 A, Iout + Ioutb = 0.003600 A
-datain = 0001111, Iout = 0.000050 A, Ioutb = 0.003550 A, Iout + Ioutb = 0.003600 A
-datain = 0010000, Iout = 0.000050 A, Ioutb = 0.003550 A, Iout + Ioutb = 0.003600 A
-datain = 0010001, Iout = 0.000056 A, Ioutb = 0.003544 A, Iout + Ioutb = 0.003600 A
-datain = 0010010, Iout = 0.000056 A, Ioutb = 0.003544 A, Iout + Ioutb = 0.003600 A
-datain = 0010011, Iout = 0.000063 A, Ioutb = 0.003538 A, Iout + Ioutb = 0.003600 A
-datain = 0010100, Iout = 0.000063 A, Ioutb = 0.003538 A, Iout + Ioutb = 0.003600 A
-datain = 0010101, Iout = 0.000069 A, Ioutb = 0.003531 A, Iout + Ioutb = 0.003600 A
-datain = 0010110, Iout = 0.000069 A, Ioutb = 0.003531 A, Iout + Ioutb = 0.003600 A
-datain = 0010111, Iout = 0.000075 A, Ioutb = 0.003525 A, Iout + Ioutb = 0.003600 A
-datain = 0011000, Iout = 0.000075 A, Ioutb = 0.003525 A, Iout + Ioutb = 0.003600 A
-datain = 0011001, Iout = 0.000081 A, Ioutb = 0.003519 A, Iout + Ioutb = 0.003600 A
-datain = 0011010, Iout = 0.000081 A, Ioutb = 0.003519 A, Iout + Ioutb = 0.003600 A
-datain = 0011011, Iout = 0.000088 A, Ioutb = 0.003513 A, Iout + Ioutb = 0.003600 A
-datain = 0011100, Iout = 0.000088 A, Ioutb = 0.003513 A, Iout + Ioutb = 0.003600 A
-datain = 0011101, Iout = 0.000094 A, Ioutb = 0.003506 A, Iout + Ioutb = 0.003600 A
-datain = 0011110, Iout = 0.000094 A, Ioutb = 0.003506 A, Iout + Ioutb = 0.003600 A
-datain = 0011111, Iout = 0.000100 A, Ioutb = 0.003500 A, Iout + Ioutb = 0.003600 A
-datain = 0100000, Iout = 0.000100 A, Ioutb = 0.003500 A, Iout + Ioutb = 0.003600 A
-datain = 0100001, Iout = 0.000106 A, Ioutb = 0.003494 A, Iout + Ioutb = 0.003600 A
-datain = 0100010, Iout = 0.000106 A, Ioutb = 0.003494 A, Iout + Ioutb = 0.003600 A
-datain = 0100011, Iout = 0.000113 A, Ioutb = 0.003488 A, Iout + Ioutb = 0.003600 A
-datain = 0100100, Iout = 0.000113 A, Ioutb = 0.003488 A, Iout + Ioutb = 0.003600 A
-datain = 0100101, Iout = 0.000119 A, Ioutb = 0.003481 A, Iout + Ioutb = 0.003600 A
-datain = 0100110, Iout = 0.000119 A, Ioutb = 0.003481 A, Iout + Ioutb = 0.003600 A
-datain = 0100111, Iout = 0.000125 A, Ioutb = 0.003475 A, Iout + Ioutb = 0.003600 A
-datain = 0101000, Iout = 0.000125 A, Ioutb = 0.003475 A, Iout + Ioutb = 0.003600 A
-datain = 0101001, Iout = 0.000131 A, Ioutb = 0.003469 A, Iout + Ioutb = 0.003600 A
-datain = 0101010, Iout = 0.000131 A, Ioutb = 0.003469 A, Iout + Ioutb = 0.003600 A
-datain = 0101011, Iout = 0.000138 A, Ioutb = 0.003463 A, Iout + Ioutb = 0.003600 A
-datain = 0101100, Iout = 0.000138 A, Ioutb = 0.003463 A, Iout + Ioutb = 0.003600 A
-datain = 0101101, Iout = 0.000144 A, Ioutb = 0.003456 A, Iout + Ioutb = 0.003600 A
-datain = 0101110, Iout = 0.000144 A, Ioutb = 0.003456 A, Iout + Ioutb = 0.003600 A
-datain = 0101111, Iout = 0.000150 A, Ioutb = 0.003450 A, Iout + Ioutb = 0.003600 A
-datain = 0110000, Iout = 0.000150 A, Ioutb = 0.003450 A, Iout + Ioutb = 0.003600 A
-datain = 0110001, Iout = 0.000156 A, Ioutb = 0.003444 A, Iout + Ioutb = 0.003600 A
-datain = 0110010, Iout = 0.000156 A, Ioutb = 0.003444 A, Iout + Ioutb = 0.003600 A
-datain = 0110011, Iout = 0.000162 A, Ioutb = 0.003438 A, Iout + Ioutb = 0.003600 A
-datain = 0110100, Iout = 0.000162 A, Ioutb = 0.003438 A, Iout + Ioutb = 0.003600 A
-datain = 0110101, Iout = 0.000169 A, Ioutb = 0.003431 A, Iout + Ioutb = 0.003600 A
-datain = 0110110, Iout = 0.000169 A, Ioutb = 0.003431 A, Iout + Ioutb = 0.003600 A
-datain = 0110111, Iout = 0.000175 A, Ioutb = 0.003425 A, Iout + Ioutb = 0.003600 A
-datain = 0111000, Iout = 0.000175 A, Ioutb = 0.003425 A, Iout + Ioutb = 0.003600 A
-datain = 0111001, Iout = 0.000181 A, Ioutb = 0.003419 A, Iout + Ioutb = 0.003600 A
-datain = 0111010, Iout = 0.000181 A, Ioutb = 0.003419 A, Iout + Ioutb = 0.003600 A
-datain = 0111011, Iout = 0.000188 A, Ioutb = 0.003413 A, Iout + Ioutb = 0.003600 A
-datain = 0111100, Iout = 0.000188 A, Ioutb = 0.003413 A, Iout + Ioutb = 0.003600 A
-datain = 0111101, Iout = 0.000194 A, Ioutb = 0.003406 A, Iout + Ioutb = 0.003600 A
-datain = 0111110, Iout = 0.000194 A, Ioutb = 0.003406 A, Iout + Ioutb = 0.003600 A
-datain = 0111111, Iout = 0.000200 A, Ioutb = 0.003400 A, Iout + Ioutb = 0.003600 A
-datain = 1000000, Iout = 0.000000 A, Ioutb = 0.003600 A, Iout + Ioutb = 0.003600 A
-datain = 1000001, Iout = 0.000006 A, Ioutb = 0.003594 A, Iout + Ioutb = 0.003600 A
-datain = 1000010, Iout = 0.000006 A, Ioutb = 0.003594 A, Iout + Ioutb = 0.003600 A
-datain = 1000011, Iout = 0.000013 A, Ioutb = 0.003588 A, Iout + Ioutb = 0.003600 A
-datain = 1000100, Iout = 0.000013 A, Ioutb = 0.003588 A, Iout + Ioutb = 0.003600 A
-datain = 1000101, Iout = 0.000019 A, Ioutb = 0.003581 A, Iout + Ioutb = 0.003600 A
-datain = 1000110, Iout = 0.000019 A, Ioutb = 0.003581 A, Iout + Ioutb = 0.003600 A
-datain = 1000111, Iout = 0.000025 A, Ioutb = 0.003575 A, Iout + Ioutb = 0.003600 A
-datain = 1001000, Iout = 0.000025 A, Ioutb = 0.003575 A, Iout + Ioutb = 0.003600 A
-datain = 1001001, Iout = 0.000031 A, Ioutb = 0.003569 A, Iout + Ioutb = 0.003600 A
-datain = 1001010, Iout = 0.000031 A, Ioutb = 0.003569 A, Iout + Ioutb = 0.003600 A
-datain = 1001011, Iout = 0.000038 A, Ioutb = 0.003563 A, Iout + Ioutb = 0.003600 A
-datain = 1001100, Iout = 0.000038 A, Ioutb = 0.003563 A, Iout + Ioutb = 0.003600 A
-datain = 1001101, Iout = 0.000044 A, Ioutb = 0.003556 A, Iout + Ioutb = 0.003600 A
-datain = 1001110, Iout = 0.000044 A, Ioutb = 0.003556 A, Iout + Ioutb = 0.003600 A
-datain = 1001111, Iout = 0.000050 A, Ioutb = 0.003550 A, Iout + Ioutb = 0.003600 A
-datain = 1010000, Iout = 0.000050 A, Ioutb = 0.003550 A, Iout + Ioutb = 0.003600 A
-datain = 1010001, Iout = 0.000056 A, Ioutb = 0.003544 A, Iout + Ioutb = 0.003600 A
-datain = 1010010, Iout = 0.000056 A, Ioutb = 0.003544 A, Iout + Ioutb = 0.003600 A
-datain = 1010011, Iout = 0.000063 A, Ioutb = 0.003538 A, Iout + Ioutb = 0.003600 A
-datain = 1010100, Iout = 0.000063 A, Ioutb = 0.003538 A, Iout + Ioutb = 0.003600 A
-datain = 1010101, Iout = 0.000069 A, Ioutb = 0.003531 A, Iout + Ioutb = 0.003600 A
-datain = 1010110, Iout = 0.000069 A, Ioutb = 0.003531 A, Iout + Ioutb = 0.003600 A
-datain = 1010111, Iout = 0.000075 A, Ioutb = 0.003525 A, Iout + Ioutb = 0.003600 A
-datain = 1011000, Iout = 0.000075 A, Ioutb = 0.003525 A, Iout + Ioutb = 0.003600 A
-datain = 1011001, Iout = 0.000081 A, Ioutb = 0.003519 A, Iout + Ioutb = 0.003600 A
-datain = 1011010, Iout = 0.000081 A, Ioutb = 0.003519 A, Iout + Ioutb = 0.003600 A
-datain = 1011011, Iout = 0.000088 A, Ioutb = 0.003513 A, Iout + Ioutb = 0.003600 A
-datain = 1011100, Iout = 0.000088 A, Ioutb = 0.003513 A, Iout + Ioutb = 0.003600 A
-datain = 1011101, Iout = 0.000094 A, Ioutb = 0.003506 A, Iout + Ioutb = 0.003600 A
-datain = 1011110, Iout = 0.000094 A, Ioutb = 0.003506 A, Iout + Ioutb = 0.003600 A
-datain = 1011111, Iout = 0.000100 A, Ioutb = 0.003500 A, Iout + Ioutb = 0.003600 A
-datain = 1100000, Iout = 0.000100 A, Ioutb = 0.003500 A, Iout + Ioutb = 0.003600 A
-datain = 1100001, Iout = 0.000106 A, Ioutb = 0.003494 A, Iout + Ioutb = 0.003600 A
-datain = 1100010, Iout = 0.000106 A, Ioutb = 0.003494 A, Iout + Ioutb = 0.003600 A
-datain = 1100011, Iout = 0.000113 A, Ioutb = 0.003488 A, Iout + Ioutb = 0.003600 A
-datain = 1100100, Iout = 0.000113 A, Ioutb = 0.003488 A, Iout + Ioutb = 0.003600 A
-datain = 1100101, Iout = 0.000119 A, Ioutb = 0.003481 A, Iout + Ioutb = 0.003600 A
-datain = 1100110, Iout = 0.000119 A, Ioutb = 0.003481 A, Iout + Ioutb = 0.003600 A
-datain = 1100111, Iout = 0.000125 A, Ioutb = 0.003475 A, Iout + Ioutb = 0.003600 A
-datain = 1101000, Iout = 0.000125 A, Ioutb = 0.003475 A, Iout + Ioutb = 0.003600 A
-datain = 1101001, Iout = 0.000131 A, Ioutb = 0.003469 A, Iout + Ioutb = 0.003600 A
-datain = 1101010, Iout = 0.000131 A, Ioutb = 0.003469 A, Iout + Ioutb = 0.003600 A
-datain = 1101011, Iout = 0.000138 A, Ioutb = 0.003463 A, Iout + Ioutb = 0.003600 A
-datain = 1101100, Iout = 0.000138 A, Ioutb = 0.003463 A, Iout + Ioutb = 0.003600 A
-datain = 1101101, Iout = 0.000144 A, Ioutb = 0.003456 A, Iout + Ioutb = 0.003600 A
-datain = 1101110, Iout = 0.000144 A, Ioutb = 0.003456 A, Iout + Ioutb = 0.003600 A
-datain = 1101111, Iout = 0.000150 A, Ioutb = 0.003450 A, Iout + Ioutb = 0.003600 A
-datain = 1110000, Iout = 0.000150 A, Ioutb = 0.003450 A, Iout + Ioutb = 0.003600 A
-datain = 1110001, Iout = 0.000156 A, Ioutb = 0.003444 A, Iout + Ioutb = 0.003600 A
-datain = 1110010, Iout = 0.000156 A, Ioutb = 0.003444 A, Iout + Ioutb = 0.003600 A
-datain = 1110011, Iout = 0.000162 A, Ioutb = 0.003438 A, Iout + Ioutb = 0.003600 A
-datain = 1110100, Iout = 0.000162 A, Ioutb = 0.003438 A, Iout + Ioutb = 0.003600 A
-datain = 1110101, Iout = 0.000169 A, Ioutb = 0.003431 A, Iout + Ioutb = 0.003600 A
-datain = 1110110, Iout = 0.000169 A, Ioutb = 0.003431 A, Iout + Ioutb = 0.003600 A
-datain = 1110111, Iout = 0.000175 A, Ioutb = 0.003425 A, Iout + Ioutb = 0.003600 A
-datain = 1111000, Iout = 0.000175 A, Ioutb = 0.003425 A, Iout + Ioutb = 0.003600 A
-datain = 1111001, Iout = 0.000181 A, Ioutb = 0.003419 A, Iout + Ioutb = 0.003600 A
-datain = 1111010, Iout = 0.000181 A, Ioutb = 0.003419 A, Iout + Ioutb = 0.003600 A
-datain = 1111011, Iout = 0.000188 A, Ioutb = 0.003413 A, Iout + Ioutb = 0.003600 A
-datain = 1111100, Iout = 0.000188 A, Ioutb = 0.003413 A, Iout + Ioutb = 0.003600 A
-datain = 1111101, Iout = 0.000194 A, Ioutb = 0.003406 A, Iout + Ioutb = 0.003600 A
-datain = 1111110, Iout = 0.000194 A, Ioutb = 0.003406 A, Iout + Ioutb = 0.003600 A
-datain = 1111111, Iout = 0.000200 A, Ioutb = 0.003400 A, Iout + Ioutb = 0.003600 A
-Test 5: Modo térmico (thermometer code)
-datatherm = 00000000000000000, Iout = 0.000200 A
-datatherm = 00000000000000001, Iout = 0.000400 A
-datatherm = 00000000000000011, Iout = 0.000600 A
-datatherm = 00000000000000111, Iout = 0.000800 A
-datatherm = 00000000000001111, Iout = 0.001000 A
-datatherm = 00000000000011111, Iout = 0.001200 A
-datatherm = 00000000000111111, Iout = 0.001400 A
-datatherm = 00000000001111111, Iout = 0.001600 A
-datatherm = 00000000011111111, Iout = 0.001800 A
-datatherm = 00000000111111111, Iout = 0.002000 A
-datatherm = 00000001111111111, Iout = 0.002200 A
-datatherm = 00000011111111111, Iout = 0.002400 A
-datatherm = 00000111111111111, Iout = 0.002600 A
-datatherm = 00001111111111111, Iout = 0.002800 A
-datatherm = 00011111111111111, Iout = 0.003000 A
-datatherm = 00111111111111111, Iout = 0.003200 A
-datatherm = 01111111111111111, Iout = 0.003400 A
-Test 6: Modo binario (Iout_binary_*)
-datain = 0000001, Iout = 0.003206 A
-datain = 0000010, Iout = 0.003206 A
-datain = 0000100, Iout = 0.003213 A
-datain = 0001000, Iout = 0.003225 A
-datain = 0010000, Iout = 0.003250 A
-datain = 0100000, Iout = 0.003300 A
-Test 7: Calibrador (Ical y dataical)
-dataical = 00000, Ical = 0.000000 A
-dataical = 00001, Ical = 0.000003 A
-dataical = 00010, Ical = 0.000006 A
-dataical = 00011, Ical = 0.000013 A
-dataical = 00100, Ical = 0.000025 A
-dataical = 00101, Ical = 0.000050 A
-dataical = 00110, Ical = 0.000100 A
-dataical = 00111, Ical = 0.000200 A
-dataical = 01000, Ical = 0.000200 A
-dataical = 01001, Ical = 0.000200 A
-dataical = 01010, Ical = 0.000200 A
-dataical = 01011, Ical = 0.000200 A
-dataical = 01100, Ical = 0.000200 A
-dataical = 01101, Ical = 0.000200 A
-dataical = 01110, Ical = 0.000200 A
-dataical = 01111, Ical = 0.000200 A
-dataical = 10000, Ical = 0.000200 A
-dataical = 10001, Ical = 0.000200 A
-dataical = 10010, Ical = 0.000200 A
-dataical = 10011, Ical = 0.000200 A
-dataical = 10100, Ical = 0.000200 A
-dataical = 10101, Ical = 0.000200 A
-dataical = 10110, Ical = 0.000200 A
-dataical = 10111, Ical = 0.000200 A
-dataical = 11000, Ical = 0.000200 A
-dataical = 11001, Ical = 0.000200 A
-dataical = 11010, Ical = 0.000200 A
-dataical = 11011, Ical = 0.000200 A
-dataical = 11100, Ical = 0.000200 A
-dataical = 11101, Ical = 0.000200 A
-dataical = 11110, Ical = 0.000200 A
-dataical = 11111, Ical = 0.000200 A
-Test 8: Señales de test (atest_ena, atb_ena, atb0, atb1)
-atb_ena = 00, atb0 = 0.000000 V, atb1 = 0.000000 V
-atb_ena = 01, atb0 = 0.000000 V, atb1 = 1.800000 V
-atb_ena = 10, atb0 = 0.800000 V, atb1 = 0.800000 V
-atb_ena = 11, atb0 = 0.000000 V, atb1 = 0.000200 V
-Barrido de vddana_1p8:
-vddana_1p8 = 1.71 V
-vddana_1p8 = 1.72 V
-vddana_1p8 = 1.73 V
-vddana_1p8 = 1.74 V
-vddana_1p8 = 1.75 V
-vddana_1p8 = 1.76 V
-vddana_1p8 = 1.77 V
-vddana_1p8 = 1.78 V
-vddana_1p8 = 1.79 V
-vddana_1p8 = 1.80 V
-vddana_1p8 = 1.81 V
-vddana_1p8 = 1.82 V
-vddana_1p8 = 1.83 V
-vddana_1p8 = 1.84 V
-vddana_1p8 = 1.85 V
-vddana_1p8 = 1.86 V
-vddana_1p8 = 1.87 V
-vddana_1p8 = 1.88 V
-vddana_1p8 = 1.89 V
-Barrido de vddana_0p8:
-vddana_0p8 = 0.76 V
-vddana_0p8 = 0.77 V
-vddana_0p8 = 0.78 V
-vddana_0p8 = 0.79 V
-vddana_0p8 = 0.80 V
-vddana_0p8 = 0.81 V
-vddana_0p8 = 0.82 V
-vddana_0p8 = 0.83 V
-vddana_0p8 = 0.84 V
-Tests completados.
-Simulation complete via $finish(1) at time 2210 PS + 0
-./tb/current_sterring_tb.sv:201         $finish;
+Simulation complete via $finish(1) at time 2120 PS + 0
+./tb/current_sterring_tb.sv:205         $finish;
 xcelium> ^C
 xcelium> exit
-...Regained control from SimVision
--------------------------------------
-TOOL:	xrun(64)	24.03-s004: Exiting on Oct 20, 2025 at 12:27:03 CEST  (total: 620:33:58)
+TOOL:	xrun(64)	24.03-s004: Exiting on Nov 11, 2025 at 16:20:04 CET  (total: 00:08:51)

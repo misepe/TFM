@@ -1,0 +1,266 @@
+
+#
+# Preferences
+#
+preferences set plugin-enable-svdatabrowser-new 1
+preferences set plugin-enable-groupscope 0
+preferences set plugin-enable-interleaveandcompare 0
+preferences set plugin-enable-waveformfrequencyplot 0
+
+#
+# Mnemonic Maps
+#
+mmap new  -reuse -name {Boolean as Logic} -radix %b -contents {{%c=FALSE -edgepriority 1 -shape low}
+{%c=TRUE -edgepriority 1 -shape high}}
+mmap new  -reuse -name {Example Map} -radix %x -contents {{%b=11???? -bgcolor orange -label REG:%x -linecolor yellow -shape bus}
+{%x=1F -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=2C -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=* -label %x -linecolor gray -shape bus}}
+
+#
+# Design Browser windows
+#
+if {[catch {window new WatchList -name "Design Browser 1" -geometry 730x500+261+33}] != ""} {
+    window geometry "Design Browser 1" 730x500+261+33
+}
+window target "Design Browser 1" on
+browser using {Design Browser 1}
+browser set -scope  simulator::rsync_latch_tb.dut 
+browser set \
+    -showinternals 0 \
+    -signalsort name
+browser yview see  simulator::rsync_latch_tb.dut 
+browser timecontrol set -lock 0
+
+#
+# Waveform windows
+#
+if {[catch {window new WaveWindow -name "Waveform 1" -geometry 1920x1016+-1+26}] != ""} {
+    window geometry "Waveform 1" 1920x1016+-1+26
+}
+window target "Waveform 1" on
+waveform using {Waveform 1}
+waveform sidebar visibility partial
+waveform set \
+    -primarycursor TimeA \
+    -signalnames name \
+    -signalwidth 175 \
+    -units ps \
+    -valuewidth 75
+waveform baseline set -time 0
+
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.vssana
+	} ]
+waveform format $id -trace analogLinear -color #78ff00
+waveform axis range $id -for default -min -1 -max 1 -scale linear
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.vddana_0p8
+	} ]
+waveform format $id -trace analogLinear -color #ffc300
+waveform axis range $id -for default -min 0.72000000000000008 -max 0.88000000000000012 -scale linear
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.pdb
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.iref_25ua
+	} ]
+waveform format $id -trace analogLinear -color #ff0000
+waveform axis range $id -for default -min 2.2500000000000001e-05 -max 2.7500000000000004e-05 -scale linear
+set id [waveform add -signals  {
+	{simulator::rsync_latch_tb.dut.atb_ena[0:1]}
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.atb1
+	} ]
+waveform format $id -trace analogSampleAndHold -color #00ff4a
+waveform axis range $id -for default -min 2.5000000000000001e-05 -max 0.80000000000000004 -scale linear
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.atb0
+	} ]
+waveform format $id -trace analogSampleAndHold -color #00f1ff
+waveform axis range $id -for default -min 2.5000000000000001e-05 -max 0.80000000000000004 -scale linear
+set id [waveform add -signals  {
+	{simulator::rsync_latch_tb.dut.datainbin[6:0]}
+	} ]
+set id [waveform add -signals  {
+	{simulator::rsync_latch_tb.dut.datainbinb[6:0]}
+	} ]
+set id [waveform add -signals  {
+	{simulator::rsync_latch_tb.dut.datainthermb[16:0]}
+	} ]
+set id [waveform add -signals  {
+	{simulator::rsync_latch_tb.dut.dataintherm[16:0]}
+	} ]
+set id [waveform add -signals  {
+	{simulator::rsync_latch_tb.dut.dataoutbin[6:0]}
+	} ]
+set id [waveform add -signals  {
+	{simulator::rsync_latch_tb.dut.dataoutbinb[6:0]}
+	} ]
+set id [waveform add -signals  {
+	{simulator::rsync_latch_tb.dut.dataouttherm[16:0]}
+	} ]
+set id [waveform add -signals  {
+	{simulator::rsync_latch_tb.dut.dataoutthermb[16:0]}
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_16
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_15
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_14
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_13
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_12
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_11
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_10
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_9
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_8
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_7
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_6
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_5
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_4
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_3
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_2
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_1
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_therm_0
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_binary_5
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_binary_4
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_binary_3
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_binary_2
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_binary_1
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_binary_0_red
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkin_binary_0
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_binary_0
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_binary_0_red
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_binary_1
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_binary_2
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_binary_3
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_binary_4
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_binary_5
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_0
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_1
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_2
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_3
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_4
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_5
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_6
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_7
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_8
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_9
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_10
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_11
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_12
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_13
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_14
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_15
+	} ]
+set id [waveform add -signals  {
+	simulator::rsync_latch_tb.dut.clkinb_therm_16
+	} ]
+
+waveform xview limits 0 70000ps
+
+#
+# Waveform Window Links
+#
+
+#
+# Console windows
+#
+console set -windowname Console
+window geometry Console 1920x1016+-1+26
+
+#
+# Layout selection
+#

@@ -1,0 +1,135 @@
+# SimVision Command Script (Mon Nov 17 13:14:08 CET 2025)
+#
+# Version 24.03.s004
+#
+# You can restore this configuration with:
+#
+#      xrun -f xrun.f -input /home/msegper/Documents/TFM/local_bias/restore.tcl
+#
+
+
+#
+# Preferences
+#
+preferences set plugin-enable-svdatabrowser-new 1
+preferences set plugin-enable-groupscope 0
+preferences set plugin-enable-interleaveandcompare 0
+preferences set plugin-enable-waveformfrequencyplot 0
+
+#
+# Simulator
+#
+database require simulator -hints {
+	simulator "xrun -f xrun.f -input restore.tcl"
+}
+
+#
+# Mnemonic Maps
+#
+mmap new  -reuse -name {Boolean as Logic} -radix %b -contents {{%c=FALSE -edgepriority 1 -shape low}
+{%c=TRUE -edgepriority 1 -shape high}}
+mmap new  -reuse -name {Example Map} -radix %x -contents {{%b=11???? -bgcolor orange -label REG:%x -linecolor yellow -shape bus}
+{%x=1F -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=2C -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=* -label %x -linecolor gray -shape bus}}
+
+#
+# Design Browser windows
+#
+if {[catch {window new WatchList -name "Design Browser 1" -geometry 730x500+261+33}] != ""} {
+    window geometry "Design Browser 1" 730x500+261+33
+}
+window target "Design Browser 1" on
+browser using {Design Browser 1}
+browser set -scope [subst  {simulator::[format {local_bias_tb.dut}]} ]
+browser set \
+    -showinternals 0 \
+    -signalsort name
+browser yview see [subst  {simulator::[format {local_bias_tb.dut}]} ]
+browser timecontrol set -lock 0
+
+#
+# Waveform windows
+#
+if {[catch {window new WaveWindow -name "Waveform 1" -geometry 1920x1016+-1+26}] != ""} {
+    window geometry "Waveform 1" 1920x1016+-1+26
+}
+window target "Waveform 1" on
+waveform using {Waveform 1}
+waveform sidebar visibility partial
+waveform set \
+    -primarycursor TimeA \
+    -signalnames name \
+    -signalwidth 175 \
+    -units ps \
+    -valuewidth 75
+waveform baseline set -time 0
+
+set id [waveform add -signals [subst  {
+	{simulator::[format {local_bias_tb.dut.vddana_1p8}]}
+	} ]]
+waveform format $id -trace analogLinear -color #ffc300
+waveform axis range $id -for default -min 1.8 -max 1.8999999999999999 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {local_bias_tb.dut.vddana_0p8}]}
+	} ]]
+waveform format $id -trace analogLinear -color #78ff00
+waveform axis range $id -for default -min 0.75 -max 0.84999999999999998 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {local_bias_tb.dut.vssana}]}
+	} ]]
+waveform format $id -trace analogLinear -color #ff0000
+waveform axis range $id -for default -min -0.10000000000000001 -max 0.10000000000000001 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {local_bias_tb.dut.atb_ena[0:1]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {local_bias_tb.dut.atb0}]}
+	} ]]
+waveform format $id -trace analogLinear -color #ff0000
+waveform axis range $id -for default -min 0.00050000000000000001 -max 1.8 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {local_bias_tb.dut.atb1}]}
+	} ]]
+waveform format $id -trace analogLinear -color #ff00a6
+waveform axis range $id -for default -min 2.5000000000000001e-05 -max 1.8 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {local_bias_tb.dut.pdb}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {local_bias_tb.dut.iclkdist_25ua}]}
+	} ]]
+waveform format $id -trace analogLinear -color #9500ff
+waveform axis range $id -for default -min 2.2500000000000001e-05 -max 2.7500000000000004e-05 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {local_bias_tb.dut.icurrentsource_500ua}]}
+	} ]]
+waveform format $id -trace analogLinear -color #002eff
+waveform axis range $id -for default -min 0.00045000000000000004 -max 0.00055000000000000003 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {local_bias_tb.dut.icurrentsterring_500ua}]}
+	} ]]
+waveform format $id -trace analogLinear -color #00f1ff
+waveform axis range $id -for default -min 0.00045000000000000004 -max 0.00055000000000000003 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {local_bias_tb.dut.isynclatch_25ua}]}
+	} ]]
+waveform format $id -trace analogLinear -color #00ff4a
+waveform axis range $id -for default -min 2.2500000000000001e-05 -max 2.7500000000000004e-05 -scale linear
+
+waveform xview limits 0 100000ps
+
+#
+# Waveform Window Links
+#
+
+#
+# Console windows
+#
+console set -windowname Console
+window geometry Console 730x250+261+564
+
+#
+# Layout selection
+#
+

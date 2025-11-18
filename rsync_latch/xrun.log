@@ -172,4 +172,8 @@ Test 3.4: atb_ena = 2'b11 -> atb0 = 0.00, atb1 = 0.00
 Simulación completada.
 Simulation complete via $finish(1) at time 70 NS + 0
 ./tb/rsync_latch_tb.sv:219         $finish;
-xcelium> 
+xcelium> ^C
+xcelium> exit
+...Regained control from SimVision
+-------------------------------------
+TOOL:	xrun(64)	24.03-s004: Exiting on Nov 17, 2025 at 13:14:40 CET  (total: 69:34:06)

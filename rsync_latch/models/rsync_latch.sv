@@ -3,9 +3,7 @@ import cds_rnm_pkg::*; // Importing the Cadence RNM package
 
 
 module rsync_latch(
-    //DUDA: en las especificaciones pone que datainbin es de 7:0
     input logic [6:0] datainbin,      // Input data for thermomethic IDAC
-    //DUDA: en las especificaciones pone que datainbinb es de 7:0
     input logic [6:0] datainbinb,     // Input negate data for thermomethic IDAC 
     input logic [16:0] dataintherm,  // Input data for thermomethic IDAC
     input logic [16:0] datainthermb, // Input negate data for thermomethic IDAC
@@ -62,7 +60,6 @@ module rsync_latch(
     input real vssana, //ground connection for the block
     input real iref_25ua, //input reference current 25uA
     input logic [0:1] atb_ena, //stablish the output of the differential testbus
-    //DUDA: en las especificaciones pone que datainbin es de 7:0
     output logic [6:0] dataoutbin, //Resyncronized data driving the current switches rising edge del reloj
     output logic [6:0] dataoutbinb, //Resyncronized negate data driving the current switches rising edge del reloj
     output logic [16:0] dataouttherm, //Resyncronized data driving the current switches rising edge del reloj
@@ -127,12 +124,12 @@ module rsync_latch(
                     atb0 = `wrealZState;
                 end
                 2'b01: begin
-                    atb1 = vddana_0p8; //DUDA: en este bloque no hay input de vddana_1p8 poque en las especificaciones indica que con esta configuración hay que sacar vddana_1p8
-                    atb0 = vddana_0p8; //DUDA: en este bloque no hay input de vddana_1p8 poque en las especificaciones indica que con esta configuración hay que sacar vddana_1p8
+                    atb1 = vddana_0p8; 
+                    atb0 = vssana; 
                 end
                 2'b10: begin
                     atb1 = vddana_0p8;
-                    atb0 = vddana_0p8;
+                    atb0 = vssana;
                 end
                 2'b11: begin
                     atb1 = iref_25ua;

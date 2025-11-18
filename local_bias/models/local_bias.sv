@@ -70,10 +70,10 @@ module local_bias import cds_rnm_pkg::*;(
                 end
                 2'b01: begin
                     atb1 = vddana_1p8; 
-                    atb0 = vddana_0p8; 
+                    atb0 = vssana; 
                 end
                 2'b10: begin
-                    atb1 = vssana;
+                    atb1 = vddana_0p8;
                     atb0 = vssana;
                 end
                 2'b11: begin

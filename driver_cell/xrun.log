@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Nov 11, 2025 at 12:40:18 CET
+TOOL:	xrun(64)	24.03-s004: Started on Dec 01, 2025 at 15:31:38 CET
 xrun
 	-f xrun.f
 		-clean
@@ -22,13 +22,25 @@ file: ./tb/driver_cell_tb.sv
 		cds_rnm_pkg
 		$unit_0x7577e926
 		driver_cell_tb
+        .datain(datain),
+                     |
+xmelab: *W,CUVMPW (./tb/driver_cell_tb.sv,23|21): port sizes differ in port connection(8/7) for the instance(driver_cell_tb) .
+        .datainb(datainb),
+                       |
+xmelab: *W,CUVMPW (./tb/driver_cell_tb.sv,24|23): port sizes differ in port connection(8/7) for the instance(driver_cell_tb) .
+        .databinout(databinout),
+                             |
+xmelab: *W,CUVMPW (./tb/driver_cell_tb.sv,31|29): port sizes differ in port connection(8/7) for the instance(driver_cell_tb) .
+        .databinoutb(databinoutb),
+                               |
+xmelab: *W,CUVMPW (./tb/driver_cell_tb.sv,32|31): port sizes differ in port connection(8/7) for the instance(driver_cell_tb) .
 	Building instance overlay tables: .................... Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.driver_cell:sv <0x7771218e>
-			streams:   7, words:  9424
-		worklib.driver_cell_tb:sv <0x7bec415a>
-			streams:   9, words: 14833
+		worklib.driver_cell:sv <0x7f8b9ad4>
+			streams:   7, words:  9385
+		worklib.driver_cell_tb:sv <0x27d4cfdd>
+			streams:   9, words: 15187
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
@@ -36,8 +48,9 @@ file: ./tb/driver_cell_tb.sv
 		Modules:                 2       2
 		Verilog packages:        1       1
 		Registers:              22      22
-		Scalar wires:            4       -
-		Vectored wires:          8       -
+		Scalar wires:            6       -
+		Expanded wires:         14       2
+		Vectored wires:          6       -
 		Always blocks:           4       4
 		Initial blocks:          4       4
 		Pseudo assignments:      8       -
@@ -160,9 +173,25 @@ Test 1: Verificación de límites de alimentación
 Test 2: Estado apagado (pdb = 0)
 databinout = zzzzzzzz, databinoutb = zzzzzzzz, datathermout = zzzzzzzzzzzzzzzzz, datathermoutb = zzzzzzzzzzzzzzzzz
 Test 3: Estado encendido (pdb = 1)
-databinout = 11001100, databinoutb = 00110011, datathermout = 11110000111100001, datathermoutb = 00001111000011110
+databinout = z1001100, databinoutb = z0110011, datathermout = 11110000111100001, datathermoutb = 00001111000011110
 Test 5: Propagación de datos binarios
-databinout = 10101010, databinoutb = 01010101
+databinout = z0101010, databinoutb = z1010101
+Test 6: Propagación de datos termométricos
+datathermout = 10101010101010101, datathermoutb = 01010101010101010
+Tests completados.
+Simulation complete via $finish(1) at time 80 NS + 0
+./tb/driver_cell_tb.sv:85         $finish;
+xcelium> reset
+Loaded snapshot worklib.driver_cell_tb:sv
+xcelium> run
+Iniciando tests...
+Test 1: Verificación de límites de alimentación
+Test 2: Estado apagado (pdb = 0)
+databinout = zzzzzzzz, databinoutb = zzzzzzzz, datathermout = zzzzzzzzzzzzzzzzz, datathermoutb = zzzzzzzzzzzzzzzzz
+Test 3: Estado encendido (pdb = 1)
+databinout = z1001100, databinoutb = z0110011, datathermout = 11110000111100001, datathermoutb = 00001111000011110
+Test 5: Propagación de datos binarios
+databinout = z0101010, databinoutb = z1010101
 Test 6: Propagación de datos termométricos
 datathermout = 10101010101010101, datathermoutb = 01010101010101010
 Tests completados.
@@ -170,4 +199,4 @@ Simulation complete via $finish(1) at time 80 NS + 0
 ./tb/driver_cell_tb.sv:85         $finish;
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Nov 11, 2025 at 12:44:59 CET  (total: 00:04:41)
+TOOL:	xrun(64)	24.03-s004: Exiting on Dec 01, 2025 at 15:42:07 CET  (total: 00:10:29)

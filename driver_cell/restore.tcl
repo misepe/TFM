@@ -5,7 +5,7 @@
 #
 # You can restore this configuration with:
 #
-#      xrun -f xrun.f -input /home/msegper/Documents/TFM/driver_cell/restore.tcl
+#      xrun -f xrun.f -input restore.tcl
 #
 
 set tcl_prompt1 {puts -nonewline "xcelium> "}

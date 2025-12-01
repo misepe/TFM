@@ -1,16 +1,16 @@
 `timescale 1ns/1ps
 import cds_rnm_pkg::*; // Importing the Cadence RNM package
 module driver_cell (
-    input [7:0] datain,      // Digital binary control of the converter
-    input [7:0] datainb,      // Digital binary control of the converter negate
+    input [6:0] datain,      // Digital binary control of the converter
+    input [6:0] datainb,      // Digital binary control of the converter negate
     input [16:0] datatherm,      // Digital thermometrical control of the converter
     input [16:0] datathermb,      // Digital thermometrical control of the converter negate
     input pdb, //power down negate signal
     input real vddana_1p8,       // 1.8V power supply
     input real vddana_0p8,       // 0.8V power supply
     input real vssana,           // ground
-    output logic [7:0] databinout, //Resyncronized sata driving the current switches
-    output logic [7:0] databinoutb, //Resyncronized sata driving the current switches negate
+    output logic [6:0] databinout, //Resyncronized sata driving the current switches
+    output logic [6:0] databinoutb, //Resyncronized sata driving the current switches negate
     output logic [16:0] datathermout, //Resyncronized sata driving the current switches
     output logic [16:0] datathermoutb //Resyncronized sata driving the current switches negate
 );

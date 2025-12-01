@@ -1,0 +1,40 @@
+#e1(26Nov2025:17:06:06): source ./xcelium.d/env.d/env.history.26Nov2025_17_06_06
+s1(26Nov2025:17:06:06):  xrun sin_tb.sv 
+#e2(26Nov2025:17:06:33): source ./xcelium.d/env.d/env.history.26Nov2025_17_06_33
+s2(26Nov2025:17:06:33):  xrun -sv sin_tb.sv 
+#e3(26Nov2025:17:07:14): source ./xcelium.d/env.d/env.history.26Nov2025_17_07_14
+s3(26Nov2025:17:07:14):  xrun sin_tb.sv -access +rw 
+#e4(26Nov2025:17:08:07): source ./xcelium.d/env.d/env.history.26Nov2025_17_08_07
+s4(26Nov2025:17:08:07):  xrun sin_tb.sv 
+#e5(26Nov2025:17:11:04): source ./xcelium.d/env.d/env.history.26Nov2025_17_11_04
+s5(26Nov2025:17:11:04):  xrun sin_tb.sv 
+#e6(26Nov2025:17:12:40): source ./xcelium.d/env.d/env.history.26Nov2025_17_12_40
+s6(26Nov2025:17:12:40):  xrun sin_tb.sv 
+#e7(26Nov2025:17:17:25): source ./xcelium.d/env.d/env.history.26Nov2025_17_17_25
+s7(26Nov2025:17:17:25):  xrun sin_tb.sv 
+#e8(26Nov2025:17:19:38): source ./xcelium.d/env.d/env.history.26Nov2025_17_19_38
+s8(26Nov2025:17:19:38):  xrun sin_tb.sv 
+#e9(01Dec2025:10:26:20): source ./xcelium.d/env.d/env.history.01Dec2025_10_26_20
+s9(01Dec2025:10:26:20):  xrun sin_tb.sv 
+#e10(01Dec2025:10:29:13): source ./xcelium.d/env.d/env.history.01Dec2025_10_29_13
+s10(01Dec2025:10:29:13):  xrun sin_tb.sv -access +rw -top sin_tb 
+#e11(01Dec2025:10:34:40): source ./xcelium.d/env.d/env.history.01Dec2025_10_34_40
+s11(01Dec2025:10:34:40):  xrun sin_tb.sv 
+#e12(01Dec2025:10:35:07): source ./xcelium.d/env.d/env.history.01Dec2025_10_35_07
+s12(01Dec2025:10:35:07):  xrun sin_tb.sv 
+#e13(01Dec2025:10:36:16): source ./xcelium.d/env.d/env.history.01Dec2025_10_36_16
+s13(01Dec2025:10:36:16):  xrun sin_tb.sv 
+#e14(01Dec2025:10:36:50): source ./xcelium.d/env.d/env.history.01Dec2025_10_36_50
+s14(01Dec2025:10:36:50):  xrun sin_tb.sv 
+#e15(01Dec2025:10:38:16): source ./xcelium.d/env.d/env.history.01Dec2025_10_38_16
+s15(01Dec2025:10:38:16):  xrun sin_tb.sv 
+#e16(01Dec2025:10:47:49): source ./xcelium.d/env.d/env.history.01Dec2025_10_47_49
+s16(01Dec2025:10:47:49):  xrun sin_tb.sv 
+#e17(01Dec2025:10:53:02): source ./xcelium.d/env.d/env.history.01Dec2025_10_53_02
+s17(01Dec2025:10:53:02):  xrun sin_tb.sv 
+#e18(01Dec2025:10:54:03): source ./xcelium.d/env.d/env.history.01Dec2025_10_54_03
+s18(01Dec2025:10:54:03):  xrun sin_tb.sv 
+#e19(01Dec2025:11:01:56): source ./xcelium.d/env.d/env.history.01Dec2025_11_01_56
+s19(01Dec2025:11:01:56):  xrun sin_tb.sv 
+#e20(01Dec2025:11:03:34): source ./xcelium.d/env.d/env.history.01Dec2025_11_03_34
+s20(01Dec2025:11:03:34):  xrun sin_tb.sv 

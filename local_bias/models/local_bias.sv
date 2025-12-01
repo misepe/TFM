@@ -4,7 +4,7 @@ module local_bias import cds_rnm_pkg::*;(
     input real vddana_1p8,       // 1.8V power supply
     input real vddana_0p8,       // 0.8V power supply
     input real vssana,           // Ground connection
-    input logic [0:1] atb_ena,        // Analog testbus enable 
+    input logic [1:0] atb_ena,        // Analog testbus enable 
     output real iclkdist_25ua, // 25µA clock distribution current
     output real isynclatch_25ua, // 25µA sync latch current
     output real icurrentsterring_500ua, // 500µA current steering bias current

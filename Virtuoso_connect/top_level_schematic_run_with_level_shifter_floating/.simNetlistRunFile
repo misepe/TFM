@@ -1,0 +1,11 @@
+simVerilogNetlistFileList = '(
+    (("top_level_DAC" "top_level_schematic") 
+	("cds0/netlist" "cds0/map" "schematic")
+    )
+)
+simVerilogNetlistFileLibList = '("top_level_DAC")
+simVerilogNetlistFileCellList = '(("top_level_DAC" 
+	("top_level_schematic")
+    )
+)
+hnlIncrementalDirectory = '"ihnl"

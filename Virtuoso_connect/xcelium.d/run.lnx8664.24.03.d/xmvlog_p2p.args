@@ -1,0 +1,14 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-WORK
+top_level_DAC
+-NOSTDOUT
+-UPDATE
+-sv
+-NEVERWARN
+-CDSLIB
+./xcelium.d/run.lnx8664.24.03.d/cds.lib
+-HDLVAR
+./xcelium.d/run.lnx8664.24.03.d/hdl.var

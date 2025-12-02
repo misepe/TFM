@@ -1,0 +1,52 @@
+TOOL:	xrun(64)	24.03-s004: Started on Dec 02, 2025 at 16:36:04 CET
+xrun
+	-compile
+	-nocopy
+	-nostdout
+	-nowarn DLNOHV
+	-nowarn SPDUSD
+	-messages
+	-update
+	-log /home/msegper/Documents/TFM/Virtuoso_connect/.cadence/dfII/TextSupport/Logs/Parser/systemverilog/top_level_DAC/systemVerilog/compile11.log
+	-incdir "/home/msegper/Documents/TFM/Virtuoso_connect/"
+	-sv
+	-cdslib /home/msegper/Documents/TFM/Virtuoso_connect/cds.lib
+	-view systemVerilog
+	-work top_level_DAC
+	/home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/top_level_schematic/systemVerilog/verilog.sv
+Recompiling... reason: file './top_level_DAC/top_level_schematic/systemVerilog/verilog.sv' is newer than expected.
+	expected: Tue Dec  2 16:12:10 2025
+	actual:   Tue Dec  2 16:36:03 2025
+TOOL:	xrun(64)	24.03-s004: Exiting on Dec 02, 2025 at 16:36:04 CET  (total: 00:00:00)
+
+
+Instance Binding Report:
+-------------------------------------------------------------------------------
+Instance		MasterLib		MasterCell		MasterView
+-------------------------------------------------------------------------------
+
+
+
+ ========================================================================================================
+		                  HDL IMPORT QUICK STATUS REPORT
+ ========================================================================================================
+ HDL SETUP MODE	: 0 - IMPROVED LEGACY FLOW
+ ========================================================================================================
+ HDL SETUP STATUS	: SUCCESS
+ ========================================================================================================
+ cds.lib USED	: "/home/msegper/Documents/TFM/Virtuoso_connect/cds.lib"
+ ========================================================================================================
+ COMPILER OPTIONS	: ""
+ ========================================================================================================
+ PCDB DM CHECKS	: SUCCESS
+ ========================================================================================================
+ PCDB UPDATE REQUIRED	: YES
+ ========================================================================================================
+ IMPORT CONFIGURATION	: CHECK BELOW SETTINGS
+		: generateShadow(true)
+		: enableBlackBox(false)
+		: enableSpecificUnit(true)
+		: updateCDF(true)
+ ========================================================================================================
+ OVERALL IMPORT STATUS	: SUCCESS
+ ========================================================================================================

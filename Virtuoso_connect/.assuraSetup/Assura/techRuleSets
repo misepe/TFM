@@ -1,0 +1,52 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Rule Set File generated/modified by AS on Feb 27 2018
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+ruleSet( "default"
+     (DrcRules             "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/drc.rul" )
+     (DrcInclude           "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/DRCinclude.rsf" )
+     (LvsExtractRules      "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/extract.rul" )
+     (LvsCompareRules      "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/compare.rul" )
+     (LvsInclude           "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/LVSinclude.rsf" )
+     (RcxSetupDir          "../../.xkit/setup/xh018/cadence/QRC_assura/XH018_1131/QRC-Typ" )
+)
+
+ruleSet( "DRC & Dummy Output"
+     (DrcRules             "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/drc.rul" )
+     (DrcInclude           "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/DRCinclude_DummyOut.rsf" )
+)
+
+ruleSet( "VAR_ANT_RATIO DRC"
+     (DrcRules             "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/drc_var.rul" )
+     (DrcSwitchesFile	   "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/drcswitch.rul" )
+     (DrcInclude           "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/DRCinclude.rsf" )
+)
+
+ruleSet( "Min"
+     (RcxSetupDir          "../../.xkit/setup/xh018/cadence/QRC_assura/XH018_1131/QRC-Min" )
+)
+
+ruleSet( "Typ"
+     (RcxSetupDir          "../../.xkit/setup/xh018/cadence/QRC_assura/XH018_1131/QRC-Typ" )
+)
+
+ruleSet( "Max"
+     (RcxSetupDir          "../../.xkit/setup/xh018/cadence/QRC_assura/XH018_1131/QRC-Max" )
+)
+
+ruleSet( "ERCFloatingGate"
+     (ErcExtractRules      "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/extract.rul" )
+     (ErcInclude           "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/ERCinclude.rsf" )
+)
+
+ruleSet( "Density"
+     (DrcRules             "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/density.rul" )
+     (DrcInclude           "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/DRCinclude.rsf" )
+)
+
+ruleSet( "Density & Dummy Output"
+     (DrcRules             "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/density.rul" )
+     (DrcInclude           "../../.xkit/setup/xh018/cadence/assura/Assura/XH018_1131/DRCinclude_DummyOut.rsf" )
+)
+

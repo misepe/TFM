@@ -1,0 +1,10 @@
+cellViewCounterTable = makeTable('cellViewCounterTableType nil)
+cellViewCounterTable['("top_level_DAC" "currentSterring" "symbol" )] =  1342
+cellViewCounterTable['("basic" "opin" "symbol" )] =  22
+cellViewCounterTable['("top_level_DAC" "driver_cell" "symbol" )] =  945
+cellViewCounterTable['("top_level_DAC" "currentSourceUnits" "symbol" )] =  995
+cellViewCounterTable['("top_level_DAC" "clock_distribution" "symbol" )] =  1696
+cellViewCounterTable['("top_level_DAC" "rsync_latch" "symbol" )] =  1968
+cellViewCounterTable['("top_level_DAC" "top_level_schematic" "schematic" )] =  35055
+cellViewCounterTable['("basic" "ipin" "symbol" )] =  22
+cellViewCounterTable['("top_level_DAC" "local_bias" "symbol" )] =  364

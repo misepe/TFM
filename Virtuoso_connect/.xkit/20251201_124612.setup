@@ -1,0 +1,73 @@
+#
+#
+# Linked PDK packages in /home/msegper/Documents/TFM/Virtuoso_connect/.xkit/20251201_124612
+#
+# This file can be used to recreate the PDK setup with the defined package versions,
+# using the following command:
+#
+# xkit --setversion /home/msegper/Documents/TFM/Virtuoso_connect/.xkit/20251201_124612.setup
+#
+# The PDK packages are installed at the following X_DIR location ($X_DIR):
+# /eda/xfab/XKIT
+#
+$X_DIR/xh018/analoglibs/GATES_PCELL/v2_2/cadence_IC61/v2_2_1
+$X_DIR/xh018/analoglibs/HALL_CELLS2/v1_0/cadence_IC61/v1_0_1
+$X_DIR/xh018/analoglibs/SPAD_CELLS/v1_0/cadence_IC61/v1_0_0
+$X_DIR/xh018/cadence/PDK_addon/IC61/ChipPeriphery/v2_4_2
+$X_DIR/xh018/cadence/v10_0/PDK/IC61/v10_0_2
+$X_DIR/xh018/cadence/v10_0/QRC_assura/v10_0_1
+$X_DIR/xh018/cadence/v10_0/QRC_pvs/v10_0_1
+$X_DIR/xh018/cadence/v10_0/assura/v10_0_2
+$X_DIR/xh018/cadence/v10_0/pvs/v10_0_1
+$X_DIR/xh018/cadence/v10_0/spectre/v10_0_1
+$X_DIR/xh018/cadence/v9_0/capTbl/v9_0_1
+$X_DIR/xh018/cadence/v9_0/power_grid_voltus/v9_0_1
+$X_DIR/xh018/cadence/v9_0/techLEF/v9_0_1
+$X_DIR/xh018/diglibs/D_CELLS_3V/v2_1/cadence_IC61/v2_1_1_1
+$X_DIR/xh018/diglibs/D_CELLS_HD/v5_0/cadence_IC61/v5_0_0
+$X_DIR/xh018/diglibs/D_CELLS_HDLL/v3_0/cadence_IC61/v3_0_0
+$X_DIR/xh018/diglibs/D_CELLS_HDLVT/v1_0/cadence_IC61/v1_0_0
+$X_DIR/xh018/diglibs/D_CELLS_HDMV/v2_2/cadence_IC61/v2_2_0
+$X_DIR/xh018/diglibs/D_CELLS_HDSVT/v3_0/cadence_IC61/v3_0_0
+$X_DIR/xh018/diglibs/D_CELLS_JI3V/v2_1/cadence_IC61/v2_1_2
+$X_DIR/xh018/diglibs/D_CELLS_JIHD/v5_0/cadence_IC61/v5_0_0
+$X_DIR/xh018/diglibs/D_CELLS_JIHDLL/v3_0/cadence_IC61/v3_0_0
+$X_DIR/xh018/diglibs/D_CELLS_JIHDLVT/v1_0/cadence_IC61/v1_0_0
+$X_DIR/xh018/diglibs/D_CELLS_JIHDMV/v3_0/cadence_IC61/v3_0_0
+$X_DIR/xh018/diglibs/D_CELLS_JIHDSVT/v3_0/cadence_IC61/v3_0_0
+$X_DIR/xh018/diglibs/D_CELLS_JIM3V/v2_1/cadence_IC61/v2_1_1
+$X_DIR/xh018/diglibs/D_CELLS_M3V/v2_0/cadence_IC61/v2_0_2
+$X_DIR/xh018/diglibs/GATES_3V/v2_1/cadence_IC61/v2_1_1
+$X_DIR/xh018/diglibs/GATES_HD/v1_1/cadence_IC61/v1_1_1
+$X_DIR/xh018/diglibs/GATES_JI3V/v1_1/cadence_IC61/v1_1_1
+$X_DIR/xh018/diglibs/GATES_JIHD/v1_1/cadence_IC61/v1_1_1
+$X_DIR/xh018/diglibs/GATES_JILVT/v1_0/cadence_IC61/v1_0_0
+$X_DIR/xh018/diglibs/GATES_JISVT/v2_0/cadence_IC61/v2_0_1
+$X_DIR/xh018/diglibs/GATES_LVT/v1_0/cadence_IC61/v1_0_0
+$X_DIR/xh018/diglibs/GATES_SVT/v2_0/cadence_IC61/v2_0_1
+$X_DIR/xh018/diglibs/IO_CELLS_3V/v2_2/cadence_IC61/v2_2_0
+$X_DIR/xh018/diglibs/IO_CELLS_C1V8/v1_1/cadence_IC61/v1_1_2
+$X_DIR/xh018/diglibs/IO_CELLS_C3V/v1_2/cadence_IC61/v1_2_2
+$X_DIR/xh018/diglibs/IO_CELLS_F3V/v2_1/cadence_IC61/v2_1_2
+$X_DIR/xh018/diglibs/IO_CELLS_FC1V8/v1_1/cadence_IC61/v1_1_2
+$X_DIR/xh018/diglibs/IO_CELLS_FC3V/v1_2/cadence_IC61/v1_2_2
+$X_DIR/xh018/diglibs/IO_CELLS_JI3V/v5_0/cadence_IC61/v5_0_0
+$X_DIR/xh018/diglibs/IO_CELLS_JIC1V8/v1_0/cadence_IC61/v1_0_1
+$X_DIR/xh018/diglibs/IO_CELLS_JIC3V/v1_0/cadence_IC61/v1_0_0
+$X_DIR/xh018/diglibs/IO_CELLS_JIF3V/v1_1/cadence_IC61/v1_1_0
+$X_DIR/xh018/diglibs/IO_CELLS_JIFC1V8/v1_0/cadence_IC61/v1_0_0
+$X_DIR/xh018/diglibs/IO_CELLS_JIFC3V/v1_0/cadence_IC61/v1_0_1
+$X_DIR/xh018/diglibs/IO_CELLS_NVM_3V/v1_6/cadence_IC61/v1_6_4
+$X_DIR/xh018/diglibs/IO_CELLS_NVM_C1V8/v1_0/cadence_IC61/v1_0_6
+$X_DIR/xh018/diglibs/IO_CELLS_NVM_F3V/v1_6/cadence_IC61/v1_6_4
+$X_DIR/xh018/diglibs/IO_CELLS_NVM_FC1V8/v1_5/cadence_IC61/v1_5_5
+$X_DIR/xh018/esdlibs/HV_CELLS/v4_3/cadence_IC61/v4_3_0
+$X_DIR/x_all/cadence/PDK_addon/IC61/AddLayerPWD/v1_0_0
+$X_DIR/x_all/cadence/PDK_addon/IC61/DFMIMD/v1_0_1
+$X_DIR/x_all/cadence/PDK_addon/IC61/MIMANT/v3_0_3
+$X_DIR/x_all/cadence/PDK_addon/IC61/TOOLBOX/v1_0_1
+$X_DIR/x_all/cadence/xenv/v1_3_3
+$X_DIR/x_all/diglibs/Implementation_Guidelines/v1_2/Multibit_Registers/v1_2_2
+$X_DIR/x_all/diglibs/VLG_PRIMITIVES/v1_2/cadence_IC61/v1_2_0
+$X_DIR/x_all/diglibs/xfab_connectLib/v1_0/cadence_IC61/v1_0_1
+$X_DIR/x_all/utilities/XSTITCH/v1_0/bin/linux_x86_64/v1_0_2

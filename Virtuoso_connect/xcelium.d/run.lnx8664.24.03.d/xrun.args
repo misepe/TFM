@@ -1,0 +1,25 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-compile
+-nocopy
+-nostdout
+-nowarn
+DLNOHV
+-nowarn
+SPDUSD
+-messages
+-update
+-log
+/home/msegper/Documents/TFM/Virtuoso_connect/.cadence/dfII/TextSupport/Logs/Parser/systemverilog/top_level_DAC/systemVerilog/compile11.log
+-incdir
+"/home/msegper/Documents/TFM/Virtuoso_connect/"
+-sv
+-cdslib
+/home/msegper/Documents/TFM/Virtuoso_connect/cds.lib
+-view
+systemVerilog
+-work
+top_level_DAC
+/home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/top_level_schematic/systemVerilog/verilog.sv

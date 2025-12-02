@@ -1,0 +1,128 @@
+/*##################################################################################
+#  X-FAB Global Services GmbH                                                      #
+#  email: hotline@xfab.com                                                         #
+#  phone: +49-361-427-6663                                                         #
+#  fax:   +49-361-427-6631                                                         #
+####################################################################################
+#  Company Confidential                                                            #
+#  All rights reserved. No part of this document may be reproduced, distributed,   #
+#  or transmitted in any form or by any means, including photocopying, recording,  #
+#  or other electronic or mechanical methods, without the prior written permission #
+#  of X-FAB Global Services GmbH.                                                  #
+##################################################################################*/
+
+T_LIBRARIES = "./.xkit/setup/xh018/cadence/PDK/xh018"
+T_VERSION = "v1.3.3"
+T_TECH = "xh018"
+
+
+XKIT = "v1.3.3"
+T_PROC = "xh018_1131"
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;verilog
+
+
+simVerilogFlattenBuses               = 'nil
+simVerilogLaiLmsiNetlisting          = 'nil
+simReNetlistAll                      = 't
+simVerilogNetlistExplicit            = 't
+hnlVerilogNetlistStopCellExplicit    = 't
+hnlVerilogNetlistNonStopCellExplicit = 't
+hnlVerilogNetlistBehavioralExplicit  = 't
+/*
+hnlMaxLineLength 		     = 1024
+hnlMaxNameLength 		     = 150
+*/
+simVerilogPwrNetList                 = '("dummyPwrNet")
+simVerilogGndNetList                 = '("dummyGndNet")
+simVerilogSimPrecisionUnit           = "ps"
+
+verilogSimStopList = '( "symbol" )
+
+verilogSimViewList = '("behavioral" "functional" "schematic" "symbol" )
+
+simVerilogLibraryDirectory       = ""
+simVerilogLibraryFile            = ""
+
+
+simVerilogInteractiveCommandFile = ""
+simVerilogInvocationOptionsFile  = "./xh018.inc"
+simVerilogInvocationOptions = "+libext+.v+ +incdir+hdlFilesDir +sdf_verbose "
+
+; Post-layout simulation variables.
+;
+; The value "nil" of simVerilogDelayPrimitive means that the Cadence default 
+; delay calculator used is $dcalc_path(..., "net.cap"). If the value is "t", the
+; task dcalc_prim(..., "net.cap") will show up in the Run Directory
+; file "delayTask.cmd".
+;
+; For delay paths to be back-annotated:
+; Note 1: Cell ports are scalars.
+; Note 2: Port names are the same as their net names.
+; Note 3: No wired logic on a output port.
+;
+simVerilogDelayPrimitive    = nil
+; The report info goes into the file "si.out", and contains information
+; on the interconnect nets.
+simVerilogDelayDetailReport = t
+simVerilogDelayUseDefault   = t
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; For Analog Artist transistor level LVS comparison 
+  lvsSchematicViewList = '( "auLvs" "schematic" "cmos_sch" "symbol" )
+  lvsLayoutViewList    = '( "auLvs" "extracted" "schematic" "symbol")
+  lvsSchematicStopList = '( "auLvs" )
+  lvsLayoutStopList    = '( "auLvs" )
+
+; For Analog Artist macro-cell comparison 
+; lvsSchematicViewList = '( "msps" "auLvs" "schematic" "pr_sch" "prc_sch" "symbol" )
+; lvsLayoutViewList    = '( "msps" "auLvs" "extracted" "schematic" "symbol")
+; lvsSchematicStopList = '( "msps" "auLvs" "symbol")
+; lvsLayoutStopList    = '( "msps" "auLvs" "symbol")
+
+; For non Analog Artist (DFII) LVS comparison 
+; lvsSchematicViewList = '( "lvs" "schematic" "cmos_sch" )
+; lvsLayoutViewList    = '( "lvs" "extracted" "schematic" "cmos_sch" )
+; lvsSchematicStopList = '( "lvs" )
+; lvsLayoutStopList    = '( "lvs" )
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;** auCdl Netlisting Analog **
+;* require: CDS_Netlisting_Mode = Analog
+
+if(isFile("./.xkit/setup/xh018/cadence/PDK/skill/ansCdlCompPrim.ile") then
+    load("./.xkit/setup/xh018/cadence/PDK/skill/ansCdlCompPrim.ile")
+else
+  load("./.xkit/setup/x_all/cadence/xenv/skill/ansCdlCompPrim.ile")
+)
+
+auCdlCheckLDD = t
+auCdlSkipMEGA = t
+; auCdlCheckRESI = t
+; auCdlCheckRESSIZE = t
+
+;* more then default terminal mos device
+auCdlPrintEmptySUBCKT = t
+auCdlCDFPinCntrl = t
+; auCdlNoInhTermInTermOrder = t
+
+;* Blackbox
+;* require on cellview: auCdlPrintBlkBox = t
+; auCdlDisableBlkBox = nil ;* by default Blackbox is enabled
+
+; simSetDef('auCdlSimViewList, '("auCdl" "schematic" "cmos_sch"))
+; simSetDef('auCdlSimStopList, '("auCdl"))
+; simSetDef('cdlSimViewList,   '("cdl"   "schematic" "cmos_sch"))
+; simSetDef('cdlSimStopList,   '("cdl"))
+
+cdlSimViewList=list("auCdl" "schematic" "cmos_sch")
+cdlSimStopList=list("auCdl")
+
+cdlSimViewList=list("auCdl" "schematic" "cmos_sch")
+cdlSimStopList=list("auCdl")
+

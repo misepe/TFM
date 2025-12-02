@@ -1,0 +1,20 @@
+tmLCVDPLList = '((nil viewType "schematicSymbol" viewName "symbol"
+    cellName "currentSourceUnits" libName "top_level_DAC"
+    ) 
+    (nil viewType "schematicSymbol" viewName "symbol"
+    cellName "currentSterring" libName "top_level_DAC"
+    ) 
+    (nil viewType "schematicSymbol" viewName "symbol"
+    cellName "local_bias" libName "top_level_DAC"
+    ) 
+    (nil viewType "schematicSymbol" viewName "symbol"
+    cellName "driver_cell" libName "top_level_DAC"
+    ) 
+    (nil viewType "schematicSymbol" viewName "symbol"
+    cellName "rsync_latch" libName "top_level_DAC"
+    )
+    (nil viewType "schematicSymbol" viewName "symbol"
+    cellName "clock_distribution" libName "top_level_DAC"
+    )
+)
+xxxInternalGlobAliasList = '(nil)

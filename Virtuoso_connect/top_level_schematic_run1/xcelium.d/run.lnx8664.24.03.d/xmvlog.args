@@ -1,0 +1,24 @@
+//
+// File created by:  xmxlmode
+// Do not modify this file
+//
+-XLMODE
+./xcelium.d/run.lnx8664.24.03.d
+-RUNMODE
+/home/msegper/Documents/TFM/Virtuoso_connect/top_level_schematic_run1/testfixture.template
+ihnl/cds0/netlist
+-NOSTDOUT
+-NOCOPYRIGHT
+-neverwarn
+-nostdout
+-nocopyright
+-CDSLIB
+./xcelium.d/run.lnx8664.24.03.d/cdsrun.lib
+-HDLVAR
+./xcelium.d/run.lnx8664.24.03.d/hdlrun.var
+-no_analogsolver
+-MESSAGES
+-UPDATE
+-XLLIBSTORE
+./xcelium.d/run.lnx8664.24.03.d/xllibs
+-ALLOWUNBOUND

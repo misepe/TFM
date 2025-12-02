@@ -1,0 +1,39 @@
+TOOL:	xmxlmode	24.03-s004: Started on Dec 02, 2025 at 16:56:55 CET
+/eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/bin/64bit/xmxlmode
+	+delay_mode_path
+	+typdelays
+	-l
+	simout.tmp
+	/home/msegper/Documents/TFM/Virtuoso_connect/top_level_schematic_run_with_level_shifter_floating/testfixture.template
+	-f /home/msegper/Documents/TFM/Virtuoso_connect/top_level_schematic_run_with_level_shifter_floating/verilog.inpfiles
+		ihnl/cds0/netlist
+	+nostdout
+	+nocopyright
+	+elaborate
+	+ncvlogargs+" -neverwarn -nostdout -nocopyright "
+	+ncelabargs+" -neg_tchk  -nonotifier  -sdf_NOCheck_celltype  -access +r  -pulse_e 100  -pulse_r 100  -neverwarn  -timescale 1ns/1ps -nostdout -nocopyright"
+xmxlmode: *W,OPDEPRREN: Command Line Option (+ncvlogargs+ -neverwarn -nostdout -nocopyright ) is deprecated. Use (+xmvlogargs+ -neverwarn -nostdout -nocopyright ) instead.
+xmxlmode: *W,OPDEPRREN: Command Line Option (+ncelabargs+ -neg_tchk  -nonotifier  -sdf_NOCheck_celltype  -access +r  -pulse_e 100  -pulse_r 100  -neverwarn  -timescale 1ns/1ps -nostdout -nocopyright) is deprecated. Use (+xmelabargs+ -neg_tchk  -nonotifier  -sdf_NOCheck_celltype  -access +r  -pulse_e 100  -pulse_r 100  -neverwarn  -timescale 1ns/1ps -nostdout -nocopyright) instead.
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+currentSourceUnits CurrentSourceUnits_inst ( .Iout_binary_0(net32),
+                                         |
+xmelab: *E,CUVMUR (./ihnl/cds0/netlist,44|41): instance 'test.top@top_level_schematic<module>.CurrentSourceUnits_inst' of design unit 'currentSourceUnits' is unresolved in 'worklib.top_level_schematic:verilog'.
+currentSterring currentSterring_inst ( .Ical(Ical), .Iout(Iout),
+                                   |
+xmelab: *E,CUVMUR (./ihnl/cds0/netlist,57|35): instance 'test.top@top_level_schematic<module>.currentSterring_inst' of design unit 'currentSterring' is unresolved in 'worklib.top_level_schematic:verilog'.
+local_bias local_bias_inst ( .atb0(atb[2]), .atb1(atb[3]),
+                         |
+xmelab: *E,CUVMUR (./ihnl/cds0/netlist,74|25): instance 'test.top@top_level_schematic<module>.local_bias_inst' of design unit 'local_bias' is unresolved in 'worklib.top_level_schematic:verilog'.
+driver_cell driver_cell_inst ( .datain(net3[0:6]), .datainb(net4[0:6]),
+                           |
+xmelab: *E,CUVMUR (./ihnl/cds0/netlist,79|27): instance 'test.top@top_level_schematic<module>.driver_cell_inst' of design unit 'driver_cell' is unresolved in 'worklib.top_level_schematic:verilog'.
+rsync_latch rsync_latch_inst ( .atb0(atb[6]), .atb1(atb[7]),
+                           |
+xmelab: *E,CUVMUR (./ihnl/cds0/netlist,85|27): instance 'test.top@top_level_schematic<module>.rsync_latch_inst' of design unit 'rsync_latch' is unresolved in 'worklib.top_level_schematic:verilog'.
+clock_distribution clock_distribution_inst ( .atb0(atb[4]),
+                                         |
+xmelab: *E,CUVMUR (./ihnl/cds0/netlist,125|41): instance 'test.top@top_level_schematic<module>.clock_distribution_inst' of design unit 'clock_distribution' is unresolved in 'worklib.top_level_schematic:verilog'.
+xmxlmode: *E,ELBERR: Error (*E) or soft error (*SE) occurred during elaboration (status 1), exiting.
+TOOL:	xmxlmode	24.03-s004: Exiting on Dec 02, 2025 at 16:56:56 CET  (total: 00:00:01)

@@ -1,0 +1,38 @@
+
+module currentSourceUnits (
+    input real iref_500ua, // input reference current(analog signal)
+    input pdb, //power down negate signal (digital signal)
+    input [1:0] atb_ena, //stablish the output of the differential testbus (digital signal)
+    input real vddana_1p8, //power supply for the block (vsupply)
+    input real vddana_0p8, //power supply for the block (vsupply)
+    input real vssana, //gound connection for the block (ground)
+    output real Iout_them_16, // Output current (analog current)
+    output real Iout_them_15, // Output current (analog current)
+    output real Iout_them_14, // Output current (analog current)
+    output real Iout_them_13, // Output current (analog current)
+    output real Iout_them_12, // Output current (analog current)
+    output real Iout_them_11, // Output current (analog current)
+    output real Iout_them_10, // Output current (analog current)
+    output real Iout_them_9,  // Output current (analog current)
+    output real Iout_them_8,  // Output current (analog current)
+    output real Iout_them_7,  // Output current (analog current)
+    output real Iout_them_6,  // Output current (analog current)
+    output real Iout_them_5,  // Output current (analog current)
+    output real Iout_them_4,  // Output current (analog current)
+    output real Iout_them_3,  // Output current (analog current)
+    output real Iout_them_2,  // Output current (analog current)
+    output real Iout_them_1,  // Output current (analog current)
+    output real Iout_them_0,  // Output current (analog current)
+    output real Iout_binary_5, //output current MSB (analog current)
+    output real Iout_binary_4, //output current MSB-1 (analog current)
+    output real Iout_binary_3, //output current MSB-2 (analog current)
+    output real Iout_binary_2, //output current MSB-3 (analog current)
+    output real Iout_binary_1, //output current MSB-4 (analog current)
+    output real Iout_binary_0, //output current LSB (analog current)
+    output real Iout_binary_0_red, //output current redundancy (analog current)
+    output real atb1, //analog testbus (analog voltage)
+    output real atb0 //analog testbus (analog voltage)
+);
+    
+
+endmodule

@@ -1,0 +1,29 @@
+//
+// File created by:  xmxlmode
+// Do not modify this file
+//
++delay_mode_path
++typdelays
++nostdout
++nocopyright
++compile
+"+ncvlogargs+ -neverwarn -nostdout -nocopyright "
+-NOSTDOUT
+-NOCOPYRIGHT
+-MESSAGES
++EMGRLOG
+simout.tmp
+-XLSTIME
+1764689980
+-XLKEEP
+-XLMODE
+./xcelium.d/run.lnx8664.24.03.d
+-RUNMODE
+-CDSLIB
+./xcelium.d/run.lnx8664.24.03.d/cds.lib
+-HDLVAR
+./xcelium.d/run.lnx8664.24.03.d/hdl.var
+-XLNAME
+xmxlmode
+-XLVERSION
+"TOOL:	xmxlmode	24.03-s004"

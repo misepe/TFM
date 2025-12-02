@@ -1,0 +1,38 @@
+( ( nil
+  version "2.1"
+  mapType "incremental"
+  blockName "top_level_schematic"
+  repList "behavioral functional schematic symbol"
+  stopList "symbol"
+  hierDelim "."
+  hierPrefix "test.top"
+  globalHierPrefix "cds_globals."
+  netlistDir "/home/msegper/Documents/TFM/Virtuoso_connect/top_level_schematic_run1"
+  busRef   "ORDERED"
+  netType   "BUS"
+  leftStr  "["
+  rangeStr  ":"
+  rightStr  "]"
+ )
+( defbus
+( "atb" 0 9  "atb" 0 9  )
+( "net2" 0 16  "net2" 0 16  )
+( "net1" 0 16  "net1" 0 16  )
+( "net34" 0 16  "net34" 0 16  )
+( "net35" 0 16  "net35" 0 16  )
+( "net36" 0 6  "net36" 0 6  )
+( "net37" 0 6  "net37" 0 6  )
+( "net4" 0 6  "net4" 0 6  )
+( "net3" 0 6  "net3" 0 6  )
+( "<*7>datainbinb" 0 6  "{datainbinb, datainbinb, datainbinb, datainbinb, datainbinb, datainbinb, datainbinb}" 0 6 t )
+( "<*17>dataintherm" 0 16  "{dataintherm, dataintherm, dataintherm, dataintherm, dataintherm, dataintherm, dataintherm, dataintherm, dataintherm, dataintherm, dataintherm, dataintherm, dataintherm, dataintherm, dataintherm, dataintherm, dataintherm}" 0 16 t )
+( "<*17>datainthermb" 0 16  "{datainthermb, datainthermb, datainthermb, datainthermb, datainthermb, datainthermb, datainthermb, datainthermb, datainthermb, datainthermb, datainthermb, datainthermb, datainthermb, datainthermb, datainthermb, datainthermb, datainthermb}" 0 16 t )
+( "<*7>datainbin" 0 6  "{datainbin, datainbin, datainbin, datainbin, datainbin, datainbin, datainbin}" 0 6 t )
+( "<*5>dataical" 0 4  "{dataical, dataical, dataical, dataical, dataical}" 0 4 t )
+( "<*2>atb_ena" 0 1  "{atb_ena, atb_ena}" 0 1 t )
+ )
+( model
+( "top_level_DAC/top_level_schematic/schematic" "top_level_schematic" )
+ )
+( "top_level_schematic" "ihnl/cds0/map" )
+ )

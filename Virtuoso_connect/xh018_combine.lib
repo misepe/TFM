@@ -1,0 +1,92 @@
+# ------------------------------------------------------------------------------
+# X-FAB XH018 Cadence library manager combine  definitions
+# Please do not edit or modify this file!
+# xkit -m|--modules overwrites this file, any changes will be lost.
+# ------------------------------------------------------------------------------
+# License Specific Cadence libraries
+ASSIGN avTech		 DISPLAY	Cadence_lib
+ASSIGN cdsDefTechLib		 DISPLAY	Cadence_lib
+ASSIGN analogLib		 DISPLAY	Cadence_lib
+ASSIGN functional		 DISPLAY	Cadence_lib
+ASSIGN sbaLib		 DISPLAY	Cadence_lib
+ASSIGN ahdlLib		 DISPLAY	Cadence_lib
+ASSIGN basic		 DISPLAY	Cadence_lib
+ASSIGN sample		 DISPLAY	Cadence_lib
+ASSIGN US_8ths		 DISPLAY	Cadence_lib
+ASSIGN ieee		 DISPLAY	Cadence_lib
+ASSIGN ambit		 DISPLAY	Cadence_lib
+ASSIGN std		 DISPLAY	Cadence_lib
+ASSIGN synopsys		 DISPLAY	Cadence_lib
+UNDEFINE	CadenceLibs
+DEFINE	CadenceLibs		./.xkit/setup/x_all/cadence/xenv/lib/libs/CadenceLibs
+ASSIGN	CadenceLibs		DISPLAY	Cadence_top
+ASSIGN	CadenceLibs		COMBINE	 avTech cdsDefTechLib analogLib functional sbaLib ahdlLib basic sample US_8ths ieee ambit std synopsys
+
+
+
+# X-FAB libraries
+ASSIGN	GATES_PCELL		DISPLAY	analoglibs_lib
+ASSIGN	HV_CELLS		DISPLAY	esdlibs_lib
+ASSIGN	IO_CELLS_3V		DISPLAY	diglibs_lib
+ASSIGN	IO_CELLS_F3V		DISPLAY	diglibs_lib
+ASSIGN	IO_CELLS_JI3V		DISPLAY	diglibs_lib
+ASSIGN	PRIMLIB		DISPLAY	XFAB_lib
+ASSIGN	TECH_XH018		DISPLAY	XFAB_lib
+ASSIGN	TECH_XH018_HD		DISPLAY	XFAB_lib
+ASSIGN	VLG_PRIMITIVES		DISPLAY	diglibs_lib
+ASSIGN	xfab_connectLib		DISPLAY	XFAB_lib
+ASSIGN	D_CELLS_3V		DISPLAY	diglibs_lib
+ASSIGN	D_CELLS_HD		DISPLAY	diglibs_lib
+ASSIGN	D_CELLS_HDLL		DISPLAY	diglibs_lib
+ASSIGN	D_CELLS_HDLVT		DISPLAY	diglibs_lib
+ASSIGN	D_CELLS_HDMV		DISPLAY	diglibs_lib
+ASSIGN	D_CELLS_HDSVT		DISPLAY	diglibs_lib
+ASSIGN	D_CELLS_JI3V		DISPLAY	diglibs_lib
+ASSIGN	D_CELLS_JIHD		DISPLAY	diglibs_lib
+ASSIGN	D_CELLS_JIHDLL		DISPLAY	diglibs_lib
+ASSIGN	D_CELLS_JIHDLVT		DISPLAY	diglibs_lib
+ASSIGN	D_CELLS_JIHDMV		DISPLAY	diglibs_lib
+ASSIGN	D_CELLS_JIHDSVT		DISPLAY	diglibs_lib
+ASSIGN	D_CELLS_JIM3V		DISPLAY	diglibs_lib
+ASSIGN	D_CELLS_M3V		DISPLAY	diglibs_lib
+ASSIGN	GATES_3V		DISPLAY	diglibs_lib
+ASSIGN	GATES_HD		DISPLAY	diglibs_lib
+ASSIGN	GATES_JI3V		DISPLAY	diglibs_lib
+ASSIGN	GATES_JIHD		DISPLAY	diglibs_lib
+ASSIGN	GATES_JILVT		DISPLAY	diglibs_lib
+ASSIGN	GATES_JISVT		DISPLAY	diglibs_lib
+ASSIGN	GATES_LVT		DISPLAY	diglibs_lib
+ASSIGN	GATES_SVT		DISPLAY	diglibs_lib
+ASSIGN	IO_CELLS_C1V8		DISPLAY	diglibs_lib
+ASSIGN	IO_CELLS_C3V		DISPLAY	diglibs_lib
+ASSIGN	IO_CELLS_FC1V8		DISPLAY	diglibs_lib
+ASSIGN	IO_CELLS_FC3V		DISPLAY	diglibs_lib
+ASSIGN	IO_CELLS_JIC1V8		DISPLAY	diglibs_lib
+ASSIGN	IO_CELLS_JIC3V		DISPLAY	diglibs_lib
+ASSIGN	IO_CELLS_JIF3V		DISPLAY	diglibs_lib
+ASSIGN	IO_CELLS_JIFC1V8		DISPLAY	diglibs_lib
+ASSIGN	IO_CELLS_JIFC3V		DISPLAY	diglibs_lib
+ASSIGN	IO_CELLS_NVM_3V		DISPLAY	diglibs_lib
+ASSIGN	IO_CELLS_NVM_C1V8		DISPLAY	diglibs_lib
+ASSIGN	IO_CELLS_NVM_F3V		DISPLAY	diglibs_lib
+ASSIGN	IO_CELLS_NVM_FC1V8		DISPLAY	diglibs_lib
+ASSIGN	SPAD_CELLS		DISPLAY	analoglibs_lib
+UNDEFINE	DigitalLibs
+DEFINE	DigitalLibs		./.xkit/setup/x_all/cadence/xenv/lib/libs/DigitalLibs
+ASSIGN	DigitalLibs		DISPLAY	diglibs_top
+ASSIGN	DigitalLibs		COMBINE	 IO_CELLS_3V IO_CELLS_F3V IO_CELLS_JI3V VLG_PRIMITIVES D_CELLS_3V D_CELLS_HD D_CELLS_HDLL D_CELLS_HDLVT D_CELLS_HDMV D_CELLS_HDSVT D_CELLS_JI3V D_CELLS_JIHD D_CELLS_JIHDLL D_CELLS_JIHDLVT D_CELLS_JIHDMV D_CELLS_JIHDSVT D_CELLS_JIM3V D_CELLS_M3V GATES_3V GATES_HD GATES_JI3V GATES_JIHD GATES_JILVT GATES_JISVT GATES_LVT GATES_SVT IO_CELLS_C1V8 IO_CELLS_C3V IO_CELLS_FC1V8 IO_CELLS_FC3V IO_CELLS_JIC1V8 IO_CELLS_JIC3V IO_CELLS_JIF3V IO_CELLS_JIFC1V8 IO_CELLS_JIFC3V IO_CELLS_NVM_3V IO_CELLS_NVM_C1V8 IO_CELLS_NVM_F3V IO_CELLS_NVM_FC1V8
+UNDEFINE	EsdLibs
+DEFINE	EsdLibs		./.xkit/setup/x_all/cadence/xenv/lib/libs/EsdLibs
+ASSIGN	EsdLibs		DISPLAY	esdlibs_top
+ASSIGN	EsdLibs		COMBINE	 HV_CELLS
+UNDEFINE	AnalogLibs
+DEFINE	AnalogLibs	./.xkit/setup/x_all/cadence/xenv/lib/libs/AnalogLibs
+ASSIGN	AnalogLibs	DISPLAY	analoglibs_top
+ASSIGN	AnalogLibs	COMBINE	 GATES_PCELL SPAD_CELLS
+UNDEFINE	XFABLibs
+DEFINE	XFABLibs	./.xkit/setup/x_all/cadence/xenv/lib/libs/XFABLibs
+ASSIGN	XFABLibs	DISPLAY	XFAB_top
+ASSIGN	XFABLibs	COMBINE	 PRIMLIB TECH_XH018 TECH_XH018_HD xfab_connectLib DigitalLibs EsdLibs AnalogLibs AUXLIB
+# user specific Library Manager Combine/Display Definitions
+#DEFINE	UserLibs	./.xkit/setup/x_all/cadence/xenv/lib/libs/UserLibs
+#ASSIGN	UserLibs	DISPLAY	User_top

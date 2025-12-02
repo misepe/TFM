@@ -1,0 +1,2076 @@
+\o Program:		@(#)$CDS: libManager version 23.1 - CAT38 04/15/2024 12:23 (sjfdcl749) $
+\o Sub version:		sub-version  p323 
+\o Arguments:		-cdslib /home/msegper/Documents/TFM/Virtuoso_connect/cds.lib -mpssession virtuoso2389225 -mpshost cdm2.cc.upv.es -masterPID 2389225 -ADVM 
+\o Working Directory:	cdm2.cc.upv.es:/home/msegper/Documents/TFM/Virtuoso_connect
+\o 64-bit offsets
+\o Qt version: 		5.15.9
+\o Log file is "/home/msegper/Documents/TFM/Virtuoso_connect/libManager.log".
+\o Opening libManager window.
+\a nrSetCurrentWindow(cdsLibManager)
+\o MPS virtuoso types registered: 71
+\a nrResizeWindow(cdsLibManager list(427 117 602 491))
+\o changeWorkingDir("/home/msegper/Documents/TFM/Virtuoso_connect") unnecessary.
+\o ddSetForcedLib("/home/msegper/Documents/TFM/Virtuoso_connect/cds.lib") unnecessary.
+\o Session hidden cells enabled.
+\o MPS service: map window
+\o Library Manager customization server connected.
+\a nrListItemExpand(cdsLibManager->libListBox "XFABLibs" t)
+\a nrListItemExpand(cdsLibManager->libListBox "XFABLibs" nil)
+\a nrListItemExpand(cdsLibManager->libListBox "CadenceLibs" t)
+\a nrListItemExpand(cdsLibManager->libListBox "CadenceLibs" nil)
+\a cdsLibManager->FileNewLibButton->value = t
+\a nrSetWindowVisibility(NewLibShell "show")
+\a nrSetCurrentWindow(NewLibShell)
+\a nrSetCurrentWindow(NewLibShell->subDialog)
+\a nrResizeWindow(NewLibShell list(465 43 507 559))
+\a NewLibShell->newLibNameText->value = "top_level_DAC"
+\a NewLibShell->newLibOKButton->value = t
+\a nrSetWindowVisibility(workingDialogForm "show")
+\a nrSetCurrentWindow(workingDialogForm)
+\o Created new library "top_level_DAC" at /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC.
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrResizeWindow(workingDialogForm list(559 219 318 133))
+\a nrResizeWindow(NewLibShell list(465 6 507 559))
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->FileNewCVButton->value = t
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "Resistor_load"
+\a cdsLibManager->cellLineEdit->value = "Resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "Resistor_load"
+\a cdsLibManager->cellLineEdit->value = "Resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a lmgrLogShowPopup("mainListPopup1" 101 10 2 "Resistor_load")
+\a cdsLibManager->editRenameButton->value = t
+\a basicRenameForm->basicRenameFromEdit->value = "Resistor_load"
+\a nrSetWindowVisibility(basicRenameForm "show")
+\a basicRenameForm->basicRenameToEdit->value = "Resistor_load"
+\a nrSetCurrentWindow(basicRenameForm)
+\a nrResizeWindow(basicRenameForm list(599 264 239 190))
+\a basicRenameForm->basicRenameToEdit->value = "resistor_load"
+\a basicRenameForm->OK->value = t
+\o View file /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/Resistor_load/systemVerilog/verilog.sv is locked by msegper at host cdm2.cc.upv.es
+\o ERROR (CLM-223): Cell top_level_DAC/Resistor_load has files that are locked or are checked out.\nCheck the "Messages" window for a list of which files are causing problem\nRename failed.
+\a nrSetWindowVisibility(errorDialog "show")
+\a nrSetCurrentWindow(errorDialog)
+\a nrResizeWindow(basicRenameForm list(599 190 239 190))
+\a nrResizeWindow(errorDialog list(496 296 465 134))
+\a errorDialog->errorOkButton->value = t
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrResizeWindow(errorDialog list(496 259 465 134))
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a lmgrLogShowPopup("mainListPopup2" 69 9 2 "systemVerilog")
+\a cdsLibManager->editDeleteButton->value = t
+\a deleteForm->deleteFilterEdit->value = "*"
+\a deleteForm->notDeleteFilterEdit->value = "*"
+\a nrSetWindowVisibility(deleteForm "show")
+\a nrSetCurrentWindow(deleteForm)
+\a nrResizeWindow(deleteForm list(405 147 627 425))
+\a deleteForm->deleteListBox->value = '("systemVerilog" )
+\a deleteForm->moveToDeleteButton->value = t
+\a deleteForm->OK->value = t
+\o QUESTION (CLM-199): The following 1 items are marked for deletion.  Are you sure?
+\a nrSetWindowVisibility(mcMBXDLG "show")
+\a nrSetCurrentWindow(mcMBXDLG)
+\a nrResizeWindow(mcMBXDLG list(584 277 268 91))
+\a mcMBXDLG->pushButton2->value = t
+\a nrSetCurrentWindow(deleteForm)
+\a deleteForm->OK->value = t
+\o QUESTION (CLM-199): The following 1 items are marked for deletion.  Are you sure?
+\a nrSetWindowVisibility(mcMBXDLG "show")
+\a nrSetCurrentWindow(mcMBXDLG)
+\a nrResizeWindow(mcMBXDLG list(584 277 268 91))
+\a mcMBXDLG->pushButton1->value = t
+\o Deleting view "systemVerilog" from cell "Resistor_load" in library "top_level_DAC".
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(workingDialogForm)
+\a nrResizeWindow(workingDialogForm list(559 293 318 133))
+\a nrResizeWindow(deleteForm list(405 73 627 425))
+\a nrSetCurrentWindow(workingDialogForm)
+\a nrSetCurrentWindow(workingDialogForm)
+\o Deleted cellview 'top_level_DAC/Resistor_load/systemVerilog'.
+\o Deletion of 1 view done.
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrResizeWindow(workingDialogForm list(559 256 318 133))
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->FileNewCVButton->value = t
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a nrSetCurrentWindow(cdsLibManager)
+\a lmgrLogShowPopup("mainListPopup2" 53 14 2 "systemVerilog")
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a lmgrLogShowPopup("mainListPopup1" 60 10 2 "resistor_load")
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->cellListBox 0 0)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrResizeWindow(cdsLibManager list(339 127 602 491))
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a nrSetCurrentWindow(cdsLibManager)
+\a lmgrLogShowPopup("mainListPopup2" 67 12 2 "systemVerilog")
+\a cdsLibManager->editDeleteButton->value = t
+\a nrSetCurrentWindow(deleteForm)
+\a nrResizeWindow(deleteForm list(405 147 627 425))
+\a deleteForm->OK->value = t
+\o QUESTION (CLM-199): The following 1 items are marked for deletion.  Are you sure?
+\a nrSetWindowVisibility(mcMBXDLG "show")
+\a nrSetCurrentWindow(mcMBXDLG)
+\a nrResizeWindow(mcMBXDLG list(584 314 268 91))
+\a mcMBXDLG->pushButton1->value = t
+\o Deleting view "systemVerilog" from cell "resistor_load" in library "top_level_DAC".
+\o Deleted cellview 'top_level_DAC/resistor_load/systemVerilog'.
+\o Deletion of 1 view done.
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->cellLineEdit->value = ""
+\a nrResizeWindow(workingDialogForm list(496 303 268 133))
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(workingDialogForm)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a nrResizeWindow(deleteForm list(405 110 627 425))
+\a nrResizeWindow(workingDialogForm list(496 266 268 133))
+\a lmgrLogShowPopup("mainListPopup0" 94 42 2 "top_level_DAC")
+\a cdsLibManager->FileNewLibButton->value = t
+\a NewLibShell->newLibNameText->value = ""
+\a NewLibShell->QLineEdit1->value = ""
+\a NewLibShell->QLineEdit1->value = "/home/msegper/Documents/TFM/Virtuoso_connect"
+\a nrSetWindowVisibility(NewLibShell->subDialog "show")
+\a nrSetCurrentWindow(NewLibShell)
+\a nrSetCurrentWindow(NewLibShell->subDialog)
+\a nrResizeWindow(NewLibShell list(377 90 507 559))
+\a NewLibShell->newLibCancelButton->value = t
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrResizeWindow(NewLibShell list(377 53 507 559))
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->FileNewCVButton->value = t
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a nrSetCurrentWindow(cdsLibManager)
+\a lmgrLogShowPopup("mainListPopup2" 49 11 2 "systemVerilog")
+\a cdsLibManager->editDeleteButton->value = t
+\a nrSetCurrentWindow(deleteForm)
+\a nrResizeWindow(deleteForm list(405 147 627 425))
+\a deleteForm->OK->value = t
+\o QUESTION (CLM-199): The following 1 items are marked for deletion.  Are you sure?
+\a nrSetWindowVisibility(mcMBXDLG "show")
+\a nrSetCurrentWindow(mcMBXDLG)
+\a nrResizeWindow(mcMBXDLG list(584 314 268 91))
+\a mcMBXDLG->pushButton1->value = t
+\o Deleting view "systemVerilog" from cell "resistor_load" in library "top_level_DAC".
+\o Deleted cellview 'top_level_DAC/resistor_load/systemVerilog'.
+\o Deletion of 1 view done.
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->cellLineEdit->value = ""
+\a nrResizeWindow(workingDialogForm list(496 303 268 133))
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(workingDialogForm)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a nrResizeWindow(deleteForm list(405 110 627 425))
+\a nrResizeWindow(workingDialogForm list(496 266 268 133))
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->FileNewCVButton->value = t
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = "CadenceLibs"
+\a cdsLibManager->libLineEdit->value = "CadenceLibs"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrResizeWindow(cdsLibManager list(339 127 824 617))
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrResizeWindow(cdsLibManager list(339 127 826 617))
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a lmgrLogShowPopup("mainListPopup2" 143 9 2 "msegper@cdm2.cc.upv.es")
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->editPropertiesButton->value = t
+\o MPS request: edit property
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a lmgrLogShowPopup("mainListPopup1" 81 10 2 "resistor_load")
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a lmgrLogShowPopup("mainListPopup2" 62 2 2 "systemVerilog")
+\a cdsLibManager->editDeleteButton->value = t
+\a nrSetCurrentWindow(deleteForm)
+\a nrResizeWindow(deleteForm list(405 147 627 425))
+\a deleteForm->OK->value = t
+\o QUESTION (CLM-199): The following 1 items are marked for deletion.  Are you sure?
+\a nrSetWindowVisibility(mcMBXDLG "show")
+\a nrSetCurrentWindow(mcMBXDLG)
+\a nrResizeWindow(mcMBXDLG list(584 314 268 91))
+\a mcMBXDLG->pushButton1->value = t
+\o Deleting view "systemVerilog" from cell "resistor_load" in library "top_level_DAC".
+\a nrSetCurrentWindow(cdsLibManager)
+\o Deleted cellview 'top_level_DAC/resistor_load/systemVerilog'.
+\o Deletion of 1 view done.
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a nrResizeWindow(deleteForm list(405 110 627 425))
+\a nrResizeWindow(workingDialogForm list(608 329 268 133))
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->FileNewCVButton->value = t
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->FileNewCVButton->value = t
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "clock_distribution"
+\a cdsLibManager->cellLineEdit->value = "clock_distribution"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->FileNewCVButton->value = t
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "clock_distribution"
+\a cdsLibManager->cellLineEdit->value = "clock_distribution"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "clock_distribution"
+\a cdsLibManager->cellLineEdit->value = "clock_distribution"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "clock_distribution"
+\a cdsLibManager->cellLineEdit->value = "clock_distribution"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "clock_distribution"
+\a cdsLibManager->cellLineEdit->value = "clock_distribution"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "clock_distribution"
+\a cdsLibManager->cellLineEdit->value = "clock_distribution"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "clock_distribution"
+\a cdsLibManager->cellLineEdit->value = "clock_distribution"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "clock_distribution"
+\a cdsLibManager->cellLineEdit->value = "clock_distribution"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "clock_distribution"
+\a cdsLibManager->cellLineEdit->value = "clock_distribution"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "clock_distribution"
+\a cdsLibManager->cellLineEdit->value = "clock_distribution"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "current_source_units"
+\a cdsLibManager->cellLineEdit->value = "current_source_units"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a lmgrLogShowPopup("mainListPopup1" 70 30 2 "current_source_units")
+\a cdsLibManager->editRenameButton->value = t
+\a basicRenameForm->basicRenameFromEdit->value = "current_source_units"
+\a basicRenameForm->basicRenameToEdit->value = "current_source_units"
+\a nrSetCurrentWindow(basicRenameForm)
+\a nrResizeWindow(basicRenameForm list(623 337 239 190))
+\a basicRenameForm->basicRenameToEdit->value = "currentSourceUnits"
+\a basicRenameForm->OK->value = t
+\o Renaming Cell "current_source_units" to "currentSourceUnits" in library "top_level_DAC".
+\a nrSetCurrentWindow(workingDialogForm)
+\a nrResizeWindow(workingDialogForm list(608 366 268 133))
+\o Rename succeeded.
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a nrResizeWindow(workingDialogForm list(608 329 268 133))
+\a nrResizeWindow(basicRenameForm list(623 300 239 190))
+\a cdsLibManager->cellListBox->value = "currentSourceUnits"
+\a cdsLibManager->cellLineEdit->value = "currentSourceUnits"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "currentSourceUnits"
+\a cdsLibManager->cellLineEdit->value = "currentSourceUnits"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "currentSourceUnits"
+\a cdsLibManager->cellLineEdit->value = "currentSourceUnits"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a lmgrLogShowPopup("mainListPopup2" 29 9 2 "systemVerilog")
+\a cdsLibManager->editDeleteButton->value = t
+\a nrSetCurrentWindow(deleteForm)
+\a nrResizeWindow(deleteForm list(405 147 627 425))
+\a deleteForm->deleteListBox->value = '("systemVerilog" )
+\a deleteForm->OK->value = t
+\o QUESTION (CLM-199): The following 1 items are marked for deletion.  Are you sure?
+\a nrSetWindowVisibility(mcMBXDLG "show")
+\a nrSetCurrentWindow(mcMBXDLG)
+\a nrResizeWindow(mcMBXDLG list(584 314 268 91))
+\a mcMBXDLG->pushButton1->value = t
+\o Deleting view "systemVerilog" from cell "currentSourceUnits" in library "top_level_DAC".
+\o Deleted cellview 'top_level_DAC/currentSourceUnits/systemVerilog'.
+\o Deletion of 1 view done.
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a nrResizeWindow(workingDialogForm list(608 366 268 133))
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(workingDialogForm)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a nrResizeWindow(deleteForm list(405 110 627 425))
+\a nrResizeWindow(workingDialogForm list(608 329 268 133))
+\a cdsLibManager->FileNewCVButton->value = t
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "currentSourceUnits"
+\a cdsLibManager->cellLineEdit->value = "currentSourceUnits"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->FileNewCVButton->value = t
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "currentSourceUnits"
+\a cdsLibManager->cellLineEdit->value = "currentSourceUnits"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "currentSourceUnits"
+\a cdsLibManager->cellLineEdit->value = "currentSourceUnits"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->FileNewCVButton->value = t
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "currentSourceUnits"
+\a cdsLibManager->cellLineEdit->value = "currentSourceUnits"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "currentSourceUnits"
+\a cdsLibManager->cellLineEdit->value = "currentSourceUnits"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "currentSterring"
+\a cdsLibManager->cellLineEdit->value = "currentSterring"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellListBox->value = "driver_cell"
+\a cdsLibManager->cellLineEdit->value = "driver_cell"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->FileNewCVButton->value = t
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "driver_cell"
+\a cdsLibManager->cellLineEdit->value = "driver_cell"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "driver_cell"
+\a cdsLibManager->cellLineEdit->value = "driver_cell"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "driver_cell"
+\a cdsLibManager->cellLineEdit->value = "driver_cell"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetWindowVisibility(cdsLibManager "hide")
+\a nrSetWindowVisibility(cdsLibManager "show")
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "level_shifter"
+\a cdsLibManager->cellLineEdit->value = "level_shifter"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->FileNewCVButton->value = t
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "level_shifter"
+\a cdsLibManager->cellLineEdit->value = "level_shifter"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "level_shifter"
+\a cdsLibManager->cellLineEdit->value = "level_shifter"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->FileNewCVButton->value = t
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "level_shifter"
+\a cdsLibManager->cellLineEdit->value = "level_shifter"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "level_shifter"
+\a cdsLibManager->cellLineEdit->value = "level_shifter"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->FileNewCVButton->value = t
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "level_shifter"
+\a cdsLibManager->cellLineEdit->value = "level_shifter"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "level_shifter"
+\a cdsLibManager->cellLineEdit->value = "level_shifter"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "level_shifter"
+\a cdsLibManager->cellLineEdit->value = "level_shifter"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrResizeWindow(cdsLibManager list(205 153 826 617))
+\a cdsLibManager->FileNewCVButton->value = t
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "level_shifter"
+\a cdsLibManager->cellLineEdit->value = "level_shifter"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "clock_distribution"
+\a cdsLibManager->cellLineEdit->value = "clock_distribution"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "top_level_schematic"
+\a cdsLibManager->cellLineEdit->value = "top_level_schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetWindowVisibility(cdsLibManager "hide")
+\a nrSetWindowVisibility(cdsLibManager "show")
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "currentSourceUnits"
+\a cdsLibManager->cellLineEdit->value = "currentSourceUnits"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrResizeWindow(cdsLibManager list(205 154 826 616))
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "clock_distribution"
+\a cdsLibManager->cellLineEdit->value = "clock_distribution"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->cellListBox->value = "currentSourceUnits"
+\a cdsLibManager->cellLineEdit->value = "currentSourceUnits"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->cellListBox->value = "currentSterring"
+\a cdsLibManager->cellLineEdit->value = "currentSterring"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetWindowVisibility(cdsLibManager "hide")
+\a nrSetWindowVisibility(cdsLibManager "show")
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "currentSourceUnits"
+\a cdsLibManager->cellLineEdit->value = "currentSourceUnits"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->cellListBox->value = "currentSterring"
+\a cdsLibManager->cellLineEdit->value = "currentSterring"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "driver_cell"
+\a cdsLibManager->cellLineEdit->value = "driver_cell"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->cellListBox 3 0)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "driver_cell"
+\a cdsLibManager->cellLineEdit->value = "driver_cell"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "level_shifter"
+\a cdsLibManager->cellLineEdit->value = "level_shifter"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "local_bias"
+\a cdsLibManager->cellLineEdit->value = "local_bias"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a lmgrLogShowPopup("mainListPopup2" 74 8 2 "symbol")
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a lmgrLogShowPopup("mainListPopup2" 50 12 2 "symbol")
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "resistor_load"
+\a cdsLibManager->cellLineEdit->value = "resistor_load"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "rsync_latch"
+\a cdsLibManager->cellLineEdit->value = "rsync_latch"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "v2i"
+\a cdsLibManager->cellLineEdit->value = "v2i"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "top_level_schematic"
+\a cdsLibManager->cellLineEdit->value = "top_level_schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->cellListBox->value = "v2i"
+\a cdsLibManager->cellLineEdit->value = "v2i"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->cellListBox->value = "top_level_schematic"
+\a cdsLibManager->cellLineEdit->value = "top_level_schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellListBox->value = "rsync_latch"
+\a cdsLibManager->cellLineEdit->value = "rsync_latch"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->cellListBox->value = "top_level_schematic"
+\a cdsLibManager->cellLineEdit->value = "top_level_schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a nrSetWindowVisibility(cdsLibManager "hide")
+\a nrSetWindowVisibility(cdsLibManager "show")
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "local_bias"
+\a cdsLibManager->cellLineEdit->value = "local_bias"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellListBox->value = "driver_cell"
+\a cdsLibManager->cellLineEdit->value = "driver_cell"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 1 0)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "driver_cell"
+\a cdsLibManager->cellLineEdit->value = "driver_cell"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "driver_cell"
+\a cdsLibManager->cellLineEdit->value = "driver_cell"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "driver_cell"
+\a cdsLibManager->cellLineEdit->value = "driver_cell"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "top_level_schematic"
+\a cdsLibManager->cellLineEdit->value = "top_level_schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 0 0)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "top_level_schematic"
+\a cdsLibManager->cellLineEdit->value = "top_level_schematic"
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a lmgrLogShowPopup("mainListPopup2" 76 30 2 "symbol")
+\a cdsLibManager->editDeleteButton->value = t
+\a nrSetCurrentWindow(deleteForm)
+\a nrResizeWindow(deleteForm list(405 147 627 425))
+\a deleteForm->OK->value = t
+\o QUESTION (CLM-199): The following 1 items are marked for deletion.  Are you sure?
+\a nrSetWindowVisibility(mcMBXDLG "show")
+\a nrSetCurrentWindow(mcMBXDLG)
+\a nrResizeWindow(mcMBXDLG list(584 314 268 91))
+\a mcMBXDLG->pushButton1->value = t
+\o Deleting view "symbol" from cell "top_level_schematic" in library "top_level_DAC".
+\a nrSetCurrentWindow(cdsLibManager)
+\o Deleted cellview 'top_level_DAC/top_level_schematic/symbol'.
+\o Deletion of 1 view done.
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a nrResizeWindow(workingDialogForm list(474 393 268 133))
+\a nrSetCurrentWindow(workingDialogForm)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "top_level_schematic"
+\a cdsLibManager->cellLineEdit->value = "top_level_schematic"
+\a nrResizeWindow(deleteForm list(405 110 627 425))
+\a nrResizeWindow(workingDialogForm list(474 356 268 133))
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 1 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetWindowVisibility(cdsLibManager "hide")
+\a nrSetWindowVisibility(cdsLibManager "show")
+\a nrSetCurrentWindow(cdsLibManager)
+\a lmgrLogShowPopup("mainListPopup2" 79 28 2 "systemVerilog")
+\a cdsLibManager->editDeleteButton->value = t
+\a nrSetCurrentWindow(deleteForm)
+\a nrResizeWindow(deleteForm list(405 147 627 425))
+\a deleteForm->OK->value = t
+\o QUESTION (CLM-199): The following 1 items are marked for deletion.  Are you sure?
+\a nrSetWindowVisibility(mcMBXDLG "show")
+\a nrSetCurrentWindow(mcMBXDLG)
+\a nrResizeWindow(mcMBXDLG list(584 314 268 91))
+\a mcMBXDLG->pushButton1->value = t
+\o Deleting view "systemVerilog" from cell "top_level_schematic" in library "top_level_DAC".
+\a nrSetCurrentWindow(cdsLibManager)
+\o Deleted cellview 'top_level_DAC/top_level_schematic/systemVerilog'.
+\o Deletion of 1 view done.
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a nrResizeWindow(workingDialogForm list(474 393 268 133))
+\a nrSetCurrentWindow(workingDialogForm)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "top_level_schematic"
+\a cdsLibManager->cellLineEdit->value = "top_level_schematic"
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a nrResizeWindow(deleteForm list(405 110 627 425))
+\a nrResizeWindow(workingDialogForm list(474 356 268 133))
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "top_level_schematic"
+\a cdsLibManager->cellLineEdit->value = "top_level_schematic"
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a lmgrLogShowPopup("mainListPopup2" 75 25 2 "symbol")
+\a cdsLibManager->editDeleteButton->value = t
+\a nrSetCurrentWindow(deleteForm)
+\a nrResizeWindow(deleteForm list(405 147 627 425))
+\a deleteForm->OK->value = t
+\o QUESTION (CLM-199): The following 1 items are marked for deletion.  Are you sure?
+\a nrSetWindowVisibility(mcMBXDLG "show")
+\a nrSetCurrentWindow(mcMBXDLG)
+\a nrResizeWindow(mcMBXDLG list(584 314 268 91))
+\a mcMBXDLG->pushButton1->value = t
+\o Deleting view "symbol" from cell "top_level_schematic" in library "top_level_DAC".
+\a nrSetCurrentWindow(cdsLibManager)
+\o Deleted cellview 'top_level_DAC/top_level_schematic/symbol'.
+\o Deletion of 1 view done.
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a nrResizeWindow(workingDialogForm list(474 393 268 133))
+\a nrSetCurrentWindow(workingDialogForm)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "top_level_schematic"
+\a cdsLibManager->cellLineEdit->value = "top_level_schematic"
+\a nrResizeWindow(deleteForm list(405 110 627 425))
+\a nrResizeWindow(workingDialogForm list(474 356 268 133))
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\o MPS request: edit design
+\a nrListItemAction(cdsLibManager->gdmXTView 1 0)
+\a nrSetCurrentWindow(cdsLibManager)
+\a lmgrLogShowPopup("mainListPopup2" 54 32 2 "systemVerilog")
+\a cdsLibManager->editDeleteButton->value = t
+\a nrSetCurrentWindow(deleteForm)
+\a nrResizeWindow(deleteForm list(405 147 627 425))
+\a deleteForm->OK->value = t
+\o QUESTION (CLM-199): The following 1 items are marked for deletion.  Are you sure?
+\a nrSetWindowVisibility(mcMBXDLG "show")
+\a nrSetCurrentWindow(mcMBXDLG)
+\a nrResizeWindow(mcMBXDLG list(584 314 268 91))
+\a mcMBXDLG->pushButton1->value = t
+\o Deleting view "systemVerilog" from cell "top_level_schematic" in library "top_level_DAC".
+\o Deleted cellview 'top_level_DAC/top_level_schematic/systemVerilog'.
+\o Deletion of 1 view done.
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewLineEdit->value = ""
+\a nrResizeWindow(workingDialogForm list(474 393 268 133))
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetCurrentWindow(workingDialogForm)
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = nil
+\a cdsLibManager->libLineEdit->value = ""
+\a cdsLibManager->cellListBox->value = nil
+\a cdsLibManager->cellLineEdit->value = ""
+\a cdsLibManager->libListBox->value = "top_level_DAC"
+\a cdsLibManager->libLineEdit->value = "top_level_DAC"
+\a cdsLibManager->cellListBox->value = "top_level_schematic"
+\a cdsLibManager->cellLineEdit->value = "top_level_schematic"
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = "schematic"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a nrResizeWindow(deleteForm list(405 110 627 425))
+\a nrResizeWindow(workingDialogForm list(474 356 268 133))

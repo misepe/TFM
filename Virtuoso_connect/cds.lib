@@ -1,0 +1,25 @@
+# ------------------------------------------------------------------------------
+# XKIT library definition files
+#   xh018.lib:
+#     - contains X-FAB XH018 Cadence library definitions 
+# 	 and must not be changed, exept with tkit -m|--modules
+#     - tkit -m|--modules overwrites this file, any changes will be lost.
+#   cds.lib:
+#     - includes xh018.lib
+#     - can contain customer specific library definitions
+#     xkit -m|--modules does NOT change an existing cds.lib.
+# ------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------
+# XH018 Cadence library definitions
+
+# X-FAB library definitions
+INCLUDE ./xh018.lib
+
+# Library Manager Combine/Display Definitions
+INCLUDE ./xh018_combine.lib
+
+# ------------------------------------------------------------------------------
+# Add user specific libraries below this line 
+DEFINE top_level_DAC /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC

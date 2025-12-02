@@ -1,0 +1,10 @@
+// Verilog HDL and netlist files of
+// "top_level_DAC top_level_schematic schematic"
+
+// Netlisted models
+
+// netlist file - top_level_DAC, top_level_schematic, schematic.
+ihnl/cds0/netlist
+
+
+// End HDL models

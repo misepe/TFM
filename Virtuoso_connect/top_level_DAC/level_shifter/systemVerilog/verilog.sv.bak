@@ -1,0 +1,30 @@
+//Modulo que permite convertir se?ales logicas de distintos niveles de tensi?n
+//De momento esta versi?n no tiene entradas bididreccionales, pero se puede intentar(TODO)
+
+
+
+module level_shifter (
+    input wreal1driver VIN, //se?al de entrada 
+    input wreal1driver VCC_LOW, //fuente de alimentaci?n de nivel bajo
+    input wreal1driver VCC_HIGH, //fuente de alimentaci?n de nivel alto
+    output real VOUT //se?al de salida 
+
+    );
+
+    //TODO: pensar si VCC_LOW y VCC_HIGH irian mejor como par?metros
+
+    // Par?metros para definir los l?mites de los niveles l?gicos
+    parameter real THRESHOLD = 1.8; // Umbral para decidir el nivel l?gico
+
+
+    //  Modelado de la salida en funci?n de la entrada
+    always_comb begin
+        if (VIN > THRESHOLD) begin
+            VOUT = VCC_HIGH; // Si la entrada supera el umbral, salida en nivel alto
+        end else begin
+            VOUT = VCC_LOW;  // Si la entrada est? por debajo del umbral, salida en nivel bajo
+        end
+    end
+
+
+endmodule

@@ -1,0 +1,43 @@
+// Library - top_level_DAC, Cell - top_level_schematic, View -
+//schematic
+// LAST TIME SAVED: Dec  2 16:35:43 2025
+// NETLIST TIME: Dec  2 16:45:47 2025
+`timescale 1ns / 1ps 
+
+module top_level_schematic ( Ical, Iout, Ioutb, atb, Vcas, atb_ena,
+     atest_ena, clkin, clkinb, dataical, datainbin, datainbinb,
+     dataintherm, datainthermb, pdb, vddana_0p8, vddana_1p8, vssana );
+
+output  Ical, Iout, Ioutb;
+
+input  Vcas, atb_ena, atest_ena, clkin, clkinb, dataical, datainbin,
+     datainbinb, dataintherm, datainthermb, pdb, vddana_0p8,
+     vddana_1p8, vssana;
+
+output [0:9]  atb;
+
+// Buses in the design
+
+wire  [0:6]  net3;
+
+wire  [0:6]  net4;
+
+wire  [0:6]  net37;
+
+wire  [0:6]  net36;
+
+wire  [0:16]  net35;
+
+wire  [0:16]  net34;
+
+wire  [0:16]  net1;
+
+wire  [0:16]  net2;
+
+
+specify 
+    specparam CDS_LIBNAME  = "top_level_DAC";
+    specparam CDS_CELLNAME = "top_level_schematic";
+    specparam CDS_VIEWNAME = "schematic";
+endspecify
+

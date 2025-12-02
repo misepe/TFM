@@ -1,0 +1,3 @@
+T_TECH = "xh018"
+T_PROC = "xh018_1131"
+load("./.xkit/setup/x_all/cadence/xenv/skill/AssuraTools.ile")

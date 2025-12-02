@@ -1,0 +1,8 @@
+CADENCE IHNL11140
+$model
+top_level_DAC/top_level_schematic/schematic top_level_schematic
+$endmodel
+$net
+$endnet
+$param
+$endparam

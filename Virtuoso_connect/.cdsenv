@@ -1,0 +1,72 @@
+;####################################################################################
+;#  X-FAB Global Services GmbH                                                      #
+;#  email: hotline@xfab.com                                                         #
+;#  phone: +49-361-427-6663                                                         #
+;#  fax:   +49-361-427-6631                                                         #
+;####################################################################################
+;#  Company Confidential                                                            #
+;#  All rights reserved. No part of this document may be reproduced, distributed,   #
+;#  or transmitted in any form or by any means, including photocopying, recording,  #
+;#  or other electronic or mechanical methods, without the prior written permission #
+;#  of X-FAB Global Services GmbH.                                                  #
+;####################################################################################
+
+spectre.envOpts useAltergroup   boolean  nil
+spectre.opts 	redefinedparams string   "warning"
+
+schematic       viewNameList    string   "cmos_sch schematic symbol"
+
+ams.envOpts     invocationStyle string   "irun"
+ams.envOpts     netlisterMode   string   "OSS-based"
+ams.envOpts     cleanSnapShot   toggle   (t)
+
+spectre.envOpts switchViewList string "spectre veriloga ahdl cmos_sch schematic"
+spectre.envOpts stopViewList string "spectre veriloga ahdl"
+
+spectre.opts     compatible string "spice2"
+spectre.opts     gmin       string "1e-12"
+spectre.opts     reltol     string "1e-3"
+spectre.opts     vabstol    string "1e-6"
+spectre.opts     iabstol    string "1e-12"
+spectre.opts     limit      string "delta"
+spectre.opts     homotopy   string "all"
+spectre.tran     errpreset  string "conservative"
+spectre.pss      errpreset  string "conservative"
+
+spectre.opts    temp       string  "27" 
+spectre.opts    tnom       string  "27" 
+spectre.opts    scale      string  "1.0" 
+spectre.opts    scalem     string  "1.0"  
+spectre.envOpts controlMode string "batch"
+
+spectreVerilog.opts     compatible string "spice2"
+
+spectreVerilog.opts     gmin       string "1e-12"
+spectreVerilog.opts     reltol     string "1e-3"
+spectreVerilog.opts     vabstol    string "1e-6"
+spectreVerilog.opts     iabstol    string "1e-12"
+spectreVerilog.opts     limit      string "delta"
+spectreVerilog.opts     homotopy   string "all"
+spectreVerilog.tran     errpreset  string "conservative"
+spectreVerilog.pss      errpreset  string "conservative"
+spectreVerilog.opts    temp       string  "27" 
+spectreVerilog.opts    tnom       string  "27" 
+spectreVerilog.opts    scale      string  "1.0" 
+spectreVerilog.opts    scalem     string  "1.0" 
+
+voltus_fi.extractDSPF	vfiTechLib	string	"pvtech.lib"
+
+layout	gravityAperture	float	0.005
+layout	xSnapSpacing	float	0.005
+layout	ySnapSpacing	float	0.005
+
+; Pre-definition of pin labels to support LVS
+layout displayPinNames boolean t
+layout labelHeight float 0.1
+layout createAsLabel boolean t
+layout createPinLabel boolean t
+layout pinTextSameLayer boolean t
+layout pinTextPurpose string "TEXT"
+layoutXL initIOPinLayer string "MET1 pin"
+
+spectre.relxOpts uriLibs string ".xkit/setup/xh018/cadence/spectre/uri/libURI.so"

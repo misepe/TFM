@@ -1,0 +1,11 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-INCDIR
+"/home/msegper/Documents/TFM/Virtuoso_connect/"
+-sv
+-VIEW
+systemVerilog
+-WORK
+top_level_DAC

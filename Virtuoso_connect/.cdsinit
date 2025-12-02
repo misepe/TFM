@@ -1,0 +1,151 @@
+/*##################################################################################
+#  X-FAB Global Services GmbH                                                      #
+#  email: hotline@xfab.com                                                         #
+#  phone: +49-361-427-6663                                                         #
+#  fax:   +49-361-427-6631                                                         #
+####################################################################################
+#  Company Confidential                                                            #
+#  All rights reserved. No part of this document may be reproduced, distributed,   #
+#  or transmitted in any form or by any means, including photocopying, recording,  #
+#  or other electronic or mechanical methods, without the prior written permission #
+#  of X-FAB Global Services GmbH.                                                  #
+##################################################################################*/
+
+T_LIBRARIES = "./.xkit/setup/xh018/cadence/PDK"
+T_VERSION = "v1.3.3"
+T_TECH = "xh018"
+
+;// Select X-FAB process 
+
+XKIT = "v1.3.3"
+T_PROC = "xh018_1131"
+SIMULATOR = "spectre"
+
+printf("Loading .cdsinit for the %s X-Fab XKit.\n" upperCase(T_TECH) )
+
+
+;##############################################################################################
+;#                                                                                            #
+;# load X-FAB specific callbacks 
+;#                                                                                            #
+;##############################################################################################
+printf( "    LOAD xh018_1131 SPECIFIC CALL-BACK ROUTINES\n" )
+when( isFile( strcat( "./.xkit/setup/xh018/cadence/PDK/skill/tips_"   lowerCase(T_PROC) ".il") )
+  load(strcat( "./.xkit/setup/xh018/cadence/PDK/skill/tips_"   lowerCase(T_PROC) ".il"))
+)
+when( isFile( "./.xkit/setup/xh018/cadence/PDK/skill/thesCallBack.il" )
+  load("./.xkit/setup/xh018/cadence/PDK/skill/thesCallBack.il")
+)
+
+
+;##############################################################################################
+;#                                                                                            #
+;# load X-FAB specific pCells
+;#                                                                                            #
+;##############################################################################################
+printf( "    LOAD ALL AVAILABLE P-CELL FUNCTIONS\n" )
+load("./.xkit/setup/xh018/cadence/PDK/skill/thesSdl.il")
+
+
+;##############################################################################################
+;#                                                                                            #
+;# Set Default options 
+;#                                                                                            #
+;##############################################################################################
+
+printf( "    LOAD THE ENVIRONMENT FILE\n" )
+load("./.xkit/setup/x_all/cadence/xenv/skill/xfabPdkSettings.ile")
+load("./.xkit/setup/x_all/cadence/xenv/skill/xfabVerilogIn.ile")
+
+if( boundp('XfabCadNoToolDefaults) && XfabCadNoToolDefaults then
+  printf( "\n --> Setting of the recommended EDA tool defaults is suppressed by .xfabcadrc\n")
+  printf( " --> To change this behavior, please modify the file in your home- or project directory.\n")
+else
+  load("./.xkit/setup/x_all/cadence/xenv/skill/xfabToolDefaults.ile")
+)
+
+
+;##############################################################################################
+;#                                                                                            #
+;# LOAD STANDARD BINDKEYS 
+;#                                                                                            #
+;##############################################################################################
+
+if( boundp('XfabCadNoSetBindKey) && XfabCadNoSetBindKey then
+  printf( "\n --> Standard bindkey settings suppressed by .xfabcadrc\n")
+  printf( " --> To change this behavior, please modify the file in your home- or project directory.\n")
+else
+  printf( "    LOAD DEFAULT BINDKEYS\n" )
+  let( (bindKeyFile)
+    foreach( bindKeyFile getDirFiles(prependInstallPath("samples/local"))
+      when( rexMatchp("BindKeys.il" bindKeyFile) 
+        unless( (!(rexMatchp("icfb" getVersion()) || rexMatchp("icca" getVersion())) && bindKeyFile == "prBindKeys.il") ||
+	        ( rexMatchp("virtuoso" getVersion()) && bindKeyFile == "awvBindKeys.il" ) ||
+		( bindKeyFile == "vivaJavaBindKeys.il") 
+          loadi(strcat(prependInstallPath("samples/local/") bindKeyFile))
+        );unless
+      );when
+    );foreach
+  );let
+)
+
+
+;##############################################################################################
+;#                                                                                            #
+;# LOAD SOME SPECIAL INIT FUNCTIONS
+;#                                                                                            #
+;##############################################################################################
+load("./.xkit/setup/x_all/cadence/xenv/skill/xfabKitInit.ile")
+
+;** Assura
+if( isFile( strcat("./.avviewinit") ) then
+   load(strcat("./.avviewinit"))
+else
+   printf( " --> AssuraTools Setup not available\n" )
+   if( isFile( strcat("./.avviewinitPvs") ) then
+      load(strcat("./.avviewinitPvs"))
+   else
+      printf( " --> PvsTools Setup not available\n" )
+   )   
+)
+
+;** PVS
+if( isFile( strcat(".xkit/setup/xh018/cadence/pvs/PVS/xh018_DRC.rul") ) ||
+    isFile( strcat(".xkit/setup/xh018/cadence/pvs/PVS/xh018.rul") )  then
+  PVSPreFormTrigger.autoload = "./.xkit/setup/x_all/cadence/xenv/skill/pvs_trigger.ile"
+) 
+
+;** call regTimer 
+hiRegTimer("xfabKitInit()" 1)
+
+;############################################################################
+;#                                           
+;# PDK addons
+;#
+;#############################################################################
+
+;#PDK addons will be defined here.
+
+
+;##############################################################################################
+;#                                                                                            #
+;# LOAD EMX CONFIGURATION
+;#                                                                                            #
+;##############################################################################################
+
+emx_home=getShellEnvVar("EMXHOME")
+emx_path=getShellEnvVar("EMX_PATH")
+emx_pvHome=getShellEnvVar("PARAVIEWHOME")
+
+if(( emx_home!=nil) && (emx_path!=nil) && (emx_pvHome!=nil) then
+  if( isDir(emx_home) && isReadable(emx_home) then
+    if( isFile( strcat("./.emxinit") ) then
+      load(strcat("./.emxinit"))
+      printf(" --> EMX configuration loaded \n")      
+    else
+        printf(" --> $EMXHOME is defined but .emxinit file is not readable\n")
+    )
+  else
+    printf(" --> $EMXHOME is not readable: %L \n" mgc_home )
+  )
+)

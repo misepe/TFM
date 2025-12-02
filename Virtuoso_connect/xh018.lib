@@ -1,0 +1,170 @@
+# ------------------------------------------------------------------------------
+# X-FAB XH018 Cadence library definitions
+# Please do not edit or modify this file!
+# xkit -m|--modules overwrites this file, any changes will be lost.
+# ------------------------------------------------------------------------------
+####################################################################################
+#  X-FAB Global Services GmbH                                                      #
+#  email: hotline@xfab.com                                                         #
+#  phone: +49-361-427-6663                                                         #
+#  fax:   +49-361-427-6631                                                         #
+####################################################################################
+# T_TECH = "xh018"                                                                 #
+# T_PROC = "1131"
+####################################################################################
+#  Company Confidential                                                            #
+#  All rights reserved. No part of this document may be reproduced, distributed,   #
+#  or transmitted in any form or by any means, including photocopying, recording,  #
+#  or other electronic or mechanical methods, without the prior written permission #
+#  of X-FAB Global Services GmbH.                                                  #
+####################################################################################
+
+# Standard Cadence libraries
+INCLUDE ./.xkit/setup/x_all/cadence/xenv/templates/cds.lib
+
+# XKit libraries
+# -- cds.lib for XH018 in TheKit -- 
+
+# ==================================================
+
+# primitive device libraries
+
+UNDEFINE PRIMLIB
+DEFINE PRIMLIB ./.xkit/setup/xh018/cadence/PDK/PRIMLIB_1131
+
+
+# technology libraries
+
+UNDEFINE TECH_XH018
+DEFINE TECH_XH018 ./.xkit/setup/xh018/cadence/PDK/TECH_XH018_1131
+UNDEFINE TECH_XH018_HD
+DEFINE TECH_XH018_HD ./.xkit/setup/xh018/cadence/PDK/TECH_XH018_HD_1131
+
+
+# analogue design library for digital cells
+
+UNDEFINE GATES_PCELL
+DEFINE GATES_PCELL ./.xkit/setup/xh018/analoglibs/GATES_PCELL/cadence_IC61/GATES_PCELL
+
+
+# logic library
+
+
+
+# digital core libraries
+
+
+
+# digital junction isolated core libraries
+
+
+
+# digital io libraries
+
+UNDEFINE IO_CELLS_3V
+DEFINE IO_CELLS_3V ./.xkit/setup/xh018/diglibs/IO_CELLS_3V/cadence_IC61/IO_CELLS_3V
+UNDEFINE IO_CELLS_F3V
+DEFINE IO_CELLS_F3V ./.xkit/setup/xh018/diglibs/IO_CELLS_F3V/cadence_IC61/IO_CELLS_F3V
+UNDEFINE IO_CELLS_JI3V
+DEFINE IO_CELLS_JI3V ./.xkit/setup/xh018/diglibs/IO_CELLS_JI3V/cadence_IC61/IO_CELLS_JI3V
+UNDEFINE HV_CELLS
+DEFINE HV_CELLS ./.xkit/setup/xh018/esdlibs/HV_CELLS/cadence_IC61/HV_CELLS
+
+
+# digital reference library - udp, check, ...
+
+UNDEFINE VLG_PRIMITIVES
+DEFINE VLG_PRIMITIVES ./.xkit/setup/x_all/diglibs/VLG_PRIMITIVES/cadence_IC61/VLG_PRIMITIVES
+
+
+# Hall IP libraries
+
+
+
+# X-FAB IP libraries
+
+UNDEFINE D_CELLS_3V
+DEFINE D_CELLS_3V		./.xkit/setup/xh018/diglibs/D_CELLS_3V/cadence_IC61/D_CELLS_3V
+UNDEFINE D_CELLS_HD
+DEFINE D_CELLS_HD		./.xkit/setup/xh018/diglibs/D_CELLS_HD/cadence_IC61/D_CELLS_HD
+UNDEFINE D_CELLS_HDLL
+DEFINE D_CELLS_HDLL		./.xkit/setup/xh018/diglibs/D_CELLS_HDLL/cadence_IC61/D_CELLS_HDLL
+UNDEFINE D_CELLS_HDLVT
+DEFINE D_CELLS_HDLVT		./.xkit/setup/xh018/diglibs/D_CELLS_HDLVT/cadence_IC61/D_CELLS_HDLVT
+UNDEFINE D_CELLS_HDMV
+DEFINE D_CELLS_HDMV		./.xkit/setup/xh018/diglibs/D_CELLS_HDMV/cadence_IC61/D_CELLS_HDMV
+UNDEFINE D_CELLS_HDSVT
+DEFINE D_CELLS_HDSVT		./.xkit/setup/xh018/diglibs/D_CELLS_HDSVT/cadence_IC61/D_CELLS_HDSVT
+UNDEFINE D_CELLS_JI3V
+DEFINE D_CELLS_JI3V		./.xkit/setup/xh018/diglibs/D_CELLS_JI3V/cadence_IC61/D_CELLS_JI3V
+UNDEFINE D_CELLS_JIHD
+DEFINE D_CELLS_JIHD		./.xkit/setup/xh018/diglibs/D_CELLS_JIHD/cadence_IC61/D_CELLS_JIHD
+UNDEFINE D_CELLS_JIHDLL
+DEFINE D_CELLS_JIHDLL		./.xkit/setup/xh018/diglibs/D_CELLS_JIHDLL/cadence_IC61/D_CELLS_JIHDLL
+UNDEFINE D_CELLS_JIHDLVT
+DEFINE D_CELLS_JIHDLVT		./.xkit/setup/xh018/diglibs/D_CELLS_JIHDLVT/cadence_IC61/D_CELLS_JIHDLVT
+UNDEFINE D_CELLS_JIHDMV
+DEFINE D_CELLS_JIHDMV		./.xkit/setup/xh018/diglibs/D_CELLS_JIHDMV/cadence_IC61/D_CELLS_JIHDMV
+UNDEFINE D_CELLS_JIHDSVT
+DEFINE D_CELLS_JIHDSVT		./.xkit/setup/xh018/diglibs/D_CELLS_JIHDSVT/cadence_IC61/D_CELLS_JIHDSVT
+UNDEFINE D_CELLS_JIM3V
+DEFINE D_CELLS_JIM3V		./.xkit/setup/xh018/diglibs/D_CELLS_JIM3V/cadence_IC61/D_CELLS_JIM3V
+UNDEFINE D_CELLS_M3V
+DEFINE D_CELLS_M3V		./.xkit/setup/xh018/diglibs/D_CELLS_M3V/cadence_IC61/D_CELLS_M3V
+UNDEFINE GATES_3V
+DEFINE GATES_3V		./.xkit/setup/xh018/diglibs/GATES_3V/cadence_IC61/GATES_3V
+UNDEFINE GATES_HD
+DEFINE GATES_HD		./.xkit/setup/xh018/diglibs/GATES_HD/cadence_IC61/GATES_HD
+UNDEFINE GATES_JI3V
+DEFINE GATES_JI3V		./.xkit/setup/xh018/diglibs/GATES_JI3V/cadence_IC61/GATES_JI3V
+UNDEFINE GATES_JIHD
+DEFINE GATES_JIHD		./.xkit/setup/xh018/diglibs/GATES_JIHD/cadence_IC61/GATES_JIHD
+UNDEFINE GATES_JILVT
+DEFINE GATES_JILVT		./.xkit/setup/xh018/diglibs/GATES_JILVT/cadence_IC61/GATES_JILVT
+UNDEFINE GATES_JISVT
+DEFINE GATES_JISVT		./.xkit/setup/xh018/diglibs/GATES_JISVT/cadence_IC61/GATES_JISVT
+UNDEFINE GATES_LVT
+DEFINE GATES_LVT		./.xkit/setup/xh018/diglibs/GATES_LVT/cadence_IC61/GATES_LVT
+UNDEFINE GATES_SVT
+DEFINE GATES_SVT		./.xkit/setup/xh018/diglibs/GATES_SVT/cadence_IC61/GATES_SVT
+UNDEFINE IO_CELLS_C1V8
+DEFINE IO_CELLS_C1V8		./.xkit/setup/xh018/diglibs/IO_CELLS_C1V8/cadence_IC61/IO_CELLS_C1V8
+UNDEFINE IO_CELLS_C3V
+DEFINE IO_CELLS_C3V		./.xkit/setup/xh018/diglibs/IO_CELLS_C3V/cadence_IC61/IO_CELLS_C3V
+UNDEFINE IO_CELLS_FC1V8
+DEFINE IO_CELLS_FC1V8		./.xkit/setup/xh018/diglibs/IO_CELLS_FC1V8/cadence_IC61/IO_CELLS_FC1V8
+UNDEFINE IO_CELLS_FC3V
+DEFINE IO_CELLS_FC3V		./.xkit/setup/xh018/diglibs/IO_CELLS_FC3V/cadence_IC61/IO_CELLS_FC3V
+UNDEFINE IO_CELLS_JIC1V8
+DEFINE IO_CELLS_JIC1V8		./.xkit/setup/xh018/diglibs/IO_CELLS_JIC1V8/cadence_IC61/IO_CELLS_JIC1V8
+UNDEFINE IO_CELLS_JIC3V
+DEFINE IO_CELLS_JIC3V		./.xkit/setup/xh018/diglibs/IO_CELLS_JIC3V/cadence_IC61/IO_CELLS_JIC3V
+UNDEFINE IO_CELLS_JIF3V
+DEFINE IO_CELLS_JIF3V		./.xkit/setup/xh018/diglibs/IO_CELLS_JIF3V/cadence_IC61/IO_CELLS_JIF3V
+UNDEFINE IO_CELLS_JIFC1V8
+DEFINE IO_CELLS_JIFC1V8		./.xkit/setup/xh018/diglibs/IO_CELLS_JIFC1V8/cadence_IC61/IO_CELLS_JIFC1V8
+UNDEFINE IO_CELLS_JIFC3V
+DEFINE IO_CELLS_JIFC3V		./.xkit/setup/xh018/diglibs/IO_CELLS_JIFC3V/cadence_IC61/IO_CELLS_JIFC3V
+UNDEFINE IO_CELLS_NVM_3V
+DEFINE IO_CELLS_NVM_3V		./.xkit/setup/xh018/diglibs/IO_CELLS_NVM_3V/cadence_IC61/IO_CELLS_NVM_3V
+UNDEFINE IO_CELLS_NVM_C1V8
+DEFINE IO_CELLS_NVM_C1V8		./.xkit/setup/xh018/diglibs/IO_CELLS_NVM_C1V8/cadence_IC61/IO_CELLS_NVM_C1V8
+UNDEFINE IO_CELLS_NVM_F3V
+DEFINE IO_CELLS_NVM_F3V		./.xkit/setup/xh018/diglibs/IO_CELLS_NVM_F3V/cadence_IC61/IO_CELLS_NVM_F3V
+UNDEFINE IO_CELLS_NVM_FC1V8
+DEFINE IO_CELLS_NVM_FC1V8		./.xkit/setup/xh018/diglibs/IO_CELLS_NVM_FC1V8/cadence_IC61/IO_CELLS_NVM_FC1V8
+UNDEFINE SPAD_CELLS
+DEFINE SPAD_CELLS		./.xkit/setup/xh018/analoglibs/SPAD_CELLS/cadence_IC61/SPAD_CELLS
+# License Specific Cadence libraries
+
+UNDEFINE avTech
+DEFINE avTech		$ASSURAHOME/tools/assura/etc/avtech/avTech
+UNDEFINE cdsDefTechLib
+DEFINE cdsDefTechLib		$CDSHOME/tools/dfII/etc/cdsDefTechLib
+UNDEFINE xfab_connectLib
+DEFINE xfab_connectLib		.xkit/setup/x_all/diglibs/xfab_connectLib/cadence_IC61/xfab_connectLib
+
+UNDEFINE AUXLIB
+DEFINE AUXLIB ./AUXLIB
+
+ASSIGN AUXLIB DISPLAY XFAB_lib

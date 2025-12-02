@@ -1,0 +1,2 @@
+1764690962 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_schematic_run_without_level_shifter/testfixture.template
+1764690962 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_schematic_run_without_level_shifter/ihnl/cds0/netlist

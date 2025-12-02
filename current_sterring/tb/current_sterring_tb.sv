@@ -89,6 +89,7 @@ module currentSterring_tb;
         vssana = 0.0;
         Vcas = 0.8;
         iref_500ua = 500e-6;
+        atest_ena = 0;
 
         // Inicializar valores de Iout_binary y Iout_them
        
@@ -181,6 +182,7 @@ module currentSterring_tb;
             #10;
             $display("atb_ena = %b, atb0 = %0.6f V, atb1 = %0.6f V", atb_ena, atb0, atb1);
         end
+        atest_ena = 0;
 
         // Test 9: Condiciones de alimentación
         // Barrido de vddana_1p8

@@ -5,7 +5,7 @@
 #
 # You can restore this configuration with:
 #
-#      xrun -f xrun.f -input /home/msegper/Documents/TFM/current_sterring/restore.tcl
+#      xrun -f xrun.f -s -input restore.tcl
 #
 
 set tcl_prompt1 {puts -nonewline "xcelium> "}
@@ -55,6 +55,8 @@ alias . run
 alias indago verisium
 alias quit exit
 database -open -shm -into waves.shm waves -default
+probe -create -database waves currentSterring_tb.dut.Ical currentSterring_tb.dut.Iout currentSterring_tb.dut.Iout_binary_0 currentSterring_tb.dut.Iout_binary_0_red currentSterring_tb.dut.Iout_binary_1 currentSterring_tb.dut.Iout_binary_2 currentSterring_tb.dut.Iout_binary_3 currentSterring_tb.dut.Iout_binary_4 currentSterring_tb.dut.Iout_binary_5 currentSterring_tb.dut.Iout_them_0 currentSterring_tb.dut.Iout_them_1 currentSterring_tb.dut.Iout_them_2 currentSterring_tb.dut.Iout_them_3 currentSterring_tb.dut.Iout_them_4 currentSterring_tb.dut.Iout_them_5 currentSterring_tb.dut.Iout_them_6 currentSterring_tb.dut.Iout_them_7 currentSterring_tb.dut.Iout_them_8 currentSterring_tb.dut.Iout_them_9 currentSterring_tb.dut.Iout_them_10 currentSterring_tb.dut.Iout_them_11 currentSterring_tb.dut.Iout_them_12 currentSterring_tb.dut.Iout_them_13 currentSterring_tb.dut.Iout_them_14 currentSterring_tb.dut.Iout_them_15 currentSterring_tb.dut.Iout_them_16 currentSterring_tb.dut.Ioutb currentSterring_tb.dut.Vcas currentSterring_tb.dut.atb0 currentSterring_tb.dut.atb1 currentSterring_tb.dut.atb_ena currentSterring_tb.dut.atest_ena currentSterring_tb.dut.dataical currentSterring_tb.dut.datain currentSterring_tb.dut.datainb currentSterring_tb.dut.datatherm currentSterring_tb.dut.datathermb currentSterring_tb.dut.iref_500ua currentSterring_tb.dut.pdb currentSterring_tb.dut.vddana_0p8 currentSterring_tb.dut.vddana_1p8 currentSterring_tb.dut.vssana
+probe -create -database waves currentSterring_tb.dut.enable_funcionality currentSterring_tb.dut.input_check
 probe -create -database waves currentSterring_tb.dut.Ical currentSterring_tb.dut.Iout currentSterring_tb.dut.Iout_binary_0 currentSterring_tb.dut.Iout_binary_0_red currentSterring_tb.dut.Iout_binary_1 currentSterring_tb.dut.Iout_binary_2 currentSterring_tb.dut.Iout_binary_3 currentSterring_tb.dut.Iout_binary_4 currentSterring_tb.dut.Iout_binary_5 currentSterring_tb.dut.Iout_them_0 currentSterring_tb.dut.Iout_them_1 currentSterring_tb.dut.Iout_them_2 currentSterring_tb.dut.Iout_them_3 currentSterring_tb.dut.Iout_them_4 currentSterring_tb.dut.Iout_them_5 currentSterring_tb.dut.Iout_them_6 currentSterring_tb.dut.Iout_them_7 currentSterring_tb.dut.Iout_them_8 currentSterring_tb.dut.Iout_them_9 currentSterring_tb.dut.Iout_them_10 currentSterring_tb.dut.Iout_them_11 currentSterring_tb.dut.Iout_them_12 currentSterring_tb.dut.Iout_them_13 currentSterring_tb.dut.Iout_them_14 currentSterring_tb.dut.Iout_them_15 currentSterring_tb.dut.Iout_them_16 currentSterring_tb.dut.Ioutb currentSterring_tb.dut.Vcas currentSterring_tb.dut.atb0 currentSterring_tb.dut.atb1 currentSterring_tb.dut.atb_ena currentSterring_tb.dut.atest_ena currentSterring_tb.dut.dataical currentSterring_tb.dut.datain currentSterring_tb.dut.datainb currentSterring_tb.dut.datatherm currentSterring_tb.dut.datathermb currentSterring_tb.dut.iref_500ua currentSterring_tb.dut.pdb currentSterring_tb.dut.vddana_0p8 currentSterring_tb.dut.vddana_1p8 currentSterring_tb.dut.vssana
 probe -create -database waves currentSterring_tb.dut.enable_funcionality currentSterring_tb.dut.input_check
 

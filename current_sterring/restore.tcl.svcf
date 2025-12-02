@@ -1,10 +1,10 @@
-# SimVision Command Script (Mon Oct 20 12:26:59 CEST 2025)
+# SimVision Command Script (Tue Dec 02 15:14:48 CET 2025)
 #
 # Version 24.03.s004
 #
 # You can restore this configuration with:
 #
-#      xrun -f xrun.f -input /home/msegper/Documents/TFM/current_sterring/restore.tcl
+#      xrun -f xrun.f -s -input restore.tcl
 #
 
 
@@ -20,7 +20,7 @@ preferences set plugin-enable-waveformfrequencyplot 0
 # Simulator
 #
 database require simulator -hints {
-	simulator "xrun -f xrun.f -input restore.tcl"
+	simulator "xrun -f xrun.f -s -input restore.tcl"
 }
 #
 # Groups
@@ -106,7 +106,7 @@ browser using {Design Browser 1}
 browser set -scope [subst  {simulator::[format {currentSterring_tb.dut}]} ]
 browser set \
     -showinouts 0 \
-    -showinputs 0 \
+    -showinternals 0 \
     -showoutputs 0 \
     -signalsort name
 browser yview see [subst  {simulator::[format {currentSterring_tb.dut}]} ]
@@ -138,18 +138,21 @@ set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.pdb}]}
 	} ]]
 set id [waveform add -signals [subst  {
+	{simulator::[format {currentSterring_tb.dut.atest_ena}]}
+	} ]]
+set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.atb_ena[1:0]}]}
 	} ]]
 set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.vddana_1p8}]}
 	} ]]
 waveform format $id -trace analogSampleAndHold -color #ffc300
-waveform axis range $id -for default -min 1.6200000000000001 -max 1.9800000000000002 -scale linear
+waveform axis range $id -for default -min 1.71 -max 1.8900000000000001 -scale linear
 set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.vddana_0p8}]}
 	} ]]
 waveform format $id -trace analogSampleAndHold -color #78ff00
-waveform axis range $id -for default -min 0.72000000000000008 -max 0.88000000000000012 -scale linear
+waveform axis range $id -for default -min 0.76000000000000001 -max 0.84000000000000008 -scale linear
 
 set groupId0 [waveform add -groups Iout_them]
 set gpGlist0 [waveform hierarchy contents $groupId0]
@@ -210,13 +213,13 @@ set groupId0 [waveform add -groups Iout_binary]
 set gpGlist0 [waveform hierarchy contents $groupId0]
 set gpID0 [lindex $gpGlist0 0]
 foreach {name attrs} [subst  {
-    {simulator::[format {currentSterring_tb.dut.Iout_binary_0}]} {-trace analogLinear -color #ff00a6}
-    {simulator::[format {currentSterring_tb.dut.Iout_binary_0_red}]} {-trace analogLinear -color #9500ff}
-    {simulator::[format {currentSterring_tb.dut.Iout_binary_1}]} {-trace analogLinear -color #002eff}
-    {simulator::[format {currentSterring_tb.dut.Iout_binary_2}]} {-trace analogLinear -color #00f1ff}
-    {simulator::[format {currentSterring_tb.dut.Iout_binary_3}]} {-trace analogLinear -color #00ff4a}
-    {simulator::[format {currentSterring_tb.dut.Iout_binary_4}]} {-trace analogLinear -color #78ff00}
-    {simulator::[format {currentSterring_tb.dut.Iout_binary_5}]} {-trace analogLinear -color #ffc300}
+    {simulator::[format {currentSterring_tb.dut.Iout_binary_0}]} {-trace analogSampleAndHold -color #00ff4a}
+    {simulator::[format {currentSterring_tb.dut.Iout_binary_0_red}]} {-trace analogSampleAndHold -color #00f1ff}
+    {simulator::[format {currentSterring_tb.dut.Iout_binary_1}]} {-trace analogSampleAndHold -color #002eff}
+    {simulator::[format {currentSterring_tb.dut.Iout_binary_2}]} {-trace analogSampleAndHold -color #9500ff}
+    {simulator::[format {currentSterring_tb.dut.Iout_binary_3}]} {-trace analogSampleAndHold -color #ff00a6}
+    {simulator::[format {currentSterring_tb.dut.Iout_binary_4}]} {-trace analogSampleAndHold -color #ff0000}
+    {simulator::[format {currentSterring_tb.dut.Iout_binary_5}]} {-trace analogSampleAndHold -color #ffc300}
 }] childcmds {
     {}
     {}
@@ -244,29 +247,22 @@ set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.datain[6:0]}]}
 	} ]]
 waveform format $id -radix %b
-waveform hierarchy collapse $id
 set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.datainb[6:0]}]}
 	} ]]
 waveform format $id -radix %b
-waveform hierarchy collapse $id
 set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.datatherm[16:0]}]}
 	} ]]
 waveform format $id -radix %b
-waveform hierarchy collapse $id
 set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.datathermb[16:0]}]}
 	} ]]
 waveform format $id -radix %b
-waveform hierarchy collapse $id
 set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.dataical[4:0]}]}
 	} ]]
 waveform format $id -radix %d
-set id [waveform add -signals [subst  {
-	{simulator::[format {currentSterring_tb.dut.atest_ena}]}
-	} ]]
 set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.Vcas}]}
 	} ]]
@@ -281,7 +277,7 @@ set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.Iout}]}
 	} ]]
 waveform format $id -trace analogSampleAndHold -color #ff0000
-waveform axis range $id -for default -min 0 -max 0.00020000000000000001 -scale linear
+waveform axis range $id -for default -min 0 -max 0.0036000000000000012 -scale linear
 set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.Ioutb}]}
 	} ]]
@@ -291,7 +287,7 @@ set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.Ical}]}
 	} ]]
 waveform format $id -trace analogSampleAndHold -color #ffc300
-waveform axis range $id -for default -min -1 -max 1 -scale linear
+waveform axis range $id -for default -min 3.1250000000000001e-06 -max 0.00020000000000000001 -scale linear
 set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.atb0}]}
 	} ]]
@@ -301,7 +297,7 @@ set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.atb1}]}
 	} ]]
 waveform format $id -trace analogSampleAndHold -color #00f1ff
-waveform axis range $id -for default -min 0 -max 1.8 -scale linear
+waveform axis range $id -for default -min 0.00020000000000000001 -max 1.8 -scale linear
 set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.enable_funcionality}]}
 	} ]]
@@ -309,7 +305,7 @@ set id [waveform add -signals [subst  {
 	{simulator::[format {currentSterring_tb.dut.input_check}]}
 	} ]]
 
-waveform xview limits 0 64ps
+waveform xview limits 120ps 2120ps
 
 #
 # Waveform Window Links

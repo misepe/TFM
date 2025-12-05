@@ -1,0 +1,10 @@
+#e1(05Dec2025:12:28:55): source ./xcelium.d/env.d/env.history.05Dec2025_12_28_55
+s1(05Dec2025:12:28:55):  xrun sin_tb.sv 
+#e2(05Dec2025:12:38:49): source ./xcelium.d/env.d/env.history.05Dec2025_12_38_49
+s2(05Dec2025:12:38:49):  xrun sin_tb.sv 
+#e3(05Dec2025:12:47:47): source ./xcelium.d/env.d/env.history.05Dec2025_12_47_47
+s3(05Dec2025:12:47:47):  xrun sin_tb.sv 
+#e4(05Dec2025:12:52:21): source ./xcelium.d/env.d/env.history.05Dec2025_12_52_21
+s4(05Dec2025:12:52:21):  xrun sin_tb.sv 
+#e5(05Dec2025:12:58:47): source ./xcelium.d/env.d/env.history.05Dec2025_12_58_47
+s5(05Dec2025:12:58:47):  xrun sin_tb.sv 

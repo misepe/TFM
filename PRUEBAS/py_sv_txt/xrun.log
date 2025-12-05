@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Dec 01, 2025 at 11:03:34 CET
+TOOL:	xrun(64)	24.03-s004: Started on Dec 01, 2025 at 12:17:19 CET
 xrun
 	sin_tb.sv
 Loading snapshot worklib.sin_tb:sv .................... Done
@@ -454,4 +454,4 @@ Procesamiento completado. Archivo de salida generado: './sin_output.txt'
 Simulation complete via $finish(1) at time 0 FS + 0
 ./sin_tb.sv:59         $finish;
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Dec 01, 2025 at 11:03:34 CET  (total: 00:00:00)
+TOOL:	xrun(64)	24.03-s004: Exiting on Dec 01, 2025 at 12:17:20 CET  (total: 00:00:01)

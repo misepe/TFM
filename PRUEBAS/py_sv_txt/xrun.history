@@ -38,3 +38,5 @@ s18(01Dec2025:10:54:03):  xrun sin_tb.sv
 s19(01Dec2025:11:01:56):  xrun sin_tb.sv 
 #e20(01Dec2025:11:03:34): source ./xcelium.d/env.d/env.history.01Dec2025_11_03_34
 s20(01Dec2025:11:03:34):  xrun sin_tb.sv 
+#e21(01Dec2025:12:17:19): source ./xcelium.d/env.d/env.history.01Dec2025_12_17_19
+s21(01Dec2025:12:17:19):  xrun sin_tb.sv 

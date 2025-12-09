@@ -12,3 +12,15 @@ s5(05Dec2025:12:58:47):  xrun sin_tb.sv
 s6(09Dec2025:15:25:52):  xrun sin_tb.sv 
 #e7(09Dec2025:15:27:58): source ./xcelium.d/env.d/env.history.09Dec2025_15_27_58
 s7(09Dec2025:15:27:58):  xrun sin_tb.sv 
+#e8(09Dec2025:16:06:45): source ./xcelium.d/env.d/env.history.09Dec2025_16_06_45
+s8(09Dec2025:16:06:45):  xrun sin_tb.sv 
+#e9(09Dec2025:16:14:28): source ./xcelium.d/env.d/env.history.09Dec2025_16_14_28
+s9(09Dec2025:16:14:28):  xrun sin_tb.sv 
+#e10(09Dec2025:16:28:49): source ./xcelium.d/env.d/env.history.09Dec2025_16_28_49
+s10(09Dec2025:16:28:49):  xrun sin_tb.sv 
+#e11(09Dec2025:16:31:16): source ./xcelium.d/env.d/env.history.09Dec2025_16_31_16
+s11(09Dec2025:16:31:16):  xrun sin_tb.sv 
+#e12(09Dec2025:16:32:47): source ./xcelium.d/env.d/env.history.09Dec2025_16_32_47
+s12(09Dec2025:16:32:47):  xrun sin_tb.sv 
+#e13(09Dec2025:16:34:08): source ./xcelium.d/env.d/env.history.09Dec2025_16_34_08
+s13(09Dec2025:16:34:08):  xrun sin_tb.sv 

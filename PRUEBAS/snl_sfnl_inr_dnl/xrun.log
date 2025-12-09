@@ -1,29 +1,7 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Dec 05, 2025 at 12:58:47 CET
+TOOL:	xrun(64)	24.03-s004: Started on Dec 09, 2025 at 15:27:58 CET
 xrun
 	sin_tb.sv
-Recompiling... reason: file './sin_tb.sv' is newer than expected.
-	expected: Fri Dec  5 12:52:11 2025
-	actual:   Fri Dec  5 12:53:43 2025
-file: sin_tb.sv
-	module worklib.sin_tb:sv
-		errors: 0, warnings: 0
-		Caching library 'worklib' ....... Done
-	Elaborating the design hierarchy:
-	Top level design units:
-		sin_tb
-	Building instance overlay tables: .................... Done
-	Generating native compiled code:
-		worklib.sin_tb:sv <0x4e310eba>
-			streams:   6, words:  6197
-	Building instance specific data structures.
-	Loading native compiled code:     .................... Done
-	Design hierarchy summary:
-		          Instances  Unique
-		Modules:          1       1
-		Registers:       12      12
-		Initial blocks:   5       5
-	Writing initial simulation snapshot: worklib.sin_tb:sv
 Loading snapshot worklib.sin_tb:sv .................... Done
 SVSEED default: 1
 xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
@@ -34,4 +12,4 @@ Señal generada con offset y ruido moderado
 Simulation complete via $finish(1) at time 0 FS + 0
 ./sin_tb.sv:55         $finish;
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Dec 05, 2025 at 12:58:49 CET  (total: 00:00:02)
+TOOL:	xrun(64)	24.03-s004: Exiting on Dec 09, 2025 at 15:27:58 CET  (total: 00:00:00)

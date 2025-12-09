@@ -4,3 +4,5 @@ s1(09Dec2025:16:53:24):  xrun thermometer_decoder.sv
 s2(09Dec2025:16:54:04):  xrun thermometer_decoder.sv 
 #e3(09Dec2025:16:54:42): source ./xcelium.d/env.d/env.history.09Dec2025_16_54_42
 s3(09Dec2025:16:54:42):  xrun thermometer_decoder.sv 
+#e4(09Dec2025:17:12:24): source ./xcelium.d/env.d/env.history.09Dec2025_17_12_24
+s4(09Dec2025:17:12:24):  xrun thermometer_decoder.sv 

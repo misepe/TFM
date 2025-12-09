@@ -1,10 +1,10 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Dec 09, 2025 at 16:54:41 CET
+TOOL:	xrun(64)	24.03-s004: Started on Dec 09, 2025 at 17:12:24 CET
 xrun
 	thermometer_decoder.sv
 Recompiling... reason: file './thermometer_decoder.sv' is newer than expected.
-	expected: Tue Dec  9 16:50:57 2025
-	actual:   Tue Dec  9 16:54:29 2025
+	expected: Tue Dec  9 16:54:29 2025
+	actual:   Tue Dec  9 17:12:01 2025
 file: thermometer_decoder.sv
 	module worklib.stimulus_processor:sv
 		errors: 0, warnings: 0
@@ -15,7 +15,7 @@ file: thermometer_decoder.sv
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
 		worklib.stimulus_processor:sv <0x7ff565f5>
-			streams:   4, words:  6447
+			streams:   4, words:  6466
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
@@ -31,4 +31,4 @@ Archivo generado -> stimulus_input.txt
 Simulation complete via $finish(1) at time 0 FS + 0
 ./thermometer_decoder.sv:65     $finish;
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Dec 09, 2025 at 16:54:42 CET  (total: 00:00:01)
+TOOL:	xrun(64)	24.03-s004: Exiting on Dec 09, 2025 at 17:12:25 CET  (total: 00:00:01)

@@ -1,5 +1,7 @@
 module stimulus_processor;
 
+  //TODO: no codifica bien los valores negativos de value_real
+
   // Parámetros ajustados a tus requerimientos
   parameter int N_BITS     = 10;   // resolución entrada
   parameter int MSB_BITS   = 4;    // MSB en binario antes de thermometer
@@ -33,15 +35,15 @@ module stimulus_processor;
     fout = $fopen(file_out,"w");
     if(fout==0) begin $display("ERROR: no se pudo crear output"); $finish; end
 
-    $fwrite(fout,"# Datainbin   Datainbinb   Dataintherm   Datainthermb\n");
+    $fwrite(fout,"# value_real valor_ normalizado digital_10b Datainbin   Datainbinb   Dataintherm   Datainthermb\n");
 
     while(!$feof(fin)) begin
 
-      r = $fscanf(fin,"%f %f\n",t_sample,value_real);
+      r = $fscanf(fin,"%.10f %.10f\n",t_sample,value_real);
 
       // cuantización a 10 bits
-      digital_10b = int'((value_real/VREF) * ((1<<N_BITS)-1));
-
+      digital_10b = $rtoi(((((value_real+VREF)/ (2*VREF)) * ((1<<N_BITS)-1))));
+      
       // separación MSB/LSB
       msb_bin = digital_10b[N_BITS-1 -: MSB_BITS];
       lsb_bin = digital_10b[LSB_BITS-1:0];
@@ -55,7 +57,7 @@ module stimulus_processor;
       Datainthermb = ~Dataintherm;
 
       // Guardado en archivo
-      $fwrite(fout, "%b %b %b %b\n", Datainbin, Datainbinb, Dataintherm, Datainthermb);
+      $fwrite(fout, "%.10f %.10f %b %b %b %b %b\n",value_real, ((value_real+VREF)/ (2*VREF)), digital_10b, Datainbin, Datainbinb, Dataintherm, Datainthermb);
 
     end
 

@@ -19,21 +19,18 @@ def analizar_metrica_fft(señal, fs):
     # SNR (dB)
     SNR = 20 * np.log10(fundamental / ruido)
 
-    # SFNR o SFDR: diferencia entre fundamental y mayor espurio
+    # SFDR: diferencia entre fundamental y mayor espurio
     espurios = np.copy(magnitud)
     espurios[idx_fundamental] = 0
     esp_max = np.max(espurios)
-    SFNR = 20 * np.log10(fundamental / esp_max)
-
-    # INR: interferencias (armónicos sin fundamental) respecto al ruido total
-    INR = 20 * np.log10(esp_max / ruido)
+    SFDR = 20 * np.log10(fundamental / esp_max)
 
     # DNL estimado a partir del histograma de niveles
     hist, bins = np.histogram(señal, bins=256)
     ideal = np.mean(hist)
     DNL = np.max(np.abs(hist - ideal) / ideal)
 
-    return SNR, SFNR, INR, DNL, frec, magnitud
+    return SNR, SFDR, DNL, frec, magnitud
 
 
 def procesar_archivo(archivo, titulo):
@@ -42,12 +39,11 @@ def procesar_archivo(archivo, titulo):
     señal = datos[:,1]
     fs = 1 / (t[1]-t[0])
 
-    SNR, SFNR, INR, DNL, frec, magnitud = analizar_metrica_fft(señal, fs)
+    SNR, SFDR, DNL, frec, magnitud = analizar_metrica_fft(señal, fs)
 
     print(f"\n Resultados para {titulo}")
     print(f"SNR   = {SNR:.2f} dB")
-    print(f"SFNR  = {SFNR:.2f} dB")
-    print(f"INR   = {INR:.2f} dB")
+    print(f"SFDR  = {SFDR:.2f} dB")
     print(f"DNL   = {DNL:.4f}")
 
     # Graficar señal y FFT
@@ -61,12 +57,11 @@ def procesar_archivo(archivo, titulo):
     plt.grid(True)
 
     plt.subplot(2,1,2)
-    plt.plot(frec, magnitud)
+    plt.plot(frec, 20*np.log10((magnitud+1e-12)/len(magnitud)*2))
     plt.title(f"FFT ({titulo})")
     plt.xlabel("Frecuencia [Hz]")
     plt.xscale('log')
-    plt.ylabel("Magnitud")
-    plt.yscale('log')
+    plt.ylabel("Magnitud [dB]")
     plt.grid(True)
 
     plt.tight_layout()
@@ -79,13 +74,15 @@ def comparar_fft(archivo_in, archivo_out):
 
     t = datos_in[:,0]
     sig_in = datos_in[:,1]
+    print(len(sig_in))
     sig_out = datos_out[:,1]
+    print(len(sig_out))
 
     fs = 1/(t[1]-t[0])
 
     # FFT
-    fft_in = np.abs(np.fft.fft(sig_in)) / len(sig_in)
-    fft_out = np.abs(np.fft.fft(sig_out)) / len(sig_out)
+    fft_in = 20*np.log10(np.abs(np.fft.fft(sig_in)+1e-12) / len(sig_in))
+    fft_out = 20*np.log10(np.abs(np.fft.fft(sig_out)+1e-12) / len(sig_out))
     frec = np.fft.fftfreq(len(sig_in),1/fs)
 
     half = len(frec)//2
@@ -96,8 +93,7 @@ def comparar_fft(archivo_in, archivo_out):
     plt.title("Comparación FFT Input vs Output")
     plt.xlabel("Frecuencia [Hz]")
     plt.xscale('log')
-    plt.ylabel("Magnitud")
-    plt.yscale('log')
+    plt.ylabel("Magnitud [dB]")
     plt.grid(True)
     plt.legend()
     plt.show(block=False)

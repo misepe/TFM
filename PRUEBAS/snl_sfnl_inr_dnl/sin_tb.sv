@@ -38,13 +38,13 @@ module sin_tb;
         $display("Ruido relativo:  %f", noise_amp);
 
         do begin
-            ret = $fscanf(input_fd,"%f %f\n",t,x);
+            ret = $fscanf(input_fd,"%.10f %.10f\n",t,x);
 
             if(ret==2) begin
                 // Señal original + offset fijo + ruido pequeño
                 y = x + offset + noise_amp * rnd();
 
-                $fwrite(output_fd,"%f %f\n",t,y);
+                $fwrite(output_fd,"%.10f %.10f\n",t,y);
             end
 
         end while(ret != -1);

@@ -1,4 +1,4 @@
-TOOL:	xrun(64)	24.03-s004: Started on Dec 01, 2025 at 13:29:39 CET
+TOOL:	xrun(64)	24.03-s004: Started on Dec 10, 2025 at 15:16:08 CET
 xrun
 	-compile
 	-nocopy
@@ -14,16 +14,8 @@ xrun
 	-view systemVerilog
 	-work top_level_DAC
 	/home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/local_bias/systemVerilog/verilog.sv
-file: /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/local_bias/systemVerilog/verilog.sv
-	module top_level_DAC.local_bias:systemVerilog
-		errors: 0, warnings: 0
-TOOL:	xrun(64)	24.03-s004: Exiting on Dec 01, 2025 at 13:29:39 CET  (total: 00:00:00)
-
-
-Instance Binding Report:
--------------------------------------------------------------------------------
-Instance		MasterLib		MasterCell		MasterView
--------------------------------------------------------------------------------
+Recompiling... reason: unable to stat '/./home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/top_level_schematic/systemVerilog/verilog.sv'.
+TOOL:	xrun(64)	24.03-s004: Exiting on Dec 10, 2025 at 15:16:09 CET  (total: 00:00:01)
 
 
 
@@ -40,13 +32,13 @@ Instance		MasterLib		MasterCell		MasterView
  ========================================================================================================
  PCDB DM CHECKS	: SUCCESS
  ========================================================================================================
- PCDB UPDATE REQUIRED	: YES
+ PCDB UPDATE REQUIRED	: NO
  ========================================================================================================
  IMPORT CONFIGURATION	: CHECK BELOW SETTINGS
-		: generateShadow(true)
+		: generateShadow(false)
 		: enableBlackBox(false)
 		: enableSpecificUnit(true)
-		: updateCDF(true)
+		: updateCDF(false)
  ========================================================================================================
  OVERALL IMPORT STATUS	: SUCCESS
  ========================================================================================================

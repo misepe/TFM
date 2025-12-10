@@ -1,1 +1,179 @@
 *** Loading .simrc from -> /home/msegper/Documents/TFM/Virtuoso_connect/.simrc.
+
+Running netlist
+Begin Incremental Netlisting Dec 10 11:10:35 2025
+si: simSetDef().... hnlMaxNameLength is already set to 2048. Redefinition to 50
+is ignored.
+si: simSetDef().... hnlCapability is initialized to "nil".
+si: simSetDef().... hnlBusCapability is initialized to "nil".
+INFO (VLOGNET-187): While generating an explicit netlist, it is recommended to
+set the Terminal SyncUp option on the Netlist Setup form as 'Merge All' with
+this option.
+Alternatively, you can set the hnlVerilogTermSyncUp variable as
+'mergeAll'. This helps in generating a pure explicit netlist.
+
+INFO (VLOGNET-57): You have selected to instantiate behavioral or functional
+module explicitly. 
+This will cause problems if the behavioral or functional
+module has ports that 
+are declared just by a port expression with bit select or
+part select of a 
+vector or bundles, or concatenations of nets.
+ 
+INFO (VLOGNET-60): The stimulus name mapped table will not be printed in the
+
+"/home/msegper/Documents/TFM/Virtuoso_connect/top_level_schematic_run1/testfixture.verilog" file. To print the stimulus name mapped table, set
+
+simVerilogPrintStimulusNameMappingTable = t either in CIW or the .simrc file
+
+before invoking Verilog netlister.
+ 
+INFO (VLOGNET-62): Database internal net names will be printed for floating
+instance ports. To prevent 
+them from being printed, set
+simVerilogProcessNullPorts = t either in CIW or 
+the .simrc file.
+ 
+INFO (VLOGNET-64): All cellviews in the design will be printed in the Netlist
+Configuration list. 
+If you want to print only those cellviews that need to be
+re-netlisted in the 
+list, set simVerilogIncrementalNetlistConfigList = t either
+in CIW or the 
+.simrc file.
+ 
+INFO (VLOGNET-68): The initial state of stimulus of all inout pins is set to
+"z". To get inout 
+pins with initial state of "0", set
+hnlVerilogIOInitStimulusStr = "0" 
+either in CIW or the .simrc file.
+ 
+ERROR (OSSHNL-109): The cellview 'top_level_DAC/top_level_schematic/schematic'
+has been modified since the last extraction. Validate
+that the schematic is
+correct and run Check and Save to correct this error.
+
+End netlisting Dec 10 11:10:35 2025
+
+Running netlist
+Begin Incremental Netlisting Dec 10 11:59:34 2025
+si: simSetDef().... hnlMaxNameLength is already set to 2048. Redefinition to 50
+is ignored.
+si: simSetDef().... hnlCapability is initialized to "nil".
+si: simSetDef().... hnlBusCapability is initialized to "nil".
+INFO (VLOGNET-187): While generating an explicit netlist, it is recommended to
+set the Terminal SyncUp option on the Netlist Setup form as 'Merge All' with
+this option.
+Alternatively, you can set the hnlVerilogTermSyncUp variable as
+'mergeAll'. This helps in generating a pure explicit netlist.
+
+INFO (VLOGNET-57): You have selected to instantiate behavioral or functional
+module explicitly. 
+This will cause problems if the behavioral or functional
+module has ports that 
+are declared just by a port expression with bit select or
+part select of a 
+vector or bundles, or concatenations of nets.
+ 
+INFO (VLOGNET-60): The stimulus name mapped table will not be printed in the
+
+"/home/msegper/Documents/TFM/Virtuoso_connect/top_level_schematic_run1/testfixture.verilog" file. To print the stimulus name mapped table, set
+
+simVerilogPrintStimulusNameMappingTable = t either in CIW or the .simrc file
+
+before invoking Verilog netlister.
+ 
+INFO (VLOGNET-62): Database internal net names will be printed for floating
+instance ports. To prevent 
+them from being printed, set
+simVerilogProcessNullPorts = t either in CIW or 
+the .simrc file.
+ 
+INFO (VLOGNET-64): All cellviews in the design will be printed in the Netlist
+Configuration list. 
+If you want to print only those cellviews that need to be
+re-netlisted in the 
+list, set simVerilogIncrementalNetlistConfigList = t either
+in CIW or the 
+.simrc file.
+ 
+INFO (VLOGNET-68): The initial state of stimulus of all inout pins is set to
+"z". To get inout 
+pins with initial state of "0", set
+hnlVerilogIOInitStimulusStr = "0" 
+either in CIW or the .simrc file.
+ 
+ERROR (OSSHNL-109): The cellview 'top_level_DAC/top_level_schematic/schematic'
+has been modified since the last extraction. Validate
+that the schematic is
+correct and run Check and Save to correct this error.
+
+End netlisting Dec 10 11:59:34 2025
+*** Loading .simrc from -> /home/msegper/Documents/TFM/Virtuoso_connect/.simrc.
+
+Running netlist
+Begin Incremental Netlisting Dec 10 12:00:20 2025
+si: simSetDef().... hnlMaxNameLength is already set to 2048. Redefinition to 50
+is ignored.
+si: simSetDef().... hnlCapability is initialized to "nil".
+si: simSetDef().... hnlBusCapability is initialized to "nil".
+INFO (VLOGNET-187): While generating an explicit netlist, it is recommended to
+set the Terminal SyncUp option on the Netlist Setup form as 'Merge All' with
+this option.
+Alternatively, you can set the hnlVerilogTermSyncUp variable as
+'mergeAll'. This helps in generating a pure explicit netlist.
+
+INFO (VLOGNET-57): You have selected to instantiate behavioral or functional
+module explicitly. 
+This will cause problems if the behavioral or functional
+module has ports that 
+are declared just by a port expression with bit select or
+part select of a 
+vector or bundles, or concatenations of nets.
+ 
+INFO (VLOGNET-60): The stimulus name mapped table will not be printed in the
+
+"/home/msegper/Documents/TFM/Virtuoso_connect/top_level_schematic_run1/testfixture.verilog" file. To print the stimulus name mapped table, set
+
+simVerilogPrintStimulusNameMappingTable = t either in CIW or the .simrc file
+
+before invoking Verilog netlister.
+ 
+INFO (VLOGNET-62): Database internal net names will be printed for floating
+instance ports. To prevent 
+them from being printed, set
+simVerilogProcessNullPorts = t either in CIW or 
+the .simrc file.
+ 
+INFO (VLOGNET-64): All cellviews in the design will be printed in the Netlist
+Configuration list. 
+If you want to print only those cellviews that need to be
+re-netlisted in the 
+list, set simVerilogIncrementalNetlistConfigList = t either
+in CIW or the 
+.simrc file.
+ 
+INFO (VLOGNET-68): The initial state of stimulus of all inout pins is set to
+"z". To get inout 
+pins with initial state of "0", set
+hnlVerilogIOInitStimulusStr = "0" 
+either in CIW or the .simrc file.
+ 
+INFO (VLOGNET-117): Re-netlisting the entire design.
+
+INFO (VLOGNET-118): Using connection by name (explicit connections) for all
+stopping and 
+non-stopping cells.
+ 
+WARNING (VLOGNET-186): Unable to generate explicit netlist for the
+'top_level_DAC/top_level_schematic/schematic' cell view because split buses
+and/or bundle terminals are present in it.  
+Set the Terminal SyncUp option on
+the Netlist Setup form as 'Merge All' or set the hnlVerilogTermSyncUp variable
+as 'mergeAll' and netlist again.
+
+WARNING (VLOGNET-105): Cannot drop port ranges because the cell
+'top_level_DAC/top_level_schematic/schematic' has split busses 
+across module
+ports. Therefore, ignoring the flag simVerilogDropPortRange.
+ 

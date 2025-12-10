@@ -9,6 +9,7 @@ module local_bias import cds_rnm_pkg::*;(
     output real isynclatch_25ua, // 25µA sync latch current
     output real icurrentsterring_500ua, // 500µA current steering bias current
     output real icurrentsource_500ua,   // 500µA current source bias current
+    output real vcas,                   //gate cascode voltage
     output real atb1,               // Analog testbus 1
     output real atb0                // Analog testbus 0
 );
@@ -86,6 +87,7 @@ module local_bias import cds_rnm_pkg::*;(
             isynclatch_25ua = 25e-6; // 25 µA
             icurrentsterring_500ua = 500e-6; // 500 µA
             icurrentsource_500ua = 500e-6;   // 500 µA
+            vcas = 0.8;    //0.8V
             
         end else if(pdb == 0) begin
             atb1 = `wrealZState;
@@ -94,6 +96,7 @@ module local_bias import cds_rnm_pkg::*;(
             isynclatch_25ua = `wrealZState;
             icurrentsterring_500ua = `wrealZState;
             icurrentsource_500ua = `wrealZState;
+            vcas = `wrealZState;   
         end
     end
 

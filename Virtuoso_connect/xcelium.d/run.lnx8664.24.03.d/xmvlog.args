@@ -20,7 +20,7 @@ SPDUSD
 systemVerilog
 -WORK
 top_level_DAC
-/home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/top_level_schematic/systemVerilog/verilog.sv
+/home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/local_bias/systemVerilog/verilog.sv
 -HDLVAR
 ./xcelium.d/run.lnx8664.24.03.d/hdlrun.var
 -no_analogsolver

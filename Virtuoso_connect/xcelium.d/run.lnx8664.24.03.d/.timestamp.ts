@@ -2,11 +2,11 @@
 1764591342 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/resistor_load/systemVerilog/verilog.sv
 1764600639 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/driver_cell/systemVerilog/verilog.sv
 1764591491 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/clock_distribution/systemVerilog/verilog.sv
-1764591826 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/currentSterring/systemVerilog/verilog.sv
+1765374095 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/currentSterring/systemVerilog/verilog.sv
 1764592333 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/v2i/systemVerilog/verilog.sv
 1764591990 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/level_shifter/systemVerilog/verilog.sv
 1764689763 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/top_level_schematic/systemVerilog/verilog.sv
-1764592178 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/local_bias/systemVerilog/verilog.sv
 1764592220 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/rsync_latch/systemVerilog/verilog.sv
+1765376161 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/local_bias/systemVerilog/verilog.sv
 1764589796 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/Resistor_load/systemVerilog/verilog.sv
 1764591633 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/current_source_units/systemVerilog/verilog.sv

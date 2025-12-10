@@ -4,13 +4,18 @@
 module test;
 
 
-wire  Ical, Iout, Ioutb;
+wire  Ical, Vout, Voutb;
 
-reg  Vcas, atb_ena, atest_ena, clkin, clkinb, dataical, datainbin, 
-     datainbinb, dataintherm, datainthermb, pdb, vddana_0p8, vddana_1p8
-     , vssana;
+reg  Vcas, atest_ena, clkin, clkinb, dataical, pdb, vddana_0p8, 
+     vddana_1p8, vssana;
 
 wire [0:9]  atb;
+
+reg [6:0]  datainbin;
+reg [16:0]  datainthermb;
+reg [6:0]  datainbinb;
+reg [16:0]  dataintherm;
+reg [1:0]  atb_ena;
 
 // Buses in the design
 
@@ -32,11 +37,20 @@ wire  [0:16]  net2;
 
 
 
-top_level_schematic top(.Ical(Ical), .Iout(Iout), .Ioutb(Ioutb), 
-     .atb(atb), .Vcas(Vcas), .atb_ena(atb_ena), .atest_ena(atest_ena), 
-     .clkin(clkin), .clkinb(clkinb), .dataical(dataical), 
-     .datainbin(datainbin), .datainbinb(datainbinb), 
-     .dataintherm(dataintherm), .datainthermb(datainthermb), .pdb(pdb)
-     , .vddana_0p8(vddana_0p8), .vddana_1p8(vddana_1p8), 
-     .vssana(vssana)); 
+top_level_schematic top(Ical, Vout, Voutb, atb, Vcas, atb_ena[0], 
+     atb_ena[1], atest_ena, clkin, clkinb, dataical, datainbin[0], 
+     datainbin[1], datainbin[2], datainbin[3], datainbin[4], 
+     datainbin[5], datainbin[6], datainbinb[0], datainbinb[1], 
+     datainbinb[2], datainbinb[3], datainbinb[4], datainbinb[5], 
+     datainbinb[6], dataintherm[0], dataintherm[1], dataintherm[2], 
+     dataintherm[3], dataintherm[4], dataintherm[5], dataintherm[6], 
+     dataintherm[7], dataintherm[8], dataintherm[9], dataintherm[10], 
+     dataintherm[11], dataintherm[12], dataintherm[13], dataintherm[14]
+     , dataintherm[15], dataintherm[16], datainthermb[0], 
+     datainthermb[1], datainthermb[2], datainthermb[3], datainthermb[4]
+     , datainthermb[5], datainthermb[6], datainthermb[7], 
+     datainthermb[8], datainthermb[9], datainthermb[10], 
+     datainthermb[11], datainthermb[12], datainthermb[13], 
+     datainthermb[14], datainthermb[15], datainthermb[16], pdb, 
+     vddana_0p8, vddana_1p8, vssana); 
  

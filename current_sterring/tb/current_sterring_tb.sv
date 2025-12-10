@@ -15,7 +15,6 @@ module currentSterring_tb;
     bit [16:0] datatherm;  // Control termométrico
     bit [16:0] datathermb; // Control termométrico negado
     bit [4:0] dataical;    // Control de calibración
-    bit atest_ena;         // Habilitación del testbus analógico
 
     // Señales de entrada adicionales
     real Iout_them[16:0];  // Corrientes de entrada del generador de bias
@@ -47,7 +46,6 @@ module currentSterring_tb;
         .datatherm(datatherm),
         .datathermb(datathermb),
         .dataical(dataical),
-        .atest_ena(atest_ena),
         .Iout_them_16(Iout_them[16]),
         .Iout_them_15(Iout_them[15]),
         .Iout_them_14(Iout_them[14]),
@@ -89,7 +87,6 @@ module currentSterring_tb;
         vssana = 0.0;
         Vcas = 0.8;
         iref_500ua = 500e-6;
-        atest_ena = 0;
 
         // Inicializar valores de Iout_binary y Iout_them
        
@@ -174,15 +171,13 @@ module currentSterring_tb;
             $display("dataical = %b, Ical = %0.6f A", dataical, Ical);
         end
 
-        // Test 8: Señales de test (atest_ena, atb_ena, atb0, atb1)
-        $display("Test 8: Señales de test (atest_ena, atb_ena, atb0, atb1)");
+        // Test 8: Señales de test (atb_ena, atb0, atb1)
+        $display("Test 8: Señales de test (atb_ena, atb0, atb1)");
         for (int i = 0; i < 4; i++) begin
             atb_ena = i;
-            atest_ena = 1;
             #10;
             $display("atb_ena = %b, atb0 = %0.6f V, atb1 = %0.6f V", atb_ena, atb0, atb1);
         end
-        atest_ena = 0;
 
         // Test 9: Condiciones de alimentación
         // Barrido de vddana_1p8

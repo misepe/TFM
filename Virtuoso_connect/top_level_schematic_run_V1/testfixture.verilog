@@ -1,0 +1,28 @@
+
+// Verilog stimulus file.
+// Please do not create a module in this file.
+
+
+// Default verilog stimulus. 
+
+initial
+begin 
+
+   atb_ena[0:9] = 10'b0000000000;
+
+   clkin = 1'b0;
+   clkinb = 1'b0;
+   dataical = 1'b0;
+   datainbin[0:6] = 7'b0000000;
+
+   datainbinb[0:6] = 7'b0000000;
+
+   dataintherm[0:16] = 17'b00000000000000000;
+
+   datainthermb[0:16] = 17'b00000000000000000;
+
+   pdb = 1'b0;
+   vddana_0p8 = 1'b0;
+   vddana_1p8 = 1'b0;
+   vssana = 1'b0;
+end 

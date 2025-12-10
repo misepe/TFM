@@ -1,0 +1,36 @@
+
+`timescale 1ns / 1ps
+
+module test;
+
+
+wire  Ical, Vout, Voutb;
+
+reg  clkin, clkinb, dataical, pdb, vddana_0p8, vddana_1p8, vssana;
+
+wire [0:9]  atb;
+
+reg [0:6]  datainbinb;
+reg [0:16]  datainthermb;
+reg [0:16]  dataintherm;
+reg [0:6]  datainbin;
+reg [0:9]  atb_ena;
+
+
+
+top_level_schematic top(.Ical(Ical), .Vout(Vout), .Voutb(Voutb), 
+     .atb(atb), .atb_ena(atb_ena), .clkin(clkin), .clkinb(clkinb), 
+     .dataical(dataical), .datainbin(datainbin), 
+     .datainbinb(datainbinb), .dataintherm(dataintherm), 
+     .datainthermb(datainthermb), .pdb(pdb), .vddana_0p8(vddana_0p8), 
+     .vddana_1p8(vddana_1p8), .vssana(vssana)); 
+ 
+
+`ifdef verilog
+
+ //please enter any additional verilog stimulus in the /home/msegper/Documents/TFM/Virtuoso_connect/top_level_schematic_run_V1/testfixture.verilog file
+`include "/home/msegper/Documents/TFM/Virtuoso_connect/top_level_schematic_run_V1/testfixture.verilog"
+
+`endif
+
+endmodule 

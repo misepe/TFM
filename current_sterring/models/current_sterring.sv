@@ -35,7 +35,6 @@ module currentSterring import cds_rnm_pkg::*;(
     input [16:0] datatherm , //Digital thermometrical control of the converter (digital signal)
     input [16:0] datathermb, //Digital thermometrical control of the converter negate (digital signal)
     input [4:0] dataical, //Determine which current goes to local output for calbibration (digital signal)
-    input atest_ena, //enables analog test bus (digital signal)
     input real Vcas, //gate cascode voltage (vsupply)
     input real vssana, //gound connection for the block (ground)
     output real Iout, // Output current of the IDAC(analog current)
@@ -455,26 +454,24 @@ module currentSterring import cds_rnm_pkg::*;(
             endcase
 
             //to generate atb1 and atb0
-            if (atest_ena) begin
-                case(atb_ena)
-                    2'b00: begin
-                        atb1 = `wrealZState; // High impedance state
-                        atb0 = `wrealZState; // High impedance state
-                    end
-                    2'b01: begin
-                        atb1 = vddana_1p8; // Analog testbus 1 connected to vddana_1p8
-                        atb0 = vssana; // Analog testbus 0 connected to vssana
-                    end
-                    2'b10: begin
-                        atb1 = vddana_0p8; // Analog testbus 1 connected to vddana_0p8
-                        atb0 = Vcas; // Analog testbus 0 connected to vcas
-                    end
-                    2'b11: begin
-                        atb1 = Ical; // Analog testbus 1 connected to Ical
-                        atb0 = `wrealZState; // Analog testbus 0 connected to high impedance state
-                    end
-                endcase
-            end
+            case(atb_ena)
+                2'b00: begin
+                    atb1 = `wrealZState; // High impedance state
+                    atb0 = `wrealZState; // High impedance state
+                end
+                2'b01: begin
+                    atb1 = vddana_1p8; // Analog testbus 1 connected to vddana_1p8
+                    atb0 = vssana; // Analog testbus 0 connected to vssana
+                end
+                2'b10: begin
+                    atb1 = vddana_0p8; // Analog testbus 1 connected to vddana_0p8
+                    atb0 = Vcas; // Analog testbus 0 connected to vcas
+                end
+                2'b11: begin
+                    atb1 = Ical; // Analog testbus 1 connected to Ical
+                    atb0 = `wrealZState; // Analog testbus 0 connected to high impedance state
+                end
+            endcase
 
 
         end else if(input_check && enable_funcionality && pdb == 0) begin

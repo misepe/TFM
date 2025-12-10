@@ -34,7 +34,6 @@ module currentSterring (
     input [16:0] datatherm , //Digital thermometrical control of the converter (digital signal)
     input [16:0] datathermb, //Digital thermometrical control of the converter negate (digital signal)
     input [4:0] dataical, //Determine which current goes to local output for calbibration (digital signal)
-    input atest_ena, //enables analog test bus (digital signal)
     input real Vcas, //gate cascode voltage (vsupply)
     input real vssana, //gound connection for the block (ground)
     output real Iout, // Output current of the IDAC(analog current)

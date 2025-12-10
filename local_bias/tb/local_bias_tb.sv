@@ -14,6 +14,7 @@ module local_bias_tb;
     real isynclatch_25ua;
     real icurrentsterring_500ua;
     real icurrentsource_500ua;
+    real vcas;
     real atb1;
     real atb0;
 
@@ -28,6 +29,7 @@ module local_bias_tb;
         .isynclatch_25ua(isynclatch_25ua),
         .icurrentsterring_500ua(icurrentsterring_500ua),
         .icurrentsource_500ua(icurrentsource_500ua),
+        .vcas(vcas),
         .atb1(atb1),
         .atb0(atb0)
     );

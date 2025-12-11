@@ -1,19 +1,19 @@
 // Library - top_level_DAC, Cell - top_level_schematic, View -
 //schematic
-// LAST TIME SAVED: Dec 10 15:06:52 2025
-// NETLIST TIME: Dec 10 15:07:40 2025
+// LAST TIME SAVED: Dec 10 15:23:12 2025
+// NETLIST TIME: Dec 10 15:23:35 2025
 `timescale 1ns / 1ps 
 
-module top_level_schematic ( Ical, Vout, Voutb, atb, Vcas, atb_ena,
-     clkin, clkinb, dataical, datainbin, datainbinb, dataintherm,
+module top_level_schematic ( Ical, Vout, Voutb, atb, atb_ena, clkin,
+     clkinb, dataical, datainbin, datainbinb, dataintherm,
      datainthermb, pdb, vddana_0p8, vddana_1p8, vssana );
 
-output  Ical, Vout, Voutb;
+output  real Ical, Vout, Voutb;
 
-input  Vcas, clkin, clkinb, dataical, pdb, vddana_0p8, vddana_1p8,
-     vssana;
+input  clkin, clkinb, dataical, pdb;
+input real vddana_0p8, vddana_1p8, vssana;
 
-output [0:9]  atb;
+output real atb [10];
 
 input [0:6]  datainbinb;
 input [0:16]  datainthermb;
@@ -39,6 +39,17 @@ wire  [0:16]  net2;
 
 wire  [0:16]  net5;
 
+real net33;//Vcas
+real net9, net10, net11, net12, net13, net14, net15, net16,
+     net17, net18, net19, net20, net21, net22, net23, net24,
+     net25, net26, net27, net28, net29, net30, net31, net32; //Iout_*
+real net37;//iclkdist_25ua
+real net39;//isynclatch_25ua
+real net6;//icurrentsource_500ua
+real net7;//icurrentsterring_500ua
+real net40;//Iout
+real net41;//Ioutb
+
 
 specify 
     specparam CDS_LIBNAME  = "top_level_DAC";
@@ -56,7 +67,7 @@ currentSourceUnits CurrentSourceUnits_inst ( .Iout_binary_0(net32),
      .Iout_them_10(net15), .Iout_them_11(net14), .Iout_them_12(net13),
      .Iout_them_13(net12), .Iout_them_14(net11), .Iout_them_15(net10),
      .Iout_them_16(net9), .atb0(atb[0]), .atb1(atb[1]),
-     .atb_ena({atb_ena[1], atb_ena[0]}), .iref_500ua(net38), .pdb(pdb),
+     .atb_ena({atb_ena[1], atb_ena[0]}), .iref_500ua(net6), .pdb(pdb),
      .vddana_0p8(vddana_0p8), .vddana_1p8(vddana_1p8),
      .vssana(vssana));
 currentSterring currentSterring_inst ( .Ical(Ical), .Iout(net40),
@@ -70,16 +81,16 @@ currentSterring currentSterring_inst ( .Ical(Ical), .Iout(net40),
      .Iout_them_8(net17), .Iout_them_9(net16), .Iout_them_10(net15),
      .Iout_them_11(net14), .Iout_them_12(net13), .Iout_them_13(net12),
      .Iout_them_14(net11), .Iout_them_15(net10), .Iout_them_16(net9),
-     .Vcas(Vcas), .atb_ena(atb_ena[8:9]), .dataical({dataical,
+     .Vcas(net33), .atb_ena(atb_ena[8:9]), .dataical({dataical,
      dataical, dataical, dataical, dataical}), .datain(net34[0:6]),
      .datainb(net36[0:6]), .datatherm(net35[0:16]),
      .datathermb(net5[0:16]), .iref_500ua(net7), .pdb(pdb),
      .vddana_0p8(vddana_0p8), .vddana_1p8(vddana_1p8),
      .vssana(vssana));
-local_bias local_bias_inst ( .atb0(atb[2]), .atb1(atb[3]),
-     .iclkdist_25ua(net83), .icurrentsource_500ua(net38),
-     .icurrentsterring_500ua(net7), .isynclatch_25ua(net33),
-     .atb_ena(atb_ena[2:3]), .pdb(pdb), .vddana_0p8(vddana_0p8),
+local_bias local_bias_inst ( .vcas(net33), .atb_ena(atb_ena[2:3]),
+     .atb0(atb[2]), .atb1(atb[3]), .iclkdist_25ua(net37),
+     .icurrentsource_500ua(net6), .icurrentsterring_500ua(net7),
+     .isynclatch_25ua(net39), .pdb(pdb), .vddana_0p8(vddana_0p8),
      .vddana_1p8(vddana_1p8), .vssana(vssana));
 driver_cell driver_cell_inst ( .datain(net3[0:6]), .datainb(net4[0:6]),
      .databinout(net34[0:6]), .datathermout(net35[0:16]),
@@ -116,7 +127,7 @@ rsync_latch rsync_latch_inst ( .atb0(atb[6]), .atb1(atb[7]),
      .clkinb_therm_14(net145), .clkinb_therm_15(net144),
      .clkinb_therm_16(net143), .datainbin(datainbin[0:6]),
      .datainbinb(datainbinb[0:6]), .dataintherm(dataintherm[0:16]),
-     .datainthermb(datainthermb[0:16]), .iref_25ua(net33), .pdb(pdb),
+     .datainthermb(datainthermb[0:16]), .iref_25ua(net39), .pdb(pdb),
      .vddana_0p8(vddana_0p8), .vssana(vssana));
 resistor_load I11 ( .vout(Vout), .voutb(Voutb), .Iin(net40),
      .Iinb(net41), .vssana(vssana));
@@ -146,7 +157,7 @@ clock_distribution clock_distribution_inst ( .atb0(atb[4]),
      .clkoutb_therm_12(net147), .clkoutb_therm_13(net146),
      .clkoutb_therm_14(net145), .clkoutb_therm_15(net144),
      .clkoutb_therm_16(net143), .atb_ena(atb_ena[4:5]), .clkin(clkin),
-     .clkinb(clkinb), .iref_25ua(net83), .pdb(pdb),
+     .clkinb(clkinb), .iref_25ua(net37), .pdb(pdb),
      .vddana_0p8(vddana_0p8), .vssana(vssana));
 
 endmodule

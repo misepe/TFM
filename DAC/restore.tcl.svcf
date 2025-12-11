@@ -1,0 +1,358 @@
+# SimVision Command Script (Thu Dec 11 15:58:26 CET 2025)
+#
+# Version 24.03.s004
+#
+# You can restore this configuration with:
+#
+#      xrun -f xrun_tb_dac.f -input restore.tcl
+#
+
+
+#
+# Preferences
+#
+preferences set plugin-enable-svdatabrowser-new 1
+preferences set plugin-enable-groupscope 0
+preferences set plugin-enable-interleaveandcompare 0
+preferences set plugin-enable-waveformfrequencyplot 0
+
+#
+# Simulator
+#
+database require simulator -hints {
+	simulator "xrun -f xrun_tb_dac.f -input restore.tcl"
+}
+#
+# Groups
+#
+catch {group new -name local_bias -overlay 0}
+catch {group new -name Current_Source_Unit -overlay 0}
+group using local_bias
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.atb0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.atb1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.atb_ena[1:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.iclkdist_25ua}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.icurrentsource_500ua}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.icurrentsterring_500ua}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.isynclatch_25ua}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.pdb}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.vcas}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.vddana_0p8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.vddana_1p8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.vssana}]} ]
+group using Current_Source_Unit
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_0_red}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_2}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_3}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_4}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_5}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_2}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_3}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_4}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_5}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_6}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_7}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_9}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_10}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_11}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_12}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_13}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_14}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_15}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_16}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.atb0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.atb1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.atb_ena[1:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.iref_500ua}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.pdb}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.vddana_0p8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.vddana_1p8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.vssana}]} ]
+
+#
+# Mnemonic Maps
+#
+mmap new  -reuse -name {Boolean as Logic} -radix %b -contents {{%c=FALSE -edgepriority 1 -shape low}
+{%c=TRUE -edgepriority 1 -shape high}}
+mmap new  -reuse -name {Example Map} -radix %x -contents {{%b=11???? -bgcolor orange -label REG:%x -linecolor yellow -shape bus}
+{%x=1F -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=2C -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=* -label %x -linecolor gray -shape bus}}
+
+#
+# Design Browser windows
+#
+if {[catch {window new WatchList -name "Design Browser 1" -geometry 730x500+261+33}] != ""} {
+    window geometry "Design Browser 1" 730x500+261+33
+}
+window target "Design Browser 1" on
+browser using {Design Browser 1}
+browser set -scope [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst}]} ]
+browser set \
+    -showassertions 0 \
+    -showfibers 0 \
+    -showinouts 0 \
+    -showinternals 0 \
+    -signalsort name
+browser yview see [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst}]} ]
+browser timecontrol set -lock 0
+
+#
+# Waveform windows
+#
+if {[catch {window new WaveWindow -name "Waveform 1" -geometry 1920x1016+-1+26}] != ""} {
+    window geometry "Waveform 1" 1920x1016+-1+26
+}
+window target "Waveform 1" on
+waveform using {Waveform 1}
+waveform sidebar visibility partial
+waveform set \
+    -primarycursor TimeA \
+    -signalnames name \
+    -signalwidth 175 \
+    -units ps \
+    -valuewidth 140
+waveform baseline set -time 0
+
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.Ical}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.Vout}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.Voutb}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.atb[0:9]}]}
+	} ]]
+waveform hierarchy expand $id
+set id2 [lindex [waveform hierarchy content $id] 0]
+waveform format $id2 -trace analogLinear -color #00ff4a
+set id2 [lindex [waveform hierarchy content $id] 1]
+waveform format $id2 -trace analogLinear -color #00f1ff
+set id2 [lindex [waveform hierarchy content $id] 2]
+waveform format $id2 -trace analogLinear -color #002eff
+set id2 [lindex [waveform hierarchy content $id] 3]
+waveform format $id2 -trace analogLinear -color #9500ff
+set id2 [lindex [waveform hierarchy content $id] 4]
+waveform format $id2 -trace analogLinear -color #ff00a6
+set id2 [lindex [waveform hierarchy content $id] 5]
+waveform format $id2 -trace analogLinear -color #ff0000
+set id2 [lindex [waveform hierarchy content $id] 6]
+waveform format $id2 -trace analogLinear -color #ffc300
+set id2 [lindex [waveform hierarchy content $id] 7]
+waveform format $id2 -trace analogLinear -color #78ff00
+set id2 [lindex [waveform hierarchy content $id] 8]
+waveform format $id2 -trace analogLinear -color #00ff4a
+set id2 [lindex [waveform hierarchy content $id] 9]
+waveform format $id2 -trace analogLinear -color #00f1ff
+waveform hierarchy collapse $id
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.atb_ena[0:9]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.clkin}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.clkinb}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.dataical}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.datainbin[0:6]}]}
+	} ]]
+waveform format $id -radix %b
+waveform axis range $id -for default -min -1 -max 1 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.datainbinb[0:6]}]}
+	} ]]
+waveform format $id -radix %b
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.dataintherm[0:16]}]}
+	} ]]
+waveform format $id -radix %b
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.datainthermb[0:16]}]}
+	} ]]
+waveform format $id -radix %b
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.pdb}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.vddana_0p8}]}
+	} ]]
+waveform format $id -trace analogLinear -color #78ff00
+waveform axis range $id -for default -min 0.72000000000000008 -max 0.88000000000000012 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.vddana_1p8}]}
+	} ]]
+waveform format $id -trace analogLinear -color #ffc300
+waveform axis range $id -for default -min 1.6200000000000001 -max 1.9800000000000002 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.DUT.vssana}]}
+	} ]]
+waveform format $id -trace analogLinear -color #ff0000
+waveform axis range $id -for default -min -1 -max 1 -scale linear
+
+set groupId0 [waveform add -groups local_bias]
+set gpGlist0 [waveform hierarchy contents $groupId0]
+set gpID0 [lindex $gpGlist0 0]
+foreach {name attrs} [subst  {
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.atb0}]} {-trace analogLinear -color #9500ff}
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.atb1}]} {-trace analogLinear -color #002eff}
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.atb_ena[1:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.iclkdist_25ua}]} {-trace analogLinear -color #00f1ff}
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.icurrentsource_500ua}]} {-trace analogLinear -color #00ff4a}
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.icurrentsterring_500ua}]} {-trace analogLinear -color #78ff00}
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.isynclatch_25ua}]} {-trace analogLinear -color #ffc300}
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.pdb}]} {}
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.vcas}]} {-trace analogLinear -color #ff0000}
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.vddana_0p8}]} {-trace analogLinear -color #ff00a6}
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.vddana_1p8}]} {-trace analogLinear -color #9500ff}
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.vssana}]} {-trace analogLinear -color #002eff}
+}] childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID0] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID0 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist0 [lrange $gpGlist0 1 end]
+    set gpID0 [lindex $gpGlist0 0]
+}
+waveform hierarchy collapse $groupId0
+
+
+set groupId0 [waveform add -groups Current_Source_Unit]
+set gpGlist0 [waveform hierarchy contents $groupId0]
+set gpID0 [lindex $gpGlist0 0]
+foreach {name attrs} [subst  {
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_0}]} {-trace analogLinear -color #00f1ff}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_0_red}]} {-trace analogLinear -color #00ff4a}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_1}]} {-trace analogLinear -color #78ff00}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_2}]} {-trace analogLinear -color #ffc300}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_3}]} {-trace analogLinear -color #ff0000}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_4}]} {-trace analogLinear -color #ff00a6}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_5}]} {-trace analogLinear -color #9500ff}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_0}]} {-trace analogLinear -color #002eff}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_1}]} {-trace analogLinear -color #00f1ff}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_2}]} {-trace analogLinear -color #00ff4a}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_3}]} {-trace analogLinear -color #78ff00}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_4}]} {-trace analogLinear -color #ffc300}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_5}]} {-trace analogLinear -color #ff0000}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_6}]} {-trace analogLinear -color #ff00a6}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_7}]} {-trace analogLinear -color #9500ff}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_8}]} {-trace analogLinear -color #002eff}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_9}]} {-trace analogLinear -color #00f1ff}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_10}]} {-trace analogLinear -color #00ff4a}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_11}]} {-trace analogLinear -color #78ff00}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_12}]} {-trace analogLinear -color #ffc300}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_13}]} {-trace analogLinear -color #ff0000}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_14}]} {-trace analogLinear -color #ff00a6}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_15}]} {-trace analogLinear -color #9500ff}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_16}]} {-trace analogLinear -color #002eff}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.atb0}]} {-trace analogLinear -color #00f1ff}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.atb1}]} {-trace analogLinear -color #00ff4a}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.atb_ena[1:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.iref_500ua}]} {-trace analogLinear -color #78ff00}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.pdb}]} {}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.vddana_0p8}]} {-trace analogLinear -color #ffc300}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.vddana_1p8}]} {-trace analogLinear -color #ff0000}
+    {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.vssana}]} {-trace analogLinear -color #ff00a6}
+}] childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID0] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID0 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist0 [lrange $gpGlist0 1 end]
+    set gpID0 [lindex $gpGlist0 0]
+}
+
+
+waveform xview limits 0 2000ps
+
+#
+# Waveform Window Links
+#
+
+#
+# Console windows
+#
+console set -windowname Console
+window geometry Console 1920x1016+-1+26
+
+#
+# Layout selection
+#
+

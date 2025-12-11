@@ -1,0 +1,240 @@
+xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	24.03-s004: Started on Dec 11, 2025 at 16:07:29 CET
+xrun
+	-f xrun_tb_dac.f
+		-clean
+		-access +rw
+		-gui
+		-input restore.tcl
+		-incdir ../clock_distribution
+		-incdir ../current_source_units
+		-incdir ../current_sterring
+		-incdir ../driver_cell
+		-incdir ../level_shifter
+		-incdir ../local_bias
+		-incdir ../resistor_load
+		-incdir ../rsync_latch
+		../clock_distribution/models/clock_distribution.sv
+		../current_source_units/models/currentSourceUnits.sv
+		../current_sterring/models/current_sterring.sv
+		../driver_cell/models/driver_cell.sv
+		../level_shifter/models/level_shifter.sv
+		../local_bias/models/local_bias.sv
+		../resistor_load/models/resistor_load.sv
+		../rsync_latch/models/rsync_latch.sv
+		./top_level_schematic.sv
+		./tb_dac_top.sv
+		+SVSEED=0
+xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
+file: ../clock_distribution/models/clock_distribution.sv
+	module worklib.clock_distribution:sv
+		errors: 0, warnings: 0
+file: ../current_source_units/models/currentSourceUnits.sv
+	module worklib.currentSourceUnits:sv
+		errors: 0, warnings: 0
+file: ../current_sterring/models/current_sterring.sv
+	module worklib.currentSterring:sv
+		errors: 0, warnings: 0
+file: ../driver_cell/models/driver_cell.sv
+	module worklib.driver_cell:sv
+		errors: 0, warnings: 0
+file: ../level_shifter/models/level_shifter.sv
+	module worklib.level_shifter:sv
+		errors: 0, warnings: 0
+file: ../local_bias/models/local_bias.sv
+	module worklib.local_bias:sv
+		errors: 0, warnings: 0
+file: ../resistor_load/models/resistor_load.sv
+	module worklib.resistor_load:sv
+		errors: 0, warnings: 0
+file: ../rsync_latch/models/rsync_latch.sv
+	module worklib.rsync_latch:sv
+		errors: 0, warnings: 0
+file: ./top_level_schematic.sv
+	module worklib.top_level_schematic:sv
+		errors: 0, warnings: 0
+file: ./tb_dac_top.sv
+	module worklib.tb_dac_top:sv
+		errors: 0, warnings: 0
+xmvlog: *W,SPDUSD: Include directory ../clock_distribution given but not used.
+xmvlog: *W,SPDUSD: Include directory ../current_source_units given but not used.
+xmvlog: *W,SPDUSD: Include directory ../current_sterring given but not used.
+xmvlog: *W,SPDUSD: Include directory ../driver_cell given but not used.
+xmvlog: *W,SPDUSD: Include directory ../level_shifter given but not used.
+xmvlog: *W,SPDUSD: Include directory ../local_bias given but not used.
+xmvlog: *W,SPDUSD: Include directory ../resistor_load given but not used.
+xmvlog: *W,SPDUSD: Include directory ../rsync_latch given but not used.
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 8
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+xmelab: *N,MSFLON: Xcelium will initiate mixed signal elaboration, Reason: RNM module.
+	Top level design units:
+		cds_rnm_pkg
+		$unit_0x349dd98b
+		level_shifter
+		tb_dac_top
+	Building instance overlay tables: .................... Done
+	Using implicit TMP libraries; associated with library worklib
+	Generating native compiled code:
+		worklib.clock_distribution:sv <0x3bda774c>
+			streams:  10, words: 29540
+		worklib.resistor_load:sv <0x5318bc26>
+			streams:   4, words:  2809
+		worklib.rsync_latch:sv <0x7933ff03>
+			streams: 127, words: 75008
+		worklib.driver_cell:sv <0x72bac416>
+			streams:   7, words:  9023
+		worklib.local_bias:sv <0x4f89ac3d>
+			streams:   7, words: 14879
+		worklib.currentSterring:sv <0x31670887>
+			streams:  27, words: 94352
+		worklib.currentSourceUnits:sv <0x6f2a7faf>
+			streams:   9, words: 28100
+		worklib.top_level_schematic:sv <0x341f73ec>
+			streams:  93, words: 34983
+		worklib.tb_dac_top:sv <0x41a36adf>
+			streams:  24, words: 13931
+		worklib.level_shifter:sv <0x6bea9714>
+			streams:   1, words:   331
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                10      10
+		Verilog packages:        1       1
+		Registers:             331     331
+		Scalar wires:          152       -
+		Vectored wires:         22       -
+		Always blocks:          64      64
+		Initial blocks:         36      36
+		Parallel blocks:         1       1
+		Cont. assignments:       2       2
+		Pseudo assignments:    109       -
+		Assertions:             30      30
+		Compilation units:       1       1
+		Process Clocks:         24      24
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.level_shifter:sv
+xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
+SVSEED set from command line: 0
+[DMSINFO] Simulating with Xcelium Mixed-Signal App...
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
+xcelium> 
+xcelium> # XM-Sim Command File
+xcelium> # TOOL:	xmsim(64)	24.03-s004
+xcelium> #
+xcelium> #
+xcelium> # You can restore this configuration with:
+xcelium> #
+xcelium> #      xrun -f xrun_tb_dac.f -input restore.tcl
+xcelium> #
+xcelium> 
+xcelium> set tcl_prompt1 {puts -nonewline "xcelium> "}
+puts -nonewline "xcelium> "
+xcelium> set tcl_prompt2 {puts -nonewline "> "}
+puts -nonewline "> "
+xcelium> set vlog_format %h
+%h
+xcelium> set vhdl_format %v
+%v
+xcelium> set real_precision 6
+6
+xcelium> set display_unit auto
+auto
+xcelium> set time_unit module
+module
+xcelium> set heap_garbage_size -200
+-200
+xcelium> set heap_garbage_time 0
+0
+xcelium> set assert_report_level note
+note
+xcelium> set assert_stop_level error
+error
+xcelium> set autoscope yes
+yes
+xcelium> set assert_1164_warnings yes
+yes
+xcelium> set pack_assert_off {}
+xcelium> set severity_pack_assert_off {note warning}
+note warning
+xcelium> set assert_output_stop_level failed
+failed
+xcelium> set tcl_debug_level 0
+0
+xcelium> set relax_path_name 1
+1
+xcelium> set vhdl_vcdmap XX01ZX01X
+XX01ZX01X
+xcelium> set intovf_severity_level ERROR
+ERROR
+xcelium> set probe_screen_format 0
+0
+xcelium> set rangecnst_severity_level ERROR
+ERROR
+xcelium> set textio_severity_level ERROR
+ERROR
+xcelium> set vital_timing_checks_on 1
+1
+xcelium> set vlog_code_show_force 0
+0
+xcelium> set assert_count_attempts 1
+1
+xcelium> set tcl_all64 false
+false
+xcelium> set tcl_runerror_exit false
+false
+xcelium> set assert_report_incompletes 0
+0
+xcelium> set show_force 1
+1
+xcelium> set force_reset_by_reinvoke 0
+0
+xcelium> set tcl_relaxed_literal 0
+0
+xcelium> set probe_exclude_patterns {}
+xcelium> set probe_packed_limit 4k
+4k
+xcelium> set probe_unpacked_limit 16k
+16k
+xcelium> set assert_internal_msg no
+no
+xcelium> set svseed 0
+0
+xcelium> set assert_reporting_mode 0
+0
+xcelium> set vcd_compact_mode 0
+0
+xcelium> set vhdl_forgen_loopindex_enum_pos 0
+0
+xcelium> set xmreplay_dc_debug 0
+0
+xcelium> set tcl_runcmd_interrupt next_command
+next_command
+xcelium> set tcl_sigval_prefix {#}
+#
+xcelium> alias . run
+xcelium> alias indago verisium
+xcelium> alias quit exit
+xcelium> database -open -shm -into waves.shm waves -default
+Created default SHM database waves
+xcelium> probe -create -database waves tb_dac_top.DUT.Ical tb_dac_top.DUT.Vout tb_dac_top.DUT.Voutb tb_dac_top.DUT.atb tb_dac_top.DUT.atb_ena tb_dac_top.DUT.clkin tb_dac_top.DUT.clkinb tb_dac_top.DUT.dataical tb_dac_top.DUT.datainbin tb_dac_top.DUT.datainbinb tb_dac_top.DUT.dataintherm tb_dac_top.DUT.datainthermb tb_dac_top.DUT.pdb tb_dac_top.DUT.vddana_0p8 tb_dac_top.DUT.vddana_1p8 tb_dac_top.DUT.vssana
+Created probe 1
+xcelium> probe -create -database waves tb_dac_top.DUT.local_bias_inst.atb0 tb_dac_top.DUT.local_bias_inst.atb1 tb_dac_top.DUT.local_bias_inst.atb_ena tb_dac_top.DUT.local_bias_inst.iclkdist_25ua tb_dac_top.DUT.local_bias_inst.icurrentsource_500ua tb_dac_top.DUT.local_bias_inst.icurrentsterring_500ua tb_dac_top.DUT.local_bias_inst.isynclatch_25ua tb_dac_top.DUT.local_bias_inst.pdb tb_dac_top.DUT.local_bias_inst.vcas tb_dac_top.DUT.local_bias_inst.vddana_0p8 tb_dac_top.DUT.local_bias_inst.vddana_1p8 tb_dac_top.DUT.local_bias_inst.vssana
+Created probe 2
+xcelium> probe -create -database waves tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_0 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_0_red tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_1 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_2 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_3 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_4 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_binary_5 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_0 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_1 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_2 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_3 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_4 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_5 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_6 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_7 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_8 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_9 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_10 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_11 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_12 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_13 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_14 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_15 tb_dac_top.DUT.CurrentSourceUnits_inst.Iout_them_16 tb_dac_top.DUT.CurrentSourceUnits_inst.atb0 tb_dac_top.DUT.CurrentSourceUnits_inst.atb1 tb_dac_top.DUT.CurrentSourceUnits_inst.atb_ena tb_dac_top.DUT.CurrentSourceUnits_inst.iref_500ua tb_dac_top.DUT.CurrentSourceUnits_inst.pdb tb_dac_top.DUT.CurrentSourceUnits_inst.vddana_0p8 tb_dac_top.DUT.CurrentSourceUnits_inst.vddana_1p8 tb_dac_top.DUT.CurrentSourceUnits_inst.vssana
+Created probe 3
+xcelium> 
+xcelium> simvision -input restore.tcl.svcf
+xcelium> run
+Señal generada
+Simulation complete via $finish(1) at time 211600 NS + 0
+./tb_dac_top.sv:98         $finish;
+xcelium> ^C
+xcelium> exit
+TOOL:	xrun(64)	24.03-s004: Exiting on Dec 11, 2025 at 16:08:35 CET  (total: 00:01:06)

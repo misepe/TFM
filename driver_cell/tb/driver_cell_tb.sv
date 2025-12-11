@@ -13,8 +13,8 @@ module driver_cell_tb;
     real vssana;           // Conexión a tierra
 
     // Señales de salida
-    wire [7:0] databinout;     // Salida binaria
-    wire [7:0] databinoutb;    // Salida binaria negada
+    wire [6:0] databinout;     // Salida binaria
+    wire [6:0] databinoutb;    // Salida binaria negada
     wire [16:0] datathermout;  // Salida termométrica
     wire [16:0] datathermoutb; // Salida termométrica negada
 

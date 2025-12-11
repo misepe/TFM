@@ -1,7 +1,12 @@
+#Se genera la señal de entrada
 #python3 rampa_generator.py
+python3 sin_generator.py
 
-#xrun thermometer_decoder.sv
+#Se codifican los datos de entrada
+xrun thermometer_decoder.sv
 
+#Simulación del DAC
 xrun -f xrun_tb_dac.f
 
-#python3 fft_generator.py
+#Post-procesado: FFT y gráficas
+python3 fft_generator.py

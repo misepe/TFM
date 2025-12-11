@@ -20,7 +20,7 @@ module tb_dac_top ();
 
     //Auxiliary variables
     real fs=4.6e6;//info from input generator
-    real duracion=0.0001;//info from input generator
+    real duracion=0.001;//info from input generator
 
     int delay = 0;
 

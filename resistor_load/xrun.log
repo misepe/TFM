@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Sep 09, 2025 at 14:49:48 CEST
+TOOL:	xrun(64)	24.03-s004: Started on Sep 10, 2025 at 11:00:02 CEST
 xrun
 	-f xrun.f
 		-clean
@@ -571,8 +571,6 @@ vssana = 0.04 V, vout = 0.100000 V, voutb = 0.100000 V
 Barrido completado.
 Simulation complete via $finish(1) at time 4100 PS + 0
 ./tb/resistor_load_tb.sv:48         $finish; // Finalizar la simulación
-xcelium> ...Regained control from SimVision
--------------------------------------
-
+xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Sep 09, 2025 at 14:56:15 CEST  (total: 00:06:27)
+TOOL:	xrun(64)	24.03-s004: Exiting on Sep 10, 2025 at 11:38:41 CEST  (total: 00:38:39)

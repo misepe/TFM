@@ -1,6 +1,5 @@
 module stimulus_processor;
 
-  //TODO: no codifica bien los valores negativos de value_real
 
   // Parámetros ajustados a tus requerimientos
   parameter int N_BITS     = 10;   // resolución entrada

@@ -89,7 +89,7 @@ def comparar_fft(archivo_in, archivo_out):
 
     plt.figure(figsize=(10,5))
     plt.plot(frec[:half],fft_in[:half],label="Input",linewidth=1)
-    plt.plot(frec[:half],fft_out[:half],label="Output con ruido/offset",linewidth=1,alpha=0.8)
+    plt.plot(frec[:half],fft_out[:half],label="Output",linewidth=1,alpha=0.8)
     plt.title("Comparación FFT Input vs Output")
     plt.xlabel("Frecuencia [Hz]")
     plt.xscale('log')

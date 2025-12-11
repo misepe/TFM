@@ -6,11 +6,11 @@
 LockStakeVersion               1.1
 LoginName                      msegper
 HostName                       cdm2.cc.upv.es
-ProcessIdentifier              2389225
-ProcessCreationTime_UTC        1764589680
-ProcessCreationTime_Readable   Mon Dec  1 12:48:00 2025 CET
+ProcessIdentifier              3170922
+ProcessCreationTime_UTC        1765463466
+ProcessCreationTime_Readable   Thu Dec 11 15:31:06 2025 CET
 AppIdentifier                  OA File System Design Manager
 OSType                         unix
 ReasonForPlacingEditLock       OpenAccess edit lock
-FilePathUsedToEditLock         /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/top_level_schematic/schematic/sch.oa.cdslck
-TimeEditLocked                 Tue Dec  2 12:47:07 2025 CET
+FilePathUsedToEditLock         /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/top_level_schematic/schematic/sch.oa.cdslck.dirlck
+TimeEditLocked                 Thu Dec 11 15:55:27 2025 CET

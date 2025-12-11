@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Nov 11, 2025 at 12:13:20 CET
+TOOL:	xrun(64)	24.03-s004: Started on Dec 11, 2025 at 16:01:08 CET
 xrun
 	-f xrun.f
 		-clean
@@ -26,7 +26,7 @@ file: ./tb/currentSourceUnits_tb.sv
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
 		worklib.currentSourceUnits:sv <0x3a5d1505>
-			streams:   9, words: 28573
+			streams:   9, words: 28100
 		worklib.currentSourceUnits_tb:sv <0x3c92c148>
 			streams:  34, words: 26473
 	Building instance specific data structures.
@@ -204,4 +204,4 @@ Simulation complete via $finish(1) at time 510 PS + 0
 ./tb/currentSourceUnits_tb.sv:134         $finish;
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Nov 11, 2025 at 12:17:46 CET  (total: 00:04:26)
+TOOL:	xrun(64)	24.03-s004: Exiting on Dec 11, 2025 at 16:02:41 CET  (total: 00:01:33)

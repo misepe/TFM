@@ -1,4 +1,4 @@
-# SimVision Command Script (Thu Dec 11 15:58:26 CET 2025)
+# SimVision Command Script (Thu Dec 11 16:40:07 CET 2025)
 #
 # Version 24.03.s004
 #
@@ -27,24 +27,29 @@ database require simulator -hints {
 #
 catch {group new -name local_bias -overlay 0}
 catch {group new -name Current_Source_Unit -overlay 0}
+catch {group new -name Current_Sterring -overlay 0}
+catch {group new -name Resistor_load -overlay 0}
+catch {group new -name clock_distribution -overlay 0}
+catch {group new -name rsync_latch -overlay 0}
+catch {group new -name driver -overlay 0}
 group using local_bias
 group set -overlay 0
 group set -comment {}
 group clear 0 end
 
 group insert \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.atb_ena[1:0]}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.atb0}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.atb1}]} ] \
-    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.atb_ena[1:0]}]} ] \
-    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.iclkdist_25ua}]} ] \
-    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.icurrentsource_500ua}]} ] \
-    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.icurrentsterring_500ua}]} ] \
-    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.isynclatch_25ua}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.pdb}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.vcas}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.vddana_0p8}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.vddana_1p8}]} ] \
-    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.vssana}]} ]
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.vssana}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.iclkdist_25ua}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.icurrentsource_500ua}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.icurrentsterring_500ua}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.local_bias_inst.isynclatch_25ua}]} ]
 group using Current_Source_Unit
 group set -overlay 0
 group set -comment {}
@@ -83,6 +88,214 @@ group insert \
     [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.vddana_0p8}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.vddana_1p8}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst.vssana}]} ]
+group using Current_Sterring
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Ical}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_0_red}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_2}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_3}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_4}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_5}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_2}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_3}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_4}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_5}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_6}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_7}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_9}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_10}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_11}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_12}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_13}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_14}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_15}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_16}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Ioutb}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Vcas}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.atb0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.atb1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.atb_ena[1:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.dataical[4:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.datain[6:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.datainb[6:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.datatherm[16:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.datathermb[16:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.iref_500ua}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.pdb}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.vddana_0p8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.vddana_1p8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.vssana}]} ]
+group using Resistor_load
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    [subst  {simulator::[format {tb_dac_top.DUT.I11.Iin}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.I11.Iinb}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.I11.vout}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.I11.voutb}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.I11.vssana}]} ]
+group using clock_distribution
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.atb0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.atb1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.atb_ena[1:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkin}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkinb}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_binary_0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_binary_0_red}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_binary_1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_binary_2}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_binary_3}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_binary_4}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_binary_5}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_2}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_3}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_4}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_5}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_6}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_7}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_9}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_10}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_11}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_12}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_13}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_14}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_15}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_16}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_binary_0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_binary_0_red}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_binary_1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_binary_2}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_binary_3}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_binary_4}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_binary_5}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_2}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_3}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_4}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_5}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_6}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_7}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_9}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_10}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_11}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_12}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_13}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_14}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_15}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_16}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.iref_25ua}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.pdb}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.vddana_0p8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.vssana}]} ]
+group using rsync_latch
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.atb0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.atb1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.atb_ena[0:1]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_binary_0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_binary_0_red}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_binary_1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_binary_2}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_binary_3}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_binary_4}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_binary_5}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_2}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_3}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_4}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_5}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_6}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_7}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_9}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_10}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_11}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_12}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_13}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_14}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_15}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_16}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_binary_0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_binary_0_red}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_binary_1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_binary_2}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_binary_3}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_binary_4}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_binary_5}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_0}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_1}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_2}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_3}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_4}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_5}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_6}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_7}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_9}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_10}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_11}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_12}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_13}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_14}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_15}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_16}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.datainbin[6:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.datainbinb[6:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.dataintherm[16:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.datainthermb[16:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.dataoutbin[6:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.dataoutbinb[6:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.dataouttherm[16:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.dataoutthermb[16:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.iref_25ua}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.pdb}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.vddana_0p8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.vssana}]} ]
+group using driver
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst.databinout[6:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst.databinoutb[6:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst.datain[6:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst.datainb[6:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst.datatherm[16:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst.datathermb[16:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst.datathermout[16:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst.datathermoutb[16:0]}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst.pdb}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst.vddana_0p8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst.vddana_1p8}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst.vssana}]} ]
 
 #
 # Mnemonic Maps
@@ -102,14 +315,14 @@ if {[catch {window new WatchList -name "Design Browser 1" -geometry 730x500+261+
 }
 window target "Design Browser 1" on
 browser using {Design Browser 1}
-browser set -scope [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst}]} ]
+browser set -scope [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst}]} ]
 browser set \
     -showassertions 0 \
     -showfibers 0 \
     -showinouts 0 \
     -showinternals 0 \
     -signalsort name
-browser yview see [subst  {simulator::[format {tb_dac_top.DUT.CurrentSourceUnits_inst}]} ]
+browser yview see [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst}]} ]
 browser timecontrol set -lock 0
 
 #
@@ -132,12 +345,18 @@ waveform baseline set -time 0
 set id [waveform add -signals [subst  {
 	{simulator::[format {tb_dac_top.DUT.Ical}]}
 	} ]]
+waveform format $id -trace analogSampleAndHold -color #ff0000
+waveform axis range $id -for default -min -1 -max 1 -scale linear
 set id [waveform add -signals [subst  {
 	{simulator::[format {tb_dac_top.DUT.Vout}]}
 	} ]]
+waveform format $id -trace analogSampleAndHold -color #ffc300
+waveform axis range $id -for default -min 0 -max 0.20000000000000004 -scale linear
 set id [waveform add -signals [subst  {
 	{simulator::[format {tb_dac_top.DUT.Voutb}]}
 	} ]]
+waveform format $id -trace analogSampleAndHold -color #78ff00
+waveform axis range $id -for default -min 0 -max 0.31937500000000008 -scale linear
 set id [waveform add -signals [subst  {
 	{simulator::[format {tb_dac_top.DUT.atb[0:9]}]}
 	} ]]
@@ -179,7 +398,6 @@ set id [waveform add -signals [subst  {
 	{simulator::[format {tb_dac_top.DUT.datainbin[0:6]}]}
 	} ]]
 waveform format $id -radix %b
-waveform axis range $id -for default -min -1 -max 1 -scale linear
 set id [waveform add -signals [subst  {
 	{simulator::[format {tb_dac_top.DUT.datainbinb[0:6]}]}
 	} ]]
@@ -215,18 +433,18 @@ set groupId0 [waveform add -groups local_bias]
 set gpGlist0 [waveform hierarchy contents $groupId0]
 set gpID0 [lindex $gpGlist0 0]
 foreach {name attrs} [subst  {
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.atb_ena[1:0]}]} {}
     {simulator::[format {tb_dac_top.DUT.local_bias_inst.atb0}]} {-trace analogLinear -color #9500ff}
     {simulator::[format {tb_dac_top.DUT.local_bias_inst.atb1}]} {-trace analogLinear -color #002eff}
-    {simulator::[format {tb_dac_top.DUT.local_bias_inst.atb_ena[1:0]}]} {}
-    {simulator::[format {tb_dac_top.DUT.local_bias_inst.iclkdist_25ua}]} {-trace analogLinear -color #00f1ff}
-    {simulator::[format {tb_dac_top.DUT.local_bias_inst.icurrentsource_500ua}]} {-trace analogLinear -color #00ff4a}
-    {simulator::[format {tb_dac_top.DUT.local_bias_inst.icurrentsterring_500ua}]} {-trace analogLinear -color #78ff00}
-    {simulator::[format {tb_dac_top.DUT.local_bias_inst.isynclatch_25ua}]} {-trace analogLinear -color #ffc300}
     {simulator::[format {tb_dac_top.DUT.local_bias_inst.pdb}]} {}
     {simulator::[format {tb_dac_top.DUT.local_bias_inst.vcas}]} {-trace analogLinear -color #ff0000}
     {simulator::[format {tb_dac_top.DUT.local_bias_inst.vddana_0p8}]} {-trace analogLinear -color #ff00a6}
     {simulator::[format {tb_dac_top.DUT.local_bias_inst.vddana_1p8}]} {-trace analogLinear -color #9500ff}
     {simulator::[format {tb_dac_top.DUT.local_bias_inst.vssana}]} {-trace analogLinear -color #002eff}
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.iclkdist_25ua}]} {-trace analogLinear -color #00f1ff}
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.icurrentsource_500ua}]} {-trace analogLinear -color #00ff4a}
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.icurrentsterring_500ua}]} {-trace analogLinear -color #78ff00}
+    {simulator::[format {tb_dac_top.DUT.local_bias_inst.isynclatch_25ua}]} {-trace analogLinear -color #ffc300}
 }] childcmds {
     {}
     {}
@@ -338,9 +556,470 @@ foreach {name attrs} [subst  {
     set gpGlist0 [lrange $gpGlist0 1 end]
     set gpID0 [lindex $gpGlist0 0]
 }
+waveform hierarchy collapse $groupId0
 
 
-waveform xview limits 0 2000ps
+set groupId0 [waveform add -groups Current_Sterring]
+set gpGlist0 [waveform hierarchy contents $groupId0]
+set gpID0 [lindex $gpGlist0 0]
+foreach {name attrs} [subst  {
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Ical}]} {-trace analogLinear -color #ffc300}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout}]} {-trace analogLinear -color #ff0000}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_0}]} {-trace analogLinear -color #ff00a6}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_0_red}]} {-trace analogLinear -color #9500ff}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_1}]} {-trace analogLinear -color #002eff}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_2}]} {-trace analogLinear -color #00f1ff}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_3}]} {-trace analogLinear -color #00ff4a}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_4}]} {-trace analogLinear -color #78ff00}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_5}]} {-trace analogLinear -color #ffc300}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_0}]} {-trace analogLinear -color #ff0000}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_1}]} {-trace analogLinear -color #ff00a6}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_2}]} {-trace analogLinear -color #9500ff}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_3}]} {-trace analogLinear -color #002eff}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_4}]} {-trace analogLinear -color #00f1ff}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_5}]} {-trace analogLinear -color #00ff4a}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_6}]} {-trace analogLinear -color #78ff00}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_7}]} {-trace analogLinear -color #ffc300}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_8}]} {-trace analogLinear -color #ff0000}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_9}]} {-trace analogLinear -color #ff00a6}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_10}]} {-trace analogLinear -color #9500ff}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_11}]} {-trace analogLinear -color #002eff}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_12}]} {-trace analogLinear -color #00f1ff}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_13}]} {-trace analogLinear -color #00ff4a}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_14}]} {-trace analogLinear -color #78ff00}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_15}]} {-trace analogLinear -color #ffc300}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_16}]} {-trace analogLinear -color #ff0000}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Ioutb}]} {-trace analogLinear -color #ff00a6}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Vcas}]} {-trace analogLinear -color #9500ff}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.atb0}]} {-trace analogLinear -color #002eff}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.atb1}]} {-trace analogLinear -color #00f1ff}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.atb_ena[1:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.dataical[4:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.datain[6:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.datainb[6:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.datatherm[16:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.datathermb[16:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.iref_500ua}]} {-trace analogLinear -color #00ff4a}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.pdb}]} {}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.vddana_0p8}]} {-trace analogLinear -color #78ff00}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.vddana_1p8}]} {-trace analogLinear -color #ffc300}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.vssana}]} {-trace analogLinear -color #ff0000}
+}] childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID0] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID0 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist0 [lrange $gpGlist0 1 end]
+    set gpID0 [lindex $gpGlist0 0]
+}
+
+
+set groupId0 [waveform add -groups Resistor_load]
+set gpGlist0 [waveform hierarchy contents $groupId0]
+set gpID0 [lindex $gpGlist0 0]
+foreach {name attrs} [subst  {
+    {simulator::[format {tb_dac_top.DUT.I11.Iin}]} {-trace analogLinear -color #9500ff}
+    {simulator::[format {tb_dac_top.DUT.I11.Iinb}]} {-trace analogLinear -color #002eff}
+    {simulator::[format {tb_dac_top.DUT.I11.vout}]} {-trace analogLinear -color #00f1ff}
+    {simulator::[format {tb_dac_top.DUT.I11.voutb}]} {-trace analogLinear -color #00ff4a}
+    {simulator::[format {tb_dac_top.DUT.I11.vssana}]} {-trace analogLinear -color #78ff00}
+}] childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID0] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID0 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist0 [lrange $gpGlist0 1 end]
+    set gpID0 [lindex $gpGlist0 0]
+}
+waveform hierarchy collapse $groupId0
+
+
+set groupId0 [waveform add -groups clock_distribution]
+set gpGlist0 [waveform hierarchy contents $groupId0]
+set gpID0 [lindex $gpGlist0 0]
+foreach {name attrs} [subst  {
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.atb0}]} {-trace analogLinear -color #00ff4a}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.atb1}]} {-trace analogLinear -color #78ff00}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.atb_ena[1:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkin}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkinb}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_binary_0}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_binary_0_red}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_binary_1}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_binary_2}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_binary_3}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_binary_4}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_binary_5}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_0}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_1}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_2}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_3}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_4}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_5}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_6}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_7}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_8}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_9}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_10}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_11}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_12}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_13}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_14}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_15}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkout_therm_16}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_binary_0}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_binary_0_red}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_binary_1}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_binary_2}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_binary_3}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_binary_4}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_binary_5}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_0}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_1}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_2}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_3}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_4}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_5}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_6}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_7}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_8}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_9}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_10}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_11}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_12}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_13}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_14}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_15}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.clkoutb_therm_16}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.iref_25ua}]} {-trace analogLinear -color #ffc300}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.pdb}]} {}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.vddana_0p8}]} {-trace analogLinear -color #ff0000}
+    {simulator::[format {tb_dac_top.DUT.clock_distribution_inst.vssana}]} {-trace analogLinear -color #ff00a6}
+}] childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID0] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID0 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist0 [lrange $gpGlist0 1 end]
+    set gpID0 [lindex $gpGlist0 0]
+}
+waveform hierarchy collapse $groupId0
+
+
+set groupId0 [waveform add -groups rsync_latch]
+set gpGlist0 [waveform hierarchy contents $groupId0]
+set gpID0 [lindex $gpGlist0 0]
+foreach {name attrs} [subst  {
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.atb0}]} {-trace analogLinear -color #ff0000}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.atb1}]} {-trace analogLinear -color #ff00a6}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.atb_ena[0:1]}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_binary_0}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_binary_0_red}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_binary_1}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_binary_2}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_binary_3}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_binary_4}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_binary_5}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_0}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_1}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_2}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_3}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_4}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_5}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_6}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_7}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_8}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_9}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_10}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_11}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_12}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_13}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_14}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_15}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkin_therm_16}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_binary_0}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_binary_0_red}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_binary_1}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_binary_2}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_binary_3}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_binary_4}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_binary_5}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_0}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_1}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_2}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_3}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_4}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_5}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_6}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_7}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_8}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_9}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_10}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_11}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_12}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_13}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_14}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_15}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.clkinb_therm_16}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.datainbin[6:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.datainbinb[6:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.dataintherm[16:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.datainthermb[16:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.dataoutbin[6:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.dataoutbinb[6:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.dataouttherm[16:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.dataoutthermb[16:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.iref_25ua}]} {-trace analogLinear -color #9500ff}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.pdb}]} {}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.vddana_0p8}]} {-trace analogLinear -color #002eff}
+    {simulator::[format {tb_dac_top.DUT.rsync_latch_inst.vssana}]} {-trace analogLinear -color #00f1ff}
+}] childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID0] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID0 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist0 [lrange $gpGlist0 1 end]
+    set gpID0 [lindex $gpGlist0 0]
+}
+waveform hierarchy collapse $groupId0
+
+
+set groupId0 [waveform add -groups driver]
+set gpGlist0 [waveform hierarchy contents $groupId0]
+set gpID0 [lindex $gpGlist0 0]
+foreach {name attrs} [subst  {
+    {simulator::[format {tb_dac_top.DUT.driver_cell_inst.databinout[6:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.driver_cell_inst.databinoutb[6:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.driver_cell_inst.datain[6:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.driver_cell_inst.datainb[6:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.driver_cell_inst.datatherm[16:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.driver_cell_inst.datathermb[16:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.driver_cell_inst.datathermout[16:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.driver_cell_inst.datathermoutb[16:0]}]} {}
+    {simulator::[format {tb_dac_top.DUT.driver_cell_inst.pdb}]} {}
+    {simulator::[format {tb_dac_top.DUT.driver_cell_inst.vddana_0p8}]} {-trace analogLinear -color #00ff4a}
+    {simulator::[format {tb_dac_top.DUT.driver_cell_inst.vddana_1p8}]} {-trace analogLinear -color #78ff00}
+    {simulator::[format {tb_dac_top.DUT.driver_cell_inst.vssana}]} {-trace analogLinear -color #ffc300}
+}] childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID0] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID0 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist0 [lrange $gpGlist0 1 end]
+    set gpID0 [lindex $gpGlist0 0]
+}
+waveform hierarchy collapse $groupId0
+
+
+waveform xview limits 0 211600000ps
 
 #
 # Waveform Window Links

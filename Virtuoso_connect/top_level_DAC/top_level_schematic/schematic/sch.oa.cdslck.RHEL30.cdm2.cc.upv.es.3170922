@@ -1,0 +1,16 @@
+#
+# Edit Lock-Stake file. CAUTION: Please do not change.
+#
+# Information about current Edit Lock Owner.
+#
+LockStakeVersion               1.1
+LoginName                      msegper
+HostName                       cdm2.cc.upv.es
+ProcessIdentifier              3170922
+ProcessCreationTime_UTC        1765463466
+ProcessCreationTime_Readable   Thu Dec 11 15:31:06 2025 CET
+AppIdentifier                  OA File System Design Manager
+OSType                         unix
+ReasonForPlacingEditLock       OpenAccess edit lock
+FilePathUsedToEditLock         /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/top_level_schematic/schematic/sch.oa.cdslck.dirlck
+TimeEditLocked                 Thu Dec 11 15:55:27 2025 CET

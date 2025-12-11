@@ -1,7 +1,7 @@
 -clean                      // Deletes previous INCA_lins direcory, if it exists 
 -access +rw                 // Turn on read/write object access 
--gui                        // Performs simulation in graphical mode
--input restore.tcl
+//-gui                        // Performs simulation in graphical mode
+//-input restore.tcl
 
 -incdir ../clock_distribution
 -incdir ../current_source_units

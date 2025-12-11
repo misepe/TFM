@@ -1,2 +1,4 @@
-#e1(11Dec2025:16:07:29): source ./xcelium.d/env.d/env.history.11Dec2025_16_07_29
-s1(11Dec2025:16:07:29):  xrun -f xrun_tb_dac.f 
+#e1(11Dec2025:16:59:40): source ./xcelium.d/env.d/env.history.11Dec2025_16_59_40
+s1(11Dec2025:16:59:40):  xrun thermometer_decoder.sv 
+#e2(11Dec2025:16:59:42): source ./xcelium.d/env.d/env.history.11Dec2025_16_59_42
+s2(11Dec2025:16:59:42):  xrun -f xrun_tb_dac.f 

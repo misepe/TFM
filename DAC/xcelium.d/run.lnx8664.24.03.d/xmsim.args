@@ -3,16 +3,13 @@
 // Do not modify this file
 //
 +SVSEED=0
--gui
--INPUT
-restore.tcl
 -SVSEED
 0
 -MESSAGES
 +EMGRLOG
 xrun.log
 -XLSTIME
-1765465649
+1765468781
 -XLKEEP
 -XLMODE
 ./xcelium.d/run.lnx8664.24.03.d

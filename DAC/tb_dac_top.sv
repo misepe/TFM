@@ -19,8 +19,9 @@ module tb_dac_top ();
     real atb [10];
 
     //Auxiliary variables
-    real fs=4.6e6;//info from input generator
-    real duracion=0.001;//info from input generator
+    real amplitud, duracion, fs; //read form the txt file
+    //real fs=4.6e6;//info from input generator
+    //real duracion=0.0001;//info from input generator
 
     int delay = 0;
 
@@ -46,13 +47,15 @@ module tb_dac_top ();
 
 
     string input_file = "./stimulus_input.txt";
+    string input_config_file = "./stimulus_input_config.txt";
     string output_file = "./output.txt";
 
-    int input_fd, output_fd;
+    int input_fd, output_fd, input_fd_config;
     real t, t_prev, value_real;
     logic valor_normalizado, digital_10b;
     
     int ret;
+
 
     always #5 clkin = ~clkin;
     always #5 clkinb = ~clkinb;
@@ -69,6 +72,7 @@ module tb_dac_top ();
         atb_ena = '0;
 
         input_fd  = $fopen(input_file, "r");
+        input_fd_config  = $fopen(input_config_file, "r");
         output_fd = $fopen(output_file, "w");
 
         if(!input_fd || !output_fd) begin
@@ -76,9 +80,15 @@ module tb_dac_top ();
             $finish;
         end
 
+        // Leer y descartar la primera línea de encabezado
+        //ret = $fscanf(input_fd_config,"%.15f %.15f %.15f \n",amplitud, duracion, fs);
+        ret = $fscanf(input_fd_config,"%.15f\n",duracion);
+        ret = $fscanf(input_fd_config,"%.15f\n",fs);
+        ret = $fscanf(input_fd_config,"%.15f\n",amplitud);
+        //$fwrite(output_fd,"%.15f %.15f %.15f \n",amplitud, duracion, fs);
         do begin
-            ret = $fscanf(input_fd,"%.10f %.10f %.10f %b %b %b %b %b\n",t, value_real, valor_normalizado, digital_10b, datainbin, datainbinb, dataintherm, datainthermb);
-            //$display("t=%f, value_real=%.10f, valor_normalizado=%.10f, digital_10b=%b", t, value_real, valor_normalizado, digital_10b);
+            ret = $fscanf(input_fd,"%.15f %.15f %.15f %b %b %b %b %b\n",t, value_real, valor_normalizado, digital_10b, datainbin, datainbinb, dataintherm, datainthermb);
+            //$display("t=%f, value_real=%.15f, valor_normalizado=%.15f, digital_10b=%b", t, value_real, valor_normalizado, digital_10b);
             //$display("ret =%0d", ret);
             
             
@@ -87,7 +97,7 @@ module tb_dac_top ();
                 delay = int'(fs*duracion);
                 #(delay);
                 
-                $fwrite(output_fd,"%.10f %.10f\n",t,Vout);
+                $fwrite(output_fd,"%.15f %.15f\n",t,Vout);
             end
 
         end while(ret != -1);

@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Dec 11, 2025 at 16:59:41 CET
+TOOL:	xrun(64)	24.03-s004: Started on Dec 16, 2025 at 14:41:01 CET
 xrun
 	-f xrun_tb_dac.f
 		-clean
@@ -91,8 +91,8 @@ xmelab: *N,MSFLON: Xcelium will initiate mixed signal elaboration, Reason: RNM m
 			streams:   9, words: 28100
 		worklib.top_level_schematic:sv <0x341f73ec>
 			streams:  93, words: 34983
-		worklib.tb_dac_top:sv <0x41a36adf>
-			streams:  24, words: 13931
+		worklib.tb_dac_top:sv <0x58838bc6>
+			streams:  23, words: 15620
 		worklib.level_shifter:sv <0x6bea9714>
 			streams:   1, words:   331
 	Building instance specific data structures.
@@ -101,11 +101,11 @@ xmelab: *N,MSFLON: Xcelium will initiate mixed signal elaboration, Reason: RNM m
 		                 Instances  Unique
 		Modules:                10      10
 		Verilog packages:        1       1
-		Registers:             331     331
+		Registers:             334     334
 		Scalar wires:          152       -
 		Vectored wires:         22       -
 		Always blocks:          64      64
-		Initial blocks:         36      36
+		Initial blocks:         35      35
 		Parallel blocks:         1       1
 		Cont. assignments:       2       2
 		Pseudo assignments:    109       -
@@ -120,7 +120,7 @@ SVSEED set from command line: 0
 xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
 xcelium> run
 Señal generada
-Simulation complete via $finish(1) at time 21160 US + 0
-./tb_dac_top.sv:98         $finish;
+Simulation complete via $finish(1) at time 67108864 NS + 0
+./tb_dac_top.sv:108         $finish;
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Dec 11, 2025 at 16:59:45 CET  (total: 00:00:04)
+TOOL:	xrun(64)	24.03-s004: Exiting on Dec 16, 2025 at 14:41:09 CET  (total: 00:00:08)

@@ -2,7 +2,7 @@
 1764599454 /home/msegper/Documents/TFM/driver_cell/models/driver_cell.sv
 1762875438 /home/msegper/Documents/TFM/current_source_units/models/currentSourceUnits.sv
 1757421742 /home/msegper/Documents/TFM/resistor_load/models/resistor_load.sv
-1765468704 /home/msegper/Documents/TFM/DAC/tb_dac_top.sv
+1765887538 /home/msegper/Documents/TFM/DAC/tb_dac_top.sv
 1765376053 /home/msegper/Documents/TFM/local_bias/models/local_bias.sv
 1765465641 /home/msegper/Documents/TFM/DAC/top_level_schematic.sv
 1750263871 /home/msegper/Documents/TFM/level_shifter/models/level_shifter.sv

@@ -5,8 +5,17 @@ def analizar_metrica_fft(señal, fs):
 
     # FFT
     N = len(señal)
-    fft_result = np.fft.fft(señal)
-    magnitud = np.abs(fft_result)[:N//2]
+
+    # Ventana Hann
+    window = np.hanning(N)
+    señal_w = (señal * window)+1e-12 #para evitar log(0)
+    
+    #FFT ventanada
+    fft_result = np.fft.fft(señal_w)
+
+    #Corrección de ganancia de ventana
+    gain = np.sum(window)/N
+    magnitud = np.abs(fft_result)[:N//2] / gain
     frec = np.fft.fftfreq(N, 1/fs)[:N//2]
 
     # Magnitud del pico principal (fundamental)
@@ -34,7 +43,7 @@ def analizar_metrica_fft(señal, fs):
 
 
 def procesar_archivo(archivo, titulo):
-    datos = np.loadtxt(archivo)
+    datos = np.loadtxt(archivo)  
     t = datos[:,0]
     señal = datos[:,1]
     fs = 1 / (t[1]-t[0])
@@ -80,10 +89,14 @@ def comparar_fft(archivo_in, archivo_out):
 
     fs = 1/(t[1]-t[0])
 
+    N = len(sig_in)
+    window = np.hanning(N)
+    gain = np.sum(window)/N
+
     # FFT
-    fft_in = 20*np.log10(np.abs(np.fft.fft(sig_in)+1e-12) / len(sig_in))
-    fft_out = 20*np.log10(np.abs(np.fft.fft(sig_out)+1e-12) / len(sig_out))
-    frec = np.fft.fftfreq(len(sig_in),1/fs)
+    fft_in = 20*np.log10(np.abs(np.fft.fft(sig_in*window)+1e-12) / (gain*N))
+    fft_out = 20*np.log10(np.abs(np.fft.fft(sig_out*window)+1e-12) / (gain*N))
+    frec = np.fft.fftfreq(N,1/fs)
 
     half = len(frec)//2
 

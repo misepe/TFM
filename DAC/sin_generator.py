@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def generar_tonos(frecuencias, amplitudes, duracion, fs=4.6e6):
+def generar_tonos(frecuencias, amplitudes, duracion, fs=8.192e6): #Fs = 8.192 MHz para tener un numero de datos que sea potencia de 2
     """
     Genera una señal combinada de tonos sinusoidales y escribe los datos en un archivo de texto.
 
@@ -22,10 +22,22 @@ def generar_tonos(frecuencias, amplitudes, duracion, fs=4.6e6):
     for frecuencia, amplitud in zip(frecuencias, amplitudes):
         señal_combinada += amplitud * np.sin(2 * np.pi * frecuencia * t)
 
+    # Añadir ruido pequeño a la señal
+    ruido = np.random.normal(0, 0.0001 * np.max(amplitudes), size=señal_combinada.shape) # añadir ruido normal con una desviación estándar del 0.01%
+    señal_combinada += ruido
+
+    # Escribir los datos de configuración en un archivo de texto
+    with open("input_config.txt", "w") as f_config:
+        f_config.write(f"{duracion:.15f}\n")
+        f_config.write(f"{fs:.15f}\n")
+        for frecuencia, amplitud in zip(frecuencias, amplitudes):
+            f_config.write(f"{amplitud:.15f}\t{frecuencia:.15f}\n")
+
     # Escribir los datos en un archivo de texto
     with open("input.txt", "w") as f:
+        #f.write(f"{amplitud:.15f}\t{duracion:.15f}\t{fs:.15f}\n")
         for tiempo, valor in zip(t, señal_combinada):
-            f.write(f"{tiempo:.10f}\t{valor:.10f}\n")
+            f.write(f"{tiempo:.15f}\t{valor:.15f}\n")
 
     print("Datos de la señal combinada generados y guardados en 'input.txt'.")
 
@@ -41,4 +53,5 @@ def generar_tonos(frecuencias, amplitudes, duracion, fs=4.6e6):
     plt.show()
 
 # Ejemplo de uso: Generar una señal combinada de uno o más tonos
-generar_tonos(frecuencias=[1e6], amplitudes=[1.0], duracion=0.001)  # Señal de 1 MHz y duración de 0.01 segundos
+generar_tonos(frecuencias=[1e6], amplitudes=[0.2], duracion=0.001)  # Señal de 1 MHz y duración de 0.01 segundos
+#generar la señal con un poco de ruido

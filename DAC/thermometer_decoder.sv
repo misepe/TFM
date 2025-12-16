@@ -5,11 +5,14 @@ module stimulus_processor;
   parameter int MSB_BITS   = 4;    // MSB en binario antes de thermometer
   parameter int THERM_BITS = 17;   // tamaño del bus termométrico final
   parameter int LSB_BITS   = 6;    // LSB binarios reales
-  parameter real VREF      = 1.0;
+  
+  real VREF      = 1.0;
 
   string file_in  = "input.txt";
+  string file_in_config  = "input_config.txt";
   string file_out = "stimulus_input.txt";
-  integer fin, fout, r;
+  string file_out_config = "stimulus_input_config.txt";
+  integer fin, fin_config, fout, fout_config, r;
 
   real t_sample, value_real;
   logic [N_BITS-1:0] digital_10b;
@@ -17,6 +20,8 @@ module stimulus_processor;
   logic [LSB_BITS-1:0] lsb_bin;
   logic [6:0] Datainbin, Datainbinb;
   logic [THERM_BITS-1:0] Dataintherm, Datainthermb;
+
+  real duracion, fs, freq;
 
   // Conversión a termómetro 17b
   function logic [THERM_BITS-1:0] to_therm(input logic [MSB_BITS-1:0] code);
@@ -29,17 +34,38 @@ module stimulus_processor;
   initial begin
     fin = $fopen(file_in,"r");
     if(fin==0) begin $display("ERROR: no se pudo abrir input"); $finish; end
+    fin_config = $fopen(file_in_config,"r");
+    if(fin_config==0) begin $display("ERROR: no se pudo abrir input_config"); $finish; end
 
     fout = $fopen(file_out,"w");
     if(fout==0) begin $display("ERROR: no se pudo crear output"); $finish; end
+    fout_config = $fopen(file_out_config,"w");
+    if(fout_config==0) begin $display("ERROR: no se pudo crear output_config"); $finish; end
 
     //$fwrite(fout,"# tiempo value_real valor_ normalizado digital_10b Datainbin   Datainbinb   Dataintherm   Datainthermb\n");
 
+    r = $fscanf(fin_config,"%.15f\n",duracion);
+    $fwrite(fout_config, "%.15f \n",duracion);
+    r = $fscanf(fin_config,"%.15f\n",fs);
+    $fwrite(fout_config, "%.15f \n",fs);
+    /*try begin
+      while(!$feof(fin_config)) begin
+        r = $fscanf(fin_config,"%.15f %.15f\n",VREF,freq);
+        $fwrite(fout_config, "%.15f %.15f \n",VREF,freq);
+      end
+    end
+    catch begin*/
+      r = $fscanf(fin_config,"%.15f\n",VREF);
+      $fwrite(fout_config, "%.15f \n",VREF);
+    //end
+
+
     while(!$feof(fin)) begin
 
-      r = $fscanf(fin,"%.10f %.10f\n",t_sample,value_real);
+      r = $fscanf(fin,"%.15f %.15f\n",t_sample,value_real);
 
       // cuantización a 10 bits
+      //digital_10b = $rtoi((((value_real/ VREF) * ((1<<N_BITS)-1))));
       digital_10b = $rtoi(((((value_real+VREF)/ (2*VREF)) * ((1<<N_BITS)-1))));
       
       // separación MSB/LSB
@@ -55,7 +81,9 @@ module stimulus_processor;
       Datainthermb = ~Dataintherm;
 
       // Guardado en archivo
-      $fwrite(fout, "%.10f %.10f %.10f %b %b %b %b %b\n",t_sample, value_real, ((value_real+VREF)/ (2*VREF)), digital_10b, Datainbin, Datainbinb, Dataintherm, Datainthermb);
+      //$fwrite(fout, "%.15f %.15f %.15f %b %b %b %b %b\n",t_sample, value_real, ((value_real)/ (VREF)), digital_10b, Datainbin, Datainbinb, Dataintherm, Datainthermb);
+      $fwrite(fout, "%.15f %.15f %.15f %b %b %b %b %b\n",t_sample, value_real, ((value_real+VREF)/ (2*VREF)), digital_10b, Datainbin, Datainbinb, Dataintherm, Datainthermb);
+      
 
     end
 

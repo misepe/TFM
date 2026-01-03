@@ -1,0 +1,382 @@
+# SimVision Command Script (Fri Jan 02 21:54:30 CET 2026)
+#
+# Version 24.03.s004
+#
+# You can restore this configuration with:
+#
+#      xrun -f xrun.f -s -input restore_mismatch.tcl
+#
+
+
+#
+# Preferences
+#
+preferences set plugin-enable-svdatabrowser-new 1
+preferences set plugin-enable-groupscope 0
+preferences set plugin-enable-interleaveandcompare 0
+preferences set plugin-enable-waveformfrequencyplot 0
+
+#
+# Simulator
+#
+database require simulator -hints {
+	simulator "xrun -f xrun.f -s -input restore_mismatch.tcl"
+}
+#
+# Groups
+#
+catch {group new -name clkout_binary -overlay 0}
+catch {group new -name clkout_therm -overlay 0}
+catch {group new -name clkoutb_binary -overlay 0}
+catch {group new -name clkoutb_therm -overlay 0}
+group using clkout_binary
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_binary_0_red}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_binary_0}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_binary_1}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_binary_2}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_binary_3}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_binary_4}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_binary_5}]} ]
+group using clkout_therm
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_0}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_1}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_2}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_3}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_4}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_5}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_6}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_7}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_8}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_9}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_10}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_11}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_12}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_13}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_14}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_15}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkout_therm_16}]} ]
+group using clkoutb_binary
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_binary_0_red}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_binary_0}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_binary_1}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_binary_2}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_binary_3}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_binary_4}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_binary_5}]} ]
+group using clkoutb_therm
+group set -overlay 0
+group set -comment {}
+group clear 0 end
+
+group insert \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_0}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_1}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_2}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_3}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_4}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_5}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_6}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_7}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_8}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_9}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_10}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_11}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_12}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_13}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_14}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_15}]} ] \
+    [subst  {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_16}]} ]
+
+#
+# Mnemonic Maps
+#
+mmap new  -reuse -name {Boolean as Logic} -radix %b -contents {{%c=FALSE -edgepriority 1 -shape low}
+{%c=TRUE -edgepriority 1 -shape high}}
+mmap new  -reuse -name {Example Map} -radix %x -contents {{%b=11???? -bgcolor orange -label REG:%x -linecolor yellow -shape bus}
+{%x=1F -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=2C -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=* -label %x -linecolor gray -shape bus}}
+
+#
+# Design Browser windows
+#
+if {[catch {window new WatchList -name "Design Browser 1" -geometry 730x500+261+33}] != ""} {
+    window geometry "Design Browser 1" 730x500+261+33
+}
+window target "Design Browser 1" on
+browser using {Design Browser 1}
+browser set -scope [subst  {simulator::[format {clock_distribution_tb.dut}]} ]
+browser set \
+    -showassertions 0 \
+    -showfibers 0 \
+    -showinternals 0 \
+    -signalsort name
+browser yview see [subst  {simulator::[format {clock_distribution_tb.dut}]} ]
+browser timecontrol set -lock 0
+
+#
+# Waveform windows
+#
+if {[catch {window new WaveWindow -name "Waveform 1" -geometry 1920x1016+-1+26}] != ""} {
+    window geometry "Waveform 1" 1920x1016+-1+26
+}
+window target "Waveform 1" on
+waveform using {Waveform 1}
+waveform sidebar visibility partial
+waveform set \
+    -primarycursor TimeA \
+    -signalnames name \
+    -signalwidth 175 \
+    -units ps \
+    -valuewidth 75
+waveform baseline set -time 0
+
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.atb0}]}
+	} ]]
+waveform format $id -trace analogSampleAndHold -color #00f1ff
+waveform axis range $id -for default -min -1 -max 1 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.atb1}]}
+	} ]]
+waveform format $id -trace analogSampleAndHold -color #00ff4a
+waveform axis range $id -for default -min -1 -max 1 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.atb_ena[1:0]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.clkin}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.clkinb}]}
+	} ]]
+
+set groupId0 [waveform add -groups clkout_binary]
+set gpGlist0 [waveform hierarchy contents $groupId0]
+set gpID0 [lindex $gpGlist0 0]
+foreach {name attrs} [subst  {
+    {simulator::[format {clock_distribution_tb.dut.clkout_binary_0_red}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_binary_0}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_binary_1}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_binary_2}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_binary_3}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_binary_4}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_binary_5}]} {-radix %b -trace analogSampleAndHold}
+}] childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID0] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID0 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist0 [lrange $gpGlist0 1 end]
+    set gpID0 [lindex $gpGlist0 0]
+}
+waveform hierarchy collapse $groupId0
+
+
+set groupId0 [waveform add -groups clkoutb_binary]
+set gpGlist0 [waveform hierarchy contents $groupId0]
+set gpID0 [lindex $gpGlist0 0]
+foreach {name attrs} [subst  {
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_binary_0_red}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_binary_0}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_binary_1}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_binary_2}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_binary_3}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_binary_4}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_binary_5}]} {-radix %b -trace analogSampleAndHold}
+}] childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID0] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID0 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist0 [lrange $gpGlist0 1 end]
+    set gpID0 [lindex $gpGlist0 0]
+}
+waveform hierarchy collapse $groupId0
+
+
+set groupId0 [waveform add -groups clkout_therm]
+set gpGlist0 [waveform hierarchy contents $groupId0]
+set gpID0 [lindex $gpGlist0 0]
+foreach {name attrs} [subst  {
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_0}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_1}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_2}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_3}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_4}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_5}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_6}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_7}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_8}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_9}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_10}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_11}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_12}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_13}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_14}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_15}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkout_therm_16}]} {-radix %b -trace analogSampleAndHold}
+}] childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID0] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID0 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist0 [lrange $gpGlist0 1 end]
+    set gpID0 [lindex $gpGlist0 0]
+}
+waveform hierarchy collapse $groupId0
+
+
+set groupId0 [waveform add -groups clkoutb_therm]
+set gpGlist0 [waveform hierarchy contents $groupId0]
+set gpID0 [lindex $gpGlist0 0]
+foreach {name attrs} [subst  {
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_0}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_1}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_2}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_3}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_4}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_5}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_6}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_7}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_8}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_9}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_10}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_11}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_12}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_13}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_14}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_15}]} {-radix %b -trace analogSampleAndHold}
+    {simulator::[format {clock_distribution_tb.dut.clkoutb_therm_16}]} {-radix %b -trace analogSampleAndHold}
+}] childcmds {
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+    {}
+} {
+    set expected [ join [waveform signals -format fullpath $gpID0] ]
+    if {[string equal $name $expected] || $name == "cdivider"} {
+        if {$attrs != ""} {
+            eval waveform format $gpID0 $attrs
+        }
+        if { $childcmds != ""} {
+            eval $childcmds
+        }
+    }
+    set gpGlist0 [lrange $gpGlist0 1 end]
+    set gpID0 [lindex $gpGlist0 0]
+}
+waveform hierarchy collapse $groupId0
+
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.iref_25ua}]}
+	} ]]
+waveform format $id -trace analogSampleAndHold -color #78ff00
+waveform axis range $id -for default -min 2.2500000000000001e-05 -max 2.7500000000000004e-05 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.pdb}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.vddana_0p8}]}
+	} ]]
+waveform format $id -trace analogSampleAndHold -color #ffc300
+waveform axis range $id -for default -min 0.72000000000000008 -max 0.88000000000000012 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.vssana}]}
+	} ]]
+waveform format $id -trace analogSampleAndHold -color #ff0000
+waveform axis range $id -for default -min -1 -max 1 -scale linear
+
+waveform xview limits 0 3000000ps
+
+#
+# Waveform Window Links
+#
+
+#
+# Console windows
+#
+console set -windowname Console
+window geometry Console 1920x1016+-1+26
+
+#
+# Layout selection
+#
+

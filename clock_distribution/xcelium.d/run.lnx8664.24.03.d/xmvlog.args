@@ -5,7 +5,7 @@
 -XLMODE
 ./xcelium.d/run.lnx8664.24.03.d
 -RUNMODE
-./models/clock_distribution.sv
+./models/clock_distribution_mismatch.sv
 ./tb/clock_distribution_tb.sv
 -CDSLIB
 ./xcelium.d/run.lnx8664.24.03.d/cdsrun.lib

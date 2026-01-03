@@ -1,64 +1,57 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Dec 01, 2025 at 15:31:38 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 03, 2026 at 14:39:01 CET
 xrun
 	-f xrun.f
 		-clean
-		./models/driver_cell.sv
-		./tb/driver_cell_tb.sv
+		./models/driver_cell_mismatch.sv
+		./tb/driver_cell_mismatch_tb.sv
 		-access +rw
 		-gui
 		-s
 		-input /home/msegper/Documents/TFM/driver_cell/restore.tcl
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
-file: ./models/driver_cell.sv
+file: ./models/driver_cell_mismatch.sv
 	module worklib.driver_cell:sv
 		errors: 0, warnings: 0
-file: ./tb/driver_cell_tb.sv
+file: ./tb/driver_cell_mismatch_tb.sv
 	module worklib.driver_cell_tb:sv
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
 	Top level design units:
 		cds_rnm_pkg
-		$unit_0x7577e926
+		$unit_0x3d03b44e
 		driver_cell_tb
-        .datain(datain),
-                     |
-xmelab: *W,CUVMPW (./tb/driver_cell_tb.sv,23|21): port sizes differ in port connection(8/7) for the instance(driver_cell_tb) .
-        .datainb(datainb),
-                       |
-xmelab: *W,CUVMPW (./tb/driver_cell_tb.sv,24|23): port sizes differ in port connection(8/7) for the instance(driver_cell_tb) .
-        .databinout(databinout),
-                             |
-xmelab: *W,CUVMPW (./tb/driver_cell_tb.sv,31|29): port sizes differ in port connection(8/7) for the instance(driver_cell_tb) .
-        .databinoutb(databinoutb),
-                               |
-xmelab: *W,CUVMPW (./tb/driver_cell_tb.sv,32|31): port sizes differ in port connection(8/7) for the instance(driver_cell_tb) .
-	Building instance overlay tables: .................... Done
+	Building instance overlay tables: ....................
+        $display("Raw binary mismatch[%0d] = %0d", k, temp);
+                                                         |
+xmelab: *W,REALCV (./models/driver_cell_mismatch.sv,71|57): Real argument converted to integer for (%d).
+ Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.driver_cell:sv <0x7f8b9ad4>
-			streams:   7, words:  9385
-		worklib.driver_cell_tb:sv <0x27d4cfdd>
-			streams:   9, words: 15187
+		worklib.driver_cell:sv <0x675eecee>
+			streams:   9, words: 15484
+		worklib.driver_cell_tb:sv <0x7e9102a1>
+			streams:  13, words: 24245
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                 Instances  Unique
 		Modules:                 2       2
 		Verilog packages:        1       1
-		Registers:              22      22
-		Scalar wires:            6       -
-		Expanded wires:         14       2
-		Vectored wires:          6       -
+		Registers:              47      47
+		Scalar wires:            4       -
+		Vectored wires:          8       -
 		Always blocks:           4       4
-		Initial blocks:          4       4
-		Pseudo assignments:      8       -
+		Initial blocks:          5       5
+		Pseudo assignments:     12       -
 		Assertions:              3       3
 		Compilation units:       1       1
 		Simulation timescale:  1ps
 	Writing initial simulation snapshot: worklib.driver_cell_tb:sv
 xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
+SVSEED default: 1
+[DMSINFO] Simulating with Xcelium Mixed-Signal App...
 
 -------------------------------------
 Relinquished control to SimVision...
@@ -71,7 +64,7 @@ xcelium> #
 xcelium> #
 xcelium> # You can restore this configuration with:
 xcelium> #
-xcelium> #      xrun -f xrun.f -input /home/msegper/Documents/TFM/driver_cell/restore.tcl
+xcelium> #      xrun -f xrun.f -input restore.tcl
 xcelium> #
 xcelium> 
 xcelium> set tcl_prompt1 {puts -nonewline "xcelium> "}
@@ -168,35 +161,192 @@ Created probe 1
 xcelium> 
 xcelium> simvision -input restore.tcl.svcf
 xcelium> run
+Raw binary mismatch[0] =        1936
+Binary mismatch[0]= -0.0006
+Raw binary mismatch[1] =        3068
+Binary mismatch[1]= 0.0107
+Raw binary mismatch[2] =        3437
+Binary mismatch[2]= 0.0144
+Raw binary mismatch[3] =         773
+Binary mismatch[3]= -0.0123
+Raw binary mismatch[4] =         699
+Binary mismatch[4]= -0.0130
+Raw binary mismatch[5] =        1935
+Binary mismatch[5]= -0.0006
+Raw binary mismatch[6] =        1043
+Binary mismatch[6]= -0.0096
+Raw binary mismatch[0] =        3926
+Binary mismatch[0]= 0.0193
+Raw binary mismatch[1] =        1599
+Binary mismatch[1]= -0.0040
+Raw binary mismatch[2] =        2933
+Binary mismatch[2]= 0.0093
+Raw binary mismatch[3] =        1604
+Binary mismatch[3]= -0.0040
+Raw binary mismatch[4] =         492
+Binary mismatch[4]= -0.0151
+Raw binary mismatch[5] =        1869
+Binary mismatch[5]= -0.0013
+Raw binary mismatch[6] =        2517
+Binary mismatch[6]= 0.0052
+Raw binary mismatch[0] =         761
+Binary mismatch[0]= -0.0124
+Raw binary mismatch[1] =        1253
+Binary mismatch[1]= -0.0075
+Raw binary mismatch[2] =        3588
+Binary mismatch[2]= 0.0159
+Raw binary mismatch[3] =        3875
+Binary mismatch[3]= 0.0187
+Raw binary mismatch[4] =         309
+Binary mismatch[4]= -0.0169
+Raw binary mismatch[5] =         332
+Binary mismatch[5]= -0.0167
+Raw binary mismatch[6] =         715
+Binary mismatch[6]= -0.0129
+Raw binary mismatch[7] =        2562
+Binary mismatch[7]= 0.0056
+Raw binary mismatch[8] =         167
+Binary mismatch[8]= -0.0183
+Raw binary mismatch[9] =        3575
+Binary mismatch[9]= 0.0158
+Raw binary mismatch[10] =        2617
+Binary mismatch[10]= 0.0062
+Raw binary mismatch[11] =        3452
+Binary mismatch[11]= 0.0145
+Raw binary mismatch[12] =         811
+Binary mismatch[12]= -0.0119
+Raw binary mismatch[13] =        1192
+Binary mismatch[13]= -0.0081
+Raw binary mismatch[14] =         686
+Binary mismatch[14]= -0.0131
+Raw binary mismatch[15] =        2570
+Binary mismatch[15]= 0.0057
+Raw binary mismatch[16] =        1192
+Binary mismatch[16]= -0.0081
+Raw binary mismatch[0] =         686
+Binary mismatch[0]= -0.0131
+Raw binary mismatch[1] =        1689
+Binary mismatch[1]= -0.0031
+Raw binary mismatch[2] =        2096
+Binary mismatch[2]= 0.0010
+Raw binary mismatch[3] =         561
+Binary mismatch[3]= -0.0144
+Raw binary mismatch[4] =        1283
+Binary mismatch[4]= -0.0072
+Raw binary mismatch[5] =        3763
+Binary mismatch[5]= 0.0176
+Raw binary mismatch[6] =         896
+Binary mismatch[6]= -0.0110
+Raw binary mismatch[7] =        3078
+Binary mismatch[7]= 0.0108
+Raw binary mismatch[8] =        1454
+Binary mismatch[8]= -0.0055
+Raw binary mismatch[9] =        1536
+Binary mismatch[9]= -0.0046
+Raw binary mismatch[10] =         500
+Binary mismatch[10]= -0.0150
+Raw binary mismatch[11] =        3218
+Binary mismatch[11]= 0.0122
+Raw binary mismatch[12] =        2560
+Binary mismatch[12]= 0.0056
+Raw binary mismatch[13] =        1395
+Binary mismatch[13]= -0.0060
+Raw binary mismatch[14] =        2710
+Binary mismatch[14]= 0.0071
+Raw binary mismatch[15] =        1517
+Binary mismatch[15]= -0.0048
+Raw binary mismatch[16] =        2617
+Binary mismatch[16]= 0.0062
 Iniciando tests...
 Test 1: Verificación de límites de alimentación
 Test 2: Estado apagado (pdb = 0)
-databinout = zzzzzzzz, databinoutb = zzzzzzzz, datathermout = zzzzzzzzzzzzzzzzz, datathermoutb = zzzzzzzzzzzzzzzzz
+Valores de databinout:
+databinout[0] = `wrealZState, databinoutb[0] = `wrealZState
+databinout[1] = `wrealZState, databinoutb[1] = `wrealZState
+databinout[2] = `wrealZState, databinoutb[2] = `wrealZState
+databinout[3] = `wrealZState, databinoutb[3] = `wrealZState
+databinout[4] = `wrealZState, databinoutb[4] = `wrealZState
+databinout[5] = `wrealZState, databinoutb[5] = `wrealZState
+databinout[6] = `wrealZState, databinoutb[6] = `wrealZState
+Valores de datathermout:
+datathermout[0] = `wrealZState, datathermoutb[0] = `wrealZState
+datathermout[1] = `wrealZState, datathermoutb[1] = `wrealZState
+datathermout[2] = `wrealZState, datathermoutb[2] = `wrealZState
+datathermout[3] = `wrealZState, datathermoutb[3] = `wrealZState
+datathermout[4] = `wrealZState, datathermoutb[4] = `wrealZState
+datathermout[5] = `wrealZState, datathermoutb[5] = `wrealZState
+datathermout[6] = `wrealZState, datathermoutb[6] = `wrealZState
+datathermout[7] = `wrealZState, datathermoutb[7] = `wrealZState
+datathermout[8] = `wrealZState, datathermoutb[8] = `wrealZState
+datathermout[9] = `wrealZState, datathermoutb[9] = `wrealZState
+datathermout[10] = `wrealZState, datathermoutb[10] = `wrealZState
+datathermout[11] = `wrealZState, datathermoutb[11] = `wrealZState
+datathermout[12] = `wrealZState, datathermoutb[12] = `wrealZState
+datathermout[13] = `wrealZState, datathermoutb[13] = `wrealZState
+datathermout[14] = `wrealZState, datathermoutb[14] = `wrealZState
+datathermout[15] = `wrealZState, datathermoutb[15] = `wrealZState
+datathermout[16] = `wrealZState, datathermoutb[16] = `wrealZState
+datathermout[17] = 0.0000, datathermoutb[17] = 0.0000
 Test 3: Estado encendido (pdb = 1)
-databinout = z1001100, databinoutb = z0110011, datathermout = 11110000111100001, datathermoutb = 00001111000011110
+Valores de databinout:
+databinout[0] = 0.0000, databinoutb[0] = 1.0193
+databinout[1] = 0.0000, databinoutb[1] = 0.9960
+databinout[2] = 1.0144, databinoutb[2] = 0.0000
+databinout[3] = 0.9877, databinoutb[3] = 0.0000
+databinout[4] = 0.0000, databinoutb[4] = 0.9849
+databinout[5] = 0.0000, databinoutb[5] = 0.9987
+databinout[6] = 0.9904, databinoutb[6] = 0.0000
+Valores de datathermout:
+datathermout[0] = 0.9876, datathermoutb[0] = 0.0000
+datathermout[1] = 0.0000, datathermoutb[1] = 0.9969
+datathermout[2] = 0.0000, datathermoutb[2] = 1.0010
+datathermout[3] = 0.0000, datathermoutb[3] = 0.9856
+datathermout[4] = 0.0000, datathermoutb[4] = 0.9928
+datathermout[5] = 0.9833, datathermoutb[5] = 0.0000
+datathermout[6] = 0.9871, datathermoutb[6] = 0.0000
+datathermout[7] = 1.0056, datathermoutb[7] = 0.0000
+datathermout[8] = 0.9817, datathermoutb[8] = 0.0000
+datathermout[9] = 0.0000, datathermoutb[9] = 0.9954
+datathermout[10] = 0.0000, datathermoutb[10] = 0.9850
+datathermout[11] = 0.0000, datathermoutb[11] = 1.0122
+datathermout[12] = 0.0000, datathermoutb[12] = 1.0056
+datathermout[13] = 0.9919, datathermoutb[13] = 0.0000
+datathermout[14] = 0.9869, datathermoutb[14] = 0.0000
+datathermout[15] = 1.0057, datathermoutb[15] = 0.0000
+datathermout[16] = 0.9919, datathermoutb[16] = 0.0000
+datathermout[17] = 0.0000, datathermoutb[17] = 0.0000
 Test 5: Propagación de datos binarios
-databinout = z0101010, databinoutb = z1010101
+Valores de databinout:
+databinout[0] = 0.0000, databinoutb[0] = 1.0193
+databinout[1] = 1.0107, databinoutb[1] = 0.0000
+databinout[2] = 0.0000, databinoutb[2] = 1.0093
+databinout[3] = 0.9877, databinoutb[3] = 0.0000
+databinout[4] = 0.0000, databinoutb[4] = 0.9849
+databinout[5] = 0.9993, databinoutb[5] = 0.0000
+databinout[6] = 0.0000, databinoutb[6] = 1.0052
 Test 6: Propagación de datos termométricos
-datathermout = 10101010101010101, datathermoutb = 01010101010101010
+Valores de datathermout:
+datathermout[0] = 0.9876, datathermoutb[0] = 0.0000
+datathermout[1] = 0.0000, datathermoutb[1] = 0.9969
+datathermout[2] = 1.0159, datathermoutb[2] = 0.0000
+datathermout[3] = 0.0000, datathermoutb[3] = 0.9856
+datathermout[4] = 0.9831, datathermoutb[4] = 0.0000
+datathermout[5] = 0.0000, datathermoutb[5] = 1.0176
+datathermout[6] = 0.9871, datathermoutb[6] = 0.0000
+datathermout[7] = 0.0000, datathermoutb[7] = 1.0108
+datathermout[8] = 0.9817, datathermoutb[8] = 0.0000
+datathermout[9] = 0.0000, datathermoutb[9] = 0.9954
+datathermout[10] = 1.0062, datathermoutb[10] = 0.0000
+datathermout[11] = 0.0000, datathermoutb[11] = 1.0122
+datathermout[12] = 0.9881, datathermoutb[12] = 0.0000
+datathermout[13] = 0.0000, datathermoutb[13] = 0.9940
+datathermout[14] = 0.9869, datathermoutb[14] = 0.0000
+datathermout[15] = 0.0000, datathermoutb[15] = 0.9952
+datathermout[16] = 0.9919, datathermoutb[16] = 0.0000
+datathermout[17] = 0.0000, datathermoutb[17] = 0.0000
 Tests completados.
 Simulation complete via $finish(1) at time 80 NS + 0
-./tb/driver_cell_tb.sv:85         $finish;
-xcelium> reset
-Loaded snapshot worklib.driver_cell_tb:sv
-xcelium> run
-Iniciando tests...
-Test 1: Verificación de límites de alimentación
-Test 2: Estado apagado (pdb = 0)
-databinout = zzzzzzzz, databinoutb = zzzzzzzz, datathermout = zzzzzzzzzzzzzzzzz, datathermoutb = zzzzzzzzzzzzzzzzz
-Test 3: Estado encendido (pdb = 1)
-databinout = z1001100, databinoutb = z0110011, datathermout = 11110000111100001, datathermoutb = 00001111000011110
-Test 5: Propagación de datos binarios
-databinout = z0101010, databinoutb = z1010101
-Test 6: Propagación de datos termométricos
-datathermout = 10101010101010101, datathermoutb = 01010101010101010
-Tests completados.
-Simulation complete via $finish(1) at time 80 NS + 0
-./tb/driver_cell_tb.sv:85         $finish;
+./tb/driver_cell_mismatch_tb.sv:106         $finish;
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Dec 01, 2025 at 15:42:07 CET  (total: 00:10:29)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 03, 2026 at 14:44:20 CET  (total: 00:05:19)

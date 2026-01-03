@@ -13,10 +13,10 @@ module driver_cell_tb;
     real vssana;           // Conexión a tierra
 
     // Señales de salida
-    wire [6:0] databinout;     // Salida binaria
-    wire [6:0] databinoutb;    // Salida binaria negada
-    wire [16:0] datathermout;  // Salida termométrica
-    wire [16:0] datathermoutb; // Salida termométrica negada
+    real  databinout [6:0];     // Salida binaria
+    real  databinoutb [6:0];    // Salida binaria negada
+    real  datathermout [16:0];  // Salida termométrica
+    real  datathermoutb [16:0]; // Salida termométrica negada
 
     // Instancia del DUT
     driver_cell dut (
@@ -56,8 +56,16 @@ module driver_cell_tb;
         datatherm = 17'b10101010101010101; datathermb = ~datatherm;
         vddana_1p8 = 1.8; vddana_0p8 = 0.8; vssana = 0.0; // Alimentación válida
         #10;
-        $display("databinout = %b, databinoutb = %b, datathermout = %b, datathermoutb = %b",
-                 databinout, databinoutb, datathermout, datathermoutb);
+        $display("Valores de databinout:");
+        for (int i = 0; i < 7; i++) begin
+            $display("databinout[%0d] = %.4f, databinoutb[%0d] = %.4f", i, databinout[i], i, databinoutb[i]);
+        end
+
+        $display("Valores de datathermout:");
+        for (int i = 0; i < 18; i++) begin
+            $display("datathermout[%0d] = %.4f, datathermoutb[%0d] = %.4f", i, datathermout[i], i, datathermoutb[i]);
+        end
+
 
         // Test 3: Estado encendido (pdb = 1)
         $display("Test 3: Estado encendido (pdb = 1)");
@@ -65,20 +73,33 @@ module driver_cell_tb;
         datain = 8'b11001100; datainb = ~datain;
         datatherm = 17'b11110000111100001; datathermb = ~datatherm;
         #10;
-        $display("databinout = %b, databinoutb = %b, datathermout = %b, datathermoutb = %b",
-                 databinout, databinoutb, datathermout, datathermoutb);
+        $display("Valores de databinout:");
+        for (int i = 0; i < 7; i++) begin
+            $display("databinout[%0d] = %.4f, databinoutb[%0d] = %.4f", i, databinout[i], i, databinoutb[i]);
+        end
+
+        $display("Valores de datathermout:");
+        for (int i = 0; i < 18; i++) begin
+            $display("datathermout[%0d] = %.4f, datathermoutb[%0d] = %.4f", i, datathermout[i], i, datathermoutb[i]);
+        end
 
         // Test 4: Propagación de datos binarios
         $display("Test 5: Propagación de datos binarios");
         datain = 8'b10101010; datainb = ~datain;
         #10;
-        $display("databinout = %b, databinoutb = %b", databinout, databinoutb);
+        $display("Valores de databinout:");
+        for (int i = 0; i < 7; i++) begin
+            $display("databinout[%0d] = %.4f, databinoutb[%0d] = %.4f", i, databinout[i], i, databinoutb[i]);
+        end
 
         // Test 5: Propagación de datos termométricos
         $display("Test 6: Propagación de datos termométricos");
         datatherm = 17'b10101010101010101; datathermb = ~datatherm;
         #10;
-        $display("datathermout = %b, datathermoutb = %b", datathermout, datathermoutb);
+        $display("Valores de datathermout:");
+        for (int i = 0; i < 18; i++) begin
+            $display("datathermout[%0d] = %.4f, datathermoutb[%0d] = %.4f", i, datathermout[i], i, datathermoutb[i]);
+        end
 
 
         $display("Tests completados.");

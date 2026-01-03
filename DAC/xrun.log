@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Dec 16, 2025 at 14:41:01 CET
+TOOL:	xrun(64)	24.03-s004: Started on Dec 16, 2025 at 17:31:46 CET
 xrun
 	-f xrun_tb_dac.f
 		-clean
@@ -123,4 +123,4 @@ Señal generada
 Simulation complete via $finish(1) at time 67108864 NS + 0
 ./tb_dac_top.sv:108         $finish;
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Dec 16, 2025 at 14:41:09 CET  (total: 00:00:08)
+TOOL:	xrun(64)	24.03-s004: Exiting on Dec 16, 2025 at 17:31:55 CET  (total: 00:00:09)

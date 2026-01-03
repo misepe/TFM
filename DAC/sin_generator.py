@@ -23,7 +23,7 @@ def generar_tonos(frecuencias, amplitudes, duracion, fs=8.192e6): #Fs = 8.192 MH
         señal_combinada += amplitud * np.sin(2 * np.pi * frecuencia * t)
 
     # Añadir ruido pequeño a la señal
-    ruido = np.random.normal(0, 0.0001 * np.max(amplitudes), size=señal_combinada.shape) # añadir ruido normal con una desviación estándar del 0.01%
+    ruido = np.random.normal(0, 0.00001 * np.max(amplitudes), size=señal_combinada.shape) # añadir ruido normal con una desviación estándar del 0.001%
     señal_combinada += ruido
 
     # Escribir los datos de configuración en un archivo de texto
@@ -53,5 +53,5 @@ def generar_tonos(frecuencias, amplitudes, duracion, fs=8.192e6): #Fs = 8.192 MH
     plt.show()
 
 # Ejemplo de uso: Generar una señal combinada de uno o más tonos
-generar_tonos(frecuencias=[1e6], amplitudes=[0.2], duracion=0.001)  # Señal de 1 MHz y duración de 0.01 segundos
+generar_tonos(frecuencias=[1e6], amplitudes=[0.5], duracion=0.001)  # Señal de 1 MHz y duración de 0.01 segundos
 #generar la señal con un poco de ruido

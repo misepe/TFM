@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def generar_rampa(amplitud, duracion, fs=10e6):
+def generar_rampa(amplitud, duracion, fs=8.192e6): #Fs = 8.192 MHz para tener un numero de datos que sea potencia de 2
     """
     Genera una señal de rampa lineal y escribe los datos en un archivo de texto.
 
@@ -14,6 +14,9 @@ def generar_rampa(amplitud, duracion, fs=10e6):
 
     # Generar la señal de rampa
     rampa = amplitud * (t / duracion)
+    # Añadir ruido pequeño a la señal
+    ruido = np.random.normal(0, 0.0001 * np.max(amplitud), size=rampa.shape) # añadir ruido normal con una desviación estándar del 0.01%
+    rampa += ruido
 
     # Escribir los datos de configuración en un archivo de texto
     with open("input_config.txt", "w") as f_config:
@@ -41,4 +44,4 @@ def generar_rampa(amplitud, duracion, fs=10e6):
     plt.show()
 
 # Ejemplo de uso: Generar una señal de rampa con amplitud 1.0 y duración de 0.001 segundos
-generar_rampa(amplitud=0.2, duracion=0.0001)
+generar_rampa(amplitud=1, duracion=0.0001)

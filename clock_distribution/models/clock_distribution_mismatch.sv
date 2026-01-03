@@ -226,7 +226,7 @@ module clock_distribution import cds_rnm_pkg::*;(
             clkout_binary_2_aux = clkin + (clkin *mismatch_binary[2]);
             clkout_binary_1_aux = clkin +(clkin *mismatch_binary[1]);
             clkout_binary_0_aux = clkin +(clkin *mismatch_binary[0]);
-            clkout_binary_0_red_aux = clkin +(clkin *mismatch_binaryb[0]);
+            clkout_binary_0_red_aux = clkin +(clkin *mismatch_binary[0]);
             clkoutb_binary_5_aux = clkinb +(clkinb *mismatch_binaryb[5]);
             clkoutb_binary_4_aux = clkinb +(clkinb *mismatch_binaryb[4]);
             clkoutb_binary_3_aux = clkinb +(clkinb *mismatch_binaryb[3]);

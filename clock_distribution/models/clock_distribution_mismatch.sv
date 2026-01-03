@@ -104,7 +104,9 @@ module clock_distribution import cds_rnm_pkg::*;(
 
     //Generate non lineartinies: mismatch
     real mismatch_therm [0:16];
+    real mismatch_thermb [0:16];
     real mismatch_binary [0:5];
+    real mismatch_binaryb [0:5];
 
     function real generate_mismatch(int k);
         real temp;
@@ -119,10 +121,18 @@ module clock_distribution import cds_rnm_pkg::*;(
         for (int i = 0; i <= 16; i++) begin
           mismatch_therm[i] = generate_mismatch(i);
         end
+        // Thermometric negated part mismatch generation
+        for (int i = 0; i <= 16; i++) begin
+          mismatch_thermb[i] = generate_mismatch(i);
+        end
 
         // Binary part mismatch generation
         for (int j = 0; j <= 5; j++) begin
           mismatch_binary[j] = generate_mismatch(j);
+        end
+        // Binary negated part mismatch generation
+        for (int j = 0; j <= 5; j++) begin
+          mismatch_binaryb[j] = generate_mismatch(j);
         end
     end
 
@@ -193,37 +203,37 @@ module clock_distribution import cds_rnm_pkg::*;(
             clkout_therm_2_aux = clkin +(clkin *mismatch_therm[2]);
             clkout_therm_1_aux = clkin +(clkin *mismatch_therm[1]);
             clkout_therm_0_aux = clkin +(clkin *mismatch_therm[0]);
-            clkoutb_therm_16_aux = clkinb +(clkinb *mismatch_therm[16]);
-            clkoutb_therm_15_aux = clkinb +(clkinb *mismatch_therm[15]);
-            clkoutb_therm_14_aux = clkinb +(clkinb *mismatch_therm[14]);
-            clkoutb_therm_13_aux = clkinb +(clkinb *mismatch_therm[13]);
-            clkoutb_therm_12_aux = clkinb +(clkinb *mismatch_therm[12]);
-            clkoutb_therm_11_aux = clkinb +(clkinb *mismatch_therm[11]);
-            clkoutb_therm_10_aux = clkinb +(clkinb *mismatch_therm[10]);
-            clkoutb_therm_9_aux = clkinb +(clkinb *mismatch_therm[9]);
-            clkoutb_therm_8_aux = clkinb +(clkinb *mismatch_therm[8]);
-            clkoutb_therm_7_aux = clkinb +(clkinb *mismatch_therm[7]);
-            clkoutb_therm_6_aux = clkinb +(clkinb *mismatch_therm[6]);
-            clkoutb_therm_5_aux = clkinb +(clkinb *mismatch_therm[5]);
-            clkoutb_therm_4_aux = clkinb +(clkinb *mismatch_therm[4]);
-            clkoutb_therm_3_aux = clkinb +(clkinb *mismatch_therm[3]);
-            clkoutb_therm_2_aux = clkinb +(clkinb *mismatch_therm[2]);
-            clkoutb_therm_1_aux = clkinb +(clkinb *mismatch_therm[1]);
-            clkoutb_therm_0_aux = clkinb +(clkinb *mismatch_therm[0]);
+            clkoutb_therm_16_aux = clkinb +(clkinb *mismatch_thermb[16]);
+            clkoutb_therm_15_aux = clkinb +(clkinb *mismatch_thermb[15]);
+            clkoutb_therm_14_aux = clkinb +(clkinb *mismatch_thermb[14]);
+            clkoutb_therm_13_aux = clkinb +(clkinb *mismatch_thermb[13]);
+            clkoutb_therm_12_aux = clkinb +(clkinb *mismatch_thermb[12]);
+            clkoutb_therm_11_aux = clkinb +(clkinb *mismatch_thermb[11]);
+            clkoutb_therm_10_aux = clkinb +(clkinb *mismatch_thermb[10]);
+            clkoutb_therm_9_aux = clkinb +(clkinb *mismatch_thermb[9]);
+            clkoutb_therm_8_aux = clkinb +(clkinb *mismatch_thermb[8]);
+            clkoutb_therm_7_aux = clkinb +(clkinb *mismatch_thermb[7]);
+            clkoutb_therm_6_aux = clkinb +(clkinb *mismatch_thermb[6]);
+            clkoutb_therm_5_aux = clkinb +(clkinb *mismatch_thermb[5]);
+            clkoutb_therm_4_aux = clkinb +(clkinb *mismatch_thermb[4]);
+            clkoutb_therm_3_aux = clkinb +(clkinb *mismatch_thermb[3]);
+            clkoutb_therm_2_aux = clkinb +(clkinb *mismatch_thermb[2]);
+            clkoutb_therm_1_aux = clkinb +(clkinb *mismatch_thermb[1]);
+            clkoutb_therm_0_aux = clkinb +(clkinb *mismatch_thermb[0]);
             clkout_binary_5_aux = clkin + (clkin *mismatch_binary[5]);
             clkout_binary_4_aux = clkin +(clkin *mismatch_binary[4]);
             clkout_binary_3_aux = clkin +(clkin *mismatch_binary[3]);
             clkout_binary_2_aux = clkin + (clkin *mismatch_binary[2]);
             clkout_binary_1_aux = clkin +(clkin *mismatch_binary[1]);
             clkout_binary_0_aux = clkin +(clkin *mismatch_binary[0]);
-            clkout_binary_0_red_aux = clkin +(clkin *mismatch_binary[0]);
-            clkoutb_binary_5_aux = clkinb +(clkinb *mismatch_binary[5]);
-            clkoutb_binary_4_aux = clkinb +(clkinb *mismatch_binary[4]);
-            clkoutb_binary_3_aux = clkinb +(clkinb *mismatch_binary[3]);
-            clkoutb_binary_2_aux = clkinb +(clkinb *mismatch_binary[2]);
-            clkoutb_binary_1_aux = clkinb +(clkinb *mismatch_binary[1]);
-            clkoutb_binary_0_aux = clkinb +(clkinb *mismatch_binary[0]);
-            clkoutb_binary_0_red_aux = clkinb +(clkinb *mismatch_binary[0]);
+            clkout_binary_0_red_aux = clkin +(clkin *mismatch_binaryb[0]);
+            clkoutb_binary_5_aux = clkinb +(clkinb *mismatch_binaryb[5]);
+            clkoutb_binary_4_aux = clkinb +(clkinb *mismatch_binaryb[4]);
+            clkoutb_binary_3_aux = clkinb +(clkinb *mismatch_binaryb[3]);
+            clkoutb_binary_2_aux = clkinb +(clkinb *mismatch_binaryb[2]);
+            clkoutb_binary_1_aux = clkinb +(clkinb *mismatch_binaryb[1]);
+            clkoutb_binary_0_aux = clkinb +(clkinb *mismatch_binaryb[0]);
+            clkoutb_binary_0_red_aux = clkinb +(clkinb *mismatch_binaryb[0]);
                 end
             
             begin

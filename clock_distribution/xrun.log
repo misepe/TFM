@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 03, 2026 at 13:52:08 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 03, 2026 at 13:56:22 CET
 xrun
 	-f xrun.f
 		-clean
@@ -9,6 +9,7 @@ xrun
 		-gui
 		-s
 		-input /home/msegper/Documents/TFM/clock_distribution/restore.tcl
+	-s
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
 file: ./models/clock_distribution_mismatch.sv
 	module worklib.clock_distribution:sv
@@ -24,12 +25,12 @@ file: ./tb/clock_distribution_tb.sv
 	Building instance overlay tables: ....................
         $display("Raw binary mismatch[%0d] = %0d", k, temp);
                                                          |
-xmelab: *W,REALCV (./models/clock_distribution_mismatch.sv,112|57): Real argument converted to integer for (%d).
+xmelab: *W,REALCV (./models/clock_distribution_mismatch.sv,114|57): Real argument converted to integer for (%d).
  Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.clock_distribution:sv <0x1f4e6663>
-			streams:  12, words: 53024
+		worklib.clock_distribution:sv <0x67bf6ba1>
+			streams:  12, words: 53753
 		worklib.clock_distribution_tb:sv <0x35627bc4>
 			streams:  12, words: 13543
 	Building instance specific data structures.
@@ -38,7 +39,7 @@ xmelab: *W,REALCV (./models/clock_distribution_mismatch.sv,112|57): Real argumen
 		                 Instances  Unique
 		Modules:                 2       2
 		Verilog packages:        1       1
-		Registers:             124     124
+		Registers:             128     128
 		Scalar wires:           56       -
 		Vectored wires:          1       -
 		Always blocks:           6       6
@@ -51,9 +52,6 @@ xmelab: *W,REALCV (./models/clock_distribution_mismatch.sv,112|57): Real argumen
 xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
 SVSEED default: 1
 [DMSINFO] Simulating with Xcelium Mixed-Signal App...
-
--------------------------------------
-Relinquished control to SimVision...
 xcelium> 
 xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
 xcelium> 
@@ -159,6 +157,13 @@ xcelium> probe -create -database waves clock_distribution_tb.dut.atb0 clock_dist
 Created probe 1
 xcelium> 
 xcelium> simvision -input restore.tcl.svcf
+xmsim: *E,TCLERR: SimVision initialization failed.
+xcelium> 
+-------------------------------------
+Relinquished control to SimVision...
+# Restoring simulation environment...
+xcelium> input -quiet .reinvoke.sim
+xcelium> file delete .reinvoke.sim
 xcelium> run
 Raw binary mismatch[0] =        1606
 Binary mismatch[0]= -0.0039
@@ -206,6 +211,52 @@ Raw binary mismatch[4] =        1591
 Binary mismatch[4]= -0.0041
 Raw binary mismatch[5] =         553
 Binary mismatch[5]= -0.0145
+Raw binary mismatch[6] =        2234
+Binary mismatch[6]= 0.0023
+Raw binary mismatch[7] =         529
+Binary mismatch[7]= -0.0147
+Raw binary mismatch[8] =        1942
+Binary mismatch[8]= -0.0006
+Raw binary mismatch[9] =        2367
+Binary mismatch[9]= 0.0037
+Raw binary mismatch[10] =        2992
+Binary mismatch[10]= 0.0099
+Raw binary mismatch[11] =        3533
+Binary mismatch[11]= 0.0153
+Raw binary mismatch[12] =        2231
+Binary mismatch[12]= 0.0023
+Raw binary mismatch[13] =        3449
+Binary mismatch[13]= 0.0145
+Raw binary mismatch[14] =        1763
+Binary mismatch[14]= -0.0024
+Raw binary mismatch[15] =        1564
+Binary mismatch[15]= -0.0044
+Raw binary mismatch[16] =        2992
+Binary mismatch[16]= 0.0099
+Raw binary mismatch[0] =        1675
+Binary mismatch[0]= -0.0032
+Raw binary mismatch[1] =        2426
+Binary mismatch[1]= 0.0043
+Raw binary mismatch[2] =         911
+Binary mismatch[2]= -0.0109
+Raw binary mismatch[3] =        2231
+Binary mismatch[3]= 0.0023
+Raw binary mismatch[4] =        2532
+Binary mismatch[4]= 0.0053
+Raw binary mismatch[5] =        1911
+Binary mismatch[5]= -0.0009
+Raw binary mismatch[0] =        1010
+Binary mismatch[0]= -0.0099
+Raw binary mismatch[1] =         891
+Binary mismatch[1]= -0.0111
+Raw binary mismatch[2] =         238
+Binary mismatch[2]= -0.0176
+Raw binary mismatch[3] =         279
+Binary mismatch[3]= -0.0172
+Raw binary mismatch[4] =        2575
+Binary mismatch[4]= 0.0057
+Raw binary mismatch[5] =        1480
+Binary mismatch[5]= -0.0052
 Iniciando tests...
 Test 1: Estado apagado
 clkout_therm_16 = x, clkoutb_therm_16 = x

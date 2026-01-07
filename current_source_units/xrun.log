@@ -1,17 +1,26 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 07, 2026 at 09:57:51 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 07, 2026 at 15:33:20 CET
 xrun
 	-f xrun.f
 		-clean
-		./models/currentSourceUnits_mismatch.sv
+		./models/currentSourceUnits_noise.sv
 		./tb/currentSourceUnits_tb.sv
 		-access +rw
 		-s
 		-input /home/msegper/Documents/TFM/current_source_units/restore.tcl
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
-file: ./models/currentSourceUnits_mismatch.sv
+file: ./models/currentSourceUnits_noise.sv
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (./models/currentSourceUnits_noise.sv,95|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 1000;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (./models/currentSourceUnits_noise.sv,96|20): Local static variable with initializer requires 'static' keyword.
+        real scalar =1e-12;  //Para ajustar el peso del ruido (1000*1e-12 = 1nA, el ruido tiene magnitud de nA)
+                    |
+xmvlog: *W,VARIST (./models/currentSourceUnits_noise.sv,99|20): Local static variable with initializer requires 'static' keyword.
 	module worklib.currentSourceUnits:sv
-		errors: 0, warnings: 0
+		errors: 0, warnings: 3
 file: ./tb/currentSourceUnits_tb.sv
 	module worklib.currentSourceUnits_tb:sv
 		errors: 0, warnings: 0
@@ -19,18 +28,18 @@ file: ./tb/currentSourceUnits_tb.sv
 	Elaborating the design hierarchy:
 	Top level design units:
 		cds_rnm_pkg
-		$unit_0x1db61142
+		$unit_0x6d800340
 		currentSourceUnits_tb
 	Building instance overlay tables: ....................
-        $display("Raw binary mismatch = %0d", temp);
-                                                 |
-xmelab: *W,REALCV (./models/currentSourceUnits_mismatch.sv,103|49): Real argument converted to integer for (%d).
+        $display("noise = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
+                                                                             |
+xmelab: *W,REALCV (./models/currentSourceUnits_noise.sv,106|77): Real argument converted to integer for (%d).
  Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.currentSourceUnits:sv <0x600e54fd>
-			streams:  11, words: 38290
-		worklib.currentSourceUnits_tb:sv <0x1850169b>
+		worklib.currentSourceUnits:sv <0x3ccd5e5e>
+			streams:  11, words: 33370
+		worklib.currentSourceUnits_tb:sv <0x777d797d>
 			streams:  34, words: 26473
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
@@ -38,7 +47,7 @@ xmelab: *W,REALCV (./models/currentSourceUnits_mismatch.sv,103|49): Real argumen
 		                 Instances  Unique
 		Modules:                 2       2
 		Verilog packages:        1       1
-		Registers:              97      97
+		Registers:              77      77
 		Scalar wires:           31       -
 		Vectored wires:          1       -
 		Always blocks:           5       5
@@ -161,99 +170,7 @@ xcelium> simvision -input restore.tcl.svcf
 -------------------------------------
 Relinquished control to SimVision...
 xcelium> 
-xcelium> run
-Raw binary mismatch =         504
-Binary mismatch= -0.0150
-Raw binary mismatch =        1373
-Binary mismatch= -0.0063
-Raw binary mismatch =         659
-Binary mismatch= -0.0134
-Raw binary mismatch =         122
-Binary mismatch= -0.0188
-Raw binary mismatch =        3842
-Binary mismatch= 0.0184
-Raw binary mismatch =         298
-Binary mismatch= -0.0170
-Raw binary mismatch =         629
-Binary mismatch= -0.0137
-Raw binary mismatch =        3411
-Binary mismatch= 0.0141
-Raw binary mismatch =        3321
-Binary mismatch= 0.0132
-Raw binary mismatch =          51
-Binary mismatch= -0.0195
-Raw binary mismatch =        1661
-Binary mismatch= -0.0034
-Raw binary mismatch =        2439
-Binary mismatch= 0.0044
-Raw binary mismatch =         579
-Binary mismatch= -0.0142
-Raw binary mismatch =        1342
-Binary mismatch= -0.0066
-Raw binary mismatch =        3977
-Binary mismatch= 0.0198
-Raw binary mismatch =         864
-Binary mismatch= -0.0114
-Raw binary mismatch =         884
-Binary mismatch= -0.0112
-Raw binary mismatch =        1020
-Binary mismatch= -0.0098
-Raw binary mismatch =        1024
-Binary mismatch= -0.0098
-Raw binary mismatch =        2933
-Binary mismatch= 0.0093
-Raw binary mismatch =        2504
-Binary mismatch= 0.0050
-Raw binary mismatch =        1387
-Binary mismatch= -0.0061
-Raw binary mismatch =         983
-Binary mismatch= -0.0102
-Raw binary mismatch =         618
-Binary mismatch= -0.0138
-Barrido de iref_500ua:
-iref_500ua = 0.000450 A
-iref_500ua = 0.000500 A
-iref_500ua = 0.000550 A
-Barrido de vddana_1p8:
-vddana_1p8 = 1.71 V
-vddana_1p8 = 1.72 V
-vddana_1p8 = 1.73 V
-vddana_1p8 = 1.74 V
-vddana_1p8 = 1.75 V
-vddana_1p8 = 1.76 V
-vddana_1p8 = 1.77 V
-vddana_1p8 = 1.78 V
-vddana_1p8 = 1.79 V
-vddana_1p8 = 1.80 V
-vddana_1p8 = 1.81 V
-vddana_1p8 = 1.82 V
-vddana_1p8 = 1.83 V
-vddana_1p8 = 1.84 V
-vddana_1p8 = 1.85 V
-vddana_1p8 = 1.86 V
-vddana_1p8 = 1.87 V
-vddana_1p8 = 1.88 V
-vddana_1p8 = 1.89 V
-Barrido de vddana_0p8:
-vddana_0p8 = 0.76 V
-vddana_0p8 = 0.77 V
-vddana_0p8 = 0.78 V
-vddana_0p8 = 0.79 V
-vddana_0p8 = 0.80 V
-vddana_0p8 = 0.81 V
-vddana_0p8 = 0.82 V
-vddana_0p8 = 0.83 V
-vddana_0p8 = 0.84 V
-Barrido de atb_ena:
-atb_ena = 00
-atb_ena = 01
-atb_ena = 10
-atb_ena = 11
-Barrido de pdb:
-pdb = 0
-pdb = 1
-Simulation complete via $finish(1) at time 510 PS + 0
-./tb/currentSourceUnits_tb.sv:134         $finish;
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 07, 2026 at 10:04:38 CET  (total: 00:06:47)
+xmsim: *W,NORUNCMD: No 'run' command issued.
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 07, 2026 at 15:33:55 CET  (total: 00:00:35)

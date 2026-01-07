@@ -6,12 +6,11 @@
 -TCL
 -INPUT
 /home/msegper/Documents/TFM/rsync_latch/restore.tcl
--TCL
 -MESSAGES
 +EMGRLOG
 xrun.log
 -XLSTIME
-1763131234
+1767777815
 -XLKEEP
 -XLMODE
 ./xcelium.d/run.lnx8664.24.03.d
@@ -25,4 +24,4 @@ xrun
 -XLVERSION
 "TOOL:	xrun(64)	24.03-s004"
 -XLNAME
-./xcelium.d/run.lnx8664.24.03.d/cdm2.cc.upv.es_2922178
+./xcelium.d/run.lnx8664.24.03.d/cdm2.cc.upv.es_1073150

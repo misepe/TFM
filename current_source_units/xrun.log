@@ -1,16 +1,15 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Dec 11, 2025 at 16:01:08 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 07, 2026 at 09:57:51 CET
 xrun
 	-f xrun.f
 		-clean
-		./models/currentSourceUnits.sv
+		./models/currentSourceUnits_mismatch.sv
 		./tb/currentSourceUnits_tb.sv
 		-access +rw
-		-gui
 		-s
 		-input /home/msegper/Documents/TFM/current_source_units/restore.tcl
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
-file: ./models/currentSourceUnits.sv
+file: ./models/currentSourceUnits_mismatch.sv
 	module worklib.currentSourceUnits:sv
 		errors: 0, warnings: 0
 file: ./tb/currentSourceUnits_tb.sv
@@ -20,14 +19,18 @@ file: ./tb/currentSourceUnits_tb.sv
 	Elaborating the design hierarchy:
 	Top level design units:
 		cds_rnm_pkg
-		$unit_0x1e9d2cb2
+		$unit_0x1db61142
 		currentSourceUnits_tb
-	Building instance overlay tables: .................... Done
+	Building instance overlay tables: ....................
+        $display("Raw binary mismatch = %0d", temp);
+                                                 |
+xmelab: *W,REALCV (./models/currentSourceUnits_mismatch.sv,103|49): Real argument converted to integer for (%d).
+ Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.currentSourceUnits:sv <0x3a5d1505>
-			streams:   9, words: 28100
-		worklib.currentSourceUnits_tb:sv <0x3c92c148>
+		worklib.currentSourceUnits:sv <0x600e54fd>
+			streams:  11, words: 38290
+		worklib.currentSourceUnits_tb:sv <0x1850169b>
 			streams:  34, words: 26473
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
@@ -35,22 +38,19 @@ file: ./tb/currentSourceUnits_tb.sv
 		                 Instances  Unique
 		Modules:                 2       2
 		Verilog packages:        1       1
-		Registers:              71      71
+		Registers:              97      97
 		Scalar wires:           31       -
 		Vectored wires:          1       -
 		Always blocks:           5       5
-		Initial blocks:          6       6
+		Initial blocks:          7       7
 		Pseudo assignments:     32       -
 		Assertions:              4       4
 		Compilation units:       1       1
 		Simulation timescale:  1ps
 	Writing initial simulation snapshot: worklib.currentSourceUnits_tb:sv
-xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
+Loading snapshot worklib.currentSourceUnits_tb:sv .................... Done
+SVSEED default: 1
 [DMSINFO] Simulating with Xcelium Mixed-Signal App...
-
--------------------------------------
-Relinquished control to SimVision...
-xcelium> 
 xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
 xcelium> 
 xcelium> # XM-Sim Command File
@@ -157,7 +157,59 @@ xcelium> probe -create -database waves currentSourceUnits_tb.dut.Iout_them_0 cur
 Created probe 2
 xcelium> 
 xcelium> simvision -input restore.tcl.svcf
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
 xcelium> run
+Raw binary mismatch =         504
+Binary mismatch= -0.0150
+Raw binary mismatch =        1373
+Binary mismatch= -0.0063
+Raw binary mismatch =         659
+Binary mismatch= -0.0134
+Raw binary mismatch =         122
+Binary mismatch= -0.0188
+Raw binary mismatch =        3842
+Binary mismatch= 0.0184
+Raw binary mismatch =         298
+Binary mismatch= -0.0170
+Raw binary mismatch =         629
+Binary mismatch= -0.0137
+Raw binary mismatch =        3411
+Binary mismatch= 0.0141
+Raw binary mismatch =        3321
+Binary mismatch= 0.0132
+Raw binary mismatch =          51
+Binary mismatch= -0.0195
+Raw binary mismatch =        1661
+Binary mismatch= -0.0034
+Raw binary mismatch =        2439
+Binary mismatch= 0.0044
+Raw binary mismatch =         579
+Binary mismatch= -0.0142
+Raw binary mismatch =        1342
+Binary mismatch= -0.0066
+Raw binary mismatch =        3977
+Binary mismatch= 0.0198
+Raw binary mismatch =         864
+Binary mismatch= -0.0114
+Raw binary mismatch =         884
+Binary mismatch= -0.0112
+Raw binary mismatch =        1020
+Binary mismatch= -0.0098
+Raw binary mismatch =        1024
+Binary mismatch= -0.0098
+Raw binary mismatch =        2933
+Binary mismatch= 0.0093
+Raw binary mismatch =        2504
+Binary mismatch= 0.0050
+Raw binary mismatch =        1387
+Binary mismatch= -0.0061
+Raw binary mismatch =         983
+Binary mismatch= -0.0102
+Raw binary mismatch =         618
+Binary mismatch= -0.0138
 Barrido de iref_500ua:
 iref_500ua = 0.000450 A
 iref_500ua = 0.000500 A
@@ -204,4 +256,4 @@ Simulation complete via $finish(1) at time 510 PS + 0
 ./tb/currentSourceUnits_tb.sv:134         $finish;
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Dec 11, 2025 at 16:02:41 CET  (total: 00:01:33)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 07, 2026 at 10:04:38 CET  (total: 00:06:47)

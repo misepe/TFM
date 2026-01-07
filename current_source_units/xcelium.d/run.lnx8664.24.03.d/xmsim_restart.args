@@ -2,7 +2,6 @@
 // File created by:  xrun
 // Do not modify this file
 //
--gui
 -TCL
 -INPUT
 /home/msegper/Documents/TFM/current_source_units/restore.tcl
@@ -10,7 +9,7 @@
 +EMGRLOG
 xrun.log
 -XLSTIME
-1765465268
+1767776271
 -XLKEEP
 -XLMODE
 ./xcelium.d/run.lnx8664.24.03.d
@@ -24,4 +23,4 @@ xrun
 -XLVERSION
 "TOOL:	xrun(64)	24.03-s004"
 -XLNAME
-./xcelium.d/run.lnx8664.24.03.d/cdm2.cc.upv.es_3217546
+./xcelium.d/run.lnx8664.24.03.d/cdm2.cc.upv.es_1065521

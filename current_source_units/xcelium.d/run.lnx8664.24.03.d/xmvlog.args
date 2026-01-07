@@ -5,7 +5,7 @@
 -XLMODE
 ./xcelium.d/run.lnx8664.24.03.d
 -RUNMODE
-./models/currentSourceUnits.sv
+./models/currentSourceUnits_mismatch.sv
 ./tb/currentSourceUnits_tb.sv
 -CDSLIB
 ./xcelium.d/run.lnx8664.24.03.d/cdsrun.lib

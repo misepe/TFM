@@ -1,50 +1,56 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 07, 2026 at 10:23:35 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 09, 2026 at 16:32:54 CET
 xrun
 	-f xrun.f
 		-clean
 		./models/rsync_latch_mismatch.sv
-		./tb/rsync_latch_mismatch_tb.sv
+		./tb/rsync_latch_tb.sv
 		-access +rw
 		-gui
 		-s
 		-input /home/msegper/Documents/TFM/rsync_latch/restore.tcl
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
 file: ./models/rsync_latch_mismatch.sv
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (./models/rsync_latch_mismatch.sv,128|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 10;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (./models/rsync_latch_mismatch.sv,129|20): Local static variable with initializer requires 'static' keyword.
 	module worklib.rsync_latch:sv
-		errors: 0, warnings: 0
-file: ./tb/rsync_latch_mismatch_tb.sv
+		errors: 0, warnings: 2
+file: ./tb/rsync_latch_tb.sv
 	module worklib.rsync_latch_tb:sv
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
 	Top level design units:
 		cds_rnm_pkg
-		$unit_0x1ad891ce
+		$unit_0x6eae53dc
 		rsync_latch_tb
 	Building instance overlay tables: ....................
-        $display("Raw binary mismatch[%0d] = %0d", k, temp);
-                                                         |
-xmelab: *W,REALCV (./models/rsync_latch_mismatch.sv,124|57): Real argument converted to integer for (%d).
+        $display("mismatch temporal = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
+                                                                                         |
+xmelab: *W,REALCV (./models/rsync_latch_mismatch.sv,135|89): Real argument converted to integer for (%d).
  Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.rsync_latch:sv <0x5c7b8ead>
-			streams: 129, words: 98340
-		worklib.rsync_latch_tb:sv <0x06aab04e>
-			streams:  90, words: 72439
+		worklib.rsync_latch:sv <0x771695a7>
+			streams: 137, words: 108933
+		worklib.rsync_latch_tb:sv <0x60dfd20b>
+			streams:  90, words: 70933
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                 Instances  Unique
 		Modules:                 2       2
 		Verilog packages:        1       1
-		Registers:              90      90
+		Registers:              93      93
 		Scalar wires:           54       -
-		Vectored wires:          9       -
-		Always blocks:          28      28
-		Initial blocks:          7       7
-		Parallel blocks:         1       1
+		Vectored wires:         13       -
+		Always blocks:          30      30
+		Initial blocks:          9       9
+		Parallel blocks:         3       3
 		Pseudo assignments:     63       -
 		Assertions:              3       3
 		Compilation units:       1       1
@@ -162,222 +168,82 @@ Created probe 1
 xcelium> 
 xcelium> simvision -input restore.tcl.svcf
 xcelium> run
-Raw binary mismatch[0] =        2556
-Binary mismatch[0]= 0.0056
-Raw binary mismatch[1] =         969
-Binary mismatch[1]= -0.0103
-Raw binary mismatch[2] =        2383
-Binary mismatch[2]= 0.0038
-Raw binary mismatch[3] =        3209
-Binary mismatch[3]= 0.0121
-Raw binary mismatch[4] =        3507
-Binary mismatch[4]= 0.0151
-Raw binary mismatch[5] =        3294
-Binary mismatch[5]= 0.0129
-Raw binary mismatch[6] =        2788
-Binary mismatch[6]= 0.0079
-Raw binary mismatch[0] =        2485
-Binary mismatch[0]= 0.0049
-Raw binary mismatch[1] =        1979
-Binary mismatch[1]= -0.0002
-Raw binary mismatch[2] =        2629
-Binary mismatch[2]= 0.0063
-Raw binary mismatch[3] =        2167
-Binary mismatch[3]= 0.0017
-Raw binary mismatch[4] =        2616
-Binary mismatch[4]= 0.0062
-Raw binary mismatch[5] =         843
-Binary mismatch[5]= -0.0116
-Raw binary mismatch[6] =         732
-Binary mismatch[6]= -0.0127
-Raw binary mismatch[0] =        3560
-Binary mismatch[0]= 0.0156
-Raw binary mismatch[1] =         360
-Binary mismatch[1]= -0.0164
-Raw binary mismatch[2] =        1224
-Binary mismatch[2]= -0.0078
-Raw binary mismatch[3] =        1837
-Binary mismatch[3]= -0.0016
-Raw binary mismatch[4] =        1470
-Binary mismatch[4]= -0.0053
-Raw binary mismatch[5] =        1443
-Binary mismatch[5]= -0.0056
-Raw binary mismatch[6] =        2720
-Binary mismatch[6]= 0.0072
-Raw binary mismatch[7] =        2736
-Binary mismatch[7]= 0.0074
-Raw binary mismatch[8] =         496
-Binary mismatch[8]= -0.0150
-Raw binary mismatch[9] =          56
-Binary mismatch[9]= -0.0194
-Raw binary mismatch[10] =        1934
-Binary mismatch[10]= -0.0007
-Raw binary mismatch[11] =         486
-Binary mismatch[11]= -0.0151
-Raw binary mismatch[12] =        3519
-Binary mismatch[12]= 0.0152
-Raw binary mismatch[13] =        2045
-Binary mismatch[13]= 0.0004
-Raw binary mismatch[14] =        2267
-Binary mismatch[14]= 0.0027
-Raw binary mismatch[15] =         542
-Binary mismatch[15]= -0.0146
-Raw binary mismatch[16] =         952
-Binary mismatch[16]= -0.0105
-Raw binary mismatch[0] =        1144
-Binary mismatch[0]= -0.0086
-Raw binary mismatch[1] =         377
-Binary mismatch[1]= -0.0162
-Raw binary mismatch[2] =        1266
-Binary mismatch[2]= -0.0073
-Raw binary mismatch[3] =        1493
-Binary mismatch[3]= -0.0051
-Raw binary mismatch[4] =         153
-Binary mismatch[4]= -0.0185
-Raw binary mismatch[5] =         487
-Binary mismatch[5]= -0.0151
-Raw binary mismatch[6] =        3017
-Binary mismatch[6]= 0.0102
-Raw binary mismatch[7] =         826
-Binary mismatch[7]= -0.0117
-Raw binary mismatch[8] =        3196
-Binary mismatch[8]= 0.0120
-Raw binary mismatch[9] =        1138
-Binary mismatch[9]= -0.0086
-Raw binary mismatch[10] =        3764
-Binary mismatch[10]= 0.0176
-Raw binary mismatch[11] =         762
-Binary mismatch[11]= -0.0124
-Raw binary mismatch[12] =        3305
-Binary mismatch[12]= 0.0131
-Raw binary mismatch[13] =        3601
-Binary mismatch[13]= 0.0160
-Raw binary mismatch[14] =        1107
-Binary mismatch[14]= -0.0089
-Raw binary mismatch[15] =        1458
-Binary mismatch[15]= -0.0054
-Raw binary mismatch[16] =        2294
-Binary mismatch[16]= 0.0029
+mismatch temporal =           3 seed = -493407719 media =0 sigma = 10
+mismatch temporal =          10 seed = -1203955251 media =0 sigma = 10
+mismatch temporal =          -2 seed = 271496356 media =0 sigma = 10
+mismatch temporal =           4 seed = 1667014281 media =0 sigma = 10
 Test 1: Verificar estado de apagado (Power-Down)
+xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 0 FS).
+rsync_latch_tb.dut
+Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 2: Verificar funcionamiento normal
+xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 200 PS).
+rsync_latch_tb.dut
+Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
+xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 400 PS).
+rsync_latch_tb.dut
+Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 3: Verificar comportamiento de atb_ena
+xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 600 PS).
+rsync_latch_tb.dut
+Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 3.1: atb_ena = 2'b00 -> atb0 = 0.00, atb1 = 0.00
+xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 800 PS).
+rsync_latch_tb.dut
+Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 3.2: atb_ena = 2'b01 -> atb0 = 0.00, atb1 = 1.00
+xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 1 NS).
+rsync_latch_tb.dut
+Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 3.3: atb_ena = 2'b10 -> atb0 = 0.00, atb1 = 1.00
+xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 1200 PS).
+rsync_latch_tb.dut
+Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 3.4: atb_ena = 2'b11 -> atb0 = 0.00, atb1 = 0.00
 Simulación completada.
-Simulation complete via $finish(1) at time 70 NS + 0
-./tb/rsync_latch_mismatch_tb.sv:223         $finish;
+Simulation complete via $finish(1) at time 1400 PS + 0
+./tb/rsync_latch_tb.sv:219         $finish;
+xcelium> probe -create -shm rsync_latch_tb.dut.dataoutbin_aux rsync_latch_tb.dut.dataoutbinb_aux rsync_latch_tb.dut.dataouttherm_aux rsync_latch_tb.dut.dataoutthermb_aux
+Created probe 2
 xcelium> reset
 SVSEED default: 1
 Loaded snapshot worklib.rsync_latch_tb:sv
 xcelium> run
-Raw binary mismatch[0] =        2556
-Binary mismatch[0]= 0.0056
-Raw binary mismatch[1] =         969
-Binary mismatch[1]= -0.0103
-Raw binary mismatch[2] =        2383
-Binary mismatch[2]= 0.0038
-Raw binary mismatch[3] =        3209
-Binary mismatch[3]= 0.0121
-Raw binary mismatch[4] =        3507
-Binary mismatch[4]= 0.0151
-Raw binary mismatch[5] =        3294
-Binary mismatch[5]= 0.0129
-Raw binary mismatch[6] =        2788
-Binary mismatch[6]= 0.0079
-Raw binary mismatch[0] =        2485
-Binary mismatch[0]= 0.0049
-Raw binary mismatch[1] =        1979
-Binary mismatch[1]= -0.0002
-Raw binary mismatch[2] =        2629
-Binary mismatch[2]= 0.0063
-Raw binary mismatch[3] =        2167
-Binary mismatch[3]= 0.0017
-Raw binary mismatch[4] =        2616
-Binary mismatch[4]= 0.0062
-Raw binary mismatch[5] =         843
-Binary mismatch[5]= -0.0116
-Raw binary mismatch[6] =         732
-Binary mismatch[6]= -0.0127
-Raw binary mismatch[0] =        3560
-Binary mismatch[0]= 0.0156
-Raw binary mismatch[1] =         360
-Binary mismatch[1]= -0.0164
-Raw binary mismatch[2] =        1224
-Binary mismatch[2]= -0.0078
-Raw binary mismatch[3] =        1837
-Binary mismatch[3]= -0.0016
-Raw binary mismatch[4] =        1470
-Binary mismatch[4]= -0.0053
-Raw binary mismatch[5] =        1443
-Binary mismatch[5]= -0.0056
-Raw binary mismatch[6] =        2720
-Binary mismatch[6]= 0.0072
-Raw binary mismatch[7] =        2736
-Binary mismatch[7]= 0.0074
-Raw binary mismatch[8] =         496
-Binary mismatch[8]= -0.0150
-Raw binary mismatch[9] =          56
-Binary mismatch[9]= -0.0194
-Raw binary mismatch[10] =        1934
-Binary mismatch[10]= -0.0007
-Raw binary mismatch[11] =         486
-Binary mismatch[11]= -0.0151
-Raw binary mismatch[12] =        3519
-Binary mismatch[12]= 0.0152
-Raw binary mismatch[13] =        2045
-Binary mismatch[13]= 0.0004
-Raw binary mismatch[14] =        2267
-Binary mismatch[14]= 0.0027
-Raw binary mismatch[15] =         542
-Binary mismatch[15]= -0.0146
-Raw binary mismatch[16] =         952
-Binary mismatch[16]= -0.0105
-Raw binary mismatch[0] =        1144
-Binary mismatch[0]= -0.0086
-Raw binary mismatch[1] =         377
-Binary mismatch[1]= -0.0162
-Raw binary mismatch[2] =        1266
-Binary mismatch[2]= -0.0073
-Raw binary mismatch[3] =        1493
-Binary mismatch[3]= -0.0051
-Raw binary mismatch[4] =         153
-Binary mismatch[4]= -0.0185
-Raw binary mismatch[5] =         487
-Binary mismatch[5]= -0.0151
-Raw binary mismatch[6] =        3017
-Binary mismatch[6]= 0.0102
-Raw binary mismatch[7] =         826
-Binary mismatch[7]= -0.0117
-Raw binary mismatch[8] =        3196
-Binary mismatch[8]= 0.0120
-Raw binary mismatch[9] =        1138
-Binary mismatch[9]= -0.0086
-Raw binary mismatch[10] =        3764
-Binary mismatch[10]= 0.0176
-Raw binary mismatch[11] =         762
-Binary mismatch[11]= -0.0124
-Raw binary mismatch[12] =        3305
-Binary mismatch[12]= 0.0131
-Raw binary mismatch[13] =        3601
-Binary mismatch[13]= 0.0160
-Raw binary mismatch[14] =        1107
-Binary mismatch[14]= -0.0089
-Raw binary mismatch[15] =        1458
-Binary mismatch[15]= -0.0054
-Raw binary mismatch[16] =        2294
-Binary mismatch[16]= 0.0029
+mismatch temporal =           3 seed = -493407719 media =0 sigma = 10
+mismatch temporal =          10 seed = -1203955251 media =0 sigma = 10
+mismatch temporal =          -2 seed = 271496356 media =0 sigma = 10
+mismatch temporal =           4 seed = 1667014281 media =0 sigma = 10
 Test 1: Verificar estado de apagado (Power-Down)
+xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 0 FS).
+rsync_latch_tb.dut
+Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 2: Verificar funcionamiento normal
+xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 200 PS).
+rsync_latch_tb.dut
+Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
+xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 400 PS).
+rsync_latch_tb.dut
+Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 3: Verificar comportamiento de atb_ena
+xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 600 PS).
+rsync_latch_tb.dut
+Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 3.1: atb_ena = 2'b00 -> atb0 = 0.00, atb1 = 0.00
+xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 800 PS).
+rsync_latch_tb.dut
+Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 3.2: atb_ena = 2'b01 -> atb0 = 0.00, atb1 = 1.00
+xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 1 NS).
+rsync_latch_tb.dut
+Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 3.3: atb_ena = 2'b10 -> atb0 = 0.00, atb1 = 1.00
+xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 1200 PS).
+rsync_latch_tb.dut
+Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 3.4: atb_ena = 2'b11 -> atb0 = 0.00, atb1 = 0.00
 Simulación completada.
-Simulation complete via $finish(1) at time 70 NS + 0
-./tb/rsync_latch_mismatch_tb.sv:223         $finish;
+Simulation complete via $finish(1) at time 1400 PS + 0
+./tb/rsync_latch_tb.sv:219         $finish;
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 07, 2026 at 10:34:53 CET  (total: 00:11:18)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 09, 2026 at 16:50:43 CET  (total: 00:17:49)

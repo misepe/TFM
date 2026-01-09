@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1ps/1ps
 
 module driver_cell_tb;
 
@@ -41,13 +41,13 @@ module driver_cell_tb;
         // Test 1: Verificación de límites de alimentación
         $display("Test 1: Verificación de límites de alimentación");
         vddana_1p8 = 1.8; vddana_0p8 = 0.8; vssana = 0.0; // Dentro de los límites
-        #10;
+        #200;
         //vddana_1p8 = 1.9;  // Fuera de los límites
-        #10;
+        #200;
         //vddana_0p8 = 0.7;vddana_1p8 = 1.8; // Fuera de los límites
-        #10;
+        #200;
         //vssana = -0.1; vddana_0p8 = 0.8; // Fuera de los límites
-        #10;
+        #200;
 
         // Test 2: Estado apagado (pdb = 0)
         $display("Test 2: Estado apagado (pdb = 0)");
@@ -55,7 +55,7 @@ module driver_cell_tb;
         datain = 8'b10101010; datainb = ~datain;
         datatherm = 17'b10101010101010101; datathermb = ~datatherm;
         vddana_1p8 = 1.8; vddana_0p8 = 0.8; vssana = 0.0; // Alimentación válida
-        #10;
+        #200;
         $display("databinout = %b, databinoutb = %b, datathermout = %b, datathermoutb = %b",
                  databinout, databinoutb, datathermout, datathermoutb);
 
@@ -64,20 +64,20 @@ module driver_cell_tb;
         pdb = 1;
         datain = 8'b11001100; datainb = ~datain;
         datatherm = 17'b11110000111100001; datathermb = ~datatherm;
-        #10;
+        #200;
         $display("databinout = %b, databinoutb = %b, datathermout = %b, datathermoutb = %b",
                  databinout, databinoutb, datathermout, datathermoutb);
 
         // Test 4: Propagación de datos binarios
         $display("Test 5: Propagación de datos binarios");
         datain = 8'b10101010; datainb = ~datain;
-        #10;
+        #200;
         $display("databinout = %b, databinoutb = %b", databinout, databinoutb);
 
         // Test 5: Propagación de datos termométricos
         $display("Test 6: Propagación de datos termométricos");
         datatherm = 17'b10101010101010101; datathermb = ~datatherm;
-        #10;
+        #200;
         $display("datathermout = %b, datathermoutb = %b", datathermout, datathermoutb);
 
 

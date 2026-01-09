@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1ps/1ps
 
 module rsync_latch_tb;
 
@@ -144,30 +144,30 @@ module rsync_latch_tb;
         // Generar relojes
     initial begin
         forever fork
-            begin #5 clkin_therm_0 = ~clkin_therm_0; clkinb_therm_0 = ~clkinb_therm_0; end
-            begin #5 clkin_therm_1 = ~clkin_therm_1; clkinb_therm_1 = ~clkinb_therm_1; end
-            begin #5 clkin_therm_2 = ~clkin_therm_2; clkinb_therm_2 = ~clkinb_therm_2; end
-            begin #5 clkin_therm_3 = ~clkin_therm_3; clkinb_therm_3 = ~clkinb_therm_3; end
-            begin #5 clkin_therm_4 = ~clkin_therm_4; clkinb_therm_4 = ~clkinb_therm_4; end
-            begin #5 clkin_therm_5 = ~clkin_therm_5; clkinb_therm_5 = ~clkinb_therm_5; end
-            begin #5 clkin_therm_6 = ~clkin_therm_6; clkinb_therm_6 = ~clkinb_therm_6; end
-            begin #5 clkin_therm_7 = ~clkin_therm_7; clkinb_therm_7 = ~clkinb_therm_7; end
-            begin #5 clkin_therm_8 = ~clkin_therm_8; clkinb_therm_8 = ~clkinb_therm_8; end
-            begin #5 clkin_therm_9 = ~clkin_therm_9; clkinb_therm_9 = ~clkinb_therm_9; end
-            begin #5 clkin_therm_10 = ~clkin_therm_10; clkinb_therm_10 = ~clkinb_therm_10; end
-            begin #5 clkin_therm_11 = ~clkin_therm_11; clkinb_therm_11 = ~clkinb_therm_11; end
-            begin #5 clkin_therm_12 = ~clkin_therm_12; clkinb_therm_12 = ~clkinb_therm_12; end
-            begin #5 clkin_therm_13 = ~clkin_therm_13; clkinb_therm_13 = ~clkinb_therm_13; end
-            begin #5 clkin_therm_14 = ~clkin_therm_14; clkinb_therm_14 = ~clkinb_therm_14; end
-            begin #5 clkin_therm_15 = ~clkin_therm_15; clkinb_therm_15 = ~clkinb_therm_15; end
-            begin #5 clkin_therm_16 = ~clkin_therm_16; clkinb_therm_16 = ~clkinb_therm_16; end
-            begin #5 clkin_binary_0_red = ~clkin_binary_0_red; clkinb_binary_0_red = ~clkinb_binary_0_red; end
-            begin #5 clkin_binary_0 = ~clkin_binary_0; clkinb_binary_0 = ~clkinb_binary_0; end
-            begin #5 clkin_binary_1 = ~clkin_binary_1; clkinb_binary_1 = ~clkinb_binary_1; end
-            begin #5 clkin_binary_2 = ~clkin_binary_2; clkinb_binary_2 = ~clkinb_binary_2; end
-            begin #5 clkin_binary_3 = ~clkin_binary_3; clkinb_binary_3 = ~clkinb_binary_3; end
-            begin #5 clkin_binary_4 = ~clkin_binary_4; clkinb_binary_4 = ~clkinb_binary_4; end
-            begin #5 clkin_binary_5 = ~clkin_binary_5; clkinb_binary_5 = ~clkinb_binary_5; end
+            begin #100 clkin_therm_0 = ~clkin_therm_0; clkinb_therm_0 = ~clkinb_therm_0; end
+            begin #100 clkin_therm_1 = ~clkin_therm_1; clkinb_therm_1 = ~clkinb_therm_1; end
+            begin #100 clkin_therm_2 = ~clkin_therm_2; clkinb_therm_2 = ~clkinb_therm_2; end
+            begin #100 clkin_therm_3 = ~clkin_therm_3; clkinb_therm_3 = ~clkinb_therm_3; end
+            begin #100 clkin_therm_4 = ~clkin_therm_4; clkinb_therm_4 = ~clkinb_therm_4; end
+            begin #100 clkin_therm_5 = ~clkin_therm_5; clkinb_therm_5 = ~clkinb_therm_5; end
+            begin #100 clkin_therm_6 = ~clkin_therm_6; clkinb_therm_6 = ~clkinb_therm_6; end
+            begin #100 clkin_therm_7 = ~clkin_therm_7; clkinb_therm_7 = ~clkinb_therm_7; end
+            begin #100 clkin_therm_8 = ~clkin_therm_8; clkinb_therm_8 = ~clkinb_therm_8; end
+            begin #100 clkin_therm_9 = ~clkin_therm_9; clkinb_therm_9 = ~clkinb_therm_9; end
+            begin #100 clkin_therm_10 = ~clkin_therm_10; clkinb_therm_10 = ~clkinb_therm_10; end
+            begin #100 clkin_therm_11 = ~clkin_therm_11; clkinb_therm_11 = ~clkinb_therm_11; end
+            begin #100 clkin_therm_12 = ~clkin_therm_12; clkinb_therm_12 = ~clkinb_therm_12; end
+            begin #100 clkin_therm_13 = ~clkin_therm_13; clkinb_therm_13 = ~clkinb_therm_13; end
+            begin #100 clkin_therm_14 = ~clkin_therm_14; clkinb_therm_14 = ~clkinb_therm_14; end
+            begin #100 clkin_therm_15 = ~clkin_therm_15; clkinb_therm_15 = ~clkinb_therm_15; end
+            begin #100 clkin_therm_16 = ~clkin_therm_16; clkinb_therm_16 = ~clkinb_therm_16; end
+            begin #100 clkin_binary_0_red = ~clkin_binary_0_red; clkinb_binary_0_red = ~clkinb_binary_0_red; end
+            begin #100 clkin_binary_0 = ~clkin_binary_0; clkinb_binary_0 = ~clkinb_binary_0; end
+            begin #100 clkin_binary_1 = ~clkin_binary_1; clkinb_binary_1 = ~clkinb_binary_1; end
+            begin #100 clkin_binary_2 = ~clkin_binary_2; clkinb_binary_2 = ~clkinb_binary_2; end
+            begin #100 clkin_binary_3 = ~clkin_binary_3; clkinb_binary_3 = ~clkinb_binary_3; end
+            begin #100 clkin_binary_4 = ~clkin_binary_4; clkinb_binary_4 = ~clkinb_binary_4; end
+            begin #100 clkin_binary_5 = ~clkin_binary_5; clkinb_binary_5 = ~clkinb_binary_5; end
         join
     end
     
@@ -175,7 +175,7 @@ module rsync_latch_tb;
         // Test 1: Verificar estado de apagado (Power-Down)
         $display("Test 1: Verificar estado de apagado (Power-Down)");
         pdb = 0;
-        #10;
+        #200;
 
         // Test 2: Verificar funcionamiento normal
         $display("Test 2: Verificar funcionamiento normal");
@@ -184,34 +184,34 @@ module rsync_latch_tb;
         datainbinb = ~datainbin;
         dataintherm = 17'b11001100110011001;
         datainthermb = ~dataintherm;
-        #10;
+        #200;
         datainbin = 7'b0101010;
         datainbinb = ~datainbin;
         dataintherm = 17'b01100110011001100;
         datainthermb = ~dataintherm;
-        #10;
+        #200;
 
         // Test 3: Verificar comportamiento de atb_ena
         $display("Test 3: Verificar comportamiento de atb_ena");
 
         // Caso 1: atb_ena = 2'b00 (alta impedancia)
         atb_ena = 2'b00;
-        #10;
+        #200;
         $display("Test 3.1: atb_ena = 2'b00 -> atb0 = %0.2f, atb1 = %0.2f", atb0, atb1);
 
         // Caso 2: atb_ena = 2'b01
         atb_ena = 2'b01;
-        #10;
+        #200;
         $display("Test 3.2: atb_ena = 2'b01 -> atb0 = %0.2f, atb1 = %0.2f", atb0, atb1);
 
         // Caso 3: atb_ena = 2'b10
         atb_ena = 2'b10;
-        #10;
+        #200;
         $display("Test 3.3: atb_ena = 2'b10 -> atb0 = %0.2f, atb1 = %0.2f", atb0, atb1);
 
         // Caso 4: atb_ena = 2'b11
         atb_ena = 2'b11;
-        #10;
+        #200;
         $display("Test 3.4: atb_ena = 2'b11 -> atb0 = %0.2f, atb1 = %0.2f", atb0, atb1);
 
         //Final del test

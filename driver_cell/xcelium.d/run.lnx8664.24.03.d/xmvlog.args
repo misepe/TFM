@@ -6,7 +6,7 @@
 ./xcelium.d/run.lnx8664.24.03.d
 -RUNMODE
 ./models/driver_cell_mismatch.sv
-./tb/driver_cell_mismatch_tb.sv
+./tb/driver_cell_tb.sv
 -CDSLIB
 ./xcelium.d/run.lnx8664.24.03.d/cdsrun.lib
 -HDLVAR

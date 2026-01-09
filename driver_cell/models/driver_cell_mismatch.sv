@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1ps/1ps
 import cds_rnm_pkg::*; // Importing the Cadence RNM package
 module driver_cell (
     input [6:0] datain,      // Digital binary control of the converter
@@ -9,14 +9,10 @@ module driver_cell (
     input real vddana_1p8,       // 1.8V power supply
     input real vddana_0p8,       // 0.8V power supply
     input real vssana,           // ground
-    /*output logic [6:0] databinout, //Resyncronized sata driving the current switches
+    output logic [6:0] databinout, //Resyncronized sata driving the current switches
     output logic [6:0] databinoutb, //Resyncronized sata driving the current switches negate
     output logic [16:0] datathermout, //Resyncronized sata driving the current switches
-    output logic [16:0] datathermoutb //Resyncronized sata driving the current switches negate*/
-    output real databinout [6:0], //Resyncronized sata driving the current switches
-    output real databinoutb [6:0], //Resyncronized sata driving the current switches negate
-    output real datathermout [16:0], //Resyncronized sata driving the current switches
-    output real datathermoutb [16:0] //Resyncronized sata driving the current switches negate
+    output logic [16:0] datathermoutb //Resyncronized sata driving the current switches negate
 );
     
     bit input_check; // Variable to check the inputs signals 1: all inputs are correct, 0: at least one input is incorrect
@@ -60,37 +56,45 @@ module driver_cell (
     end
 
      //Generate non lineartinies: mismatch
-    real mismatch_databinout [0:6];
-    real mismatch_databinoutb [0:6];
-    real mismatch_datathermout [0:16];
-    real mismatch_datathermoutb [0:16];
+    real mismatch_databinout;
+    real mismatch_databinoutb;
+    real mismatch_datathermout;
+    real mismatch_datathermoutb;
+    int t_prop=10; //tiempo de propagación de las señales en el bloque
 
-    function real generate_mismatch(int k);
+    /*
+    //Distribución uniforme
+    function real generate_mismatch_temp();
         real temp;
-        temp = $urandom()%4000;
-        $display("Raw binary mismatch[%0d] = %0d", k, temp);
-        $display("Binary mismatch[%0d]= %0.4f", k, ((temp)-2000) / 100000.0);
-        return ((temp)-2000) / 100000.0;
+        temp = $urandom()%20;
+        $display("Raw binary mismatch = %0d", temp);
+        $display("Binary mismatch= %0.4f", ((temp)-10));
+        return ((temp)-10);
+    endfunction*/
+
+    function real generate_mismatch_temp();
+        // Variables
+        int seed ;  // Semilla para el generador de números aleatorios
+        int mean = 0;         // Promedio de la distribución
+        int std_dev = 10;     // Desviación estándar, sigma
+        real random_value;      // Valor aleatorio generado
+
+        // Genera valor aleatorio
+        seed = $urandom();
+        random_value = $dist_normal(seed, mean, std_dev);
+        $display("mismatch temporal = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
+        return random_value;
     endfunction
 
     initial begin
         // Binary part mismatch generation
-        for (int j = 0; j <= 6; j++) begin
-          mismatch_databinout[j] = generate_mismatch(j);
-        end
+          mismatch_databinout = generate_mismatch_temp();
         // Binary negated part mismatch generation
-        for (int j = 0; j <= 6; j++) begin
-          mismatch_databinoutb[j] = generate_mismatch(j);
-        end
-
+          mismatch_databinoutb = generate_mismatch_temp();
         // Thermometric part mismatch generation
-        for (int i = 0; i <= 16; i++) begin
-          mismatch_datathermout[i] = generate_mismatch(i);
-        end
+          mismatch_datathermout = generate_mismatch_temp();
         // Thermometric negated part mismatch generation
-        for (int i = 0; i <= 16; i++) begin
-          mismatch_datathermoutb[i] = generate_mismatch(i);
-        end
+          mismatch_datathermoutb = generate_mismatch_temp();
     end
 
     always_comb begin
@@ -102,24 +106,34 @@ module driver_cell (
             $warning("Input signals boundaries are not correct: vddana_1p8_check=%0d, vddana_0p8_check=%0d, vssana_check=%0d,", vddana_1p8_check, vddana_0p8_check, vssana_check);
         end
 
+    end
+
+    always@(datain,input_check,pdb)begin
         if(input_check == 1 && pdb == 1) begin
-            for (int j = 0; j <= 6; j++) begin
-                databinout[j] = datain[j] + (datain[j] * mismatch_databinout[j]);
-                databinoutb[j] = datainb[j] + (datainb[j] * mismatch_databinoutb[j]);
-            end
-            for (int i = 0; i <= 16; i++) begin
-                datathermout[i] = datatherm[i] + (datatherm[i] * mismatch_datathermout[i]);
-                datathermoutb[i] = datathermb[i] + (datathermb[i] * mismatch_datathermoutb[i]);
-            end
+            databinout = #(t_prop+mismatch_databinout) datain;
         end else if(input_check == 1 && pdb ==0) begin
-            for (int j = 0; j <= 6; j++) begin
-                databinout[j] = `wrealZState;
-                databinoutb[j] = `wrealZState;
-            end
-            for (int i = 0; i <= 16; i++) begin
-                datathermout[i] = `wrealZState;
-                datathermoutb[i] = `wrealZState;
-            end
+                databinout =#(t_prop+mismatch_databinout) 'z;
+        end
+    end
+    always@(datainb,input_check,pdb)begin
+        if(input_check == 1 && pdb == 1) begin
+            databinoutb =#(t_prop+mismatch_databinoutb) datainb;
+        end else if(input_check == 1 && pdb ==0) begin
+                databinoutb =#(t_prop+mismatch_databinoutb) 'z;
+        end
+    end
+    always@(datatherm,input_check,pdb)begin
+        if(input_check == 1 && pdb == 1) begin
+            datathermout =#(t_prop+mismatch_datathermout) datatherm;
+        end else if(input_check == 1 && pdb ==0) begin
+                datathermout =#(t_prop+mismatch_datathermout) 'z;
+        end
+    end
+    always@(datathermb,input_check,pdb)begin
+        if(input_check == 1 && pdb == 1) begin
+            datathermoutb =#(t_prop+mismatch_datathermoutb) datathermb;
+        end else if(input_check == 1 && pdb ==0) begin
+                datathermoutb =#(t_prop+mismatch_datathermoutb) 'z;
         end
     end
 

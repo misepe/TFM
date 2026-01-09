@@ -1,4 +1,4 @@
-# SimVision Command Script (Mon Dec 01 15:42:01 CET 2025)
+# SimVision Command Script (Fri Jan 09 14:08:11 CET 2026)
 #
 # Version 24.03.s004
 #
@@ -63,7 +63,7 @@ waveform set \
     -signalwidth 175 \
     -units ps \
     -valuewidth 75
-waveform baseline set -time 0
+waveform baseline set -time 1000ps
 
 set id [waveform add -signals [subst  {
 	{simulator::[format {driver_cell_tb.dut.vssana}]}
@@ -84,7 +84,19 @@ set id [waveform add -signals [subst  {
 	{simulator::[format {driver_cell_tb.dut.pdb}]}
 	} ]]
 set id [waveform add -signals [subst  {
-	{simulator::[format {driver_cell_tb.dut.datathermoutb[16:0]}]}
+	{simulator::[format {driver_cell_tb.dut.datain[6:0]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {driver_cell_tb.dut.databinout[6:0]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {driver_cell_tb.dut.datainb[6:0]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {driver_cell_tb.dut.databinoutb[6:0]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {driver_cell_tb.dut.datatherm[16:0]}]}
 	} ]]
 set id [waveform add -signals [subst  {
 	{simulator::[format {driver_cell_tb.dut.datathermout[16:0]}]}
@@ -93,22 +105,10 @@ set id [waveform add -signals [subst  {
 	{simulator::[format {driver_cell_tb.dut.datathermb[16:0]}]}
 	} ]]
 set id [waveform add -signals [subst  {
-	{simulator::[format {driver_cell_tb.dut.datatherm[16:0]}]}
-	} ]]
-set id [waveform add -signals [subst  {
-	{simulator::[format {driver_cell_tb.dut.datain[6:0]}]}
-	} ]]
-set id [waveform add -signals [subst  {
-	{simulator::[format {driver_cell_tb.dut.datainb[6:0]}]}
-	} ]]
-set id [waveform add -signals [subst  {
-	{simulator::[format {driver_cell_tb.dut.databinout[6:0]}]}
-	} ]]
-set id [waveform add -signals [subst  {
-	{simulator::[format {driver_cell_tb.dut.databinoutb[6:0]}]}
+	{simulator::[format {driver_cell_tb.dut.datathermoutb[16:0]}]}
 	} ]]
 
-waveform xview limits 0 80000ps
+waveform xview limits 800ps 1600ps
 
 #
 # Waveform Window Links
@@ -118,7 +118,7 @@ waveform xview limits 0 80000ps
 # Console windows
 #
 console set -windowname Console
-window geometry Console 730x250+261+564
+window geometry Console 732x409+261+564
 
 #
 # Layout selection

@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1ps/1ps
 module clock_distribution import cds_rnm_pkg::*;(
     input logic clkin, //digital input current comming from the switching pairs
     input logic clkinb, // digital input negate current comming from the switching pairs 

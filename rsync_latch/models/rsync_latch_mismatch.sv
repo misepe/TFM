@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1ps/1ps
 import cds_rnm_pkg::*; // Importing the Cadence RNM package
 
 
@@ -60,14 +60,10 @@ module rsync_latch(
     input real vssana, //ground connection for the block
     input real iref_25ua, //input reference current 25uA
     input logic [0:1] atb_ena, //stablish the output of the differential testbus
-    /*output logic [6:0] dataoutbin, //Resyncronized data driving the current switches rising edge del reloj
+    output logic [6:0] dataoutbin, //Resyncronized data driving the current switches rising edge del reloj
     output logic [6:0] dataoutbinb, //Resyncronized negate data driving the current switches rising edge del reloj
     output logic [16:0] dataouttherm, //Resyncronized data driving the current switches rising edge del reloj
-    output logic [16:0] dataoutthermb, //Resyncronized negate data driving the current switches rising edge del reloj*/
-    output real dataoutbin [6:0], //Resyncronized data driving the current switches rising edge del reloj
-    output real dataoutbinb [6:0], //Resyncronized negate data driving the current switches rising edge del reloj
-    output real dataouttherm [16:0], //Resyncronized data driving the current switches rising edge del reloj
-    output real dataoutthermb [16:0], //Resyncronized negate data driving the current switches rising edge del reloj
+    output logic [16:0] dataoutthermb, //Resyncronized negate data driving the current switches rising edge del reloj
     output real atb1, //analog testbus
     output real atb0 //analog testbus
 );
@@ -113,37 +109,43 @@ module rsync_latch(
     end
 
     //Generate non lineartinies: mismatch
-    real mismatch_databinout [0:6];
-    real mismatch_databinoutb [0:6];
-    real mismatch_datathermout [0:16];
-    real mismatch_datathermoutb [0:16];
+    real mismatch_databinout;
+    real mismatch_databinoutb;
+    real mismatch_datathermout;
+    real mismatch_datathermoutb;
+    int t_prop=10; //tiempo de propagación de las señales en el bloque
 
-    function real generate_mismatch(int k);
+    /*function real generate_mismatch(int k);
         real temp;
         temp = $urandom()%4000;
         $display("Raw binary mismatch[%0d] = %0d", k, temp);
         $display("Binary mismatch[%0d]= %0.4f", k, ((temp)-2000) / 100000.0);
         return ((temp)-2000) / 100000.0;
+    endfunction*/
+    function real generate_mismatch_temp();
+        // Variables
+        int seed ;  // Semilla para el generador de números aleatorios
+        int mean = 0;         // Promedio de la distribución
+        int std_dev = 10;     // Desviación estándar, sigma
+        real random_value;      // Valor aleatorio generado
+
+        // Genera valor aleatorio
+        seed = $urandom();
+        random_value = $dist_normal(seed, mean, std_dev);
+        $display("mismatch temporal = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
+        return random_value;
     endfunction
 
     initial begin
         // Binary part mismatch generation
-        for (int j = 0; j <= 6; j++) begin
-          mismatch_databinout[j] = generate_mismatch(j);
-        end
+          mismatch_databinout = generate_mismatch_temp();
         // Binary negated part mismatch generation
-        for (int j = 0; j <= 6; j++) begin
-          mismatch_databinoutb[j] = generate_mismatch(j);
-        end
+          mismatch_databinoutb = generate_mismatch_temp();
 
         // Thermometric part mismatch generation
-        for (int i = 0; i <= 16; i++) begin
-          mismatch_datathermout[i] = generate_mismatch(i);
-        end
+          mismatch_datathermout = generate_mismatch_temp();
         // Thermometric negated part mismatch generation
-        for (int i = 0; i <= 16; i++) begin
-          mismatch_datathermoutb[i] = generate_mismatch(i);
-        end
+          mismatch_datathermoutb = generate_mismatch_temp();
     end
 
     always_comb begin
@@ -180,14 +182,20 @@ module rsync_latch(
         end
     end
 
+    logic [6:0] dataoutbin_aux; 
+    logic [6:0] dataoutbinb_aux;
+    logic [16:0] dataouttherm_aux;
+    logic [16:0] dataoutthermb_aux;
+    
+
     always @(posedge clkin_therm_0 or negedge clkinb_therm_0) begin
         if(clkin_therm_0 && !clkinb_therm_0) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[0] <= dataintherm[0] + (dataintherm[0] * mismatch_datathermout[0]);
-                dataoutthermb[0] <= datainthermb[0] + (datainthermb[0] * mismatch_datathermoutb[0]);
+                dataouttherm_aux[0] <= dataintherm[0];
+                dataoutthermb_aux[0] <= datainthermb[0];
             end else if (pdb == 0) begin
-                dataouttherm[0] <= 'z;
-                dataoutthermb[0] <= 'z;
+                dataouttherm_aux[0] <='z;
+                dataoutthermb_aux[0] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_0 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_0, clkinb_therm_0);
@@ -197,81 +205,81 @@ module rsync_latch(
     always @(posedge clkin_therm_1 or negedge clkinb_therm_1) begin
         if(clkin_therm_1 && !clkinb_therm_1) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[1] <= dataintherm[1] + (dataintherm[1] * mismatch_datathermout[1]);
-                dataoutthermb[1] <= datainthermb[1] + (datainthermb[1] * mismatch_datathermoutb[1]);
+                dataouttherm_aux[1] <= dataintherm[1];
+                dataoutthermb_aux[1] <= datainthermb[1];
             end else if (pdb == 0) begin
-                dataouttherm[1] <= 'z;
-                dataoutthermb[1] <= 'z;
+                dataouttherm_aux[1] <='z;
+                dataoutthermb_aux[1] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_1 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_1, clkinb_therm_1);
         end
     end
 
-    always @(posedge clkin_therm_2 or negedge clkinb_therm_2) begin
+     always @(posedge clkin_therm_2 or negedge clkinb_therm_2) begin
         if(clkin_therm_2 && !clkinb_therm_2) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[2] <= dataintherm[2] + (dataintherm[2] * mismatch_datathermout[2]);
-                dataoutthermb[2] <= datainthermb[2] + (datainthermb[2] * mismatch_datathermoutb[2]);
+                dataouttherm_aux[2] <= dataintherm[2];
+                dataoutthermb_aux[2] <= datainthermb[2];
             end else if (pdb == 0) begin
-                dataouttherm[2] <= 'z;
-                dataoutthermb[2] <= 'z;
+                dataouttherm_aux[2] <='z;
+                dataoutthermb_aux[2] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_2 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_2, clkinb_therm_2);
         end
     end
 
-    always @(posedge clkin_therm_3 or negedge clkinb_therm_3) begin
+     always @(posedge clkin_therm_3 or negedge clkinb_therm_3) begin
         if(clkin_therm_3 && !clkinb_therm_3) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[3] <= dataintherm[3] + (dataintherm[3] * mismatch_datathermout[3]);
-                dataoutthermb[3] <= datainthermb[3] + (datainthermb[3] * mismatch_datathermoutb[3]);
+                dataouttherm_aux[3] <= dataintherm[3];
+                dataoutthermb_aux[3] <= datainthermb[3];
             end else if (pdb == 0) begin
-                dataouttherm[3] <= 'z;
-                dataoutthermb[3] <= 'z;
+                dataouttherm_aux[3] <='z;
+                dataoutthermb_aux[3] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_3 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_3, clkinb_therm_3);
         end
     end
 
-    always @(posedge clkin_therm_4 or negedge clkinb_therm_4) begin
+     always @(posedge clkin_therm_4 or negedge clkinb_therm_4) begin
         if(clkin_therm_4 && !clkinb_therm_4) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[4] <= dataintherm[4] + (dataintherm[4] * mismatch_datathermout[4]);
-                dataoutthermb[4] <= datainthermb[4] + (datainthermb[4] * mismatch_datathermoutb[4]);
+                dataouttherm_aux[4] <= dataintherm[4];
+                dataoutthermb_aux[4] <= datainthermb[4];
             end else if (pdb == 0) begin
-                dataouttherm[4] <= 'z;
-                dataoutthermb[4] <= 'z;
+                dataouttherm_aux[4] <='z;
+                dataoutthermb_aux[4] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_4 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_4, clkinb_therm_4);
         end
     end
 
-    always @(posedge clkin_therm_5 or negedge clkinb_therm_5) begin
+     always @(posedge clkin_therm_5 or negedge clkinb_therm_5) begin
         if(clkin_therm_5 && !clkinb_therm_5) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[5] <= dataintherm[5] + (dataintherm[5] * mismatch_datathermout[5]);
-                dataoutthermb[5] <= datainthermb[5] + (datainthermb[5] * mismatch_datathermoutb[5]);
+                dataouttherm_aux[5] <= dataintherm[5];
+                dataoutthermb_aux[5] <= datainthermb[5];
             end else if (pdb == 0) begin
-                dataouttherm[5] <= 'z;
-                dataoutthermb[5] <= 'z;
+                dataouttherm_aux[5] <='z;
+                dataoutthermb_aux[5] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_5 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_5, clkinb_therm_5);
         end
     end
 
-    always @(posedge clkin_therm_6 or negedge clkinb_therm_6) begin
+     always @(posedge clkin_therm_6 or negedge clkinb_therm_6) begin
         if(clkin_therm_6 && !clkinb_therm_6) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[6] <= dataintherm[6] + (dataintherm[6] * mismatch_datathermout[6]);
-                dataoutthermb[6] <= datainthermb[6] + (datainthermb[6] * mismatch_datathermoutb[6]);
+                dataouttherm_aux[6] <= dataintherm[6];
+                dataoutthermb_aux[6] <= datainthermb[6];
             end else if (pdb == 0) begin
-                dataouttherm[6] <= 'z;
-                dataoutthermb[6] <= 'z;
+                dataouttherm_aux[6] <='z;
+                dataoutthermb_aux[6] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_6 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_6, clkinb_therm_6);
@@ -281,242 +289,314 @@ module rsync_latch(
     always @(posedge clkin_therm_7 or negedge clkinb_therm_7) begin
         if(clkin_therm_7 && !clkinb_therm_7) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[7] <= dataintherm[7] + (dataintherm[7] * mismatch_datathermout[7]);
-                dataoutthermb[7] <= datainthermb[7] + (datainthermb[7] * mismatch_datathermoutb[7]);
+                dataouttherm_aux[7] <= dataintherm[7];
+                dataoutthermb_aux[7] <= datainthermb[7];
             end else if (pdb == 0) begin
-                dataouttherm[7] <= 'z;
-                dataoutthermb[7] <= 'z;
+                dataouttherm_aux[7] <='z;
+                dataoutthermb_aux[7] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_7 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_7, clkinb_therm_7);
         end
     end
 
-    always @(posedge clkin_therm_8 or negedge clkinb_therm_8) begin
+     always @(posedge clkin_therm_8 or negedge clkinb_therm_8) begin
         if(clkin_therm_8 && !clkinb_therm_8) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[8] <= dataintherm[8] + (dataintherm[8] * mismatch_datathermout[8]);
-                dataoutthermb[8] <= datainthermb[8] + (datainthermb[8] * mismatch_datathermoutb[8]);
+                dataouttherm_aux[8] <= dataintherm[8];
+                dataoutthermb_aux[8] <= datainthermb[8];
             end else if (pdb == 0) begin
-                dataouttherm[8] <= 'z;
-                dataoutthermb[8] <= 'z;
+                dataouttherm_aux[8] <='z;
+                dataoutthermb_aux[8] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_8 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_8, clkinb_therm_8);
         end
     end
 
-    always @(posedge clkin_therm_9 or negedge clkinb_therm_9) begin
+     always @(posedge clkin_therm_9 or negedge clkinb_therm_9) begin
         if(clkin_therm_9 && !clkinb_therm_9) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[9] <= dataintherm[9] + (dataintherm[9] * mismatch_datathermout[9]);
-                dataoutthermb[9] <= datainthermb[9] + (datainthermb[9] * mismatch_datathermoutb[9]);
+                dataouttherm_aux[9] <= dataintherm[9];
+                dataoutthermb_aux[9] <= datainthermb[9];
             end else if (pdb == 0) begin
-                dataouttherm[9] <= 'z;
-                dataoutthermb[9] <= 'z;
+                dataouttherm_aux[9] <='z;
+                dataoutthermb_aux[9] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_9 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_9, clkinb_therm_9);
         end
     end
 
-    always @(posedge clkin_therm_10 or negedge clkinb_therm_10) begin
+     always @(posedge clkin_therm_10 or negedge clkinb_therm_10) begin
         if(clkin_therm_10 && !clkinb_therm_10) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[10] <= dataintherm[10] + (dataintherm[10] * mismatch_datathermout[10]);
-                dataoutthermb[10] <= datainthermb[10] + (datainthermb[10] * mismatch_datathermoutb[10]);
+                dataouttherm_aux[10] <= dataintherm[10];
+                dataoutthermb_aux[10] <= datainthermb[10];
             end else if (pdb == 0) begin
-                dataouttherm[10] <= 'z;
-                dataoutthermb[10] <= 'z;
+                dataouttherm_aux[10] <='z;
+                dataoutthermb_aux[10] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_10 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_10, clkinb_therm_10);
         end
     end
 
-    always @(posedge clkin_therm_11 or negedge clkinb_therm_11) begin
+     always @(posedge clkin_therm_11 or negedge clkinb_therm_11) begin
         if(clkin_therm_11 && !clkinb_therm_11) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[11] <= dataintherm[11] + (dataintherm[11] * mismatch_datathermout[11]);
-                dataoutthermb[11] <= datainthermb[11] + (datainthermb[11] * mismatch_datathermoutb[11]);
+                dataouttherm_aux[11] <= dataintherm[11];
+                dataoutthermb_aux[11] <= datainthermb[11];
             end else if (pdb == 0) begin
-                dataouttherm[11] <= 'z;
-                dataoutthermb[11] <= 'z;
+                dataouttherm_aux[11] <='z;
+                dataoutthermb_aux[11] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_11 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_11, clkinb_therm_11);
         end
     end
 
-    always @(posedge clkin_therm_12 or negedge clkinb_therm_12) begin
+     always @(posedge clkin_therm_12 or negedge clkinb_therm_12) begin
         if(clkin_therm_12 && !clkinb_therm_12) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[12] <= dataintherm[12] + (dataintherm[12] * mismatch_datathermout[12]);
-                dataoutthermb[12] <= datainthermb[12] + (datainthermb[12] * mismatch_datathermoutb[12]);
+                dataouttherm_aux[12] <= dataintherm[12];
+                dataoutthermb_aux[12] <= datainthermb[12];
             end else if (pdb == 0) begin
-                dataouttherm[12] <= 'z;
-                dataoutthermb[12] <= 'z;
+                dataouttherm_aux[12] <='z;
+                dataoutthermb_aux[12] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_12 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_12, clkinb_therm_12);
         end
     end
 
-    always @(posedge clkin_therm_13 or negedge clkinb_therm_13) begin
+     always @(posedge clkin_therm_13 or negedge clkinb_therm_13) begin
         if(clkin_therm_13 && !clkinb_therm_13) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[13] <= dataintherm[13] + (dataintherm[13] * mismatch_datathermout[13]);
-                dataoutthermb[13] <= datainthermb[13] + (datainthermb[13] * mismatch_datathermoutb[13]);
+                dataouttherm_aux[13] <= dataintherm[13];
+                dataoutthermb_aux[13] <= datainthermb[13];
             end else if (pdb == 0) begin
-                dataouttherm[13] <= 'z;
-                dataoutthermb[13] <= 'z;
+                dataouttherm_aux[13] <='z;
+                dataoutthermb_aux[13] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_13 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_13, clkinb_therm_13);
         end
     end
 
-    always @(posedge clkin_therm_14 or negedge clkinb_therm_14) begin
+     always @(posedge clkin_therm_14 or negedge clkinb_therm_14) begin
         if(clkin_therm_14 && !clkinb_therm_14) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[14] <= dataintherm[14] + (dataintherm[14] * mismatch_datathermout[14]);
-                dataoutthermb[14] <= datainthermb[14] + (datainthermb[14] * mismatch_datathermoutb[14]);
+                dataouttherm_aux[14] <= dataintherm[14];
+                dataoutthermb_aux[14] <= datainthermb[14];
             end else if (pdb == 0) begin
-                dataouttherm[14] <= 'z;
-                dataoutthermb[14] <= 'z;
+                dataouttherm_aux[14] <='z;
+                dataoutthermb_aux[14] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_14 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_14, clkinb_therm_14);
         end
     end
 
-    always @(posedge clkin_therm_15 or negedge clkinb_therm_15) begin
+     always @(posedge clkin_therm_15 or negedge clkinb_therm_15) begin
         if(clkin_therm_15 && !clkinb_therm_15) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[15] <= dataintherm[15] + (dataintherm[15] * mismatch_datathermout[15]);
-                dataoutthermb[15] <= datainthermb[15] + (datainthermb[15] * mismatch_datathermoutb[15]);
+                dataouttherm_aux[15] <= dataintherm[15];
+                dataoutthermb_aux[15] <= datainthermb[15];
             end else if (pdb == 0) begin
-                dataouttherm[15] <= 'z;
-                dataoutthermb[15] <= 'z;
+                dataouttherm_aux[15] <='z;
+                dataoutthermb_aux[15] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_15 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_15, clkinb_therm_15);
         end
     end
 
-    always @(posedge clkin_therm_16 or negedge clkinb_therm_16) begin
+     always @(posedge clkin_therm_16 or negedge clkinb_therm_16) begin
         if(clkin_therm_16 && !clkinb_therm_16) begin
             if (input_check == 1 && pdb == 1) begin
-                dataouttherm[16] <= dataintherm[16] + (dataintherm[16] * mismatch_datathermout[16]);
-                dataoutthermb[16] <= datainthermb[16] + (datainthermb[16] * mismatch_datathermoutb[16]);
+                dataouttherm_aux[16] <= dataintherm[16];
+                dataoutthermb_aux[16] <= datainthermb[16];
             end else if (pdb == 0) begin
-                dataouttherm[16] <= 'z;
-                dataoutthermb[16] <= 'z;
+                dataouttherm_aux[16] <='z;
+                dataoutthermb_aux[16] <= 'z;
             end
         end else begin
             $warning("Clock signals for therm_16 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_16, clkinb_therm_16);
         end
     end
 
+    always @(dataouttherm_aux or dataoutthermb_aux) begin
+        fork 
+            begin
+            #(t_prop+mismatch_datathermout)
+            dataouttherm[0] = dataouttherm_aux[0];
+            dataouttherm[1] = dataouttherm_aux[1];
+            dataouttherm[2] = dataouttherm_aux[2];
+            dataouttherm[3] = dataouttherm_aux[3];
+            dataouttherm[4] = dataouttherm_aux[4];
+            dataouttherm[5] = dataouttherm_aux[5];
+            dataouttherm[6] = dataouttherm_aux[6];
+            dataouttherm[7] = dataouttherm_aux[7];
+            dataouttherm[8] = dataouttherm_aux[8];
+            dataouttherm[9] = dataouttherm_aux[9];
+            dataouttherm[10] = dataouttherm_aux[10];
+            dataouttherm[11] = dataouttherm_aux[11];
+            dataouttherm[12] = dataouttherm_aux[12];
+            dataouttherm[13] = dataouttherm_aux[13];
+            dataouttherm[14] = dataouttherm_aux[14];
+            dataouttherm[15] = dataouttherm_aux[15];
+            dataouttherm[16] = dataouttherm_aux[16];
+            end
+            begin
+            #(t_prop+mismatch_datathermoutb)
+            dataoutthermb[0] = dataoutthermb_aux[0];
+            dataoutthermb[1] = dataoutthermb_aux[1];
+            dataoutthermb[2] = dataoutthermb_aux[2];
+            dataoutthermb[3] = dataoutthermb_aux[3];
+            dataoutthermb[4] = dataoutthermb_aux[4];
+            dataoutthermb[5] = dataoutthermb_aux[5];
+            dataoutthermb[6] = dataoutthermb_aux[6];
+            dataoutthermb[7] = dataoutthermb_aux[7];
+            dataoutthermb[8] = dataoutthermb_aux[8];
+            dataoutthermb[9] = dataoutthermb_aux[9];
+            dataoutthermb[10] = dataoutthermb_aux[10];
+            dataoutthermb[11] = dataoutthermb_aux[11];
+            dataoutthermb[12] = dataoutthermb_aux[12];
+            dataoutthermb[13] = dataoutthermb_aux[13];
+            dataoutthermb[14] = dataoutthermb_aux[14];
+            dataoutthermb[15] = dataoutthermb_aux[15];
+            dataoutthermb[16] = dataoutthermb_aux[16];
+            end
+            
+        join
+    end
+    
+
     //El bit redundante va en la posicion 0 del vector dataoutbin y datainbin
-    always @(posedge clkin_binary_0_red or negedge clkinb_binary_0_red) begin
+     always @(posedge clkin_binary_0_red or negedge clkinb_binary_0_red) begin
         if(clkin_binary_0_red && !clkinb_binary_0_red) begin
-        if (input_check == 1 && pdb == 1) begin
-            dataoutbin[0] <= datainbin[0]   + (datainbin[0] * mismatch_databinout[0]);
-            dataoutbinb[0] <= datainbinb[0] + (datainbinb[0] * mismatch_databinoutb[0]);
-        end else if (pdb == 0) begin
-            dataoutbin[0] <= 'z;
-            dataoutbinb[0] <= 'z;
-        end
+            if (input_check == 1 && pdb == 1) begin
+                dataoutbin_aux[0] <= datainbin[0];
+                dataoutbinb_aux[0] <= datainbinb[0];
+            end else if (pdb == 0) begin
+                dataoutbin_aux[0] <='z;
+                dataoutbinb_aux[0] <= 'z;
+            end
         end else begin
-        $warning("Clock signals for bin_0_red are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_0_red, clkinb_binary_0_red);
+            $warning("Clock signals for bin_0_red are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_0_red, clkinb_binary_0_red);
         end
     end
-
+    
     always @(posedge clkin_binary_0 or negedge clkinb_binary_0) begin
         if(clkin_binary_0 && !clkinb_binary_0) begin
-        if (input_check == 1 && pdb == 1) begin
-            dataoutbin[1] <= datainbin[1] + (datainbin[1] * mismatch_databinout[1]);
-            dataoutbinb[1] <= datainbinb[1] + (datainbinb[1] * mismatch_databinoutb[1]);
-        end else if (pdb == 0) begin
-            dataoutbin[1] <= 'z;
-            dataoutbinb[1] <= 'z;
-        end
+            if (input_check == 1 && pdb == 1) begin
+                dataoutbin_aux[1] <= datainbin[1];
+                dataoutbinb_aux[1] <= datainbinb[1];
+            end else if (pdb == 0) begin
+                dataoutbin_aux[1] <='z;
+                dataoutbinb_aux[1] <= 'z;
+            end
         end else begin
-        $warning("Clock signals for bin_0 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_0, clkinb_binary_0);
+            $warning("Clock signals for bin_0 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_0, clkinb_binary_0);
         end
     end
 
     always @(posedge clkin_binary_1 or negedge clkinb_binary_1) begin
         if(clkin_binary_1 && !clkinb_binary_1) begin
-        if (input_check == 1 && pdb == 1) begin
-            dataoutbin[2] <= datainbin[2] + (datainbin[2] * mismatch_databinout[2]);
-            dataoutbinb[2] <= datainbinb[2] + (datainbinb[2] * mismatch_databinoutb[2]);
-        end else if (pdb == 0) begin
-            dataoutbin[2] <= 'z;
-            dataoutbinb[2] <= 'z;
-        end
+            if (input_check == 1 && pdb == 1) begin
+                dataoutbin_aux[2] <= datainbin[2];
+                dataoutbinb_aux[2] <= datainbinb[2];
+            end else if (pdb == 0) begin
+                dataoutbin_aux[2] <='z;
+                dataoutbinb_aux[2] <= 'z;
+            end
         end else begin
-        $warning("Clock signals for bin_1 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_1, clkinb_binary_1);
+            $warning("Clock signals for bin_1 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_1, clkinb_binary_1);
         end
     end
 
     always @(posedge clkin_binary_2 or negedge clkinb_binary_2) begin
         if(clkin_binary_2 && !clkinb_binary_2) begin
-        if (input_check == 1 && pdb == 1) begin
-            dataoutbin[3] <= datainbin[3] + (datainbin[3] * mismatch_databinout[3]);
-            dataoutbinb[3] <= datainbinb[3] + (datainbinb[3] * mismatch_databinoutb[3]);
-        end else if (pdb == 0) begin
-            dataoutbin[3] <= 'z;
-            dataoutbinb[3] <= 'z;
-        end
+            if (input_check == 1 && pdb == 1) begin
+                dataoutbin_aux[3] <= datainbin[3];
+                dataoutbinb_aux[3] <= datainbinb[3];
+            end else if (pdb == 0) begin
+                dataoutbin_aux[3] <='z;
+                dataoutbinb_aux[3] <= 'z;
+            end
         end else begin
-        $warning("Clock signals for bin_2 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_2, clkinb_binary_2);
+            $warning("Clock signals for bin_3 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_2, clkinb_binary_2);
         end
     end
 
     always @(posedge clkin_binary_3 or negedge clkinb_binary_3) begin
         if(clkin_binary_3 && !clkinb_binary_3) begin
-        if (input_check == 1 && pdb == 1) begin
-            dataoutbin[4] <= datainbin[4]   + (datainbin[4] * mismatch_databinout[4]);
-            dataoutbinb[4] <= datainbinb[4] + (datainbinb[4] * mismatch_databinoutb[4]);
-        end else if (pdb == 0) begin
-            dataoutbin[4] <= 'z;
-            dataoutbinb[4] <= 'z;
-        end
+            if (input_check == 1 && pdb == 1) begin
+                dataoutbin_aux[4] <= datainbin[4];
+                dataoutbinb_aux[4] <= datainbinb[4];
+            end else if (pdb == 0) begin
+                dataoutbin_aux[4] <='z;
+                dataoutbinb_aux[4] <= 'z;
+            end
         end else begin
-        $warning("Clock signals for bin_3 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_3, clkinb_binary_3);
+            $warning("Clock signals for bin_3 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_3, clkinb_binary_3);
         end
     end
-
+    
     always @(posedge clkin_binary_4 or negedge clkinb_binary_4) begin
         if(clkin_binary_4 && !clkinb_binary_4) begin
-        if (input_check == 1 && pdb == 1) begin
-            dataoutbin[5] <= datainbin[5]   + (datainbin[5] * mismatch_databinout[5]);
-            dataoutbinb[5] <= datainbinb[5] + (datainbinb[5] * mismatch_databinoutb[5]);
-        end else if (pdb == 0) begin
-            dataoutbin[5] <= 'z;
-            dataoutbinb[5] <= 'z;
-        end
+            if (input_check == 1 && pdb == 1) begin
+                dataoutbin_aux[5] <= datainbin[5];
+                dataoutbinb_aux[5] <= datainbinb[5];
+            end else if (pdb == 0) begin
+                dataoutbin_aux[5] <='z;
+                dataoutbinb_aux[5] <= 'z;
+            end
         end else begin
-        $warning("Clock signals for bin_4 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_4, clkinb_binary_4);
+            $warning("Clock signals for bin_4 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_4, clkinb_binary_4);
         end
     end
 
-    always @(posedge clkin_binary_5 or negedge clkinb_binary_5) begin
+    always @(posedge clkinb_binary_5 or negedge clkinb_binary_5) begin
         if(clkin_binary_5 && !clkinb_binary_5) begin
-        if (input_check == 1 && pdb == 1) begin
-            dataoutbin[6] <= datainbin[6]   + (datainbin[6] * mismatch_databinout[6]);
-            dataoutbinb[6] <= datainbinb[6] + (datainbinb[6] * mismatch_databinoutb[6]);
-        end else if (pdb == 0) begin
-            dataoutbin[6] <= 'z;
-            dataoutbinb[6] <= 'z;
-        end
+            if (input_check == 1 && pdb == 1) begin
+                dataoutbin_aux[6] <= datainbin[6];
+                dataoutbinb_aux[6] <= datainbinb[6];
+            end else if (pdb == 0) begin
+                dataoutbin_aux[6] <='z;
+                dataoutbinb_aux[6] <= 'z;
+            end
         end else begin
-        $warning("Clock signals for bin_5 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_5, clkinb_binary_5);
+            $warning("Clock signals for bin_5 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_5, clkinb_binary_5);
         end
     end
-
+    
+     always @(dataoutbin_aux or dataoutbinb_aux) begin
+        fork 
+            begin
+            #(t_prop+mismatch_databinout)
+            dataoutbin[0] = dataoutbin_aux[0];
+            dataoutbin[1] = dataoutbin_aux[1];
+            dataoutbin[2] = dataoutbin_aux[2];
+            dataoutbin[3] = dataoutbin_aux[3];
+            dataoutbin[4] = dataoutbin_aux[4];
+            dataoutbin[5] = dataoutbin_aux[5];
+            dataoutbin[6] = dataoutbin_aux[6];
+            end
+            begin
+            #(t_prop+mismatch_databinoutb)
+            dataoutbinb[0] = dataoutbinb_aux[0];
+            dataoutbinb[1] = dataoutbinb_aux[1];
+            dataoutbinb[2] = dataoutbinb_aux[2];
+            dataoutbinb[3] = dataoutbinb_aux[3];
+            dataoutbinb[4] = dataoutbinb_aux[4];
+            dataoutbinb[5] = dataoutbinb_aux[5];
+            dataoutbinb[6] = dataoutbinb_aux[6];
+            end
+            
+        join
+    end
     
 
 

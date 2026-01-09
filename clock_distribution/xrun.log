@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 03, 2026 at 13:56:22 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 09, 2026 at 16:56:18 CET
 xrun
 	-f xrun.f
 		-clean
@@ -9,11 +9,16 @@ xrun
 		-gui
 		-s
 		-input /home/msegper/Documents/TFM/clock_distribution/restore.tcl
-	-s
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
 file: ./models/clock_distribution_mismatch.sv
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (./models/clock_distribution_mismatch.sv,124|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 10;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (./models/clock_distribution_mismatch.sv,125|20): Local static variable with initializer requires 'static' keyword.
 	module worklib.clock_distribution:sv
-		errors: 0, warnings: 0
+		errors: 0, warnings: 2
 file: ./tb/clock_distribution_tb.sv
 	module worklib.clock_distribution_tb:sv
 		errors: 0, warnings: 0
@@ -23,15 +28,15 @@ file: ./tb/clock_distribution_tb.sv
 		cds_rnm_pkg
 		clock_distribution_tb
 	Building instance overlay tables: ....................
-        $display("Raw binary mismatch[%0d] = %0d", k, temp);
-                                                         |
-xmelab: *W,REALCV (./models/clock_distribution_mismatch.sv,114|57): Real argument converted to integer for (%d).
+        $display("mismatch temporal[%0d] = %0d seed = %0d media =%0d sigma = %0d", i, random_value, seed, mean, std_dev);
+                                                                                                 |
+xmelab: *W,REALCV (./models/clock_distribution_mismatch.sv,131|97): Real argument converted to integer for (%d).
  Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.clock_distribution:sv <0x67bf6ba1>
-			streams:  12, words: 53753
-		worklib.clock_distribution_tb:sv <0x35627bc4>
+		worklib.clock_distribution:sv <0x49b1b2d7>
+			streams:  60, words: 97219
+		worklib.clock_distribution_tb:sv <0x11f75bdf>
 			streams:  12, words: 13543
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
@@ -39,11 +44,11 @@ xmelab: *W,REALCV (./models/clock_distribution_mismatch.sv,114|57): Real argumen
 		                 Instances  Unique
 		Modules:                 2       2
 		Verilog packages:        1       1
-		Registers:             128     128
+		Registers:             132     132
 		Scalar wires:           56       -
 		Vectored wires:          1       -
 		Always blocks:           6       6
-		Initial blocks:          6       6
+		Initial blocks:          8       8
 		Parallel blocks:         1       1
 		Pseudo assignments:      9       -
 		Assertions:              3       3
@@ -52,6 +57,9 @@ xmelab: *W,REALCV (./models/clock_distribution_mismatch.sv,114|57): Real argumen
 xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
 SVSEED default: 1
 [DMSINFO] Simulating with Xcelium Mixed-Signal App...
+
+-------------------------------------
+Relinquished control to SimVision...
 xcelium> 
 xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
 xcelium> 
@@ -157,109 +165,56 @@ xcelium> probe -create -database waves clock_distribution_tb.dut.atb0 clock_dist
 Created probe 1
 xcelium> 
 xcelium> simvision -input restore.tcl.svcf
-xmsim: *E,TCLERR: SimVision initialization failed.
-xcelium> 
--------------------------------------
-Relinquished control to SimVision...
-# Restoring simulation environment...
-xcelium> input -quiet .reinvoke.sim
-xcelium> file delete .reinvoke.sim
 xcelium> run
-Raw binary mismatch[0] =        1606
-Binary mismatch[0]= -0.0039
-Raw binary mismatch[1] =        2263
-Binary mismatch[1]= 0.0026
-Raw binary mismatch[2] =        3896
-Binary mismatch[2]= 0.0190
-Raw binary mismatch[3] =        3914
-Binary mismatch[3]= 0.0191
-Raw binary mismatch[4] =         341
-Binary mismatch[4]= -0.0166
-Raw binary mismatch[5] =        1377
-Binary mismatch[5]= -0.0062
-Raw binary mismatch[6] =        1245
-Binary mismatch[6]= -0.0076
-Raw binary mismatch[7] =        1550
-Binary mismatch[7]= -0.0045
-Raw binary mismatch[8] =        2685
-Binary mismatch[8]= 0.0069
-Raw binary mismatch[9] =        1881
-Binary mismatch[9]= -0.0012
-Raw binary mismatch[10] =        3596
-Binary mismatch[10]= 0.0160
-Raw binary mismatch[11] =        2903
-Binary mismatch[11]= 0.0090
-Raw binary mismatch[12] =         775
-Binary mismatch[12]= -0.0123
-Raw binary mismatch[13] =        2794
-Binary mismatch[13]= 0.0079
-Raw binary mismatch[14] =        2668
-Binary mismatch[14]= 0.0067
-Raw binary mismatch[15] =        1502
-Binary mismatch[15]= -0.0050
-Raw binary mismatch[16] =        3161
-Binary mismatch[16]= 0.0116
-Raw binary mismatch[0] =        1726
-Binary mismatch[0]= -0.0027
-Raw binary mismatch[1] =        3553
-Binary mismatch[1]= 0.0155
-Raw binary mismatch[2] =        2649
-Binary mismatch[2]= 0.0065
-Raw binary mismatch[3] =        2034
-Binary mismatch[3]= 0.0003
-Raw binary mismatch[4] =        1591
-Binary mismatch[4]= -0.0041
-Raw binary mismatch[5] =         553
-Binary mismatch[5]= -0.0145
-Raw binary mismatch[6] =        2234
-Binary mismatch[6]= 0.0023
-Raw binary mismatch[7] =         529
-Binary mismatch[7]= -0.0147
-Raw binary mismatch[8] =        1942
-Binary mismatch[8]= -0.0006
-Raw binary mismatch[9] =        2367
-Binary mismatch[9]= 0.0037
-Raw binary mismatch[10] =        2992
-Binary mismatch[10]= 0.0099
-Raw binary mismatch[11] =        3533
-Binary mismatch[11]= 0.0153
-Raw binary mismatch[12] =        2231
-Binary mismatch[12]= 0.0023
-Raw binary mismatch[13] =        3449
-Binary mismatch[13]= 0.0145
-Raw binary mismatch[14] =        1763
-Binary mismatch[14]= -0.0024
-Raw binary mismatch[15] =        1564
-Binary mismatch[15]= -0.0044
-Raw binary mismatch[16] =        2992
-Binary mismatch[16]= 0.0099
-Raw binary mismatch[0] =        1675
-Binary mismatch[0]= -0.0032
-Raw binary mismatch[1] =        2426
-Binary mismatch[1]= 0.0043
-Raw binary mismatch[2] =         911
-Binary mismatch[2]= -0.0109
-Raw binary mismatch[3] =        2231
-Binary mismatch[3]= 0.0023
-Raw binary mismatch[4] =        2532
-Binary mismatch[4]= 0.0053
-Raw binary mismatch[5] =        1911
-Binary mismatch[5]= -0.0009
-Raw binary mismatch[0] =        1010
-Binary mismatch[0]= -0.0099
-Raw binary mismatch[1] =         891
-Binary mismatch[1]= -0.0111
-Raw binary mismatch[2] =         238
-Binary mismatch[2]= -0.0176
-Raw binary mismatch[3] =         279
-Binary mismatch[3]= -0.0172
-Raw binary mismatch[4] =        2575
-Binary mismatch[4]= 0.0057
-Raw binary mismatch[5] =        1480
-Binary mismatch[5]= -0.0052
+mismatch temporal[0] =           3 seed = -665810235 media =0 sigma = 10
+mismatch temporal[1] =          11 seed = -1369323317 media =0 sigma = 10
+mismatch temporal[2] =          -1 seed = -265150613 media =0 sigma = 10
+mismatch temporal[3] =          -9 seed = -1150328559 media =0 sigma = 10
+mismatch temporal[4] =          -8 seed = 1308122185 media =0 sigma = 10
+mismatch temporal[5] =         -20 seed = 1879843743 media =0 sigma = 10
+mismatch temporal[6] =         -14 seed = -1806158787 media =0 sigma = 10
+mismatch temporal[7] =          10 seed = 2027533513 media =0 sigma = 10
+mismatch temporal[8] =           0 seed = -468304391 media =0 sigma = 10
+mismatch temporal[9] =           6 seed = 783835274 media =0 sigma = 10
+mismatch temporal[10] =         -13 seed = 2007190375 media =0 sigma = 10
+mismatch temporal[11] =          18 seed = -1776842891 media =0 sigma = 10
+mismatch temporal[12] =           7 seed = -1118601810 media =0 sigma = 10
+mismatch temporal[13] =           2 seed = -964037897 media =0 sigma = 10
+mismatch temporal[14] =         -16 seed = 2130641910 media =0 sigma = 10
+mismatch temporal[15] =           0 seed = -188503446 media =0 sigma = 10
+mismatch temporal[16] =          10 seed = 1224124911 media =0 sigma = 10
+mismatch temporal[0] =           8 seed = -1815533540 media =0 sigma = 10
+mismatch temporal[1] =           6 seed = -904099331 media =0 sigma = 10
+mismatch temporal[2] =          -6 seed = -987998196 media =0 sigma = 10
+mismatch temporal[3] =           1 seed = 512922378 media =0 sigma = 10
+mismatch temporal[4] =         -13 seed = 1486658417 media =0 sigma = 10
+mismatch temporal[5] =           6 seed = 1035052190 media =0 sigma = 10
+mismatch temporal[6] =          12 seed = -1780495438 media =0 sigma = 10
+mismatch temporal[7] =          16 seed = 1849785074 media =0 sigma = 10
+mismatch temporal[8] =          -1 seed = -1515680127 media =0 sigma = 10
+mismatch temporal[9] =           0 seed = -140519604 media =0 sigma = 10
+mismatch temporal[10] =          -2 seed = 867706007 media =0 sigma = 10
+mismatch temporal[11] =           4 seed = -596971564 media =0 sigma = 10
+mismatch temporal[12] =           3 seed = -1376642554 media =0 sigma = 10
+mismatch temporal[13] =          -7 seed = -955733948 media =0 sigma = 10
+mismatch temporal[14] =          12 seed = 2080587752 media =0 sigma = 10
+mismatch temporal[15] =          13 seed = -1660797128 media =0 sigma = 10
+mismatch temporal[16] =           8 seed = -1253589866 media =0 sigma = 10
+mismatch temporal[0] =         -18 seed = -1903471105 media =0 sigma = 10
+mismatch temporal[1] =           6 seed = 766332548 media =0 sigma = 10
+mismatch temporal[2] =           0 seed = -219869516 media =0 sigma = 10
+mismatch temporal[3] =           2 seed = 1372225059 media =0 sigma = 10
+mismatch temporal[4] =          -8 seed = 1176572041 media =0 sigma = 10
+mismatch temporal[5] =          16 seed = -1665888237 media =0 sigma = 10
+mismatch temporal[0] =          -7 seed = 2124686048 media =0 sigma = 10
+mismatch temporal[1] =         -10 seed = 1300172114 media =0 sigma = 10
+mismatch temporal[2] =           7 seed = -916290221 media =0 sigma = 10
+mismatch temporal[3] =          -1 seed = 456076362 media =0 sigma = 10
+mismatch temporal[4] =          16 seed = -1690972545 media =0 sigma = 10
+mismatch temporal[5] =         -12 seed = 1723802998 media =0 sigma = 10
 Iniciando tests...
 Test 1: Estado apagado
-clkout_therm_16 = x, clkoutb_therm_16 = x
+clkout_therm_16 = 0, clkoutb_therm_16 = 0
 Test 2: Estado encendido con atb_ena = 2'b00
 atb1 = `wrealZState, atb0 = `wrealZState
 Test 3: Estado encendido con atb_ena = 2'b01
@@ -269,6 +224,8 @@ atb1 = 0.80, atb0 = 0.00
 Test 5: Estado encendido con atb_ena = 2'b11
 atb1 = 0.00, atb0 = 0.00
 Tests completados.
-Simulation complete via $finish(1) at time 3 US + 0
+Simulation complete via $finish(1) at time 3 NS + 0
 ./tb/clock_distribution_tb.sv:144         $finish;
-xcelium> 
+xcelium> ^C
+xcelium> exit
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 09, 2026 at 17:01:37 CET  (total: 00:05:19)

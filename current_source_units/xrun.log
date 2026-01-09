@@ -1,24 +1,24 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 07, 2026 at 15:33:20 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 09, 2026 at 17:07:51 CET
 xrun
 	-f xrun.f
 		-clean
-		./models/currentSourceUnits_noise.sv
+		./models/currentSourceUnits_mismatch.sv
 		./tb/currentSourceUnits_tb.sv
 		-access +rw
 		-s
 		-input /home/msegper/Documents/TFM/current_source_units/restore.tcl
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
-file: ./models/currentSourceUnits_noise.sv
+file: ./models/currentSourceUnits_mismatch.sv
         int mean = 0;         // Promedio de la distribución
                  |
-xmvlog: *W,VARIST (./models/currentSourceUnits_noise.sv,95|17): Local static variable with initializer requires 'static' keyword.
-        int std_dev = 1000;     // Desviación estándar, sigma
+xmvlog: *W,VARIST (./models/currentSourceUnits_mismatch.sv,111|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 20;     // Desviación estándar, sigma
                     |
-xmvlog: *W,VARIST (./models/currentSourceUnits_noise.sv,96|20): Local static variable with initializer requires 'static' keyword.
-        real scalar =1e-12;  //Para ajustar el peso del ruido (1000*1e-12 = 1nA, el ruido tiene magnitud de nA)
-                    |
-xmvlog: *W,VARIST (./models/currentSourceUnits_noise.sv,99|20): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (./models/currentSourceUnits_mismatch.sv,112|20): Local static variable with initializer requires 'static' keyword.
+        real scale = 1000; // para escalar la desviación estándar y que sea 2%
+                   |
+xmvlog: *W,VARIST (./models/currentSourceUnits_mismatch.sv,115|19): Local static variable with initializer requires 'static' keyword.
 	module worklib.currentSourceUnits:sv
 		errors: 0, warnings: 3
 file: ./tb/currentSourceUnits_tb.sv
@@ -28,18 +28,14 @@ file: ./tb/currentSourceUnits_tb.sv
 	Elaborating the design hierarchy:
 	Top level design units:
 		cds_rnm_pkg
-		$unit_0x6d800340
+		$unit_0x1db61142
 		currentSourceUnits_tb
-	Building instance overlay tables: ....................
-        $display("noise = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
-                                                                             |
-xmelab: *W,REALCV (./models/currentSourceUnits_noise.sv,106|77): Real argument converted to integer for (%d).
- Done
+	Building instance overlay tables: .................... Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.currentSourceUnits:sv <0x3ccd5e5e>
-			streams:  11, words: 33370
-		worklib.currentSourceUnits_tb:sv <0x777d797d>
+		worklib.currentSourceUnits:sv <0x7a7ec548>
+			streams:  12, words: 38707
+		worklib.currentSourceUnits_tb:sv <0x1850169b>
 			streams:  34, words: 26473
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
@@ -47,11 +43,11 @@ xmelab: *W,REALCV (./models/currentSourceUnits_noise.sv,106|77): Real argument c
 		                 Instances  Unique
 		Modules:                 2       2
 		Verilog packages:        1       1
-		Registers:              77      77
+		Registers:             101     101
 		Scalar wires:           31       -
 		Vectored wires:          1       -
 		Always blocks:           5       5
-		Initial blocks:          7       7
+		Initial blocks:          8       8
 		Pseudo assignments:     32       -
 		Assertions:              4       4
 		Compilation units:       1       1
@@ -170,7 +166,73 @@ xcelium> simvision -input restore.tcl.svcf
 -------------------------------------
 Relinquished control to SimVision...
 xcelium> 
-xcelium> ^C
-xcelium> exit
-xmsim: *W,NORUNCMD: No 'run' command issued.
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 07, 2026 at 15:33:55 CET  (total: 00:00:35)
+xcelium> run
+mismatch temporal = 0.0090 seed = 1840269805 media =0 sigma = 20
+mismatch temporal = 0.0080 seed = 928968188 media =0 sigma = 20
+mismatch temporal = 0.0010 seed = -534203927 media =0 sigma = 20
+mismatch temporal = 0.0120 seed = 1279713169 media =0 sigma = 20
+mismatch temporal = -0.0240 seed = -1430061861 media =0 sigma = 20
+mismatch temporal = -0.0120 seed = 791161322 media =0 sigma = 20
+mismatch temporal = 0.0180 seed = -1152288105 media =0 sigma = 20
+mismatch temporal = -0.0270 seed = -1910851880 media =0 sigma = 20
+mismatch temporal = -0.0300 seed = -1741221507 media =0 sigma = 20
+mismatch temporal = -0.0150 seed = 2002757025 media =0 sigma = 20
+mismatch temporal = -0.0130 seed = -1296375947 media =0 sigma = 20
+mismatch temporal = -0.0010 seed = 676098319 media =0 sigma = 20
+mismatch temporal = 0.0120 seed = -1481781317 media =0 sigma = 20
+mismatch temporal = -0.0300 seed = 1711176387 media =0 sigma = 20
+mismatch temporal = 0.0010 seed = 619648634 media =0 sigma = 20
+mismatch temporal = -0.0100 seed = 1659360218 media =0 sigma = 20
+mismatch temporal = -0.0240 seed = 1986516043 media =0 sigma = 20
+mismatch temporal = 0.0220 seed = 1365106268 media =0 sigma = 20
+mismatch temporal = -0.0050 seed = -393730850 media =0 sigma = 20
+mismatch temporal = 0.0130 seed = -972016066 media =0 sigma = 20
+mismatch temporal = -0.0280 seed = -1694214983 media =0 sigma = 20
+mismatch temporal = -0.0140 seed = -912121123 media =0 sigma = 20
+mismatch temporal = -0.0220 seed = 1307061901 media =0 sigma = 20
+mismatch temporal = -0.0140 seed = -1402409784 media =0 sigma = 20
+Barrido de iref_500ua:
+iref_500ua = 0.000450 A
+iref_500ua = 0.000500 A
+iref_500ua = 0.000550 A
+Barrido de vddana_1p8:
+vddana_1p8 = 1.71 V
+vddana_1p8 = 1.72 V
+vddana_1p8 = 1.73 V
+vddana_1p8 = 1.74 V
+vddana_1p8 = 1.75 V
+vddana_1p8 = 1.76 V
+vddana_1p8 = 1.77 V
+vddana_1p8 = 1.78 V
+vddana_1p8 = 1.79 V
+vddana_1p8 = 1.80 V
+vddana_1p8 = 1.81 V
+vddana_1p8 = 1.82 V
+vddana_1p8 = 1.83 V
+vddana_1p8 = 1.84 V
+vddana_1p8 = 1.85 V
+vddana_1p8 = 1.86 V
+vddana_1p8 = 1.87 V
+vddana_1p8 = 1.88 V
+vddana_1p8 = 1.89 V
+Barrido de vddana_0p8:
+vddana_0p8 = 0.76 V
+vddana_0p8 = 0.77 V
+vddana_0p8 = 0.78 V
+vddana_0p8 = 0.79 V
+vddana_0p8 = 0.80 V
+vddana_0p8 = 0.81 V
+vddana_0p8 = 0.82 V
+vddana_0p8 = 0.83 V
+vddana_0p8 = 0.84 V
+Barrido de atb_ena:
+atb_ena = 00
+atb_ena = 01
+atb_ena = 10
+atb_ena = 11
+Barrido de pdb:
+pdb = 0
+pdb = 1
+Simulation complete via $finish(1) at time 510 PS + 0
+./tb/currentSourceUnits_tb.sv:134         $finish;
+xcelium> 

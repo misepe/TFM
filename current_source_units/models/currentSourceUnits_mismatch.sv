@@ -97,12 +97,28 @@ module currentSourceUnits (
     real mismatch_iout_binary_5, mismatch_iout_binary_4, mismatch_iout_binary_3;
     real mismatch_iout_binary_2, mismatch_iout_binary_1, mismatch_iout_binary_0, mismatch_iout_binary_0_red;
 
-    function real generate_mismatch();
+    /*function real generate_mismatch();
         real temp;
         temp = $urandom()%4000;
         $display("Raw binary mismatch = %0d", temp);
         $display("Binary mismatch= %0.4f", ((temp)-2000) / 100000.0);
         return ((temp)-2000) / 100000.0;
+    endfunction*/
+
+    function real generate_mismatch();
+        // Variables
+        int seed ;  // Semilla para el generador de números aleatorios
+        int mean = 0;         // Promedio de la distribución
+        int std_dev = 20;     // Desviación estándar, sigma
+        real random_value;      // Valor aleatorio generado
+
+        real scale = 1000; // para escalar la desviación estándar y que sea 2%
+
+        // Genera valor aleatorio
+        seed = $urandom();
+        random_value = $dist_normal(seed, mean, std_dev)/scale;
+        $display("mismatch temporal = %0.4f seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
+        return random_value;
     endfunction
 
     initial begin

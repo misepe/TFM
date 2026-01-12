@@ -1,25 +1,30 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 12, 2026 at 12:33:08 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 12, 2026 at 13:04:30 CET
 xrun
 	-f xrun.f
 		-clean
-		./models/clock_distribution_jitter.sv
+		./models/clock_distribution_all_non_linearities.sv
 		./tb/clock_distribution_tb.sv
 		-access +rw
 		-gui
 		-s
 		-input /home/msegper/Documents/TFM/clock_distribution/restore.tcl
-	-s
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
-file: ./models/clock_distribution_jitter.sv
+file: ./models/clock_distribution_all_non_linearities.sv
         int mean = 0;         // Promedio de la distribución
                  |
-xmvlog: *W,VARIST (./models/clock_distribution_jitter.sv,124|17): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (./models/clock_distribution_all_non_linearities.sv,120|17): Local static variable with initializer requires 'static' keyword.
         int std_dev = 1;     // Desviación estándar, sigma
                     |
-xmvlog: *W,VARIST (./models/clock_distribution_jitter.sv,125|20): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (./models/clock_distribution_all_non_linearities.sv,121|20): Local static variable with initializer requires 'static' keyword.
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (./models/clock_distribution_all_non_linearities.sv,133|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 10;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (./models/clock_distribution_all_non_linearities.sv,134|20): Local static variable with initializer requires 'static' keyword.
 	module worklib.clock_distribution:sv
-		errors: 0, warnings: 2
+		errors: 0, warnings: 4
 file: ./tb/clock_distribution_tb.sv
 	module worklib.clock_distribution_tb:sv
 		errors: 0, warnings: 0
@@ -29,14 +34,17 @@ file: ./tb/clock_distribution_tb.sv
 		cds_rnm_pkg
 		clock_distribution_tb
 	Building instance overlay tables: ....................
-        $display("jitter temporal[%0d] = %0d seed = %0d media =%0d sigma = %0d", i, random_value, seed, mean, std_dev);
-                                                                                               |
-xmelab: *W,REALCV (./models/clock_distribution_jitter.sv,131|95): Real argument converted to integer for (%d).
+        $display("jitter temporal %s [%0d] = %0d seed = %0d media =%0d sigma = %0d", type_jitter, i, random_value, seed, mean, std_dev);
+                                                                                                                |
+xmelab: *W,REALCV (./models/clock_distribution_all_non_linearities.sv,127|112): Real argument converted to integer for (%d).
+        $display("mismatch temporal %s [%0d] = %0d seed = %0d media =%0d sigma = %0d", type_mismatch, i, random_value, seed, mean, std_dev);
+                                                                                                                    |
+xmelab: *W,REALCV (./models/clock_distribution_all_non_linearities.sv,140|116): Real argument converted to integer for (%d).
  Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.clock_distribution:sv <0x4029ac90>
-			streams: 105, words: 143454
+		worklib.clock_distribution:sv <0x7ba1c742>
+			streams: 108, words: 156524
 		worklib.clock_distribution_tb:sv <0x11f75bdf>
 			streams:  12, words: 13543
 	Building instance specific data structures.
@@ -45,11 +53,11 @@ xmelab: *W,REALCV (./models/clock_distribution_jitter.sv,131|95): Real argument 
 		                 Instances  Unique
 		Modules:                 2       2
 		Verilog packages:        1       1
-		Registers:             128     128
+		Registers:             144     144
 		Scalar wires:           56       -
 		Vectored wires:          1       -
 		Always blocks:           6       6
-		Initial blocks:          7       7
+		Initial blocks:          9       9
 		Parallel blocks:         1       1
 		Pseudo assignments:      9       -
 		Assertions:              3       3
@@ -58,6 +66,9 @@ xmelab: *W,REALCV (./models/clock_distribution_jitter.sv,131|95): Real argument 
 xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
 SVSEED default: 1
 [DMSINFO] Simulating with Xcelium Mixed-Signal App...
+
+-------------------------------------
+Relinquished control to SimVision...
 xcelium> 
 xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
 xcelium> 
@@ -163,1178 +174,1217 @@ xcelium> probe -create -database waves clock_distribution_tb.dut.atb0 clock_dist
 Created probe 1
 xcelium> 
 xcelium> simvision -input restore.tcl.svcf
-xmsim: *E,TCLERR: SimVision initialization failed.
-xcelium> 
--------------------------------------
-Relinquished control to SimVision...
-# Restoring simulation environment...
-xcelium> input -quiet .reinvoke.sim
-xcelium> file delete .reinvoke.sim
 xcelium> run
+mismatch temporal therm [0] =           1 seed = 129616766 media =0 sigma = 10
+mismatch temporal therm [1] =           0 seed = 237957420 media =0 sigma = 10
+mismatch temporal therm [2] =          11 seed = 1379569055 media =0 sigma = 10
+mismatch temporal therm [3] =           6 seed = 1083003834 media =0 sigma = 10
+mismatch temporal therm [4] =         -11 seed = 1436499988 media =0 sigma = 10
+mismatch temporal therm [5] =          17 seed = 1734256537 media =0 sigma = 10
+mismatch temporal therm [6] =           3 seed = 466026175 media =0 sigma = 10
+mismatch temporal therm [7] =           6 seed = -1194537998 media =0 sigma = 10
+mismatch temporal therm [8] =         -24 seed = -1994547904 media =0 sigma = 10
+mismatch temporal therm [9] =         -26 seed = 2051887517 media =0 sigma = 10
+mismatch temporal therm [10] =          11 seed = -1355547127 media =0 sigma = 10
+mismatch temporal therm [11] =         -20 seed = 1877475193 media =0 sigma = 10
+mismatch temporal therm [12] =         -14 seed = 1727671484 media =0 sigma = 10
+mismatch temporal therm [13] =          -3 seed = -500328910 media =0 sigma = 10
+mismatch temporal therm [14] =          15 seed = -2127066652 media =0 sigma = 10
+mismatch temporal therm [15] =         -13 seed = 1479910163 media =0 sigma = 10
+mismatch temporal therm [16] =          -4 seed = -502357234 media =0 sigma = 10
+mismatch temporal thermb [0] =          15 seed = 1634104956 media =0 sigma = 10
+mismatch temporal thermb [1] =           3 seed = -1927313332 media =0 sigma = 10
+mismatch temporal thermb [2] =           6 seed = -834847021 media =0 sigma = 10
+mismatch temporal thermb [3] =         -23 seed = -2115364627 media =0 sigma = 10
+mismatch temporal thermb [4] =           4 seed = 597661442 media =0 sigma = 10
+mismatch temporal thermb [5] =           7 seed = 1118328367 media =0 sigma = 10
+mismatch temporal thermb [6] =           4 seed = 621745896 media =0 sigma = 10
+mismatch temporal thermb [7] =           0 seed = 62486414 media =0 sigma = 10
+mismatch temporal thermb [8] =          -6 seed = 1113444174 media =0 sigma = 10
+mismatch temporal thermb [9] =         -13 seed = -1964120070 media =0 sigma = 10
+mismatch temporal thermb [10] =         -10 seed = -1341725445 media =0 sigma = 10
+mismatch temporal thermb [11] =           1 seed = 700542336 media =0 sigma = 10
+mismatch temporal thermb [12] =          10 seed = 1449825813 media =0 sigma = 10
+mismatch temporal thermb [13] =          -5 seed = -1243117787 media =0 sigma = 10
+mismatch temporal thermb [14] =          -7 seed = 944834049 media =0 sigma = 10
+mismatch temporal thermb [15] =           6 seed = -886686983 media =0 sigma = 10
+mismatch temporal thermb [16] =         -14 seed = 1996761365 media =0 sigma = 10
+mismatch temporal binary [0] =         -12 seed = 1987599480 media =0 sigma = 10
+mismatch temporal binary [1] =           2 seed = 1522651986 media =0 sigma = 10
+mismatch temporal binary [2] =           3 seed = 1148883081 media =0 sigma = 10
+mismatch temporal binary [3] =          12 seed = -1374072306 media =0 sigma = 10
+mismatch temporal binary [4] =          -4 seed = 773178278 media =0 sigma = 10
+mismatch temporal binary [5] =         -18 seed = 1849499825 media =0 sigma = 10
+mismatch temporal binaryb [0] =          23 seed = -2104045803 media =0 sigma = 10
+mismatch temporal binaryb [1] =          13 seed = -1518319124 media =0 sigma = 10
+mismatch temporal binaryb [2] =          11 seed = -1811915731 media =0 sigma = 10
+mismatch temporal binaryb [3] =           4 seed = -1346899391 media =0 sigma = 10
+mismatch temporal binaryb [4] =          -4 seed = 2002906927 media =0 sigma = 10
+mismatch temporal binaryb [5] =          14 seed = -1636791257 media =0 sigma = 10
 Iniciando tests...
 Test 1: Estado apagado
 clkout_therm_16 = 0, clkoutb_therm_16 = 0
 Test 2: Estado encendido con atb_ena = 2'b00
-jitter temporal[16] =          -1 seed = -1092437766 media =0 sigma = 1
-jitter temporal[15] =          -1 seed = -1123821437 media =0 sigma = 1
-jitter temporal[14] =           0 seed = 124880592 media =0 sigma = 1
-jitter temporal[13] =           1 seed = -1625779986 media =0 sigma = 1
-jitter temporal[12] =          -1 seed = 1689153146 media =0 sigma = 1
-jitter temporal[11] =           1 seed = -1672505401 media =0 sigma = 1
-jitter temporal[10] =           0 seed = -482609332 media =0 sigma = 1
-jitter temporal[9] =           1 seed = 785128560 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -255091464 media =0 sigma = 1
-jitter temporal[7] =          -1 seed = -764368703 media =0 sigma = 1
-jitter temporal[6] =           0 seed = 495848208 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -816887984 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 1616385090 media =0 sigma = 1
-jitter temporal[3] =           1 seed = 1195433913 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 836071932 media =0 sigma = 1
-jitter temporal[1] =           1 seed = -1634173050 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = -1452306400 media =0 sigma = 1
-jitter temporal[16] =           0 seed = -63915833 media =0 sigma = 1
-jitter temporal[15] =           1 seed = 982270071 media =0 sigma = 1
-jitter temporal[14] =          -1 seed = 1774869579 media =0 sigma = 1
-jitter temporal[13] =           1 seed = -2046393009 media =0 sigma = 1
-jitter temporal[12] =           2 seed = -1995881002 media =0 sigma = 1
-jitter temporal[11] =           1 seed = 2116688354 media =0 sigma = 1
-jitter temporal[10] =           0 seed = 165995258 media =0 sigma = 1
-jitter temporal[9] =           0 seed = 511430929 media =0 sigma = 1
-jitter temporal[8] =           0 seed = 151151951 media =0 sigma = 1
-jitter temporal[7] =           1 seed = 1641478387 media =0 sigma = 1
-jitter temporal[6] =          -1 seed = -1084816026 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -1350920620 media =0 sigma = 1
-jitter temporal[4] =           1 seed = -1376912799 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 1334153570 media =0 sigma = 1
-jitter temporal[2] =           1 seed = -729270948 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 190785071 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -525883197 media =0 sigma = 1
-jitter temporal[5] =           1 seed = 917366304 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 1971694528 media =0 sigma = 1
-jitter temporal[3] =           0 seed = -1821738769 media =0 sigma = 1
-jitter temporal[2] =          -2 seed = -1898636184 media =0 sigma = 1
-jitter temporal[1] =           2 seed = -1758729575 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = 1512720333 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = 1008385205 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -1165419884 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 314583540 media =0 sigma = 1
-jitter temporal[2] =           1 seed = -775153056 media =0 sigma = 1
-jitter temporal[1] =           1 seed = 1403106167 media =0 sigma = 1
-jitter temporal[0] =           1 seed = 1217086498 media =0 sigma = 1
-jitter temporal[16] =           0 seed = 442562164 media =0 sigma = 1
-jitter temporal[15] =           1 seed = 963981345 media =0 sigma = 1
-jitter temporal[14] =           1 seed = -2070820217 media =0 sigma = 1
-jitter temporal[13] =           0 seed = -295421971 media =0 sigma = 1
-jitter temporal[12] =           0 seed = 515572413 media =0 sigma = 1
-jitter temporal[11] =           0 seed = 81733313 media =0 sigma = 1
-jitter temporal[10] =           0 seed = 262665483 media =0 sigma = 1
-jitter temporal[9] =          -1 seed = -2027517892 media =0 sigma = 1
-jitter temporal[8] =          -1 seed = 1930250651 media =0 sigma = 1
-jitter temporal[7] =           1 seed = -1381058536 media =0 sigma = 1
-jitter temporal[6] =           1 seed = 959682269 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -647644750 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 836664955 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = 1390821508 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 200058374 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = 1947450028 media =0 sigma = 1
-jitter temporal[0] =           1 seed = 1502782341 media =0 sigma = 1
-jitter temporal[16] =           1 seed = 1582373408 media =0 sigma = 1
-jitter temporal[15] =           2 seed = 1866879994 media =0 sigma = 1
-jitter temporal[14] =           0 seed = 1838609669 media =0 sigma = 1
-jitter temporal[13] =          -1 seed = -1210856028 media =0 sigma = 1
-jitter temporal[12] =           1 seed = 1776535679 media =0 sigma = 1
-jitter temporal[11] =          -2 seed = -1876214361 media =0 sigma = 1
-jitter temporal[10] =           0 seed = 568804785 media =0 sigma = 1
-jitter temporal[9] =           0 seed = 954594221 media =0 sigma = 1
-jitter temporal[8] =          -1 seed = -2109607667 media =0 sigma = 1
-jitter temporal[7] =          -1 seed = -1852065917 media =0 sigma = 1
-jitter temporal[6] =           0 seed = -263734487 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -1223058275 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -1558019079 media =0 sigma = 1
-jitter temporal[3] =           1 seed = 1600239229 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 856952156 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -334903678 media =0 sigma = 1
-jitter temporal[0] =           1 seed = -1754728170 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -1546980626 media =0 sigma = 1
-jitter temporal[4] =           1 seed = -1001818918 media =0 sigma = 1
-jitter temporal[3] =           1 seed = -1255452757 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -943949770 media =0 sigma = 1
-jitter temporal[1] =           2 seed = -1764107480 media =0 sigma = 1
-jitter temporal[0] =          -2 seed = -2126062501 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -161122271 media =0 sigma = 1
-jitter temporal[4] =           1 seed = 770628550 media =0 sigma = 1
-jitter temporal[3] =           2 seed = 1993890445 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = 1842261256 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = -1464557805 media =0 sigma = 1
-jitter temporal[0] =          -2 seed = 1851413505 media =0 sigma = 1
-jitter temporal[16] =           0 seed = -162767344 media =0 sigma = 1
-jitter temporal[15] =           1 seed = -1632993908 media =0 sigma = 1
-jitter temporal[14] =           0 seed = 510511656 media =0 sigma = 1
-jitter temporal[13] =           0 seed = -340101000 media =0 sigma = 1
-jitter temporal[12] =           0 seed = -633031320 media =0 sigma = 1
-jitter temporal[11] =           0 seed = 895054728 media =0 sigma = 1
-jitter temporal[10] =           0 seed = 497787939 media =0 sigma = 1
-jitter temporal[9] =          -1 seed = -1677731585 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -140141839 media =0 sigma = 1
-jitter temporal[7] =           1 seed = -1608664172 media =0 sigma = 1
-jitter temporal[6] =           0 seed = -860548079 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -1517967461 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -1005514243 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 1674674801 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = 1071293888 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 354340023 media =0 sigma = 1
-jitter temporal[0] =           1 seed = -1387867536 media =0 sigma = 1
-jitter temporal[16] =           1 seed = -794198342 media =0 sigma = 1
-jitter temporal[15] =           1 seed = 2051135268 media =0 sigma = 1
-jitter temporal[14] =          -1 seed = 1806973872 media =0 sigma = 1
-jitter temporal[13] =           1 seed = -2089493562 media =0 sigma = 1
-jitter temporal[12] =           0 seed = 1240189768 media =0 sigma = 1
-jitter temporal[11] =           0 seed = -343749717 media =0 sigma = 1
-jitter temporal[10] =          -1 seed = -1234173575 media =0 sigma = 1
-jitter temporal[9] =          -2 seed = -2062446887 media =0 sigma = 1
-jitter temporal[8] =           1 seed = 1544179311 media =0 sigma = 1
-jitter temporal[7] =           1 seed = 1605599148 media =0 sigma = 1
-jitter temporal[6] =           1 seed = -1841949195 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = 1336954980 media =0 sigma = 1
-jitter temporal[4] =           1 seed = 1747633625 media =0 sigma = 1
-jitter temporal[3] =           1 seed = -1090990190 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -2070876480 media =0 sigma = 1
-jitter temporal[1] =          -2 seed = 1913537242 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -938577829 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 1085069551 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 2089536532 media =0 sigma = 1
-jitter temporal[3] =           1 seed = 1237839731 media =0 sigma = 1
-jitter temporal[2] =           1 seed = -1173566448 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 110225553 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -968008700 media =0 sigma = 1
-jitter temporal[5] =           1 seed = 1116578095 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -813712008 media =0 sigma = 1
-jitter temporal[3] =           1 seed = 1538430283 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -879676856 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = 1543404017 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = 1895535963 media =0 sigma = 1
-jitter temporal[16] =           1 seed = -1285174787 media =0 sigma = 1
-jitter temporal[15] =          -1 seed = -1163848140 media =0 sigma = 1
-jitter temporal[14] =           1 seed = 1823686230 media =0 sigma = 1
-jitter temporal[13] =           2 seed = 1679297959 media =0 sigma = 1
-jitter temporal[12] =           0 seed = -1095754578 media =0 sigma = 1
-jitter temporal[11] =          -1 seed = -1778735675 media =0 sigma = 1
-jitter temporal[10] =          -2 seed = 2143872883 media =0 sigma = 1
-jitter temporal[9] =           0 seed = 386607184 media =0 sigma = 1
-jitter temporal[8] =          -1 seed = -1209526552 media =0 sigma = 1
-jitter temporal[7] =           1 seed = -1978172993 media =0 sigma = 1
-jitter temporal[6] =           1 seed = -1706102202 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -883052221 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -764805012 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 1941372651 media =0 sigma = 1
-jitter temporal[2] =           2 seed = -2003651854 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = 1115141226 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = 1321899296 media =0 sigma = 1
-jitter temporal[16] =          -1 seed = 1277755865 media =0 sigma = 1
-jitter temporal[15] =           0 seed = 426006158 media =0 sigma = 1
-jitter temporal[14] =           0 seed = -217170462 media =0 sigma = 1
-jitter temporal[13] =           1 seed = 2143877705 media =0 sigma = 1
-jitter temporal[12] =           1 seed = 1467365935 media =0 sigma = 1
-jitter temporal[11] =          -1 seed = -913642533 media =0 sigma = 1
-jitter temporal[10] =           0 seed = -356776432 media =0 sigma = 1
-jitter temporal[9] =          -1 seed = -892014942 media =0 sigma = 1
-jitter temporal[8] =          -1 seed = 1810447049 media =0 sigma = 1
-jitter temporal[7] =           1 seed = 1172368719 media =0 sigma = 1
-jitter temporal[6] =           0 seed = 716341272 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = -1354549785 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 1471585356 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = 1074794837 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -660017430 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -499886501 media =0 sigma = 1
-jitter temporal[0] =          -2 seed = 1795279981 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -1382700772 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -1677725625 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = -2098624497 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 663814321 media =0 sigma = 1
-jitter temporal[1] =           1 seed = -1784173532 media =0 sigma = 1
-jitter temporal[0] =          -3 seed = -2034933585 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = 1570707100 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -1008409945 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = 1412641928 media =0 sigma = 1
-jitter temporal[2] =           1 seed = 1923767907 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 139763847 media =0 sigma = 1
-jitter temporal[0] =           1 seed = 1133891880 media =0 sigma = 1
-jitter temporal[16] =           0 seed = -408108558 media =0 sigma = 1
-jitter temporal[15] =          -1 seed = -1035644179 media =0 sigma = 1
-jitter temporal[14] =           0 seed = 1186804246 media =0 sigma = 1
-jitter temporal[13] =           1 seed = -1377241781 media =0 sigma = 1
-jitter temporal[12] =          -1 seed = 1460581115 media =0 sigma = 1
-jitter temporal[11] =           0 seed = 1227874998 media =0 sigma = 1
-jitter temporal[10] =           0 seed = 105792521 media =0 sigma = 1
-jitter temporal[9] =           1 seed = -1517086277 media =0 sigma = 1
-jitter temporal[8] =           0 seed = 1957521276 media =0 sigma = 1
-jitter temporal[7] =           1 seed = 1715819142 media =0 sigma = 1
-jitter temporal[6] =           1 seed = 1984992240 media =0 sigma = 1
-jitter temporal[5] =           1 seed = 1272421980 media =0 sigma = 1
-jitter temporal[4] =           1 seed = -1231355667 media =0 sigma = 1
-jitter temporal[3] =           2 seed = -2012947249 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 173855218 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = 1261673554 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 941026921 media =0 sigma = 1
-jitter temporal[16] =          -2 seed = 1999154394 media =0 sigma = 1
-jitter temporal[15] =           0 seed = -584297085 media =0 sigma = 1
-jitter temporal[14] =           0 seed = 350977138 media =0 sigma = 1
-jitter temporal[13] =           2 seed = 2112245649 media =0 sigma = 1
-jitter temporal[12] =          -1 seed = -894011244 media =0 sigma = 1
-jitter temporal[11] =          -1 seed = 1282680260 media =0 sigma = 1
-jitter temporal[10] =           0 seed = -337769185 media =0 sigma = 1
-jitter temporal[9] =           0 seed = -402298142 media =0 sigma = 1
-jitter temporal[8] =           0 seed = 83749189 media =0 sigma = 1
-jitter temporal[7] =           1 seed = 1247582727 media =0 sigma = 1
-jitter temporal[6] =           0 seed = -156488037 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 627685827 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -283476883 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = 1342222556 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 320192489 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = -1185363527 media =0 sigma = 1
-jitter temporal[0] =          -2 seed = 2074675009 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -263937384 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -1600672751 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = 1493577234 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -590633221 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = 1418349026 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 491814994 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = 1005038019 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 1684863710 media =0 sigma = 1
-jitter temporal[3] =           0 seed = -423541227 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 550109818 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = 763060537 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = -2039255679 media =0 sigma = 1
+jitter temporal therm [16] =           3 seed = 2049777229 media =0 sigma = 1
+jitter temporal therm [15] =          -1 seed = 935010399 media =0 sigma = 1
+jitter temporal therm [14] =           2 seed = 1923838383 media =0 sigma = 1
+jitter temporal therm [13] =           1 seed = 1496260146 media =0 sigma = 1
+jitter temporal therm [12] =          -1 seed = -1272287527 media =0 sigma = 1
+jitter temporal therm [11] =          -1 seed = 1416363817 media =0 sigma = 1
+jitter temporal therm [10] =           2 seed = -2031530373 media =0 sigma = 1
+jitter temporal therm [9] =           1 seed = -1403276627 media =0 sigma = 1
+jitter temporal therm [8] =           1 seed = -1739549836 media =0 sigma = 1
+jitter temporal therm [7] =          -1 seed = 2045447604 media =0 sigma = 1
+jitter temporal therm [6] =          -2 seed = 1995736582 media =0 sigma = 1
+jitter temporal therm [5] =           2 seed = -1896957595 media =0 sigma = 1
+jitter temporal therm [4] =           0 seed = 353525573 media =0 sigma = 1
+jitter temporal therm [3] =           1 seed = -998158522 media =0 sigma = 1
+jitter temporal therm [2] =           1 seed = 1266084719 media =0 sigma = 1
+jitter temporal therm [1] =           2 seed = 2011445172 media =0 sigma = 1
+jitter temporal therm [0] =           1 seed = 1972203375 media =0 sigma = 1
+jitter temporal thermb [16] =          -1 seed = -1212714505 media =0 sigma = 1
+jitter temporal thermb [15] =           0 seed = -368028907 media =0 sigma = 1
+jitter temporal thermb [14] =          -1 seed = -1215744032 media =0 sigma = 1
+jitter temporal thermb [13] =           2 seed = 1847150967 media =0 sigma = 1
+jitter temporal thermb [12] =           0 seed = -975207532 media =0 sigma = 1
+jitter temporal thermb [11] =           2 seed = -1936229351 media =0 sigma = 1
+jitter temporal thermb [10] =           2 seed = -1648009150 media =0 sigma = 1
+jitter temporal thermb [9] =           1 seed = -1106616374 media =0 sigma = 1
+jitter temporal thermb [8] =          -1 seed = 1152259756 media =0 sigma = 1
+jitter temporal thermb [7] =          -1 seed = -1882349354 media =0 sigma = 1
+jitter temporal thermb [6] =           0 seed = -257353177 media =0 sigma = 1
+jitter temporal thermb [5] =           3 seed = -2088317965 media =0 sigma = 1
+jitter temporal thermb [4] =           0 seed = 84986204 media =0 sigma = 1
+jitter temporal thermb [3] =           0 seed = -775351110 media =0 sigma = 1
+jitter temporal thermb [2] =           0 seed = -775617090 media =0 sigma = 1
+jitter temporal thermb [1] =          -2 seed = 1833746667 media =0 sigma = 1
+jitter temporal thermb [0] =           0 seed = -572772880 media =0 sigma = 1
+jitter temporal binary [5] =           0 seed = 1046028917 media =0 sigma = 1
+jitter temporal binary [4] =           0 seed = -1120018967 media =0 sigma = 1
+jitter temporal binary [3] =          -1 seed = 1429346394 media =0 sigma = 1
+jitter temporal binary [2] =           0 seed = -1518040217 media =0 sigma = 1
+jitter temporal binary [1] =          -1 seed = -1467458607 media =0 sigma = 1
+jitter temporal binary [0] =           1 seed = 1121138069 media =0 sigma = 1
+jitter temporal binaryb [5] =          -1 seed = 870490422 media =0 sigma = 1
+jitter temporal binaryb [4] =          -1 seed = 986322041 media =0 sigma = 1
+jitter temporal binaryb [3] =           0 seed = 621889643 media =0 sigma = 1
+jitter temporal binaryb [2] =           0 seed = -670339373 media =0 sigma = 1
+jitter temporal binaryb [1] =           0 seed = 1511046705 media =0 sigma = 1
+jitter temporal binaryb [0] =          -1 seed = -968697540 media =0 sigma = 1
+jitter temporal therm [16] =           0 seed = 534133530 media =0 sigma = 1
+jitter temporal therm [15] =          -1 seed = 1762160747 media =0 sigma = 1
+jitter temporal therm [14] =          -1 seed = 1730471090 media =0 sigma = 1
+jitter temporal therm [13] =           0 seed = -896125734 media =0 sigma = 1
+jitter temporal therm [12] =           0 seed = -608135500 media =0 sigma = 1
+jitter temporal therm [11] =           3 seed = 2090305488 media =0 sigma = 1
+jitter temporal therm [10] =           0 seed = -440723526 media =0 sigma = 1
+jitter temporal therm [9] =           2 seed = -1617918997 media =0 sigma = 1
+jitter temporal therm [8] =           1 seed = -1848799684 media =0 sigma = 1
+jitter temporal therm [7] =          -2 seed = 2039811959 media =0 sigma = 1
+jitter temporal therm [6] =          -1 seed = -1664515413 media =0 sigma = 1
+jitter temporal therm [5] =           1 seed = -1143769857 media =0 sigma = 1
+jitter temporal therm [4] =           0 seed = -565429652 media =0 sigma = 1
+jitter temporal therm [3] =           2 seed = -1902327858 media =0 sigma = 1
+jitter temporal therm [2] =          -1 seed = -939463004 media =0 sigma = 1
+jitter temporal therm [1] =          -2 seed = -1856808716 media =0 sigma = 1
+jitter temporal therm [0] =           2 seed = -2097960115 media =0 sigma = 1
+jitter temporal thermb [16] =          -1 seed = -869419760 media =0 sigma = 1
+jitter temporal thermb [15] =          -1 seed = 1718218121 media =0 sigma = 1
+jitter temporal thermb [14] =          -1 seed = -2112253274 media =0 sigma = 1
+jitter temporal thermb [13] =           2 seed = -1920423470 media =0 sigma = 1
+jitter temporal thermb [12] =           1 seed = 1037350367 media =0 sigma = 1
+jitter temporal thermb [11] =           0 seed = 360208394 media =0 sigma = 1
+jitter temporal thermb [10] =          -2 seed = 1911162715 media =0 sigma = 1
+jitter temporal thermb [9] =           1 seed = -763212241 media =0 sigma = 1
+jitter temporal thermb [8] =           1 seed = 1252696651 media =0 sigma = 1
+jitter temporal thermb [7] =           1 seed = 1308425973 media =0 sigma = 1
+jitter temporal thermb [6] =           0 seed = -667567164 media =0 sigma = 1
+jitter temporal thermb [5] =          -1 seed = -1649662728 media =0 sigma = 1
+jitter temporal thermb [4] =           1 seed = -1040023813 media =0 sigma = 1
+jitter temporal thermb [3] =           1 seed = -1083022347 media =0 sigma = 1
+jitter temporal thermb [2] =          -1 seed = 1317968687 media =0 sigma = 1
+jitter temporal thermb [1] =          -1 seed = -1366179993 media =0 sigma = 1
+jitter temporal thermb [0] =          -3 seed = -2018622128 media =0 sigma = 1
+jitter temporal binary [5] =           1 seed = -1604585771 media =0 sigma = 1
+jitter temporal binary [4] =           0 seed = -624573858 media =0 sigma = 1
+jitter temporal binary [3] =           1 seed = 1720464347 media =0 sigma = 1
+jitter temporal binary [2] =           0 seed = 591166648 media =0 sigma = 1
+jitter temporal binary [1] =           0 seed = -576723960 media =0 sigma = 1
+jitter temporal binary [0] =           1 seed = -1994913693 media =0 sigma = 1
+jitter temporal binaryb [5] =          -1 seed = -1108470887 media =0 sigma = 1
+jitter temporal binaryb [4] =           1 seed = -2094601512 media =0 sigma = 1
+jitter temporal binaryb [3] =          -2 seed = 1713961530 media =0 sigma = 1
+jitter temporal binaryb [2] =          -1 seed = -1432278126 media =0 sigma = 1
+jitter temporal binaryb [1] =           1 seed = -1216916531 media =0 sigma = 1
+jitter temporal binaryb [0] =          -1 seed = 1551485314 media =0 sigma = 1
+jitter temporal therm [16] =           0 seed = 623861470 media =0 sigma = 1
+jitter temporal therm [15] =          -1 seed = 947700570 media =0 sigma = 1
+jitter temporal therm [14] =          -1 seed = -1991716830 media =0 sigma = 1
+jitter temporal therm [13] =           0 seed = -72881096 media =0 sigma = 1
+jitter temporal therm [12] =           0 seed = -943112472 media =0 sigma = 1
+jitter temporal therm [11] =          -3 seed = -2028118634 media =0 sigma = 1
+jitter temporal therm [10] =           0 seed = -591545105 media =0 sigma = 1
+jitter temporal therm [9] =           0 seed = 420753007 media =0 sigma = 1
+jitter temporal therm [8] =           0 seed = 546669529 media =0 sigma = 1
+jitter temporal therm [7] =          -1 seed = -1536421724 media =0 sigma = 1
+jitter temporal therm [6] =           0 seed = -90974166 media =0 sigma = 1
+jitter temporal therm [5] =           1 seed = -1507146574 media =0 sigma = 1
+jitter temporal therm [4] =          -1 seed = 1648109783 media =0 sigma = 1
+jitter temporal therm [3] =          -1 seed = -1373204952 media =0 sigma = 1
+jitter temporal therm [2] =          -2 seed = -1632533514 media =0 sigma = 1
+jitter temporal therm [1] =           0 seed = -300837932 media =0 sigma = 1
+jitter temporal therm [0] =           1 seed = 1517765809 media =0 sigma = 1
+jitter temporal thermb [16] =           0 seed = -987158594 media =0 sigma = 1
+jitter temporal thermb [15] =          -1 seed = 1445183995 media =0 sigma = 1
+jitter temporal thermb [14] =           2 seed = 1992836180 media =0 sigma = 1
+jitter temporal thermb [13] =           0 seed = 753131645 media =0 sigma = 1
+jitter temporal thermb [12] =           0 seed = -672052060 media =0 sigma = 1
+jitter temporal thermb [11] =           1 seed = -1512143473 media =0 sigma = 1
+jitter temporal thermb [10] =           0 seed = 467542078 media =0 sigma = 1
+jitter temporal thermb [9] =           0 seed = -1207492603 media =0 sigma = 1
+jitter temporal thermb [8] =           1 seed = -1502560086 media =0 sigma = 1
+jitter temporal thermb [7] =          -1 seed = 1599327234 media =0 sigma = 1
+jitter temporal thermb [6] =           0 seed = 561584596 media =0 sigma = 1
+jitter temporal thermb [5] =           0 seed = 1028882996 media =0 sigma = 1
+jitter temporal thermb [4] =           2 seed = -1965897994 media =0 sigma = 1
+jitter temporal thermb [3] =           0 seed = -462110982 media =0 sigma = 1
+jitter temporal thermb [2] =           1 seed = 1700388460 media =0 sigma = 1
+jitter temporal thermb [1] =           0 seed = 216404676 media =0 sigma = 1
+jitter temporal thermb [0] =          -2 seed = -1639543735 media =0 sigma = 1
+jitter temporal binary [5] =          -1 seed = -1780221592 media =0 sigma = 1
+jitter temporal binary [4] =           0 seed = 385938655 media =0 sigma = 1
+jitter temporal binary [3] =           0 seed = 575221335 media =0 sigma = 1
+jitter temporal binary [2] =           0 seed = -1081957840 media =0 sigma = 1
+jitter temporal binary [1] =           1 seed = 729235816 media =0 sigma = 1
+jitter temporal binary [0] =           0 seed = -428715953 media =0 sigma = 1
+jitter temporal binaryb [5] =           0 seed = 1182115443 media =0 sigma = 1
+jitter temporal binaryb [4] =           0 seed = -659000156 media =0 sigma = 1
+jitter temporal binaryb [3] =           1 seed = 1442506570 media =0 sigma = 1
+jitter temporal binaryb [2] =           0 seed = -1573261465 media =0 sigma = 1
+jitter temporal binaryb [1] =          -1 seed = 1866379282 media =0 sigma = 1
+jitter temporal binaryb [0] =           0 seed = -725483043 media =0 sigma = 1
+jitter temporal therm [16] =           2 seed = -1839496812 media =0 sigma = 1
+jitter temporal therm [15] =           0 seed = -435933567 media =0 sigma = 1
+jitter temporal therm [14] =           1 seed = -1551674534 media =0 sigma = 1
+jitter temporal therm [13] =           0 seed = -1237179887 media =0 sigma = 1
+jitter temporal therm [12] =           0 seed = 1062503358 media =0 sigma = 1
+jitter temporal therm [11] =          -1 seed = -912330566 media =0 sigma = 1
+jitter temporal therm [10] =           0 seed = 197027431 media =0 sigma = 1
+jitter temporal therm [9] =           0 seed = 856222717 media =0 sigma = 1
+jitter temporal therm [8] =           0 seed = 1347268557 media =0 sigma = 1
+jitter temporal therm [7] =           1 seed = -855600481 media =0 sigma = 1
+jitter temporal therm [6] =           3 seed = 2061229439 media =0 sigma = 1
+jitter temporal therm [5] =          -1 seed = 804749055 media =0 sigma = 1
+jitter temporal therm [4] =           1 seed = 1307178467 media =0 sigma = 1
+jitter temporal therm [3] =          -1 seed = 869409863 media =0 sigma = 1
+jitter temporal therm [2] =           0 seed = 1581684091 media =0 sigma = 1
+jitter temporal therm [1] =           0 seed = -1285139383 media =0 sigma = 1
+jitter temporal therm [0] =           1 seed = -1708339486 media =0 sigma = 1
+jitter temporal thermb [16] =          -1 seed = -1317080911 media =0 sigma = 1
+jitter temporal thermb [15] =           1 seed = -1365286578 media =0 sigma = 1
+jitter temporal thermb [14] =           0 seed = 2073370409 media =0 sigma = 1
+jitter temporal thermb [13] =           0 seed = -1460241779 media =0 sigma = 1
+jitter temporal thermb [12] =           1 seed = 1889597655 media =0 sigma = 1
+jitter temporal thermb [11] =           2 seed = -1948518676 media =0 sigma = 1
+jitter temporal thermb [10] =           1 seed = -1251975098 media =0 sigma = 1
+jitter temporal thermb [9] =           0 seed = -356364678 media =0 sigma = 1
+jitter temporal thermb [8] =           0 seed = -739250492 media =0 sigma = 1
+jitter temporal thermb [7] =           0 seed = 665151898 media =0 sigma = 1
+jitter temporal thermb [6] =           0 seed = -2021218778 media =0 sigma = 1
+jitter temporal thermb [5] =           2 seed = 1809549673 media =0 sigma = 1
+jitter temporal thermb [4] =           0 seed = -208393005 media =0 sigma = 1
+jitter temporal thermb [3] =           1 seed = -823416685 media =0 sigma = 1
+jitter temporal thermb [2] =          -1 seed = 1622728884 media =0 sigma = 1
+jitter temporal thermb [1] =           1 seed = 975878241 media =0 sigma = 1
+jitter temporal thermb [0] =           1 seed = -1983167818 media =0 sigma = 1
+jitter temporal binary [5] =          -1 seed = 1647132805 media =0 sigma = 1
+jitter temporal binary [4] =          -3 seed = -2059552614 media =0 sigma = 1
+jitter temporal binary [3] =           0 seed = -105793891 media =0 sigma = 1
+jitter temporal binary [2] =           1 seed = -1785620824 media =0 sigma = 1
+jitter temporal binary [1] =           0 seed = 459731696 media =0 sigma = 1
+jitter temporal binary [0] =           0 seed = 2072128576 media =0 sigma = 1
+jitter temporal binaryb [5] =          -1 seed = 912630623 media =0 sigma = 1
+jitter temporal binaryb [4] =          -1 seed = 1729491962 media =0 sigma = 1
+jitter temporal binaryb [3] =          -2 seed = -1836139347 media =0 sigma = 1
+jitter temporal binaryb [2] =          -1 seed = 1018627567 media =0 sigma = 1
+jitter temporal binaryb [1] =           1 seed = 1172382813 media =0 sigma = 1
+jitter temporal binaryb [0] =           1 seed = -1720972812 media =0 sigma = 1
+jitter temporal therm [16] =           0 seed = -722627719 media =0 sigma = 1
+jitter temporal therm [15] =          -1 seed = -1282210734 media =0 sigma = 1
+jitter temporal therm [14] =           2 seed = 1891518937 media =0 sigma = 1
+jitter temporal therm [13] =           2 seed = 1628354022 media =0 sigma = 1
+jitter temporal therm [12] =           1 seed = 1299042132 media =0 sigma = 1
+jitter temporal therm [11] =          -1 seed = 1947905262 media =0 sigma = 1
+jitter temporal therm [10] =           0 seed = 278798863 media =0 sigma = 1
+jitter temporal therm [9] =          -1 seed = 1212736536 media =0 sigma = 1
+jitter temporal therm [8] =           2 seed = 2002902033 media =0 sigma = 1
+jitter temporal therm [7] =          -2 seed = 1756385606 media =0 sigma = 1
+jitter temporal therm [6] =          -1 seed = -1218613863 media =0 sigma = 1
+jitter temporal therm [5] =           1 seed = 1527643772 media =0 sigma = 1
+jitter temporal therm [4] =          -1 seed = 1382685746 media =0 sigma = 1
+jitter temporal therm [3] =           1 seed = 879685146 media =0 sigma = 1
+jitter temporal therm [2] =          -1 seed = -1317785848 media =0 sigma = 1
+jitter temporal therm [1] =           2 seed = 1787803000 media =0 sigma = 1
+jitter temporal therm [0] =           1 seed = 1252518165 media =0 sigma = 1
+jitter temporal thermb [16] =           2 seed = 1770954312 media =0 sigma = 1
+jitter temporal thermb [15] =           0 seed = -242095127 media =0 sigma = 1
+jitter temporal thermb [14] =          -1 seed = -1426663230 media =0 sigma = 1
+jitter temporal thermb [13] =           0 seed = 554794630 media =0 sigma = 1
+jitter temporal thermb [12] =           1 seed = 1395173851 media =0 sigma = 1
+jitter temporal thermb [11] =           1 seed = -1312499027 media =0 sigma = 1
+jitter temporal thermb [10] =          -1 seed = 1840186533 media =0 sigma = 1
+jitter temporal thermb [9] =           0 seed = 975457965 media =0 sigma = 1
+jitter temporal thermb [8] =           0 seed = -729043114 media =0 sigma = 1
+jitter temporal thermb [7] =          -1 seed = -1058405529 media =0 sigma = 1
+jitter temporal thermb [6] =           3 seed = 2090883761 media =0 sigma = 1
+jitter temporal thermb [5] =          -1 seed = -817393133 media =0 sigma = 1
+jitter temporal thermb [4] =           0 seed = 317519124 media =0 sigma = 1
+jitter temporal thermb [3] =          -1 seed = -1691793136 media =0 sigma = 1
+jitter temporal thermb [2] =          -1 seed = -1307441290 media =0 sigma = 1
+jitter temporal thermb [1] =          -2 seed = 1748694007 media =0 sigma = 1
+jitter temporal thermb [0] =           1 seed = 1541871302 media =0 sigma = 1
+jitter temporal binary [5] =           2 seed = -1812570427 media =0 sigma = 1
+jitter temporal binary [4] =           1 seed = 2105379813 media =0 sigma = 1
+jitter temporal binary [3] =           0 seed = -322601260 media =0 sigma = 1
+jitter temporal binary [2] =           0 seed = -319238208 media =0 sigma = 1
+jitter temporal binary [1] =           0 seed = 1766432875 media =0 sigma = 1
+jitter temporal binary [0] =          -1 seed = 1675104464 media =0 sigma = 1
+jitter temporal binaryb [5] =           1 seed = -2020458831 media =0 sigma = 1
+jitter temporal binaryb [4] =           0 seed = -342611964 media =0 sigma = 1
+jitter temporal binaryb [3] =          -1 seed = -1408298481 media =0 sigma = 1
+jitter temporal binaryb [2] =           2 seed = -2145773726 media =0 sigma = 1
+jitter temporal binaryb [1] =           2 seed = 1942210274 media =0 sigma = 1
+jitter temporal binaryb [0] =           0 seed = 1868816905 media =0 sigma = 1
 atb1 = `wrealZState, atb0 = `wrealZState
 Test 3: Estado encendido con atb_ena = 2'b01
-jitter temporal[16] =          -2 seed = 1966621659 media =0 sigma = 1
-jitter temporal[15] =           1 seed = -1560196333 media =0 sigma = 1
-jitter temporal[14] =           1 seed = -2046667802 media =0 sigma = 1
-jitter temporal[13] =          -1 seed = -889289468 media =0 sigma = 1
-jitter temporal[12] =           0 seed = -186845034 media =0 sigma = 1
-jitter temporal[11] =           0 seed = -1135405029 media =0 sigma = 1
-jitter temporal[10] =           0 seed = 901167794 media =0 sigma = 1
-jitter temporal[9] =           0 seed = -308541780 media =0 sigma = 1
-jitter temporal[8] =           1 seed = -839850221 media =0 sigma = 1
-jitter temporal[7] =           1 seed = 1778782309 media =0 sigma = 1
-jitter temporal[6] =           1 seed = 1576008856 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = 1403617968 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 1921725571 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = 1620699639 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = -1336645830 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -1162209040 media =0 sigma = 1
-jitter temporal[0] =           1 seed = 772585899 media =0 sigma = 1
-jitter temporal[16] =           4 seed = 2127046631 media =0 sigma = 1
-jitter temporal[15] =          -1 seed = 1239299173 media =0 sigma = 1
-jitter temporal[14] =          -2 seed = -1783130638 media =0 sigma = 1
-jitter temporal[13] =           0 seed = 1448998417 media =0 sigma = 1
-jitter temporal[12] =           0 seed = 1918882973 media =0 sigma = 1
-jitter temporal[11] =           1 seed = 1719544621 media =0 sigma = 1
-jitter temporal[10] =          -1 seed = -1839443667 media =0 sigma = 1
-jitter temporal[9] =          -1 seed = -1447183374 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -165699673 media =0 sigma = 1
-jitter temporal[7] =           0 seed = 281455064 media =0 sigma = 1
-jitter temporal[6] =           0 seed = -931749525 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -541929666 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 1322749837 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 363638615 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = 1758678740 media =0 sigma = 1
-jitter temporal[1] =           1 seed = -1516623912 media =0 sigma = 1
-jitter temporal[0] =           1 seed = -1609565549 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = -1745159607 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 1178937588 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = 1873430963 media =0 sigma = 1
-jitter temporal[2] =           1 seed = -1844041827 media =0 sigma = 1
-jitter temporal[1] =          -2 seed = 1664437898 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = 1372491999 media =0 sigma = 1
-jitter temporal[5] =           1 seed = 1531680575 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 1875975996 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = 1491822209 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -569687674 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = 1679550399 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -197134210 media =0 sigma = 1
-jitter temporal[16] =          -1 seed = 1589858770 media =0 sigma = 1
-jitter temporal[15] =           0 seed = -1188420549 media =0 sigma = 1
-jitter temporal[14] =           0 seed = 211309564 media =0 sigma = 1
-jitter temporal[13] =           0 seed = 1527139336 media =0 sigma = 1
-jitter temporal[12] =          -1 seed = -1199379281 media =0 sigma = 1
-jitter temporal[11] =           1 seed = 1236098697 media =0 sigma = 1
-jitter temporal[10] =           0 seed = -1162456555 media =0 sigma = 1
-jitter temporal[9] =           0 seed = -2060409082 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -215868960 media =0 sigma = 1
-jitter temporal[7] =          -2 seed = -1984868585 media =0 sigma = 1
-jitter temporal[6] =           0 seed = 1722634405 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -1610993765 media =0 sigma = 1
-jitter temporal[4] =           1 seed = 1372630409 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 651774606 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -651455738 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -366152602 media =0 sigma = 1
-jitter temporal[0] =           2 seed = 1799522532 media =0 sigma = 1
-jitter temporal[16] =           0 seed = -598376570 media =0 sigma = 1
-jitter temporal[15] =           0 seed = 299991364 media =0 sigma = 1
-jitter temporal[14] =           0 seed = -1081941082 media =0 sigma = 1
-jitter temporal[13] =           2 seed = 1913983376 media =0 sigma = 1
-jitter temporal[12] =           0 seed = 596491980 media =0 sigma = 1
-jitter temporal[11] =           2 seed = 2033021316 media =0 sigma = 1
-jitter temporal[10] =           0 seed = 313324667 media =0 sigma = 1
-jitter temporal[9] =           1 seed = -1922233060 media =0 sigma = 1
-jitter temporal[8] =           0 seed = 375139357 media =0 sigma = 1
-jitter temporal[7] =           2 seed = 1945314211 media =0 sigma = 1
-jitter temporal[6] =           0 seed = 617005630 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 1717125758 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 689664641 media =0 sigma = 1
-jitter temporal[3] =           2 seed = 1792479298 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -407621199 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 529193241 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -530267332 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = 1471797631 media =0 sigma = 1
-jitter temporal[4] =           1 seed = 733736491 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 1094956753 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -690721624 media =0 sigma = 1
-jitter temporal[1] =           1 seed = 1250398284 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = 1346654753 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -151125924 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -132316015 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 644082416 media =0 sigma = 1
-jitter temporal[2] =           2 seed = 2065226424 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -177751590 media =0 sigma = 1
-jitter temporal[0] =           2 seed = 2126008817 media =0 sigma = 1
-jitter temporal[16] =           0 seed = 1296159521 media =0 sigma = 1
-jitter temporal[15] =          -3 seed = 2079177070 media =0 sigma = 1
-jitter temporal[14] =           1 seed = 1217644337 media =0 sigma = 1
-jitter temporal[13] =           1 seed = -1587471946 media =0 sigma = 1
-jitter temporal[12] =          -2 seed = -1953222617 media =0 sigma = 1
-jitter temporal[11] =           1 seed = -1854261681 media =0 sigma = 1
-jitter temporal[10] =           0 seed = -695336730 media =0 sigma = 1
-jitter temporal[9] =          -1 seed = -1525980495 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -1323298231 media =0 sigma = 1
-jitter temporal[7] =           0 seed = -619749847 media =0 sigma = 1
-jitter temporal[6] =          -1 seed = -1343620270 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -581787861 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -1311107086 media =0 sigma = 1
-jitter temporal[3] =           1 seed = 1844044415 media =0 sigma = 1
-jitter temporal[2] =           3 seed = -2089038623 media =0 sigma = 1
-jitter temporal[1] =           1 seed = -880962156 media =0 sigma = 1
-jitter temporal[0] =           2 seed = -1862703709 media =0 sigma = 1
-jitter temporal[16] =          -1 seed = 1653885238 media =0 sigma = 1
-jitter temporal[15] =          -2 seed = 1795364467 media =0 sigma = 1
-jitter temporal[14] =          -1 seed = 1347327944 media =0 sigma = 1
-jitter temporal[13] =           0 seed = -764076101 media =0 sigma = 1
-jitter temporal[12] =           0 seed = 441913129 media =0 sigma = 1
-jitter temporal[11] =           1 seed = 748244214 media =0 sigma = 1
-jitter temporal[10] =          -1 seed = 871233653 media =0 sigma = 1
-jitter temporal[9] =           0 seed = 1326606845 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -1770908215 media =0 sigma = 1
-jitter temporal[7] =           1 seed = -963326139 media =0 sigma = 1
-jitter temporal[6] =          -1 seed = -1608461844 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -374581635 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 2114693207 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 67543868 media =0 sigma = 1
-jitter temporal[2] =           2 seed = -1627656246 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 1742158248 media =0 sigma = 1
-jitter temporal[0] =           2 seed = 2096133232 media =0 sigma = 1
-jitter temporal[5] =          -2 seed = -1711484094 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 161977091 media =0 sigma = 1
-jitter temporal[3] =           0 seed = -665675028 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 363704240 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -246393700 media =0 sigma = 1
-jitter temporal[0] =          -2 seed = -1996802846 media =0 sigma = 1
-jitter temporal[5] =           1 seed = 2065777373 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 386367045 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = -828594816 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -263085165 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -721291825 media =0 sigma = 1
-jitter temporal[0] =           1 seed = -2063024022 media =0 sigma = 1
-jitter temporal[16] =           0 seed = 571086363 media =0 sigma = 1
-jitter temporal[15] =           0 seed = -819478945 media =0 sigma = 1
-jitter temporal[14] =          -2 seed = -1802252419 media =0 sigma = 1
-jitter temporal[13] =           0 seed = -716186396 media =0 sigma = 1
-jitter temporal[12] =           0 seed = -280774156 media =0 sigma = 1
-jitter temporal[11] =           1 seed = 933274369 media =0 sigma = 1
-jitter temporal[10] =          -1 seed = -964250832 media =0 sigma = 1
-jitter temporal[9] =           1 seed = -1217440171 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -1086625620 media =0 sigma = 1
-jitter temporal[7] =           0 seed = -728860530 media =0 sigma = 1
-jitter temporal[6] =           1 seed = 1949618809 media =0 sigma = 1
-jitter temporal[5] =           2 seed = -1930232575 media =0 sigma = 1
-jitter temporal[4] =           1 seed = -1607990759 media =0 sigma = 1
-jitter temporal[3] =           1 seed = 1289639257 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 1057130001 media =0 sigma = 1
-jitter temporal[1] =           1 seed = 773599815 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = 1160639496 media =0 sigma = 1
-jitter temporal[16] =           0 seed = -805421643 media =0 sigma = 1
-jitter temporal[15] =           2 seed = -1928000288 media =0 sigma = 1
-jitter temporal[14] =           0 seed = 1254668827 media =0 sigma = 1
-jitter temporal[13] =          -1 seed = 1517173541 media =0 sigma = 1
-jitter temporal[12] =           0 seed = 780247089 media =0 sigma = 1
-jitter temporal[11] =           0 seed = 510770231 media =0 sigma = 1
-jitter temporal[10] =           0 seed = 845988606 media =0 sigma = 1
-jitter temporal[9] =           2 seed = 2103703226 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -1374134467 media =0 sigma = 1
-jitter temporal[7] =           0 seed = 458835972 media =0 sigma = 1
-jitter temporal[6] =           0 seed = -114340871 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = -1644898058 media =0 sigma = 1
-jitter temporal[4] =          -2 seed = -1994371503 media =0 sigma = 1
-jitter temporal[3] =           1 seed = -849482382 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = -1544080388 media =0 sigma = 1
-jitter temporal[1] =           3 seed = 2114515586 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 1957327188 media =0 sigma = 1
-jitter temporal[5] =          -2 seed = -1960252971 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 1440681837 media =0 sigma = 1
-jitter temporal[3] =           0 seed = -594841856 media =0 sigma = 1
-jitter temporal[2] =           2 seed = -1941006714 media =0 sigma = 1
-jitter temporal[1] =          -3 seed = -2132783120 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -1947088253 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -1474915222 media =0 sigma = 1
-jitter temporal[4] =          -2 seed = -2136234956 media =0 sigma = 1
-jitter temporal[3] =           1 seed = 1422517232 media =0 sigma = 1
-jitter temporal[2] =           1 seed = -1651494218 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 1723900926 media =0 sigma = 1
-jitter temporal[0] =           1 seed = 1622323366 media =0 sigma = 1
-jitter temporal[16] =           0 seed = -811970836 media =0 sigma = 1
-jitter temporal[15] =           1 seed = 1409816848 media =0 sigma = 1
-jitter temporal[14] =          -1 seed = 1946783661 media =0 sigma = 1
-jitter temporal[13] =          -1 seed = 920372822 media =0 sigma = 1
-jitter temporal[12] =          -1 seed = -848972052 media =0 sigma = 1
-jitter temporal[11] =           1 seed = 1829767728 media =0 sigma = 1
-jitter temporal[10] =           0 seed = 487290434 media =0 sigma = 1
-jitter temporal[9] =          -1 seed = -1448611059 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -1021027309 media =0 sigma = 1
-jitter temporal[7] =          -3 seed = 2093813843 media =0 sigma = 1
-jitter temporal[6] =           0 seed = -1766872721 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -221126667 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -1037708104 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = -2020030623 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -983202663 media =0 sigma = 1
-jitter temporal[1] =           1 seed = -1730410300 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -337987420 media =0 sigma = 1
-jitter temporal[16] =          -1 seed = 1064424055 media =0 sigma = 1
-jitter temporal[15] =          -1 seed = 1300399341 media =0 sigma = 1
-jitter temporal[14] =           1 seed = 1650155508 media =0 sigma = 1
-jitter temporal[13] =           0 seed = -319837799 media =0 sigma = 1
-jitter temporal[12] =           1 seed = 755468656 media =0 sigma = 1
-jitter temporal[11] =           1 seed = -1419215424 media =0 sigma = 1
-jitter temporal[10] =           0 seed = -1302171381 media =0 sigma = 1
-jitter temporal[9] =          -1 seed = 2147004343 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -101582500 media =0 sigma = 1
-jitter temporal[7] =          -1 seed = 1122445859 media =0 sigma = 1
-jitter temporal[6] =           0 seed = 741983987 media =0 sigma = 1
-jitter temporal[5] =           2 seed = -2093754684 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -425099131 media =0 sigma = 1
-jitter temporal[3] =           0 seed = -1741354579 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 551166932 media =0 sigma = 1
-jitter temporal[1] =           1 seed = 1601012950 media =0 sigma = 1
-jitter temporal[0] =           1 seed = 1573780549 media =0 sigma = 1
-jitter temporal[5] =          -2 seed = -1940239318 media =0 sigma = 1
-jitter temporal[4] =           1 seed = 1884310946 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 1007016977 media =0 sigma = 1
-jitter temporal[2] =           1 seed = 2043777546 media =0 sigma = 1
-jitter temporal[1] =           2 seed = -1759232276 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = 1830531583 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -1684366370 media =0 sigma = 1
-jitter temporal[4] =           1 seed = -1616817834 media =0 sigma = 1
-jitter temporal[3] =           0 seed = -593050642 media =0 sigma = 1
-jitter temporal[2] =           1 seed = 1154992041 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = -1226354355 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 1042152562 media =0 sigma = 1
+jitter temporal therm [16] =           0 seed = -782781294 media =0 sigma = 1
+jitter temporal therm [15] =           1 seed = -1573322272 media =0 sigma = 1
+jitter temporal therm [14] =           0 seed = 823931921 media =0 sigma = 1
+jitter temporal therm [13] =           1 seed = 1008063588 media =0 sigma = 1
+jitter temporal therm [12] =           0 seed = 390969478 media =0 sigma = 1
+jitter temporal therm [11] =           1 seed = -1789931091 media =0 sigma = 1
+jitter temporal therm [10] =          -1 seed = -1120660340 media =0 sigma = 1
+jitter temporal therm [9] =          -1 seed = 1465194946 media =0 sigma = 1
+jitter temporal therm [8] =           0 seed = 228645548 media =0 sigma = 1
+jitter temporal therm [7] =           2 seed = 2022291480 media =0 sigma = 1
+jitter temporal therm [6] =           1 seed = -1763485436 media =0 sigma = 1
+jitter temporal therm [5] =           1 seed = 1613615150 media =0 sigma = 1
+jitter temporal therm [4] =           0 seed = -1942279800 media =0 sigma = 1
+jitter temporal therm [3] =           1 seed = 1615840624 media =0 sigma = 1
+jitter temporal therm [2] =          -2 seed = 1985242313 media =0 sigma = 1
+jitter temporal therm [1] =           0 seed = -1033946556 media =0 sigma = 1
+jitter temporal therm [0] =           0 seed = 428157963 media =0 sigma = 1
+jitter temporal thermb [16] =          -1 seed = -1612197538 media =0 sigma = 1
+jitter temporal thermb [15] =           1 seed = -1242467620 media =0 sigma = 1
+jitter temporal thermb [14] =          -1 seed = 1067961977 media =0 sigma = 1
+jitter temporal thermb [13] =          -2 seed = -1919116590 media =0 sigma = 1
+jitter temporal thermb [12] =           1 seed = 1654636036 media =0 sigma = 1
+jitter temporal thermb [11] =           1 seed = -1321478412 media =0 sigma = 1
+jitter temporal thermb [10] =           1 seed = 1370043607 media =0 sigma = 1
+jitter temporal thermb [9] =           0 seed = 631292518 media =0 sigma = 1
+jitter temporal thermb [8] =          -2 seed = 2045881920 media =0 sigma = 1
+jitter temporal thermb [7] =           0 seed = 794129923 media =0 sigma = 1
+jitter temporal thermb [6] =           0 seed = -441849978 media =0 sigma = 1
+jitter temporal thermb [5] =          -1 seed = -2082501854 media =0 sigma = 1
+jitter temporal thermb [4] =          -1 seed = -1666728030 media =0 sigma = 1
+jitter temporal thermb [3] =           0 seed = 746123444 media =0 sigma = 1
+jitter temporal thermb [2] =           1 seed = -1348255718 media =0 sigma = 1
+jitter temporal thermb [1] =           0 seed = -753322854 media =0 sigma = 1
+jitter temporal thermb [0] =           1 seed = 1873573613 media =0 sigma = 1
+jitter temporal binary [5] =          -2 seed = 1683922620 media =0 sigma = 1
+jitter temporal binary [4] =           1 seed = 1486249360 media =0 sigma = 1
+jitter temporal binary [3] =           0 seed = -78712795 media =0 sigma = 1
+jitter temporal binary [2] =           0 seed = 599416644 media =0 sigma = 1
+jitter temporal binary [1] =           2 seed = 1877679010 media =0 sigma = 1
+jitter temporal binary [0] =           1 seed = 1061116333 media =0 sigma = 1
+jitter temporal binaryb [5] =           1 seed = -1451224288 media =0 sigma = 1
+jitter temporal binaryb [4] =           0 seed = 243133933 media =0 sigma = 1
+jitter temporal binaryb [3] =           3 seed = -2080267448 media =0 sigma = 1
+jitter temporal binaryb [2] =           0 seed = 672166349 media =0 sigma = 1
+jitter temporal binaryb [1] =           1 seed = -924598952 media =0 sigma = 1
+jitter temporal binaryb [0] =          -1 seed = -1454857086 media =0 sigma = 1
+jitter temporal therm [16] =          -1 seed = -2142526717 media =0 sigma = 1
+jitter temporal therm [15] =           0 seed = -655278953 media =0 sigma = 1
+jitter temporal therm [14] =           0 seed = -876390436 media =0 sigma = 1
+jitter temporal therm [13] =           1 seed = 1038370825 media =0 sigma = 1
+jitter temporal therm [12] =           1 seed = 1407994458 media =0 sigma = 1
+jitter temporal therm [11] =           1 seed = 1623165109 media =0 sigma = 1
+jitter temporal therm [10] =           0 seed = 179261435 media =0 sigma = 1
+jitter temporal therm [9] =           1 seed = 1380918058 media =0 sigma = 1
+jitter temporal therm [8] =           1 seed = -1035133533 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = -353397495 media =0 sigma = 1
+jitter temporal therm [6] =           0 seed = 151541371 media =0 sigma = 1
+jitter temporal therm [5] =          -1 seed = -1355526763 media =0 sigma = 1
+jitter temporal therm [4] =           2 seed = 1916719327 media =0 sigma = 1
+jitter temporal therm [3] =          -1 seed = -1203684726 media =0 sigma = 1
+jitter temporal therm [2] =          -1 seed = 761237869 media =0 sigma = 1
+jitter temporal therm [1] =           1 seed = 1544120784 media =0 sigma = 1
+jitter temporal therm [0] =          -1 seed = -1143576907 media =0 sigma = 1
+jitter temporal thermb [16] =          -1 seed = -1530466659 media =0 sigma = 1
+jitter temporal thermb [15] =           3 seed = -2137546370 media =0 sigma = 1
+jitter temporal thermb [14] =           0 seed = 1053703198 media =0 sigma = 1
+jitter temporal thermb [13] =           0 seed = 866670451 media =0 sigma = 1
+jitter temporal thermb [12] =           1 seed = -1120129223 media =0 sigma = 1
+jitter temporal thermb [11] =           1 seed = -1919344207 media =0 sigma = 1
+jitter temporal thermb [10] =           0 seed = 821163831 media =0 sigma = 1
+jitter temporal thermb [9] =          -1 seed = -1573167411 media =0 sigma = 1
+jitter temporal thermb [8] =           0 seed = 816890204 media =0 sigma = 1
+jitter temporal thermb [7] =           0 seed = -679552438 media =0 sigma = 1
+jitter temporal thermb [6] =           0 seed = 1089183889 media =0 sigma = 1
+jitter temporal thermb [5] =           0 seed = -539360253 media =0 sigma = 1
+jitter temporal thermb [4] =           0 seed = -177576831 media =0 sigma = 1
+jitter temporal thermb [3] =          -2 seed = -2056897325 media =0 sigma = 1
+jitter temporal thermb [2] =           1 seed = 775479030 media =0 sigma = 1
+jitter temporal thermb [1] =          -1 seed = -1074108231 media =0 sigma = 1
+jitter temporal thermb [0] =           1 seed = 1588212243 media =0 sigma = 1
+jitter temporal binary [5] =           2 seed = -1630481291 media =0 sigma = 1
+jitter temporal binary [4] =          -2 seed = 1802802042 media =0 sigma = 1
+jitter temporal binary [3] =           0 seed = 1266075906 media =0 sigma = 1
+jitter temporal binary [2] =          -1 seed = 2105155049 media =0 sigma = 1
+jitter temporal binary [1] =          -1 seed = 996334762 media =0 sigma = 1
+jitter temporal binary [0] =           2 seed = 1778380904 media =0 sigma = 1
+jitter temporal binaryb [5] =          -2 seed = -1773410059 media =0 sigma = 1
+jitter temporal binaryb [4] =           0 seed = 891975778 media =0 sigma = 1
+jitter temporal binaryb [3] =           0 seed = -641152026 media =0 sigma = 1
+jitter temporal binaryb [2] =           1 seed = -1844928713 media =0 sigma = 1
+jitter temporal binaryb [1] =           1 seed = 1848265479 media =0 sigma = 1
+jitter temporal binaryb [0] =          -2 seed = -2037808222 media =0 sigma = 1
+jitter temporal therm [16] =          -1 seed = -1223356912 media =0 sigma = 1
+jitter temporal therm [15] =           1 seed = -944695426 media =0 sigma = 1
+jitter temporal therm [14] =           1 seed = 1926564135 media =0 sigma = 1
+jitter temporal therm [13] =           0 seed = -681458353 media =0 sigma = 1
+jitter temporal therm [12] =           0 seed = 143604115 media =0 sigma = 1
+jitter temporal therm [11] =           2 seed = -2002592530 media =0 sigma = 1
+jitter temporal therm [10] =           2 seed = 1840332192 media =0 sigma = 1
+jitter temporal therm [9] =          -1 seed = 1009672880 media =0 sigma = 1
+jitter temporal therm [8] =          -1 seed = -830584863 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = 530959924 media =0 sigma = 1
+jitter temporal therm [6] =           1 seed = 866778734 media =0 sigma = 1
+jitter temporal therm [5] =           1 seed = 1880546009 media =0 sigma = 1
+jitter temporal therm [4] =           1 seed = -1440311872 media =0 sigma = 1
+jitter temporal therm [3] =           0 seed = -319706516 media =0 sigma = 1
+jitter temporal therm [2] =          -2 seed = -1866205631 media =0 sigma = 1
+jitter temporal therm [1] =           0 seed = -591233672 media =0 sigma = 1
+jitter temporal therm [0] =           0 seed = 725746214 media =0 sigma = 1
+jitter temporal thermb [16] =          -1 seed = -1048510774 media =0 sigma = 1
+jitter temporal thermb [15] =          -1 seed = 1321109615 media =0 sigma = 1
+jitter temporal thermb [14] =           0 seed = -1802780114 media =0 sigma = 1
+jitter temporal thermb [13] =           1 seed = 1830005582 media =0 sigma = 1
+jitter temporal thermb [12] =           0 seed = 629631260 media =0 sigma = 1
+jitter temporal thermb [11] =           1 seed = 1271346986 media =0 sigma = 1
+jitter temporal thermb [10] =           0 seed = -338377307 media =0 sigma = 1
+jitter temporal thermb [9] =           0 seed = -982483438 media =0 sigma = 1
+jitter temporal thermb [8] =          -1 seed = -1404896672 media =0 sigma = 1
+jitter temporal thermb [7] =          -2 seed = 2072348813 media =0 sigma = 1
+jitter temporal thermb [6] =           1 seed = 1262208642 media =0 sigma = 1
+jitter temporal thermb [5] =           1 seed = -1095918324 media =0 sigma = 1
+jitter temporal thermb [4] =           0 seed = -399833313 media =0 sigma = 1
+jitter temporal thermb [3] =           0 seed = 855750036 media =0 sigma = 1
+jitter temporal thermb [2] =          -2 seed = -1819881434 media =0 sigma = 1
+jitter temporal thermb [1] =          -1 seed = 1202650962 media =0 sigma = 1
+jitter temporal thermb [0] =           0 seed = -415602951 media =0 sigma = 1
+jitter temporal binary [5] =          -1 seed = 966862969 media =0 sigma = 1
+jitter temporal binary [4] =           1 seed = 834827150 media =0 sigma = 1
+jitter temporal binary [3] =           1 seed = -1618800505 media =0 sigma = 1
+jitter temporal binary [2] =           1 seed = 803299221 media =0 sigma = 1
+jitter temporal binary [1] =          -2 seed = -1628319612 media =0 sigma = 1
+jitter temporal binary [0] =          -2 seed = 2122276541 media =0 sigma = 1
+jitter temporal binaryb [5] =           0 seed = 806266819 media =0 sigma = 1
+jitter temporal binaryb [4] =           0 seed = -812034839 media =0 sigma = 1
+jitter temporal binaryb [3] =           0 seed = 630143630 media =0 sigma = 1
+jitter temporal binaryb [2] =          -2 seed = 2069533256 media =0 sigma = 1
+jitter temporal binaryb [1] =           0 seed = 412775786 media =0 sigma = 1
+jitter temporal binaryb [0] =           0 seed = 435319535 media =0 sigma = 1
+jitter temporal therm [16] =           0 seed = 714491268 media =0 sigma = 1
+jitter temporal therm [15] =           0 seed = -247359507 media =0 sigma = 1
+jitter temporal therm [14] =          -1 seed = -2071886925 media =0 sigma = 1
+jitter temporal therm [13] =          -1 seed = 1468778682 media =0 sigma = 1
+jitter temporal therm [12] =          -1 seed = 1684169761 media =0 sigma = 1
+jitter temporal therm [11] =          -3 seed = -2045291293 media =0 sigma = 1
+jitter temporal therm [10] =          -1 seed = -874266277 media =0 sigma = 1
+jitter temporal therm [9] =           1 seed = -1758384191 media =0 sigma = 1
+jitter temporal therm [8] =           0 seed = -588691352 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = 1508250047 media =0 sigma = 1
+jitter temporal therm [6] =           1 seed = -1913210952 media =0 sigma = 1
+jitter temporal therm [5] =           0 seed = -1017517007 media =0 sigma = 1
+jitter temporal therm [4] =           0 seed = -404565814 media =0 sigma = 1
+jitter temporal therm [3] =          -1 seed = 831523819 media =0 sigma = 1
+jitter temporal therm [2] =           0 seed = -197714497 media =0 sigma = 1
+jitter temporal therm [1] =           1 seed = -1236289776 media =0 sigma = 1
+jitter temporal therm [0] =           1 seed = -1469847612 media =0 sigma = 1
+jitter temporal thermb [16] =           0 seed = -1069334403 media =0 sigma = 1
+jitter temporal thermb [15] =           0 seed = 1097658554 media =0 sigma = 1
+jitter temporal thermb [14] =           1 seed = -1094186514 media =0 sigma = 1
+jitter temporal thermb [13] =           1 seed = 1534349602 media =0 sigma = 1
+jitter temporal thermb [12] =           0 seed = 561776682 media =0 sigma = 1
+jitter temporal thermb [11] =           0 seed = -635553319 media =0 sigma = 1
+jitter temporal thermb [10] =          -1 seed = -1100236935 media =0 sigma = 1
+jitter temporal thermb [9] =           0 seed = -1986442609 media =0 sigma = 1
+jitter temporal thermb [8] =          -1 seed = -1315501582 media =0 sigma = 1
+jitter temporal thermb [7] =          -1 seed = -1133677004 media =0 sigma = 1
+jitter temporal thermb [6] =          -1 seed = 1076112250 media =0 sigma = 1
+jitter temporal thermb [5] =          -1 seed = 1369259006 media =0 sigma = 1
+jitter temporal thermb [4] =           1 seed = 1581061668 media =0 sigma = 1
+jitter temporal thermb [3] =          -1 seed = 1299549942 media =0 sigma = 1
+jitter temporal thermb [2] =           0 seed = -1574025877 media =0 sigma = 1
+jitter temporal thermb [1] =           1 seed = -1654828354 media =0 sigma = 1
+jitter temporal thermb [0] =           0 seed = -1113012195 media =0 sigma = 1
+jitter temporal binary [5] =          -1 seed = -1203231203 media =0 sigma = 1
+jitter temporal binary [4] =           1 seed = 2070427240 media =0 sigma = 1
+jitter temporal binary [3] =           1 seed = 1899657485 media =0 sigma = 1
+jitter temporal binary [2] =           1 seed = -1743916092 media =0 sigma = 1
+jitter temporal binary [1] =           1 seed = 1598056150 media =0 sigma = 1
+jitter temporal binary [0] =           1 seed = 1715777649 media =0 sigma = 1
+jitter temporal binaryb [5] =           1 seed = -1343538797 media =0 sigma = 1
+jitter temporal binaryb [4] =           0 seed = -407472576 media =0 sigma = 1
+jitter temporal binaryb [3] =           1 seed = -809161324 media =0 sigma = 1
+jitter temporal binaryb [2] =          -2 seed = -1867864040 media =0 sigma = 1
+jitter temporal binaryb [1] =           0 seed = -303715725 media =0 sigma = 1
+jitter temporal binaryb [0] =          -1 seed = -1021844634 media =0 sigma = 1
+jitter temporal therm [16] =           1 seed = -913286735 media =0 sigma = 1
+jitter temporal therm [15] =           0 seed = 1616715977 media =0 sigma = 1
+jitter temporal therm [14] =          -1 seed = -1995376623 media =0 sigma = 1
+jitter temporal therm [13] =           2 seed = -1954311262 media =0 sigma = 1
+jitter temporal therm [12] =           2 seed = -1832344561 media =0 sigma = 1
+jitter temporal therm [11] =           0 seed = 1398575074 media =0 sigma = 1
+jitter temporal therm [10] =           0 seed = -261789627 media =0 sigma = 1
+jitter temporal therm [9] =          -1 seed = -2089520284 media =0 sigma = 1
+jitter temporal therm [8] =           0 seed = 613274758 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = 169527191 media =0 sigma = 1
+jitter temporal therm [6] =           0 seed = -706522125 media =0 sigma = 1
+jitter temporal therm [5] =           1 seed = -813424435 media =0 sigma = 1
+jitter temporal therm [4] =          -1 seed = 1409606389 media =0 sigma = 1
+jitter temporal therm [3] =           1 seed = -1095073982 media =0 sigma = 1
+jitter temporal therm [2] =           2 seed = 1999182810 media =0 sigma = 1
+jitter temporal therm [1] =           1 seed = -1117505490 media =0 sigma = 1
+jitter temporal therm [0] =           1 seed = -1305477130 media =0 sigma = 1
+jitter temporal thermb [16] =          -1 seed = 2006205211 media =0 sigma = 1
+jitter temporal thermb [15] =          -1 seed = 1349797218 media =0 sigma = 1
+jitter temporal thermb [14] =           0 seed = -1581676011 media =0 sigma = 1
+jitter temporal thermb [13] =          -2 seed = -1938925649 media =0 sigma = 1
+jitter temporal thermb [12] =          -1 seed = -1483982839 media =0 sigma = 1
+jitter temporal thermb [11] =           1 seed = -1903588700 media =0 sigma = 1
+jitter temporal thermb [10] =           0 seed = 110473068 media =0 sigma = 1
+jitter temporal thermb [9] =          -1 seed = 1476929196 media =0 sigma = 1
+jitter temporal thermb [8] =          -2 seed = -2047236145 media =0 sigma = 1
+jitter temporal thermb [7] =          -1 seed = 2069461347 media =0 sigma = 1
+jitter temporal thermb [6] =          -1 seed = 1613747141 media =0 sigma = 1
+jitter temporal thermb [5] =           1 seed = 1549148611 media =0 sigma = 1
+jitter temporal thermb [4] =          -2 seed = -2054543269 media =0 sigma = 1
+jitter temporal thermb [3] =           1 seed = -1385933478 media =0 sigma = 1
+jitter temporal thermb [2] =          -1 seed = -732391233 media =0 sigma = 1
+jitter temporal thermb [1] =           0 seed = -1201857809 media =0 sigma = 1
+jitter temporal thermb [0] =           1 seed = -1886622634 media =0 sigma = 1
+jitter temporal binary [5] =           0 seed = -319502275 media =0 sigma = 1
+jitter temporal binary [4] =           1 seed = -1304556117 media =0 sigma = 1
+jitter temporal binary [3] =           0 seed = 280829602 media =0 sigma = 1
+jitter temporal binary [2] =           1 seed = -1502631143 media =0 sigma = 1
+jitter temporal binary [1] =           1 seed = 2034675389 media =0 sigma = 1
+jitter temporal binary [0] =           0 seed = 1017266693 media =0 sigma = 1
+jitter temporal binaryb [5] =           0 seed = 697293175 media =0 sigma = 1
+jitter temporal binaryb [4] =          -1 seed = 1411539191 media =0 sigma = 1
+jitter temporal binaryb [3] =          -1 seed = -1266457212 media =0 sigma = 1
+jitter temporal binaryb [2] =           1 seed = 1578494195 media =0 sigma = 1
+jitter temporal binaryb [1] =          -1 seed = 1176005799 media =0 sigma = 1
+jitter temporal binaryb [0] =           0 seed = -1358174663 media =0 sigma = 1
 atb1 = 0.80, atb0 = 0.00
 Test 4: Estado encendido con atb_ena = 2'b10
-jitter temporal[16] =           2 seed = 2005530022 media =0 sigma = 1
-jitter temporal[15] =          -1 seed = 1016801512 media =0 sigma = 1
-jitter temporal[14] =           0 seed = -1077205401 media =0 sigma = 1
-jitter temporal[13] =           1 seed = 1959421809 media =0 sigma = 1
-jitter temporal[12] =           0 seed = -649764660 media =0 sigma = 1
-jitter temporal[11] =           0 seed = 335208013 media =0 sigma = 1
-jitter temporal[10] =           1 seed = -871845994 media =0 sigma = 1
-jitter temporal[9] =          -1 seed = 1833701064 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -1277412244 media =0 sigma = 1
-jitter temporal[7] =           1 seed = -2083213408 media =0 sigma = 1
-jitter temporal[6] =           0 seed = -1711249097 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = 1656613852 media =0 sigma = 1
-jitter temporal[4] =           1 seed = 1143438547 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = -809583106 media =0 sigma = 1
-jitter temporal[2] =           2 seed = -1741748652 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -1555739566 media =0 sigma = 1
-jitter temporal[0] =           1 seed = -868479442 media =0 sigma = 1
-jitter temporal[16] =           1 seed = -1905921458 media =0 sigma = 1
-jitter temporal[15] =           1 seed = -897150645 media =0 sigma = 1
-jitter temporal[14] =           1 seed = 1243216184 media =0 sigma = 1
-jitter temporal[13] =           0 seed = 787649430 media =0 sigma = 1
-jitter temporal[12] =           1 seed = 1274552119 media =0 sigma = 1
-jitter temporal[11] =           0 seed = 1830769998 media =0 sigma = 1
-jitter temporal[10] =           1 seed = 1959221761 media =0 sigma = 1
-jitter temporal[9] =           0 seed = 775630282 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -594709624 media =0 sigma = 1
-jitter temporal[7] =          -1 seed = 1232087253 media =0 sigma = 1
-jitter temporal[6] =           0 seed = 1714770719 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = -1301824974 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 754750278 media =0 sigma = 1
-jitter temporal[3] =           1 seed = -1138843490 media =0 sigma = 1
-jitter temporal[2] =           1 seed = -1913576410 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -788711062 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -394509310 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -632114576 media =0 sigma = 1
-jitter temporal[4] =          -2 seed = -1709615126 media =0 sigma = 1
-jitter temporal[3] =           0 seed = -981175270 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -1106831407 media =0 sigma = 1
-jitter temporal[1] =           1 seed = -1339379691 media =0 sigma = 1
-jitter temporal[0] =           3 seed = -2077447792 media =0 sigma = 1
-jitter temporal[5] =           2 seed = -1918972220 media =0 sigma = 1
-jitter temporal[4] =          -2 seed = -2043702771 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = 2061570260 media =0 sigma = 1
-jitter temporal[2] =           1 seed = 1639142240 media =0 sigma = 1
-jitter temporal[1] =           1 seed = -1529225146 media =0 sigma = 1
-jitter temporal[0] =           1 seed = -1322436634 media =0 sigma = 1
-jitter temporal[16] =          -1 seed = 898525314 media =0 sigma = 1
-jitter temporal[15] =           0 seed = 190843197 media =0 sigma = 1
-jitter temporal[14] =           1 seed = 1467871242 media =0 sigma = 1
-jitter temporal[13] =           0 seed = -925246854 media =0 sigma = 1
-jitter temporal[12] =          -1 seed = -1702435015 media =0 sigma = 1
-jitter temporal[11] =           2 seed = 1826078362 media =0 sigma = 1
-jitter temporal[10] =          -1 seed = -1197156517 media =0 sigma = 1
-jitter temporal[9] =           0 seed = 398186523 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -1283241417 media =0 sigma = 1
-jitter temporal[7] =          -1 seed = 1594114739 media =0 sigma = 1
-jitter temporal[6] =           0 seed = 2028254216 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = -1832962323 media =0 sigma = 1
-jitter temporal[4] =           1 seed = -701762833 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 390018063 media =0 sigma = 1
-jitter temporal[2] =          -2 seed = 1819949398 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 1378690310 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = -1323304220 media =0 sigma = 1
-jitter temporal[16] =          -1 seed = 1412092845 media =0 sigma = 1
-jitter temporal[15] =           0 seed = 1200001384 media =0 sigma = 1
-jitter temporal[14] =           0 seed = -236407324 media =0 sigma = 1
-jitter temporal[13] =           1 seed = -1408404471 media =0 sigma = 1
-jitter temporal[12] =           0 seed = -1140977130 media =0 sigma = 1
-jitter temporal[11] =           0 seed = 1178962308 media =0 sigma = 1
-jitter temporal[10] =          -1 seed = -1693725119 media =0 sigma = 1
-jitter temporal[9] =           1 seed = -1291852163 media =0 sigma = 1
-jitter temporal[8] =          -1 seed = -2062611695 media =0 sigma = 1
-jitter temporal[7] =           0 seed = -1151383331 media =0 sigma = 1
-jitter temporal[6] =           1 seed = 856050210 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = -1835611930 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 346013787 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 527514235 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 604926426 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -937911462 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 155674219 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -1775382459 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -640496164 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 427765739 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = -2047013358 media =0 sigma = 1
-jitter temporal[1] =          -2 seed = 2057753283 media =0 sigma = 1
-jitter temporal[0] =           2 seed = 1753092551 media =0 sigma = 1
-jitter temporal[5] =           2 seed = -1866086550 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -1739517711 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 1974477129 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = -843726572 media =0 sigma = 1
-jitter temporal[1] =           2 seed = 2070526121 media =0 sigma = 1
-jitter temporal[0] =           1 seed = 1551499514 media =0 sigma = 1
-jitter temporal[16] =           1 seed = -1022629757 media =0 sigma = 1
-jitter temporal[15] =           1 seed = -1251349636 media =0 sigma = 1
-jitter temporal[14] =           0 seed = -688821201 media =0 sigma = 1
-jitter temporal[13] =           0 seed = -497328132 media =0 sigma = 1
-jitter temporal[12] =          -1 seed = -1623361371 media =0 sigma = 1
-jitter temporal[11] =           0 seed = 798735450 media =0 sigma = 1
-jitter temporal[10] =           0 seed = 622851254 media =0 sigma = 1
-jitter temporal[9] =           1 seed = -1996402459 media =0 sigma = 1
-jitter temporal[8] =           1 seed = -915484219 media =0 sigma = 1
-jitter temporal[7] =          -1 seed = -1134297906 media =0 sigma = 1
-jitter temporal[6] =           1 seed = -1601950937 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 945786390 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 602363206 media =0 sigma = 1
-jitter temporal[3] =           0 seed = -2121055698 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = 1527588065 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 1704943700 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = -2081325393 media =0 sigma = 1
-jitter temporal[16] =          -1 seed = 1253274366 media =0 sigma = 1
-jitter temporal[15] =           2 seed = 1729066581 media =0 sigma = 1
-jitter temporal[14] =           0 seed = -1692833770 media =0 sigma = 1
-jitter temporal[13] =           0 seed = -182733382 media =0 sigma = 1
-jitter temporal[12] =          -1 seed = -1323413197 media =0 sigma = 1
-jitter temporal[11] =           0 seed = -1778079255 media =0 sigma = 1
-jitter temporal[10] =           2 seed = 1708634776 media =0 sigma = 1
-jitter temporal[9] =          -2 seed = -1804148105 media =0 sigma = 1
-jitter temporal[8] =           0 seed = 1506900247 media =0 sigma = 1
-jitter temporal[7] =           0 seed = -508143059 media =0 sigma = 1
-jitter temporal[6] =           1 seed = -814336897 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -313288828 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -752291029 media =0 sigma = 1
-jitter temporal[3] =           0 seed = -912997173 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -1006216473 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -1748546921 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 624281573 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -424263592 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -220501205 media =0 sigma = 1
-jitter temporal[3] =           2 seed = -1685723284 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -297262519 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = -2057206230 media =0 sigma = 1
-jitter temporal[0] =           1 seed = 1569326895 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -1339938357 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 1277732832 media =0 sigma = 1
-jitter temporal[3] =           1 seed = 1801752310 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 617163033 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 1375598304 media =0 sigma = 1
-jitter temporal[0] =           2 seed = -1878250708 media =0 sigma = 1
-jitter temporal[16] =          -1 seed = 1528253892 media =0 sigma = 1
-jitter temporal[15] =           0 seed = 394453371 media =0 sigma = 1
-jitter temporal[14] =           0 seed = 46320086 media =0 sigma = 1
-jitter temporal[13] =           0 seed = 554763103 media =0 sigma = 1
-jitter temporal[12] =           1 seed = -1512584059 media =0 sigma = 1
-jitter temporal[11] =           0 seed = 378296921 media =0 sigma = 1
-jitter temporal[10] =          -1 seed = -886000490 media =0 sigma = 1
-jitter temporal[9] =           0 seed = -863591526 media =0 sigma = 1
-jitter temporal[8] =           0 seed = 2065545229 media =0 sigma = 1
-jitter temporal[7] =          -1 seed = -1776189242 media =0 sigma = 1
-jitter temporal[6] =           0 seed = -1969265406 media =0 sigma = 1
-jitter temporal[5] =           1 seed = 911207220 media =0 sigma = 1
-jitter temporal[4] =           1 seed = -1870351659 media =0 sigma = 1
-jitter temporal[3] =           2 seed = 1692239546 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = -1283017193 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -1209653295 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -631776720 media =0 sigma = 1
-jitter temporal[16] =           1 seed = -1490673528 media =0 sigma = 1
-jitter temporal[15] =          -1 seed = -1392941388 media =0 sigma = 1
-jitter temporal[14] =           1 seed = -1982924294 media =0 sigma = 1
-jitter temporal[13] =           1 seed = 1177675297 media =0 sigma = 1
-jitter temporal[12] =          -2 seed = 1773852978 media =0 sigma = 1
-jitter temporal[11] =           1 seed = 1814350819 media =0 sigma = 1
-jitter temporal[10] =          -1 seed = 1295689558 media =0 sigma = 1
-jitter temporal[9] =          -1 seed = 1404335504 media =0 sigma = 1
-jitter temporal[8] =           1 seed = -1154464283 media =0 sigma = 1
-jitter temporal[7] =           0 seed = 348803523 media =0 sigma = 1
-jitter temporal[6] =           1 seed = -1934922251 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -46878153 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 521618716 media =0 sigma = 1
-jitter temporal[3] =           2 seed = -1730674922 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 340034055 media =0 sigma = 1
-jitter temporal[1] =           1 seed = 1785629441 media =0 sigma = 1
-jitter temporal[0] =           1 seed = 1580932956 media =0 sigma = 1
-jitter temporal[5] =           1 seed = 1620687411 media =0 sigma = 1
-jitter temporal[4] =           1 seed = -1356903297 media =0 sigma = 1
-jitter temporal[3] =           2 seed = 1925273153 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 768145740 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -1397773685 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = 941327973 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = -1790434930 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 904981062 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 752031333 media =0 sigma = 1
-jitter temporal[2] =           1 seed = 2105777520 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -1134714511 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 194795525 media =0 sigma = 1
-jitter temporal[16] =          -1 seed = 933807511 media =0 sigma = 1
-jitter temporal[15] =           1 seed = 1230543905 media =0 sigma = 1
-jitter temporal[14] =           1 seed = -1243837023 media =0 sigma = 1
-jitter temporal[13] =           2 seed = -2091231880 media =0 sigma = 1
-jitter temporal[12] =          -2 seed = 2060249142 media =0 sigma = 1
-jitter temporal[11] =           0 seed = -617253765 media =0 sigma = 1
-jitter temporal[10] =           0 seed = 750255301 media =0 sigma = 1
-jitter temporal[9] =           0 seed = 345532080 media =0 sigma = 1
-jitter temporal[8] =           1 seed = 1642735271 media =0 sigma = 1
-jitter temporal[7] =           1 seed = 1327505125 media =0 sigma = 1
-jitter temporal[6] =           0 seed = -324257786 media =0 sigma = 1
-jitter temporal[5] =           3 seed = 2027143102 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 2089868150 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = -1713091925 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = 1764988436 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = 1583084397 media =0 sigma = 1
-jitter temporal[0] =           2 seed = -1822729087 media =0 sigma = 1
-jitter temporal[16] =           1 seed = 891914958 media =0 sigma = 1
-jitter temporal[15] =           2 seed = -1889862729 media =0 sigma = 1
-jitter temporal[14] =          -2 seed = 1837163257 media =0 sigma = 1
-jitter temporal[13] =           0 seed = 597633203 media =0 sigma = 1
-jitter temporal[12] =           1 seed = -1297904852 media =0 sigma = 1
-jitter temporal[11] =           0 seed = 700564826 media =0 sigma = 1
-jitter temporal[10] =          -1 seed = -1318699233 media =0 sigma = 1
-jitter temporal[9] =           0 seed = -832634588 media =0 sigma = 1
-jitter temporal[8] =          -1 seed = -919545002 media =0 sigma = 1
-jitter temporal[7] =           1 seed = 1334173543 media =0 sigma = 1
-jitter temporal[6] =           2 seed = 1994993319 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = 1816908495 media =0 sigma = 1
-jitter temporal[4] =           1 seed = 1287078448 media =0 sigma = 1
-jitter temporal[3] =           1 seed = -2048507237 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = 1726433728 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = 2024551773 media =0 sigma = 1
-jitter temporal[0] =           1 seed = 1140990417 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 561170840 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -1223072213 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 45809996 media =0 sigma = 1
-jitter temporal[2] =           1 seed = 1966365776 media =0 sigma = 1
-jitter temporal[1] =           1 seed = 1705368516 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -694534157 media =0 sigma = 1
-jitter temporal[5] =          -2 seed = -1932230439 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -600724076 media =0 sigma = 1
-jitter temporal[3] =           0 seed = -700393148 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -820939295 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = -1098339951 media =0 sigma = 1
-jitter temporal[0] =           1 seed = -944536865 media =0 sigma = 1
+jitter temporal therm [16] =           1 seed = -1149344495 media =0 sigma = 1
+jitter temporal therm [15] =           1 seed = 1086836525 media =0 sigma = 1
+jitter temporal therm [14] =          -1 seed = 1147602193 media =0 sigma = 1
+jitter temporal therm [13] =           0 seed = -324159891 media =0 sigma = 1
+jitter temporal therm [12] =           0 seed = 962349220 media =0 sigma = 1
+jitter temporal therm [11] =           0 seed = -1200312914 media =0 sigma = 1
+jitter temporal therm [10] =           1 seed = -1440436348 media =0 sigma = 1
+jitter temporal therm [9] =           1 seed = -897883882 media =0 sigma = 1
+jitter temporal therm [8] =          -1 seed = -1081071527 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = -341550344 media =0 sigma = 1
+jitter temporal therm [6] =          -1 seed = -2064473145 media =0 sigma = 1
+jitter temporal therm [5] =          -2 seed = 1738687982 media =0 sigma = 1
+jitter temporal therm [4] =           1 seed = -1424158885 media =0 sigma = 1
+jitter temporal therm [3] =          -1 seed = -1788889057 media =0 sigma = 1
+jitter temporal therm [2] =           0 seed = -553208740 media =0 sigma = 1
+jitter temporal therm [1] =          -1 seed = -927694133 media =0 sigma = 1
+jitter temporal therm [0] =           1 seed = -1434702741 media =0 sigma = 1
+jitter temporal thermb [16] =           0 seed = 247374588 media =0 sigma = 1
+jitter temporal thermb [15] =           0 seed = 1279543833 media =0 sigma = 1
+jitter temporal thermb [14] =          -1 seed = -2020956141 media =0 sigma = 1
+jitter temporal thermb [13] =           0 seed = -531775146 media =0 sigma = 1
+jitter temporal thermb [12] =           0 seed = -474879300 media =0 sigma = 1
+jitter temporal thermb [11] =          -1 seed = -1856317514 media =0 sigma = 1
+jitter temporal thermb [10] =           0 seed = -658156177 media =0 sigma = 1
+jitter temporal thermb [9] =           0 seed = -767809819 media =0 sigma = 1
+jitter temporal thermb [8] =           0 seed = 1399143998 media =0 sigma = 1
+jitter temporal thermb [7] =          -1 seed = -1968235861 media =0 sigma = 1
+jitter temporal thermb [6] =          -2 seed = -1878283124 media =0 sigma = 1
+jitter temporal thermb [5] =          -1 seed = -1153891679 media =0 sigma = 1
+jitter temporal thermb [4] =           1 seed = 1659333910 media =0 sigma = 1
+jitter temporal thermb [3] =           1 seed = 1982786512 media =0 sigma = 1
+jitter temporal thermb [2] =          -1 seed = 1627463456 media =0 sigma = 1
+jitter temporal thermb [1] =          -1 seed = -1006307362 media =0 sigma = 1
+jitter temporal thermb [0] =          -1 seed = 1534666451 media =0 sigma = 1
+jitter temporal binary [5] =          -2 seed = 2007319436 media =0 sigma = 1
+jitter temporal binary [4] =           0 seed = 935020915 media =0 sigma = 1
+jitter temporal binary [3] =           1 seed = 1560551476 media =0 sigma = 1
+jitter temporal binary [2] =           1 seed = 1572806543 media =0 sigma = 1
+jitter temporal binary [1] =           1 seed = 1678133160 media =0 sigma = 1
+jitter temporal binary [0] =           0 seed = 1080425366 media =0 sigma = 1
+jitter temporal binaryb [5] =           1 seed = 1602700529 media =0 sigma = 1
+jitter temporal binaryb [4] =           0 seed = 992624930 media =0 sigma = 1
+jitter temporal binaryb [3] =           0 seed = 1188552742 media =0 sigma = 1
+jitter temporal binaryb [2] =           0 seed = -281681530 media =0 sigma = 1
+jitter temporal binaryb [1] =           0 seed = -422431533 media =0 sigma = 1
+jitter temporal binaryb [0] =           0 seed = 614960723 media =0 sigma = 1
+jitter temporal therm [16] =          -1 seed = -1609097535 media =0 sigma = 1
+jitter temporal therm [15] =           0 seed = -87999761 media =0 sigma = 1
+jitter temporal therm [14] =          -2 seed = 1746149153 media =0 sigma = 1
+jitter temporal therm [13] =           0 seed = 875981275 media =0 sigma = 1
+jitter temporal therm [12] =           1 seed = -1009799528 media =0 sigma = 1
+jitter temporal therm [11] =           1 seed = -1420283058 media =0 sigma = 1
+jitter temporal therm [10] =           2 seed = -1930266250 media =0 sigma = 1
+jitter temporal therm [9] =          -1 seed = 1521524746 media =0 sigma = 1
+jitter temporal therm [8] =           1 seed = 2101753257 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = -1759474662 media =0 sigma = 1
+jitter temporal therm [6] =           0 seed = 526178778 media =0 sigma = 1
+jitter temporal therm [5] =          -1 seed = -1664206260 media =0 sigma = 1
+jitter temporal therm [4] =           1 seed = -1944084846 media =0 sigma = 1
+jitter temporal therm [3] =           0 seed = 1226940649 media =0 sigma = 1
+jitter temporal therm [2] =           0 seed = -1765890639 media =0 sigma = 1
+jitter temporal therm [1] =           1 seed = -1479587807 media =0 sigma = 1
+jitter temporal therm [0] =           0 seed = 1613284613 media =0 sigma = 1
+jitter temporal thermb [16] =           0 seed = 230134331 media =0 sigma = 1
+jitter temporal thermb [15] =           0 seed = 815642698 media =0 sigma = 1
+jitter temporal thermb [14] =          -1 seed = -838883759 media =0 sigma = 1
+jitter temporal thermb [13] =           2 seed = -1991125141 media =0 sigma = 1
+jitter temporal thermb [12] =          -1 seed = 1256245619 media =0 sigma = 1
+jitter temporal thermb [11] =           0 seed = 1330502261 media =0 sigma = 1
+jitter temporal thermb [10] =           1 seed = 1168929411 media =0 sigma = 1
+jitter temporal thermb [9] =          -1 seed = 1169400012 media =0 sigma = 1
+jitter temporal thermb [8] =          -1 seed = -1042242599 media =0 sigma = 1
+jitter temporal thermb [7] =           1 seed = 775711776 media =0 sigma = 1
+jitter temporal thermb [6] =           0 seed = 96567794 media =0 sigma = 1
+jitter temporal thermb [5] =           0 seed = 1116709830 media =0 sigma = 1
+jitter temporal thermb [4] =          -1 seed = -1997199658 media =0 sigma = 1
+jitter temporal thermb [3] =           0 seed = 898218149 media =0 sigma = 1
+jitter temporal thermb [2] =          -1 seed = -1240410693 media =0 sigma = 1
+jitter temporal thermb [1] =           1 seed = 1095868011 media =0 sigma = 1
+jitter temporal thermb [0] =           0 seed = 728211396 media =0 sigma = 1
+jitter temporal binary [5] =           0 seed = -378987700 media =0 sigma = 1
+jitter temporal binary [4] =          -1 seed = 1027259729 media =0 sigma = 1
+jitter temporal binary [3] =           0 seed = -132686291 media =0 sigma = 1
+jitter temporal binary [2] =           0 seed = 440949495 media =0 sigma = 1
+jitter temporal binary [1] =           0 seed = -734577954 media =0 sigma = 1
+jitter temporal binary [0] =           1 seed = 1412985034 media =0 sigma = 1
+jitter temporal binaryb [5] =          -2 seed = 1920199027 media =0 sigma = 1
+jitter temporal binaryb [4] =           0 seed = 897519056 media =0 sigma = 1
+jitter temporal binaryb [3] =           0 seed = 682125074 media =0 sigma = 1
+jitter temporal binaryb [2] =          -1 seed = 1140774831 media =0 sigma = 1
+jitter temporal binaryb [1] =          -1 seed = -1687222554 media =0 sigma = 1
+jitter temporal binaryb [0] =           0 seed = 717002343 media =0 sigma = 1
+jitter temporal therm [16] =          -2 seed = -1724979321 media =0 sigma = 1
+jitter temporal therm [15] =           1 seed = 1620429115 media =0 sigma = 1
+jitter temporal therm [14] =           1 seed = 1509263112 media =0 sigma = 1
+jitter temporal therm [13] =          -1 seed = 1586566185 media =0 sigma = 1
+jitter temporal therm [12] =           0 seed = -297680802 media =0 sigma = 1
+jitter temporal therm [11] =           1 seed = -1484540560 media =0 sigma = 1
+jitter temporal therm [10] =           0 seed = 1078288698 media =0 sigma = 1
+jitter temporal therm [9] =           0 seed = 476031360 media =0 sigma = 1
+jitter temporal therm [8] =           0 seed = 352561249 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = 339530857 media =0 sigma = 1
+jitter temporal therm [6] =          -1 seed = -1715288096 media =0 sigma = 1
+jitter temporal therm [5] =           0 seed = -144602643 media =0 sigma = 1
+jitter temporal therm [4] =           1 seed = 806549836 media =0 sigma = 1
+jitter temporal therm [3] =          -2 seed = -1959479192 media =0 sigma = 1
+jitter temporal therm [2] =           0 seed = -1785300275 media =0 sigma = 1
+jitter temporal therm [1] =          -2 seed = -1760339399 media =0 sigma = 1
+jitter temporal therm [0] =           0 seed = -741559499 media =0 sigma = 1
+jitter temporal thermb [16] =           1 seed = -1191344393 media =0 sigma = 1
+jitter temporal thermb [15] =           1 seed = -1696883387 media =0 sigma = 1
+jitter temporal thermb [14] =          -1 seed = 1591974071 media =0 sigma = 1
+jitter temporal thermb [13] =           1 seed = -1194614902 media =0 sigma = 1
+jitter temporal thermb [12] =           2 seed = 1847194545 media =0 sigma = 1
+jitter temporal thermb [11] =          -1 seed = 1179112069 media =0 sigma = 1
+jitter temporal thermb [10] =          -2 seed = -1681705412 media =0 sigma = 1
+jitter temporal thermb [9] =          -1 seed = -1887546480 media =0 sigma = 1
+jitter temporal thermb [8] =           0 seed = 487378835 media =0 sigma = 1
+jitter temporal thermb [7] =           0 seed = -479352988 media =0 sigma = 1
+jitter temporal thermb [6] =          -1 seed = 1774187014 media =0 sigma = 1
+jitter temporal thermb [5] =           1 seed = 1465220416 media =0 sigma = 1
+jitter temporal thermb [4] =           0 seed = -2037299594 media =0 sigma = 1
+jitter temporal thermb [3] =           0 seed = 195346566 media =0 sigma = 1
+jitter temporal thermb [2] =          -1 seed = 1772701818 media =0 sigma = 1
+jitter temporal thermb [1] =           0 seed = -241989277 media =0 sigma = 1
+jitter temporal thermb [0] =          -1 seed = -1576463778 media =0 sigma = 1
+jitter temporal binary [5] =           0 seed = -600317991 media =0 sigma = 1
+jitter temporal binary [4] =           0 seed = 514288533 media =0 sigma = 1
+jitter temporal binary [3] =           0 seed = 473007226 media =0 sigma = 1
+jitter temporal binary [2] =           0 seed = 628680427 media =0 sigma = 1
+jitter temporal binary [1] =           0 seed = 494685382 media =0 sigma = 1
+jitter temporal binary [0] =           0 seed = 920140497 media =0 sigma = 1
+jitter temporal binaryb [5] =          -1 seed = -1595964897 media =0 sigma = 1
+jitter temporal binaryb [4] =           0 seed = -357426045 media =0 sigma = 1
+jitter temporal binaryb [3] =          -1 seed = -1529205315 media =0 sigma = 1
+jitter temporal binaryb [2] =          -1 seed = -1352203687 media =0 sigma = 1
+jitter temporal binaryb [1] =          -2 seed = -1796250194 media =0 sigma = 1
+jitter temporal binaryb [0] =          -1 seed = 1444305353 media =0 sigma = 1
+jitter temporal therm [16] =          -1 seed = 897330670 media =0 sigma = 1
+jitter temporal therm [15] =           0 seed = 545630748 media =0 sigma = 1
+jitter temporal therm [14] =           0 seed = -523493050 media =0 sigma = 1
+jitter temporal therm [13] =          -2 seed = -1753355345 media =0 sigma = 1
+jitter temporal therm [12] =          -1 seed = 1862331021 media =0 sigma = 1
+jitter temporal therm [11] =          -1 seed = -1020771887 media =0 sigma = 1
+jitter temporal therm [10] =           1 seed = -1607183064 media =0 sigma = 1
+jitter temporal therm [9] =          -1 seed = -1385591905 media =0 sigma = 1
+jitter temporal therm [8] =           0 seed = -373624555 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = 47773220 media =0 sigma = 1
+jitter temporal therm [6] =           1 seed = 803093301 media =0 sigma = 1
+jitter temporal therm [5] =           2 seed = -2094064726 media =0 sigma = 1
+jitter temporal therm [4] =           0 seed = -126621261 media =0 sigma = 1
+jitter temporal therm [3] =          -1 seed = 951181647 media =0 sigma = 1
+jitter temporal therm [2] =           0 seed = -1184899705 media =0 sigma = 1
+jitter temporal therm [1] =           0 seed = 1868045378 media =0 sigma = 1
+jitter temporal therm [0] =           1 seed = 695333255 media =0 sigma = 1
+jitter temporal thermb [16] =           0 seed = 421558046 media =0 sigma = 1
+jitter temporal thermb [15] =           1 seed = -1341965584 media =0 sigma = 1
+jitter temporal thermb [14] =          -1 seed = 1340112536 media =0 sigma = 1
+jitter temporal thermb [13] =           1 seed = 1729538291 media =0 sigma = 1
+jitter temporal thermb [12] =           1 seed = 1375615318 media =0 sigma = 1
+jitter temporal thermb [11] =          -1 seed = 1024715394 media =0 sigma = 1
+jitter temporal thermb [10] =          -1 seed = -1032980663 media =0 sigma = 1
+jitter temporal thermb [9] =          -2 seed = 2013399542 media =0 sigma = 1
+jitter temporal thermb [8] =           1 seed = 1302871880 media =0 sigma = 1
+jitter temporal thermb [7] =          -1 seed = 1919971688 media =0 sigma = 1
+jitter temporal thermb [6] =           2 seed = 1988010694 media =0 sigma = 1
+jitter temporal thermb [5] =           1 seed = -1626919103 media =0 sigma = 1
+jitter temporal thermb [4] =           0 seed = 938352522 media =0 sigma = 1
+jitter temporal thermb [3] =           1 seed = -1354210783 media =0 sigma = 1
+jitter temporal thermb [2] =          -1 seed = 1095849229 media =0 sigma = 1
+jitter temporal thermb [1] =           0 seed = 384545826 media =0 sigma = 1
+jitter temporal thermb [0] =          -1 seed = -1705994808 media =0 sigma = 1
+jitter temporal binary [5] =           0 seed = 892429579 media =0 sigma = 1
+jitter temporal binary [4] =           2 seed = -1937837668 media =0 sigma = 1
+jitter temporal binary [3] =           0 seed = -951317953 media =0 sigma = 1
+jitter temporal binary [2] =           0 seed = -613715451 media =0 sigma = 1
+jitter temporal binary [1] =          -1 seed = -2111674723 media =0 sigma = 1
+jitter temporal binary [0] =           0 seed = -347630143 media =0 sigma = 1
+jitter temporal binaryb [5] =           1 seed = 843158849 media =0 sigma = 1
+jitter temporal binaryb [4] =           1 seed = 1466931780 media =0 sigma = 1
+jitter temporal binaryb [3] =           0 seed = 242280285 media =0 sigma = 1
+jitter temporal binaryb [2] =           1 seed = -1411886690 media =0 sigma = 1
+jitter temporal binaryb [1] =           0 seed = -94613244 media =0 sigma = 1
+jitter temporal binaryb [0] =           0 seed = -719426050 media =0 sigma = 1
+jitter temporal therm [16] =          -2 seed = 1678971728 media =0 sigma = 1
+jitter temporal therm [15] =           0 seed = 633826184 media =0 sigma = 1
+jitter temporal therm [14] =           0 seed = 719533137 media =0 sigma = 1
+jitter temporal therm [13] =          -2 seed = -1750309920 media =0 sigma = 1
+jitter temporal therm [12] =           0 seed = 241259840 media =0 sigma = 1
+jitter temporal therm [11] =           0 seed = 309483834 media =0 sigma = 1
+jitter temporal therm [10] =           1 seed = 1102942983 media =0 sigma = 1
+jitter temporal therm [9] =          -1 seed = 1023472953 media =0 sigma = 1
+jitter temporal therm [8] =           1 seed = -1590867471 media =0 sigma = 1
+jitter temporal therm [7] =          -2 seed = 1940697873 media =0 sigma = 1
+jitter temporal therm [6] =           2 seed = -1625782528 media =0 sigma = 1
+jitter temporal therm [5] =          -2 seed = 1767231680 media =0 sigma = 1
+jitter temporal therm [4] =           0 seed = -1218449106 media =0 sigma = 1
+jitter temporal therm [3] =          -1 seed = -1114162516 media =0 sigma = 1
+jitter temporal therm [2] =           1 seed = -1552474956 media =0 sigma = 1
+jitter temporal therm [1] =           1 seed = -938762537 media =0 sigma = 1
+jitter temporal therm [0] =          -2 seed = -2089106819 media =0 sigma = 1
+jitter temporal thermb [16] =          -1 seed = -2079119682 media =0 sigma = 1
+jitter temporal thermb [15] =           1 seed = 1214311019 media =0 sigma = 1
+jitter temporal thermb [14] =           0 seed = 1803486324 media =0 sigma = 1
+jitter temporal thermb [13] =           0 seed = -273624152 media =0 sigma = 1
+jitter temporal thermb [12] =           1 seed = 1534088169 media =0 sigma = 1
+jitter temporal thermb [11] =          -1 seed = 1492465150 media =0 sigma = 1
+jitter temporal thermb [10] =           0 seed = 541408934 media =0 sigma = 1
+jitter temporal thermb [9] =           0 seed = 282593122 media =0 sigma = 1
+jitter temporal thermb [8] =           1 seed = -1566582353 media =0 sigma = 1
+jitter temporal thermb [7] =          -1 seed = 999217377 media =0 sigma = 1
+jitter temporal thermb [6] =           1 seed = -1139753123 media =0 sigma = 1
+jitter temporal thermb [5] =          -1 seed = -2035349066 media =0 sigma = 1
+jitter temporal thermb [4] =          -1 seed = -1386496131 media =0 sigma = 1
+jitter temporal thermb [3] =          -1 seed = -1420424288 media =0 sigma = 1
+jitter temporal thermb [2] =           0 seed = 943829610 media =0 sigma = 1
+jitter temporal thermb [1] =           2 seed = -1751674898 media =0 sigma = 1
+jitter temporal thermb [0] =          -1 seed = 1613290200 media =0 sigma = 1
+jitter temporal binary [5] =           0 seed = 804166807 media =0 sigma = 1
+jitter temporal binary [4] =           0 seed = 1489808293 media =0 sigma = 1
+jitter temporal binary [3] =          -1 seed = 1627629115 media =0 sigma = 1
+jitter temporal binary [2] =           1 seed = 1088541541 media =0 sigma = 1
+jitter temporal binary [1] =          -1 seed = 1590436725 media =0 sigma = 1
+jitter temporal binary [0] =           0 seed = -645567174 media =0 sigma = 1
+jitter temporal binaryb [5] =           0 seed = -262641550 media =0 sigma = 1
+jitter temporal binaryb [4] =           1 seed = 1435239794 media =0 sigma = 1
+jitter temporal binaryb [3] =           0 seed = -550060639 media =0 sigma = 1
+jitter temporal binaryb [2] =           1 seed = 1007759506 media =0 sigma = 1
+jitter temporal binaryb [1] =          -1 seed = -1061971331 media =0 sigma = 1
+jitter temporal binaryb [0] =          -1 seed = -1967243541 media =0 sigma = 1
 atb1 = 0.80, atb0 = 0.00
 Test 5: Estado encendido con atb_ena = 2'b11
-jitter temporal[16] =          -1 seed = -1743302656 media =0 sigma = 1
-jitter temporal[15] =           1 seed = -1515500082 media =0 sigma = 1
-jitter temporal[14] =           1 seed = -1817369946 media =0 sigma = 1
-jitter temporal[13] =           0 seed = -659452828 media =0 sigma = 1
-jitter temporal[12] =           1 seed = -1286127444 media =0 sigma = 1
-jitter temporal[11] =           0 seed = 1106689888 media =0 sigma = 1
-jitter temporal[10] =           0 seed = 1478784505 media =0 sigma = 1
-jitter temporal[9] =           1 seed = 1058174396 media =0 sigma = 1
-jitter temporal[8] =           1 seed = 1400454878 media =0 sigma = 1
-jitter temporal[7] =          -1 seed = 1277869526 media =0 sigma = 1
-jitter temporal[6] =           0 seed = -278682106 media =0 sigma = 1
-jitter temporal[5] =          -2 seed = 2016216974 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 678740609 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = -1315855845 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -1079633910 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = 1262573028 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 620662575 media =0 sigma = 1
-jitter temporal[16] =          -1 seed = 1784379312 media =0 sigma = 1
-jitter temporal[15] =           1 seed = 1482033687 media =0 sigma = 1
-jitter temporal[14] =          -1 seed = 1488138791 media =0 sigma = 1
-jitter temporal[13] =           0 seed = -905712206 media =0 sigma = 1
-jitter temporal[12] =           0 seed = 765633970 media =0 sigma = 1
-jitter temporal[11] =          -1 seed = -792569218 media =0 sigma = 1
-jitter temporal[10] =           0 seed = 1511429613 media =0 sigma = 1
-jitter temporal[9] =           2 seed = -1772260602 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -500417607 media =0 sigma = 1
-jitter temporal[7] =          -1 seed = 2108672795 media =0 sigma = 1
-jitter temporal[6] =           1 seed = 1891871026 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 448379110 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -593183354 media =0 sigma = 1
-jitter temporal[3] =           1 seed = 1833866608 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -879974687 media =0 sigma = 1
-jitter temporal[1] =          -2 seed = -1975454798 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -366250647 media =0 sigma = 1
-jitter temporal[5] =           1 seed = 942273773 media =0 sigma = 1
-jitter temporal[4] =           1 seed = 1784691912 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = -1372759863 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = 1924621833 media =0 sigma = 1
-jitter temporal[1] =           1 seed = -1240853838 media =0 sigma = 1
-jitter temporal[0] =           1 seed = 1323379257 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = -2068993578 media =0 sigma = 1
-jitter temporal[4] =           1 seed = 800300374 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = -1153892821 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = -1592672738 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = 1383273979 media =0 sigma = 1
-jitter temporal[0] =           2 seed = -1904987661 media =0 sigma = 1
-jitter temporal[16] =           1 seed = -1070968461 media =0 sigma = 1
-jitter temporal[15] =           0 seed = -1005463092 media =0 sigma = 1
-jitter temporal[14] =          -1 seed = 1082254854 media =0 sigma = 1
-jitter temporal[13] =           0 seed = -1174849759 media =0 sigma = 1
-jitter temporal[12] =           3 seed = -2120882071 media =0 sigma = 1
-jitter temporal[11] =           0 seed = 260828324 media =0 sigma = 1
-jitter temporal[10] =           1 seed = -1604817915 media =0 sigma = 1
-jitter temporal[9] =          -1 seed = 1469146217 media =0 sigma = 1
-jitter temporal[8] =           0 seed = 966362274 media =0 sigma = 1
-jitter temporal[7] =           0 seed = -1247821092 media =0 sigma = 1
-jitter temporal[6] =          -1 seed = -853851534 media =0 sigma = 1
-jitter temporal[5] =           1 seed = 1698534825 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 1056209295 media =0 sigma = 1
-jitter temporal[3] =           1 seed = -1618632275 media =0 sigma = 1
-jitter temporal[2] =           1 seed = 1739811585 media =0 sigma = 1
-jitter temporal[1] =           2 seed = 1657952766 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 188972633 media =0 sigma = 1
-jitter temporal[16] =          -1 seed = -1623651836 media =0 sigma = 1
-jitter temporal[15] =          -1 seed = -1693581706 media =0 sigma = 1
-jitter temporal[14] =           1 seed = -1534036536 media =0 sigma = 1
-jitter temporal[13] =           0 seed = 1045924065 media =0 sigma = 1
-jitter temporal[12] =          -1 seed = 1879865118 media =0 sigma = 1
-jitter temporal[11] =           0 seed = -847666855 media =0 sigma = 1
-jitter temporal[10] =           1 seed = -1792489186 media =0 sigma = 1
-jitter temporal[9] =           1 seed = -1461759284 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -861535766 media =0 sigma = 1
-jitter temporal[7] =           0 seed = 469285171 media =0 sigma = 1
-jitter temporal[6] =           0 seed = -902457313 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = 1104422060 media =0 sigma = 1
-jitter temporal[4] =           2 seed = -1695451252 media =0 sigma = 1
-jitter temporal[3] =          -2 seed = 2037391385 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = -1426818660 media =0 sigma = 1
-jitter temporal[1] =           1 seed = -1192311424 media =0 sigma = 1
-jitter temporal[0] =           1 seed = -959142051 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 1065010597 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -943203545 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = 1737251521 media =0 sigma = 1
-jitter temporal[2] =           1 seed = 1356495813 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 1154674619 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 805674026 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -1373626657 media =0 sigma = 1
-jitter temporal[4] =           1 seed = -1775938583 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = -1391068142 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -1345060814 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -750488474 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 279933907 media =0 sigma = 1
-jitter temporal[16] =           0 seed = 1468564638 media =0 sigma = 1
-jitter temporal[15] =           2 seed = 1833430985 media =0 sigma = 1
-jitter temporal[14] =           2 seed = -1890615221 media =0 sigma = 1
-jitter temporal[13] =          -1 seed = -1849349252 media =0 sigma = 1
-jitter temporal[12] =           2 seed = -1760596861 media =0 sigma = 1
-jitter temporal[11] =          -2 seed = 2133074992 media =0 sigma = 1
-jitter temporal[10] =          -1 seed = -2019108184 media =0 sigma = 1
-jitter temporal[9] =          -2 seed = 1910019496 media =0 sigma = 1
-jitter temporal[8] =           1 seed = -1496918467 media =0 sigma = 1
-jitter temporal[7] =          -2 seed = 1859477084 media =0 sigma = 1
-jitter temporal[6] =           2 seed = 2096453208 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 514588906 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -1538493598 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = -1941877440 media =0 sigma = 1
-jitter temporal[2] =           1 seed = -921797611 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -1337614690 media =0 sigma = 1
-jitter temporal[0] =           1 seed = 1077767260 media =0 sigma = 1
-jitter temporal[16] =          -3 seed = -2099019231 media =0 sigma = 1
-jitter temporal[15] =           0 seed = 464182624 media =0 sigma = 1
-jitter temporal[14] =           0 seed = 798306433 media =0 sigma = 1
-jitter temporal[13] =          -1 seed = -1370191058 media =0 sigma = 1
-jitter temporal[12] =           0 seed = -447936044 media =0 sigma = 1
-jitter temporal[11] =          -1 seed = 2092123334 media =0 sigma = 1
-jitter temporal[10] =           0 seed = -957008772 media =0 sigma = 1
-jitter temporal[9] =           0 seed = -1580999984 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -385238005 media =0 sigma = 1
-jitter temporal[7] =           1 seed = 1650401603 media =0 sigma = 1
-jitter temporal[6] =           0 seed = -1738042301 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = 1009597803 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 1537143550 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = -1169864561 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = 1068632057 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -316116600 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 343393522 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 622795979 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -604223340 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 1356453488 media =0 sigma = 1
-jitter temporal[2] =           1 seed = 1546612083 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = 849599824 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 1481105883 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = -1547267053 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -964404801 media =0 sigma = 1
-jitter temporal[3] =           1 seed = -1874526672 media =0 sigma = 1
-jitter temporal[2] =           1 seed = -1260799978 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -526352635 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -304226384 media =0 sigma = 1
-jitter temporal[16] =           1 seed = 1004727990 media =0 sigma = 1
-jitter temporal[15] =           0 seed = -374698731 media =0 sigma = 1
-jitter temporal[14] =           1 seed = -1293374610 media =0 sigma = 1
-jitter temporal[13] =           1 seed = -991381934 media =0 sigma = 1
-jitter temporal[12] =          -1 seed = 1721066638 media =0 sigma = 1
-jitter temporal[11] =           1 seed = 1838209282 media =0 sigma = 1
-jitter temporal[10] =           0 seed = -1447320355 media =0 sigma = 1
-jitter temporal[9] =          -1 seed = 913720710 media =0 sigma = 1
-jitter temporal[8] =           1 seed = 1224518397 media =0 sigma = 1
-jitter temporal[7] =           0 seed = 347640722 media =0 sigma = 1
-jitter temporal[6] =           2 seed = -1866024896 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = -1179542811 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 1602215482 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 563019657 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -538384102 media =0 sigma = 1
-jitter temporal[1] =           1 seed = -869151229 media =0 sigma = 1
-jitter temporal[0] =           1 seed = 1762172879 media =0 sigma = 1
-jitter temporal[16] =           0 seed = -899311567 media =0 sigma = 1
-jitter temporal[15] =          -1 seed = -2066921704 media =0 sigma = 1
-jitter temporal[14] =           0 seed = -728330713 media =0 sigma = 1
-jitter temporal[13] =           0 seed = 735044260 media =0 sigma = 1
-jitter temporal[12] =           2 seed = -1776827400 media =0 sigma = 1
-jitter temporal[11] =          -1 seed = -1352564585 media =0 sigma = 1
-jitter temporal[10] =          -1 seed = 2145379970 media =0 sigma = 1
-jitter temporal[9] =           0 seed = 457450367 media =0 sigma = 1
-jitter temporal[8] =           1 seed = 2141611743 media =0 sigma = 1
-jitter temporal[7] =           0 seed = -485998537 media =0 sigma = 1
-jitter temporal[6] =          -1 seed = -1279036264 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -1447951208 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 1024084768 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 884360020 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = 1494073666 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = 2038014600 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 237929662 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = -835579799 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -2040491927 media =0 sigma = 1
-jitter temporal[3] =           0 seed = -372243519 media =0 sigma = 1
-jitter temporal[2] =           1 seed = -1062928435 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = 1546041186 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = -1630417053 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = 989407275 media =0 sigma = 1
-jitter temporal[4] =           2 seed = -1852274483 media =0 sigma = 1
-jitter temporal[3] =           1 seed = 1561458808 media =0 sigma = 1
-jitter temporal[2] =          -2 seed = -1717397972 media =0 sigma = 1
-jitter temporal[1] =           1 seed = 1964785470 media =0 sigma = 1
-jitter temporal[0] =           1 seed = 1770218574 media =0 sigma = 1
-jitter temporal[16] =           1 seed = -1617444156 media =0 sigma = 1
-jitter temporal[15] =           0 seed = -667447394 media =0 sigma = 1
-jitter temporal[14] =           0 seed = 1514409409 media =0 sigma = 1
-jitter temporal[13] =           0 seed = 446656476 media =0 sigma = 1
-jitter temporal[12] =          -1 seed = 1547546805 media =0 sigma = 1
-jitter temporal[11] =           1 seed = -1700570358 media =0 sigma = 1
-jitter temporal[10] =          -1 seed = 1592480366 media =0 sigma = 1
-jitter temporal[9] =           0 seed = 1978568870 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -1339266877 media =0 sigma = 1
-jitter temporal[7] =           3 seed = -2119697671 media =0 sigma = 1
-jitter temporal[6] =           1 seed = -781981873 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 1131584693 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -866859102 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 911800013 media =0 sigma = 1
-jitter temporal[2] =           1 seed = 1200358047 media =0 sigma = 1
-jitter temporal[1] =          -2 seed = -2109267101 media =0 sigma = 1
-jitter temporal[0] =          -2 seed = -1909401102 media =0 sigma = 1
-jitter temporal[16] =           0 seed = -606754157 media =0 sigma = 1
-jitter temporal[15] =           1 seed = -1256447913 media =0 sigma = 1
-jitter temporal[14] =           0 seed = 859304783 media =0 sigma = 1
-jitter temporal[13] =           0 seed = 1270616273 media =0 sigma = 1
-jitter temporal[12] =          -2 seed = 2107346004 media =0 sigma = 1
-jitter temporal[11] =           1 seed = 1093891873 media =0 sigma = 1
-jitter temporal[10] =           0 seed = -924326648 media =0 sigma = 1
-jitter temporal[9] =          -1 seed = 1266999461 media =0 sigma = 1
-jitter temporal[8] =          -1 seed = -2059783649 media =0 sigma = 1
-jitter temporal[7] =           0 seed = 248734073 media =0 sigma = 1
-jitter temporal[6] =          -2 seed = 1825640862 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 537287807 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -645763264 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = 1421767209 media =0 sigma = 1
-jitter temporal[2] =           2 seed = 2005706505 media =0 sigma = 1
-jitter temporal[1] =          -2 seed = 1916317922 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = 1150869313 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = 1096578875 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 256924404 media =0 sigma = 1
-jitter temporal[3] =           1 seed = 1038686276 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = -1736082390 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = 1365277799 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 1633960138 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -1038620848 media =0 sigma = 1
-jitter temporal[4] =           3 seed = 2145227783 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 1884522681 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = 1269238256 media =0 sigma = 1
-jitter temporal[1] =           1 seed = -1352480342 media =0 sigma = 1
-jitter temporal[0] =           1 seed = -1191457620 media =0 sigma = 1
-jitter temporal[16] =           1 seed = -1744198274 media =0 sigma = 1
-jitter temporal[15] =           0 seed = 383161052 media =0 sigma = 1
-jitter temporal[14] =           1 seed = -2123411461 media =0 sigma = 1
-jitter temporal[13] =           0 seed = 940657715 media =0 sigma = 1
-jitter temporal[12] =           1 seed = 1317978347 media =0 sigma = 1
-jitter temporal[11] =           0 seed = -1430592717 media =0 sigma = 1
-jitter temporal[10] =          -1 seed = -1147703687 media =0 sigma = 1
-jitter temporal[9] =           0 seed = 452287478 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -172251215 media =0 sigma = 1
-jitter temporal[7] =          -2 seed = -2143161594 media =0 sigma = 1
-jitter temporal[6] =          -1 seed = 1393442408 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -2037700828 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -1140198975 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 421680242 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 508260450 media =0 sigma = 1
-jitter temporal[1] =           1 seed = 1005914398 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = -2086406912 media =0 sigma = 1
-jitter temporal[16] =          -1 seed = 1611242473 media =0 sigma = 1
-jitter temporal[15] =          -1 seed = -1495262040 media =0 sigma = 1
-jitter temporal[14] =           2 seed = -1895165054 media =0 sigma = 1
-jitter temporal[13] =           1 seed = -1332476629 media =0 sigma = 1
-jitter temporal[12] =          -1 seed = -1758223737 media =0 sigma = 1
-jitter temporal[11] =           0 seed = 960478823 media =0 sigma = 1
-jitter temporal[10] =           0 seed = -1486487445 media =0 sigma = 1
-jitter temporal[9] =           0 seed = 1784132104 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -1440897567 media =0 sigma = 1
-jitter temporal[7] =           0 seed = 893829400 media =0 sigma = 1
-jitter temporal[6] =           1 seed = 986701421 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 379220476 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -1256673541 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = -1984979979 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = -1049443459 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 632068883 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -567609023 media =0 sigma = 1
-jitter temporal[5] =           2 seed = -1753958641 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 492138667 media =0 sigma = 1
-jitter temporal[3] =           0 seed = -215896746 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = 968173002 media =0 sigma = 1
-jitter temporal[1] =           1 seed = -1833027408 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = 1332637791 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 479615891 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 241699577 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 362767336 media =0 sigma = 1
-jitter temporal[2] =          -2 seed = 1877521226 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 103267095 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = 1815941473 media =0 sigma = 1
-jitter temporal[16] =           0 seed = 1237016162 media =0 sigma = 1
-jitter temporal[15] =           0 seed = -727398349 media =0 sigma = 1
-jitter temporal[14] =           1 seed = -956915815 media =0 sigma = 1
-jitter temporal[13] =          -1 seed = 893017521 media =0 sigma = 1
-jitter temporal[12] =           0 seed = -2016028501 media =0 sigma = 1
-jitter temporal[11] =           1 seed = -1534184731 media =0 sigma = 1
-jitter temporal[10] =           0 seed = -323502166 media =0 sigma = 1
-jitter temporal[9] =           0 seed = 267486998 media =0 sigma = 1
-jitter temporal[8] =          -2 seed = 1758659133 media =0 sigma = 1
-jitter temporal[7] =          -1 seed = -1362813728 media =0 sigma = 1
-jitter temporal[6] =           0 seed = 596559887 media =0 sigma = 1
-jitter temporal[5] =           2 seed = -1828802926 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 503428024 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 495368166 media =0 sigma = 1
-jitter temporal[2] =           1 seed = 1686227608 media =0 sigma = 1
-jitter temporal[1] =           2 seed = -1725455018 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -653394065 media =0 sigma = 1
-jitter temporal[16] =           0 seed = 328156625 media =0 sigma = 1
-jitter temporal[15] =          -2 seed = 1744888883 media =0 sigma = 1
-jitter temporal[14] =           1 seed = -1471721145 media =0 sigma = 1
-jitter temporal[13] =           2 seed = 2114903202 media =0 sigma = 1
-jitter temporal[12] =           1 seed = 1581681633 media =0 sigma = 1
-jitter temporal[11] =           1 seed = 1931185847 media =0 sigma = 1
-jitter temporal[10] =           0 seed = 1062011750 media =0 sigma = 1
-jitter temporal[9] =           0 seed = -624796944 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -395630662 media =0 sigma = 1
-jitter temporal[7] =          -1 seed = -1735363165 media =0 sigma = 1
-jitter temporal[6] =          -2 seed = -2018443204 media =0 sigma = 1
-jitter temporal[5] =          -2 seed = -1971063620 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -695362316 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = -1476934520 media =0 sigma = 1
-jitter temporal[2] =           1 seed = -994373392 media =0 sigma = 1
-jitter temporal[1] =           1 seed = 1383058302 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = 1178143049 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -833942050 media =0 sigma = 1
-jitter temporal[4] =           1 seed = 801706728 media =0 sigma = 1
-jitter temporal[3] =           3 seed = -2059347146 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -506215804 media =0 sigma = 1
-jitter temporal[1] =           0 seed = -734522200 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -1370621003 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = -867127469 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = -1487078811 media =0 sigma = 1
-jitter temporal[3] =          -2 seed = -1818890821 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = 1332384316 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 840515218 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -327185862 media =0 sigma = 1
-jitter temporal[16] =           0 seed = -487629722 media =0 sigma = 1
-jitter temporal[15] =           1 seed = -1078067580 media =0 sigma = 1
-jitter temporal[14] =          -1 seed = -1425702437 media =0 sigma = 1
-jitter temporal[13] =           1 seed = -828656205 media =0 sigma = 1
-jitter temporal[12] =           0 seed = -531217049 media =0 sigma = 1
-jitter temporal[11] =          -1 seed = 1152253489 media =0 sigma = 1
-jitter temporal[10] =           0 seed = -372017355 media =0 sigma = 1
-jitter temporal[9] =          -1 seed = 1123006186 media =0 sigma = 1
-jitter temporal[8] =           0 seed = -1151345524 media =0 sigma = 1
-jitter temporal[7] =           1 seed = -1635351382 media =0 sigma = 1
-jitter temporal[6] =           1 seed = -1713759725 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 608962751 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 1128182037 media =0 sigma = 1
-jitter temporal[3] =           1 seed = -1299915341 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -879734843 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 1052251657 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 414113940 media =0 sigma = 1
-jitter temporal[16] =           1 seed = -2120414063 media =0 sigma = 1
-jitter temporal[15] =           0 seed = 1766861969 media =0 sigma = 1
-jitter temporal[14] =           0 seed = 124956127 media =0 sigma = 1
-jitter temporal[13] =           2 seed = -1980745579 media =0 sigma = 1
-jitter temporal[12] =           0 seed = 509096202 media =0 sigma = 1
-jitter temporal[11] =           1 seed = -902425479 media =0 sigma = 1
-jitter temporal[10] =          -1 seed = 1658726066 media =0 sigma = 1
-jitter temporal[9] =           2 seed = 1915943574 media =0 sigma = 1
-jitter temporal[8] =           0 seed = 1651643427 media =0 sigma = 1
-jitter temporal[7] =           1 seed = 955109440 media =0 sigma = 1
-jitter temporal[6] =          -1 seed = 2087809338 media =0 sigma = 1
-jitter temporal[5] =           1 seed = 1015348551 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 1421918770 media =0 sigma = 1
-jitter temporal[3] =           1 seed = -987832092 media =0 sigma = 1
-jitter temporal[2] =           1 seed = -753012534 media =0 sigma = 1
-jitter temporal[1] =           1 seed = 1343614432 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -362270578 media =0 sigma = 1
-jitter temporal[5] =          -2 seed = -1969732298 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 972978299 media =0 sigma = 1
-jitter temporal[3] =           0 seed = -1503190365 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = -1798963384 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = -1352212496 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = 1296497668 media =0 sigma = 1
-jitter temporal[5] =           0 seed = -311268101 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 1370504830 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = 800597898 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -218613763 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 1402484123 media =0 sigma = 1
-jitter temporal[0] =           2 seed = 1795672511 media =0 sigma = 1
-jitter temporal[16] =           0 seed = 1628224728 media =0 sigma = 1
-jitter temporal[15] =           2 seed = -1819109341 media =0 sigma = 1
-jitter temporal[14] =           0 seed = -777453111 media =0 sigma = 1
-jitter temporal[13] =          -1 seed = 1238568683 media =0 sigma = 1
-jitter temporal[12] =           1 seed = -1018748033 media =0 sigma = 1
-jitter temporal[11] =           0 seed = -760506096 media =0 sigma = 1
-jitter temporal[10] =           2 seed = -1789445181 media =0 sigma = 1
-jitter temporal[9] =           1 seed = -917649025 media =0 sigma = 1
-jitter temporal[8] =          -1 seed = 1095731312 media =0 sigma = 1
-jitter temporal[7] =           1 seed = -2015981447 media =0 sigma = 1
-jitter temporal[6] =           1 seed = 1355594158 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = -1062084456 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 601390058 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = 2018737736 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = -1689299266 media =0 sigma = 1
-jitter temporal[1] =          -3 seed = 2065810362 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = 1850559857 media =0 sigma = 1
-jitter temporal[16] =          -1 seed = 983185673 media =0 sigma = 1
-jitter temporal[15] =          -3 seed = -2061654615 media =0 sigma = 1
-jitter temporal[14] =           2 seed = 1817414025 media =0 sigma = 1
-jitter temporal[13] =           0 seed = -1861912966 media =0 sigma = 1
-jitter temporal[12] =           0 seed = 789938999 media =0 sigma = 1
-jitter temporal[11] =           0 seed = 348648662 media =0 sigma = 1
-jitter temporal[10] =           0 seed = 272628786 media =0 sigma = 1
-jitter temporal[9] =           1 seed = -1678485186 media =0 sigma = 1
-jitter temporal[8] =           0 seed = 646417176 media =0 sigma = 1
-jitter temporal[7] =           0 seed = 678755378 media =0 sigma = 1
-jitter temporal[6] =          -1 seed = 1743701014 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -1227756747 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 485227091 media =0 sigma = 1
-jitter temporal[3] =           2 seed = 2086059413 media =0 sigma = 1
-jitter temporal[2] =           1 seed = 1933696045 media =0 sigma = 1
-jitter temporal[1] =           1 seed = -1065218004 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = -2049631949 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -1390215345 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 1295764243 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 1517093687 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = -2014750033 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 522119133 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 487084135 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 73013285 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 359875912 media =0 sigma = 1
-jitter temporal[3] =          -1 seed = -1441302674 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -831430825 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = -1286613642 media =0 sigma = 1
-jitter temporal[0] =           0 seed = -1025253815 media =0 sigma = 1
-jitter temporal[16] =           0 seed = -1090983661 media =0 sigma = 1
-jitter temporal[15] =          -1 seed = 1990519349 media =0 sigma = 1
-jitter temporal[14] =          -1 seed = 1984347243 media =0 sigma = 1
-jitter temporal[13] =           1 seed = 1084625099 media =0 sigma = 1
-jitter temporal[12] =          -1 seed = 959241837 media =0 sigma = 1
-jitter temporal[11] =          -1 seed = -1102421084 media =0 sigma = 1
-jitter temporal[10] =           0 seed = -594719280 media =0 sigma = 1
-jitter temporal[9] =          -1 seed = -1482333393 media =0 sigma = 1
-jitter temporal[8] =           0 seed = 1768944641 media =0 sigma = 1
-jitter temporal[7] =           0 seed = 849633091 media =0 sigma = 1
-jitter temporal[6] =           0 seed = 448845429 media =0 sigma = 1
-jitter temporal[5] =           1 seed = -1543832755 media =0 sigma = 1
-jitter temporal[4] =           0 seed = 430251356 media =0 sigma = 1
-jitter temporal[3] =           1 seed = 1095164668 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 606784023 media =0 sigma = 1
-jitter temporal[1] =           0 seed = 1237420457 media =0 sigma = 1
-jitter temporal[0] =          -2 seed = -1797757982 media =0 sigma = 1
-jitter temporal[16] =           0 seed = -321029320 media =0 sigma = 1
-jitter temporal[15] =          -1 seed = 1736871749 media =0 sigma = 1
-jitter temporal[14] =          -2 seed = 1980035471 media =0 sigma = 1
-jitter temporal[13] =           0 seed = -448482512 media =0 sigma = 1
-jitter temporal[12] =          -1 seed = 1869861501 media =0 sigma = 1
-jitter temporal[11] =          -1 seed = 1563653370 media =0 sigma = 1
-jitter temporal[10] =           0 seed = -685858425 media =0 sigma = 1
-jitter temporal[9] =           0 seed = -853165276 media =0 sigma = 1
-jitter temporal[8] =          -1 seed = 951266818 media =0 sigma = 1
-jitter temporal[7] =          -2 seed = -1722642310 media =0 sigma = 1
-jitter temporal[6] =           0 seed = 1088405425 media =0 sigma = 1
-jitter temporal[5] =           0 seed = 841549016 media =0 sigma = 1
-jitter temporal[4] =          -1 seed = 1400224985 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 1154634823 media =0 sigma = 1
-jitter temporal[2] =           0 seed = -767663476 media =0 sigma = 1
-jitter temporal[1] =          -1 seed = -1280372142 media =0 sigma = 1
-jitter temporal[0] =           0 seed = 310268144 media =0 sigma = 1
-jitter temporal[5] =           1 seed = 1107988693 media =0 sigma = 1
-jitter temporal[4] =           0 seed = -944912814 media =0 sigma = 1
-jitter temporal[3] =           0 seed = -792490951 media =0 sigma = 1
-jitter temporal[2] =           0 seed = 590987038 media =0 sigma = 1
-jitter temporal[1] =           1 seed = 1205438950 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = -851187589 media =0 sigma = 1
-jitter temporal[5] =          -1 seed = 1195883325 media =0 sigma = 1
-jitter temporal[4] =           2 seed = -1856774880 media =0 sigma = 1
-jitter temporal[3] =           0 seed = 843329180 media =0 sigma = 1
-jitter temporal[2] =          -1 seed = 1583358048 media =0 sigma = 1
-jitter temporal[1] =           2 seed = -1709554853 media =0 sigma = 1
-jitter temporal[0] =          -1 seed = 2072006102 media =0 sigma = 1
+jitter temporal therm [16] =           0 seed = 1318916393 media =0 sigma = 1
+jitter temporal therm [15] =           1 seed = 1086084880 media =0 sigma = 1
+jitter temporal therm [14] =           1 seed = -1307846413 media =0 sigma = 1
+jitter temporal therm [13] =           0 seed = 469212145 media =0 sigma = 1
+jitter temporal therm [12] =           0 seed = 476769347 media =0 sigma = 1
+jitter temporal therm [11] =           0 seed = 547235443 media =0 sigma = 1
+jitter temporal therm [10] =           1 seed = -976069737 media =0 sigma = 1
+jitter temporal therm [9] =          -1 seed = -1834461331 media =0 sigma = 1
+jitter temporal therm [8] =          -1 seed = 2106877683 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = -159749407 media =0 sigma = 1
+jitter temporal therm [6] =           1 seed = -1309533631 media =0 sigma = 1
+jitter temporal therm [5] =          -2 seed = -1948592102 media =0 sigma = 1
+jitter temporal therm [4] =           2 seed = 2104625534 media =0 sigma = 1
+jitter temporal therm [3] =           0 seed = -1102294449 media =0 sigma = 1
+jitter temporal therm [2] =           0 seed = 1679345995 media =0 sigma = 1
+jitter temporal therm [1] =           1 seed = 1886009724 media =0 sigma = 1
+jitter temporal therm [0] =           0 seed = -54655866 media =0 sigma = 1
+jitter temporal thermb [16] =           2 seed = 1818204033 media =0 sigma = 1
+jitter temporal thermb [15] =           0 seed = -1212170899 media =0 sigma = 1
+jitter temporal thermb [14] =           0 seed = -1634794116 media =0 sigma = 1
+jitter temporal thermb [13] =          -1 seed = -1974977209 media =0 sigma = 1
+jitter temporal thermb [12] =          -1 seed = -1876888972 media =0 sigma = 1
+jitter temporal thermb [11] =           2 seed = 1851738889 media =0 sigma = 1
+jitter temporal thermb [10] =          -2 seed = -2110523260 media =0 sigma = 1
+jitter temporal thermb [9] =          -1 seed = 1558378425 media =0 sigma = 1
+jitter temporal thermb [8] =           1 seed = -1835836698 media =0 sigma = 1
+jitter temporal thermb [7] =           0 seed = 547652617 media =0 sigma = 1
+jitter temporal thermb [6] =           0 seed = -335676661 media =0 sigma = 1
+jitter temporal thermb [5] =           1 seed = 1488506791 media =0 sigma = 1
+jitter temporal thermb [4] =          -2 seed = 1900202587 media =0 sigma = 1
+jitter temporal thermb [3] =           0 seed = 433272103 media =0 sigma = 1
+jitter temporal thermb [2] =          -1 seed = -1172904608 media =0 sigma = 1
+jitter temporal thermb [1] =           0 seed = -162328872 media =0 sigma = 1
+jitter temporal thermb [0] =           1 seed = 1316958749 media =0 sigma = 1
+jitter temporal binary [5] =           2 seed = 2106241132 media =0 sigma = 1
+jitter temporal binary [4] =           0 seed = -279848043 media =0 sigma = 1
+jitter temporal binary [3] =          -1 seed = 1575165728 media =0 sigma = 1
+jitter temporal binary [2] =           0 seed = 1271016473 media =0 sigma = 1
+jitter temporal binary [1] =           0 seed = -125739753 media =0 sigma = 1
+jitter temporal binary [0] =          -2 seed = -1869779333 media =0 sigma = 1
+jitter temporal binaryb [5] =           1 seed = 1729846609 media =0 sigma = 1
+jitter temporal binaryb [4] =          -1 seed = -958400907 media =0 sigma = 1
+jitter temporal binaryb [3] =           0 seed = 793927465 media =0 sigma = 1
+jitter temporal binaryb [2] =           0 seed = -83639747 media =0 sigma = 1
+jitter temporal binaryb [1] =          -1 seed = 1174442302 media =0 sigma = 1
+jitter temporal binaryb [0] =           0 seed = 1187251253 media =0 sigma = 1
+jitter temporal therm [16] =           0 seed = 300793082 media =0 sigma = 1
+jitter temporal therm [15] =           0 seed = 179496723 media =0 sigma = 1
+jitter temporal therm [14] =           1 seed = -1203464780 media =0 sigma = 1
+jitter temporal therm [13] =          -1 seed = -2118519781 media =0 sigma = 1
+jitter temporal therm [12] =           1 seed = 1850457268 media =0 sigma = 1
+jitter temporal therm [11] =          -1 seed = -2140970311 media =0 sigma = 1
+jitter temporal therm [10] =          -1 seed = 1325878256 media =0 sigma = 1
+jitter temporal therm [9] =           0 seed = -334404622 media =0 sigma = 1
+jitter temporal therm [8] =          -1 seed = -1138387965 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = 557082492 media =0 sigma = 1
+jitter temporal therm [6] =           0 seed = -390713660 media =0 sigma = 1
+jitter temporal therm [5] =          -1 seed = -1989649453 media =0 sigma = 1
+jitter temporal therm [4] =          -1 seed = -1485253588 media =0 sigma = 1
+jitter temporal therm [3] =           0 seed = -131208601 media =0 sigma = 1
+jitter temporal therm [2] =           0 seed = -258267641 media =0 sigma = 1
+jitter temporal therm [1] =          -2 seed = 1845890661 media =0 sigma = 1
+jitter temporal therm [0] =           0 seed = 510174375 media =0 sigma = 1
+jitter temporal thermb [16] =           2 seed = -2096441242 media =0 sigma = 1
+jitter temporal thermb [15] =          -1 seed = 920104009 media =0 sigma = 1
+jitter temporal thermb [14] =          -2 seed = 1966041534 media =0 sigma = 1
+jitter temporal thermb [13] =           0 seed = -1732795692 media =0 sigma = 1
+jitter temporal thermb [12] =           2 seed = 2037638053 media =0 sigma = 1
+jitter temporal thermb [11] =          -1 seed = -847576496 media =0 sigma = 1
+jitter temporal thermb [10] =           0 seed = -343968638 media =0 sigma = 1
+jitter temporal thermb [9] =           0 seed = -1735613500 media =0 sigma = 1
+jitter temporal thermb [8] =           0 seed = -680889458 media =0 sigma = 1
+jitter temporal thermb [7] =           1 seed = 1792398871 media =0 sigma = 1
+jitter temporal thermb [6] =           1 seed = -1579784296 media =0 sigma = 1
+jitter temporal thermb [5] =          -1 seed = -1497379088 media =0 sigma = 1
+jitter temporal thermb [4] =          -1 seed = -1458831482 media =0 sigma = 1
+jitter temporal thermb [3] =          -1 seed = -1229812404 media =0 sigma = 1
+jitter temporal thermb [2] =           0 seed = 350892275 media =0 sigma = 1
+jitter temporal thermb [1] =           0 seed = -363196122 media =0 sigma = 1
+jitter temporal thermb [0] =          -1 seed = -1469664891 media =0 sigma = 1
+jitter temporal binary [5] =          -2 seed = 1754704635 media =0 sigma = 1
+jitter temporal binary [4] =          -3 seed = -2047979791 media =0 sigma = 1
+jitter temporal binary [3] =           0 seed = -267268991 media =0 sigma = 1
+jitter temporal binary [2] =           0 seed = 364508174 media =0 sigma = 1
+jitter temporal binary [1] =           0 seed = 585737571 media =0 sigma = 1
+jitter temporal binary [0] =          -1 seed = -1082474455 media =0 sigma = 1
+jitter temporal binaryb [5] =           0 seed = -82608229 media =0 sigma = 1
+jitter temporal binaryb [4] =          -1 seed = -900291660 media =0 sigma = 1
+jitter temporal binaryb [3] =          -1 seed = 2058007327 media =0 sigma = 1
+jitter temporal binaryb [2] =          -1 seed = 1197403456 media =0 sigma = 1
+jitter temporal binaryb [1] =          -2 seed = 2114994229 media =0 sigma = 1
+jitter temporal binaryb [0] =           0 seed = 1450837271 media =0 sigma = 1
+jitter temporal therm [16] =           0 seed = -495849300 media =0 sigma = 1
+jitter temporal therm [15] =           0 seed = 399222323 media =0 sigma = 1
+jitter temporal therm [14] =           0 seed = -1487783545 media =0 sigma = 1
+jitter temporal therm [13] =          -1 seed = -1634993624 media =0 sigma = 1
+jitter temporal therm [12] =          -1 seed = 863522703 media =0 sigma = 1
+jitter temporal therm [11] =           1 seed = -1600605984 media =0 sigma = 1
+jitter temporal therm [10] =           0 seed = -537793876 media =0 sigma = 1
+jitter temporal therm [9] =          -1 seed = 1168739310 media =0 sigma = 1
+jitter temporal therm [8] =           0 seed = 82036793 media =0 sigma = 1
+jitter temporal therm [7] =           1 seed = 1104129391 media =0 sigma = 1
+jitter temporal therm [6] =          -1 seed = -1318084291 media =0 sigma = 1
+jitter temporal therm [5] =           2 seed = 2036649724 media =0 sigma = 1
+jitter temporal therm [4] =           1 seed = -1911221212 media =0 sigma = 1
+jitter temporal therm [3] =           0 seed = -725009053 media =0 sigma = 1
+jitter temporal therm [2] =           1 seed = 1533968544 media =0 sigma = 1
+jitter temporal therm [1] =           3 seed = 2109389449 media =0 sigma = 1
+jitter temporal therm [0] =          -1 seed = 1844043846 media =0 sigma = 1
+jitter temporal thermb [16] =           0 seed = 740172366 media =0 sigma = 1
+jitter temporal thermb [15] =           0 seed = -1750570775 media =0 sigma = 1
+jitter temporal thermb [14] =           1 seed = -1497115666 media =0 sigma = 1
+jitter temporal thermb [13] =          -1 seed = -1572816521 media =0 sigma = 1
+jitter temporal thermb [12] =           1 seed = -1049820546 media =0 sigma = 1
+jitter temporal thermb [11] =           1 seed = -967184901 media =0 sigma = 1
+jitter temporal thermb [10] =           1 seed = -2016772902 media =0 sigma = 1
+jitter temporal thermb [9] =           0 seed = 482338516 media =0 sigma = 1
+jitter temporal thermb [8] =           1 seed = -1541649171 media =0 sigma = 1
+jitter temporal thermb [7] =          -2 seed = -2065798101 media =0 sigma = 1
+jitter temporal thermb [6] =          -1 seed = -1411943519 media =0 sigma = 1
+jitter temporal thermb [5] =           0 seed = 726042665 media =0 sigma = 1
+jitter temporal thermb [4] =           1 seed = 1860024399 media =0 sigma = 1
+jitter temporal thermb [3] =           2 seed = -1827962647 media =0 sigma = 1
+jitter temporal thermb [2] =          -1 seed = 873922458 media =0 sigma = 1
+jitter temporal thermb [1] =           1 seed = 1786243745 media =0 sigma = 1
+jitter temporal thermb [0] =           1 seed = 1648435723 media =0 sigma = 1
+jitter temporal binary [5] =           1 seed = 1447976265 media =0 sigma = 1
+jitter temporal binary [4] =          -1 seed = -944003766 media =0 sigma = 1
+jitter temporal binary [3] =           0 seed = 515961324 media =0 sigma = 1
+jitter temporal binary [2] =           0 seed = 663747413 media =0 sigma = 1
+jitter temporal binary [1] =           1 seed = -1801165631 media =0 sigma = 1
+jitter temporal binary [0] =          -1 seed = -1594228636 media =0 sigma = 1
+jitter temporal binaryb [5] =           0 seed = 520576649 media =0 sigma = 1
+jitter temporal binaryb [4] =          -1 seed = -1367785915 media =0 sigma = 1
+jitter temporal binaryb [3] =           1 seed = -1652484536 media =0 sigma = 1
+jitter temporal binaryb [2] =           0 seed = -815189698 media =0 sigma = 1
+jitter temporal binaryb [1] =          -1 seed = -1450547110 media =0 sigma = 1
+jitter temporal binaryb [0] =           0 seed = 417742502 media =0 sigma = 1
+jitter temporal therm [16] =           0 seed = 621140847 media =0 sigma = 1
+jitter temporal therm [15] =          -1 seed = 1863783700 media =0 sigma = 1
+jitter temporal therm [14] =           1 seed = 1401659135 media =0 sigma = 1
+jitter temporal therm [13] =          -1 seed = -1429481097 media =0 sigma = 1
+jitter temporal therm [12] =          -1 seed = 1936753895 media =0 sigma = 1
+jitter temporal therm [11] =           1 seed = 2046740297 media =0 sigma = 1
+jitter temporal therm [10] =           0 seed = 762983794 media =0 sigma = 1
+jitter temporal therm [9] =           0 seed = 155450461 media =0 sigma = 1
+jitter temporal therm [8] =           1 seed = 1101778724 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = 427245420 media =0 sigma = 1
+jitter temporal therm [6] =           0 seed = 436047000 media =0 sigma = 1
+jitter temporal therm [5] =          -2 seed = -1903327263 media =0 sigma = 1
+jitter temporal therm [4] =          -1 seed = 1781464028 media =0 sigma = 1
+jitter temporal therm [3] =           0 seed = -73724566 media =0 sigma = 1
+jitter temporal therm [2] =          -1 seed = 1522153057 media =0 sigma = 1
+jitter temporal therm [1] =           0 seed = 784598505 media =0 sigma = 1
+jitter temporal therm [0] =          -1 seed = -1300870170 media =0 sigma = 1
+jitter temporal thermb [16] =           2 seed = 1926490734 media =0 sigma = 1
+jitter temporal thermb [15] =           1 seed = -1030569758 media =0 sigma = 1
+jitter temporal thermb [14] =           0 seed = 517410145 media =0 sigma = 1
+jitter temporal thermb [13] =           0 seed = -1356265317 media =0 sigma = 1
+jitter temporal thermb [12] =           0 seed = 870348095 media =0 sigma = 1
+jitter temporal thermb [11] =           0 seed = 1322637592 media =0 sigma = 1
+jitter temporal thermb [10] =           0 seed = 1725646598 media =0 sigma = 1
+jitter temporal thermb [9] =           1 seed = 1822793853 media =0 sigma = 1
+jitter temporal thermb [8] =           1 seed = -1650100631 media =0 sigma = 1
+jitter temporal thermb [7] =           0 seed = -1272437242 media =0 sigma = 1
+jitter temporal thermb [6] =           1 seed = 1505702472 media =0 sigma = 1
+jitter temporal thermb [5] =           1 seed = -1675801203 media =0 sigma = 1
+jitter temporal thermb [4] =           1 seed = -1881620400 media =0 sigma = 1
+jitter temporal thermb [3] =           2 seed = -1737154846 media =0 sigma = 1
+jitter temporal thermb [2] =          -2 seed = 1982760141 media =0 sigma = 1
+jitter temporal thermb [1] =           1 seed = 1514490405 media =0 sigma = 1
+jitter temporal thermb [0] =           0 seed = -627647168 media =0 sigma = 1
+jitter temporal binary [5] =           0 seed = 357164651 media =0 sigma = 1
+jitter temporal binary [4] =           0 seed = 401499665 media =0 sigma = 1
+jitter temporal binary [3] =          -1 seed = 987496791 media =0 sigma = 1
+jitter temporal binary [2] =          -1 seed = -1574687148 media =0 sigma = 1
+jitter temporal binary [1] =           1 seed = 1420638000 media =0 sigma = 1
+jitter temporal binary [0] =           1 seed = 2098670106 media =0 sigma = 1
+jitter temporal binaryb [5] =           0 seed = -1068579431 media =0 sigma = 1
+jitter temporal binaryb [4] =           1 seed = 1616191875 media =0 sigma = 1
+jitter temporal binaryb [3] =           0 seed = -2039448460 media =0 sigma = 1
+jitter temporal binaryb [2] =          -1 seed = -1538621492 media =0 sigma = 1
+jitter temporal binaryb [1] =           2 seed = 2015175603 media =0 sigma = 1
+jitter temporal binaryb [0] =          -1 seed = -858844959 media =0 sigma = 1
+jitter temporal therm [16] =           0 seed = 128904796 media =0 sigma = 1
+jitter temporal therm [15] =           0 seed = 1293340328 media =0 sigma = 1
+jitter temporal therm [14] =           2 seed = 1982103083 media =0 sigma = 1
+jitter temporal therm [13] =           2 seed = 1808410411 media =0 sigma = 1
+jitter temporal therm [12] =           0 seed = -214366052 media =0 sigma = 1
+jitter temporal therm [11] =           0 seed = -193275198 media =0 sigma = 1
+jitter temporal therm [10] =           0 seed = -800747338 media =0 sigma = 1
+jitter temporal therm [9] =          -1 seed = -2052390121 media =0 sigma = 1
+jitter temporal therm [8] =           1 seed = 2001102963 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = 1263449300 media =0 sigma = 1
+jitter temporal therm [6] =           2 seed = 2057235817 media =0 sigma = 1
+jitter temporal therm [5] =           2 seed = -1744647266 media =0 sigma = 1
+jitter temporal therm [4] =          -1 seed = -1372358128 media =0 sigma = 1
+jitter temporal therm [3] =           0 seed = 884721586 media =0 sigma = 1
+jitter temporal therm [2] =          -1 seed = -1385930625 media =0 sigma = 1
+jitter temporal therm [1] =           0 seed = -1066728072 media =0 sigma = 1
+jitter temporal therm [0] =          -2 seed = -1799699715 media =0 sigma = 1
+jitter temporal thermb [16] =          -2 seed = -2125644496 media =0 sigma = 1
+jitter temporal thermb [15] =          -2 seed = -1630602332 media =0 sigma = 1
+jitter temporal thermb [14] =           2 seed = -1902875075 media =0 sigma = 1
+jitter temporal thermb [13] =          -1 seed = 1158092613 media =0 sigma = 1
+jitter temporal thermb [12] =           0 seed = 1239223306 media =0 sigma = 1
+jitter temporal thermb [11] =           2 seed = 2026003314 media =0 sigma = 1
+jitter temporal thermb [10] =           0 seed = 1481743265 media =0 sigma = 1
+jitter temporal thermb [9] =          -1 seed = -2068701723 media =0 sigma = 1
+jitter temporal thermb [8] =          -2 seed = -1736354056 media =0 sigma = 1
+jitter temporal thermb [7] =          -1 seed = 1505104579 media =0 sigma = 1
+jitter temporal thermb [6] =          -1 seed = 1044633652 media =0 sigma = 1
+jitter temporal thermb [5] =           0 seed = -1553938386 media =0 sigma = 1
+jitter temporal thermb [4] =          -1 seed = -798982084 media =0 sigma = 1
+jitter temporal thermb [3] =          -1 seed = -1453867615 media =0 sigma = 1
+jitter temporal thermb [2] =          -1 seed = -816640851 media =0 sigma = 1
+jitter temporal thermb [1] =          -2 seed = -2129088904 media =0 sigma = 1
+jitter temporal thermb [0] =           0 seed = 1945875157 media =0 sigma = 1
+jitter temporal binary [5] =          -1 seed = 1424011098 media =0 sigma = 1
+jitter temporal binary [4] =           0 seed = -1783964675 media =0 sigma = 1
+jitter temporal binary [3] =           0 seed = 708362150 media =0 sigma = 1
+jitter temporal binary [2] =           1 seed = -1181971043 media =0 sigma = 1
+jitter temporal binary [1] =          -2 seed = 1705099994 media =0 sigma = 1
+jitter temporal binary [0] =           0 seed = -372243519 media =0 sigma = 1
+jitter temporal binaryb [5] =           0 seed = 291532268 media =0 sigma = 1
+jitter temporal binaryb [4] =           1 seed = -1214936140 media =0 sigma = 1
+jitter temporal binaryb [3] =           0 seed = 788761400 media =0 sigma = 1
+jitter temporal binaryb [2] =           1 seed = 1864846272 media =0 sigma = 1
+jitter temporal binaryb [1] =           0 seed = 2069358775 media =0 sigma = 1
+jitter temporal binaryb [0] =           0 seed = -1758687810 media =0 sigma = 1
+jitter temporal therm [16] =           0 seed = 443439112 media =0 sigma = 1
+jitter temporal therm [15] =           0 seed = -344282069 media =0 sigma = 1
+jitter temporal therm [14] =           1 seed = -1277696137 media =0 sigma = 1
+jitter temporal therm [13] =          -1 seed = 1572395358 media =0 sigma = 1
+jitter temporal therm [12] =           0 seed = -1396402289 media =0 sigma = 1
+jitter temporal therm [11] =           1 seed = -1784274426 media =0 sigma = 1
+jitter temporal therm [10] =           0 seed = -869312619 media =0 sigma = 1
+jitter temporal therm [9] =           0 seed = -312873378 media =0 sigma = 1
+jitter temporal therm [8] =           0 seed = 642861354 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = -173411192 media =0 sigma = 1
+jitter temporal therm [6] =           2 seed = 1828413504 media =0 sigma = 1
+jitter temporal therm [5] =           2 seed = 1946054198 media =0 sigma = 1
+jitter temporal therm [4] =           1 seed = -1490365787 media =0 sigma = 1
+jitter temporal therm [3] =          -1 seed = -1583843497 media =0 sigma = 1
+jitter temporal therm [2] =           0 seed = 561306110 media =0 sigma = 1
+jitter temporal therm [1] =           0 seed = -1741758384 media =0 sigma = 1
+jitter temporal therm [0] =           2 seed = 1832150781 media =0 sigma = 1
+jitter temporal thermb [16] =          -1 seed = -1413979326 media =0 sigma = 1
+jitter temporal thermb [15] =           1 seed = 1114990045 media =0 sigma = 1
+jitter temporal thermb [14] =           0 seed = -860349636 media =0 sigma = 1
+jitter temporal thermb [13] =           0 seed = -359351298 media =0 sigma = 1
+jitter temporal thermb [12] =           0 seed = 401771605 media =0 sigma = 1
+jitter temporal thermb [11] =           0 seed = 502571951 media =0 sigma = 1
+jitter temporal thermb [10] =           0 seed = 739101330 media =0 sigma = 1
+jitter temporal thermb [9] =           0 seed = -4997516 media =0 sigma = 1
+jitter temporal thermb [8] =           0 seed = -1870221227 media =0 sigma = 1
+jitter temporal thermb [7] =          -1 seed = -1134064038 media =0 sigma = 1
+jitter temporal thermb [6] =           0 seed = 705182584 media =0 sigma = 1
+jitter temporal thermb [5] =           1 seed = 964630258 media =0 sigma = 1
+jitter temporal thermb [4] =           1 seed = 2106019084 media =0 sigma = 1
+jitter temporal thermb [3] =           0 seed = 765142362 media =0 sigma = 1
+jitter temporal thermb [2] =           1 seed = -1027644809 media =0 sigma = 1
+jitter temporal thermb [1] =          -1 seed = -1400157586 media =0 sigma = 1
+jitter temporal thermb [0] =           1 seed = 1375712512 media =0 sigma = 1
+jitter temporal binary [5] =          -1 seed = 1301702521 media =0 sigma = 1
+jitter temporal binary [4] =           0 seed = -423611981 media =0 sigma = 1
+jitter temporal binary [3] =          -1 seed = -1311109075 media =0 sigma = 1
+jitter temporal binary [2] =           0 seed = -283165728 media =0 sigma = 1
+jitter temporal binary [1] =          -1 seed = -1587857564 media =0 sigma = 1
+jitter temporal binary [0] =          -1 seed = -1592683897 media =0 sigma = 1
+jitter temporal binaryb [5] =           1 seed = -949533577 media =0 sigma = 1
+jitter temporal binaryb [4] =           0 seed = -1968277908 media =0 sigma = 1
+jitter temporal binaryb [3] =          -1 seed = -1044991638 media =0 sigma = 1
+jitter temporal binaryb [2] =           1 seed = -1769466224 media =0 sigma = 1
+jitter temporal binaryb [1] =           0 seed = 482012285 media =0 sigma = 1
+jitter temporal binaryb [0] =           0 seed = -276913990 media =0 sigma = 1
+jitter temporal therm [16] =          -1 seed = 1114263718 media =0 sigma = 1
+jitter temporal therm [15] =           1 seed = 2145933668 media =0 sigma = 1
+jitter temporal therm [14] =          -1 seed = -1478135388 media =0 sigma = 1
+jitter temporal therm [13] =           0 seed = 1179491436 media =0 sigma = 1
+jitter temporal therm [12] =           0 seed = -828240688 media =0 sigma = 1
+jitter temporal therm [11] =           1 seed = -1803761055 media =0 sigma = 1
+jitter temporal therm [10] =          -1 seed = -1595361756 media =0 sigma = 1
+jitter temporal therm [9] =          -1 seed = -917940512 media =0 sigma = 1
+jitter temporal therm [8] =           0 seed = -842571413 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = -378813219 media =0 sigma = 1
+jitter temporal therm [6] =           1 seed = -989243837 media =0 sigma = 1
+jitter temporal therm [5] =           0 seed = -854993606 media =0 sigma = 1
+jitter temporal therm [4] =           1 seed = 925454632 media =0 sigma = 1
+jitter temporal therm [3] =          -1 seed = -875642927 media =0 sigma = 1
+jitter temporal therm [2] =           0 seed = -923889633 media =0 sigma = 1
+jitter temporal therm [1] =           0 seed = -483974426 media =0 sigma = 1
+jitter temporal therm [0] =           0 seed = 715895770 media =0 sigma = 1
+jitter temporal thermb [16] =          -2 seed = -1685042979 media =0 sigma = 1
+jitter temporal thermb [15] =          -2 seed = 1981651529 media =0 sigma = 1
+jitter temporal thermb [14] =           0 seed = 851509448 media =0 sigma = 1
+jitter temporal thermb [13] =           1 seed = 954137889 media =0 sigma = 1
+jitter temporal thermb [12] =           0 seed = -345598697 media =0 sigma = 1
+jitter temporal thermb [11] =           1 seed = -1581451534 media =0 sigma = 1
+jitter temporal thermb [10] =           0 seed = -1991547137 media =0 sigma = 1
+jitter temporal thermb [9] =           1 seed = -1456471757 media =0 sigma = 1
+jitter temporal thermb [8] =          -2 seed = 1862081746 media =0 sigma = 1
+jitter temporal thermb [7] =           0 seed = 694203409 media =0 sigma = 1
+jitter temporal thermb [6] =           0 seed = 125585773 media =0 sigma = 1
+jitter temporal thermb [5] =           2 seed = -1872292823 media =0 sigma = 1
+jitter temporal thermb [4] =           1 seed = 1231515621 media =0 sigma = 1
+jitter temporal thermb [3] =           1 seed = -1787906684 media =0 sigma = 1
+jitter temporal thermb [2] =           2 seed = -2055371919 media =0 sigma = 1
+jitter temporal thermb [1] =           1 seed = -727033468 media =0 sigma = 1
+jitter temporal thermb [0] =          -1 seed = 827466716 media =0 sigma = 1
+jitter temporal binary [5] =           0 seed = 770934588 media =0 sigma = 1
+jitter temporal binary [4] =          -1 seed = -1290565029 media =0 sigma = 1
+jitter temporal binary [3] =           0 seed = -239047844 media =0 sigma = 1
+jitter temporal binary [2] =          -1 seed = -1262908799 media =0 sigma = 1
+jitter temporal binary [1] =           0 seed = 920304904 media =0 sigma = 1
+jitter temporal binary [0] =          -1 seed = -2116425729 media =0 sigma = 1
+jitter temporal binaryb [5] =           0 seed = 199159372 media =0 sigma = 1
+jitter temporal binaryb [4] =          -1 seed = -1809481110 media =0 sigma = 1
+jitter temporal binaryb [3] =           0 seed = 963325629 media =0 sigma = 1
+jitter temporal binaryb [2] =          -1 seed = -850615123 media =0 sigma = 1
+jitter temporal binaryb [1] =          -2 seed = 1915712261 media =0 sigma = 1
+jitter temporal binaryb [0] =          -2 seed = 1851578886 media =0 sigma = 1
+jitter temporal therm [16] =           0 seed = -387211292 media =0 sigma = 1
+jitter temporal therm [15] =           1 seed = 1560054161 media =0 sigma = 1
+jitter temporal therm [14] =           1 seed = -1185681735 media =0 sigma = 1
+jitter temporal therm [13] =           0 seed = 1098632392 media =0 sigma = 1
+jitter temporal therm [12] =          -1 seed = -766749025 media =0 sigma = 1
+jitter temporal therm [11] =          -1 seed = 1958545152 media =0 sigma = 1
+jitter temporal therm [10] =           1 seed = 1199935435 media =0 sigma = 1
+jitter temporal therm [9] =           1 seed = -1206919999 media =0 sigma = 1
+jitter temporal therm [8] =           0 seed = 1366527581 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = 546901541 media =0 sigma = 1
+jitter temporal therm [6] =           0 seed = -1932765249 media =0 sigma = 1
+jitter temporal therm [5] =           0 seed = 1529171180 media =0 sigma = 1
+jitter temporal therm [4] =          -1 seed = 1000618111 media =0 sigma = 1
+jitter temporal therm [3] =           3 seed = 2106653177 media =0 sigma = 1
+jitter temporal therm [2] =           0 seed = 525641567 media =0 sigma = 1
+jitter temporal therm [1] =           1 seed = -1631142181 media =0 sigma = 1
+jitter temporal therm [0] =          -1 seed = 1861292094 media =0 sigma = 1
+jitter temporal thermb [16] =           0 seed = 785751846 media =0 sigma = 1
+jitter temporal thermb [15] =           1 seed = 1282267887 media =0 sigma = 1
+jitter temporal thermb [14] =           0 seed = -1098345342 media =0 sigma = 1
+jitter temporal thermb [13] =          -1 seed = 1313950802 media =0 sigma = 1
+jitter temporal thermb [12] =           1 seed = -982125111 media =0 sigma = 1
+jitter temporal thermb [11] =           0 seed = -212295175 media =0 sigma = 1
+jitter temporal thermb [10] =          -1 seed = -855674202 media =0 sigma = 1
+jitter temporal thermb [9] =           1 seed = 1544254220 media =0 sigma = 1
+jitter temporal thermb [8] =           1 seed = 1748369928 media =0 sigma = 1
+jitter temporal thermb [7] =           1 seed = -1655482241 media =0 sigma = 1
+jitter temporal thermb [6] =           3 seed = -2034611038 media =0 sigma = 1
+jitter temporal thermb [5] =           0 seed = -979771902 media =0 sigma = 1
+jitter temporal thermb [4] =          -1 seed = 1234421980 media =0 sigma = 1
+jitter temporal thermb [3] =           0 seed = 671341674 media =0 sigma = 1
+jitter temporal thermb [2] =           0 seed = 724272380 media =0 sigma = 1
+jitter temporal thermb [1] =           1 seed = 1770556463 media =0 sigma = 1
+jitter temporal thermb [0] =          -1 seed = -902008041 media =0 sigma = 1
+jitter temporal binary [5] =          -1 seed = 1234150874 media =0 sigma = 1
+jitter temporal binary [4] =           0 seed = -1340683178 media =0 sigma = 1
+jitter temporal binary [3] =           1 seed = 1642482653 media =0 sigma = 1
+jitter temporal binary [2] =           0 seed = -523644737 media =0 sigma = 1
+jitter temporal binary [1] =          -1 seed = 1797093065 media =0 sigma = 1
+jitter temporal binary [0] =          -2 seed = -1967999144 media =0 sigma = 1
+jitter temporal binaryb [5] =          -1 seed = 1040602980 media =0 sigma = 1
+jitter temporal binaryb [4] =           0 seed = 626255048 media =0 sigma = 1
+jitter temporal binaryb [3] =           1 seed = -1187903079 media =0 sigma = 1
+jitter temporal binaryb [2] =           1 seed = -1331731824 media =0 sigma = 1
+jitter temporal binaryb [1] =          -1 seed = -1076984886 media =0 sigma = 1
+jitter temporal binaryb [0] =           0 seed = 1349663603 media =0 sigma = 1
+jitter temporal therm [16] =           1 seed = 1911691772 media =0 sigma = 1
+jitter temporal therm [15] =           1 seed = 1417509191 media =0 sigma = 1
+jitter temporal therm [14] =          -2 seed = 1854605593 media =0 sigma = 1
+jitter temporal therm [13] =           0 seed = 581112453 media =0 sigma = 1
+jitter temporal therm [12] =           2 seed = -1910198980 media =0 sigma = 1
+jitter temporal therm [11] =           1 seed = 1765693752 media =0 sigma = 1
+jitter temporal therm [10] =           1 seed = 1395443544 media =0 sigma = 1
+jitter temporal therm [9] =           0 seed = -1190824352 media =0 sigma = 1
+jitter temporal therm [8] =          -2 seed = 2060387274 media =0 sigma = 1
+jitter temporal therm [7] =           0 seed = -1101407563 media =0 sigma = 1
+jitter temporal therm [6] =          -2 seed = 2080263053 media =0 sigma = 1
+jitter temporal therm [5] =           0 seed = -1227735138 media =0 sigma = 1
+jitter temporal therm [4] =           1 seed = 1499676640 media =0 sigma = 1
+jitter temporal therm [3] =          -2 seed = -2075481451 media =0 sigma = 1
+jitter temporal therm [2] =           1 seed = -1071416286 media =0 sigma = 1
+jitter temporal therm [1] =          -1 seed = 1654210900 media =0 sigma = 1
+jitter temporal therm [0] =           1 seed = 1113250289 media =0 sigma = 1
+jitter temporal thermb [16] =           1 seed = 1077431079 media =0 sigma = 1
+jitter temporal thermb [15] =           2 seed = 1948471906 media =0 sigma = 1
+jitter temporal thermb [14] =           0 seed = -1280435772 media =0 sigma = 1
+jitter temporal thermb [13] =           1 seed = -1247739111 media =0 sigma = 1
+jitter temporal thermb [12] =          -1 seed = 1837303640 media =0 sigma = 1
+jitter temporal thermb [11] =           1 seed = -1299493067 media =0 sigma = 1
+jitter temporal thermb [10] =           0 seed = -532948009 media =0 sigma = 1
+jitter temporal thermb [9] =           1 seed = 1198750836 media =0 sigma = 1
+jitter temporal thermb [8] =           1 seed = 748020019 media =0 sigma = 1
+jitter temporal thermb [7] =          -2 seed = 1911999023 media =0 sigma = 1
+jitter temporal thermb [6] =          -2 seed = 1655484555 media =0 sigma = 1
+jitter temporal thermb [5] =           0 seed = 1493701706 media =0 sigma = 1
+jitter temporal thermb [4] =           0 seed = 1656516949 media =0 sigma = 1
+jitter temporal thermb [3] =           2 seed = 1732476609 media =0 sigma = 1
+jitter temporal thermb [2] =           1 seed = 1818479948 media =0 sigma = 1
+jitter temporal thermb [1] =          -2 seed = -1806689147 media =0 sigma = 1
+jitter temporal thermb [0] =           2 seed = -1928301623 media =0 sigma = 1
+jitter temporal binary [5] =           0 seed = 148837953 media =0 sigma = 1
+jitter temporal binary [4] =           1 seed = -833635721 media =0 sigma = 1
+jitter temporal binary [3] =           1 seed = -1300584279 media =0 sigma = 1
+jitter temporal binary [2] =           0 seed = -643489033 media =0 sigma = 1
+jitter temporal binary [1] =           0 seed = 828434025 media =0 sigma = 1
+jitter temporal binary [0] =          -1 seed = 1033114589 media =0 sigma = 1
+jitter temporal binaryb [5] =           0 seed = -607924072 media =0 sigma = 1
+jitter temporal binaryb [4] =           1 seed = 1549054515 media =0 sigma = 1
+jitter temporal binaryb [3] =           2 seed = 2045316325 media =0 sigma = 1
+jitter temporal binaryb [2] =           1 seed = 1309742551 media =0 sigma = 1
+jitter temporal binaryb [1] =           0 seed = 687879185 media =0 sigma = 1
+jitter temporal binaryb [0] =           1 seed = -1441710277 media =0 sigma = 1
+jitter temporal therm [16] =           0 seed = -1536768684 media =0 sigma = 1
+jitter temporal therm [15] =          -2 seed = 1933696521 media =0 sigma = 1
+jitter temporal therm [14] =           1 seed = 1628257115 media =0 sigma = 1
+jitter temporal therm [13] =          -1 seed = 2135638196 media =0 sigma = 1
+jitter temporal therm [12] =           1 seed = -1272323905 media =0 sigma = 1
+jitter temporal therm [11] =           0 seed = 953748273 media =0 sigma = 1
+jitter temporal therm [10] =           1 seed = -2031001119 media =0 sigma = 1
+jitter temporal therm [9] =           0 seed = -764072709 media =0 sigma = 1
+jitter temporal therm [8] =          -1 seed = -1080786803 media =0 sigma = 1
+jitter temporal therm [7] =          -1 seed = -1414366360 media =0 sigma = 1
+jitter temporal therm [6] =           1 seed = 1242850726 media =0 sigma = 1
+jitter temporal therm [5] =           0 seed = 1120496938 media =0 sigma = 1
+jitter temporal therm [4] =          -1 seed = 1153362323 media =0 sigma = 1
+jitter temporal therm [3] =           0 seed = 484778664 media =0 sigma = 1
+jitter temporal therm [2] =          -2 seed = 1919442842 media =0 sigma = 1
+jitter temporal therm [1] =           0 seed = -1472304842 media =0 sigma = 1
+jitter temporal therm [0] =           1 seed = 1194123602 media =0 sigma = 1
+jitter temporal thermb [16] =          -1 seed = -1625343196 media =0 sigma = 1
+jitter temporal thermb [15] =           1 seed = 1331823862 media =0 sigma = 1
+jitter temporal thermb [14] =           1 seed = 977339451 media =0 sigma = 1
+jitter temporal thermb [13] =           0 seed = 370681474 media =0 sigma = 1
+jitter temporal thermb [12] =           0 seed = 1386557537 media =0 sigma = 1
+jitter temporal thermb [11] =           1 seed = -2033524673 media =0 sigma = 1
+jitter temporal thermb [10] =           0 seed = 368127063 media =0 sigma = 1
+jitter temporal thermb [9] =          -2 seed = -1731249413 media =0 sigma = 1
+jitter temporal thermb [8] =           0 seed = 1814132025 media =0 sigma = 1
+jitter temporal thermb [7] =          -2 seed = -1939788834 media =0 sigma = 1
+jitter temporal thermb [6] =          -1 seed = -1523380602 media =0 sigma = 1
+jitter temporal thermb [5] =           1 seed = -1922894622 media =0 sigma = 1
+jitter temporal thermb [4] =          -1 seed = 1353961329 media =0 sigma = 1
+jitter temporal thermb [3] =           1 seed = -1424961034 media =0 sigma = 1
+jitter temporal thermb [2] =          -1 seed = 965487586 media =0 sigma = 1
+jitter temporal thermb [1] =          -2 seed = 1686146498 media =0 sigma = 1
+jitter temporal thermb [0] =          -1 seed = -1697229406 media =0 sigma = 1
+jitter temporal binary [5] =           1 seed = -765427625 media =0 sigma = 1
+jitter temporal binary [4] =          -2 seed = -2090414559 media =0 sigma = 1
+jitter temporal binary [3] =          -1 seed = -1114298617 media =0 sigma = 1
+jitter temporal binary [2] =          -1 seed = -1847148021 media =0 sigma = 1
+jitter temporal binary [1] =           1 seed = 1518295433 media =0 sigma = 1
+jitter temporal binary [0] =           0 seed = -889069813 media =0 sigma = 1
+jitter temporal binaryb [5] =           0 seed = 213388001 media =0 sigma = 1
+jitter temporal binaryb [4] =           1 seed = 1703034358 media =0 sigma = 1
+jitter temporal binaryb [3] =          -1 seed = 1505109675 media =0 sigma = 1
+jitter temporal binaryb [2] =           0 seed = -187577030 media =0 sigma = 1
+jitter temporal binaryb [1] =           0 seed = 664813170 media =0 sigma = 1
+jitter temporal binaryb [0] =           0 seed = -730641567 media =0 sigma = 1
 atb1 = 0.00, atb0 = 0.00
 Tests completados.
 Simulation complete via $finish(1) at time 3 NS + 0
 ./tb/clock_distribution_tb.sv:144         $finish;
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 12, 2026 at 12:34:25 CET  (total: 00:01:17)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 12, 2026 at 13:10:49 CET  (total: 00:06:19)

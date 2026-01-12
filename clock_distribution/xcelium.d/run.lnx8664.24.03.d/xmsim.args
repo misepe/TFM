@@ -6,12 +6,11 @@
 -TCL
 -INPUT
 /home/msegper/Documents/TFM/clock_distribution/restore.tcl
--TCL
 -MESSAGES
 +EMGRLOG
 xrun.log
 -XLSTIME
-1768217588
+1768219470
 -XLKEEP
 -XLMODE
 ./xcelium.d/run.lnx8664.24.03.d

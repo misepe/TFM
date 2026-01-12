@@ -2,5 +2,5 @@
 // File created by:  xrun
 // Do not modify this file
 //
-/home/msegper/Documents/TFM/clock_distribution/models/clock_distribution_jitter.sv
+/home/msegper/Documents/TFM/clock_distribution/models/clock_distribution_all_non_linearities.sv
 /home/msegper/Documents/TFM/clock_distribution/tb/clock_distribution_tb.sv

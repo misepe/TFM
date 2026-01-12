@@ -1,7 +1,8 @@
 -clean                      // Deletes previous INCA_lins direcory, if it exists 
 //./models/clock_distribution.sv           // original digital vco
 //./models/clock_distribution_mismatch.sv           // original digital vco
-./models/clock_distribution_jitter.sv           // original digital vco
+//./models/clock_distribution_jitter.sv           // original digital vco
+./models/clock_distribution_all_non_linearities.sv           // original digital vco
 ./tb/clock_distribution_tb.sv             // Testbench
 -access +rw                 // Turn on read/write object access 
 -gui                        // Performs simulation in graphical mode

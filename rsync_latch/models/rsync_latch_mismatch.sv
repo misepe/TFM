@@ -558,7 +558,7 @@ module rsync_latch(
         end
     end
 
-    always @(posedge clkinb_binary_5 or negedge clkinb_binary_5) begin
+    always @(posedge clkin_binary_5 or negedge clkinb_binary_5) begin
         if(clkin_binary_5 && !clkinb_binary_5) begin
             if (input_check == 1 && pdb == 1) begin
                 dataoutbin_aux[6] <= datainbin[6];

@@ -1,22 +1,22 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 09, 2026 at 16:32:54 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 12, 2026 at 12:24:13 CET
 xrun
 	-f xrun.f
 		-clean
-		./models/rsync_latch_mismatch.sv
+		./models/rsync_latch_jitter.sv
 		./tb/rsync_latch_tb.sv
 		-access +rw
 		-gui
 		-s
 		-input /home/msegper/Documents/TFM/rsync_latch/restore.tcl
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
-file: ./models/rsync_latch_mismatch.sv
+file: ./models/rsync_latch_jitter.sv
         int mean = 0;         // Promedio de la distribución
                  |
-xmvlog: *W,VARIST (./models/rsync_latch_mismatch.sv,128|17): Local static variable with initializer requires 'static' keyword.
-        int std_dev = 10;     // Desviación estándar, sigma
+xmvlog: *W,VARIST (./models/rsync_latch_jitter.sv,128|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 1;     // Desviación estándar, sigma
                     |
-xmvlog: *W,VARIST (./models/rsync_latch_mismatch.sv,129|20): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (./models/rsync_latch_jitter.sv,129|20): Local static variable with initializer requires 'static' keyword.
 	module worklib.rsync_latch:sv
 		errors: 0, warnings: 2
 file: ./tb/rsync_latch_tb.sv
@@ -26,18 +26,18 @@ file: ./tb/rsync_latch_tb.sv
 	Elaborating the design hierarchy:
 	Top level design units:
 		cds_rnm_pkg
-		$unit_0x6eae53dc
+		$unit_0x5fecaa8a
 		rsync_latch_tb
 	Building instance overlay tables: ....................
-        $display("mismatch temporal = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
-                                                                                         |
-xmelab: *W,REALCV (./models/rsync_latch_mismatch.sv,135|89): Real argument converted to integer for (%d).
+        $display("jitter temporal = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
+                                                                                       |
+xmelab: *W,REALCV (./models/rsync_latch_jitter.sv,135|87): Real argument converted to integer for (%d).
  Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.rsync_latch:sv <0x771695a7>
-			streams: 137, words: 108933
-		worklib.rsync_latch_tb:sv <0x60dfd20b>
+		worklib.rsync_latch:sv <0x2a487089>
+			streams: 136, words: 108628
+		worklib.rsync_latch_tb:sv <0x1a0876aa>
 			streams:  90, words: 70933
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
@@ -49,7 +49,7 @@ xmelab: *W,REALCV (./models/rsync_latch_mismatch.sv,135|89): Real argument conve
 		Scalar wires:           54       -
 		Vectored wires:         13       -
 		Always blocks:          30      30
-		Initial blocks:          9       9
+		Initial blocks:          8       8
 		Parallel blocks:         3       3
 		Pseudo assignments:     63       -
 		Assertions:              3       3
@@ -165,85 +165,33 @@ xcelium> database -open -shm -into waves.shm waves -default
 Created default SHM database waves
 xcelium> probe -create -database waves rsync_latch_tb.dut.vssana rsync_latch_tb.dut.vddana_0p8 rsync_latch_tb.dut.pdb rsync_latch_tb.dut.iref_25ua rsync_latch_tb.dut.dataoutthermb rsync_latch_tb.dut.dataouttherm rsync_latch_tb.dut.dataoutbinb rsync_latch_tb.dut.dataoutbin rsync_latch_tb.dut.datainthermb rsync_latch_tb.dut.dataintherm rsync_latch_tb.dut.datainbinb rsync_latch_tb.dut.datainbin rsync_latch_tb.dut.clkinb_therm_16 rsync_latch_tb.dut.clkinb_therm_15 rsync_latch_tb.dut.clkinb_therm_14 rsync_latch_tb.dut.clkinb_therm_13 rsync_latch_tb.dut.clkinb_therm_12 rsync_latch_tb.dut.clkinb_therm_11 rsync_latch_tb.dut.clkinb_therm_10 rsync_latch_tb.dut.clkinb_therm_9 rsync_latch_tb.dut.clkinb_therm_8 rsync_latch_tb.dut.clkinb_therm_7 rsync_latch_tb.dut.clkinb_therm_6 rsync_latch_tb.dut.clkinb_therm_5 rsync_latch_tb.dut.clkinb_therm_4 rsync_latch_tb.dut.clkinb_therm_3 rsync_latch_tb.dut.clkinb_therm_2 rsync_latch_tb.dut.clkinb_therm_1 rsync_latch_tb.dut.clkinb_therm_0 rsync_latch_tb.dut.clkinb_binary_5 rsync_latch_tb.dut.clkinb_binary_4 rsync_latch_tb.dut.clkinb_binary_3 rsync_latch_tb.dut.clkinb_binary_2 rsync_latch_tb.dut.clkinb_binary_1 rsync_latch_tb.dut.clkinb_binary_0_red rsync_latch_tb.dut.clkinb_binary_0 rsync_latch_tb.dut.clkin_therm_16 rsync_latch_tb.dut.clkin_therm_15 rsync_latch_tb.dut.clkin_therm_14 rsync_latch_tb.dut.clkin_therm_13 rsync_latch_tb.dut.clkin_therm_12 rsync_latch_tb.dut.clkin_therm_11 rsync_latch_tb.dut.clkin_therm_10 rsync_latch_tb.dut.clkin_therm_9 rsync_latch_tb.dut.clkin_therm_8 rsync_latch_tb.dut.clkin_therm_7 rsync_latch_tb.dut.clkin_therm_6 rsync_latch_tb.dut.clkin_therm_5 rsync_latch_tb.dut.clkin_therm_4 rsync_latch_tb.dut.clkin_therm_3 rsync_latch_tb.dut.clkin_therm_2 rsync_latch_tb.dut.clkin_therm_1 rsync_latch_tb.dut.clkin_therm_0 rsync_latch_tb.dut.clkin_binary_5 rsync_latch_tb.dut.clkin_binary_4 rsync_latch_tb.dut.clkin_binary_3 rsync_latch_tb.dut.clkin_binary_2 rsync_latch_tb.dut.clkin_binary_1 rsync_latch_tb.dut.clkin_binary_0_red rsync_latch_tb.dut.clkin_binary_0 rsync_latch_tb.dut.atb_ena rsync_latch_tb.dut.atb1 rsync_latch_tb.dut.atb0
 Created probe 1
+xcelium> probe -create -database waves rsync_latch_tb.dut.dataoutbin_aux rsync_latch_tb.dut.dataoutbinb_aux rsync_latch_tb.dut.dataouttherm_aux rsync_latch_tb.dut.dataoutthermb_aux
+Created probe 2
 xcelium> 
 xcelium> simvision -input restore.tcl.svcf
 xcelium> run
-mismatch temporal =           3 seed = -493407719 media =0 sigma = 10
-mismatch temporal =          10 seed = -1203955251 media =0 sigma = 10
-mismatch temporal =          -2 seed = 271496356 media =0 sigma = 10
-mismatch temporal =           4 seed = 1667014281 media =0 sigma = 10
 Test 1: Verificar estado de apagado (Power-Down)
-xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 0 FS).
-rsync_latch_tb.dut
-Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
+jitter temporal =           2 seed = -1808676067 media =0 sigma = 1
+jitter temporal =           0 seed = 1074635142 media =0 sigma = 1
+jitter temporal =           0 seed = -255198600 media =0 sigma = 1
+jitter temporal =          -1 seed = -1418211933 media =0 sigma = 1
 Test 2: Verificar funcionamiento normal
-xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 200 PS).
-rsync_latch_tb.dut
-Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
-xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 400 PS).
-rsync_latch_tb.dut
-Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
+jitter temporal =           0 seed = -566389667 media =0 sigma = 1
+jitter temporal =           0 seed = -357903175 media =0 sigma = 1
+jitter temporal =           0 seed = -678123079 media =0 sigma = 1
+jitter temporal =          -1 seed = 1493730122 media =0 sigma = 1
+jitter temporal =          -1 seed = -1249168059 media =0 sigma = 1
+jitter temporal =          -1 seed = 875096668 media =0 sigma = 1
+jitter temporal =           1 seed = -1178521894 media =0 sigma = 1
+jitter temporal =           2 seed = 2049298388 media =0 sigma = 1
 Test 3: Verificar comportamiento de atb_ena
-xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 600 PS).
-rsync_latch_tb.dut
-Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 3.1: atb_ena = 2'b00 -> atb0 = 0.00, atb1 = 0.00
-xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 800 PS).
-rsync_latch_tb.dut
-Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 3.2: atb_ena = 2'b01 -> atb0 = 0.00, atb1 = 1.00
-xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 1 NS).
-rsync_latch_tb.dut
-Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 3.3: atb_ena = 2'b10 -> atb0 = 0.00, atb1 = 1.00
-xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 1200 PS).
-rsync_latch_tb.dut
-Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
-Test 3.4: atb_ena = 2'b11 -> atb0 = 0.00, atb1 = 0.00
-Simulación completada.
-Simulation complete via $finish(1) at time 1400 PS + 0
-./tb/rsync_latch_tb.sv:219         $finish;
-xcelium> probe -create -shm rsync_latch_tb.dut.dataoutbin_aux rsync_latch_tb.dut.dataoutbinb_aux rsync_latch_tb.dut.dataouttherm_aux rsync_latch_tb.dut.dataoutthermb_aux
-Created probe 2
-xcelium> reset
-SVSEED default: 1
-Loaded snapshot worklib.rsync_latch_tb:sv
-xcelium> run
-mismatch temporal =           3 seed = -493407719 media =0 sigma = 10
-mismatch temporal =          10 seed = -1203955251 media =0 sigma = 10
-mismatch temporal =          -2 seed = 271496356 media =0 sigma = 10
-mismatch temporal =           4 seed = 1667014281 media =0 sigma = 10
-Test 1: Verificar estado de apagado (Power-Down)
-xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 0 FS).
-rsync_latch_tb.dut
-Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
-Test 2: Verificar funcionamiento normal
-xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 200 PS).
-rsync_latch_tb.dut
-Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
-xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 400 PS).
-rsync_latch_tb.dut
-Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
-Test 3: Verificar comportamiento de atb_ena
-xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 600 PS).
-rsync_latch_tb.dut
-Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
-Test 3.1: atb_ena = 2'b00 -> atb0 = 0.00, atb1 = 0.00
-xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 800 PS).
-rsync_latch_tb.dut
-Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
-Test 3.2: atb_ena = 2'b01 -> atb0 = 0.00, atb1 = 1.00
-xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 1 NS).
-rsync_latch_tb.dut
-Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
-Test 3.3: atb_ena = 2'b10 -> atb0 = 0.00, atb1 = 1.00
-xmsim: *W,WARSEV (./models/rsync_latch_mismatch.sv,571): (time 1200 PS).
-rsync_latch_tb.dut
-Clock signals for bin_5 are not in the correct state: clkin= 0, clkinb= 1
 Test 3.4: atb_ena = 2'b11 -> atb0 = 0.00, atb1 = 0.00
 Simulación completada.
 Simulation complete via $finish(1) at time 1400 PS + 0
 ./tb/rsync_latch_tb.sv:219         $finish;
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 09, 2026 at 16:50:43 CET  (total: 00:17:49)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 12, 2026 at 12:26:10 CET  (total: 00:01:57)

@@ -55,24 +55,24 @@ module driver_cell (
         vssana_boundaries: assert (vssana >= VSSANA_MIN && vssana <= VSSANA_MAX) else $warning("Input voltge vssana is out of bounds: %0.2f V", vssana);
     end
 
-     //Generate non lineartinies: mismatch
-    real mismatch_databinout;
-    real mismatch_databinoutb;
-    real mismatch_datathermout;
-    real mismatch_datathermoutb;
+     //Generate non lineartinies: jitter
+    real jitter_databinout;
+    real jitter_databinoutb;
+    real jitter_datathermout;
+    real jitter_datathermoutb;
     int t_prop=10; //tiempo de propagación de las señales en el bloque
 
     /*
     //Distribución uniforme
-    function real generate_mismatch_temp();
+    function real generate_jitter_temp();
         real temp;
         temp = $urandom()%20;
-        $display("Raw binary mismatch = %0d", temp);
-        $display("Binary mismatch= %0.4f", ((temp)-10));
+        $display("Raw binary jitter = %0d", temp);
+        $display("Binary jitter= %0.4f", ((temp)-10));
         return ((temp)-10);
     endfunction*/
 
-    function real generate_mismatch_temp();
+    function real generate_jitter_temp();
         // Variables
         int seed ;  // Semilla para el generador de números aleatorios
         int mean = 0;         // Promedio de la distribución
@@ -82,19 +82,19 @@ module driver_cell (
         // Genera valor aleatorio
         seed = $urandom();
         random_value = $dist_normal(seed, mean, std_dev);
-        $display("mismatch temporal = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
+        $display("jitter temporal = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
         return random_value;
     endfunction
 
     /*initial begin
-        // Binary part mismatch generation
-          mismatch_databinout = generate_mismatch_temp();
-        // Binary negated part mismatch generation
-          mismatch_databinoutb = generate_mismatch_temp();
-        // Thermometric part mismatch generation
-          mismatch_datathermout = generate_mismatch_temp();
-        // Thermometric negated part mismatch generation
-          mismatch_datathermoutb = generate_mismatch_temp();
+        // Binary part jitter generation
+          jitter_databinout = generate_jitter_temp();
+        // Binary negated part jitter generation
+          jitter_databinoutb = generate_jitter_temp();
+        // Thermometric part jitter generation
+          jitter_datathermout = generate_jitter_temp();
+        // Thermometric negated part jitter generation
+          jitter_datathermoutb = generate_jitter_temp();
     end*/
 
     always_comb begin
@@ -110,38 +110,38 @@ module driver_cell (
 
     always@(datain,input_check,pdb)begin
         if(input_check == 1 && pdb == 1) begin
-            mismatch_databinout = generate_mismatch_temp();
-            databinout = #(t_prop+mismatch_databinout) datain;
+            jitter_databinout = generate_jitter_temp();
+            databinout = #(t_prop+jitter_databinout) datain;
         end else if(input_check == 1 && pdb ==0) begin
-            mismatch_databinout = generate_mismatch_temp();
-            databinout =#(t_prop+mismatch_databinout) 'z;
+            jitter_databinout = generate_jitter_temp();
+            databinout =#(t_prop+jitter_databinout) 'z;
         end
     end
     always@(datainb,input_check,pdb)begin
         if(input_check == 1 && pdb == 1) begin
-            mismatch_databinoutb = generate_mismatch_temp();
-            databinoutb =#(t_prop+mismatch_databinoutb) datainb;
+            jitter_databinoutb = generate_jitter_temp();
+            databinoutb =#(t_prop+jitter_databinoutb) datainb;
         end else if(input_check == 1 && pdb ==0) begin
-            mismatch_databinoutb = generate_mismatch_temp();
-            databinoutb =#(t_prop+mismatch_databinoutb) 'z;
+            jitter_databinoutb = generate_jitter_temp();
+            databinoutb =#(t_prop+jitter_databinoutb) 'z;
         end
     end
     always@(datatherm,input_check,pdb)begin
         if(input_check == 1 && pdb == 1) begin
-            mismatch_datathermout = generate_mismatch_temp();
-            datathermout =#(t_prop+mismatch_datathermout) datatherm;
+            jitter_datathermout = generate_jitter_temp();
+            datathermout =#(t_prop+jitter_datathermout) datatherm;
         end else if(input_check == 1 && pdb ==0) begin
-            mismatch_datathermout = generate_mismatch_temp();
-            datathermout =#(t_prop+mismatch_datathermout) 'z;
+            jitter_datathermout = generate_jitter_temp();
+            datathermout =#(t_prop+jitter_datathermout) 'z;
         end
     end
     always@(datathermb,input_check,pdb)begin
         if(input_check == 1 && pdb == 1) begin
-            mismatch_datathermoutb = generate_mismatch_temp();
-            datathermoutb =#(t_prop+mismatch_datathermoutb) datathermb;
+            jitter_datathermoutb = generate_jitter_temp();
+            datathermoutb =#(t_prop+jitter_datathermoutb) datathermb;
         end else if(input_check == 1 && pdb ==0) begin
-            mismatch_datathermoutb = generate_mismatch_temp();
-            datathermoutb =#(t_prop+mismatch_datathermoutb) 'z;
+            jitter_datathermoutb = generate_jitter_temp();
+            datathermoutb =#(t_prop+jitter_datathermoutb) 'z;
         end
     end
 

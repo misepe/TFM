@@ -1,22 +1,22 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 09, 2026 at 15:06:41 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 12, 2026 at 11:44:11 CET
 xrun
 	-f xrun.f
 		-clean
-		./models/driver_cell_mismatch.sv
+		./models/driver_cell_jitter.sv
 		./tb/driver_cell_tb.sv
 		-access +rw
 		-gui
 		-s
 		-input /home/msegper/Documents/TFM/driver_cell/restore.tcl
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
-file: ./models/driver_cell_mismatch.sv
+file: ./models/driver_cell_jitter.sv
         int mean = 0;         // Promedio de la distribución
                  |
-xmvlog: *W,VARIST (./models/driver_cell_mismatch.sv,78|17): Local static variable with initializer requires 'static' keyword.
-        int std_dev = 10;     // Desviación estándar, sigma
+xmvlog: *W,VARIST (./models/driver_cell_jitter.sv,78|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 1;     // Desviación estándar, sigma =1ps
                     |
-xmvlog: *W,VARIST (./models/driver_cell_mismatch.sv,79|20): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (./models/driver_cell_jitter.sv,79|20): Local static variable with initializer requires 'static' keyword.
 	module worklib.driver_cell:sv
 		errors: 0, warnings: 2
 file: ./tb/driver_cell_tb.sv
@@ -26,18 +26,18 @@ file: ./tb/driver_cell_tb.sv
 	Elaborating the design hierarchy:
 	Top level design units:
 		cds_rnm_pkg
-		$unit_0x40547646
+		$unit_0x3c640484
 		driver_cell_tb
 	Building instance overlay tables: ....................
         $display("mismatch temporal = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
                                                                                          |
-xmelab: *W,REALCV (./models/driver_cell_mismatch.sv,85|89): Real argument converted to integer for (%d).
+xmelab: *W,REALCV (./models/driver_cell_jitter.sv,85|89): Real argument converted to integer for (%d).
  Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.driver_cell:sv <0x3d635688>
-			streams:  15, words: 18510
-		worklib.driver_cell_tb:sv <0x52b1ca59>
+		worklib.driver_cell:sv <0x708a4a03>
+			streams:  14, words: 18785
+		worklib.driver_cell_tb:sv <0x67a90426>
 			streams:   9, words: 14815
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
@@ -49,7 +49,7 @@ xmelab: *W,REALCV (./models/driver_cell_mismatch.sv,85|89): Real argument conver
 		Scalar wires:            4       -
 		Vectored wires:          8       -
 		Always blocks:           8       8
-		Initial blocks:          7       7
+		Initial blocks:          6       6
 		Pseudo assignments:      8       -
 		Assertions:              3       3
 		Compilation units:       1       1
@@ -166,23 +166,31 @@ Created probe 1
 xcelium> 
 xcelium> simvision -input restore.tcl.svcf
 xcelium> run
-mismatch temporal =           1 seed = -773618803 media =0 sigma = 10
-mismatch temporal =          34 seed = -2134336748 media =0 sigma = 10
-mismatch temporal =          -4 seed = -833485699 media =0 sigma = 10
-mismatch temporal =          -5 seed = -1233661402 media =0 sigma = 10
 Iniciando tests...
 Test 1: Verificación de límites de alimentación
 Test 2: Estado apagado (pdb = 0)
+mismatch temporal =           0 seed = 677759301 media =0 sigma = 1
+mismatch temporal =           0 seed = 686896801 media =0 sigma = 1
+mismatch temporal =          -2 seed = -1992527815 media =0 sigma = 1
+mismatch temporal =           0 seed = 65102178 media =0 sigma = 1
 databinout = zzzzzzz, databinoutb = zzzzzzz, datathermout = zzzzzzzzzzzzzzzzz, datathermoutb = zzzzzzzzzzzzzzzzz
 Test 3: Estado encendido (pdb = 1)
+mismatch temporal =          -1 seed = -1350050770 media =0 sigma = 1
+mismatch temporal =           1 seed = -2128088571 media =0 sigma = 1
+mismatch temporal =           0 seed = -383982977 media =0 sigma = 1
+mismatch temporal =           1 seed = 1990666696 media =0 sigma = 1
 databinout = 1001100, databinoutb = 0110011, datathermout = 11110000111100001, datathermoutb = 00001111000011110
 Test 5: Propagación de datos binarios
+mismatch temporal =           1 seed = 1273627691 media =0 sigma = 1
+mismatch temporal =           0 seed = -565439612 media =0 sigma = 1
 databinout = 0101010, databinoutb = 1010101
 Test 6: Propagación de datos termométricos
+mismatch temporal =           2 seed = -1854032267 media =0 sigma = 1
+mismatch temporal =           0 seed = -678322366 media =0 sigma = 1
 datathermout = 10101010101010101, datathermoutb = 01010101010101010
 Tests completados.
 Simulation complete via $finish(1) at time 1600 PS + 0
 ./tb/driver_cell_tb.sv:85         $finish;
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 09, 2026 at 15:08:37 CET  (total: 00:01:56)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 12, 2026 at 11:53:18 CET  (total: 00:09:07)

@@ -7,7 +7,7 @@ module clock_distribution import cds_rnm_pkg::*;(
     input logic [1:0] atb_ena, //stablish the output of the differential testbus
     input real vddana_0p8, //0.8V power supply for the block
     input real vssana, //ground connection for the block
-    output logic clkout_therm_16, //output block for thermomethric IDAC
+    output logic clkout_therm_16, //output block for thermomethric IDAC 
     output logic clkout_therm_15, //output block for thermomethric IDAC
     output logic clkout_therm_14, //output block for thermomethric IDAC
     output logic clkout_therm_13, //output block for thermomethric IDAC
@@ -102,55 +102,55 @@ module clock_distribution import cds_rnm_pkg::*;(
         iref_ua_boundaries: assert (iref_25ua >= IREF*0.9 && iref_25ua <= IREF*1.1) else $warning("Input current iref_25ua is out of bounds: %0.2f uA", iref_25ua*1e6);
     end
 
-    //Generate non lineartinies: mismatch
-    real mismatch_therm[16:0];
-    real mismatch_thermb[16:0];
-    real mismatch_binary[5:0];
-    real mismatch_binaryb[5:0];
+    //Generate non lineartinies: jitter
+    real jitter_therm[16:0];
+    real jitter_thermb[16:0];
+    real jitter_binary[5:0];
+    real jitter_binaryb[5:0];
     // Delay of 50ps and assign auxiliary signals to outputs
     int t_prop=50; //tiempo de propagación de las señales en el bloque
 
-    /*function real generate_mismatch(int k);
+    /*function real generate_jitter(int k);
         real temp;
         temp = $urandom()%4000;
-        $display("Raw binary mismatch[%0d] = %0d", k, temp);
-        $display("Binary mismatch[%0d]= %0.4f", k, ((temp)-2000) / 100000.0);
+        $display("Raw binary jitter[%0d] = %0d", k, temp);
+        $display("Binary jitter[%0d]= %0.4f", k, ((temp)-2000) / 100000.0);
         return ((temp)-2000) / 100000.0;
     endfunction*/
 
-    function real generate_mismatch_temp(int i);
+    function real generate_jitter_temp(int i);
         // Variables
         int seed ;  // Semilla para el generador de números aleatorios
         int mean = 0;         // Promedio de la distribución
-        int std_dev = 10;     // Desviación estándar, sigma
+        int std_dev = 1;     // Desviación estándar, sigma
         real random_value;      // Valor aleatorio generado
 
         // Genera valor aleatorio
         seed = $urandom();
         random_value = $dist_normal(seed, mean, std_dev);
-        $display("mismatch temporal[%0d] = %0d seed = %0d media =%0d sigma = %0d", i, random_value, seed, mean, std_dev);
+        $display("jitter temporal[%0d] = %0d seed = %0d media =%0d sigma = %0d", i, random_value, seed, mean, std_dev);
         return random_value;
     endfunction
 
-    initial begin
-        // Thermometric part mismatch generation
+    /*initial begin
+        // Thermometric part jitter generation
         for (int i=0; i<17; i=i+1) begin
-          mismatch_therm[i] = generate_mismatch_temp(i);
+          jitter_therm[i] = generate_jitter_temp(i);
         end
-        // Thermometric negated part mismatch generation
+        // Thermometric negated part jitter generation
         for (int j=0; j<17; j=j+1) begin
-          mismatch_thermb[j] = generate_mismatch_temp(j);
+          jitter_thermb[j] = generate_jitter_temp(j);
         end
 
-        // Binary part mismatch generation
+        // Binary part jitter generation
         for (int k=0; k<6; k=k+1) begin
-          mismatch_binary[k] = generate_mismatch_temp(k);
+          jitter_binary[k] = generate_jitter_temp(k);
         end
-        // Binary negated part mismatch generation
+        // Binary negated part jitter generation
         for (int l=0; l<6; l=l+1) begin
-          mismatch_binaryb[l] = generate_mismatch_temp(l);
+          jitter_binaryb[l] = generate_jitter_temp(l);
         end
-    end
+    end*/
 
     always_comb begin
 
@@ -199,55 +199,102 @@ module clock_distribution import cds_rnm_pkg::*;(
     always@(clkin, clkinb,pdb) begin
         if(pdb == 1) fork
             // Load clkin and clkinb into auxiliary signals
+            jitter_therm[16] = generate_jitter_temp(16);
+            jitter_therm[15] = generate_jitter_temp(15);
+            jitter_therm[14] = generate_jitter_temp(14);
+            jitter_therm[13] = generate_jitter_temp(13);
+            jitter_therm[12] = generate_jitter_temp(12);
+            jitter_therm[11] = generate_jitter_temp(11);
+            jitter_therm[10] = generate_jitter_temp(10);
+            jitter_therm[9] = generate_jitter_temp(9);
+            jitter_therm[8] = generate_jitter_temp(8);
+            jitter_therm[7] = generate_jitter_temp(7);
+            jitter_therm[6] = generate_jitter_temp(6);
+            jitter_therm[5] = generate_jitter_temp(5);
+            jitter_therm[4] = generate_jitter_temp(4);
+            jitter_therm[3] = generate_jitter_temp(3);
+            jitter_therm[2] = generate_jitter_temp(2);
+            jitter_therm[1] = generate_jitter_temp(1);
+            jitter_therm[0] = generate_jitter_temp(0);
+            jitter_thermb[16] = generate_jitter_temp(16);
+            jitter_thermb[15] = generate_jitter_temp(15);
+            jitter_thermb[14] = generate_jitter_temp(14);
+            jitter_thermb[13] = generate_jitter_temp(13);
+            jitter_thermb[12] = generate_jitter_temp(12);
+            jitter_thermb[11] = generate_jitter_temp(11);
+            jitter_thermb[10] = generate_jitter_temp(10);
+            jitter_thermb[9] = generate_jitter_temp(9);
+            jitter_thermb[8] = generate_jitter_temp(8);
+            jitter_thermb[7] = generate_jitter_temp(7);
+            jitter_thermb[6] = generate_jitter_temp(6);
+            jitter_thermb[5] = generate_jitter_temp(5); 
+            jitter_thermb[4] = generate_jitter_temp(4);
+            jitter_thermb[3] = generate_jitter_temp(3);
+            jitter_thermb[2] = generate_jitter_temp(2);
+            jitter_thermb[1] = generate_jitter_temp(1);
+            jitter_thermb[0] = generate_jitter_temp(0);
+            jitter_binary[5] = generate_jitter_temp(5);
+            jitter_binary[4] = generate_jitter_temp(4);
+            jitter_binary[3] = generate_jitter_temp(3);
+            jitter_binary[2] = generate_jitter_temp(2);
+            jitter_binary[1] = generate_jitter_temp(1);
+            jitter_binary[0] = generate_jitter_temp(0);
+            jitter_binaryb[5] = generate_jitter_temp(5);
+            jitter_binaryb[4] = generate_jitter_temp(4);
+            jitter_binaryb[3] = generate_jitter_temp(3);
+            jitter_binaryb[2] = generate_jitter_temp(2);
+            jitter_binaryb[1] = generate_jitter_temp(1);
+            jitter_binaryb[0] = generate_jitter_temp(0);
+
             
-            clkout_therm_16 = #(t_prop+mismatch_therm[16]) clkin;
-            clkout_therm_15 = #(t_prop+mismatch_therm[15]) clkin;
-            clkout_therm_14 = #(t_prop+mismatch_therm[14]) clkin;
-            clkout_therm_13 = #(t_prop+mismatch_therm[13]) clkin;
-            clkout_therm_12 = #(t_prop+mismatch_therm[12]) clkin;
-            clkout_therm_11 = #(t_prop+mismatch_therm[11]) clkin;
-            clkout_therm_10 = #(t_prop+mismatch_therm[10]) clkin;
-            clkout_therm_9 = #(t_prop+mismatch_therm[9]) clkin;
-            clkout_therm_8 = #(t_prop+mismatch_therm[8]) clkin;
-            clkout_therm_7 = #(t_prop+mismatch_therm[7]) clkin;
-            clkout_therm_6 = #(t_prop+mismatch_therm[6]) clkin;
-            clkout_therm_5 = #(t_prop+mismatch_therm[5]) clkin;
-            clkout_therm_4 = #(t_prop+mismatch_therm[4]) clkin;
-            clkout_therm_3 = #(t_prop+mismatch_therm[3]) clkin;
-            clkout_therm_2 = #(t_prop+mismatch_therm[2]) clkin;
-            clkout_therm_1 = #(t_prop+mismatch_therm[1]) clkin;
-            clkout_therm_0 = #(t_prop+mismatch_therm[0]) clkin;
-            clkoutb_therm_16 = #(t_prop+mismatch_thermb[16]) clkinb;
-            clkoutb_therm_15 = #(t_prop+mismatch_thermb[15]) clkinb;
-            clkoutb_therm_14 = #(t_prop+mismatch_thermb[14]) clkinb;
-            clkoutb_therm_13 = #(t_prop+mismatch_thermb[13]) clkinb;
-            clkoutb_therm_12 = #(t_prop+mismatch_thermb[12]) clkinb;
-            clkoutb_therm_11 = #(t_prop+mismatch_thermb[11]) clkinb;
-            clkoutb_therm_10 = #(t_prop+mismatch_thermb[10]) clkinb;
-            clkoutb_therm_9 = #(t_prop+mismatch_thermb[9]) clkinb;
-            clkoutb_therm_8 = #(t_prop+mismatch_thermb[8]) clkinb;
-            clkoutb_therm_7 = #(t_prop+mismatch_thermb[7]) clkinb;
-            clkoutb_therm_6 = #(t_prop+mismatch_thermb[6]) clkinb;
-            clkoutb_therm_5 = #(t_prop+mismatch_thermb[5]) clkinb;
-            clkoutb_therm_4 = #(t_prop+mismatch_thermb[4]) clkinb;
-            clkoutb_therm_3 = #(t_prop+mismatch_thermb[3]) clkinb;
-            clkoutb_therm_2 = #(t_prop+mismatch_thermb[2]) clkinb;
-            clkoutb_therm_1 = #(t_prop+mismatch_thermb[1]) clkinb;
-            clkoutb_therm_0 = #(t_prop+mismatch_thermb[0]) clkinb;
-            clkout_binary_5 = #(t_prop+mismatch_binary[5]) clkin;
-            clkout_binary_4 = #(t_prop+mismatch_binary[4]) clkin;
-            clkout_binary_3 = #(t_prop+mismatch_binary[3]) clkin;
-            clkout_binary_2 = #(t_prop+mismatch_binary[2]) clkin;
-            clkout_binary_1 = #(t_prop+mismatch_binary[1]) clkin;
-            clkout_binary_0 = #(t_prop+mismatch_binary[0]) clkin;
-            clkout_binary_0_red = #(t_prop+mismatch_binary[0]) clkin;
-            clkoutb_binary_5 = #(t_prop+mismatch_binaryb[5]) clkinb;
-            clkoutb_binary_4 = #(t_prop+mismatch_binaryb[4]) clkinb;
-            clkoutb_binary_3 = #(t_prop+mismatch_binaryb[3]) clkinb;
-            clkoutb_binary_2 = #(t_prop+mismatch_binaryb[2]) clkinb;
-            clkoutb_binary_1 = #(t_prop+mismatch_binaryb[1]) clkinb;
-            clkoutb_binary_0 = #(t_prop+mismatch_binaryb[0]) clkinb;
-            clkoutb_binary_0_red = #(t_prop+mismatch_binaryb[0]) clkinb;
+            clkout_therm_16 = #(t_prop+jitter_therm[16]) clkin;
+            clkout_therm_15 = #(t_prop+jitter_therm[15]) clkin;
+            clkout_therm_14 = #(t_prop+jitter_therm[14]) clkin;
+            clkout_therm_13 = #(t_prop+jitter_therm[13]) clkin;
+            clkout_therm_12 = #(t_prop+jitter_therm[12]) clkin;
+            clkout_therm_11 = #(t_prop+jitter_therm[11]) clkin;
+            clkout_therm_10 = #(t_prop+jitter_therm[10]) clkin;
+            clkout_therm_9 = #(t_prop+jitter_therm[9]) clkin;
+            clkout_therm_8 = #(t_prop+jitter_therm[8]) clkin;
+            clkout_therm_7 = #(t_prop+jitter_therm[7]) clkin;
+            clkout_therm_6 = #(t_prop+jitter_therm[6]) clkin;
+            clkout_therm_5 = #(t_prop+jitter_therm[5]) clkin;
+            clkout_therm_4 = #(t_prop+jitter_therm[4]) clkin;
+            clkout_therm_3 = #(t_prop+jitter_therm[3]) clkin;
+            clkout_therm_2 = #(t_prop+jitter_therm[2]) clkin;
+            clkout_therm_1 = #(t_prop+jitter_therm[1]) clkin;
+            clkout_therm_0 = #(t_prop+jitter_therm[0]) clkin;
+            clkoutb_therm_16 = #(t_prop+jitter_thermb[16]) clkinb;
+            clkoutb_therm_15 = #(t_prop+jitter_thermb[15]) clkinb;
+            clkoutb_therm_14 = #(t_prop+jitter_thermb[14]) clkinb;
+            clkoutb_therm_13 = #(t_prop+jitter_thermb[13]) clkinb;
+            clkoutb_therm_12 = #(t_prop+jitter_thermb[12]) clkinb;
+            clkoutb_therm_11 = #(t_prop+jitter_thermb[11]) clkinb;
+            clkoutb_therm_10 = #(t_prop+jitter_thermb[10]) clkinb;
+            clkoutb_therm_9 = #(t_prop+jitter_thermb[9]) clkinb;
+            clkoutb_therm_8 = #(t_prop+jitter_thermb[8]) clkinb;
+            clkoutb_therm_7 = #(t_prop+jitter_thermb[7]) clkinb;
+            clkoutb_therm_6 = #(t_prop+jitter_thermb[6]) clkinb;
+            clkoutb_therm_5 = #(t_prop+jitter_thermb[5]) clkinb;
+            clkoutb_therm_4 = #(t_prop+jitter_thermb[4]) clkinb;
+            clkoutb_therm_3 = #(t_prop+jitter_thermb[3]) clkinb;
+            clkoutb_therm_2 = #(t_prop+jitter_thermb[2]) clkinb;
+            clkoutb_therm_1 = #(t_prop+jitter_thermb[1]) clkinb;
+            clkoutb_therm_0 = #(t_prop+jitter_thermb[0]) clkinb;
+            clkout_binary_5 = #(t_prop+jitter_binary[5]) clkin;
+            clkout_binary_4 = #(t_prop+jitter_binary[4]) clkin;
+            clkout_binary_3 = #(t_prop+jitter_binary[3]) clkin;
+            clkout_binary_2 = #(t_prop+jitter_binary[2]) clkin;
+            clkout_binary_1 = #(t_prop+jitter_binary[1]) clkin;
+            clkout_binary_0 = #(t_prop+jitter_binary[0]) clkin;
+            clkout_binary_0_red = #(t_prop+jitter_binary[0]) clkin;
+            clkoutb_binary_5 = #(t_prop+jitter_binaryb[5]) clkinb;
+            clkoutb_binary_4 = #(t_prop+jitter_binaryb[4]) clkinb;
+            clkoutb_binary_3 = #(t_prop+jitter_binaryb[3]) clkinb;
+            clkoutb_binary_2 = #(t_prop+jitter_binaryb[2]) clkinb;
+            clkoutb_binary_1 = #(t_prop+jitter_binaryb[1]) clkinb;
+            clkoutb_binary_0 = #(t_prop+jitter_binaryb[0]) clkinb;
+            clkoutb_binary_0_red = #(t_prop+jitter_binaryb[0]) clkinb;
         
         join else if(pdb == 0)begin
 

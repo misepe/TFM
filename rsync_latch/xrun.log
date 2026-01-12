@@ -1,24 +1,30 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 12, 2026 at 12:24:13 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 12, 2026 at 13:19:27 CET
 xrun
 	-f xrun.f
 		-clean
-		./models/rsync_latch_jitter.sv
+		./models/rsync_latch_all_non_linearities.sv
 		./tb/rsync_latch_tb.sv
 		-access +rw
 		-gui
 		-s
 		-input /home/msegper/Documents/TFM/rsync_latch/restore.tcl
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
-file: ./models/rsync_latch_jitter.sv
+file: ./models/rsync_latch_all_non_linearities.sv
         int mean = 0;         // Promedio de la distribución
                  |
-xmvlog: *W,VARIST (./models/rsync_latch_jitter.sv,128|17): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (./models/rsync_latch_all_non_linearities.sv,125|17): Local static variable with initializer requires 'static' keyword.
         int std_dev = 1;     // Desviación estándar, sigma
                     |
-xmvlog: *W,VARIST (./models/rsync_latch_jitter.sv,129|20): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (./models/rsync_latch_all_non_linearities.sv,126|20): Local static variable with initializer requires 'static' keyword.
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (./models/rsync_latch_all_non_linearities.sv,139|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 10;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (./models/rsync_latch_all_non_linearities.sv,140|20): Local static variable with initializer requires 'static' keyword.
 	module worklib.rsync_latch:sv
-		errors: 0, warnings: 2
+		errors: 0, warnings: 4
 file: ./tb/rsync_latch_tb.sv
 	module worklib.rsync_latch_tb:sv
 		errors: 0, warnings: 0
@@ -26,18 +32,21 @@ file: ./tb/rsync_latch_tb.sv
 	Elaborating the design hierarchy:
 	Top level design units:
 		cds_rnm_pkg
-		$unit_0x5fecaa8a
+		$unit_0x7c07758d
 		rsync_latch_tb
 	Building instance overlay tables: ....................
-        $display("jitter temporal = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
-                                                                                       |
-xmelab: *W,REALCV (./models/rsync_latch_jitter.sv,135|87): Real argument converted to integer for (%d).
+        $display("jitter temporal %s = %0d seed = %0d media =%0d sigma = %0d", type_jitter, random_value, seed, mean, std_dev);
+                                                                                                       |
+xmelab: *W,REALCV (./models/rsync_latch_all_non_linearities.sv,132|103): Real argument converted to integer for (%d).
+        $display("mismatch temporal %s = %0d seed = %0d media =%0d sigma = %0d", type_mismatch, random_value, seed, mean, std_dev);
+                                                                                                           |
+xmelab: *W,REALCV (./models/rsync_latch_all_non_linearities.sv,146|107): Real argument converted to integer for (%d).
  Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.rsync_latch:sv <0x2a487089>
-			streams: 136, words: 108628
-		worklib.rsync_latch_tb:sv <0x1a0876aa>
+		worklib.rsync_latch:sv <0x63b910b6>
+			streams: 139, words: 113776
+		worklib.rsync_latch_tb:sv <0x63a3637e>
 			streams:  90, words: 70933
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
@@ -45,11 +54,11 @@ xmelab: *W,REALCV (./models/rsync_latch_jitter.sv,135|87): Real argument convert
 		                 Instances  Unique
 		Modules:                 2       2
 		Verilog packages:        1       1
-		Registers:              93      93
+		Registers:             104     104
 		Scalar wires:           54       -
 		Vectored wires:         13       -
 		Always blocks:          30      30
-		Initial blocks:          8       8
+		Initial blocks:         10      10
 		Parallel blocks:         3       3
 		Pseudo assignments:     63       -
 		Assertions:              3       3
@@ -170,20 +179,24 @@ Created probe 2
 xcelium> 
 xcelium> simvision -input restore.tcl.svcf
 xcelium> run
+mismatch temporal databinout =           1 seed = 446507284 media =0 sigma = 10
+mismatch temporal databinoutb =          20 seed = -1959372182 media =0 sigma = 10
+mismatch temporal datathermout =          13 seed = -1867232270 media =0 sigma = 10
+mismatch temporal datathermoutb =           7 seed = -940395944 media =0 sigma = 10
 Test 1: Verificar estado de apagado (Power-Down)
-jitter temporal =           2 seed = -1808676067 media =0 sigma = 1
-jitter temporal =           0 seed = 1074635142 media =0 sigma = 1
-jitter temporal =           0 seed = -255198600 media =0 sigma = 1
-jitter temporal =          -1 seed = -1418211933 media =0 sigma = 1
+jitter temporal databinout =           0 seed = 594737015 media =0 sigma = 1
+jitter temporal databinoutb =           0 seed = -544176328 media =0 sigma = 1
+jitter temporal datathermout =           0 seed = 1152829515 media =0 sigma = 1
+jitter temporal datathermoutb =           0 seed = 190154791 media =0 sigma = 1
 Test 2: Verificar funcionamiento normal
-jitter temporal =           0 seed = -566389667 media =0 sigma = 1
-jitter temporal =           0 seed = -357903175 media =0 sigma = 1
-jitter temporal =           0 seed = -678123079 media =0 sigma = 1
-jitter temporal =          -1 seed = 1493730122 media =0 sigma = 1
-jitter temporal =          -1 seed = -1249168059 media =0 sigma = 1
-jitter temporal =          -1 seed = 875096668 media =0 sigma = 1
-jitter temporal =           1 seed = -1178521894 media =0 sigma = 1
-jitter temporal =           2 seed = 2049298388 media =0 sigma = 1
+jitter temporal databinout =           1 seed = -1750080874 media =0 sigma = 1
+jitter temporal databinoutb =           1 seed = -1183258636 media =0 sigma = 1
+jitter temporal datathermout =           1 seed = 1433885226 media =0 sigma = 1
+jitter temporal datathermoutb =           0 seed = 1103301879 media =0 sigma = 1
+jitter temporal databinout =           0 seed = 218933773 media =0 sigma = 1
+jitter temporal databinoutb =          -1 seed = 1101121162 media =0 sigma = 1
+jitter temporal datathermout =           0 seed = -760540561 media =0 sigma = 1
+jitter temporal datathermoutb =          -1 seed = -1342692121 media =0 sigma = 1
 Test 3: Verificar comportamiento de atb_ena
 Test 3.1: atb_ena = 2'b00 -> atb0 = 0.00, atb1 = 0.00
 Test 3.2: atb_ena = 2'b01 -> atb0 = 0.00, atb1 = 1.00
@@ -194,4 +207,4 @@ Simulation complete via $finish(1) at time 1400 PS + 0
 ./tb/rsync_latch_tb.sv:219         $finish;
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 12, 2026 at 12:26:10 CET  (total: 00:01:57)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 12, 2026 at 13:20:49 CET  (total: 00:01:22)

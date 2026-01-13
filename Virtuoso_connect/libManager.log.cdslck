@@ -6,11 +6,11 @@
 LockStakeVersion               1.1
 LoginName                      msegper
 HostName                       cdm2.cc.upv.es
-ProcessIdentifier              3171624
-ProcessCreationTime_UTC        1765463470
-ProcessCreationTime_Readable   Thu Dec 11 15:31:10 2025 CET
+ProcessIdentifier              323325
+ProcessCreationTime_UTC        1765982463
+ProcessCreationTime_Readable   Wed Dec 17 15:41:03 2025 CET
 AppIdentifier                  /eda/cadence/2024-25/RHELx86/IC_23.10.070/tools/dfII/bin/64bit/libManager
 OSType                         lnx86
 ReasonForPlacingEditLock       log file
 FilePathUsedToEditLock         /home/msegper/Documents/TFM/Virtuoso_connect/libManager.log
-TimeEditLocked                 Thu Dec 11 15:31:10 2025 CET
+TimeEditLocked                 Wed Dec 17 15:41:03 2025 CET

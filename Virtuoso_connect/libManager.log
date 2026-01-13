@@ -1,6 +1,6 @@
 \o Program:		@(#)$CDS: libManager version 23.1 - CAT38 04/15/2024 12:23 (sjfdcl749) $
 \o Sub version:		sub-version  p323 
-\o Arguments:		-mpssession virtuoso3170922 -mpshost cdm2.cc.upv.es -masterPID 3170922 -ADVM 
+\o Arguments:		-mpssession virtuoso322661 -mpshost cdm2.cc.upv.es -masterPID 322661 -ADVM 
 \o Working Directory:	cdm2.cc.upv.es:/home/msegper/Documents/TFM/Virtuoso_connect
 \o 64-bit offsets
 \o Qt version: 		5.15.9
@@ -14,9 +14,6 @@
 \o Session hidden cells enabled.
 \o MPS service: map window
 \o Library Manager customization server connected.
-\a nrSetWindowVisibility(cdsLibManager "hide")
-\a nrSetWindowVisibility(cdsLibManager "show")
-\a nrSetCurrentWindow(cdsLibManager)
 \a cdsLibManager->libListBox->value = "top_level_DAC"
 \a cdsLibManager->libLineEdit->value = "top_level_DAC"
 \a cdsLibManager->cellListBox->value = "top_level_schematic"
@@ -46,3 +43,15 @@
 \a cdsLibManager->viewListBox->value = nil
 \a cdsLibManager->viewListBox->value = "schematic"
 \a cdsLibManager->viewLineEdit->value = "schematic"
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->cellListBox->value = "clock_distribution"
+\a cdsLibManager->cellLineEdit->value = "clock_distribution"
+\a cdsLibManager->viewLineEdit->value = ""
+\a cdsLibManager->viewListBox->value = nil
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a cdsLibManager->viewListBox->value = "systemVerilog"
+\a cdsLibManager->viewLineEdit->value = "systemVerilog"
+\a cdsLibManager->viewListBox->value = "symbol"
+\a cdsLibManager->viewLineEdit->value = "symbol"
+\a nrSetCurrentWindow(cdsLibManager)

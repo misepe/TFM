@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def generar_tonos(frecuencias, amplitudes, duracion, fs=8.192e6): #Fs = 8.192 MHz para tener un numero de datos que sea potencia de 2
+def generar_tonos(frecuencias, amplitudes, duracion, fs=6e6): #Fs = 8.192 MHz para tener un numero de datos que sea potencia de 2
     """
     Genera una señal combinada de tonos sinusoidales y escribe los datos en un archivo de texto.
 
@@ -41,17 +41,21 @@ def generar_tonos(frecuencias, amplitudes, duracion, fs=8.192e6): #Fs = 8.192 MH
 
     print("Datos de la señal combinada generados y guardados en 'input.txt'.")
 
-    # Representar la señal combinada en una gráfica
-    plt.figure(figsize=(10, 4))
-    plt.plot(t, señal_combinada, label="Señal Combinada")
-    plt.title("Señal Combinada de Tonos")  
-    plt.xlabel("Tiempo (s)")
-    plt.ylabel("Amplitud")
-    plt.grid(True)
-    plt.legend()
-    plt.tight_layout()
-    plt.show()
+    respuesta = input("¿Desea ver la gráfica de la señal generada? (s/n): ")
+    if respuesta.lower() == 's':
+        # Representar la señal combinada en una gráfica
+        plt.figure(figsize=(10, 4))
+        plt.plot(t, señal_combinada, label="Señal Combinada")
+        plt.title("Señal Combinada de Tonos")  
+        plt.xlabel("Tiempo (s)")
+        plt.ylabel("Amplitud")
+        plt.grid(True)
+        plt.legend()
+        plt.tight_layout()
+        plt.show()
 
 # Ejemplo de uso: Generar una señal combinada de uno o más tonos
-generar_tonos(frecuencias=[1e6], amplitudes=[0.5], duracion=0.001)  # Señal de 1 MHz y duración de 0.01 segundos
+# La amplitud máxima de entrada es de 0.125 porque al ponerle el offset para eliminar los negativos, la señal pasa 
+# de un rango de -0.125 a 0.125 a un rango de 0 a 0.25, Vmax=Vref/2=500uV/2=250uV
+generar_tonos(frecuencias=[1e6], amplitudes=[0.125], duracion=0.0005)  # Señal de 1 MHz y duración de 0.0001 segundos
 #generar la señal con un poco de ruido

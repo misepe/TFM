@@ -124,7 +124,9 @@ module clock_distribution import cds_rnm_pkg::*;(
         // Genera valor aleatorio
         seed = $urandom();
         random_value = $dist_normal(seed, mean, std_dev);
+        `ifndef DEBUG_DISPLAY
         $display("jitter temporal %s [%0d] = %0d seed = %0d media =%0d sigma = %0d", type_jitter, i, random_value, seed, mean, std_dev);
+        `endif
         return random_value;
     endfunction
     function real generate_mismatch_temp(int i, string type_mismatch);
@@ -137,7 +139,9 @@ module clock_distribution import cds_rnm_pkg::*;(
         // Genera valor aleatorio
         seed = $urandom();
         random_value = $dist_normal(seed, mean, std_dev);
+        `ifndef DEBUG_DISPLAY
         $display("mismatch temporal %s [%0d] = %0d seed = %0d media =%0d sigma = %0d", type_mismatch, i, random_value, seed, mean, std_dev);
+        `endif
         return random_value;
     endfunction
 

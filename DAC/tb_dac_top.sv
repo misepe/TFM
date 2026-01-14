@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1ps/1ps
 
 module tb_dac_top ();
 
@@ -24,6 +24,7 @@ module tb_dac_top ();
     //real duracion=0.0001;//info from input generator
 
     int delay = 0;
+    string tipo_senal;
 
 
     top_level_schematic DUT (
@@ -84,6 +85,7 @@ module tb_dac_top ();
 
         // Leer y descartar la primera línea de encabezado
         //ret = $fscanf(input_fd_config,"%.15f %.15f %.15f \n",amplitud, duracion, fs);
+        ret = $fscanf(input_fd_config,"%s\n",tipo_senal);
         ret = $fscanf(input_fd_config,"%.15f\n",duracion);
         ret = $fscanf(input_fd_config,"%.15f\n",fs);
         ret = $fscanf(input_fd_config,"%.15f\n",amplitud);
@@ -99,7 +101,7 @@ module tb_dac_top ();
                 delay = int'(fs*duracion);
                 #(delay);
                 Vout_total = Vout - Voutb;
-                $fwrite(output_fd,"%.15f %.15f \n",t,Vout_total);
+                $fwrite(output_fd,"%.15f %.15f %.15f %.15f %d\n",t,Vout_total,Vout, Voutb,delay);
             end
 
         end while(ret != -1);

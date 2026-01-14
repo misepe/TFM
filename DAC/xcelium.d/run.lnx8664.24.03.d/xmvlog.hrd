@@ -2,8 +2,6 @@
 // File created by:  xrun
 // Do not modify this file
 //
--DEFINE
-DEBUG_DISPLAY
 -INCDIR
 ../clock_distribution
 -INCDIR

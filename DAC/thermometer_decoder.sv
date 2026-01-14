@@ -23,6 +23,8 @@ module stimulus_processor;
 
   real duracion, fs, freq;
 
+  string tipo_senal;
+
   // Conversión a termómetro 17b
   function logic [THERM_BITS-1:0] to_therm(input logic [MSB_BITS-1:0] code);
     logic [THERM_BITS-1:0] t;
@@ -44,6 +46,8 @@ module stimulus_processor;
 
     //$fwrite(fout,"# tiempo value_real valor_ normalizado digital_10b Datainbin   Datainbinb   Dataintherm   Datainthermb\n");
 
+    r = $fscanf(fin_config,"%s\n",tipo_senal);
+    $fwrite(fout_config, "%s \n",tipo_senal);
     r = $fscanf(fin_config,"%.15f\n",duracion);
     $fwrite(fout_config, "%.15f \n",duracion);
     r = $fscanf(fin_config,"%.15f\n",fs);

@@ -2,7 +2,6 @@
 // File created by:  xrun
 // Do not modify this file
 //
-+define+DEBUG_DISPLAY
 +SVSEED=0
 -SVSEED
 0
@@ -10,7 +9,7 @@
 +EMGRLOG
 xrun.log
 -XLSTIME
-1768327125
+1768407711
 -XLKEEP
 -XLMODE
 ./xcelium.d/run.lnx8664.24.03.d

@@ -70,6 +70,7 @@ def analizar_metrica_fft(señal, fs):
     P_noise = max(P_noise, 1e-30)
 
     # --- SNR ---
+    print("SNR Calculation: P_signal =", P_signal, ", P_noise =", P_noise)
     SNR = 10 * np.log10(P_signal / P_noise)
 
     # --- SFDR ---
@@ -77,6 +78,7 @@ def analizar_metrica_fft(señal, fs):
     P_spurs[idx_min:idx_max] = 0
     P_max_spur = max(np.max(P_spurs), 1e-30)
 
+    print("SFDR Calculation: P_signal =", P_signal, ", P_max_spur =", P_max_spur)
     SFDR = 10 * np.log10(P_signal / P_max_spur)
 
     # --- DNL ---

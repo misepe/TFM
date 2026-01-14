@@ -2,7 +2,6 @@
 // File created by:  xrun
 // Do not modify this file
 //
-+define+DEBUG_DISPLAY
 +SVSEED=0
 -ACCESS
 +rw

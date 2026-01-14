@@ -59,7 +59,7 @@ def analizar_metrica_fft(señal, fs):
     idx_fundamental = np.argmax(P)
 
     # Integración del fundamental (varios bins por ventana Hann)
-    bins_fund = 2
+    bins_fund = 10 # número de bins para integrar alrededor del pico fundamental
     idx_min = max(idx_fundamental - bins_fund, 0)
     idx_max = min(idx_fundamental + bins_fund + 1, len(P))
 
@@ -158,7 +158,10 @@ def comparar_fft(archivo_in, archivo_out):
     # --- FFT COMPARATIVA ---
     plt.figure(figsize=(10, 5))
     plt.plot(frec, 20 * np.log10(mag_in + 1e-15), label="Input", linewidth=1)
-    plt.plot(frec, 20 * np.log10(mag_out + 1e-15), label="Output", linewidth=1, alpha=0.8)
+    plt.plot(frec, (20 * np.log10(mag_out + 1e-15)), label="Output", linewidth=1, alpha=0.8)
+
+    #La comparación de la salida es a full scale
+    plt.plot(frec, (20 * np.log10(mag_out + 1e-15))-np.max(20 * np.log10(mag_out + 1e-15)), label="Output_full_sacle", linewidth=1, alpha=0.8)
 
     plt.title("Comparación FFT Input vs Output")
     plt.xlabel("Frecuencia [Hz]")

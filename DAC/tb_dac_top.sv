@@ -56,6 +56,8 @@ module tb_dac_top ();
     
     int ret;
 
+    real Vout_total;
+
 
     always #5 clkin = ~clkin;
     always #5 clkinb = ~clkinb;
@@ -96,8 +98,8 @@ module tb_dac_top ();
                 // Introducir un delay basado en la diferencia de tiempo
                 delay = int'(fs*duracion);
                 #(delay);
-                
-                $fwrite(output_fd,"%.15f %.15f\n",t,Vout);
+                Vout_total = Vout - Voutb;
+                $fwrite(output_fd,"%.15f %.15f \n",t,Vout_total);
             end
 
         end while(ret != -1);

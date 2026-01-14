@@ -57,13 +57,13 @@ module driver_cell (
 
      //Generate non lineartinies: jitter
     real jitter_databinout;
-    real jitter_databinoutb;
+    //real jitter_databinoutb;
     real jitter_datathermout;
-    real jitter_datathermoutb;
+    //real jitter_datathermoutb;
     real mismatch_databinout;
-    real mismatch_databinoutb;
+    //real mismatch_databinoutb;
     real mismatch_datathermout;
-    real mismatch_datathermoutb;
+    //real mismatch_datathermoutb;
     int t_prop=10; //tiempo de propagación de las señales en el bloque
 
     function real generate_jitter_temp(string type_jitter);
@@ -86,7 +86,7 @@ module driver_cell (
         // Variables
         int seed ;  // Semilla para el generador de números aleatorios
         int mean = 0;         // Promedio de la distribución
-        int std_dev = 10;     // Desviación estándar, sigma
+        int std_dev = 1;     // Desviación estándar, sigma
         real random_value;      // Valor aleatorio generado
 
         // Genera valor aleatorio
@@ -102,11 +102,11 @@ module driver_cell (
         // Binary part jitter generation
           mismatch_databinout = generate_mismatch_temp("databinout");
         // Binary negated part jitter generation
-          mismatch_databinoutb = generate_mismatch_temp("databinoutb");
+          //mismatch_databinoutb = generate_mismatch_temp("databinoutb");
         // Thermometric part jitter generation
           mismatch_datathermout = generate_mismatch_temp("datathermout");
         // Thermometric negated part jitter generation
-          mismatch_datathermoutb = generate_mismatch_temp("datathermoutb");
+          //mismatch_datathermoutb = generate_mismatch_temp("datathermoutb");
     end
 
     always_comb begin
@@ -120,40 +120,26 @@ module driver_cell (
 
     end
 
-    always@(datain,input_check,pdb)begin
+    always@(datain,datainb,input_check,pdb)begin
         if(input_check == 1 && pdb == 1) begin
             jitter_databinout = generate_jitter_temp("databinout");
             databinout = #(t_prop+jitter_databinout+mismatch_databinout) datain;
+            databinoutb =#(t_prop+jitter_databinout+mismatch_databinout) datainb;
         end else if(input_check == 1 && pdb ==0) begin
             jitter_databinout = generate_jitter_temp("databinout");
             databinout =#(t_prop+jitter_databinout+mismatch_databinout) 'z;
-        end
-    end
-    always@(datainb,input_check,pdb)begin
-        if(input_check == 1 && pdb == 1) begin
-            jitter_databinoutb = generate_jitter_temp("databinoutb");
-            databinoutb =#(t_prop+jitter_databinoutb+mismatch_databinoutb) datainb;
-        end else if(input_check == 1 && pdb ==0) begin
-            jitter_databinoutb = generate_jitter_temp("databinoutb");
-            databinoutb =#(t_prop+jitter_databinoutb+mismatch_databinoutb) 'z;
+            databinoutb =#(t_prop+jitter_databinout+mismatch_databinout) 'z;
         end
     end
     always@(datatherm,input_check,pdb)begin
         if(input_check == 1 && pdb == 1) begin
             jitter_datathermout = generate_jitter_temp("datathermout");
             datathermout =#(t_prop+jitter_datathermout+mismatch_datathermout) datatherm;
+            datathermoutb =#(t_prop+jitter_datathermout+mismatch_datathermout) datathermb;
         end else if(input_check == 1 && pdb ==0) begin
             jitter_datathermout = generate_jitter_temp("datathermout");
             datathermout =#(t_prop+jitter_datathermout+mismatch_datathermout) 'z;
-        end
-    end
-    always@(datathermb,input_check,pdb)begin
-        if(input_check == 1 && pdb == 1) begin
-            jitter_datathermoutb = generate_jitter_temp("datathermoutb");
-            datathermoutb =#(t_prop+jitter_datathermoutb+mismatch_datathermoutb) datathermb;
-        end else if(input_check == 1 && pdb ==0) begin
-            jitter_datathermoutb = generate_jitter_temp("datathermoutb");
-            datathermoutb =#(t_prop+jitter_datathermoutb+mismatch_datathermoutb) 'z;
+            datathermoutb =#(t_prop+jitter_datathermout+mismatch_datathermout) 'z;
         end
     end
 

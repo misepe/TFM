@@ -15,7 +15,7 @@
 -incdir ../rsync_latch
 
 ../clock_distribution/models/clock_distribution_all_non_linearities.sv
-../current_source_units/models/currentSourceUnits.sv
+../current_source_units/models/currentSourceUnits_mismatch.sv
 ../current_sterring/models/current_sterring_noise.sv
 ../driver_cell/models/driver_cell_all_non_linearities.sv
 ../level_shifter/models/level_shifter.sv

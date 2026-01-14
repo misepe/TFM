@@ -73,7 +73,7 @@ module stimulus_processor;
       lsb_bin = digital_10b[LSB_BITS-1:0];
 
       // Construimos bus binario de 7 bits (1 redundante = 0)
-      Datainbin = {lsb_bin,lsb_bin[0]};//]1'bx};       // [0]=extra , [6:1]=LSB
+      Datainbin = {1'bx,lsb_bin};//lsb_bin[0]};       // [6]=extra , [5:0]=LSB
       Datainbinb = ~Datainbin;
 
       // Termómetro 17 bits

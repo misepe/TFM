@@ -110,13 +110,13 @@ module rsync_latch(
 
     //Generate non lineartinies: jitter
     real jitter_databinout;
-    real jitter_databinoutb;
+    //real jitter_databinoutb;
     real jitter_datathermout;
-    real jitter_datathermoutb;
+    //real jitter_datathermoutb;
     real mismatch_databinout;
-    real mismatch_databinoutb;
+    //real mismatch_databinoutb;
     real mismatch_datathermout;
-    real mismatch_datathermoutb;
+    //real mismatch_datathermoutb;
     int t_prop=10; //tiempo de propagación de las señales en el bloque
 
     function real generate_jitter_temp(string type_jitter);
@@ -139,7 +139,7 @@ module rsync_latch(
         // Variables
         int seed ;  // Semilla para el generador de números aleatorios
         int mean = 0;         // Promedio de la distribución
-        int std_dev = 10;     // Desviación estándar, sigma
+        int std_dev = 1;     // Desviación estándar, sigma
         real random_value;      // Valor aleatorio generado
 
         // Genera valor aleatorio
@@ -155,12 +155,12 @@ module rsync_latch(
         // Binary part jitter generation
           mismatch_databinout = generate_mismatch_temp("databinout");
         // Binary negated part jitter generation
-          mismatch_databinoutb = generate_mismatch_temp("databinoutb");
+          //mismatch_databinoutb = generate_mismatch_temp("databinoutb");
 
         // Thermometric part jitter generation
           mismatch_datathermout = generate_mismatch_temp("datathermout");
         // Thermometric negated part jitter generation
-          mismatch_datathermoutb = generate_mismatch_temp("datathermoutb");
+          //mismatch_datathermoutb = generate_mismatch_temp("datathermoutb");
     end
 
     always_comb begin
@@ -373,7 +373,6 @@ module rsync_latch(
     end 
 
     always @(dataouttherm_aux or dataoutthermb_aux) begin
-        fork 
             begin
             jitter_datathermout = generate_jitter_temp("datathermout");
             #(t_prop+jitter_datathermout+mismatch_datathermout)
@@ -394,10 +393,6 @@ module rsync_latch(
             dataouttherm[14] = dataouttherm_aux[14];
             dataouttherm[15] = dataouttherm_aux[15];
             dataouttherm[16] = dataouttherm_aux[16];
-            end
-            begin
-            jitter_datathermoutb = generate_jitter_temp("datathermoutb");
-            #(t_prop+jitter_datathermoutb+mismatch_datathermoutb)
             dataoutthermb[0] = dataoutthermb_aux[0];
             dataoutthermb[1] = dataoutthermb_aux[1];
             dataoutthermb[2] = dataoutthermb_aux[2];
@@ -417,7 +412,6 @@ module rsync_latch(
             dataoutthermb[16] = dataoutthermb_aux[16];
             end
             
-        join
     end
     
 
@@ -493,7 +487,6 @@ module rsync_latch(
     end
     
      always @(dataoutbin_aux or dataoutbinb_aux) begin
-        fork 
             begin
             jitter_databinout = generate_jitter_temp("databinout");
             #(t_prop+jitter_databinout+mismatch_databinout)
@@ -504,10 +497,6 @@ module rsync_latch(
             dataoutbin[4] = dataoutbin_aux[4];
             dataoutbin[5] = dataoutbin_aux[5];
             dataoutbin[6] = dataoutbin_aux[6];
-            end
-            begin
-            jitter_databinoutb = generate_jitter_temp("databinoutb");
-            #(t_prop+jitter_databinoutb+mismatch_databinoutb)
             dataoutbinb[0] = dataoutbinb_aux[0];
             dataoutbinb[1] = dataoutbinb_aux[1];
             dataoutbinb[2] = dataoutbinb_aux[2];
@@ -517,7 +506,6 @@ module rsync_latch(
             dataoutbinb[6] = dataoutbinb_aux[6];
             end
             
-        join
     end
     
 

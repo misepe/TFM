@@ -119,102 +119,134 @@ module currentSterring import cds_rnm_pkg::*;(
 
     //to check that Iout_them_x currents are iref/2.5 to enable funcionality
     parameter real IOUT_THEM_REF = IREF/2.5; // Reference current from the bias generator
+    parameter real IOUT_THEM_REF_MAX = IOUT_THEM_REF+IOUT_THEM_REF*0.1; // Reference current from the bias generator
+    parameter real IOUT_THEM_REF_MIN = IOUT_THEM_REF-IOUT_THEM_REF*0.1; // Reference current from the bias generator
     always @(Iout_them_16 or Iout_them_15 or Iout_them_14 or Iout_them_13 or Iout_them_12 or Iout_them_11 or Iout_them_10 or Iout_them_9 or Iout_them_8 or Iout_them_7 or Iout_them_6 or Iout_them_5 or Iout_them_4 or Iout_them_3 or Iout_them_2 or Iout_them_1 or Iout_them_0) begin
-        if((Iout_them_16 == IOUT_THEM_REF) && (Iout_them_15 == IOUT_THEM_REF) && (Iout_them_14 == IOUT_THEM_REF) && (Iout_them_13 == IOUT_THEM_REF) && (Iout_them_12 == IOUT_THEM_REF) && (Iout_them_11 == IOUT_THEM_REF) && (Iout_them_10 == IOUT_THEM_REF) && (Iout_them_9 == IOUT_THEM_REF) && (Iout_them_8 == IOUT_THEM_REF) && (Iout_them_7 == IOUT_THEM_REF) && (Iout_them_6 == IOUT_THEM_REF) && (Iout_them_5 == IOUT_THEM_REF) && (Iout_them_4 == IOUT_THEM_REF) && (Iout_them_3 == IOUT_THEM_REF) && (Iout_them_2 == IOUT_THEM_REF) && (Iout_them_1 == IOUT_THEM_REF) && (Iout_them_0 == IOUT_THEM_REF)) begin
+        if((Iout_them_16 <= IOUT_THEM_REF_MAX && Iout_them_16 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_15 <= IOUT_THEM_REF_MAX && Iout_them_15 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_14 <= IOUT_THEM_REF_MAX && Iout_them_14 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_13 <= IOUT_THEM_REF_MAX && Iout_them_13 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_12 <= IOUT_THEM_REF_MAX && Iout_them_12 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_11 <= IOUT_THEM_REF_MAX && Iout_them_11 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_10 <= IOUT_THEM_REF_MAX && Iout_them_10 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_9 <= IOUT_THEM_REF_MAX && Iout_them_9 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_8 <= IOUT_THEM_REF_MAX && Iout_them_8 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_7 <= IOUT_THEM_REF_MAX && Iout_them_7 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_6 <= IOUT_THEM_REF_MAX && Iout_them_6 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_5 <= IOUT_THEM_REF_MAX && Iout_them_5 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_4 <= IOUT_THEM_REF_MAX && Iout_them_4 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_3 <= IOUT_THEM_REF_MAX && Iout_them_3 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_2 <= IOUT_THEM_REF_MAX && Iout_them_2 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_1 <= IOUT_THEM_REF_MAX && Iout_them_1 >= IOUT_THEM_REF_MIN) 
+        && (Iout_them_0 <= IOUT_THEM_REF_MAX && Iout_them_0 >= IOUT_THEM_REF_MIN)) begin
             Iout_them_check = 1;
         end else begin
             Iout_them_check = 0;
         end
-        iout_them_boundaries: assert ((Iout_them_16 == IOUT_THEM_REF) && 
-            (Iout_them_15 == IOUT_THEM_REF) && 
-            (Iout_them_14 == IOUT_THEM_REF) && 
-            (Iout_them_13 == IOUT_THEM_REF) && 
-            (Iout_them_12 == IOUT_THEM_REF) && 
-            (Iout_them_11 == IOUT_THEM_REF) && 
-            (Iout_them_10 == IOUT_THEM_REF) && 
-            (Iout_them_9 == IOUT_THEM_REF) && 
-            (Iout_them_8 == IOUT_THEM_REF) && 
-            (Iout_them_7 == IOUT_THEM_REF) && 
-            (Iout_them_6 == IOUT_THEM_REF) && 
-            (Iout_them_5 == IOUT_THEM_REF) && 
-            (Iout_them_4 == IOUT_THEM_REF) && 
-            (Iout_them_3 == IOUT_THEM_REF) && 
-            (Iout_them_2 == IOUT_THEM_REF) && 
-            (Iout_them_1 == IOUT_THEM_REF) && 
-            (Iout_them_0 == IOUT_THEM_REF)) else $warning("Input currents from the bias generator are not correct: Iout_them_16=%0.2f uA, Iout_them_15=%0.2f uA, Iout_them_14=%0.2f uA, Iout_them_13=%0.2f uA, Iout_them_12=%0.2f uA, Iout_them_11=%0.2f uA, Iout_them_10=%0.2f uA, Iout_them_9=%0.2f uA, Iout_them_8=%0.2f uA, Iout_them_7=%0.2f uA, Iout_them_6=%0.2f uA, Iout_them_5=%0.2f uA, Iout_them_4=%0.2f uA, Iout_them_3=%0.2f uA, Iout_them_2=%0.2f uA, Iout_them_1=%0.2f uA, Iout_them_0=%0.2f uA", 
+        iout_them_boundaries: assert ((Iout_them_16 >= IOUT_THEM_REF_MIN && Iout_them_16 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_15 >= IOUT_THEM_REF_MIN && Iout_them_15 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_14 >= IOUT_THEM_REF_MIN && Iout_them_14 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_13 >= IOUT_THEM_REF_MIN && Iout_them_13 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_12 >= IOUT_THEM_REF_MIN && Iout_them_12 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_11 >= IOUT_THEM_REF_MIN && Iout_them_11 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_10 >= IOUT_THEM_REF_MIN && Iout_them_10 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_9 >= IOUT_THEM_REF_MIN && Iout_them_9 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_8 >= IOUT_THEM_REF_MIN && Iout_them_8 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_7 >= IOUT_THEM_REF_MIN && Iout_them_7 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_6 >= IOUT_THEM_REF_MIN && Iout_them_6 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_5 >= IOUT_THEM_REF_MIN && Iout_them_5 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_4 >= IOUT_THEM_REF_MIN && Iout_them_4 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_3 >= IOUT_THEM_REF_MIN && Iout_them_3 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_2 >= IOUT_THEM_REF_MIN && Iout_them_2 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_1 >= IOUT_THEM_REF_MIN && Iout_them_1 <= IOUT_THEM_REF_MAX) && 
+            (Iout_them_0 >= IOUT_THEM_REF_MIN && Iout_them_0 <= IOUT_THEM_REF_MAX)) else $warning("Input currents from the bias generator are not correct: Iout_them_16=%0.2f uA, Iout_them_15=%0.2f uA, Iout_them_14=%0.2f uA, Iout_them_13=%0.2f uA, Iout_them_12=%0.2f uA, Iout_them_11=%0.2f uA, Iout_them_10=%0.2f uA, Iout_them_9=%0.2f uA, Iout_them_8=%0.2f uA, Iout_them_7=%0.2f uA, Iout_them_6=%0.2f uA, Iout_them_5=%0.2f uA, Iout_them_4=%0.2f uA, Iout_them_3=%0.2f uA, Iout_them_2=%0.2f uA, Iout_them_1=%0.2f uA, Iout_them_0=%0.2f uA", 
             Iout_them_16*1e6, Iout_them_15*1e6, Iout_them_14*1e6, Iout_them_13*1e6, Iout_them_12*1e6, Iout_them_11*1e6, Iout_them_10*1e6, 
             Iout_them_9*1e6, Iout_them_8*1e6, Iout_them_7*1e6, Iout_them_6*1e6, Iout_them_5*1e6, Iout_them_4*1e6, Iout_them_3*1e6, Iout_them_2*1e6, Iout_them_1*1e6, Iout_them_0*1e6);
     end
 
     //to check that Iout_binary_5 is iref/(2.5*2) to enable funcionality
     parameter real IOUT_BINARY_5_REF = IREF/(2.5*2); // Reference current MSB
+    parameter real IOUT_BINARY_5_REF_MAX = IOUT_BINARY_5_REF+IOUT_BINARY_5_REF*0.1; // Reference current MSB
+    parameter real IOUT_BINARY_5_REF_MIN = IOUT_BINARY_5_REF-IOUT_BINARY_5_REF*0.1; // Reference current MSB
     always @(Iout_binary_5) begin
-        if(Iout_binary_5 == IOUT_BINARY_5_REF) begin
+        if(Iout_binary_5 >= IOUT_BINARY_5_REF_MIN && Iout_binary_5 <= IOUT_BINARY_5_REF_MAX) begin
             Iout_binary_5_check = 1;
         end else begin
             Iout_binary_5_check = 0;
         end
-        iout_binary_5_boundaries: assert (Iout_binary_5 == IOUT_BINARY_5_REF) else $warning("Input current MSB is not correct: Iout_binary_5=%0.2f uA", Iout_binary_5*1e6);
+        iout_binary_5_boundaries: assert (Iout_binary_5 >= IOUT_BINARY_5_REF_MIN && Iout_binary_5 <= IOUT_BINARY_5_REF_MAX) else $warning("Input current MSB is not correct: Iout_binary_5=%0.2f uA", Iout_binary_5*1e6);
     end
     //to check that Iout_binary_4 is iref/(2.5*4) to enable funcionality
     parameter real IOUT_BINARY_4_REF = IREF/(2.5*4); // Reference current MSB-1
+    parameter real IOUT_BINARY_4_REF_MAX = IOUT_BINARY_4_REF+IOUT_BINARY_4_REF*0.1; 
+    parameter real IOUT_BINARY_4_REF_MIN = IOUT_BINARY_4_REF-IOUT_BINARY_4_REF*0.1; 
     always @(Iout_binary_4) begin
-        if(Iout_binary_4 == IOUT_BINARY_4_REF) begin
+        if(Iout_binary_4 >= IOUT_BINARY_4_REF_MIN && Iout_binary_4 <= IOUT_BINARY_4_REF_MAX) begin
             Iout_binary_4_check = 1;
         end else begin
             Iout_binary_4_check = 0;
         end
-        iout_binary_4_boundaries: assert (Iout_binary_4 == IOUT_BINARY_4_REF) else $warning("Input current MSB-1 is not correct: Iout_binary_4=%0.2f uA", Iout_binary_4*1e6);
+        iout_binary_4_boundaries: assert (Iout_binary_4 >= IOUT_BINARY_4_REF_MIN && Iout_binary_4 <= IOUT_BINARY_4_REF_MAX) else $warning("Input current MSB-1 is not correct: Iout_binary_4=%0.2f uA", Iout_binary_4*1e6);
     end
     //to check that Iout_binary_3 is iref/(2.5*8) to enable funcionality
     parameter real IOUT_BINARY_3_REF = IREF/(2.5*8); // Reference current MSB-2
+    parameter real IOUT_BINARY_3_REF_MAX = IOUT_BINARY_3_REF+IOUT_BINARY_3_REF*0.1; 
+    parameter real IOUT_BINARY_3_REF_MIN = IOUT_BINARY_3_REF-IOUT_BINARY_3_REF*0.1; 
     always @(Iout_binary_3) begin
-        if(Iout_binary_3 == IOUT_BINARY_3_REF) begin
+        if(Iout_binary_3 >= IOUT_BINARY_3_REF_MIN && Iout_binary_3 <= IOUT_BINARY_3_REF_MAX) begin
             Iout_binary_3_check = 1;
         end else begin
             Iout_binary_3_check = 0;
         end
-        iout_binary_3_boundaries: assert (Iout_binary_3 == IOUT_BINARY_3_REF) else $warning("Input current MSB-2 is not correct: Iout_binary_3=%0.2f uA", Iout_binary_3*1e6);
+        iout_binary_3_boundaries: assert (Iout_binary_3 >= IOUT_BINARY_3_REF_MIN && Iout_binary_3 <= IOUT_BINARY_3_REF_MAX) else $warning("Input current MSB-2 is not correct: Iout_binary_3=%0.2f uA", Iout_binary_3*1e6);
     end
     //to check that Iout_binary_2 is iref/(2.5*16) to enable funcionality
     parameter real IOUT_BINARY_2_REF = IREF/(2.5*16); // Reference current MSB-3
+    parameter real IOUT_BINARY_2_REF_MAX = IOUT_BINARY_2_REF+IOUT_BINARY_2_REF*0.1; 
+    parameter real IOUT_BINARY_2_REF_MIN = IOUT_BINARY_2_REF-IOUT_BINARY_2_REF*0.1; 
     always @(Iout_binary_2) begin
-        if(Iout_binary_2 == IOUT_BINARY_2_REF) begin
+        if(Iout_binary_2 >= IOUT_BINARY_2_REF_MIN && Iout_binary_2 <= IOUT_BINARY_2_REF_MAX) begin
             Iout_binary_2_check = 1;
         end else begin
             Iout_binary_2_check = 0;
         end
-        iout_binary_2_boundaries: assert (Iout_binary_2 == IOUT_BINARY_2_REF) else $warning("Input current MSB-3 is not correct: Iout_binary_2=%0.2f uA", Iout_binary_2*1e6);
+        iout_binary_2_boundaries: assert (Iout_binary_2 >= IOUT_BINARY_2_REF_MIN && Iout_binary_2 <= IOUT_BINARY_2_REF_MAX) else $warning("Input current MSB-3 is not correct: Iout_binary_2=%0.2f uA", Iout_binary_2*1e6);
     end
     //to check that Iout_binary_1 is iref/(2.5*32) to enable funcionality
     parameter real IOUT_BINARY_1_REF = IREF/(2.5*32); // Reference current MSB-4
+    parameter real IOUT_BINARY_1_REF_MAX = IOUT_BINARY_1_REF+IOUT_BINARY_1_REF*0.1; 
+    parameter real IOUT_BINARY_1_REF_MIN = IOUT_BINARY_1_REF-IOUT_BINARY_1_REF*0.1; 
     always @(Iout_binary_1) begin
-        if(Iout_binary_1 == IOUT_BINARY_1_REF) begin
+        if(Iout_binary_1 >= IOUT_BINARY_1_REF_MIN && Iout_binary_1 <= IOUT_BINARY_1_REF_MAX) begin
             Iout_binary_1_check = 1;
         end else begin
             Iout_binary_1_check = 0;
         end
-        iout_binary_1_boundaries: assert (Iout_binary_1 == IOUT_BINARY_1_REF) else $warning("Input current MSB-4 is not correct: Iout_binary_1=%0.2f uA", Iout_binary_1*1e6);
+        iout_binary_1_boundaries: assert (Iout_binary_1 >= IOUT_BINARY_1_REF_MIN && Iout_binary_1 <= IOUT_BINARY_1_REF_MAX) else $warning("Input current MSB-4 is not correct: Iout_binary_1=%0.2f uA", Iout_binary_1*1e6);
     end
     //to check that Iout_binary_0 is iref/(2.5*64) to enable funcionality 
     parameter real IOUT_BINARY_0_REF = IREF/(2.5*64); // Reference current LSB 
+    parameter real IOUT_BINARY_0_REF_MAX = IOUT_BINARY_0_REF+IOUT_BINARY_0_REF*0.1; 
+    parameter real IOUT_BINARY_0_REF_MIN = IOUT_BINARY_0_REF-IOUT_BINARY_0_REF*0.1; 
     always @(Iout_binary_0) begin
-        if(Iout_binary_0 == IOUT_BINARY_0_REF) begin
+        if(Iout_binary_0 >= IOUT_BINARY_0_REF_MIN && Iout_binary_0 <= IOUT_BINARY_0_REF_MAX) begin
             Iout_binary_0_check = 1;
         end else begin
             Iout_binary_0_check = 0;
         end
-        iout_binary_0_boundaries: assert (Iout_binary_0 == IOUT_BINARY_0_REF) else $warning("Input current LSB is not correct: Iout_binary_0=%0.2f uA", Iout_binary_0*1e6);
+        iout_binary_0_boundaries: assert (Iout_binary_0 >= IOUT_BINARY_0_REF_MIN && Iout_binary_0 <= IOUT_BINARY_0_REF_MAX) else $warning("Input current LSB is not correct: Iout_binary_0=%0.2f uA", Iout_binary_0*1e6);
     end
     //to check that Iout_binary_0_red is iref/(2.5*64) to enable funcionality
     parameter real IOUT_BINARY_0_RED_REF = IREF/(2.5*64); // Reference current redundancy
+    parameter real IOUT_BINARY_0_RED_REF_MAX = IOUT_BINARY_0_RED_REF+IOUT_BINARY_0_RED_REF*0.1; 
+    parameter real IOUT_BINARY_0_RED_REF_MIN = IOUT_BINARY_0_RED_REF-IOUT_BINARY_0_RED_REF*0.1; 
     always @(Iout_binary_0_red) begin
-        if(Iout_binary_0_red == IOUT_BINARY_0_RED_REF) begin
+        if(Iout_binary_0_red >= IOUT_BINARY_0_RED_REF_MIN && Iout_binary_0_red <= IOUT_BINARY_0_RED_REF_MAX) begin
             Iout_binary_0_red_check = 1;
         end else begin
             Iout_binary_0_red_check = 0;
         end
-        iout_binary_0_red_boundaries: assert (Iout_binary_0_red == IOUT_BINARY_0_RED_REF) else $warning("Input current redundancy is not correct: Iout_binary_0_red=%0.2f uA", Iout_binary_0_red*1e6);
+        iout_binary_0_red_boundaries: assert (Iout_binary_0_red >= IOUT_BINARY_0_RED_REF_MIN && Iout_binary_0_red <= IOUT_BINARY_0_RED_REF_MAX) else $warning("Input current redundancy is not correct: Iout_binary_0_red=%0.2f uA", Iout_binary_0_red*1e6);
     end
 
     //Gerenate non linearities: niose
@@ -243,7 +275,7 @@ module currentSterring import cds_rnm_pkg::*;(
             enable_funcionality = 1; // Enable funcionality if all input checks are correct
         end else begin
             enable_funcionality = 0; // Disable funcionality if at least one input check is incorrect
-            $warning("Input signals are not correct: Iout_them_check=%0d", Iout_them_check);
+            $warning("Input signals are not correct: Iout_them_check=%0d Iout_binary_5_check=%0d Iout_binary_4_check=%0d Iout_binary_3_check=%0d Iout_binary_2_check=%0d Iout_binary_1_check=%0d Iout_binary_0_check=%0d Iout_binary_0_red_check=%0d", Iout_them_check,Iout_binary_5_check, Iout_binary_4_check, Iout_binary_3_check, Iout_binary_2_check, Iout_binary_1_check, Iout_binary_0_check, Iout_binary_0_red_check);
         end
 
         if (iref_check && vddana_1p8_check && vddana_0p8_check && vssana_check && vcas_check) begin

@@ -32,16 +32,18 @@ def generar_rampa(amplitud, duracion, fs=8.192e6): #Fs = 8.192 MHz para tener un
 
     print("Datos de la señal de rampa generados y guardados en 'input.txt'.")
 
-    # Representar la señal de rampa en una gráfica
-    plt.figure(figsize=(10, 4))
-    plt.plot(t, rampa, label="Señal de Rampa")
-    plt.title("Señal de Rampa Lineal")
-    plt.xlabel("Tiempo (s)")
-    plt.ylabel("Amplitud")
-    plt.grid(True)
-    plt.legend()
-    plt.tight_layout()
-    plt.show()
+    respuesta = input("¿Desea ver la gráfica de la señal generada? (s/n): ")
+    if respuesta.lower() == 's':
+        # Representar la señal de rampa en una gráfica
+        plt.figure(figsize=(10, 4))
+        plt.plot(t, rampa, label="Señal de Rampa")
+        plt.title("Señal de Rampa Lineal")
+        plt.xlabel("Tiempo (s)")
+        plt.ylabel("Amplitud")
+        plt.grid(True)
+        plt.legend()
+        plt.tight_layout()
+        plt.show()
 
 # Ejemplo de uso: Generar una señal de rampa con amplitud 1.0 y duración de 0.001 segundos
-generar_rampa(amplitud=1, duracion=0.0001)
+generar_rampa(amplitud=0.125, duracion=0.0001)

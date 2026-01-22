@@ -1,9 +1,10 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 22, 2026 at 12:25:08 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 22, 2026 at 21:02:42 CET
 xrun
-	-f xrun_tb_dac.f
+	-f xrun_tb_dac_all_non_linearities.f
 		-clean
 		-access +rw
+		+define+DEBUG_DISPLAY
 		-incdir ../clock_distribution
 		-incdir ../current_source_units
 		-incdir ../current_sterring
@@ -12,30 +13,81 @@ xrun
 		-incdir ../local_bias
 		-incdir ../resistor_load
 		-incdir ../rsync_latch
-		../clock_distribution/models/clock_distribution.sv
-		../current_source_units/models/currentSourceUnits.sv
-		../current_sterring/models/current_sterring.sv
-		../driver_cell/models/driver_cell.sv
+		../clock_distribution/models/clock_distribution_all_non_linearities.sv
+		../current_source_units/models/currentSourceUnits_all_non_linearities.sv
+		../current_sterring/models/current_sterring_noise.sv
+		../driver_cell/models/driver_cell_all_non_linearities.sv
 		../level_shifter/models/level_shifter.sv
 		../local_bias/models/local_bias.sv
 		../resistor_load/models/resistor_load.sv
-		../rsync_latch/models/rsync_latch.sv
+		../rsync_latch/models/rsync_latch_all_non_linearities.sv
 		./top_level_schematic.sv
 		./tb_dac_top.sv
 		+SVSEED=0
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
-file: ../clock_distribution/models/clock_distribution.sv
+file: ../clock_distribution/models/clock_distribution_all_non_linearities.sv
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (../clock_distribution/models/clock_distribution_all_non_linearities.sv,120|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 1;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (../clock_distribution/models/clock_distribution_all_non_linearities.sv,121|20): Local static variable with initializer requires 'static' keyword.
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (../clock_distribution/models/clock_distribution_all_non_linearities.sv,135|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 1;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (../clock_distribution/models/clock_distribution_all_non_linearities.sv,136|20): Local static variable with initializer requires 'static' keyword.
 	module worklib.clock_distribution:sv
-		errors: 0, warnings: 0
-file: ../current_source_units/models/currentSourceUnits.sv
+		errors: 0, warnings: 4
+file: ../current_source_units/models/currentSourceUnits_all_non_linearities.sv
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (../current_source_units/models/currentSourceUnits_all_non_linearities.sv,95|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 1000;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (../current_source_units/models/currentSourceUnits_all_non_linearities.sv,96|20): Local static variable with initializer requires 'static' keyword.
+        real scalar =1e-12;  //Para ajustar el peso del ruido (1000*1e-12 = 1nA, el ruido tiene magnitud de nA)
+                    |
+xmvlog: *W,VARIST (../current_source_units/models/currentSourceUnits_all_non_linearities.sv,99|20): Local static variable with initializer requires 'static' keyword.
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (../current_source_units/models/currentSourceUnits_all_non_linearities.sv,126|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 20;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (../current_source_units/models/currentSourceUnits_all_non_linearities.sv,127|20): Local static variable with initializer requires 'static' keyword.
+        real scale = 1000; // para escalar la desviación estándar y que sea 2%
+                   |
+xmvlog: *W,VARIST (../current_source_units/models/currentSourceUnits_all_non_linearities.sv,130|19): Local static variable with initializer requires 'static' keyword.
 	module worklib.currentSourceUnits:sv
-		errors: 0, warnings: 0
-file: ../current_sterring/models/current_sterring.sv
+		errors: 0, warnings: 6
+file: ../current_sterring/models/current_sterring_noise.sv
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (../current_sterring/models/current_sterring_noise.sv,256|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 1000;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (../current_sterring/models/current_sterring_noise.sv,257|20): Local static variable with initializer requires 'static' keyword.
+        real scalar =1e-12;  //Para ajustar el peso del ruido (1000*1e-12 = 1nA, el ruido tiene magnitud de nA)
+                    |
+xmvlog: *W,VARIST (../current_sterring/models/current_sterring_noise.sv,260|20): Local static variable with initializer requires 'static' keyword.
 	module worklib.currentSterring:sv
-		errors: 0, warnings: 0
-file: ../driver_cell/models/driver_cell.sv
+		errors: 0, warnings: 3
+file: ../driver_cell/models/driver_cell_all_non_linearities.sv
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (../driver_cell/models/driver_cell_all_non_linearities.sv,72|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 1;     // Desviación estándar, sigma =1ps
+                    |
+xmvlog: *W,VARIST (../driver_cell/models/driver_cell_all_non_linearities.sv,73|20): Local static variable with initializer requires 'static' keyword.
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (../driver_cell/models/driver_cell_all_non_linearities.sv,88|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 1;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (../driver_cell/models/driver_cell_all_non_linearities.sv,89|20): Local static variable with initializer requires 'static' keyword.
 	module worklib.driver_cell:sv
-		errors: 0, warnings: 0
+		errors: 0, warnings: 4
 file: ../level_shifter/models/level_shifter.sv
 	module worklib.level_shifter:sv
 		errors: 0, warnings: 0
@@ -45,9 +97,21 @@ file: ../local_bias/models/local_bias.sv
 file: ../resistor_load/models/resistor_load.sv
 	module worklib.resistor_load:sv
 		errors: 0, warnings: 0
-file: ../rsync_latch/models/rsync_latch.sv
+file: ../rsync_latch/models/rsync_latch_all_non_linearities.sv
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (../rsync_latch/models/rsync_latch_all_non_linearities.sv,125|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 1;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (../rsync_latch/models/rsync_latch_all_non_linearities.sv,126|20): Local static variable with initializer requires 'static' keyword.
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (../rsync_latch/models/rsync_latch_all_non_linearities.sv,141|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 1;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (../rsync_latch/models/rsync_latch_all_non_linearities.sv,142|20): Local static variable with initializer requires 'static' keyword.
 	module worklib.rsync_latch:sv
-		errors: 0, warnings: 0
+		errors: 0, warnings: 4
 file: ./top_level_schematic.sv
 	module worklib.top_level_schematic:sv
 		errors: 0, warnings: 0
@@ -69,31 +133,31 @@ xmvlog: *W,SPDUSD: Include directory ../rsync_latch given but not used.
 xmelab: *N,MSFLON: Xcelium will initiate mixed signal elaboration, Reason: RNM module.
 	Top level design units:
 		cds_rnm_pkg
-		$unit_0x349dd98b
+		$unit_0x67f53119
 		level_shifter
 		tb_dac_top
 	Building instance overlay tables: .................... Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.clock_distribution:sv <0x1f3d06e6>
-			streams:  10, words: 29540
-		worklib.resistor_load:sv <0x01872030>
+		worklib.clock_distribution:sv <0x110ebd51>
+			streams:  85, words: 124175
+		worklib.resistor_load:sv <0x6b53b94f>
 			streams:   4, words:  2809
-		worklib.rsync_latch:sv <0x1db3df15>
-			streams: 127, words: 75008
-		worklib.driver_cell:sv <0x6087193c>
-			streams:   7, words:  9023
-		worklib.local_bias:sv <0x35039f78>
+		worklib.rsync_latch:sv <0x4c83aa1e>
+			streams:  87, words: 53591
+		worklib.driver_cell:sv <0x4b873c91>
+			streams:  15, words: 18499
+		worklib.local_bias:sv <0x51256669>
 			streams:   7, words: 14879
-		worklib.currentSterring:sv <0x76b743f4>
-			streams:  27, words: 91104
-		worklib.currentSourceUnits:sv <0x75522b37>
-			streams:   9, words: 28100
-		worklib.top_level_schematic:sv <0x1fd746d5>
+		worklib.currentSterring:sv <0x2f025cfc>
+			streams:  29, words: 86863
+		worklib.currentSourceUnits:sv <0x6e397f6e>
+			streams:  14, words: 41509
+		worklib.top_level_schematic:sv <0x0e71fc47>
 			streams:  93, words: 34983
-		worklib.tb_dac_top:sv <0x517adfae>
+		worklib.tb_dac_top:sv <0x67cde5f1>
 			streams:  24, words: 20450
-		worklib.level_shifter:sv <0x773f9903>
+		worklib.level_shifter:sv <0x3b37b98a>
 			streams:   1, words:   331
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
@@ -101,11 +165,11 @@ xmelab: *N,MSFLON: Xcelium will initiate mixed signal elaboration, Reason: RNM m
 		                 Instances  Unique
 		Modules:                10      10
 		Verilog packages:        1       1
-		Registers:             339     339
+		Registers:             440     440
 		Scalar wires:          152       -
 		Vectored wires:         22       -
-		Always blocks:          64      64
-		Initial blocks:         36      36
+		Always blocks:          68      68
+		Initial blocks:         52      52
 		Parallel blocks:         1       1
 		Cont. assignments:       2       2
 		Pseudo assignments:    109       -
@@ -119,8 +183,30 @@ SVSEED set from command line: 0
 [DMSINFO] Simulating with Xcelium Mixed-Signal App...
 xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
 xcelium> run
+xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,162): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_them_boundaries has failed
+Input currents from the bias generator are not correct: Iout_them_16=0.00 uA, Iout_them_15=-0.01 uA, Iout_them_14=-0.00 uA, Iout_them_13=-0.00 uA, Iout_them_12=0.00 uA, Iout_them_11=0.01 uA, Iout_them_10=-0.02 uA, Iout_them_9=-0.00 uA, Iout_them_8=0.01 uA, Iout_them_7=0.01 uA, Iout_them_6=0.01 uA, Iout_them_5=0.01 uA, Iout_them_4=-0.01 uA, Iout_them_3=-0.01 uA, Iout_them_2=-0.01 uA, Iout_them_1=-0.01 uA, Iout_them_0=0.01 uA
+xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,177): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_binary_5_boundaries has failed
+Input current MSB is not correct: Iout_binary_5=0.00 uA
+xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,189): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_binary_4_boundaries has failed
+Input current MSB-1 is not correct: Iout_binary_4=0.00 uA
+xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,201): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_binary_3_boundaries has failed
+Input current MSB-2 is not correct: Iout_binary_3=-0.01 uA
+xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,213): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_binary_2_boundaries has failed
+Input current MSB-3 is not correct: Iout_binary_2=0.00 uA
+xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,225): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_binary_1_boundaries has failed
+Input current MSB-4 is not correct: Iout_binary_1=-0.00 uA
+xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,237): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_binary_0_boundaries has failed
+Input current LSB is not correct: Iout_binary_0=0.00 uA
+xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,249): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_binary_0_red_boundaries has failed
+Input current redundancy is not correct: Iout_binary_0_red=0.00 uA
+xmsim: *W,WARSEV (../current_sterring/models/current_sterring_noise.sv,282): (time 0 FS).
+tb_dac_top.DUT.currentSterring_inst
+Input signals are not correct: Iout_them_check=0 Iout_binary_5_check=0 Iout_binary_4_check=0 Iout_binary_3_check=0 Iout_binary_2_check=0 Iout_binary_1_check=0 Iout_binary_0_check=0 Iout_binary_0_red_check=0
+xmsim: *W,WARSEV (../current_sterring/models/current_sterring_noise.sv,282): (time 0 FS).
+tb_dac_top.DUT.currentSterring_inst
+Input signals are not correct: Iout_them_check=1 Iout_binary_5_check=0 Iout_binary_4_check=0 Iout_binary_3_check=0 Iout_binary_2_check=0 Iout_binary_1_check=0 Iout_binary_0_check=0 Iout_binary_0_red_check=0
 Señal generada
 Simulation complete via $finish(1) at time 67108864 PS + 0
 ./tb_dac_top.sv:123         $finish;
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 22, 2026 at 12:25:15 CET  (total: 00:00:07)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 22, 2026 at 21:03:00 CET  (total: 00:00:18)

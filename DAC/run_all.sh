@@ -30,7 +30,7 @@ echo "Seleccione el modelo de DAC a simular:"
 echo "1: Modelo ideal"
 echo "2: Modelos con mismatches"
 echo "3: Modelos con jitter"
-echo "4: Modelos con mismatches y jitter"
+echo "4: Modelos con todas las no linealidades"
 read -p "Ingrese su elección (1,2,3 o 4): " choice
 
 if [ "$choice" -eq 1 ]; then

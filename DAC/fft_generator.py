@@ -68,7 +68,6 @@ def dnl_por_pasos_barrido(señal, vref, tipo_senal, n_bits=10):
     DNL estático asumiendo que:
       - la señal está muestreada como un barrido de códigos consecutivos
       - cada muestra corresponde a un código distinto (1 muestra por escalón)
-      - no hay asentamiento que descartar (settle_frac no aplica)
 
     IMPORTANTE: esto solo es válido si el DAC/modelo se asienta en 1 muestra.
     """

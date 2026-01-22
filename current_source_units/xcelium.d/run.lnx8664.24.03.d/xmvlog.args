@@ -5,7 +5,7 @@
 -XLMODE
 ./xcelium.d/run.lnx8664.24.03.d
 -RUNMODE
-./models/currentSourceUnits_noise.sv
+./models/currentSourceUnits_all_non_linearities.sv
 ./tb/currentSourceUnits_tb.sv
 -CDSLIB
 ./xcelium.d/run.lnx8664.24.03.d/cdsrun.lib

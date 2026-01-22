@@ -103,7 +103,7 @@ module currentSourceUnits (
         // Genera valor aleatorio
         seed = $urandom();
         random_value = $dist_normal(seed, mean, std_dev) * scalar;
-        $display("noise = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
+        $display("noise = %.15fe-9 seed = %0d media =%.15f sigma = %.15f", random_value*1e9, seed, mean, std_dev*scalar);
         return random_value;
     endfunction
 
@@ -118,29 +118,29 @@ module currentSourceUnits (
 
         if(pdb == 1 && input_check == 1) begin
 
-            Iout_them_16 = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_15 = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_14 = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_13 = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_12 = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_11 = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_10 = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_9  = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_8  = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_7  = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_6  = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_5  = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_4  = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_3  = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_2  = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_1  = (iref_500ua / 2.5) + (generate_noise());
-            Iout_them_0  = (iref_500ua / 2.5) + (generate_noise());
+            Iout_them_16 = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_15 = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_14 = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_13 = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_12 = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_11 = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_10 = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_9  = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_8  = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_7  = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_6  = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_5  = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_4  = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_3  = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_2  = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_1  = (iref_500ua / 2.5) + (generate_noise()*8);
+            Iout_them_0  = (iref_500ua / 2.5) + (generate_noise()*8);
 
-            Iout_binary_5 = (iref_500ua / (2.5 * 2)) + (generate_noise());
-            Iout_binary_4 = (iref_500ua / (2.5 * 4)) + (generate_noise());
-            Iout_binary_3 = (iref_500ua / (2.5 * 8)) + (generate_noise());
-            Iout_binary_2 = (iref_500ua / (2.5 * 16)) + (generate_noise());
-            Iout_binary_1 = (iref_500ua / (2.5 * 32)) + (generate_noise());
+            Iout_binary_5 = (iref_500ua / (2.5 * 2)) + (generate_noise()*4*$sqrt(2));
+            Iout_binary_4 = (iref_500ua / (2.5 * 4)) + (generate_noise()*4);
+            Iout_binary_3 = (iref_500ua / (2.5 * 8)) + (generate_noise()*2*$sqrt(2));
+            Iout_binary_2 = (iref_500ua / (2.5 * 16)) + (generate_noise()*2);
+            Iout_binary_1 = (iref_500ua / (2.5 * 32)) + (generate_noise()*$sqrt(2));
             Iout_binary_0 = (iref_500ua / (2.5 * 64)) + (generate_noise());
             Iout_binary_0_red = (iref_500ua / (2.5 * 64)) + (generate_noise()); // Redundant output
 

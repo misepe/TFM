@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 22, 2026 at 20:30:52 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 22, 2026 at 20:48:45 CET
 xrun
 	-f xrun.f
 		-clean
@@ -33,7 +33,7 @@ file: ./tb/current_sterring_tb.sv
 	Building instance overlay tables: .................... Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.currentSterring:sv <0x6f853329>
+		worklib.currentSterring:sv <0x7b41b504>
 			streams:  29, words: 86439
 		worklib.currentSterring_tb:sv <0x53fa4dcb>
 			streams:  42, words: 44167
@@ -9160,4 +9160,4 @@ Simulation complete via $finish(1) at time 2120 PS + 0
 ./tb/current_sterring_tb.sv:202         $finish;
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 22, 2026 at 20:39:03 CET  (total: 00:08:11)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 22, 2026 at 20:53:25 CET  (total: 00:04:40)

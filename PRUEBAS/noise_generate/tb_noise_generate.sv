@@ -3,7 +3,7 @@ module tb;
   // --- Tu función ---
    function real generate_noise();
         // Variables
-        int seed ;  // Semilla para el generador de números aleatorios
+        int seed;  // Semilla para el generador de números aleatorios
         int mean = 0;         // Promedio de la distribución
         int std_dev = 1000;     // Desviación estándar, sigma
         real random_value;      // Valor aleatorio generado

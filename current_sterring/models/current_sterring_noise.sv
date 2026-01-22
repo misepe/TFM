@@ -259,12 +259,16 @@ module currentSterring import cds_rnm_pkg::*;(
     
         real scalar =1e-12;  //Para ajustar el peso del ruido (1000*1e-12 = 1nA, el ruido tiene magnitud de nA)
 
+        `ifndef DEBUG_DISPLAY
         $display("Probando $dist_normal con mean = %0.2f y std_dev = %0.2f", mean, std_dev);
+        `endif
 
         // Genera valor aleatorio
         seed = $urandom();
         random_value = $dist_normal(seed, mean, std_dev) * scalar;
-        $display("noise = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
+        `ifndef DEBUG_DISPLAY
+        $display("noise = %.15fe-9 seed = %0d media =%.15f sigma = %.15f", random_value*1e9, seed, mean, std_dev*scalar);
+        `endif
         return random_value;
     endfunction
 
@@ -293,130 +297,130 @@ module currentSterring import cds_rnm_pkg::*;(
     
             if(datain[0] == 1'b0 && datainb[0] ==1'b1 && dataical != 5'b00001) begin
                 //Ioutb += Iout_binary_0_red + Iout_binary_0;
-                Ioutb +=  Iout_binary_0;
+                Ioutb +=  (Iout_binary_0 + generate_noise());
             end else if(datain[0] == 1'b1 && datainb[0] ==1'b0 && dataical != 5'b00001) begin
                 //Iout += Iout_binary_0_red + Iout_binary_0; 
-                Iout += Iout_binary_0;
+                Iout += (Iout_binary_0 + generate_noise());
             end 
 
             if(datain[1] == 1'b0 && datainb[1] ==1'b1 && dataical != 5'b00010) begin
-                Ioutb += Iout_binary_1;
+                Ioutb += (Iout_binary_1 + generate_noise()*$sqrt(2));
             end else if(datain[1] == 1'b1 && datainb[1] ==1'b0 && dataical != 5'b00010) begin
-                Iout += Iout_binary_1;
+                Iout += (Iout_binary_1 + generate_noise()*$sqrt(2));
             end 
 
             if(datain[2] == 1'b0 && datainb[2] ==1'b1 && dataical != 5'b00011) begin
-                Ioutb += Iout_binary_2;
+                Ioutb += (Iout_binary_2 + generate_noise()*2);
             end else if(datain[2] == 1'b1 && datainb[2] ==1'b0 && dataical != 5'b00011) begin
-                Iout += Iout_binary_2;
+                Iout += (Iout_binary_2 + generate_noise()*2);
             end 
 
             if(datain[3] == 1'b0 && datainb[3] ==1'b1 && dataical != 5'b00100) begin
-                Ioutb += Iout_binary_3;
+                Ioutb += (Iout_binary_3 + generate_noise()*2*$sqrt(2));
             end else if(datain[3] == 1'b1 && datainb[3] ==1'b0 && dataical != 5'b00100) begin
-                Iout += Iout_binary_3;
+                Iout += (Iout_binary_3 + generate_noise()*2*$sqrt(2));
             end 
 
             if(datain[4] == 1'b0 && datainb[4] ==1'b1 && dataical != 5'b00101) begin
-                Ioutb += Iout_binary_4;
+                Ioutb += (Iout_binary_4 + generate_noise()*4);
             end else if(datain[4] == 1'b1 && datainb[4] ==1'b0 && dataical != 5'b00101) begin
-                Iout += Iout_binary_4;
+                Iout += (Iout_binary_4 + generate_noise()*4);
             end 
 
             if(datain[5] == 1'b0 && datainb[5] ==1'b1 && dataical != 5'b00110) begin
-                Ioutb += Iout_binary_5;
+                Ioutb += (Iout_binary_5 + generate_noise()*4*$sqrt(2));
             end else if(datain[5] == 1'b1 && datainb[5] ==1'b0 && dataical != 5'b00110) begin
-                Iout += Iout_binary_5;
+                Iout += (Iout_binary_5 + generate_noise()*4*$sqrt(2));
             end 
 
             if(datatherm[0] == 1'b0 && datathermb[0] == 1'b1 && dataical != 5'b00111)begin
-                Ioutb += Iout_them_0;
+                Ioutb += (Iout_them_0 + generate_noise()*8);
             end if(datatherm[0] == 1'b1 && datathermb[0] == 1'b0 && dataical != 5'b00111) begin
-                Iout += Iout_them_0;
+                Iout += (Iout_them_0 + generate_noise()*8);
             end 
 
             if(datatherm[1] == 1'b0 && datathermb[1] == 1'b1 && dataical != 5'b01000)begin
-                Ioutb += Iout_them_1;
+                Ioutb += (Iout_them_1 + generate_noise()*8);
             end if(datatherm[1] == 1'b1 && datathermb[1] == 1'b0 && dataical != 5'b01000) begin
-                Iout += Iout_them_1;
+                Iout += (Iout_them_1 + generate_noise()*8);
             end 
 
             if(datatherm[2] == 1'b0 && datathermb[2] == 1'b1 && dataical != 5'b01001)begin
-                Ioutb += Iout_them_2;
+                Ioutb += (Iout_them_2 + generate_noise()*8);
             end if(datatherm[2] == 1'b1 && datathermb[2] == 1'b0 && dataical != 5'b01001) begin
-                Iout += Iout_them_2;
+                Iout += (Iout_them_2 + generate_noise()*8);
             end 
 
             if(datatherm[3] == 1'b0 && datathermb[3] == 1'b1 && dataical != 5'b01010)begin
-                Ioutb += Iout_them_3;
+                Ioutb += (Iout_them_3 + generate_noise()*8);
             end if(datatherm[3] == 1'b1 && datathermb[3] == 1'b0 && dataical != 5'b01010) begin
-                Iout += Iout_them_3;
+                Iout += (Iout_them_3 + generate_noise()*8);
             end 
 
             if(datatherm[4] == 1'b0 && datathermb[4] == 1'b1 && dataical != 5'b01011)begin
-                Ioutb += Iout_them_4;
+                Ioutb += (Iout_them_4 + generate_noise()*8);
             end if(datatherm[4] == 1'b1 && datathermb[4] == 1'b0 && dataical != 5'b01011) begin
-                Iout += Iout_them_4;
+                Iout += (Iout_them_4 + generate_noise()*8);
             end 
 
             if(datatherm[5] == 1'b0 && datathermb[5] == 1'b1 && dataical != 5'b01100)begin
-                Ioutb += Iout_them_5;
+                Ioutb += (Iout_them_5 + generate_noise()*8);
             end if(datatherm[5] == 1'b1 && datathermb[5] == 1'b0 && dataical != 5'b01100) begin
-                Iout += Iout_them_5;
+                Iout += (Iout_them_5 + generate_noise()*8);
             end 
 
             if(datatherm[6] == 1'b0 && datathermb[6] == 1'b1 && dataical != 5'b01101)begin
-                Ioutb += Iout_them_6;
+                Ioutb += (Iout_them_6 + generate_noise()*8);
             end if(datatherm[6] == 1'b1 && datathermb[6] == 1'b0 && dataical != 5'b01101) begin
-                Iout += Iout_them_6;
+                Iout += (Iout_them_6 + generate_noise()*8);
             end 
 
             if(datatherm[7] == 1'b0 && datathermb[7] == 1'b1 && dataical != 5'b01110)begin
-                Ioutb += Iout_them_7;
+                Ioutb += (Iout_them_7 + generate_noise()*8);
             end if(datatherm[7] == 1'b1 && datathermb[7] == 1'b0 && dataical != 5'b01110) begin
-                Iout += Iout_them_7;
+                Iout += (Iout_them_7 + generate_noise()*8);
             end 
 
             if(datatherm[8] == 1'b0 && datathermb[8] == 1'b1 && dataical != 5'b01111)begin
-                Ioutb += Iout_them_8;
+                Ioutb += (Iout_them_8 + generate_noise()*8);
             end if(datatherm[8] == 1'b1 && datathermb[8] == 1'b0 && dataical != 5'b01111) begin
-                Iout += Iout_them_8;
+                Iout += (Iout_them_8 + generate_noise()*8);
             end 
 
             if(datatherm[9] == 1'b0 && datathermb[9] == 1'b1 && dataical != 5'b10000)begin
-                Ioutb += Iout_them_9;
+                Ioutb += (Iout_them_9 + generate_noise()*8);
             end if(datatherm[9] == 1'b1 && datathermb[9] == 1'b0 && dataical != 5'b10000) begin
-                Iout += Iout_them_9;
+                Iout += (Iout_them_9 + generate_noise()*8);
             end 
 
             if(datatherm[10] == 1'b0 && datathermb[10] == 1'b1 && dataical != 5'b10001)begin
-                Ioutb += Iout_them_10;
+                Ioutb += (Iout_them_10 + generate_noise()*8);
             end if(datatherm[10] == 1'b1 && datathermb[10] == 1'b0 && dataical != 5'b10001) begin
-                Iout += Iout_them_10;
+                Iout += (Iout_them_10 + generate_noise()*8);
             end 
 
             if(datatherm[11] == 1'b0 && datathermb[11] == 1'b1 && dataical != 5'b10010)begin
-                Ioutb += Iout_them_11;
+                Ioutb += (Iout_them_11 + generate_noise()*8);
             end if(datatherm[11] == 1'b1 && datathermb[11] == 1'b0 && dataical != 5'b10010) begin
-                Iout += Iout_them_11;
+                Iout += (Iout_them_11 + generate_noise()*8);
             end 
 
             if(datatherm[12] == 1'b0 && datathermb[12] == 1'b1 && dataical != 5'b10011)begin
-                Ioutb += Iout_them_12;
+                Ioutb += (Iout_them_12 + generate_noise()*8);
             end if(datatherm[12] == 1'b1 && datathermb[12] == 1'b0 && dataical != 5'b10011) begin
-                Iout += Iout_them_12;
+                Iout += (Iout_them_12 + generate_noise()*8);
             end 
 
             if(datatherm[13] == 1'b0 && datathermb[13] == 1'b1 && dataical != 5'b10100)begin
-                Ioutb += Iout_them_13;
+                Ioutb += (Iout_them_13 + generate_noise()*8);
             end if(datatherm[13] == 1'b1 && datathermb[13] == 1'b0 && dataical != 5'b10100) begin
-                Iout += Iout_them_13;
+                Iout += (Iout_them_13 + generate_noise()*8);
             end 
 
             if(datatherm[14] == 1'b0 && datathermb[14] == 1'b1 && dataical != 5'b10101)begin
-                Ioutb += Iout_them_14;
+                Ioutb += (Iout_them_14 + generate_noise()*8);
             end if(datatherm[14] == 1'b1 && datathermb[14] == 1'b0 && dataical != 5'b10101) begin
-                Iout += Iout_them_14;
+                Iout += (Iout_them_14 + generate_noise()*8);
             end 
 
             /*if(datatherm[15] == 1'b0 && datathermb[15] == 1'b1 && dataical != 5'b10110)begin
@@ -436,29 +440,29 @@ module currentSterring import cds_rnm_pkg::*;(
             //to generate Ical
             case(dataical)
                 5'b00000: begin Ical = `wrealZState; end //datacal = 0 
-                5'b00001: begin Ical = Iout_binary_0_red; end  //datacal = 1 
-                5'b00010: begin Ical = Iout_binary_1; end  //datacal = 2 
-                5'b00011: begin Ical = Iout_binary_2; end  //datacal = 3 
-                5'b00100: begin Ical = Iout_binary_3; end  //datacal = 4 
-                5'b00101: begin Ical = Iout_binary_4; end  //datacal = 5 
-                5'b00110: begin Ical = Iout_binary_5; end  //datacal = 6 
-                5'b00111: begin Ical = Iout_them_0; end    //datacal = 7 
-                5'b01000: begin Ical = Iout_them_1; end    //datacal = 8 
-                5'b01001: begin Ical = Iout_them_2; end    //datacal = 9 
-                5'b01010: begin Ical = Iout_them_3; end   //datacal = 10 
-                5'b01011: begin Ical = Iout_them_4; end   //datacal = 11 
-                5'b01100: begin Ical = Iout_them_5; end   //datacal = 12 
-                5'b01101: begin Ical = Iout_them_6; end   //datacal = 13 
-                5'b01110: begin Ical = Iout_them_7; end   //datacal = 14 
-                5'b01111: begin Ical = Iout_them_8; end   //datacal = 15 
-                5'b10000: begin Ical = Iout_them_9; end   //datacal = 16 
-                5'b10001: begin Ical = Iout_them_10; end  //datacal = 17 
-                5'b10010: begin Ical = Iout_them_11; end  //datacal = 18 
-                5'b10011: begin Ical = Iout_them_12; end  //datacal = 19 
-                5'b10100: begin Ical = Iout_them_13; end  //datacal = 20 
-                5'b10101: begin Ical = Iout_them_14; end  //datacal = 21 
-                5'b10110: begin Ical = Iout_them_15; end  //datacal = 22 
-                5'b10111: begin Ical = Iout_them_16; end  //datacal = 23 
+                5'b00001: begin Ical = Iout_binary_0_red + generate_noise(); end  //datacal = 1 
+                5'b00010: begin Ical = Iout_binary_1 + generate_noise()*$sqrt(2); end  //datacal = 2 
+                5'b00011: begin Ical = Iout_binary_2 + generate_noise()*2; end  //datacal = 3 
+                5'b00100: begin Ical = Iout_binary_3 + generate_noise()*2*$sqrt(2); end  //datacal = 4 
+                5'b00101: begin Ical = Iout_binary_4 + generate_noise()*4; end  //datacal = 5 
+                5'b00110: begin Ical = Iout_binary_5 + generate_noise()*4*$sqrt(2); end  //datacal = 6 
+                5'b00111: begin Ical = Iout_them_0 + generate_noise()*8; end    //datacal = 7 
+                5'b01000: begin Ical = Iout_them_1 + generate_noise()*8; end    //datacal = 8 
+                5'b01001: begin Ical = Iout_them_2 + generate_noise()*8; end    //datacal = 9 
+                5'b01010: begin Ical = Iout_them_3 + generate_noise()*8; end   //datacal = 10 
+                5'b01011: begin Ical = Iout_them_4 + generate_noise()*8; end   //datacal = 11 
+                5'b01100: begin Ical = Iout_them_5 + generate_noise()*8; end   //datacal = 12 
+                5'b01101: begin Ical = Iout_them_6 + generate_noise()*8; end   //datacal = 13 
+                5'b01110: begin Ical = Iout_them_7 + generate_noise()*8; end   //datacal = 14 
+                5'b01111: begin Ical = Iout_them_8 + generate_noise()*8; end   //datacal = 15 
+                5'b10000: begin Ical = Iout_them_9 + generate_noise()*8; end   //datacal = 16 
+                5'b10001: begin Ical = Iout_them_10 + generate_noise()*8; end  //datacal = 17 
+                5'b10010: begin Ical = Iout_them_11 + generate_noise()*8; end  //datacal = 18 
+                5'b10011: begin Ical = Iout_them_12 + generate_noise()*8; end  //datacal = 19 
+                5'b10100: begin Ical = Iout_them_13 + generate_noise()*8; end  //datacal = 20 
+                5'b10101: begin Ical = Iout_them_14 + generate_noise()*8; end  //datacal = 21 
+                5'b10110: begin Ical = Iout_them_15 + generate_noise()*8; end  //datacal = 22 
+                5'b10111: begin Ical = Iout_them_16 + generate_noise()*8; end  //datacal = 23 
             endcase
 
             //to generate atb1 and atb0

@@ -6,12 +6,11 @@
 -TCL
 -INPUT
 /home/msegper/Documents/TFM/current_sterring/restore.tcl
--TCL
 -MESSAGES
 +EMGRLOG
 xrun.log
 -XLSTIME
-1764684851
+1769110252
 -XLKEEP
 -XLMODE
 ./xcelium.d/run.lnx8664.24.03.d

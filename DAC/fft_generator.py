@@ -37,11 +37,76 @@ def fft_amplitud_real(señal, fs):
 
     return frec, mag
 
+def real_to_code(señal, vref=1.0, tipo_senal="sinusoidal", n_bits=10):
+    """
+    Convierte señal analógica (real) a códigos enteros 0..(2^N-1)
+    asumiendo rango bipolar [-VREF, +VREF]
+    """
+    n_codes = 2**n_bits
+    if tipo_senal == "output_dac" or tipo_senal == "output_rampa_por_codigos":
+        vref = max(señal)
+    if tipo_senal == "rampa_por_codigos":
+        vref = n_codes - 1
+    print("Vref used for code conversion:", vref)
+    if tipo_senal == "sinusoidal" or tipo_senal == "output_dac" or tipo_senal == "output_rampa_por_codigos":
+        codes = np.round(((señal + vref) / (2*vref)) * (n_codes - 1)).astype(int)
+    else:
+        codes = np.round(((señal) / (vref)) * (n_codes - 1)).astype(int)
+    codes = np.clip(codes, 0, n_codes-1)
+    #np.set_printoptions(threshold=np.inf)  # Desactiva el truncamiento
+    #print("Codes for DNL calculation:", codes)
+    return codes
+
+
+# ============================================================
+# Calculo del histograma para calcular DNL
+# ============================================================
+
+
+def dnl_por_pasos_barrido(señal, vref, tipo_senal, n_bits=10):
+    """
+    DNL estático asumiendo que:
+      - la señal está muestreada como un barrido de códigos consecutivos
+      - cada muestra corresponde a un código distinto (1 muestra por escalón)
+      - no hay asentamiento que descartar (settle_frac no aplica)
+
+    IMPORTANTE: esto solo es válido si el DAC/modelo se asienta en 1 muestra.
+    """
+
+    señal = np.asarray(señal)
+    n_codes = 2**n_bits
+
+    # Para output, NO recomiendo usar max(señal) como vref,
+    # pero si lo quieres mantener:
+    if tipo_senal == "output_rampa_por_codigos":
+        vref = max(señal)
+
+    # Unipolar 0..Vref -> LSB ideal por pasos
+    lsb_ideal = vref / (n_codes - 1)
+    print("lsb_ideal:", lsb_ideal, "vref", vref)
+
+    # Si hay más muestras que códigos, recortamos a n_codes
+    # Si hay menos, calculamos con lo que haya (pero no será “1024 códigos”)
+    n = min(len(señal), n_codes)
+    niveles = señal[:n]
+
+    print("Niveles usados:", len(niveles))
+
+    if len(niveles) < 2:
+        return np.nan, np.array([np.nan]), niveles
+
+    delta = np.diff(niveles)
+    dnl_k = delta / (lsb_ideal + 1e-30) - 1.0
+    dnl_peak = np.max(np.abs(dnl_k))
+
+    return dnl_peak, dnl_k, niveles
+
+
 
 # ============================================================
 # CÁLCULO DE MÉTRICAS ESPECTRALES
 # ============================================================
-def analizar_metrica_fft(señal, fs):
+def analizar_metrica_fft(señal, vref, tipo_senal, fs):
     """
     Calcula métricas espectrales a partir de la FFT con amplitud real:
     - SNR
@@ -83,17 +148,45 @@ def analizar_metrica_fft(señal, fs):
 
     # --- DNL ---
     # Estimación a partir del histograma de niveles (modelo RNM)
-    hist, _ = np.histogram(señal, bins=256)
-    ideal = np.mean(hist)
-    DNL = np.max(np.abs(hist - ideal) / ideal)
+    #hist, _ = np.histogram(señal, bins=256)
+    #ideal = np.mean(hist)
+    #DNL = np.max(np.abs(hist - ideal) / ideal)
 
-    return SNR, SFDR, DNL, frec, mag
+    if tipo_senal == "rampa_por_codigos" or tipo_senal == "output_rampa_por_codigos":
+        DNL_peak, dnl_k, niveles = dnl_por_pasos_barrido(señal, vref, tipo_senal, n_bits=10)
+        codes = real_to_code(señal, vref=vref, tipo_senal=tipo_senal, n_bits=10)
+        hist = np.bincount(codes, minlength=2**10)
+
+        plt.figure(figsize=(10,8))
+        #plot histogram of codes
+        plt.subplot(2, 1, 1)
+        plt.plot(hist)
+        plt.title(f"Histograma de códigos ({tipo_senal})")
+        plt.xlabel("Código")
+        plt.ylabel("Número de ocurrencias")
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show(block=False)
+
+        #plot dnl curve
+        plt.subplot(2, 1, 2)
+        plt.plot(dnl_k)
+        plt.title(f"DNL por código ({tipo_senal})")
+        plt.xlabel("Código")
+        plt.ylabel("DNL [LSB]")
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show(block=False)
+    else:
+        DNL_peak = np.nan
+
+    return SNR, SFDR, DNL_peak, frec, mag
 
 
 # ============================================================
 # PROCESADO DE UN ARCHIVO (INPUT O OUTPUT)
 # ============================================================
-def procesar_archivo(archivo, titulo):
+def procesar_archivo(archivo,archivo_config, titulo):
     """
     Lee un archivo de datos, calcula métricas y grafica señal y FFT
     """
@@ -101,11 +194,17 @@ def procesar_archivo(archivo, titulo):
     datos = np.loadtxt(archivo)
     t = datos[:, 0]
     señal = datos[:, 1]
+    vref = np.genfromtxt(archivo_config, dtype=float, skip_header=3, max_rows=1)
+    vref = vref[0] if vref.ndim > 0 else vref  # Seleccionar el primer valor si es un array
+    
+    tipo_senal = np.genfromtxt(archivo_config, dtype=str, skip_header=0, max_rows=1)
 
-    fs = 1 / (t[1] - t[0])
+
+    #fs = 1 / (t[1] - t[0])
+    fs = np.genfromtxt(archivo_config, dtype=float, skip_header=2, max_rows=1)
 
     # Métricas
-    SNR, SFDR, DNL, frec, mag = analizar_metrica_fft(señal, fs)
+    SNR, SFDR, DNL, frec, mag = analizar_metrica_fft(señal, vref, tipo_senal, fs)
 
     print(f"\nResultados para {titulo}")
     print(f"SNR  = {SNR:.2f} dB")
@@ -134,6 +233,8 @@ def procesar_archivo(archivo, titulo):
 
     plt.tight_layout()
     plt.show(block=False)
+
+    
 
 
 # ============================================================
@@ -188,8 +289,8 @@ def comparar_fft(archivo_in, archivo_out):
 # ============================================================
 # EJECUCIÓN
 # ============================================================
-procesar_archivo("input.txt", "Input")
-procesar_archivo("output.txt", "Output")
+procesar_archivo("input.txt","input_config.txt", "Input")
+procesar_archivo("output.txt", "output_config.txt", "Output")
 
 comparar_fft("input.txt", "output.txt")
 

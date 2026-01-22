@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def generar_tonos(frecuencias, amplitudes, duracion, fs=4.096e6): #Fs = 8.192 MHz para tener un numero de datos que sea potencia de 2
+def generar_tonos(frecuencias, amplitudes, duracion, fs=8.192e6): #Fs = 8.192 MHz para tener un numero de datos que sea potencia de 2
     """
     Genera una señal combinada de tonos sinusoidales y escribe los datos en un archivo de texto.
 
@@ -19,7 +19,11 @@ def generar_tonos(frecuencias, amplitudes, duracion, fs=4.096e6): #Fs = 8.192 MH
     # Generar la señal combinada
     señal_combinada = np.zeros_like(t)
     #señal_combinada += 1e-12  # Evitar problemas con logaritmos de cero
+    
     for frecuencia, amplitud in zip(frecuencias, amplitudes):
+        factor=round(frecuencia/(fs*duracion))  # factor para ajustar la frecuencia debido al redondeo de muestras
+        frecuencia = factor * (fs/(fs*duracion))  # ajustar la frecuencia
+        print(f"Frecuencia ajustada: {frecuencia} Hz")
         señal_combinada += amplitud * np.sin(2 * np.pi * frecuencia * t)
 
     # Añadir ruido pequeño a la señal
@@ -58,5 +62,5 @@ def generar_tonos(frecuencias, amplitudes, duracion, fs=4.096e6): #Fs = 8.192 MH
 # Ejemplo de uso: Generar una señal combinada de uno o más tonos
 # La amplitud máxima de entrada es de 0.125 porque al ponerle el offset para eliminar los negativos, la señal pasa 
 # de un rango de -0.125 a 0.125 a un rango de 0 a 0.25, Vmax=Vref/2=500uV/2=250uV
-generar_tonos(frecuencias=[1e6], amplitudes=[0.125], duracion=0.0005)  # Señal de 1 MHz y duración de 0.0001 segundos
+generar_tonos(frecuencias=[1e6], amplitudes=[0.125], duracion=0.001)  # Señal de 1 MHz y duración de 0.0001 segundos
 #generar la señal con un poco de ruido

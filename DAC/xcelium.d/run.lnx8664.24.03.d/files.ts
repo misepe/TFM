@@ -1,10 +1,10 @@
 1767974008 /home/msegper/Documents/TFM/clock_distribution/models/clock_distribution.sv
 1762875438 /home/msegper/Documents/TFM/current_source_units/models/currentSourceUnits.sv
-1768399142 /home/msegper/Documents/TFM/current_sterring/models/current_sterring.sv
+1768407954 /home/msegper/Documents/TFM/current_sterring/models/current_sterring.sv
 1767966804 /home/msegper/Documents/TFM/driver_cell/models/driver_cell.sv
 1750263871 /home/msegper/Documents/TFM/level_shifter/models/level_shifter.sv
 1765376053 /home/msegper/Documents/TFM/local_bias/models/local_bias.sv
 1757421742 /home/msegper/Documents/TFM/resistor_load/models/resistor_load.sv
 1767966793 /home/msegper/Documents/TFM/rsync_latch/models/rsync_latch.sv
 1765465641 /home/msegper/Documents/TFM/DAC/top_level_schematic.sv
-1768407580 /home/msegper/Documents/TFM/DAC/tb_dac_top.sv
+1768925024 /home/msegper/Documents/TFM/DAC/tb_dac_top.sv

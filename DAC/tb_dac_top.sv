@@ -19,7 +19,7 @@ module tb_dac_top ();
     real atb [10];
 
     //Auxiliary variables
-    real amplitud, duracion, fs; //read form the txt file
+    real amplitud, duracion, fs, freq; //read form the txt file
     //real fs=4.6e6;//info from input generator
     //real duracion=0.0001;//info from input generator
 
@@ -49,11 +49,13 @@ module tb_dac_top ();
 
     string input_file = "./stimulus_input.txt";
     string input_config_file = "./stimulus_input_config.txt";
+    string output_config_file = "./output_config.txt";
     string output_file = "./output.txt";
 
-    int input_fd, output_fd, input_fd_config;
+    int input_fd, output_fd, input_fd_config, output_fd_config;
     real t, t_prev, value_real;
-    logic valor_normalizado, digital_10b;
+    logic valor_normalizado;
+    logic [0:9] digital_10b;
     
     int ret;
 
@@ -77,6 +79,7 @@ module tb_dac_top ();
         input_fd  = $fopen(input_file, "r");
         input_fd_config  = $fopen(input_config_file, "r");
         output_fd = $fopen(output_file, "w");
+        output_fd_config  = $fopen(output_config_file, "w");
 
         if(!input_fd || !output_fd) begin
             $display("Error abriendo archivos");
@@ -88,7 +91,15 @@ module tb_dac_top ();
         ret = $fscanf(input_fd_config,"%s\n",tipo_senal);
         ret = $fscanf(input_fd_config,"%.15f\n",duracion);
         ret = $fscanf(input_fd_config,"%.15f\n",fs);
-        ret = $fscanf(input_fd_config,"%.15f\n",amplitud);
+        ret = $fscanf(input_fd_config,"%.15f %.15f\n",amplitud,freq);
+        if(tipo_senal == "rampa_por_codigos") begin
+            $fwrite(output_fd_config,"%s \n","output_rampa_por_codigos");
+        end else begin
+            $fwrite(output_fd_config,"%s \n","output_dac");
+        end
+        $fwrite(output_fd_config,"%.15f \n",duracion);
+        $fwrite(output_fd_config,"%.15f \n",fs);
+        $fwrite(output_fd_config,"%.15f %.15f \n",amplitud,freq);
         //$fwrite(output_fd,"%.15f %.15f %.15f \n",amplitud, duracion, fs);
         do begin
             ret = $fscanf(input_fd,"%.15f %.15f %.15f %b %b %b %b %b\n",t, value_real, valor_normalizado, digital_10b, datainbin, datainbinb, dataintherm, datainthermb);
@@ -101,7 +112,7 @@ module tb_dac_top ();
                 delay = int'(fs*duracion);
                 #(delay);
                 Vout_total = Vout - Voutb;
-                $fwrite(output_fd,"%.15f %.15f %.15f %.15f %d\n",t,Vout_total,Vout, Voutb,delay);
+                $fwrite(output_fd,"%.15f %.15f %.15f %.15f %b\n",t,Vout_total,Vout, Voutb,digital_10b);
             end
 
         end while(ret != -1);

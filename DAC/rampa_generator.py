@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def generar_rampa(amplitud, duracion, fs=4.096e6): #Fs = 8.192 MHz para tener un numero de datos que sea potencia de 2
+def generar_rampa(amplitud, duracion, fs=8.192e6): #Fs = 8.192 MHz para tener un numero de datos que sea potencia de 2
     """
     Genera una señal de rampa lineal y escribe los datos en un archivo de texto.
 

@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 14, 2026 at 17:21:51 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 22, 2026 at 12:25:08 CET
 xrun
 	-f xrun_tb_dac.f
 		-clean
@@ -85,14 +85,14 @@ xmelab: *N,MSFLON: Xcelium will initiate mixed signal elaboration, Reason: RNM m
 			streams:   7, words:  9023
 		worklib.local_bias:sv <0x35039f78>
 			streams:   7, words: 14879
-		worklib.currentSterring:sv <0x171c1f26>
-			streams:  27, words: 94352
+		worklib.currentSterring:sv <0x76b743f4>
+			streams:  27, words: 91104
 		worklib.currentSourceUnits:sv <0x75522b37>
 			streams:   9, words: 28100
 		worklib.top_level_schematic:sv <0x1fd746d5>
 			streams:  93, words: 34983
-		worklib.tb_dac_top:sv <0x08b32b99>
-			streams:  23, words: 16927
+		worklib.tb_dac_top:sv <0x517adfae>
+			streams:  24, words: 20450
 		worklib.level_shifter:sv <0x773f9903>
 			streams:   1, words:   331
 	Building instance specific data structures.
@@ -101,11 +101,11 @@ xmelab: *N,MSFLON: Xcelium will initiate mixed signal elaboration, Reason: RNM m
 		                 Instances  Unique
 		Modules:                10      10
 		Verilog packages:        1       1
-		Registers:             336     336
+		Registers:             339     339
 		Scalar wires:          152       -
 		Vectored wires:         22       -
 		Always blocks:          64      64
-		Initial blocks:         35      35
+		Initial blocks:         36      36
 		Parallel blocks:         1       1
 		Cont. assignments:       2       2
 		Pseudo assignments:    109       -
@@ -120,7 +120,7 @@ SVSEED set from command line: 0
 xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
 xcelium> run
 Señal generada
-Simulation complete via $finish(1) at time 167690 PS + 0
-./tb_dac_top.sv:112         $finish;
+Simulation complete via $finish(1) at time 67108864 PS + 0
+./tb_dac_top.sv:123         $finish;
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 14, 2026 at 17:21:52 CET  (total: 00:00:01)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 22, 2026 at 12:25:15 CET  (total: 00:00:07)

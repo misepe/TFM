@@ -52,15 +52,10 @@ module stimulus_processor;
     $fwrite(fout_config, "%.15f \n",duracion);
     r = $fscanf(fin_config,"%.15f\n",fs);
     $fwrite(fout_config, "%.15f \n",fs);
-    /*try begin
-      while(!$feof(fin_config)) begin
-        r = $fscanf(fin_config,"%.15f %.15f\n",VREF,freq);
-        $fwrite(fout_config, "%.15f %.15f \n",VREF,freq);
-      end
+    while(!$feof(fin_config)) begin
+      r = $fscanf(fin_config,"%.15f %.15f\n",VREF,freq);
+      $fwrite(fout_config, "%.15f %.15f \n",VREF,freq);
     end
-    catch begin*/
-      r = $fscanf(fin_config,"%.15f\n",VREF);
-      $fwrite(fout_config, "%.15f \n",VREF);
     //end
 
 
@@ -69,8 +64,13 @@ module stimulus_processor;
       r = $fscanf(fin,"%.15f %.15f\n",t_sample,value_real);
 
       // cuantización a 10 bits
-      //digital_10b = $rtoi((((value_real/ VREF) * ((1<<N_BITS)-1))));
-      digital_10b = $rtoi(((((value_real+VREF)/ (2*VREF)) * ((1<<N_BITS)-1))));
+      if(tipo_senal == "sinusoidal") begin
+        digital_10b = $rtoi(((((value_real+VREF)/ (2*VREF)) * ((1<<N_BITS)-1)))); //Subir la señal para que no hayan valores negativos
+      end else if (tipo_senal == "rampa_por_codigos") begin
+        digital_10b = $rtoi((value_real)); // en rampa por códigos el valor ya está entre 0 y 1023
+      end else begin
+        digital_10b = $rtoi((((value_real/ VREF) * ((1<<N_BITS)-1)))); // si son rampa u otra señal sin negativos no hace falta subirla
+      end
       
       // separación MSB/LSB
       msb_bin = digital_10b[N_BITS-1 -: MSB_BITS];
@@ -85,8 +85,14 @@ module stimulus_processor;
       Datainthermb = ~Dataintherm;
 
       // Guardado en archivo
-      //$fwrite(fout, "%.15f %.15f %.15f %b %b %b %b %b\n",t_sample, value_real, ((value_real)/ (VREF)), digital_10b, Datainbin, Datainbinb, Dataintherm, Datainthermb);
-      $fwrite(fout, "%.15f %.15f %.15f %b %b %b %b %b\n",t_sample, value_real, ((value_real+VREF)/ (2*VREF)), digital_10b, Datainbin, Datainbinb, Dataintherm, Datainthermb);
+      if(tipo_senal == "sinusoidal") begin
+          $fwrite(fout, "%.15f %.15f %.15f %b %b %b %b %b\n",t_sample, value_real, ((value_real+VREF)/ (2*VREF)), digital_10b, Datainbin, Datainbinb, Dataintherm, Datainthermb);
+      end else if (tipo_senal == "rampa_por_codigos") begin
+        $fwrite(fout, "%.15f %.15f %.15f %b %b %b %b %b\n",t_sample, value_real, value_real, digital_10b, Datainbin, Datainbinb, Dataintherm, Datainthermb);
+      end else begin
+          $fwrite(fout, "%.15f %.15f %.15f %b %b %b %b %b\n",t_sample, value_real, ((value_real)/ (VREF)), digital_10b, Datainbin, Datainbinb, Dataintherm, Datainthermb);
+      end
+      
       
 
     end

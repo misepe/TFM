@@ -1,13 +1,17 @@
 # Preguntar al usuario qué tipo de señal generar
 echo "Seleccione el tipo de señal a generar:"
 echo "1: Señal tipo rampa"
-echo "2: Señal tipo seno"
-read -p "Ingrese su elección (1 o 2): " choice
+echo "2: Señal tipo barrido de los codigos input"
+echo "3: Señal tipo seno"
+read -p "Ingrese su elección (1, 2 o 3): " choice
 
 if [ "$choice" -eq 1 ]; then
-    echo "Generando señal tipo rampa..."
+    echo "Generando señal tipo rampa analógica..."
     python3 rampa_generator.py
 elif [ "$choice" -eq 2 ]; then
+    echo "Generando señal tipo barrido de los codigos input..."
+    python3 rampa_codigos_generator.py
+elif [ "$choice" -eq 3 ]; then
     echo "Generando señal tipo seno..."
     python3 sin_generator.py
 else

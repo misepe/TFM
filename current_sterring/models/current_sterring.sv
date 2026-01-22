@@ -240,9 +240,11 @@ module currentSterring import cds_rnm_pkg::*;(
             Ioutb = 0;
     
             if(datain[0] == 1'b0 && datainb[0] ==1'b1 && dataical != 5'b00001) begin
-                Ioutb += Iout_binary_0_red + Iout_binary_0;
+                //Ioutb += Iout_binary_0_red + Iout_binary_0;
+                Ioutb +=  Iout_binary_0;
             end else if(datain[0] == 1'b1 && datainb[0] ==1'b0 && dataical != 5'b00001) begin
-                Iout += Iout_binary_0_red + Iout_binary_0; 
+               // Iout += Iout_binary_0_red + Iout_binary_0; 
+                Iout += Iout_binary_0; 
             end else if ((datain[0] == 1'b1 && datainb[0] ==1'b1) || (datain[0] == 1'b0 && datainb[0] ==1'b0))begin
                 $error("Input signals datain and datainb are not correct: datain[0]=%0b, datainb[0]=%0b", datain[0], datainb[0]);
             end
@@ -407,7 +409,7 @@ module currentSterring import cds_rnm_pkg::*;(
                 $error("Input signals datatherm and datathermb are not correct: datatherm[14]=%0b, datathermb[14]=%0b", datatherm[14], datathermb[14]);
             end
 
-            if(datatherm[15] == 1'b0 && datathermb[15] == 1'b1 && dataical != 5'b10110)begin
+            /*if(datatherm[15] == 1'b0 && datathermb[15] == 1'b1 && dataical != 5'b10110)begin
                 Ioutb += Iout_them_15;
             end if(datatherm[15] == 1'b1 && datathermb[15] == 1'b0 && dataical != 5'b10110) begin
                 Iout += Iout_them_15;
@@ -421,7 +423,7 @@ module currentSterring import cds_rnm_pkg::*;(
                 Iout += Iout_them_16;
             end else if ((datatherm[16] == 1'b1 && datathermb[16] ==1'b1) || (datatherm[16] == 1'b0 && datathermb[16] ==1'b0))begin
                 $error("Input signals datatherm and datathermb are not correct: datatherm[16]=%0b, datathermb[16]=%0b", datatherm[16], datathermb[16]);
-            end
+            end*/
 
 
 

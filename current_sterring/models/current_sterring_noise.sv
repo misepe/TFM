@@ -292,9 +292,11 @@ module currentSterring import cds_rnm_pkg::*;(
             Ioutb = 0;
     
             if(datain[0] == 1'b0 && datainb[0] ==1'b1 && dataical != 5'b00001) begin
-                Ioutb += Iout_binary_0_red + Iout_binary_0;
+                //Ioutb += Iout_binary_0_red + Iout_binary_0;
+                Ioutb +=  Iout_binary_0;
             end else if(datain[0] == 1'b1 && datainb[0] ==1'b0 && dataical != 5'b00001) begin
-                Iout += Iout_binary_0_red + Iout_binary_0; 
+                //Iout += Iout_binary_0_red + Iout_binary_0; 
+                Iout += Iout_binary_0;
             end 
 
             if(datain[1] == 1'b0 && datainb[1] ==1'b1 && dataical != 5'b00010) begin
@@ -417,7 +419,7 @@ module currentSterring import cds_rnm_pkg::*;(
                 Iout += Iout_them_14;
             end 
 
-            if(datatherm[15] == 1'b0 && datathermb[15] == 1'b1 && dataical != 5'b10110)begin
+            /*if(datatherm[15] == 1'b0 && datathermb[15] == 1'b1 && dataical != 5'b10110)begin
                 Ioutb += Iout_them_15;
             end if(datatherm[15] == 1'b1 && datathermb[15] == 1'b0 && dataical != 5'b10110) begin
                 Iout += Iout_them_15;
@@ -427,7 +429,7 @@ module currentSterring import cds_rnm_pkg::*;(
                 Ioutb += Iout_them_16;
             end if(datatherm[16] == 1'b1 && datathermb[16] == 1'b0 && dataical != 5'b10111) begin
                 Iout += Iout_them_16;
-            end 
+            end */
 
 
 

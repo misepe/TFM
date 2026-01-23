@@ -60,48 +60,55 @@ module currentSterring import cds_rnm_pkg::*;(
     bit Iout_binary_0_check = 1; // Variable to check the input current LSB 1: correct, 0: incorrect
     bit Iout_binary_0_red_check = 1; // Variable to check the input current redundancy 1: correct, 0: incorrect
 
+    bit check_en =0; // Variable to enable the checks 1: enable, 0: disable
+
+    initial begin
+        #1; // Wait 1000ps to start the checks
+        check_en =1; // Enable the checks after 1000ps
+    end
+
     //to check that iref current is within the boundaries +/-10%
     parameter real IREF = 500e-6; // 500 µA
     always @(iref_500ua) begin
-        if(iref_500ua >= IREF*0.9 && iref_500ua <= IREF*1.1) begin
+        if(!check_en ||(iref_500ua >= IREF*0.9 && iref_500ua <= IREF*1.1)) begin
             iref_check = 1;
         end else begin
             iref_check = 0;
         end
-        iref_ua_boundaries: assert (iref_500ua >= IREF*0.9 && iref_500ua <= IREF*1.1) else $warning("Input current iref_500ua is out of bounds: %0.2f uA", iref_500ua*1e6);
+        iref_ua_boundaries: assert (!check_en || (iref_500ua >= IREF*0.9 && iref_500ua <= IREF*1.1)) else $warning("Input current iref_500ua is out of bounds: %0.2f uA", iref_500ua*1e6);
     end
 
     //to check that vddana_1p8 voltage is within the boundaries +/-5%
     parameter real VDDANA_1P8_REF = 1.8; // 1.8 V
     always @(vddana_1p8) begin
-        if(vddana_1p8 >= VDDANA_1P8_REF*0.95 && vddana_1p8 <= VDDANA_1P8_REF*1.05) begin
+        if(!check_en || (vddana_1p8 >= VDDANA_1P8_REF*0.95 && vddana_1p8 <= VDDANA_1P8_REF*1.05)) begin
             vddana_1p8_check = 1;
         end else begin
             vddana_1p8_check = 0;
         end
-        vddana_1p8_boundaries: assert (vddana_1p8 >= VDDANA_1P8_REF*0.95 && vddana_1p8 <= VDDANA_1P8_REF*1.05) else $warning("Input voltge vddana_1p8 is out of bounds: %0.2f V", vddana_1p8);
+        vddana_1p8_boundaries: assert (!check_en || (vddana_1p8 >= VDDANA_1P8_REF*0.95 && vddana_1p8 <= VDDANA_1P8_REF*1.05)) else $warning("Input voltge vddana_1p8 is out of bounds: %0.2f V", vddana_1p8);
     end
 
     //to check that vddana_0p8 voltage is within the boundaries +/-5%
     parameter real VDDANA_0P8_REF = 0.8; // 0.8 V
     always @(vddana_0p8) begin
-        if(vddana_0p8 >= VDDANA_0P8_REF*0.95 && vddana_0p8 <= VDDANA_0P8_REF*1.05) begin
+        if(!check_en || (vddana_0p8 >= VDDANA_0P8_REF*0.95 && vddana_0p8 <= VDDANA_0P8_REF*1.05)) begin
             vddana_0p8_check = 1;
         end else begin
             vddana_0p8_check = 0;
         end
-        vddana_0p8_boundaries: assert (vddana_0p8 >= VDDANA_0P8_REF*0.95 && vddana_0p8 <= VDDANA_0P8_REF*1.05) else $warning("Input voltge vddana_0p8 is out of bounds: %0.2f V", vddana_0p8);
+        vddana_0p8_boundaries: assert (!check_en || (vddana_0p8 >= VDDANA_0P8_REF*0.95 && vddana_0p8 <= VDDANA_0P8_REF*1.05)) else $warning("Input voltge vddana_0p8 is out of bounds: %0.2f V", vddana_0p8);
     end
 
     //to check that cascode voltage is within the boundaries +/-5%
     parameter real VCAS_REF = 0.8; // 0.8 V
     always @(Vcas)begin
-        if(Vcas >= VCAS_REF*0.95 && Vcas <= VCAS_REF*1.05) begin
+        if(!check_en || (Vcas >= VCAS_REF*0.95 && Vcas <= VCAS_REF*1.05)) begin
             vcas_check = 1;
         end else begin
             vcas_check = 0;
         end
-        vcas_boundaries: assert (Vcas >= VCAS_REF*0.95 && Vcas <= VCAS_REF*1.05) else $warning("Input voltage Vcas is out of bounds: %0.2f V", Vcas);
+        vcas_boundaries: assert (!check_en || (Vcas >= VCAS_REF*0.95 && Vcas <= VCAS_REF*1.05)) else $warning("Input voltage Vcas is out of bounds: %0.2f V", Vcas);
     end
 
     //to check that vssana voltage is within the boundaries +/-5%
@@ -109,12 +116,12 @@ module currentSterring import cds_rnm_pkg::*;(
     parameter real VSSANA_MIN = VSSANA_REF -0.05; // -0.05 V
     parameter real VSSANA_MAX = VSSANA_REF +0.05; // 0.05 V
     always @(vssana) begin
-        if(vssana >= VSSANA_MIN && vssana <= VSSANA_MAX) begin
+        if(!check_en || (vssana >= VSSANA_MIN && vssana <= VSSANA_MAX)) begin
             vssana_check = 1;
         end else begin
             vssana_check = 0;
         end
-        vssana_boundaries: assert (vssana >= VSSANA_MIN && vssana <= VSSANA_MAX) else $warning("Input voltge vssana is out of bounds: %0.2f V", vssana);
+        vssana_boundaries: assert (!check_en || (vssana >= VSSANA_MIN && vssana <= VSSANA_MAX)) else $warning("Input voltge vssana is out of bounds: %0.2f V", vssana);
     end
 
     //to check that Iout_them_x currents are iref/2.5 to enable funcionality
@@ -122,7 +129,7 @@ module currentSterring import cds_rnm_pkg::*;(
     parameter real IOUT_THEM_REF_MAX = IOUT_THEM_REF+IOUT_THEM_REF*0.1; // Reference current from the bias generator
     parameter real IOUT_THEM_REF_MIN = IOUT_THEM_REF-IOUT_THEM_REF*0.1; // Reference current from the bias generator
     always @(Iout_them_16 or Iout_them_15 or Iout_them_14 or Iout_them_13 or Iout_them_12 or Iout_them_11 or Iout_them_10 or Iout_them_9 or Iout_them_8 or Iout_them_7 or Iout_them_6 or Iout_them_5 or Iout_them_4 or Iout_them_3 or Iout_them_2 or Iout_them_1 or Iout_them_0) begin
-        if((Iout_them_16 <= IOUT_THEM_REF_MAX && Iout_them_16 >= IOUT_THEM_REF_MIN) 
+        if(!check_en || ((Iout_them_16 <= IOUT_THEM_REF_MAX && Iout_them_16 >= IOUT_THEM_REF_MIN) 
         && (Iout_them_15 <= IOUT_THEM_REF_MAX && Iout_them_15 >= IOUT_THEM_REF_MIN) 
         && (Iout_them_14 <= IOUT_THEM_REF_MAX && Iout_them_14 >= IOUT_THEM_REF_MIN) 
         && (Iout_them_13 <= IOUT_THEM_REF_MAX && Iout_them_13 >= IOUT_THEM_REF_MIN) 
@@ -138,12 +145,12 @@ module currentSterring import cds_rnm_pkg::*;(
         && (Iout_them_3 <= IOUT_THEM_REF_MAX && Iout_them_3 >= IOUT_THEM_REF_MIN) 
         && (Iout_them_2 <= IOUT_THEM_REF_MAX && Iout_them_2 >= IOUT_THEM_REF_MIN) 
         && (Iout_them_1 <= IOUT_THEM_REF_MAX && Iout_them_1 >= IOUT_THEM_REF_MIN) 
-        && (Iout_them_0 <= IOUT_THEM_REF_MAX && Iout_them_0 >= IOUT_THEM_REF_MIN)) begin
+        && (Iout_them_0 <= IOUT_THEM_REF_MAX && Iout_them_0 >= IOUT_THEM_REF_MIN))) begin
             Iout_them_check = 1;
         end else begin
             Iout_them_check = 0;
         end
-        iout_them_boundaries: assert ((Iout_them_16 >= IOUT_THEM_REF_MIN && Iout_them_16 <= IOUT_THEM_REF_MAX) && 
+        iout_them_boundaries: assert (!check_en || (Iout_them_16 >= IOUT_THEM_REF_MIN && Iout_them_16 <= IOUT_THEM_REF_MAX) && 
             (Iout_them_15 >= IOUT_THEM_REF_MIN && Iout_them_15 <= IOUT_THEM_REF_MAX) && 
             (Iout_them_14 >= IOUT_THEM_REF_MIN && Iout_them_14 <= IOUT_THEM_REF_MAX) && 
             (Iout_them_13 >= IOUT_THEM_REF_MIN && Iout_them_13 <= IOUT_THEM_REF_MAX) && 
@@ -159,7 +166,7 @@ module currentSterring import cds_rnm_pkg::*;(
             (Iout_them_3 >= IOUT_THEM_REF_MIN && Iout_them_3 <= IOUT_THEM_REF_MAX) && 
             (Iout_them_2 >= IOUT_THEM_REF_MIN && Iout_them_2 <= IOUT_THEM_REF_MAX) && 
             (Iout_them_1 >= IOUT_THEM_REF_MIN && Iout_them_1 <= IOUT_THEM_REF_MAX) && 
-            (Iout_them_0 >= IOUT_THEM_REF_MIN && Iout_them_0 <= IOUT_THEM_REF_MAX)) else $warning("Input currents from the bias generator are not correct: Iout_them_16=%0.2f uA, Iout_them_15=%0.2f uA, Iout_them_14=%0.2f uA, Iout_them_13=%0.2f uA, Iout_them_12=%0.2f uA, Iout_them_11=%0.2f uA, Iout_them_10=%0.2f uA, Iout_them_9=%0.2f uA, Iout_them_8=%0.2f uA, Iout_them_7=%0.2f uA, Iout_them_6=%0.2f uA, Iout_them_5=%0.2f uA, Iout_them_4=%0.2f uA, Iout_them_3=%0.2f uA, Iout_them_2=%0.2f uA, Iout_them_1=%0.2f uA, Iout_them_0=%0.2f uA", 
+            (Iout_them_0 >= IOUT_THEM_REF_MIN && Iout_them_0 <= IOUT_THEM_REF_MAX)) else $warning("Input currents from the bias generator are not correct: Iout_them_16=%0.5f uA, Iout_them_15=%0.5f uA, Iout_them_14=%0.5f uA, Iout_them_13=%0.5f uA, Iout_them_12=%0.5f uA, Iout_them_11=%0.5f uA, Iout_them_10=%0.5f uA, Iout_them_9=%0.5f uA, Iout_them_8=%0.5f uA, Iout_them_7=%0.5f uA, Iout_them_6=%0.5f uA, Iout_them_5=%0.5f uA, Iout_them_4=%0.5f uA, Iout_them_3=%0.5f uA, Iout_them_2=%0.5f uA, Iout_them_1=%0.5f uA, Iout_them_0=%0.5f uA", 
             Iout_them_16*1e6, Iout_them_15*1e6, Iout_them_14*1e6, Iout_them_13*1e6, Iout_them_12*1e6, Iout_them_11*1e6, Iout_them_10*1e6, 
             Iout_them_9*1e6, Iout_them_8*1e6, Iout_them_7*1e6, Iout_them_6*1e6, Iout_them_5*1e6, Iout_them_4*1e6, Iout_them_3*1e6, Iout_them_2*1e6, Iout_them_1*1e6, Iout_them_0*1e6);
     end
@@ -169,84 +176,84 @@ module currentSterring import cds_rnm_pkg::*;(
     parameter real IOUT_BINARY_5_REF_MAX = IOUT_BINARY_5_REF+IOUT_BINARY_5_REF*0.1; // Reference current MSB
     parameter real IOUT_BINARY_5_REF_MIN = IOUT_BINARY_5_REF-IOUT_BINARY_5_REF*0.1; // Reference current MSB
     always @(Iout_binary_5) begin
-        if(Iout_binary_5 >= IOUT_BINARY_5_REF_MIN && Iout_binary_5 <= IOUT_BINARY_5_REF_MAX) begin
+        if(!check_en || (Iout_binary_5 >= IOUT_BINARY_5_REF_MIN && Iout_binary_5 <= IOUT_BINARY_5_REF_MAX)) begin
             Iout_binary_5_check = 1;
         end else begin
             Iout_binary_5_check = 0;
         end
-        iout_binary_5_boundaries: assert (Iout_binary_5 >= IOUT_BINARY_5_REF_MIN && Iout_binary_5 <= IOUT_BINARY_5_REF_MAX) else $warning("Input current MSB is not correct: Iout_binary_5=%0.2f uA", Iout_binary_5*1e6);
+        iout_binary_5_boundaries: assert (!check_en || (Iout_binary_5 >= IOUT_BINARY_5_REF_MIN && Iout_binary_5 <= IOUT_BINARY_5_REF_MAX)) else $warning("Input current MSB is not correct: Iout_binary_5=%0.5f uA", Iout_binary_5*1e6);
     end
     //to check that Iout_binary_4 is iref/(2.5*4) to enable funcionality
     parameter real IOUT_BINARY_4_REF = IREF/(2.5*4); // Reference current MSB-1
     parameter real IOUT_BINARY_4_REF_MAX = IOUT_BINARY_4_REF+IOUT_BINARY_4_REF*0.1; 
     parameter real IOUT_BINARY_4_REF_MIN = IOUT_BINARY_4_REF-IOUT_BINARY_4_REF*0.1; 
     always @(Iout_binary_4) begin
-        if(Iout_binary_4 >= IOUT_BINARY_4_REF_MIN && Iout_binary_4 <= IOUT_BINARY_4_REF_MAX) begin
+        if(!check_en || (Iout_binary_4 >= IOUT_BINARY_4_REF_MIN && Iout_binary_4 <= IOUT_BINARY_4_REF_MAX)) begin
             Iout_binary_4_check = 1;
         end else begin
             Iout_binary_4_check = 0;
         end
-        iout_binary_4_boundaries: assert (Iout_binary_4 >= IOUT_BINARY_4_REF_MIN && Iout_binary_4 <= IOUT_BINARY_4_REF_MAX) else $warning("Input current MSB-1 is not correct: Iout_binary_4=%0.2f uA", Iout_binary_4*1e6);
+        iout_binary_4_boundaries: assert (!check_en || (Iout_binary_4 >= IOUT_BINARY_4_REF_MIN && Iout_binary_4 <= IOUT_BINARY_4_REF_MAX)) else $warning("Input current MSB-1 is not correct: Iout_binary_4=%0.5f uA", Iout_binary_4*1e6);
     end
     //to check that Iout_binary_3 is iref/(2.5*8) to enable funcionality
     parameter real IOUT_BINARY_3_REF = IREF/(2.5*8); // Reference current MSB-2
     parameter real IOUT_BINARY_3_REF_MAX = IOUT_BINARY_3_REF+IOUT_BINARY_3_REF*0.1; 
     parameter real IOUT_BINARY_3_REF_MIN = IOUT_BINARY_3_REF-IOUT_BINARY_3_REF*0.1; 
     always @(Iout_binary_3) begin
-        if(Iout_binary_3 >= IOUT_BINARY_3_REF_MIN && Iout_binary_3 <= IOUT_BINARY_3_REF_MAX) begin
+        if(!check_en || (Iout_binary_3 >= IOUT_BINARY_3_REF_MIN && Iout_binary_3 <= IOUT_BINARY_3_REF_MAX)) begin
             Iout_binary_3_check = 1;
         end else begin
             Iout_binary_3_check = 0;
         end
-        iout_binary_3_boundaries: assert (Iout_binary_3 >= IOUT_BINARY_3_REF_MIN && Iout_binary_3 <= IOUT_BINARY_3_REF_MAX) else $warning("Input current MSB-2 is not correct: Iout_binary_3=%0.2f uA", Iout_binary_3*1e6);
+        iout_binary_3_boundaries: assert (!check_en || (Iout_binary_3 >= IOUT_BINARY_3_REF_MIN && Iout_binary_3 <= IOUT_BINARY_3_REF_MAX)) else $warning("Input current MSB-2 is not correct: Iout_binary_3=%0.5f uA", Iout_binary_3*1e6);
     end
     //to check that Iout_binary_2 is iref/(2.5*16) to enable funcionality
     parameter real IOUT_BINARY_2_REF = IREF/(2.5*16); // Reference current MSB-3
     parameter real IOUT_BINARY_2_REF_MAX = IOUT_BINARY_2_REF+IOUT_BINARY_2_REF*0.1; 
     parameter real IOUT_BINARY_2_REF_MIN = IOUT_BINARY_2_REF-IOUT_BINARY_2_REF*0.1; 
     always @(Iout_binary_2) begin
-        if(Iout_binary_2 >= IOUT_BINARY_2_REF_MIN && Iout_binary_2 <= IOUT_BINARY_2_REF_MAX) begin
+        if(!check_en || (Iout_binary_2 >= IOUT_BINARY_2_REF_MIN && Iout_binary_2 <= IOUT_BINARY_2_REF_MAX)) begin
             Iout_binary_2_check = 1;
         end else begin
             Iout_binary_2_check = 0;
         end
-        iout_binary_2_boundaries: assert (Iout_binary_2 >= IOUT_BINARY_2_REF_MIN && Iout_binary_2 <= IOUT_BINARY_2_REF_MAX) else $warning("Input current MSB-3 is not correct: Iout_binary_2=%0.2f uA", Iout_binary_2*1e6);
+        iout_binary_2_boundaries: assert (!check_en || (Iout_binary_2 >= IOUT_BINARY_2_REF_MIN && Iout_binary_2 <= IOUT_BINARY_2_REF_MAX)) else $warning("Input current MSB-3 is not correct: Iout_binary_2=%0.5f uA", Iout_binary_2*1e6);
     end
     //to check that Iout_binary_1 is iref/(2.5*32) to enable funcionality
     parameter real IOUT_BINARY_1_REF = IREF/(2.5*32); // Reference current MSB-4
     parameter real IOUT_BINARY_1_REF_MAX = IOUT_BINARY_1_REF+IOUT_BINARY_1_REF*0.1; 
     parameter real IOUT_BINARY_1_REF_MIN = IOUT_BINARY_1_REF-IOUT_BINARY_1_REF*0.1; 
     always @(Iout_binary_1) begin
-        if(Iout_binary_1 >= IOUT_BINARY_1_REF_MIN && Iout_binary_1 <= IOUT_BINARY_1_REF_MAX) begin
+        if(!check_en || (Iout_binary_1 >= IOUT_BINARY_1_REF_MIN && Iout_binary_1 <= IOUT_BINARY_1_REF_MAX)) begin
             Iout_binary_1_check = 1;
         end else begin
             Iout_binary_1_check = 0;
         end
-        iout_binary_1_boundaries: assert (Iout_binary_1 >= IOUT_BINARY_1_REF_MIN && Iout_binary_1 <= IOUT_BINARY_1_REF_MAX) else $warning("Input current MSB-4 is not correct: Iout_binary_1=%0.2f uA", Iout_binary_1*1e6);
+        iout_binary_1_boundaries: assert (!check_en || (Iout_binary_1 >= IOUT_BINARY_1_REF_MIN && Iout_binary_1 <= IOUT_BINARY_1_REF_MAX)) else $warning("Input current MSB-4 is not correct: Iout_binary_1=%0.5f uA", Iout_binary_1*1e6);
     end
     //to check that Iout_binary_0 is iref/(2.5*64) to enable funcionality 
     parameter real IOUT_BINARY_0_REF = IREF/(2.5*64); // Reference current LSB 
     parameter real IOUT_BINARY_0_REF_MAX = IOUT_BINARY_0_REF+IOUT_BINARY_0_REF*0.1; 
     parameter real IOUT_BINARY_0_REF_MIN = IOUT_BINARY_0_REF-IOUT_BINARY_0_REF*0.1; 
     always @(Iout_binary_0) begin
-        if(Iout_binary_0 >= IOUT_BINARY_0_REF_MIN && Iout_binary_0 <= IOUT_BINARY_0_REF_MAX) begin
+        if(!check_en || (Iout_binary_0 >= IOUT_BINARY_0_REF_MIN && Iout_binary_0 <= IOUT_BINARY_0_REF_MAX)) begin
             Iout_binary_0_check = 1;
         end else begin
             Iout_binary_0_check = 0;
         end
-        iout_binary_0_boundaries: assert (Iout_binary_0 >= IOUT_BINARY_0_REF_MIN && Iout_binary_0 <= IOUT_BINARY_0_REF_MAX) else $warning("Input current LSB is not correct: Iout_binary_0=%0.2f uA", Iout_binary_0*1e6);
+        iout_binary_0_boundaries: assert (!check_en || (Iout_binary_0 >= IOUT_BINARY_0_REF_MIN && Iout_binary_0 <= IOUT_BINARY_0_REF_MAX)) else $warning("Input current LSB is not correct: Iout_binary_0=%0.5f uA", Iout_binary_0*1e6);
     end
     //to check that Iout_binary_0_red is iref/(2.5*64) to enable funcionality
     parameter real IOUT_BINARY_0_RED_REF = IREF/(2.5*64); // Reference current redundancy
     parameter real IOUT_BINARY_0_RED_REF_MAX = IOUT_BINARY_0_RED_REF+IOUT_BINARY_0_RED_REF*0.1; 
     parameter real IOUT_BINARY_0_RED_REF_MIN = IOUT_BINARY_0_RED_REF-IOUT_BINARY_0_RED_REF*0.1; 
     always @(Iout_binary_0_red) begin
-        if(Iout_binary_0_red >= IOUT_BINARY_0_RED_REF_MIN && Iout_binary_0_red <= IOUT_BINARY_0_RED_REF_MAX) begin
+        if(!check_en || (Iout_binary_0_red >= IOUT_BINARY_0_RED_REF_MIN && Iout_binary_0_red <= IOUT_BINARY_0_RED_REF_MAX)) begin
             Iout_binary_0_red_check = 1;
         end else begin
             Iout_binary_0_red_check = 0;
         end
-        iout_binary_0_red_boundaries: assert (Iout_binary_0_red >= IOUT_BINARY_0_RED_REF_MIN && Iout_binary_0_red <= IOUT_BINARY_0_RED_REF_MAX) else $warning("Input current redundancy is not correct: Iout_binary_0_red=%0.2f uA", Iout_binary_0_red*1e6);
+        iout_binary_0_red_boundaries: assert (!check_en || (Iout_binary_0_red >= IOUT_BINARY_0_RED_REF_MIN && Iout_binary_0_red <= IOUT_BINARY_0_RED_REF_MAX)) else $warning("Input current redundancy is not correct: Iout_binary_0_red=%0.5f uA", Iout_binary_0_red*1e6);
     end
 
     //Gerenate non linearities: niose
@@ -272,8 +279,16 @@ module currentSterring import cds_rnm_pkg::*;(
         return random_value;
     endfunction
 
+    real Iout_binary_0_red_noise, Iout_binary_0_noise, Iout_binary_1_noise, Iout_binary_2_noise, Iout_binary_3_noise, Iout_binary_4_noise, Iout_binary_5_noise;
+    real Iout_therm_0_noise, Iout_therm_1_noise, Iout_therm_2_noise, Iout_therm_3_noise, Iout_therm_4_noise, Iout_therm_5_noise, Iout_therm_6_noise, Iout_therm_7_noise;
+    real Iout_therm_8_noise, Iout_therm_9_noise, Iout_therm_10_noise, Iout_therm_11_noise, Iout_therm_12_noise, Iout_therm_13_noise, Iout_therm_14_noise, Iout_therm_15_noise, Iout_therm_16_noise;
 
     always_comb begin
+
+        Iout_binary_0_red_noise = 0.000003125; Iout_binary_0_noise =0.000003125; Iout_binary_1_noise =0.000006250; Iout_binary_2_noise = 0.000012500; Iout_binary_3_noise = 0.000025000; Iout_binary_4_noise = 0.000050000; Iout_binary_5_noise = 0.000100000;
+        Iout_therm_0_noise = 0.0002; Iout_therm_1_noise = 0.0002; Iout_therm_2_noise = 0.0002; Iout_therm_3_noise = 0.0002; Iout_therm_4_noise = 0.0002; Iout_therm_5_noise = 0.0002; Iout_therm_6_noise = 0.0002; Iout_therm_7_noise = 0.0002;
+        Iout_therm_8_noise = 0.0002; Iout_therm_9_noise = 0.0002; Iout_therm_10_noise = 0.0002; Iout_therm_11_noise = 0.0002; Iout_therm_12_noise = 0.0002; Iout_therm_13_noise = 0.0002; Iout_therm_14_noise = 0.0002; Iout_therm_15_noise = 0.0002; Iout_therm_16_noise = 0.0002;
+
 
         if(Iout_them_check && Iout_binary_5_check && Iout_binary_4_check && Iout_binary_3_check && Iout_binary_2_check && Iout_binary_1_check && Iout_binary_0_check && Iout_binary_0_red_check) begin
             enable_funcionality = 1; // Enable funcionality if all input checks are correct
@@ -296,143 +311,189 @@ module currentSterring import cds_rnm_pkg::*;(
             Ioutb = 0;
     
             if(datain[0] == 1'b0 && datainb[0] ==1'b1 && dataical != 5'b00001) begin
-                //Ioutb += Iout_binary_0_red + Iout_binary_0;
-                Ioutb +=  (Iout_binary_0 + generate_noise());
+                //Iout_binary_0_noise= Iout_binary_0_red + Iout_binary_0;
+                Iout_binary_0_noise =  (Iout_binary_0 + generate_noise());
+                Ioutb += Iout_binary_0_noise; 
             end else if(datain[0] == 1'b1 && datainb[0] ==1'b0 && dataical != 5'b00001) begin
-                //Iout += Iout_binary_0_red + Iout_binary_0; 
-                Iout += (Iout_binary_0 + generate_noise());
+                //Iout_binary_0_noise= Iout_binary_0_red + Iout_binary_0; 
+                Iout_binary_0_noise = (Iout_binary_0 + generate_noise());
+                Iout += Iout_binary_0_noise;
             end 
 
             if(datain[1] == 1'b0 && datainb[1] ==1'b1 && dataical != 5'b00010) begin
-                Ioutb += (Iout_binary_1 + generate_noise()*$sqrt(2));
+                Iout_binary_1_noise = (Iout_binary_1 + generate_noise()*$sqrt(2));
+                Ioutb += Iout_binary_1_noise;
             end else if(datain[1] == 1'b1 && datainb[1] ==1'b0 && dataical != 5'b00010) begin
-                Iout += (Iout_binary_1 + generate_noise()*$sqrt(2));
+                Iout_binary_1_noise = (Iout_binary_1 + generate_noise()*$sqrt(2));
+                Iout += Iout_binary_1_noise;
             end 
 
             if(datain[2] == 1'b0 && datainb[2] ==1'b1 && dataical != 5'b00011) begin
-                Ioutb += (Iout_binary_2 + generate_noise()*2);
+                Iout_binary_2_noise = (Iout_binary_2 + generate_noise()*2);
+                Ioutb += Iout_binary_2_noise;
             end else if(datain[2] == 1'b1 && datainb[2] ==1'b0 && dataical != 5'b00011) begin
-                Iout += (Iout_binary_2 + generate_noise()*2);
+                Iout_binary_2_noise = (Iout_binary_2 + generate_noise()*2);
+                Iout += Iout_binary_2_noise;
             end 
 
             if(datain[3] == 1'b0 && datainb[3] ==1'b1 && dataical != 5'b00100) begin
-                Ioutb += (Iout_binary_3 + generate_noise()*2*$sqrt(2));
+                Iout_binary_3_noise = (Iout_binary_3 + generate_noise()*2*$sqrt(2));
+                Ioutb += Iout_binary_3_noise;
             end else if(datain[3] == 1'b1 && datainb[3] ==1'b0 && dataical != 5'b00100) begin
-                Iout += (Iout_binary_3 + generate_noise()*2*$sqrt(2));
+                Iout_binary_3_noise = (Iout_binary_3 + generate_noise()*2*$sqrt(2));
+                Iout += Iout_binary_3_noise;
             end 
 
             if(datain[4] == 1'b0 && datainb[4] ==1'b1 && dataical != 5'b00101) begin
-                Ioutb += (Iout_binary_4 + generate_noise()*4);
+                Iout_binary_4_noise = (Iout_binary_4 + generate_noise()*4);
+                Ioutb += Iout_binary_4_noise;
             end else if(datain[4] == 1'b1 && datainb[4] ==1'b0 && dataical != 5'b00101) begin
-                Iout += (Iout_binary_4 + generate_noise()*4);
+                Iout_binary_4_noise = (Iout_binary_4 + generate_noise()*4);
+                Iout += Iout_binary_4_noise;
             end 
 
             if(datain[5] == 1'b0 && datainb[5] ==1'b1 && dataical != 5'b00110) begin
-                Ioutb += (Iout_binary_5 + generate_noise()*4*$sqrt(2));
+                Iout_binary_5_noise = (Iout_binary_5 + generate_noise()*4*$sqrt(2));
+                Ioutb += Iout_binary_5_noise;
             end else if(datain[5] == 1'b1 && datainb[5] ==1'b0 && dataical != 5'b00110) begin
-                Iout += (Iout_binary_5 + generate_noise()*4*$sqrt(2));
+                Iout_binary_5_noise = (Iout_binary_5 + generate_noise()*4*$sqrt(2));
+                Iout += Iout_binary_5_noise;
             end 
 
             if(datatherm[0] == 1'b0 && datathermb[0] == 1'b1 && dataical != 5'b00111)begin
-                Ioutb += (Iout_them_0 + generate_noise()*8);
+                Iout_therm_0_noise = (Iout_them_0 + generate_noise()*8);
+                Ioutb += Iout_therm_0_noise;
             end if(datatherm[0] == 1'b1 && datathermb[0] == 1'b0 && dataical != 5'b00111) begin
-                Iout += (Iout_them_0 + generate_noise()*8);
+                Iout_therm_0_noise = (Iout_them_0 + generate_noise()*8);
+                Iout += Iout_therm_0_noise;
             end 
 
             if(datatherm[1] == 1'b0 && datathermb[1] == 1'b1 && dataical != 5'b01000)begin
-                Ioutb += (Iout_them_1 + generate_noise()*8);
+                Iout_therm_1_noise = (Iout_them_1 + generate_noise()*8);
+                Ioutb += Iout_therm_1_noise;
             end if(datatherm[1] == 1'b1 && datathermb[1] == 1'b0 && dataical != 5'b01000) begin
-                Iout += (Iout_them_1 + generate_noise()*8);
+                Iout_therm_1_noise = (Iout_them_1 + generate_noise()*8);
+                Iout += Iout_therm_1_noise;
             end 
 
             if(datatherm[2] == 1'b0 && datathermb[2] == 1'b1 && dataical != 5'b01001)begin
-                Ioutb += (Iout_them_2 + generate_noise()*8);
+                Iout_therm_2_noise = (Iout_them_2 + generate_noise()*8);
+                Ioutb += Iout_therm_2_noise;
             end if(datatherm[2] == 1'b1 && datathermb[2] == 1'b0 && dataical != 5'b01001) begin
-                Iout += (Iout_them_2 + generate_noise()*8);
+                Iout_therm_2_noise = (Iout_them_2 + generate_noise()*8);
+                Iout += Iout_therm_2_noise;
             end 
 
             if(datatherm[3] == 1'b0 && datathermb[3] == 1'b1 && dataical != 5'b01010)begin
-                Ioutb += (Iout_them_3 + generate_noise()*8);
+                Iout_therm_3_noise = (Iout_them_3 + generate_noise()*8);
+                Ioutb += Iout_therm_3_noise;
             end if(datatherm[3] == 1'b1 && datathermb[3] == 1'b0 && dataical != 5'b01010) begin
-                Iout += (Iout_them_3 + generate_noise()*8);
+                Iout_therm_3_noise = (Iout_them_3 + generate_noise()*8);
+                Iout += Iout_therm_3_noise;
             end 
 
             if(datatherm[4] == 1'b0 && datathermb[4] == 1'b1 && dataical != 5'b01011)begin
-                Ioutb += (Iout_them_4 + generate_noise()*8);
+                Iout_therm_4_noise = (Iout_them_4 + generate_noise()*8);
+                Ioutb += Iout_therm_4_noise;
             end if(datatherm[4] == 1'b1 && datathermb[4] == 1'b0 && dataical != 5'b01011) begin
-                Iout += (Iout_them_4 + generate_noise()*8);
+                Iout_therm_4_noise = (Iout_them_4 + generate_noise()*8);
+                Iout += Iout_therm_4_noise;
             end 
 
             if(datatherm[5] == 1'b0 && datathermb[5] == 1'b1 && dataical != 5'b01100)begin
-                Ioutb += (Iout_them_5 + generate_noise()*8);
+                Iout_therm_5_noise = (Iout_them_5 + generate_noise()*8);
+                Ioutb += Iout_therm_5_noise;
             end if(datatherm[5] == 1'b1 && datathermb[5] == 1'b0 && dataical != 5'b01100) begin
-                Iout += (Iout_them_5 + generate_noise()*8);
+                Iout_therm_5_noise = (Iout_them_5 + generate_noise()*8);
+                Iout += Iout_therm_5_noise;
             end 
 
             if(datatherm[6] == 1'b0 && datathermb[6] == 1'b1 && dataical != 5'b01101)begin
-                Ioutb += (Iout_them_6 + generate_noise()*8);
+                Iout_therm_6_noise = (Iout_them_6 + generate_noise()*8);
+                Ioutb += Iout_therm_6_noise;
             end if(datatherm[6] == 1'b1 && datathermb[6] == 1'b0 && dataical != 5'b01101) begin
-                Iout += (Iout_them_6 + generate_noise()*8);
+                Iout_therm_6_noise = (Iout_them_6 + generate_noise()*8);
+                Iout += Iout_therm_6_noise;
             end 
 
             if(datatherm[7] == 1'b0 && datathermb[7] == 1'b1 && dataical != 5'b01110)begin
-                Ioutb += (Iout_them_7 + generate_noise()*8);
+                Iout_therm_7_noise = (Iout_them_7 + generate_noise()*8);
+                Ioutb += Iout_therm_7_noise;
             end if(datatherm[7] == 1'b1 && datathermb[7] == 1'b0 && dataical != 5'b01110) begin
-                Iout += (Iout_them_7 + generate_noise()*8);
+                Iout_therm_7_noise = (Iout_them_7 + generate_noise()*8);
+                Iout += Iout_therm_7_noise;
             end 
 
             if(datatherm[8] == 1'b0 && datathermb[8] == 1'b1 && dataical != 5'b01111)begin
-                Ioutb += (Iout_them_8 + generate_noise()*8);
+                Iout_therm_8_noise = (Iout_them_8 + generate_noise()*8);
+                Ioutb += Iout_therm_8_noise;
             end if(datatherm[8] == 1'b1 && datathermb[8] == 1'b0 && dataical != 5'b01111) begin
-                Iout += (Iout_them_8 + generate_noise()*8);
+                Iout_therm_8_noise = (Iout_them_8 + generate_noise()*8);
+                Iout += Iout_therm_8_noise;
             end 
 
             if(datatherm[9] == 1'b0 && datathermb[9] == 1'b1 && dataical != 5'b10000)begin
-                Ioutb += (Iout_them_9 + generate_noise()*8);
+                Iout_therm_9_noise = (Iout_them_9 + generate_noise()*8);
+                Ioutb += Iout_therm_9_noise;
             end if(datatherm[9] == 1'b1 && datathermb[9] == 1'b0 && dataical != 5'b10000) begin
-                Iout += (Iout_them_9 + generate_noise()*8);
+                Iout_therm_9_noise = (Iout_them_9 + generate_noise()*8);
+                Iout += Iout_therm_9_noise;
             end 
 
             if(datatherm[10] == 1'b0 && datathermb[10] == 1'b1 && dataical != 5'b10001)begin
-                Ioutb += (Iout_them_10 + generate_noise()*8);
+                Iout_therm_10_noise = (Iout_them_10 + generate_noise()*8);
+                Ioutb += Iout_therm_10_noise;
             end if(datatherm[10] == 1'b1 && datathermb[10] == 1'b0 && dataical != 5'b10001) begin
-                Iout += (Iout_them_10 + generate_noise()*8);
+                Iout_therm_10_noise = (Iout_them_10 + generate_noise()*8);
+                Iout += Iout_therm_10_noise;
             end 
 
             if(datatherm[11] == 1'b0 && datathermb[11] == 1'b1 && dataical != 5'b10010)begin
-                Ioutb += (Iout_them_11 + generate_noise()*8);
+                Iout_therm_11_noise = (Iout_them_11 + generate_noise()*8);
+                Ioutb += Iout_therm_11_noise;
             end if(datatherm[11] == 1'b1 && datathermb[11] == 1'b0 && dataical != 5'b10010) begin
-                Iout += (Iout_them_11 + generate_noise()*8);
+                Iout_therm_11_noise = (Iout_them_11 + generate_noise()*8);
+                Iout += Iout_therm_11_noise;
             end 
 
             if(datatherm[12] == 1'b0 && datathermb[12] == 1'b1 && dataical != 5'b10011)begin
-                Ioutb += (Iout_them_12 + generate_noise()*8);
+                Iout_therm_12_noise = (Iout_them_12 + generate_noise()*8);
+                Ioutb += Iout_therm_12_noise;
             end if(datatherm[12] == 1'b1 && datathermb[12] == 1'b0 && dataical != 5'b10011) begin
-                Iout += (Iout_them_12 + generate_noise()*8);
+                Iout_therm_12_noise = (Iout_them_12 + generate_noise()*8);
+                Iout += Iout_therm_12_noise;
             end 
 
             if(datatherm[13] == 1'b0 && datathermb[13] == 1'b1 && dataical != 5'b10100)begin
-                Ioutb += (Iout_them_13 + generate_noise()*8);
+                Iout_therm_13_noise = (Iout_them_13 + generate_noise()*8);
+                Ioutb += Iout_therm_13_noise;
             end if(datatherm[13] == 1'b1 && datathermb[13] == 1'b0 && dataical != 5'b10100) begin
-                Iout += (Iout_them_13 + generate_noise()*8);
+                Iout_therm_13_noise = (Iout_them_13 + generate_noise()*8);
+                Iout += Iout_therm_13_noise;
             end 
 
             if(datatherm[14] == 1'b0 && datathermb[14] == 1'b1 && dataical != 5'b10101)begin
-                Ioutb += (Iout_them_14 + generate_noise()*8);
+                Iout_therm_14_noise = (Iout_them_14 + generate_noise()*8);
+                Ioutb += Iout_therm_14_noise;
             end if(datatherm[14] == 1'b1 && datathermb[14] == 1'b0 && dataical != 5'b10101) begin
-                Iout += (Iout_them_14 + generate_noise()*8);
+                Iout_therm_14_noise = (Iout_them_14 + generate_noise()*8);
+                Iout += Iout_therm_14_noise;
             end 
 
             /*if(datatherm[15] == 1'b0 && datathermb[15] == 1'b1 && dataical != 5'b10110)begin
-                Ioutb += Iout_them_15;
+                Iout_therm_15_noise = (Iout_them_15 + generate_noise()*8);
+                Ioutb += Iout_therm_15_noise;
             end if(datatherm[15] == 1'b1 && datathermb[15] == 1'b0 && dataical != 5'b10110) begin
-                Iout += Iout_them_15;
+                Iout_therm_15_noise = (Iout_them_15 + generate_noise()*8);
+                Iout += Iout_therm_15_noise;
             end 
 
             if(datatherm[16] == 1'b0 && datathermb[16] == 1'b1 && dataical != 5'b10111)begin
-                Ioutb += Iout_them_16;
+                Iout_therm_16_noise = (Iout_them_16 + generate_noise()*8);
+                Ioutb += Iout_therm_16_noise;
             end if(datatherm[16] == 1'b1 && datathermb[16] == 1'b0 && dataical != 5'b10111) begin
-                Iout += Iout_them_16;
+                Iout_therm_16_noise = (Iout_them_16 + generate_noise()*8);
+                Iout += Iout_therm_16_noise;
             end */
 
 

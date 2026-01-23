@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 22, 2026 at 21:02:42 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 23, 2026 at 13:56:41 CET
 xrun
 	-f xrun_tb_dac_all_non_linearities.f
 		-clean
@@ -64,13 +64,13 @@ xmvlog: *W,VARIST (../current_source_units/models/currentSourceUnits_all_non_lin
 file: ../current_sterring/models/current_sterring_noise.sv
         int mean = 0;         // Promedio de la distribución
                  |
-xmvlog: *W,VARIST (../current_sterring/models/current_sterring_noise.sv,256|17): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (../current_sterring/models/current_sterring_noise.sv,263|17): Local static variable with initializer requires 'static' keyword.
         int std_dev = 1000;     // Desviación estándar, sigma
                     |
-xmvlog: *W,VARIST (../current_sterring/models/current_sterring_noise.sv,257|20): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (../current_sterring/models/current_sterring_noise.sv,264|20): Local static variable with initializer requires 'static' keyword.
         real scalar =1e-12;  //Para ajustar el peso del ruido (1000*1e-12 = 1nA, el ruido tiene magnitud de nA)
                     |
-xmvlog: *W,VARIST (../current_sterring/models/current_sterring_noise.sv,260|20): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (../current_sterring/models/current_sterring_noise.sv,267|20): Local static variable with initializer requires 'static' keyword.
 	module worklib.currentSterring:sv
 		errors: 0, warnings: 3
 file: ../driver_cell/models/driver_cell_all_non_linearities.sv
@@ -149,27 +149,27 @@ xmelab: *N,MSFLON: Xcelium will initiate mixed signal elaboration, Reason: RNM m
 			streams:  15, words: 18499
 		worklib.local_bias:sv <0x51256669>
 			streams:   7, words: 14879
-		worklib.currentSterring:sv <0x2f025cfc>
-			streams:  29, words: 86863
-		worklib.currentSourceUnits:sv <0x6e397f6e>
-			streams:  14, words: 41509
 		worklib.top_level_schematic:sv <0x0e71fc47>
 			streams:  93, words: 34983
-		worklib.tb_dac_top:sv <0x67cde5f1>
-			streams:  24, words: 20450
+		worklib.tb_dac_top:sv <0x49eb9aa1>
+			streams:  25, words: 22748
 		worklib.level_shifter:sv <0x3b37b98a>
 			streams:   1, words:   331
+		worklib.currentSourceUnits:sv <0x6e397f6e>
+			streams:  14, words: 41509
+		worklib.currentSterring:sv <0x5bc0ca3d>
+			streams:  31, words: 106602
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                 Instances  Unique
 		Modules:                10      10
 		Verilog packages:        1       1
-		Registers:             440     440
+		Registers:             469     469
 		Scalar wires:          152       -
 		Vectored wires:         22       -
 		Always blocks:          68      68
-		Initial blocks:         52      52
+		Initial blocks:         55      55
 		Parallel blocks:         1       1
 		Cont. assignments:       2       2
 		Pseudo assignments:    109       -
@@ -183,30 +183,8 @@ SVSEED set from command line: 0
 [DMSINFO] Simulating with Xcelium Mixed-Signal App...
 xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
 xcelium> run
-xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,162): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_them_boundaries has failed
-Input currents from the bias generator are not correct: Iout_them_16=0.00 uA, Iout_them_15=-0.01 uA, Iout_them_14=-0.00 uA, Iout_them_13=-0.00 uA, Iout_them_12=0.00 uA, Iout_them_11=0.01 uA, Iout_them_10=-0.02 uA, Iout_them_9=-0.00 uA, Iout_them_8=0.01 uA, Iout_them_7=0.01 uA, Iout_them_6=0.01 uA, Iout_them_5=0.01 uA, Iout_them_4=-0.01 uA, Iout_them_3=-0.01 uA, Iout_them_2=-0.01 uA, Iout_them_1=-0.01 uA, Iout_them_0=0.01 uA
-xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,177): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_binary_5_boundaries has failed
-Input current MSB is not correct: Iout_binary_5=0.00 uA
-xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,189): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_binary_4_boundaries has failed
-Input current MSB-1 is not correct: Iout_binary_4=0.00 uA
-xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,201): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_binary_3_boundaries has failed
-Input current MSB-2 is not correct: Iout_binary_3=-0.01 uA
-xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,213): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_binary_2_boundaries has failed
-Input current MSB-3 is not correct: Iout_binary_2=0.00 uA
-xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,225): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_binary_1_boundaries has failed
-Input current MSB-4 is not correct: Iout_binary_1=-0.00 uA
-xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,237): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_binary_0_boundaries has failed
-Input current LSB is not correct: Iout_binary_0=0.00 uA
-xmsim: *W,ASRTST (../current_sterring/models/current_sterring_noise.sv,249): (time 0 FS) Assertion tb_dac_top.DUT.currentSterring_inst.iout_binary_0_red_boundaries has failed
-Input current redundancy is not correct: Iout_binary_0_red=0.00 uA
-xmsim: *W,WARSEV (../current_sterring/models/current_sterring_noise.sv,282): (time 0 FS).
-tb_dac_top.DUT.currentSterring_inst
-Input signals are not correct: Iout_them_check=0 Iout_binary_5_check=0 Iout_binary_4_check=0 Iout_binary_3_check=0 Iout_binary_2_check=0 Iout_binary_1_check=0 Iout_binary_0_check=0 Iout_binary_0_red_check=0
-xmsim: *W,WARSEV (../current_sterring/models/current_sterring_noise.sv,282): (time 0 FS).
-tb_dac_top.DUT.currentSterring_inst
-Input signals are not correct: Iout_them_check=1 Iout_binary_5_check=0 Iout_binary_4_check=0 Iout_binary_3_check=0 Iout_binary_2_check=0 Iout_binary_1_check=0 Iout_binary_0_check=0 Iout_binary_0_red_check=0
 Señal generada
-Simulation complete via $finish(1) at time 67108864 PS + 0
-./tb_dac_top.sv:123         $finish;
+Simulation complete via $finish(1) at time 999997440 PS + 0
+./tb_dac_top.sv:135         $finish;
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 22, 2026 at 21:03:00 CET  (total: 00:00:18)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 23, 2026 at 14:00:22 CET  (total: 00:03:41)

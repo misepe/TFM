@@ -1,8 +1,8 @@
 1757421742 /home/msegper/Documents/TFM/resistor_load/models/resistor_load.sv
 1768323308 /home/msegper/Documents/TFM/clock_distribution/models/clock_distribution_all_non_linearities.sv
-1769110800 /home/msegper/Documents/TFM/current_sterring/models/current_sterring_noise.sv
+1769172856 /home/msegper/Documents/TFM/current_sterring/models/current_sterring_noise.sv
 1769111283 /home/msegper/Documents/TFM/current_source_units/models/currentSourceUnits_all_non_linearities.sv
-1768925024 /home/msegper/Documents/TFM/DAC/tb_dac_top.sv
+1769167597 /home/msegper/Documents/TFM/DAC/tb_dac_top.sv
 1765376053 /home/msegper/Documents/TFM/local_bias/models/local_bias.sv
 1768323610 /home/msegper/Documents/TFM/rsync_latch/models/rsync_latch_all_non_linearities.sv
 1765465641 /home/msegper/Documents/TFM/DAC/top_level_schematic.sv

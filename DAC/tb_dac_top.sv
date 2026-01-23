@@ -51,8 +51,9 @@ module tb_dac_top ();
     string input_config_file = "./stimulus_input_config.txt";
     string output_config_file = "./output_config.txt";
     string output_file = "./output.txt";
+    string debug_file = "./debug.txt";
 
-    int input_fd, output_fd, input_fd_config, output_fd_config;
+    int input_fd, output_fd, input_fd_config, output_fd_config,debug_fd;
     real t, t_prev, value_real;
     logic valor_normalizado;
     logic [0:9] digital_10b;
@@ -60,6 +61,9 @@ module tb_dac_top ();
     int ret;
 
     real Vout_total;
+
+    real Ts;
+    longint delay_ps;
 
 
     always #5 clkin = ~clkin;
@@ -80,6 +84,7 @@ module tb_dac_top ();
         input_fd_config  = $fopen(input_config_file, "r");
         output_fd = $fopen(output_file, "w");
         output_fd_config  = $fopen(output_config_file, "w");
+        debug_fd = $fopen(debug_file, "w");
 
         if(!input_fd || !output_fd) begin
             $display("Error abriendo archivos");
@@ -101,6 +106,9 @@ module tb_dac_top ();
         $fwrite(output_fd_config,"%.15f \n",fs);
         $fwrite(output_fd_config,"%.15f %.15f \n",amplitud,freq);
         //$fwrite(output_fd,"%.15f %.15f %.15f \n",amplitud, duracion, fs);
+
+        Ts = 1.0/fs; //segundos
+        delay_ps = longint'(Ts * 1e12); //ps porque `timescale es 1ps
         do begin
             ret = $fscanf(input_fd,"%.15f %.15f %.15f %b %b %b %b %b\n",t, value_real, valor_normalizado, digital_10b, datainbin, datainbinb, dataintherm, datainthermb);
             //$display("t=%f, value_real=%.15f, valor_normalizado=%.15f, digital_10b=%b", t, value_real, valor_normalizado, digital_10b);
@@ -109,16 +117,20 @@ module tb_dac_top ();
             
             if(ret==8) begin
                 // Introducir un delay basado en la diferencia de tiempo
-                delay = int'(fs*duracion);
-                #(delay);
+                //delay = int'(fs*duracion);
+                #(delay_ps);
                 Vout_total = Vout - Voutb;
                 $fwrite(output_fd,"%.15f %.15f %.15f %.15f %b\n",t,Vout_total,Vout, Voutb,digital_10b);
+                $fwrite(debug_fd,"%.15f %.15f %.15f %.15f\n",delay_ps, t,DUT.CurrentSourceUnits_inst.Iout_binary_0,DUT.currentSterring_inst.Iout_binary_0);
             end
 
         end while(ret != -1);
 
         $fclose(input_fd);
         $fclose(output_fd);
+        $fclose(input_fd_config);
+        $fclose(output_fd_config);
+        $fclose(debug_fd);
         $display("Señal generada");
         $finish;
     end

@@ -107,8 +107,15 @@ module tb_dac_top ();
         $fwrite(output_fd_config,"%.15f %.15f \n",amplitud,freq);
         //$fwrite(output_fd,"%.15f %.15f %.15f \n",amplitud, duracion, fs);
 
-        Ts = 1.0/fs; //segundos
-        delay_ps = longint'(Ts * 1e12); //ps porque `timescale es 1ps
+        `ifndef gui_on
+            delay_ps = 1000;
+             $display("GUI OFF: less delay_ps = %0d ps", delay_ps);
+        `else
+            Ts = 1.0/fs;                 // segundos
+            delay_ps = longint'(Ts * 1e12); //ps porque `timescale es 1ps
+            $display("GUI OON: delay_ps = %0d ps", delay_ps);
+        `endif
+
         do begin
             ret = $fscanf(input_fd,"%.15f %.15f %.15f %b %b %b %b %b\n",t, value_real, valor_normalizado, digital_10b, datainbin, datainbinb, dataintherm, datainthermb);
             //$display("t=%f, value_real=%.15f, valor_normalizado=%.15f, digital_10b=%b", t, value_real, valor_normalizado, digital_10b);

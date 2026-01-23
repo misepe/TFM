@@ -2,6 +2,7 @@
 -access +rw                 // Turn on read/write object access 
 //-gui                        // Performs simulation in graphical mode
 //-input restore.tcl
+//`define gui_on   // <-- descomenta para GUI (delay=0)
 
 +define+DEBUG_DISPLAY
 

@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 23, 2026 at 13:56:41 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 23, 2026 at 14:18:35 CET
 xrun
 	-f xrun_tb_dac_all_non_linearities.f
 		-clean
@@ -151,8 +151,8 @@ xmelab: *N,MSFLON: Xcelium will initiate mixed signal elaboration, Reason: RNM m
 			streams:   7, words: 14879
 		worklib.top_level_schematic:sv <0x0e71fc47>
 			streams:  93, words: 34983
-		worklib.tb_dac_top:sv <0x49eb9aa1>
-			streams:  25, words: 22748
+		worklib.tb_dac_top:sv <0x349fea9e>
+			streams:  25, words: 22941
 		worklib.level_shifter:sv <0x3b37b98a>
 			streams:   1, words:   331
 		worklib.currentSourceUnits:sv <0x6e397f6e>
@@ -183,8 +183,9 @@ SVSEED set from command line: 0
 [DMSINFO] Simulating with Xcelium Mixed-Signal App...
 xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
 xcelium> run
+GUI OFF: less delay_ps = 1000 ps
 Señal generada
-Simulation complete via $finish(1) at time 999997440 PS + 0
-./tb_dac_top.sv:135         $finish;
+Simulation complete via $finish(1) at time 1024 NS + 0
+./tb_dac_top.sv:142         $finish;
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 23, 2026 at 14:00:22 CET  (total: 00:03:41)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 23, 2026 at 14:18:36 CET  (total: 00:00:01)

@@ -32,7 +32,7 @@ DEBUG_DISPLAY
 ../resistor_load/models/resistor_load.sv
 ../rsync_latch/models/rsync_latch_all_non_linearities.sv
 ./top_level_schematic.sv
-./tb_dac_top.sv
+./tb_dac_top_mean.sv
 -CDSLIB
 ./xcelium.d/run.lnx8664.24.03.d/cdsrun.lib
 -HDLVAR

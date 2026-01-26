@@ -1,7 +1,7 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 23, 2026 at 14:18:35 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 26, 2026 at 13:22:13 CET
 xrun
-	-f xrun_tb_dac_all_non_linearities.f
+	-f xrun_tb_dac_all_non_linearities_mean.f
 		-clean
 		-access +rw
 		+define+DEBUG_DISPLAY
@@ -22,7 +22,7 @@ xrun
 		../resistor_load/models/resistor_load.sv
 		../rsync_latch/models/rsync_latch_all_non_linearities.sv
 		./top_level_schematic.sv
-		./tb_dac_top.sv
+		./tb_dac_top_mean.sv
 		+SVSEED=0
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
 file: ../clock_distribution/models/clock_distribution_all_non_linearities.sv
@@ -115,7 +115,7 @@ xmvlog: *W,VARIST (../rsync_latch/models/rsync_latch_all_non_linearities.sv,142|
 file: ./top_level_schematic.sv
 	module worklib.top_level_schematic:sv
 		errors: 0, warnings: 0
-file: ./tb_dac_top.sv
+file: ./tb_dac_top_mean.sv
 	module worklib.tb_dac_top:sv
 		errors: 0, warnings: 0
 xmvlog: *W,SPDUSD: Include directory ../clock_distribution given but not used.
@@ -133,32 +133,32 @@ xmvlog: *W,SPDUSD: Include directory ../rsync_latch given but not used.
 xmelab: *N,MSFLON: Xcelium will initiate mixed signal elaboration, Reason: RNM module.
 	Top level design units:
 		cds_rnm_pkg
-		$unit_0x67f53119
+		$unit_0x6a65b0f0
 		level_shifter
 		tb_dac_top
 	Building instance overlay tables: .................... Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.clock_distribution:sv <0x110ebd51>
+		worklib.clock_distribution:sv <0x7c331bde>
 			streams:  85, words: 124175
-		worklib.resistor_load:sv <0x6b53b94f>
+		worklib.resistor_load:sv <0x58f6e65b>
 			streams:   4, words:  2809
-		worklib.rsync_latch:sv <0x4c83aa1e>
+		worklib.rsync_latch:sv <0x46403f82>
 			streams:  87, words: 53591
-		worklib.driver_cell:sv <0x4b873c91>
+		worklib.driver_cell:sv <0x11b1ef14>
 			streams:  15, words: 18499
-		worklib.local_bias:sv <0x51256669>
+		worklib.local_bias:sv <0x1bb8e099>
 			streams:   7, words: 14879
-		worklib.top_level_schematic:sv <0x0e71fc47>
-			streams:  93, words: 34983
-		worklib.tb_dac_top:sv <0x349fea9e>
-			streams:  25, words: 22941
-		worklib.level_shifter:sv <0x3b37b98a>
-			streams:   1, words:   331
-		worklib.currentSourceUnits:sv <0x6e397f6e>
-			streams:  14, words: 41509
-		worklib.currentSterring:sv <0x5bc0ca3d>
+		worklib.currentSterring:sv <0x1ef27496>
 			streams:  31, words: 106602
+		worklib.currentSourceUnits:sv <0x20062154>
+			streams:  14, words: 41509
+		worklib.top_level_schematic:sv <0x3a5dc493>
+			streams:  93, words: 34983
+		worklib.tb_dac_top:sv <0x44a1d603>
+			streams:  23, words: 25404
+		worklib.level_shifter:sv <0x34fb277c>
+			streams:   1, words:   331
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
@@ -169,7 +169,7 @@ xmelab: *N,MSFLON: Xcelium will initiate mixed signal elaboration, Reason: RNM m
 		Scalar wires:          152       -
 		Vectored wires:         22       -
 		Always blocks:          68      68
-		Initial blocks:         55      55
+		Initial blocks:         53      53
 		Parallel blocks:         1       1
 		Cont. assignments:       2       2
 		Pseudo assignments:    109       -
@@ -183,9 +183,41 @@ SVSEED set from command line: 0
 [DMSINFO] Simulating with Xcelium Mixed-Signal App...
 xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
 xcelium> run
-GUI OFF: less delay_ps = 1000 ps
-Señal generada
-Simulation complete via $finish(1) at time 1024 NS + 0
-./tb_dac_top.sv:142         $finish;
+GUI OFF: less delay_ps = 500 ps
+Run 1 completado
+Run 2 completado
+Run 3 completado
+Run 4 completado
+Run 5 completado
+Run 6 completado
+Run 7 completado
+Run 8 completado
+Run 9 completado
+Run 10 completado
+Run 11 completado
+Run 12 completado
+Run 13 completado
+Run 14 completado
+Run 15 completado
+Run 16 completado
+Run 17 completado
+Run 18 completado
+Run 19 completado
+Run 20 completado
+Run 21 completado
+Run 22 completado
+Run 23 completado
+Run 24 completado
+Run 25 completado
+Run 26 completado
+Run 27 completado
+Run 28 completado
+Run 29 completado
+Run 30 completado
+Run 31 completado
+Run 32 completado
+Los 32 runs se han completado
+Simulation complete via $finish(1) at time 131072 NS + 0
+./tb_dac_top_mean.sv:172         $finish;
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 23, 2026 at 14:18:36 CET  (total: 00:00:01)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 26, 2026 at 13:22:49 CET  (total: 00:00:36)

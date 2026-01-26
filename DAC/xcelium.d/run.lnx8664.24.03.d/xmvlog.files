@@ -11,4 +11,4 @@
 /home/msegper/Documents/TFM/resistor_load/models/resistor_load.sv
 /home/msegper/Documents/TFM/rsync_latch/models/rsync_latch_all_non_linearities.sv
 /home/msegper/Documents/TFM/DAC/top_level_schematic.sv
-/home/msegper/Documents/TFM/DAC/tb_dac_top.sv
+/home/msegper/Documents/TFM/DAC/tb_dac_top_mean.sv

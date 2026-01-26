@@ -86,7 +86,7 @@ module tb_dac_top ();
         output_fd_config  = $fopen(output_config_file, "w");
         debug_fd = $fopen(debug_file, "w");
 
-        if(!input_fd || !output_fd) begin
+        if(!input_fd || !output_fd || !input_fd_config || !output_fd_config || !debug_fd) begin
             $display("Error abriendo archivos");
             $finish;
         end

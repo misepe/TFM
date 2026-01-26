@@ -59,7 +59,7 @@ def real_to_code(señal, vref=1.0, tipo_senal="sinusoidal", n_bits=10):
 
 
 # ============================================================
-# Calculo del histograma para calcular DNL
+# Calculo del DNL
 # ============================================================
 
 
@@ -75,14 +75,13 @@ def dnl_por_pasos_barrido(señal, vref, tipo_senal, n_bits=10):
     señal = np.asarray(señal)
     n_codes = 2**n_bits
 
-    # Para output, NO recomiendo usar max(señal) como vref,
-    # pero si lo quieres mantener:
-    if tipo_senal == "output_rampa_por_codigos":
-        vref = max(señal)
-
-    # Unipolar 0..Vref -> LSB ideal por pasos
-    lsb_ideal = vref / (n_codes - 1)
-    print("lsb_ideal:", lsb_ideal, "vref", vref)
+    # LSB ideal por pasos, para DAC diferencial
+    vmax= max(señal)
+    vmin= min(señal)
+    print("Vmax:", vmax, "Vmin:", vmin)
+    vref = vmax - vmin
+    lsb_ideal = (vref / (n_codes -1))
+    print("lsb_ideal:", lsb_ideal, "vref:", vref, "n_codes:", n_codes)
 
     # Si hay más muestras que códigos, recortamos a n_codes
     # Si hay menos, calculamos con lo que haya (pero no será “1024 códigos”)
@@ -100,6 +99,45 @@ def dnl_por_pasos_barrido(señal, vref, tipo_senal, n_bits=10):
 
     return dnl_peak, dnl_k, niveles
 
+# ============================================================
+# Cálculo del INL
+# ============================================================
+def inl_por_pasos_barrido(niveles, n_bits=10):
+    """
+    Calcula INL por código a partir de un barrido de códigos.
+    - niveles: array con Vdiff(k) (idealmente 2^N puntos, 1 por código, ya asentados)
+    
+    Devuelve para cada método (endpoints y best fit):
+      inl_peak, inl_k, v_line, lsb
+    """
+    niveles = np.asarray(niveles).astype(float)
+    n_codes = 2**n_bits
+
+    # usar solo 2^N niveles
+    n = min(len(niveles), n_codes)
+    niveles = niveles[:n]
+
+    codes = np.arange(n)
+
+    # Ajuste lineal por endpoints
+    v0  = niveles[0]
+    vfs = niveles[-1]
+    lsb_ep = (vfs - v0) / (n_codes - 1)  # LSB ideal (en Vdiff)
+    v_line_ep = v0 + lsb_ep * codes
+
+    # Ajuste lineal por mínimos cuadrados (best fit)
+    # Ajuste lineal V = a + b*k
+    b, a = np.polyfit(codes, niveles, 1)  # b=slope, a=intercept
+    v_line_bf = a + b * codes
+    lsb_bf = b  # 1 código -> b voltios (equivalente a LSB "ajustado")
+
+    inl_k_ep = (niveles - v_line_ep) / (lsb_ep + 1e-30)   # en LSB
+    inl_peak_ep = np.max(np.abs(inl_k_ep))
+
+    inl_k_bf = (niveles - v_line_bf) / (lsb_bf + 1e-30)   # en LSB
+    inl_peak_bf = np.max(np.abs(inl_k_bf))
+
+    return inl_peak_ep, inl_k_ep, v_line_ep, lsb_ep, inl_peak_bf, inl_k_bf, v_line_bf, lsb_bf
 
 
 # ============================================================
@@ -110,7 +148,8 @@ def analizar_metrica_fft(señal, vref, tipo_senal, fs):
     Calcula métricas espectrales a partir de la FFT con amplitud real:
     - SNR
     - SFDR
-    - DNL (estimado por histograma)
+    - DNL 
+    - INL 
     """
 
     # FFT física
@@ -145,13 +184,10 @@ def analizar_metrica_fft(señal, vref, tipo_senal, fs):
     print("SFDR Calculation: P_signal =", P_signal, ", P_max_spur =", P_max_spur)
     SFDR = 10 * np.log10(P_signal / P_max_spur)
 
-    # --- DNL ---
-    # Estimación a partir del histograma de niveles (modelo RNM)
-    #hist, _ = np.histogram(señal, bins=256)
-    #ideal = np.mean(hist)
-    #DNL = np.max(np.abs(hist - ideal) / ideal)
+    # --- DNL e INL ---
 
     if tipo_senal == "rampa_por_codigos" or tipo_senal == "output_rampa_por_codigos":
+        # --- DNL ---
         DNL_peak, dnl_k, niveles = dnl_por_pasos_barrido(señal, vref, tipo_senal, n_bits=10)
         codes = real_to_code(señal, vref=vref, tipo_senal=tipo_senal, n_bits=10)
         hist = np.bincount(codes, minlength=2**10)
@@ -176,10 +212,40 @@ def analizar_metrica_fft(señal, vref, tipo_senal, fs):
         plt.grid(True)
         plt.tight_layout()
         plt.show(block=False)
+
+        # --- INL ---
+        INL_peak_ep, inl_k_ep, v_line_ep, lsb_ep, INL_peak_bf, inl_k_bf, v_line_bf, lsb_bf = inl_por_pasos_barrido(niveles, n_bits=10)
+
+        codes = np.arange(len(niveles))
+
+        plt.figure(figsize=(10,4))
+        plt.plot(codes, niveles, label="Vreal(k)")
+        plt.plot(codes, v_line_ep, label="Videal endpoint")
+        plt.title(f"Curva real vs ideal (Endpoint) ({tipo_senal})")
+        plt.xlabel("Código k")
+        plt.ylabel("Vdiff [V]")
+        plt.grid(True)
+        plt.legend()
+        plt.tight_layout()
+        plt.show(block=False)
+
+        plt.figure(figsize=(10,4))
+        plt.plot(codes, niveles, label="Vreal(k)")
+        plt.plot(codes, v_line_bf, label="Videal best-fit")
+        plt.title(f"Curva real vs ideal (Best-fit) ({tipo_senal})")
+        plt.xlabel("Código k")
+        plt.ylabel("Vdiff [V]")
+        plt.grid(True)
+        plt.legend()
+        plt.tight_layout()
+        plt.show(block=False)
+
     else:
         DNL_peak = np.nan
+        INL_peak_bf = np.nan
+        INL_peak_ep = np.nan
 
-    return SNR, SFDR, DNL_peak, frec, mag
+    return SNR, SFDR, DNL_peak, INL_peak_ep, INL_peak_bf, frec, mag
 
 
 # ============================================================
@@ -203,12 +269,14 @@ def procesar_archivo(archivo,archivo_config, titulo):
     fs = np.genfromtxt(archivo_config, dtype=float, skip_header=2, max_rows=1)
 
     # Métricas
-    SNR, SFDR, DNL, frec, mag = analizar_metrica_fft(señal, vref, tipo_senal, fs)
+    SNR, SFDR, DNL, INL_peak_ep, INL_peak_bf, frec, mag = analizar_metrica_fft(señal, vref, tipo_senal, fs)
 
     print(f"\nResultados para {titulo}")
     print(f"SNR  = {SNR:.2f} dB")
     print(f"SFDR = {SFDR:.2f} dB")
-    print(f"DNL  = {DNL:.4f}")
+    print(f"DNL  = {DNL:.4f} LSB")
+    print(f"INL (endpoint) = {INL_peak_ep:.4f} LSB")
+    print(f"INL (best fit) = {INL_peak_bf:.4f} LSB")
 
     # --- GRÁFICAS ---
     plt.figure(figsize=(12, 6))

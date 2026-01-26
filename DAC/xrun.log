@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 26, 2026 at 13:22:13 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 26, 2026 at 16:44:45 CET
 xrun
 	-f xrun_tb_dac_all_non_linearities_mean.f
 		-clean
@@ -220,4 +220,4 @@ Los 32 runs se han completado
 Simulation complete via $finish(1) at time 131072 NS + 0
 ./tb_dac_top_mean.sv:172         $finish;
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 26, 2026 at 13:22:49 CET  (total: 00:00:36)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 26, 2026 at 16:45:20 CET  (total: 00:00:35)

@@ -390,12 +390,12 @@ def procesar_archivo(archivo,archivo_config, titulo, archivo_mean = None):
     fs= leer_fs_de_config(archivo_config)
 
     # Métricas
-    SNR, SFDR, DNL, INL_peak_ep, INL_peak_bf, frec, mag = analizar_metrica_fft(señal_mean, vref, tipo_senal, fs,t_mean)
+    SNR, SFDR, DNL_peak, INL_peak_ep, INL_peak_bf, frec, mag = analizar_metrica_fft(señal_mean, vref, tipo_senal, fs,t_mean)
 
     print(f"\nResultados para {titulo}")
     print(f"SNR  = {SNR:.2f} dB")
     print(f"SFDR = {SFDR:.2f} dB")
-    print(f"DNL  = {DNL:.4f} LSB")
+    print(f"DNL  = {DNL_peak:.4f} LSB")
     print(f"INL (endpoint) = {INL_peak_ep:.4f} LSB")
     print(f"INL (best fit) = {INL_peak_bf:.4f} LSB")
 

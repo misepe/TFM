@@ -291,12 +291,12 @@ def procesar_archivo(archivo,archivo_config, titulo):
     fs = np.genfromtxt(archivo_config, dtype=float, skip_header=2, max_rows=1)
 
     # Métricas
-    SNR, SFDR, DNL, INL_peak_ep, INL_peak_bf, frec, mag = analizar_metrica_fft(señal, vref, tipo_senal, fs)
+    SNR, SFDR, DNL_peak, INL_peak_ep, INL_peak_bf, frec, mag = analizar_metrica_fft(señal, vref, tipo_senal, fs)
 
     print(f"\nResultados para {titulo}")
     print(f"SNR  = {SNR:.2f} dB")
     print(f"SFDR = {SFDR:.2f} dB")
-    print(f"DNL  = {DNL:.4f} LSB")
+    print(f"DNL  = {DNL_peak:.4f} LSB")
     print(f"INL (endpoint) = {INL_peak_ep:.4f} LSB")
     print(f"INL (best fit) = {INL_peak_bf:.4f} LSB")
 

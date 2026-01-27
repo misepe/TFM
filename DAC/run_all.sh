@@ -86,7 +86,16 @@ elif [ "$choice" -eq 2 ]; then
         echo "Ejecutando modelos ideales..."
         read -p "Quiere simular 32 veces para obtener mejores estadísticas? (y/n)" choice
         if [ "$choice" = "y" ]; then
-            xrun -f xrun_tb_dac_mean.f
+            #xrun -f xrun_tb_dac_mean.f
+
+            rm -rf output
+            mkdir -p output
+            for i in $(seq 1 32); do
+            xrun -f xrun_tb_dac.f +SVSEED=$i
+            mv output.txt output/output_run_${i}.txt   # o como lo generes
+            cp output_config.txt output/output_config_run_${i}.txt
+            done
+
             # Post-procesado: FFT y gráficas
             python3 fft_generator_mean.py
         else
@@ -99,7 +108,16 @@ elif [ "$choice" -eq 2 ]; then
         echo "Ejecutando modelos con mismatches..."
         read -p "Quiere simular 32 veces para obtener mejores estadísticas? (y/n)" choice
         if [ "$choice" = "y" ]; then
-            xrun -f xrun_tb_dac_mismatch_mean.f
+            #xrun -f xrun_tb_dac_mismatch_mean.f
+    
+            rm -rf output
+            mkdir -p output
+            for i in $(seq 1 32); do
+            xrun -f xrun_tb_dac_mismatch.f +SVSEED=$i
+            mv output.txt output/output_run_${i}.txt   # o como lo generes
+            cp output_config.txt output/output_config_run_${i}.txt
+            done
+
             # Post-procesado: FFT y gráficas
             python3 fft_generator_mean.py
         else 
@@ -112,7 +130,14 @@ elif [ "$choice" -eq 2 ]; then
         echo "Ejecutando modelos con jitter..."
         read -p "Quiere simular 32 veces para obtener mejores estadísticas? (y/n)" choice
         if [ "$choice" = "y" ]; then
-            xrun -f xrun_tb_dac_jitter_mean.f
+            #xrun -f xrun_tb_dac_jitter_mean.f
+            rm -rf output
+            mkdir -p output
+            for i in $(seq 1 32); do
+            xrun -f xrun_tb_dac_jitter.f +SVSEED=$i
+            mv output.txt output/output_run_${i}.txt   # o como lo generes
+            cp output_config.txt output/output_config_run_${i}.txt
+            done
             # Post-procesado: FFT y gráficas
             python3 fft_generator_mean.py
         else 
@@ -125,7 +150,14 @@ elif [ "$choice" -eq 2 ]; then
         echo "Ejecutando modelos con noise..."
         read -p "Quiere simular 32 veces para obtener mejores estadísticas? (y/n)" choice
         if [ "$choice" = "y" ]; then
-            xrun -f xrun_tb_dac_noise_mean.f
+            #xrun -f xrun_tb_dac_noise_mean.f
+            rm -rf output
+            mkdir -p output
+            for i in $(seq 1 32); do
+            xrun -f xrun_tb_dac_noise.f +SVSEED=$i
+            mv output.txt output/output_run_${i}.txt   # o como lo generes
+            cp output_config.txt output/output_config_run_${i}.txt
+            done
             # Post-procesado: FFT y gráficas
             python3 fft_generator_mean.py
         else 
@@ -138,7 +170,14 @@ elif [ "$choice" -eq 2 ]; then
         echo "Ejecutando modelos con todas las no linealidades..."
         read -p "Quiere simular 32 veces para obtener mejores estadísticas? (y/n)" choice
         if [ "$choice" = "y" ]; then
-            xrun -f xrun_tb_dac_all_non_linearities_mean.f
+            #xrun -f xrun_tb_dac_all_non_linearities_mean.f
+            rm -rf output
+            mkdir -p output
+            for i in $(seq 1 32); do
+            xrun -f xrun_tb_dac_all_non_linearities.f +SVSEED=$i
+            mv output.txt output/output_run_${i}.txt   # o como lo generes
+            cp output_config.txt output/output_config_run_${i}.txt
+            done
             # Post-procesado: FFT y gráficas
             python3 fft_generator_mean.py
         else

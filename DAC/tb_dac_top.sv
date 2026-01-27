@@ -108,7 +108,7 @@ module tb_dac_top ();
         //$fwrite(output_fd,"%.15f %.15f %.15f \n",amplitud, duracion, fs);
 
         `ifndef gui_on
-            delay_ps = 1000;
+            delay_ps = 500;
              $display("GUI OFF: less delay_ps = %0d ps", delay_ps);
         `else
             Ts = 1.0/fs;                 // segundos

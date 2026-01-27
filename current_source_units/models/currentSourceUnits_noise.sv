@@ -98,12 +98,16 @@ module currentSourceUnits (
     
         real scalar =1e-12;  //Para ajustar el peso del ruido (1000*1e-12 = 1nA, el ruido tiene magnitud de nA)
 
+        `ifndef DEBUG_DISPLAY
         $display("Probando $dist_normal con mean = %0.2f y std_dev = %0.2f", mean, std_dev);
+        `endif
 
         // Genera valor aleatorio
         seed = $urandom();
         random_value = $dist_normal(seed, mean, std_dev) * scalar;
+        `ifndef DEBUG_DISPLAY
         $display("noise = %.15fe-9 seed = %0d media =%.15f sigma = %.15f", random_value*1e9, seed, mean, std_dev*scalar);
+        `endif
         return random_value;
     endfunction
 

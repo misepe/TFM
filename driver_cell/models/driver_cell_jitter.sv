@@ -82,7 +82,9 @@ module driver_cell (
         // Genera valor aleatorio
         seed = $urandom();
         random_value = $dist_normal(seed, mean, std_dev);
+        `ifndef DEBUG_DISPLAY
         $display("jitter temporal = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
+        `endif
         return random_value;
     endfunction
 

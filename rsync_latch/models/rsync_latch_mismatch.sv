@@ -126,13 +126,15 @@ module rsync_latch(
         // Variables
         int seed ;  // Semilla para el generador de números aleatorios
         int mean = 0;         // Promedio de la distribución
-        int std_dev = 10;     // Desviación estándar, sigma
+        int std_dev = 1;     // Desviación estándar, sigma
         real random_value;      // Valor aleatorio generado
 
         // Genera valor aleatorio
         seed = $urandom();
         random_value = $dist_normal(seed, mean, std_dev);
+        `ifndef DEBUG_DISPLAY
         $display("mismatch temporal = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
+        `endif
         return random_value;
     endfunction
 

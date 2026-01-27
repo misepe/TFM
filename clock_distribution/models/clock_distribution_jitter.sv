@@ -128,7 +128,9 @@ module clock_distribution import cds_rnm_pkg::*;(
         // Genera valor aleatorio
         seed = $urandom();
         random_value = $dist_normal(seed, mean, std_dev);
+        `ifndef DEBUG_DISPLAY
         $display("jitter temporal[%0d] = %0d seed = %0d media =%0d sigma = %0d", i, random_value, seed, mean, std_dev);
+        `endif
         return random_value;
     endfunction
 

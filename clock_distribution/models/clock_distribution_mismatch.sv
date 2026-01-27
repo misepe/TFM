@@ -122,13 +122,15 @@ module clock_distribution import cds_rnm_pkg::*;(
         // Variables
         int seed ;  // Semilla para el generador de números aleatorios
         int mean = 0;         // Promedio de la distribución
-        int std_dev = 10;     // Desviación estándar, sigma
+        int std_dev = 1;     // Desviación estándar, sigma
         real random_value;      // Valor aleatorio generado
 
         // Genera valor aleatorio
         seed = $urandom();
         random_value = $dist_normal(seed, mean, std_dev);
+        `ifndef DEBUG_DISPLAY
         $display("mismatch temporal[%0d] = %0d seed = %0d media =%0d sigma = %0d", i, random_value, seed, mean, std_dev);
+        `endif
         return random_value;
     endfunction
 
@@ -138,18 +140,18 @@ module clock_distribution import cds_rnm_pkg::*;(
           mismatch_therm[i] = generate_mismatch_temp(i);
         end
         // Thermometric negated part mismatch generation
-        for (int j=0; j<17; j=j+1) begin
-          mismatch_thermb[j] = generate_mismatch_temp(j);
-        end
+        //for (int j=0; j<17; j=j+1) begin
+          //mismatch_thermb[j] = generate_mismatch_temp(j,"thermb");
+        //end
 
         // Binary part mismatch generation
         for (int k=0; k<6; k=k+1) begin
           mismatch_binary[k] = generate_mismatch_temp(k);
         end
         // Binary negated part mismatch generation
-        for (int l=0; l<6; l=l+1) begin
-          mismatch_binaryb[l] = generate_mismatch_temp(l);
-        end
+        //for (int l=0; l<6; l=l+1) begin
+          //mismatch_binaryb[l] = generate_mismatch_temp(l,"binaryb");
+        //end
     end
 
     always_comb begin
@@ -217,23 +219,23 @@ module clock_distribution import cds_rnm_pkg::*;(
             clkout_therm_2 = #(t_prop+mismatch_therm[2]) clkin;
             clkout_therm_1 = #(t_prop+mismatch_therm[1]) clkin;
             clkout_therm_0 = #(t_prop+mismatch_therm[0]) clkin;
-            clkoutb_therm_16 = #(t_prop+mismatch_thermb[16]) clkinb;
-            clkoutb_therm_15 = #(t_prop+mismatch_thermb[15]) clkinb;
-            clkoutb_therm_14 = #(t_prop+mismatch_thermb[14]) clkinb;
-            clkoutb_therm_13 = #(t_prop+mismatch_thermb[13]) clkinb;
-            clkoutb_therm_12 = #(t_prop+mismatch_thermb[12]) clkinb;
-            clkoutb_therm_11 = #(t_prop+mismatch_thermb[11]) clkinb;
-            clkoutb_therm_10 = #(t_prop+mismatch_thermb[10]) clkinb;
-            clkoutb_therm_9 = #(t_prop+mismatch_thermb[9]) clkinb;
-            clkoutb_therm_8 = #(t_prop+mismatch_thermb[8]) clkinb;
-            clkoutb_therm_7 = #(t_prop+mismatch_thermb[7]) clkinb;
-            clkoutb_therm_6 = #(t_prop+mismatch_thermb[6]) clkinb;
-            clkoutb_therm_5 = #(t_prop+mismatch_thermb[5]) clkinb;
-            clkoutb_therm_4 = #(t_prop+mismatch_thermb[4]) clkinb;
-            clkoutb_therm_3 = #(t_prop+mismatch_thermb[3]) clkinb;
-            clkoutb_therm_2 = #(t_prop+mismatch_thermb[2]) clkinb;
-            clkoutb_therm_1 = #(t_prop+mismatch_thermb[1]) clkinb;
-            clkoutb_therm_0 = #(t_prop+mismatch_thermb[0]) clkinb;
+            clkoutb_therm_16 = #(t_prop+mismatch_therm[16]) clkinb;
+            clkoutb_therm_15 = #(t_prop+mismatch_therm[15]) clkinb;
+            clkoutb_therm_14 = #(t_prop+mismatch_therm[14]) clkinb;
+            clkoutb_therm_13 = #(t_prop+mismatch_therm[13]) clkinb;
+            clkoutb_therm_12 = #(t_prop+mismatch_therm[12]) clkinb;
+            clkoutb_therm_11 = #(t_prop+mismatch_therm[11]) clkinb;
+            clkoutb_therm_10 = #(t_prop+mismatch_therm[10]) clkinb;
+            clkoutb_therm_9 = #(t_prop+mismatch_therm[9]) clkinb;
+            clkoutb_therm_8 = #(t_prop+mismatch_therm[8]) clkinb;
+            clkoutb_therm_7 = #(t_prop+mismatch_therm[7]) clkinb;
+            clkoutb_therm_6 = #(t_prop+mismatch_therm[6]) clkinb;
+            clkoutb_therm_5 = #(t_prop+mismatch_therm[5]) clkinb;
+            clkoutb_therm_4 = #(t_prop+mismatch_therm[4]) clkinb;
+            clkoutb_therm_3 = #(t_prop+mismatch_therm[3]) clkinb;
+            clkoutb_therm_2 = #(t_prop+mismatch_therm[2]) clkinb;
+            clkoutb_therm_1 = #(t_prop+mismatch_therm[1]) clkinb;
+            clkoutb_therm_0 = #(t_prop+mismatch_therm[0]) clkinb;
             clkout_binary_5 = #(t_prop+mismatch_binary[5]) clkin;
             clkout_binary_4 = #(t_prop+mismatch_binary[4]) clkin;
             clkout_binary_3 = #(t_prop+mismatch_binary[3]) clkin;
@@ -241,13 +243,13 @@ module clock_distribution import cds_rnm_pkg::*;(
             clkout_binary_1 = #(t_prop+mismatch_binary[1]) clkin;
             clkout_binary_0 = #(t_prop+mismatch_binary[0]) clkin;
             clkout_binary_0_red = #(t_prop+mismatch_binary[0]) clkin;
-            clkoutb_binary_5 = #(t_prop+mismatch_binaryb[5]) clkinb;
-            clkoutb_binary_4 = #(t_prop+mismatch_binaryb[4]) clkinb;
-            clkoutb_binary_3 = #(t_prop+mismatch_binaryb[3]) clkinb;
-            clkoutb_binary_2 = #(t_prop+mismatch_binaryb[2]) clkinb;
-            clkoutb_binary_1 = #(t_prop+mismatch_binaryb[1]) clkinb;
-            clkoutb_binary_0 = #(t_prop+mismatch_binaryb[0]) clkinb;
-            clkoutb_binary_0_red = #(t_prop+mismatch_binaryb[0]) clkinb;
+            clkoutb_binary_5 = #(t_prop+mismatch_binary[5]) clkinb;
+            clkoutb_binary_4 = #(t_prop+mismatch_binary[4]) clkinb;
+            clkoutb_binary_3 = #(t_prop+mismatch_binary[3]) clkinb;
+            clkoutb_binary_2 = #(t_prop+mismatch_binary[2]) clkinb;
+            clkoutb_binary_1 = #(t_prop+mismatch_binary[1]) clkinb;
+            clkoutb_binary_0 = #(t_prop+mismatch_binary[0]) clkinb;
+            clkoutb_binary_0_red = #(t_prop+mismatch_binary[0]) clkinb;
         
         join else if(pdb == 0)begin
 

@@ -92,6 +92,9 @@ module driver_cell (
         // Genera valor aleatorio
         seed = $urandom();
         random_value = $dist_normal(seed, mean, std_dev);
+        if (t_prop + random_value <0) begin
+            random_value = -t_prop; //Evitar tiempos de propagación negativos
+        end
         `ifndef DEBUG_DISPLAY
         $display("mismatch temporal %s = %0d seed = %0d media =%0d sigma = %0d", type_mismatch, random_value, seed, mean, std_dev);
         `endif

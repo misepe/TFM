@@ -132,7 +132,9 @@ module rsync_latch(
         // Genera valor aleatorio
         seed = $urandom();
         random_value = $dist_normal(seed, mean, std_dev);
+        `ifndef DEBUG_DISPLAY
         $display("jitter temporal = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
+        `endif
         return random_value;
     endfunction
 
@@ -197,9 +199,7 @@ module rsync_latch(
                 dataouttherm_aux[0] <='z;
                 dataoutthermb_aux[0] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_0 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_0, clkinb_therm_0);
-        end
+        end 
     end
 
     always @(posedge clkin_therm_1 or negedge clkinb_therm_1) begin
@@ -211,9 +211,7 @@ module rsync_latch(
                 dataouttherm_aux[1] <='z;
                 dataoutthermb_aux[1] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_1 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_1, clkinb_therm_1);
-        end
+        end 
     end
 
      always @(posedge clkin_therm_2 or negedge clkinb_therm_2) begin
@@ -225,9 +223,7 @@ module rsync_latch(
                 dataouttherm_aux[2] <='z;
                 dataoutthermb_aux[2] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_2 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_2, clkinb_therm_2);
-        end
+        end 
     end
 
      always @(posedge clkin_therm_3 or negedge clkinb_therm_3) begin
@@ -239,9 +235,7 @@ module rsync_latch(
                 dataouttherm_aux[3] <='z;
                 dataoutthermb_aux[3] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_3 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_3, clkinb_therm_3);
-        end
+        end 
     end
 
      always @(posedge clkin_therm_4 or negedge clkinb_therm_4) begin
@@ -253,9 +247,7 @@ module rsync_latch(
                 dataouttherm_aux[4] <='z;
                 dataoutthermb_aux[4] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_4 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_4, clkinb_therm_4);
-        end
+        end 
     end
 
      always @(posedge clkin_therm_5 or negedge clkinb_therm_5) begin
@@ -267,9 +259,7 @@ module rsync_latch(
                 dataouttherm_aux[5] <='z;
                 dataoutthermb_aux[5] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_5 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_5, clkinb_therm_5);
-        end
+        end 
     end
 
      always @(posedge clkin_therm_6 or negedge clkinb_therm_6) begin
@@ -281,9 +271,7 @@ module rsync_latch(
                 dataouttherm_aux[6] <='z;
                 dataoutthermb_aux[6] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_6 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_6, clkinb_therm_6);
-        end
+        end 
     end
 
     always @(posedge clkin_therm_7 or negedge clkinb_therm_7) begin
@@ -295,9 +283,7 @@ module rsync_latch(
                 dataouttherm_aux[7] <='z;
                 dataoutthermb_aux[7] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_7 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_7, clkinb_therm_7);
-        end
+        end 
     end
 
      always @(posedge clkin_therm_8 or negedge clkinb_therm_8) begin
@@ -309,9 +295,7 @@ module rsync_latch(
                 dataouttherm_aux[8] <='z;
                 dataoutthermb_aux[8] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_8 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_8, clkinb_therm_8);
-        end
+        end 
     end
 
      always @(posedge clkin_therm_9 or negedge clkinb_therm_9) begin
@@ -323,9 +307,7 @@ module rsync_latch(
                 dataouttherm_aux[9] <='z;
                 dataoutthermb_aux[9] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_9 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_9, clkinb_therm_9);
-        end
+        end 
     end
 
      always @(posedge clkin_therm_10 or negedge clkinb_therm_10) begin
@@ -337,9 +319,7 @@ module rsync_latch(
                 dataouttherm_aux[10] <='z;
                 dataoutthermb_aux[10] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_10 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_10, clkinb_therm_10);
-        end
+        end 
     end
 
      always @(posedge clkin_therm_11 or negedge clkinb_therm_11) begin
@@ -351,9 +331,7 @@ module rsync_latch(
                 dataouttherm_aux[11] <='z;
                 dataoutthermb_aux[11] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_11 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_11, clkinb_therm_11);
-        end
+        end 
     end
 
      always @(posedge clkin_therm_12 or negedge clkinb_therm_12) begin
@@ -365,9 +343,7 @@ module rsync_latch(
                 dataouttherm_aux[12] <='z;
                 dataoutthermb_aux[12] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_12 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_12, clkinb_therm_12);
-        end
+        end 
     end
 
      always @(posedge clkin_therm_13 or negedge clkinb_therm_13) begin
@@ -379,9 +355,7 @@ module rsync_latch(
                 dataouttherm_aux[13] <='z;
                 dataoutthermb_aux[13] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_13 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_13, clkinb_therm_13);
-        end
+        end 
     end
 
      always @(posedge clkin_therm_14 or negedge clkinb_therm_14) begin
@@ -393,9 +367,7 @@ module rsync_latch(
                 dataouttherm_aux[14] <='z;
                 dataoutthermb_aux[14] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_14 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_14, clkinb_therm_14);
-        end
+        end 
     end
 
      always @(posedge clkin_therm_15 or negedge clkinb_therm_15) begin
@@ -407,9 +379,7 @@ module rsync_latch(
                 dataouttherm_aux[15] <='z;
                 dataoutthermb_aux[15] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_15 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_15, clkinb_therm_15);
-        end
+        end 
     end
 
      always @(posedge clkin_therm_16 or negedge clkinb_therm_16) begin
@@ -421,9 +391,7 @@ module rsync_latch(
                 dataouttherm_aux[16] <='z;
                 dataoutthermb_aux[16] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for therm_16 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_therm_16, clkinb_therm_16);
-        end
+        end 
     end
 
     always @(dataouttherm_aux or dataoutthermb_aux) begin
@@ -485,9 +453,7 @@ module rsync_latch(
                 dataoutbin_aux[0] <='z;
                 dataoutbinb_aux[0] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for bin_0_red are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_0_red, clkinb_binary_0_red);
-        end
+        end 
     end
     
     always @(posedge clkin_binary_0 or negedge clkinb_binary_0) begin
@@ -499,9 +465,7 @@ module rsync_latch(
                 dataoutbin_aux[1] <='z;
                 dataoutbinb_aux[1] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for bin_0 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_0, clkinb_binary_0);
-        end
+        end 
     end
 
     always @(posedge clkin_binary_1 or negedge clkinb_binary_1) begin
@@ -513,9 +477,7 @@ module rsync_latch(
                 dataoutbin_aux[2] <='z;
                 dataoutbinb_aux[2] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for bin_1 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_1, clkinb_binary_1);
-        end
+        end 
     end
 
     always @(posedge clkin_binary_2 or negedge clkinb_binary_2) begin
@@ -527,9 +489,7 @@ module rsync_latch(
                 dataoutbin_aux[3] <='z;
                 dataoutbinb_aux[3] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for bin_3 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_2, clkinb_binary_2);
-        end
+        end 
     end
 
     always @(posedge clkin_binary_3 or negedge clkinb_binary_3) begin
@@ -541,9 +501,7 @@ module rsync_latch(
                 dataoutbin_aux[4] <='z;
                 dataoutbinb_aux[4] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for bin_3 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_3, clkinb_binary_3);
-        end
+        end 
     end
     
     always @(posedge clkin_binary_4 or negedge clkinb_binary_4) begin
@@ -555,9 +513,7 @@ module rsync_latch(
                 dataoutbin_aux[5] <='z;
                 dataoutbinb_aux[5] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for bin_4 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_4, clkinb_binary_4);
-        end
+        end 
     end
 
     always @(posedge clkin_binary_5 or negedge clkinb_binary_5) begin
@@ -569,9 +525,7 @@ module rsync_latch(
                 dataoutbin_aux[6] <='z;
                 dataoutbinb_aux[6] <= 'z;
             end
-        end else begin
-            $warning("Clock signals for bin_5 are not in the correct state: clkin= %0d, clkinb= %0d", clkin_binary_5, clkinb_binary_5);
-        end
+        end 
     end
     
      always @(dataoutbin_aux or dataoutbinb_aux) begin

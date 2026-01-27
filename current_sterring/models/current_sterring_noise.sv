@@ -70,7 +70,7 @@ module currentSterring import cds_rnm_pkg::*;(
     //to check that iref current is within the boundaries +/-10%
     parameter real IREF = 500e-6; // 500 µA
     always @(iref_500ua) begin
-        if(!check_en ||(iref_500ua >= IREF*0.9 && iref_500ua <= IREF*1.1)) begin
+        if(!check_en || (iref_500ua >= IREF*0.9 && iref_500ua <= IREF*1.1)) begin
             iref_check = 1;
         end else begin
             iref_check = 0;

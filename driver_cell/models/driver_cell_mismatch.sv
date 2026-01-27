@@ -76,13 +76,19 @@ module driver_cell (
         // Variables
         int seed ;  // Semilla para el generador de números aleatorios
         int mean = 0;         // Promedio de la distribución
-        int std_dev = 10;     // Desviación estándar, sigma
+        int std_dev = 1;     // Desviación estándar, sigma
         real random_value;      // Valor aleatorio generado
 
         // Genera valor aleatorio
         seed = $urandom();
         random_value = $dist_normal(seed, mean, std_dev);
+        if (t_prop + random_value <0) begin
+            random_value = -t_prop; //Evitar tiempos de propagación negativos
+        end
+        `ifndef DEBUG_DISPLAY
         $display("mismatch temporal = %0d seed = %0d media =%0d sigma = %0d", random_value, seed, mean, std_dev);
+        `endif
+        
         return random_value;
     endfunction
 

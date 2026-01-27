@@ -3,4 +3,4 @@
 // Do not modify this file
 //
 -f
-xrun_tb_dac_mismatch_mean.f
+xrun_tb_dac_jitter_mean.f

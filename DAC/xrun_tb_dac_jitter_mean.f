@@ -25,7 +25,7 @@
 
 //./thermometer_decoder.sv
 ./top_level_schematic.sv 
-./tb_dac_top.sv
+./tb_dac_top_mean.sv
 
 
 +SVSEED=0

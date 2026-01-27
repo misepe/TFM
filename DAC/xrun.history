@@ -1,4 +1,6 @@
-#e1(27Jan2026:14:41:50): source ./xcelium.d/env.d/env.history.27Jan2026_14_41_50
-s1(27Jan2026:14:41:50):  xrun thermometer_decoder.sv 
-#e2(27Jan2026:14:41:53): source ./xcelium.d/env.d/env.history.27Jan2026_14_41_53
-s2(27Jan2026:14:41:53):  xrun -f xrun_tb_dac_noise.f 
+#e1(27Jan2026:14:59:40): source ./xcelium.d/env.d/env.history.27Jan2026_14_59_40
+s1(27Jan2026:14:59:40):  xrun thermometer_decoder.sv 
+#e2(27Jan2026:15:00:28): source ./xcelium.d/env.d/env.history.27Jan2026_15_00_28
+s2(27Jan2026:15:00:28):  xrun thermometer_decoder.sv 
+#e3(27Jan2026:15:00:38): source ./xcelium.d/env.d/env.history.27Jan2026_15_00_38
+s3(27Jan2026:15:00:38):  xrun -f xrun_tb_dac_mismatch_mean.f 

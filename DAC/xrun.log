@@ -1,7 +1,7 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 27, 2026 at 14:41:53 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 27, 2026 at 15:00:38 CET
 xrun
-	-f xrun_tb_dac_noise.f
+	-f xrun_tb_dac_mismatch_mean.f
 		-clean
 		-access +rw
 		+define+DEBUG_DISPLAY
@@ -13,48 +13,51 @@ xrun
 		-incdir ../local_bias
 		-incdir ../resistor_load
 		-incdir ../rsync_latch
-		../clock_distribution/models/clock_distribution.sv
-		../current_source_units/models/currentSourceUnits_noise.sv
-		../current_sterring/models/current_sterring_noise.sv
-		../driver_cell/models/driver_cell.sv
+		../clock_distribution/models/clock_distribution_mismatch.sv
+		../current_source_units/models/currentSourceUnits_mismatch.sv
+		../current_sterring/models/current_sterring.sv
+		../driver_cell/models/driver_cell_mismatch.sv
 		../level_shifter/models/level_shifter.sv
 		../local_bias/models/local_bias.sv
 		../resistor_load/models/resistor_load.sv
-		../rsync_latch/models/rsync_latch.sv
+		../rsync_latch/models/rsync_latch_mismatch.sv
 		./top_level_schematic.sv
-		./tb_dac_top.sv
+		./tb_dac_top_mean.sv
 		+SVSEED=0
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
-file: ../clock_distribution/models/clock_distribution.sv
-	module worklib.clock_distribution:sv
-		errors: 0, warnings: 0
-file: ../current_source_units/models/currentSourceUnits_noise.sv
+file: ../clock_distribution/models/clock_distribution_mismatch.sv
         int mean = 0;         // Promedio de la distribución
                  |
-xmvlog: *W,VARIST (../current_source_units/models/currentSourceUnits_noise.sv,95|17): Local static variable with initializer requires 'static' keyword.
-        int std_dev = 1000;     // Desviación estándar, sigma
+xmvlog: *W,VARIST (../clock_distribution/models/clock_distribution_mismatch.sv,124|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 1;     // Desviación estándar, sigma
                     |
-xmvlog: *W,VARIST (../current_source_units/models/currentSourceUnits_noise.sv,96|20): Local static variable with initializer requires 'static' keyword.
-        real scalar =1e-12;  //Para ajustar el peso del ruido (1000*1e-12 = 1nA, el ruido tiene magnitud de nA)
+xmvlog: *W,VARIST (../clock_distribution/models/clock_distribution_mismatch.sv,125|20): Local static variable with initializer requires 'static' keyword.
+	module worklib.clock_distribution:sv
+		errors: 0, warnings: 2
+file: ../current_source_units/models/currentSourceUnits_mismatch.sv
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (../current_source_units/models/currentSourceUnits_mismatch.sv,111|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 20;     // Desviación estándar, sigma
                     |
-xmvlog: *W,VARIST (../current_source_units/models/currentSourceUnits_noise.sv,99|20): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (../current_source_units/models/currentSourceUnits_mismatch.sv,112|20): Local static variable with initializer requires 'static' keyword.
+        real scale = 1000; // para escalar la desviación estándar y que sea 2%
+                   |
+xmvlog: *W,VARIST (../current_source_units/models/currentSourceUnits_mismatch.sv,115|19): Local static variable with initializer requires 'static' keyword.
 	module worklib.currentSourceUnits:sv
 		errors: 0, warnings: 3
-file: ../current_sterring/models/current_sterring_noise.sv
+file: ../current_sterring/models/current_sterring.sv
+	module worklib.currentSterring:sv
+		errors: 0, warnings: 0
+file: ../driver_cell/models/driver_cell_mismatch.sv
         int mean = 0;         // Promedio de la distribución
                  |
-xmvlog: *W,VARIST (../current_sterring/models/current_sterring_noise.sv,263|17): Local static variable with initializer requires 'static' keyword.
-        int std_dev = 1000;     // Desviación estándar, sigma
+xmvlog: *W,VARIST (../driver_cell/models/driver_cell_mismatch.sv,78|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 1;     // Desviación estándar, sigma
                     |
-xmvlog: *W,VARIST (../current_sterring/models/current_sterring_noise.sv,264|20): Local static variable with initializer requires 'static' keyword.
-        real scalar =1e-12;  //Para ajustar el peso del ruido (1000*1e-12 = 1nA, el ruido tiene magnitud de nA)
-                    |
-xmvlog: *W,VARIST (../current_sterring/models/current_sterring_noise.sv,267|20): Local static variable with initializer requires 'static' keyword.
-	module worklib.currentSterring:sv
-		errors: 0, warnings: 3
-file: ../driver_cell/models/driver_cell.sv
+xmvlog: *W,VARIST (../driver_cell/models/driver_cell_mismatch.sv,79|20): Local static variable with initializer requires 'static' keyword.
 	module worklib.driver_cell:sv
-		errors: 0, warnings: 0
+		errors: 0, warnings: 2
 file: ../level_shifter/models/level_shifter.sv
 	module worklib.level_shifter:sv
 		errors: 0, warnings: 0
@@ -64,13 +67,19 @@ file: ../local_bias/models/local_bias.sv
 file: ../resistor_load/models/resistor_load.sv
 	module worklib.resistor_load:sv
 		errors: 0, warnings: 0
-file: ../rsync_latch/models/rsync_latch.sv
+file: ../rsync_latch/models/rsync_latch_mismatch.sv
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (../rsync_latch/models/rsync_latch_mismatch.sv,128|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 1;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (../rsync_latch/models/rsync_latch_mismatch.sv,129|20): Local static variable with initializer requires 'static' keyword.
 	module worklib.rsync_latch:sv
-		errors: 0, warnings: 0
+		errors: 0, warnings: 2
 file: ./top_level_schematic.sv
 	module worklib.top_level_schematic:sv
 		errors: 0, warnings: 0
-file: ./tb_dac_top.sv
+file: ./tb_dac_top_mean.sv
 	module worklib.tb_dac_top:sv
 		errors: 0, warnings: 0
 xmvlog: *W,SPDUSD: Include directory ../clock_distribution given but not used.
@@ -88,44 +97,44 @@ xmvlog: *W,SPDUSD: Include directory ../rsync_latch given but not used.
 xmelab: *N,MSFLON: Xcelium will initiate mixed signal elaboration, Reason: RNM module.
 	Top level design units:
 		cds_rnm_pkg
-		$unit_0x6031f42f
+		$unit_0x4b60e8de
 		level_shifter
 		tb_dac_top
 	Building instance overlay tables: .................... Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.clock_distribution:sv <0x507104ac>
-			streams:  10, words: 29840
-		worklib.resistor_load:sv <0x08203c63>
+		worklib.clock_distribution:sv <0x6ae02d8e>
+			streams:  60, words: 94760
+		worklib.resistor_load:sv <0x7e2b2786>
 			streams:   4, words:  2809
-		worklib.rsync_latch:sv <0x2fc983e6>
-			streams: 127, words: 75008
-		worklib.driver_cell:sv <0x31b0b498>
-			streams:   7, words:  9023
-		worklib.local_bias:sv <0x0eec6d76>
+		worklib.rsync_latch:sv <0x15c5c0e8>
+			streams: 137, words: 106414
+		worklib.driver_cell:sv <0x2007c1c0>
+			streams:  15, words: 17094
+		worklib.local_bias:sv <0x00fa9a8c>
 			streams:   7, words: 14879
-		worklib.top_level_schematic:sv <0x0965a70b>
+		worklib.currentSterring:sv <0x649d9ada>
+			streams:  29, words: 74125
+		worklib.currentSourceUnits:sv <0x4a1c5185>
+			streams:  12, words: 38707
+		worklib.top_level_schematic:sv <0x729e2079>
 			streams:  93, words: 34983
-		worklib.tb_dac_top:sv <0x2b6a6411>
-			streams:  25, words: 22986
-		worklib.level_shifter:sv <0x453062eb>
+		worklib.tb_dac_top:sv <0x1772d9f4>
+			streams:  23, words: 25404
+		worklib.level_shifter:sv <0x7eeac992>
 			streams:   1, words:   331
-		worklib.currentSourceUnits:sv <0x17425f42>
-			streams:  11, words: 31912
-		worklib.currentSterring:sv <0x5671d859>
-			streams:  31, words: 106602
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                 Instances  Unique
 		Modules:                10      10
 		Verilog packages:        1       1
-		Registers:             380     380
+		Registers:             411     411
 		Scalar wires:          152       -
 		Vectored wires:         22       -
-		Always blocks:          64      64
-		Initial blocks:         41      41
-		Parallel blocks:         1       1
+		Always blocks:          70      70
+		Initial blocks:         48      48
+		Parallel blocks:         3       3
 		Cont. assignments:       2       2
 		Pseudo assignments:    109       -
 		Assertions:             30      30
@@ -138,9 +147,65 @@ SVSEED set from command line: 0
 [DMSINFO] Simulating with Xcelium Mixed-Signal App...
 xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
 xcelium> run
-GUI OFF: less delay_ps = 1000 ps
-Señal generada
-Simulation complete via $finish(1) at time 8192 NS + 0
-./tb_dac_top.sv:142         $finish;
+mismatch temporal = 0.0180 seed = -2015147697 media =0 sigma = 20
+mismatch temporal = -0.0280 seed = -1564838843 media =0 sigma = 20
+mismatch temporal = -0.0200 seed = -1447776425 media =0 sigma = 20
+mismatch temporal = 0.0040 seed = 1093138063 media =0 sigma = 20
+mismatch temporal = -0.0150 seed = 988522602 media =0 sigma = 20
+mismatch temporal = -0.0010 seed = 1685491200 media =0 sigma = 20
+mismatch temporal = 0.0130 seed = 2031838614 media =0 sigma = 20
+mismatch temporal = -0.0390 seed = 1993086745 media =0 sigma = 20
+mismatch temporal = 0.0230 seed = -1598590643 media =0 sigma = 20
+mismatch temporal = 0.0230 seed = 1380642708 media =0 sigma = 20
+mismatch temporal = 0.0170 seed = -1090848089 media =0 sigma = 20
+mismatch temporal = 0.0110 seed = -899090463 media =0 sigma = 20
+mismatch temporal = -0.0460 seed = -2087256882 media =0 sigma = 20
+mismatch temporal = 0.0260 seed = -2043088887 media =0 sigma = 20
+mismatch temporal = 0.0170 seed = -1853553918 media =0 sigma = 20
+mismatch temporal = -0.0210 seed = 1387496594 media =0 sigma = 20
+mismatch temporal = -0.0120 seed = -1652345207 media =0 sigma = 20
+mismatch temporal = 0.0010 seed = -298858717 media =0 sigma = 20
+mismatch temporal = -0.0120 seed = 831456443 media =0 sigma = 20
+mismatch temporal = 0.0080 seed = 757023443 media =0 sigma = 20
+mismatch temporal = -0.0040 seed = -289978914 media =0 sigma = 20
+mismatch temporal = 0.0040 seed = 328654380 media =0 sigma = 20
+mismatch temporal = -0.0010 seed = 276171051 media =0 sigma = 20
+mismatch temporal = -0.0290 seed = 1594674549 media =0 sigma = 20
+GUI OFF: less delay_ps = 500 ps
+Run 1 completado
+Run 2 completado
+Run 3 completado
+Run 4 completado
+Run 5 completado
+Run 6 completado
+Run 7 completado
+Run 8 completado
+Run 9 completado
+Run 10 completado
+Run 11 completado
+Run 12 completado
+Run 13 completado
+Run 14 completado
+Run 15 completado
+Run 16 completado
+Run 17 completado
+Run 18 completado
+Run 19 completado
+Run 20 completado
+Run 21 completado
+Run 22 completado
+Run 23 completado
+Run 24 completado
+Run 25 completado
+Run 26 completado
+Run 27 completado
+Run 28 completado
+Run 29 completado
+Run 30 completado
+Run 31 completado
+Run 32 completado
+Los 32 runs se han completado
+Simulation complete via $finish(1) at time 131072 NS + 0
+./tb_dac_top_mean.sv:172         $finish;
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 27, 2026 at 14:41:55 CET  (total: 00:00:02)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 27, 2026 at 15:00:56 CET  (total: 00:00:18)

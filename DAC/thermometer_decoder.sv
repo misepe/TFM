@@ -6,7 +6,9 @@ module stimulus_processor;
   parameter int THERM_BITS = 17;   // tamaño del bus termométrico final
   parameter int LSB_BITS   = 6;    // LSB binarios reales
   
-  real VREF      = 1.0;
+  real VREF = 1.0;
+  real amp_in;
+  real VFS = 2.0; // Voltaje full scale (pico a pico)
 
   string file_in  = "input.txt";
   string file_in_config  = "input_config.txt";
@@ -53,8 +55,8 @@ module stimulus_processor;
     r = $fscanf(fin_config,"%.15f\n",fs);
     $fwrite(fout_config, "%.15f \n",fs);
     while(!$feof(fin_config)) begin
-      r = $fscanf(fin_config,"%.15f %.15f\n",VREF,freq);
-      $fwrite(fout_config, "%.15f %.15f \n",VREF,freq);
+      r = $fscanf(fin_config,"%.15f %.15f\n",amp_in,freq);
+      $fwrite(fout_config, "%.15f %.15f \n",amp_in,freq);
     end
     //end
 
@@ -65,28 +67,39 @@ module stimulus_processor;
 
       // cuantización a 10 bits
       if(tipo_senal == "sinusoidal") begin
-        digital_10b = $rtoi(((((value_real+VREF)/ (2*VREF)) * ((1<<N_BITS)-1)))); //Subir la señal para que no hayan valores negativos
+        VFS = 2.0*amp_in; // si A es amplitud pico a pico
+        digital_10b = int'(((((value_real+amp_in)/ (VFS)) * ((1<<N_BITS)-1)))); //Subir la señal para que no hayan valores negativos
+        //digital_10b = $rtoi(((((value_real+amp_in)/ (VFS)) * ((1<<N_BITS)-1)))); //Subir la señal para que no hayan valores negativos
+        //digital_10b = $rtoi(((((value_real+VREF)/ (2*VREF)) * ((1<<N_BITS)-1)))); //Subir la señal para que no hayan valores negativos
       end else if (tipo_senal == "rampa_por_codigos") begin
-        digital_10b = $rtoi((value_real)); // en rampa por códigos el valor ya está entre 0 y 1023
+        digital_10b = int'(value_real); // en rampa por códigos el valor ya está entre 0 y 1023
+        //digital_10b = $rtoi((value_real)); // en rampa por códigos el valor ya está entre 0 y 1023
       end else begin
-        digital_10b = $rtoi((((value_real/ VREF) * ((1<<N_BITS)-1)))); // si son rampa u otra señal sin negativos no hace falta subirla
+        VREF = amp_in;
+        digital_10b = int'((((value_real/ VREF) * ((1<<N_BITS)-1)))); // si son rampa u otra señal sin negativos no hace falta subirla
+        //digital_10b = $rtoi((((value_real/ VREF) * ((1<<N_BITS)-1)))); // si son rampa u otra señal sin negativos no hace falta subirla
       end
+
+      if (digital_10b < 0) digital_10b = 0;
+      if (digital_10b > ((1<<N_BITS)-1)) digital_10b = (1<<N_BITS)-1;
+
       
       // separación MSB/LSB
       msb_bin = digital_10b[N_BITS-1 -: MSB_BITS];
       lsb_bin = digital_10b[LSB_BITS-1:0];
 
       // Construimos bus binario de 7 bits (1 redundante = 0)
-      Datainbin = {1'bx,lsb_bin};//lsb_bin[0]};       // [6]=extra , [5:0]=LSB
+      Datainbin = {1'b0,lsb_bin};//lsb_bin[0]};       // [6]=extra , [5:0]=LSB
       Datainbinb = ~Datainbin;
 
       // Termómetro 17 bits
       Dataintherm  = to_therm(msb_bin);
+      Dataintherm[16:15] = 2'b00; 
       Datainthermb = ~Dataintherm;
 
       // Guardado en archivo
       if(tipo_senal == "sinusoidal") begin
-          $fwrite(fout, "%.15f %.15f %.15f %b %b %b %b %b\n",t_sample, value_real, ((value_real+VREF)/ (2*VREF)), digital_10b, Datainbin, Datainbinb, Dataintherm, Datainthermb);
+          $fwrite(fout, "%.15f %.15f %.15f %b %b %b %b %b\n",t_sample, value_real,(value_real + amp_in) / (2.0*amp_in), digital_10b, Datainbin, Datainbinb, Dataintherm, Datainthermb);
       end else if (tipo_senal == "rampa_por_codigos") begin
         $fwrite(fout, "%.15f %.15f %.15f %b %b %b %b %b\n",t_sample, value_real, value_real, digital_10b, Datainbin, Datainbinb, Dataintherm, Datainthermb);
       end else begin

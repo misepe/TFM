@@ -218,7 +218,9 @@ def analizar_metrica_fft(señal, vref, tipo_senal, fs):
 
         codes = np.arange(len(niveles))
 
-        plt.figure(figsize=(10,4))
+        #Plot INL curves endpoint
+        plt.figure(figsize=(10,8))
+        plt.subplot(2, 1, 1)
         plt.plot(codes, niveles, label="Vreal(k)")
         plt.plot(codes, v_line_ep, label="Videal endpoint")
         plt.title(f"Curva real vs ideal (Endpoint) ({tipo_senal})")
@@ -226,10 +228,21 @@ def analizar_metrica_fft(señal, vref, tipo_senal, fs):
         plt.ylabel("Vdiff [V]")
         plt.grid(True)
         plt.legend()
+
+        plt.subplot(2, 1, 2)
+        plt.plot(codes, inl_k_ep, label="INL(k) endpoint")
+        plt.title(f"Curva INL endpoint ({tipo_senal})")
+        plt.xlabel("Código k")
+        plt.ylabel("INL [LSB]")
+        plt.grid(True)
+        plt.legend()
+
         plt.tight_layout()
         plt.show(block=False)
 
-        plt.figure(figsize=(10,4))
+        #Plot INL curves best-fit
+        plt.figure(figsize=(10,8))
+        plt.subplot(2, 1, 1)
         plt.plot(codes, niveles, label="Vreal(k)")
         plt.plot(codes, v_line_bf, label="Videal best-fit")
         plt.title(f"Curva real vs ideal (Best-fit) ({tipo_senal})")
@@ -237,6 +250,15 @@ def analizar_metrica_fft(señal, vref, tipo_senal, fs):
         plt.ylabel("Vdiff [V]")
         plt.grid(True)
         plt.legend()
+
+        plt.subplot(2, 1, 2)
+        plt.plot(codes, inl_k_bf, label="INL(k) best-fit")
+        plt.title(f"Curva INL best-fit ({tipo_senal})")
+        plt.xlabel("Código k")
+        plt.ylabel("INL [LSB]")
+        plt.grid(True)
+        plt.legend()
+
         plt.tight_layout()
         plt.show(block=False)
 
@@ -326,19 +348,28 @@ def comparar_fft(archivo_in, archivo_out):
     _, mag_out = fft_amplitud_real(sig_out, fs)
 
     # --- FFT COMPARATIVA ---
-    plt.figure(figsize=(10, 5))
+    plt.figure(figsize=(10, 10))
+    plt.subplot(2, 1, 1)
     plt.plot(frec, 20 * np.log10(mag_in + 1e-15), label="Input", linewidth=1)
     plt.plot(frec, (20 * np.log10(mag_out + 1e-15)), label="Output", linewidth=1, alpha=0.8)
-
-    #La comparación de la salida es a full scale
-    plt.plot(frec, (20 * np.log10(mag_out + 1e-15))-np.max(20 * np.log10(mag_out + 1e-15)), label="Output_full_sacle", linewidth=1, alpha=0.8)
-
     plt.title("Comparación FFT Input vs Output")
     plt.xlabel("Frecuencia [Hz]")
     plt.ylabel("Magnitud [dB]")
     plt.xscale("log")
     plt.grid(True)
     plt.legend()
+
+    plt.subplot(2, 1, 2)
+    #La comparación de la salida es a full scale
+    plt.plot(frec, (20 * np.log10(mag_in + 1e-15))-np.max(20 * np.log10(mag_in + 1e-15)), label="Input_full_scale", linewidth=1)
+    plt.plot(frec, (20 * np.log10(mag_out + 1e-15))-np.max(20 * np.log10(mag_out + 1e-15)), label="Output_full_scale", linewidth=1, alpha=0.8)
+    plt.title("FFT Output normalizada a Full Scale")
+    plt.xlabel("Frecuencia [Hz]")
+    plt.ylabel("Magnitud [dBFS]")
+    plt.xscale("log")
+    plt.grid(True)
+    plt.legend()
+
     plt.show(block=False)
 
     # --- SEÑALES TEMPORALES ---

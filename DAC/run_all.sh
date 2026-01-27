@@ -21,8 +21,9 @@ if [ "$choice" -eq 1 ]; then
     echo "1: Modelo ideal"
     echo "2: Modelos con mismatches"
     echo "3: Modelos con jitter"
-    echo "4: Modelos con todas las no linealidades"
-    read -p "Ingrese su elección (1,2,3 o 4): " choice
+    echo "4: Modelos con noise"
+    echo "5: Modelos con todas las no linealidades"
+    read -p "Ingrese su elección (1,2,3,4 o 5): " choice
 
     if [ "$choice" -eq 1 ]; then
         echo "Ejecutando modelos ideales..."
@@ -32,7 +33,7 @@ if [ "$choice" -eq 1 ]; then
 
     elif [ "$choice" -eq 2 ]; then
         echo "Ejecutando modelos con mismatches..."
-        xrun -f xrun_tb_dac_mismatches.f
+        xrun -f xrun_tb_dac_mismatch.f
         # Post-procesado: FFT y gráficas
         python3 fft_generator.py
 
@@ -43,7 +44,13 @@ if [ "$choice" -eq 1 ]; then
         python3 fft_generator.py
 
     elif [ "$choice" -eq 4 ]; then
-        echo "Ejecutando modelos con mismatches y jitter..."
+        echo "Ejecutando modelos con noise..."
+        xrun -f xrun_tb_dac_noise.f
+        # Post-procesado: FFT y gráficas
+        python3 fft_generator.py
+
+    elif [ "$choice" -eq 5 ]; then
+        echo "Ejecutando modelos con todas las no linealidades..."
         xrun -f xrun_tb_dac_all_non_linearities.f
         # Post-procesado: FFT y gráficas
         python3 fft_generator.py
@@ -71,26 +78,26 @@ elif [ "$choice" -eq 2 ]; then
     echo "1: Modelo ideal"
     echo "2: Modelos con mismatches"
     echo "3: Modelos con jitter"
-    echo "4: Modelos con todas las no linealidades"
-    read -p "Ingrese su elección (1,2,3 o 4): " choice
+    echo "4: Modelos con noise"
+    echo "5: Modelos con todas las no linealidades"
+    read -p "Ingrese su elección (1,2,3,4 o 5): " choice
 
     if [ "$choice" -eq 1 ]; then
         echo "Ejecutando modelos ideales..."
-        ###DUDA: SI el modelo es ideal, ¿tiene sentido hacer 32 simulaciones para obtener mejores estadísticas si no tiene ruido?
-        #read -p "Quiere simular 32 veces para obtener mejores estadísticas? (y/n)" choice
-        #if [ "$choice" = "y" ]; then
-        #    xrun -f xrun_tb_dac_mean.f
+        read -p "Quiere simular 32 veces para obtener mejores estadísticas? (y/n)" choice
+        if [ "$choice" = "y" ]; then
+            xrun -f xrun_tb_dac_mean.f
             # Post-procesado: FFT y gráficas
-        #    python3 fft_generator_mean.py
-        #else
+            python3 fft_generator_mean.py
+        else
             xrun -f xrun_tb_dac.f
             # Post-procesado: FFT y gráficas
             python3 fft_generator.py
-        #fi
+        fi
 
     elif [ "$choice" -eq 2 ]; then
         echo "Ejecutando modelos con mismatches..."
-        xrun -f xrun_tb_dac_mismatches.f
+        xrun -f xrun_tb_dac_mismatch.f
         # Post-procesado: FFT y gráficas
         python3 fft_generator.py
 
@@ -100,8 +107,14 @@ elif [ "$choice" -eq 2 ]; then
         # Post-procesado: FFT y gráficas
         python3 fft_generator.py
 
-    elif [ "$choice" -eq 4 ]; then
-        echo "Ejecutando modelos con mismatches y jitter..."
+     elif [ "$choice" -eq 4 ]; then
+        echo "Ejecutando modelos con noise..."
+        xrun -f xrun_tb_dac_noise.f
+        # Post-procesado: FFT y gráficas
+        python3 fft_generator.py
+
+    elif [ "$choice" -eq 5 ]; then
+        echo "Ejecutando modelos con todas las no linealidades..."
         read -p "Quiere simular 32 veces para obtener mejores estadísticas? (y/n)" choice
         if [ "$choice" = "y" ]; then
             xrun -f xrun_tb_dac_all_non_linearities_mean.f
@@ -133,8 +146,9 @@ elif [ "$choice" -eq 3 ]; then
     echo "1: Modelo ideal"
     echo "2: Modelos con mismatches"
     echo "3: Modelos con jitter"
-    echo "4: Modelos con todas las no linealidades"
-    read -p "Ingrese su elección (1,2,3 o 4): " choice
+    echo "4: Modelos con noise"
+    echo "5: Modelos con todas las no linealidades"
+    read -p "Ingrese su elección (1,2,3,4 o 5): " choice
 
     if [ "$choice" -eq 1 ]; then
         echo "Ejecutando modelos ideales..."
@@ -144,7 +158,7 @@ elif [ "$choice" -eq 3 ]; then
 
     elif [ "$choice" -eq 2 ]; then
         echo "Ejecutando modelos con mismatches..."
-        xrun -f xrun_tb_dac_mismatches.f
+        xrun -f xrun_tb_dac_mismatch.f
         # Post-procesado: FFT y gráficas
         python3 fft_generator.py
 
@@ -154,8 +168,14 @@ elif [ "$choice" -eq 3 ]; then
         # Post-procesado: FFT y gráficas
         python3 fft_generator.py
 
-    elif [ "$choice" -eq 4 ]; then
-        echo "Ejecutando modelos con mismatches y jitter..."
+     elif [ "$choice" -eq 4 ]; then
+        echo "Ejecutando modelos con noise..."
+        xrun -f xrun_tb_dac_noise.f
+        # Post-procesado: FFT y gráficas
+        python3 fft_generator.py
+
+    elif [ "$choice" -eq 5 ]; then
+        echo "Ejecutando modelos con todas las no linealidades..."
         xrun -f xrun_tb_dac_all_non_linearities.f
         # Post-procesado: FFT y gráficas
         python3 fft_generator.py

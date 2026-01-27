@@ -3,6 +3,8 @@
 //-gui                        // Performs simulation in graphical mode
 //-input restore.tcl
 
++define+DEBUG_DISPLAY
+
 -incdir ../clock_distribution
 -incdir ../current_source_units
 -incdir ../current_sterring

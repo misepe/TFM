@@ -21,7 +21,7 @@ module tb;
 
   // --- Parámetros del histograma ---
   localparam int N_SAMPLES = 10000;
-  localparam int N_BINS    = 50;
+  localparam int N_BINS    = 100;
 
   // Rango del histograma: +/- 5 sigma (en unidades físicas)
   // sigma_fis = std_dev * scalar = 1000 * 1e-12 = 1e-9

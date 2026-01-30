@@ -19,6 +19,13 @@ plt.plot(x, gauss, linewidth=2, label="Gaussiana (fit)")
 plt.title("Histograma + ajuste gaussiano")
 plt.xlabel("Valor de ruido")
 plt.ylabel("Densidad")
+
+# Añadir texto con valores de mu y sigma en notación científica
+plt.text(0.05, 0.95, f"Media (μ): {mu:.5e}\nDesviación estándar (σ): {sigma:.5e}",
+         transform=plt.gca().transAxes, fontsize=12,
+         verticalalignment='top', horizontalalignment='left',
+         bbox=dict(facecolor='white', alpha=0.8, edgecolor='black'))
+
 plt.grid(True)
 plt.legend()
 plt.tight_layout()

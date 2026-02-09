@@ -147,7 +147,7 @@ module clock_distribution import cds_rnm_pkg::*;(
     logic clkoutb_binary_5_aux, clkoutb_binary_4_aux, clkoutb_binary_3_aux, clkoutb_binary_2_aux, clkoutb_binary_1_aux, clkoutb_binary_0_aux, clkoutb_binary_0_red_aux;
 
     always@(clkin, clkinb,pdb) begin
-        if(pdb == 1) begin
+        if(input_check == 1 && pdb == 1) begin
             // Load clkin and clkinb into auxiliary signals
             fork
                 begin
@@ -256,57 +256,57 @@ module clock_distribution import cds_rnm_pkg::*;(
             end
             join_none
         
-        end else if(pdb == 0)begin
+        end else if(input_check == 1 && pdb == 0)begin
 
-            clkout_therm_16 = 0;
-            clkout_therm_15 = 0;
-            clkout_therm_14 = 0;
-            clkout_therm_13 = 0;
-            clkout_therm_12 = 0;
-            clkout_therm_11 = 0;
-            clkout_therm_10 = 0;
-            clkout_therm_9 = 0;
-            clkout_therm_8 = 0;
-            clkout_therm_7 = 0;
-            clkout_therm_6 = 0;
-            clkout_therm_5 = 0;
-            clkout_therm_4 = 0;
-            clkout_therm_3 = 0;
-            clkout_therm_2 = 0;
-            clkout_therm_1 = 0;
-            clkout_therm_0 = 0;
-            clkoutb_therm_16 = 0;
-            clkoutb_therm_15 = 0;
-            clkoutb_therm_14 = 0;
-            clkoutb_therm_13 = 0;
-            clkoutb_therm_12 = 0;
-            clkoutb_therm_11 = 0;
-            clkoutb_therm_10 = 0;
-            clkoutb_therm_9 = 0;
-            clkoutb_therm_8 = 0;
-            clkoutb_therm_7 = 0;
-            clkoutb_therm_6 = 0;
-            clkoutb_therm_5 = 0;
-            clkoutb_therm_4 = 0;
-            clkoutb_therm_3 = 0;
-            clkoutb_therm_2 = 0;
-            clkoutb_therm_1 = 0;
-            clkoutb_therm_0 = 0;
+            clkout_therm_16 = 'z;
+            clkout_therm_15 = 'z;
+            clkout_therm_14 = 'z;
+            clkout_therm_13 = 'z;
+            clkout_therm_12 = 'z;
+            clkout_therm_11 = 'z;
+            clkout_therm_10 = 'z;
+            clkout_therm_9 = 'z;
+            clkout_therm_8 = 'z;
+            clkout_therm_7 = 'z;
+            clkout_therm_6 = 'z;
+            clkout_therm_5 = 'z;
+            clkout_therm_4 = 'z;
+            clkout_therm_3 = 'z;
+            clkout_therm_2 = 'z;
+            clkout_therm_1 = 'z;
+            clkout_therm_0 = 'z;
+            clkoutb_therm_16 = 'z;
+            clkoutb_therm_15 = 'z;
+            clkoutb_therm_14 = 'z;
+            clkoutb_therm_13 = 'z;
+            clkoutb_therm_12 = 'z;
+            clkoutb_therm_11 = 'z;
+            clkoutb_therm_10 = 'z;
+            clkoutb_therm_9 = 'z;
+            clkoutb_therm_8 = 'z;
+            clkoutb_therm_7 = 'z;
+            clkoutb_therm_6 = 'z;
+            clkoutb_therm_5 = 'z;
+            clkoutb_therm_4 = 'z;
+            clkoutb_therm_3 = 'z;
+            clkoutb_therm_2 = 'z;
+            clkoutb_therm_1 = 'z;
+            clkoutb_therm_0 = 'z;
             
-            clkout_binary_5 = 0;
-            clkout_binary_4 = 0;
-            clkout_binary_3 = 0;
-            clkout_binary_2 = 0;
-            clkout_binary_1 = 0; 
-            clkout_binary_0 = 0;
-            clkout_binary_0_red = 0;
-            clkoutb_binary_5 = 0;
-            clkoutb_binary_4 = 0;
-            clkoutb_binary_3 = 0;
-            clkoutb_binary_2 = 0;
-            clkoutb_binary_1 = 0;
-            clkoutb_binary_0 = 0;
-            clkoutb_binary_0_red = 0;
+            clkout_binary_5 = 'z;
+            clkout_binary_4 = 'z;
+            clkout_binary_3 = 'z;
+            clkout_binary_2 = 'z;
+            clkout_binary_1 = 'z; 
+            clkout_binary_0 = 'z;
+            clkout_binary_0_red = 'z;
+            clkoutb_binary_5 = 'z;
+            clkoutb_binary_4 = 'z;
+            clkoutb_binary_3 = 'z;
+            clkoutb_binary_2 = 'z;
+            clkoutb_binary_1 = 'z;
+            clkoutb_binary_0 = 'z;
+            clkoutb_binary_0_red = 'z;
 
         end
 

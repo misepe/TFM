@@ -1,4 +1,4 @@
-# SimVision Command Script (Tue Oct 28 15:33:34 CET 2025)
+# SimVision Command Script (Mon Feb 09 12:22:38 CET 2026)
 #
 # Version 24.03.s004
 #
@@ -12,6 +12,10 @@
 # Preferences
 #
 preferences set plugin-enable-svdatabrowser-new 1
+preferences set toolbar-Standard-WaveWindow {
+  usual
+  position -pos 1
+}
 preferences set plugin-enable-groupscope 0
 preferences set plugin-enable-interleaveandcompare 0
 preferences set plugin-enable-waveformfrequencyplot 0
@@ -144,8 +148,26 @@ waveform set \
     -signalwidth 175 \
     -units ps \
     -valuewidth 75
-waveform baseline set -time 0
+waveform baseline set -time 500ps
 
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.iref_25ua}]}
+	} ]]
+waveform format $id -trace analogSampleAndHold -color #78ff00
+waveform axis range $id -for default -min 2.2500000000000001e-05 -max 2.7500000000000004e-05 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.vddana_0p8}]}
+	} ]]
+waveform format $id -trace analogSampleAndHold -color #ffc300
+waveform axis range $id -for default -min 0.72000000000000008 -max 0.88000000000000012 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.vssana}]}
+	} ]]
+waveform format $id -trace analogSampleAndHold -color #ff0000
+waveform axis range $id -for default -min -1 -max 1 -scale linear
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.atb_ena[1:0]}]}
+	} ]]
 set id [waveform add -signals [subst  {
 	{simulator::[format {clock_distribution_tb.dut.atb0}]}
 	} ]]
@@ -157,13 +179,25 @@ set id [waveform add -signals [subst  {
 waveform format $id -trace analogSampleAndHold -color #00ff4a
 waveform axis range $id -for default -min 2.5000000000000001e-05 -max 0.80000000000000004 -scale linear
 set id [waveform add -signals [subst  {
-	{simulator::[format {clock_distribution_tb.dut.atb_ena[1:0]}]}
+	{simulator::[format {clock_distribution_tb.dut.pdb}]}
 	} ]]
 set id [waveform add -signals [subst  {
 	{simulator::[format {clock_distribution_tb.dut.clkin}]}
 	} ]]
 set id [waveform add -signals [subst  {
 	{simulator::[format {clock_distribution_tb.dut.clkinb}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.clkout_binary_0}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.clkoutb_binary_0}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.clkout_therm_0}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {clock_distribution_tb.dut.clkoutb_therm_0}]}
 	} ]]
 
 set groupId0 [waveform add -groups clkout_binary]
@@ -181,26 +215,8 @@ waveform hierarchy collapse $groupId0
 set groupId0 [waveform add -groups clkoutb_therm]
 waveform hierarchy collapse $groupId0
 
-set id [waveform add -signals [subst  {
-	{simulator::[format {clock_distribution_tb.dut.iref_25ua}]}
-	} ]]
-waveform format $id -trace analogSampleAndHold -color #78ff00
-waveform axis range $id -for default -min 2.2500000000000001e-05 -max 2.7500000000000004e-05 -scale linear
-set id [waveform add -signals [subst  {
-	{simulator::[format {clock_distribution_tb.dut.pdb}]}
-	} ]]
-set id [waveform add -signals [subst  {
-	{simulator::[format {clock_distribution_tb.dut.vddana_0p8}]}
-	} ]]
-waveform format $id -trace analogSampleAndHold -color #ffc300
-waveform axis range $id -for default -min 0.72000000000000008 -max 0.88000000000000012 -scale linear
-set id [waveform add -signals [subst  {
-	{simulator::[format {clock_distribution_tb.dut.vssana}]}
-	} ]]
-waveform format $id -trace analogSampleAndHold -color #ff0000
-waveform axis range $id -for default -min -1 -max 1 -scale linear
 
-waveform xview limits 0 750000ps
+waveform xview limits 0 3000ps
 
 #
 # Waveform Window Links

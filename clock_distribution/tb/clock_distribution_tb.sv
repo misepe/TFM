@@ -109,7 +109,7 @@ module clock_distribution_tb;
         pdb = 0;
         vddana_0p8 = 0.8;
         vssana = 0.0;
-        #500;
+        #300;
         $display("clkout_therm_16 = %b, clkoutb_therm_16 = %b", clkout_therm_16, clkoutb_therm_16);
 
         // Test 2: Estado encendido con atb_ena = 2'b00
@@ -118,19 +118,19 @@ module clock_distribution_tb;
         atb_ena = 2'b00;
         vddana_0p8 = 0.8;
         vssana = 0.0;
-        #500;
+        #300;
         $display("atb1 = %0.2f, atb0 = %0.2f", atb1, atb0);
 
         // Test 3: Estado encendido con atb_ena = 2'b01
         $display("Test 3: Estado encendido con atb_ena = 2'b01");
         atb_ena = 2'b01;
-        #500;
+        #300;
         $display("atb1 = %0.2f, atb0 = %0.2f", atb1, atb0);
 
         // Test 4: Estado encendido con atb_ena = 2'b10
         $display("Test 4: Estado encendido con atb_ena = 2'b10");
         atb_ena = 2'b10;
-        #500;
+        #300;
         $display("atb1 = %0.2f, atb0 = %0.2f", atb1, atb0);
 
         // Test 5: Estado encendido con atb_ena = 2'b11

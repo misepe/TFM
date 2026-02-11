@@ -4,11 +4,12 @@ module local_bias(
     input real vddana_1p8,       // 1.8V power supply
     input real vddana_0p8,       // 0.8V power supply
     input real vssana,           // Ground connection
-    input logic [0:1] atb_ena,        // Analog testbus enable 
+    input logic [1:0] atb_ena,        // Analog testbus enable 
     output real iclkdist_25ua, // 25?A clock distribution current
     output real isynclatch_25ua, // 25?A sync latch current
     output real icurrentsterring_500ua, // 500?A current steering bias current
     output real icurrentsource_500ua,   // 500?A current source bias current
+    output real vcas,                   //gate cascode voltage
     output real atb1,               // Analog testbus 1
     output real atb0                // Analog testbus 0
 );
@@ -86,6 +87,7 @@ module local_bias(
             isynclatch_25ua = 25e-6; // 25 ?A
             icurrentsterring_500ua = 500e-6; // 500 ?A
             icurrentsource_500ua = 500e-6;   // 500 ?A
+            vcas = 0.8;    //0.8V
             
         end else if(pdb == 0) begin
             atb1 = `wrealZState;
@@ -94,6 +96,7 @@ module local_bias(
             isynclatch_25ua = `wrealZState;
             icurrentsterring_500ua = `wrealZState;
             icurrentsource_500ua = `wrealZState;
+            vcas = `wrealZState;   
         end
     end
 

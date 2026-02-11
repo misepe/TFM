@@ -5,6 +5,6 @@
 1765374095 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/currentSterring/systemVerilog/verilog.sv
 1764600639 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/driver_cell/systemVerilog/verilog.sv
 1764591990 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/level_shifter/systemVerilog/verilog.sv
-1765376161 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/local_bias/systemVerilog/verilog.sv
+1770810627 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/local_bias/systemVerilog/verilog.sv
 1764592220 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/rsync_latch/systemVerilog/verilog.sv
 1764592333 /home/msegper/Documents/TFM/Virtuoso_connect/top_level_DAC/v2i/systemVerilog/verilog.sv

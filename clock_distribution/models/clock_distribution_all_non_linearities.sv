@@ -210,7 +210,7 @@ module clock_distribution import cds_rnm_pkg::*;(
     logic clkoutb_binary_5_aux, clkoutb_binary_4_aux, clkoutb_binary_3_aux, clkoutb_binary_2_aux, clkoutb_binary_1_aux, clkoutb_binary_0_aux, clkoutb_binary_0_red_aux;
 
     always@(clkin, clkinb,pdb) begin
-        if(pdb == 1) fork
+        if(pdb == 1) begin //fork
             // Load clkin and clkinb into auxiliary signals
             jitter_therm[16] = generate_jitter_temp(16,"therm");
             jitter_therm[15] = generate_jitter_temp(15,"therm");
@@ -260,56 +260,57 @@ module clock_distribution import cds_rnm_pkg::*;(
             jitter_binaryb[0] = generate_jitter_temp(0,"binaryb");*/
 
             
-            clkout_therm_16 = #(t_prop+jitter_therm[16]+mismatch_therm[16]) clkin;
-            clkout_therm_15 = #(t_prop+jitter_therm[15]+mismatch_therm[15]) clkin;
-            clkout_therm_14 = #(t_prop+jitter_therm[14]+mismatch_therm[14]) clkin;
-            clkout_therm_13 = #(t_prop+jitter_therm[13]+mismatch_therm[13]) clkin;
-            clkout_therm_12 = #(t_prop+jitter_therm[12]+mismatch_therm[12]) clkin;
-            clkout_therm_11 = #(t_prop+jitter_therm[11]+mismatch_therm[11]) clkin;
-            clkout_therm_10 = #(t_prop+jitter_therm[10]+mismatch_therm[10]) clkin;
-            clkout_therm_9 = #(t_prop+jitter_therm[9]+mismatch_therm[9]) clkin;
-            clkout_therm_8 = #(t_prop+jitter_therm[8]+mismatch_therm[8]) clkin;
-            clkout_therm_7 = #(t_prop+jitter_therm[7]+mismatch_therm[7]) clkin;
-            clkout_therm_6 = #(t_prop+jitter_therm[6]+mismatch_therm[6]) clkin;
-            clkout_therm_5 = #(t_prop+jitter_therm[5]+mismatch_therm[5]) clkin;
-            clkout_therm_4 = #(t_prop+jitter_therm[4]+mismatch_therm[4]) clkin;
-            clkout_therm_3 = #(t_prop+jitter_therm[3]+mismatch_therm[3]) clkin;
-            clkout_therm_2 = #(t_prop+jitter_therm[2]+mismatch_therm[2]) clkin;
-            clkout_therm_1 = #(t_prop+jitter_therm[1]+mismatch_therm[1]) clkin;
-            clkout_therm_0 = #(t_prop+jitter_therm[0]+mismatch_therm[0]) clkin;
-            clkoutb_therm_16 = #(t_prop+jitter_therm[16]+mismatch_therm[16]) clkinb;
-            clkoutb_therm_15 = #(t_prop+jitter_therm[15]+mismatch_therm[15]) clkinb;
-            clkoutb_therm_14 = #(t_prop+jitter_therm[14]+mismatch_therm[14]) clkinb;
-            clkoutb_therm_13 = #(t_prop+jitter_therm[13]+mismatch_therm[13]) clkinb;
-            clkoutb_therm_12 = #(t_prop+jitter_therm[12]+mismatch_therm[12]) clkinb;
-            clkoutb_therm_11 = #(t_prop+jitter_therm[11]+mismatch_therm[11]) clkinb;
-            clkoutb_therm_10 = #(t_prop+jitter_therm[10]+mismatch_therm[10]) clkinb;
-            clkoutb_therm_9 = #(t_prop+jitter_therm[9]+mismatch_therm[9]) clkinb;
-            clkoutb_therm_8 = #(t_prop+jitter_therm[8]+mismatch_therm[8]) clkinb;
-            clkoutb_therm_7 = #(t_prop+jitter_therm[7]+mismatch_therm[7]) clkinb;
-            clkoutb_therm_6 = #(t_prop+jitter_therm[6]+mismatch_therm[6]) clkinb;
-            clkoutb_therm_5 = #(t_prop+jitter_therm[5]+mismatch_therm[5]) clkinb;
-            clkoutb_therm_4 = #(t_prop+jitter_therm[4]+mismatch_therm[4]) clkinb;
-            clkoutb_therm_3 = #(t_prop+jitter_therm[3]+mismatch_therm[3]) clkinb;
-            clkoutb_therm_2 = #(t_prop+jitter_therm[2]+mismatch_therm[2]) clkinb;
-            clkoutb_therm_1 = #(t_prop+jitter_therm[1]+mismatch_therm[1]) clkinb;
-            clkoutb_therm_0 = #(t_prop+jitter_therm[0]+mismatch_therm[0]) clkinb;
-            clkout_binary_5 = #(t_prop+jitter_binary[5]+mismatch_binary[5]) clkin;
-            clkout_binary_4 = #(t_prop+jitter_binary[4]+mismatch_binary[4]) clkin;
-            clkout_binary_3 = #(t_prop+jitter_binary[3]+mismatch_binary[3]) clkin;
-            clkout_binary_2 = #(t_prop+jitter_binary[2]+mismatch_binary[2]) clkin;
-            clkout_binary_1 = #(t_prop+jitter_binary[1]+mismatch_binary[1]) clkin;
-            clkout_binary_0 = #(t_prop+jitter_binary[0]+mismatch_binary[0]) clkin;
-            clkout_binary_0_red = #(t_prop+jitter_binary[0]+mismatch_binary[0]) clkin;
-            clkoutb_binary_5 = #(t_prop+jitter_binary[5]+mismatch_binary[5]) clkinb;
-            clkoutb_binary_4 = #(t_prop+jitter_binary[4]+mismatch_binary[4]) clkinb;
-            clkoutb_binary_3 = #(t_prop+jitter_binary[3]+mismatch_binary[3]) clkinb;
-            clkoutb_binary_2 = #(t_prop+jitter_binary[2]+mismatch_binary[2]) clkinb;
-            clkoutb_binary_1 = #(t_prop+jitter_binary[1]+mismatch_binary[1]) clkinb;
-            clkoutb_binary_0 = #(t_prop+jitter_binary[0]+mismatch_binary[0]) clkinb;
-            clkoutb_binary_0_red = #(t_prop+jitter_binary[0]+mismatch_binary[0]) clkinb;
+            clkout_therm_16 <= #(t_prop+jitter_therm[16]+mismatch_therm[16]) clkin;
+            clkout_therm_15 <= #(t_prop+jitter_therm[15]+mismatch_therm[15]) clkin;
+            clkout_therm_14 <= #(t_prop+jitter_therm[14]+mismatch_therm[14]) clkin;
+            clkout_therm_13 <= #(t_prop+jitter_therm[13]+mismatch_therm[13]) clkin;
+            clkout_therm_12 <= #(t_prop+jitter_therm[12]+mismatch_therm[12]) clkin;
+            clkout_therm_11 <= #(t_prop+jitter_therm[11]+mismatch_therm[11]) clkin;
+            clkout_therm_10 <= #(t_prop+jitter_therm[10]+mismatch_therm[10]) clkin;
+            clkout_therm_9 <= #(t_prop+jitter_therm[9]+mismatch_therm[9]) clkin;
+            clkout_therm_8 <= #(t_prop+jitter_therm[8]+mismatch_therm[8]) clkin;
+            clkout_therm_7 <= #(t_prop+jitter_therm[7]+mismatch_therm[7]) clkin;
+            clkout_therm_6 <= #(t_prop+jitter_therm[6]+mismatch_therm[6]) clkin;
+            clkout_therm_5 <= #(t_prop+jitter_therm[5]+mismatch_therm[5]) clkin;
+            clkout_therm_4 <= #(t_prop+jitter_therm[4]+mismatch_therm[4]) clkin;
+            clkout_therm_3 <= #(t_prop+jitter_therm[3]+mismatch_therm[3]) clkin;
+            clkout_therm_2 <= #(t_prop+jitter_therm[2]+mismatch_therm[2]) clkin;
+            clkout_therm_1 <= #(t_prop+jitter_therm[1]+mismatch_therm[1]) clkin;
+            clkout_therm_0 <= #(t_prop+jitter_therm[0]+mismatch_therm[0]) clkin;
+            clkoutb_therm_16 <= #(t_prop+jitter_therm[16]+mismatch_therm[16]) clkinb;
+            clkoutb_therm_15 <= #(t_prop+jitter_therm[15]+mismatch_therm[15]) clkinb;
+            clkoutb_therm_14 <= #(t_prop+jitter_therm[14]+mismatch_therm[14]) clkinb;
+            clkoutb_therm_13 <= #(t_prop+jitter_therm[13]+mismatch_therm[13]) clkinb;
+            clkoutb_therm_12 <= #(t_prop+jitter_therm[12]+mismatch_therm[12]) clkinb;
+            clkoutb_therm_11 <= #(t_prop+jitter_therm[11]+mismatch_therm[11]) clkinb;
+            clkoutb_therm_10 <= #(t_prop+jitter_therm[10]+mismatch_therm[10]) clkinb;
+            clkoutb_therm_9 <= #(t_prop+jitter_therm[9]+mismatch_therm[9]) clkinb;
+            clkoutb_therm_8 <= #(t_prop+jitter_therm[8]+mismatch_therm[8]) clkinb;
+            clkoutb_therm_7 <= #(t_prop+jitter_therm[7]+mismatch_therm[7]) clkinb;
+            clkoutb_therm_6 <= #(t_prop+jitter_therm[6]+mismatch_therm[6]) clkinb;
+            clkoutb_therm_5 <= #(t_prop+jitter_therm[5]+mismatch_therm[5]) clkinb;
+            clkoutb_therm_4 <= #(t_prop+jitter_therm[4]+mismatch_therm[4]) clkinb;
+            clkoutb_therm_3 <= #(t_prop+jitter_therm[3]+mismatch_therm[3]) clkinb;
+            clkoutb_therm_2 <= #(t_prop+jitter_therm[2]+mismatch_therm[2]) clkinb;
+            clkoutb_therm_1 <= #(t_prop+jitter_therm[1]+mismatch_therm[1]) clkinb;
+            clkoutb_therm_0 <= #(t_prop+jitter_therm[0]+mismatch_therm[0]) clkinb;
+            clkout_binary_5 <= #(t_prop+jitter_binary[5]+mismatch_binary[5]) clkin;
+            clkout_binary_4 <= #(t_prop+jitter_binary[4]+mismatch_binary[4]) clkin;
+            clkout_binary_3 <= #(t_prop+jitter_binary[3]+mismatch_binary[3]) clkin;
+            clkout_binary_2 <= #(t_prop+jitter_binary[2]+mismatch_binary[2]) clkin;
+            clkout_binary_1 <= #(t_prop+jitter_binary[1]+mismatch_binary[1]) clkin;
+            clkout_binary_0 <= #(t_prop+jitter_binary[0]+mismatch_binary[0]) clkin;
+            clkout_binary_0_red <= #(t_prop+jitter_binary[0]+mismatch_binary[0]) clkin;
+            clkoutb_binary_5 <= #(t_prop+jitter_binary[5]+mismatch_binary[5]) clkinb;
+            clkoutb_binary_4 <= #(t_prop+jitter_binary[4]+mismatch_binary[4]) clkinb;
+            clkoutb_binary_3 <= #(t_prop+jitter_binary[3]+mismatch_binary[3]) clkinb;
+            clkoutb_binary_2 <= #(t_prop+jitter_binary[2]+mismatch_binary[2]) clkinb;
+            clkoutb_binary_1 <= #(t_prop+jitter_binary[1]+mismatch_binary[1]) clkinb;
+            clkoutb_binary_0 <= #(t_prop+jitter_binary[0]+mismatch_binary[0]) clkinb;
+            clkoutb_binary_0_red <= #(t_prop+jitter_binary[0]+mismatch_binary[0]) clkinb;
         
-        join else if(pdb == 0)begin
+        //join else if(pdb == 0)begin
+        end else if(pdb == 0)begin
 
             clkout_therm_16 = 'z;
             clkout_therm_15 = 'z;

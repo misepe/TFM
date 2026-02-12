@@ -11,7 +11,7 @@ module local_bias_tb;
 
     // Señales de salida
     real iclkdist_25ua;
-    real isynclatch_25ua;
+    real isyncflip_flop_25ua;
     real icurrentsterring_500ua;
     real icurrentsource_500ua;
     real vcas;
@@ -26,7 +26,7 @@ module local_bias_tb;
         .vssana(vssana),
         .atb_ena(atb_ena),
         .iclkdist_25ua(iclkdist_25ua),
-        .isynclatch_25ua(isynclatch_25ua),
+        .isyncflip_flop_25ua(isyncflip_flop_25ua),
         .icurrentsterring_500ua(icurrentsterring_500ua),
         .icurrentsource_500ua(icurrentsource_500ua),
         .vcas(vcas),

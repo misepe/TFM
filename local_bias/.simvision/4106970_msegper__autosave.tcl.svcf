@@ -1,0 +1,122 @@
+
+#
+# Preferences
+#
+preferences set plugin-enable-svdatabrowser-new 1
+preferences set toolbar-Standard-WaveWindow {
+  usual
+  position -pos 1
+}
+preferences set plugin-enable-groupscope 0
+preferences set plugin-enable-interleaveandcompare 0
+preferences set plugin-enable-waveformfrequencyplot 0
+
+#
+# Mnemonic Maps
+#
+mmap new  -reuse -name {Boolean as Logic} -radix %b -contents {{%c=FALSE -edgepriority 1 -shape low}
+{%c=TRUE -edgepriority 1 -shape high}}
+mmap new  -reuse -name {Example Map} -radix %x -contents {{%b=11???? -bgcolor orange -label REG:%x -linecolor yellow -shape bus}
+{%x=1F -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=2C -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=* -label %x -linecolor gray -shape bus}}
+
+#
+# Design Browser windows
+#
+if {[catch {window new WatchList -name "Design Browser 1" -geometry 730x500+261+33}] != ""} {
+    window geometry "Design Browser 1" 730x500+261+33
+}
+window target "Design Browser 1" on
+browser using {Design Browser 1}
+browser set -scope  simulator::local_bias_tb.dut 
+browser set \
+    -showinternals 0 \
+    -signalsort name
+browser yview see  simulator::local_bias_tb.dut 
+browser timecontrol set -lock 0
+
+#
+# Waveform windows
+#
+if {[catch {window new WaveWindow -name "Waveform 1" -geometry 1920x1016+-1+26}] != ""} {
+    window geometry "Waveform 1" 1920x1016+-1+26
+}
+window target "Waveform 1" on
+waveform using {Waveform 1}
+waveform sidebar visibility partial
+waveform set \
+    -primarycursor TimeA \
+    -signalnames name \
+    -signalwidth 175 \
+    -units ps \
+    -valuewidth 75
+waveform baseline set -time 0
+
+set id [waveform add -signals  {
+	simulator::local_bias_tb.dut.vddana_1p8
+	} ]
+waveform format $id -trace analogSampleAndHold -color #ffc300
+waveform axis range $id -for default -min 1.6200000000000001 -max 1.9800000000000002 -scale linear
+set id [waveform add -signals  {
+	simulator::local_bias_tb.dut.vddana_0p8
+	} ]
+waveform format $id -trace analogSampleAndHold -color #78ff00
+waveform axis range $id -for default -min 0.72000000000000008 -max 0.88000000000000012 -scale linear
+set id [waveform add -signals  {
+	simulator::local_bias_tb.dut.vssana
+	} ]
+waveform format $id -trace analogSampleAndHold -color #ff0000
+waveform axis range $id -for default -min -1 -max 1 -scale linear
+set id [waveform add -signals  {
+	simulator::local_bias_tb.dut.pdb
+	} ]
+set id [waveform add -signals  {
+	simulator::local_bias_tb.dut.iclkdist_25ua
+	} ]
+waveform format $id -trace analogSampleAndHold -color #9500ff
+waveform axis range $id -for default -min 2.2500000000000001e-05 -max 2.7500000000000004e-05 -scale linear
+set id [waveform add -signals  {
+	simulator::local_bias_tb.dut.icurrentsource_500ua
+	} ]
+waveform format $id -trace analogSampleAndHold -color #002eff
+waveform axis range $id -for default -min 0.00045000000000000004 -max 0.00055000000000000003 -scale linear
+set id [waveform add -signals  {
+	simulator::local_bias_tb.dut.icurrentsterring_500ua
+	} ]
+waveform format $id -trace analogSampleAndHold -color #00f1ff
+waveform axis range $id -for default -min 0.00045000000000000004 -max 0.00055000000000000003 -scale linear
+set id [waveform add -signals  {
+	simulator::local_bias_tb.dut.isyncflip_flop_25ua
+	} ]
+waveform format $id -trace analogSampleAndHold -color #ff0000
+waveform axis range $id -for default -min 2.2500000000000001e-05 -max 2.7500000000000004e-05 -scale linear
+set id [waveform add -signals  {
+	{simulator::local_bias_tb.dut.atb_ena[0:1]}
+	} ]
+set id [waveform add -signals  {
+	simulator::local_bias_tb.dut.atb1
+	} ]
+waveform format $id -trace analogSampleAndHold -color #ff00a6
+waveform axis range $id -for default -min 2.5000000000000001e-05 -max 1.8 -scale linear
+set id [waveform add -signals  {
+	simulator::local_bias_tb.dut.atb0
+	} ]
+waveform format $id -trace analogSampleAndHold -color #ff0000
+waveform axis range $id -for default -min 0 -max 0.00050000000000000001 -scale linear
+
+waveform xview limits 90000ps 150000ps
+
+#
+# Waveform Window Links
+#
+
+#
+# Console windows
+#
+console set -windowname Console
+window geometry Console 730x250+261+564
+
+#
+# Layout selection
+#

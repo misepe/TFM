@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 12, 2026 at 14:31:00 CET
+TOOL:	xrun(64)	24.03-s004: Started on Feb 09, 2026 at 23:44:19 CET
 xrun
 	-f xrun.f
 		-clean
@@ -9,6 +9,7 @@ xrun
 		-gui
 		-s
 		-input /home/msegper/Documents/TFM/driver_cell/restore.tcl
+	-s
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
 file: ./models/driver_cell_all_non_linearities.sv
         int mean = 0;         // Promedio de la distribución
@@ -19,10 +20,10 @@ xmvlog: *W,VARIST (./models/driver_cell_all_non_linearities.sv,72|17): Local sta
 xmvlog: *W,VARIST (./models/driver_cell_all_non_linearities.sv,73|20): Local static variable with initializer requires 'static' keyword.
         int mean = 0;         // Promedio de la distribución
                  |
-xmvlog: *W,VARIST (./models/driver_cell_all_non_linearities.sv,86|17): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (./models/driver_cell_all_non_linearities.sv,88|17): Local static variable with initializer requires 'static' keyword.
         int std_dev = 10;     // Desviación estándar, sigma
                     |
-xmvlog: *W,VARIST (./models/driver_cell_all_non_linearities.sv,87|20): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (./models/driver_cell_all_non_linearities.sv,89|20): Local static variable with initializer requires 'static' keyword.
 	module worklib.driver_cell:sv
 		errors: 0, warnings: 4
 file: ./tb/driver_cell_tb.sv
@@ -37,27 +38,27 @@ file: ./tb/driver_cell_tb.sv
 	Building instance overlay tables: ....................
         $display("jitter temporal %s = %0d seed = %0d media =%0d sigma = %0d", type_jitter, random_value, seed, mean, std_dev);
                                                                                                        |
-xmelab: *W,REALCV (./models/driver_cell_all_non_linearities.sv,79|103): Real argument converted to integer for (%d).
+xmelab: *W,REALCV (./models/driver_cell_all_non_linearities.sv,80|103): Real argument converted to integer for (%d).
         $display("mismatch temporal %s = %0d seed = %0d media =%0d sigma = %0d", type_mismatch, random_value, seed, mean, std_dev);
                                                                                                            |
-xmelab: *W,REALCV (./models/driver_cell_all_non_linearities.sv,93|107): Real argument converted to integer for (%d).
+xmelab: *W,REALCV (./models/driver_cell_all_non_linearities.sv,99|107): Real argument converted to integer for (%d).
  Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.driver_cell:sv <0x07f7711c>
-			streams:  17, words: 24601
-		worklib.driver_cell_tb:sv <0x458157df>
-			streams:   9, words: 14815
+		worklib.driver_cell:sv <0x48ddecda>
+			streams:  15, words: 22338
+		worklib.driver_cell_tb:sv <0x4191c8f7>
+			streams:   9, words: 15849
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                 Instances  Unique
 		Modules:                 2       2
 		Verilog packages:        1       1
-		Registers:              43      43
+		Registers:              39      39
 		Scalar wires:            4       -
 		Vectored wires:          8       -
-		Always blocks:           8       8
+		Always blocks:           6       6
 		Initial blocks:          8       8
 		Pseudo assignments:      8       -
 		Assertions:              3       3
@@ -66,9 +67,6 @@ xmelab: *W,REALCV (./models/driver_cell_all_non_linearities.sv,93|107): Real arg
 	Writing initial simulation snapshot: worklib.driver_cell_tb:sv
 xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
 SVSEED default: 1
-
--------------------------------------
-Relinquished control to SimVision...
 xcelium> 
 xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
 xcelium> 
@@ -174,36 +172,49 @@ xcelium> probe -create -database waves driver_cell_tb.dut.databinout driver_cell
 Created probe 1
 xcelium> 
 xcelium> simvision -input restore.tcl.svcf
+xmsim: *E,TCLERR: SimVision initialization failed.
+xcelium> 
+-------------------------------------
+Relinquished control to SimVision...
+# Restoring simulation environment...
+xcelium> input -quiet .reinvoke.sim
+xcelium> file delete .reinvoke.sim
 xcelium> run
 mismatch temporal databinout =           0 seed = 65102178 media =0 sigma = 10
-mismatch temporal databinoutb =           7 seed = 1990666696 media =0 sigma = 10
-mismatch temporal datathermout =           3 seed = -565439612 media =0 sigma = 10
-mismatch temporal datathermoutb =           1 seed = 1513314721 media =0 sigma = 10
+mismatch temporal datathermout =           7 seed = 1990666696 media =0 sigma = 10
 Iniciando tests...
 Test 1: Verificación de límites de alimentación
+xmsim: *W,ASRTST (./models/driver_cell_all_non_linearities.sv,31): (time 200 PS) Assertion driver_cell_tb.dut.vddana_1p8_boundaries has failed
+Input voltge vddana_1p8 is out of bounds: 1.90 V
+xmsim: *W,WARSEV (./models/driver_cell_all_non_linearities.sv,121): (time 200 PS).
+driver_cell_tb.dut
+Input signals boundaries are not correct: vddana_1p8_check=0, vddana_0p8_check=1, vssana_check=1,
+xmsim: *W,ASRTST (./models/driver_cell_all_non_linearities.sv,42): (time 400 PS) Assertion driver_cell_tb.dut.vddana_0p8_boundaries has failed
+Input voltge vddana_0p8 is out of bounds: 0.70 V
+xmsim: *W,WARSEV (./models/driver_cell_all_non_linearities.sv,121): (time 400 PS).
+driver_cell_tb.dut
+Input signals boundaries are not correct: vddana_1p8_check=1, vddana_0p8_check=0, vssana_check=1,
+xmsim: *W,ASRTST (./models/driver_cell_all_non_linearities.sv,55): (time 600 PS) Assertion driver_cell_tb.dut.vssana_boundaries has failed
+Input voltge vssana is out of bounds: -0.10 V
+xmsim: *W,WARSEV (./models/driver_cell_all_non_linearities.sv,121): (time 600 PS).
+driver_cell_tb.dut
+Input signals boundaries are not correct: vddana_1p8_check=1, vddana_0p8_check=1, vssana_check=0,
 Test 2: Estado apagado (pdb = 0)
-jitter temporal datathermoutb =           0 seed = -144475920 media =0 sigma = 1
-jitter temporal datathermout =           0 seed = -585889300 media =0 sigma = 1
-jitter temporal databinoutb =           0 seed = 677759301 media =0 sigma = 1
+jitter temporal datathermout =           0 seed = 677759301 media =0 sigma = 1
 jitter temporal databinout =           0 seed = 686896801 media =0 sigma = 1
 databinout = zzzzzzz, databinoutb = zzzzzzz, datathermout = zzzzzzzzzzzzzzzzz, datathermoutb = zzzzzzzzzzzzzzzzz
 Test 3: Estado encendido (pdb = 1)
-jitter temporal datathermoutb =          -2 seed = -1943457616 media =0 sigma = 1
-jitter temporal datathermout =           0 seed = -1181135731 media =0 sigma = 1
-jitter temporal databinoutb =          -1 seed = -1350050770 media =0 sigma = 1
+jitter temporal datathermout =          -1 seed = -1350050770 media =0 sigma = 1
 jitter temporal databinout =           1 seed = -2128088571 media =0 sigma = 1
 databinout = 1001100, databinoutb = 0110011, datathermout = 11110000111100001, datathermoutb = 00001111000011110
-Test 5: Propagación de datos binarios
-jitter temporal databinoutb =           2 seed = -1854032267 media =0 sigma = 1
+jitter temporal datathermout =           2 seed = -1854032267 media =0 sigma = 1
 jitter temporal databinout =           0 seed = -678322366 media =0 sigma = 1
-databinout = 0101010, databinoutb = 1010101
-Test 6: Propagación de datos termométricos
-jitter temporal datathermoutb =           1 seed = 1208160472 media =0 sigma = 1
-jitter temporal datathermout =          -1 seed = 1787934764 media =0 sigma = 1
-datathermout = 10101010101010101, datathermoutb = 01010101010101010
+databinout = 0101010, databinoutb = 1010101, datathermout = 10101010101010101, datathermoutb = 01010101010101010
 Tests completados.
-Simulation complete via $finish(1) at time 1600 PS + 0
-./tb/driver_cell_tb.sv:85         $finish;
+Simulation complete via $finish(1) at time 1400 PS + 0
+./tb/driver_cell_tb.sv:91         $finish;
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 12, 2026 at 14:48:19 CET  (total: 00:17:19)
+...Regained control from SimVision
+-------------------------------------
+TOOL:	xrun(64)	24.03-s004: Exiting on Feb 11, 2026 at 12:08:41 CET  (total: 36:24:22)

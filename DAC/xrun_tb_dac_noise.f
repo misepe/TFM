@@ -12,7 +12,7 @@
 -incdir ../level_shifter
 -incdir ../local_bias
 -incdir ../resistor_load
--incdir ../rsync_latch
+-incdir ../rsync_flip_flop
 
 ../clock_distribution/models/clock_distribution.sv
 ../current_source_units/models/currentSourceUnits_noise.sv
@@ -21,7 +21,7 @@
 ../level_shifter/models/level_shifter.sv
 ../local_bias/models/local_bias.sv
 ../resistor_load/models/resistor_load.sv
-../rsync_latch/models/rsync_latch.sv
+../rsync_flip_flop/models/rsync_flip_flop.sv
 
 //./thermometer_decoder.sv
 ./top_level_schematic.sv 

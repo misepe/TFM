@@ -5,7 +5,7 @@
 #
 # You can restore this configuration with:
 #
-#      xrun -f xrun.f -input restore.tcl
+#      xrun -f xrun.f -s -input restore.tcl
 #
 
 set tcl_prompt1 {puts -nonewline "xcelium> "}
@@ -55,6 +55,8 @@ alias . run
 alias indago verisium
 alias quit exit
 database -open -shm -into waves.shm waves -default
+probe -create -database waves resistor_load_tb.dut.Iin resistor_load_tb.dut.Iinb resistor_load_tb.dut.vout resistor_load_tb.dut.voutb resistor_load_tb.dut.vssana
+probe -create -database waves resistor_load_tb.dut.vssana_check
 probe -create -database waves resistor_load_tb.dut.Iin resistor_load_tb.dut.Iinb resistor_load_tb.dut.vout resistor_load_tb.dut.voutb resistor_load_tb.dut.vssana
 probe -create -database waves resistor_load_tb.dut.vssana_check
 

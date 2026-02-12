@@ -6,12 +6,11 @@
 -TCL
 -INPUT
 /home/msegper/Documents/TFM/local_bias/restore.tcl
--TCL
 -MESSAGES
 +EMGRLOG
 xrun.log
 -XLSTIME
-1763381804
+1770809513
 -XLKEEP
 -XLMODE
 ./xcelium.d/run.lnx8664.24.03.d

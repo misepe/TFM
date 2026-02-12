@@ -65,7 +65,13 @@ module tb_dac_top ();
     real Ts;
     longint delay_ps;
 
-
+    //5GHz de reloj (perido de 200ps y medio ciclo de 100ps)
+    //always #100 clkin = ~clkin;
+    //always #100 clkinb = ~clkinb;
+    //10GHz de reloj (perido de 100ps y medio ciclo de 50ps)
+    //always #50 clkin = ~clkin;
+    //always #50 clkinb = ~clkinb;
+    //100GHz de reloj (perido de 10ps y medio ciclo de 5ps)
     always #5 clkin = ~clkin;
     always #5 clkinb = ~clkinb;
 

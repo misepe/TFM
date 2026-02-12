@@ -1,0 +1,208 @@
+xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	24.03-s004: Started on Feb 11, 2026 at 17:58:03 CET
+xrun
+	-f xrun.f
+		-clean
+		./models/rsync_flip_flop_all_non_linearities.sv
+		./tb/rsync_flip_flop_tb.sv
+		-access +rw
+		-gui
+		-s
+		-input /home/msegper/Documents/TFM/rsync_flip_flop/restore.tcl
+xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
+file: ./models/rsync_flip_flop_all_non_linearities.sv
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (./models/rsync_flip_flop_all_non_linearities.sv,125|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 1;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (./models/rsync_flip_flop_all_non_linearities.sv,126|20): Local static variable with initializer requires 'static' keyword.
+        int mean = 0;         // Promedio de la distribución
+                 |
+xmvlog: *W,VARIST (./models/rsync_flip_flop_all_non_linearities.sv,141|17): Local static variable with initializer requires 'static' keyword.
+        int std_dev = 10;     // Desviación estándar, sigma
+                    |
+xmvlog: *W,VARIST (./models/rsync_flip_flop_all_non_linearities.sv,142|20): Local static variable with initializer requires 'static' keyword.
+	module worklib.rsync_flip_flop:sv
+		errors: 0, warnings: 4
+file: ./tb/rsync_flip_flop_tb.sv
+	module worklib.rsync_flip_flop_tb:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		cds_rnm_pkg
+		$unit_0x7db2325d
+		rsync_flip_flop_tb
+	Building instance overlay tables: ....................
+        $display("jitter temporal %s = %0d seed = %0d media =%0d sigma = %0d", type_jitter, random_value, seed, mean, std_dev);
+                                                                                                       |
+xmelab: *W,REALCV (./models/rsync_flip_flop_all_non_linearities.sv,133|103): Real argument converted to integer for (%d).
+        $display("mismatch temporal %s = %0d seed = %0d media =%0d sigma = %0d", type_mismatch, random_value, seed, mean, std_dev);
+                                                                                                           |
+xmelab: *W,REALCV (./models/rsync_flip_flop_all_non_linearities.sv,149|107): Real argument converted to integer for (%d).
+ Done
+	Using implicit TMP libraries; associated with library worklib
+	Generating native compiled code:
+		worklib.rsync_flip_flop:sv <0x04316a0a>
+			streams:  87, words: 57239
+		worklib.rsync_flip_flop_tb:sv <0x6ba81a1f>
+			streams:  90, words: 70933
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 2       2
+		Verilog packages:        1       1
+		Registers:             100     100
+		Scalar wires:           54       -
+		Vectored wires:         13       -
+		Always blocks:          30      30
+		Initial blocks:         10      10
+		Parallel blocks:         1       1
+		Pseudo assignments:     63       -
+		Assertions:              3       3
+		Compilation units:       1       1
+		Process Clocks:         24      24
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.rsync_flip_flop_tb:sv
+xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
+SVSEED default: 1
+[DMSINFO] Simulating with Xcelium Mixed-Signal App...
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
+xcelium> 
+xcelium> # XM-Sim Command File
+xcelium> # TOOL:	xmsim(64)	24.03-s004
+xcelium> #
+xcelium> #
+xcelium> # You can restore this configuration with:
+xcelium> #
+xcelium> #      xrun -f xrun.f -input restore.tcl
+xcelium> #
+xcelium> 
+xcelium> set tcl_prompt1 {puts -nonewline "xcelium> "}
+puts -nonewline "xcelium> "
+xcelium> set tcl_prompt2 {puts -nonewline "> "}
+puts -nonewline "> "
+xcelium> set vlog_format %h
+%h
+xcelium> set vhdl_format %v
+%v
+xcelium> set real_precision 6
+6
+xcelium> set display_unit auto
+auto
+xcelium> set time_unit module
+module
+xcelium> set heap_garbage_size -200
+-200
+xcelium> set heap_garbage_time 0
+0
+xcelium> set assert_report_level note
+note
+xcelium> set assert_stop_level error
+error
+xcelium> set autoscope yes
+yes
+xcelium> set assert_1164_warnings yes
+yes
+xcelium> set pack_assert_off {}
+xcelium> set severity_pack_assert_off {note warning}
+note warning
+xcelium> set assert_output_stop_level failed
+failed
+xcelium> set tcl_debug_level 0
+0
+xcelium> set relax_path_name 1
+1
+xcelium> set vhdl_vcdmap XX01ZX01X
+XX01ZX01X
+xcelium> set intovf_severity_level ERROR
+ERROR
+xcelium> set probe_screen_format 0
+0
+xcelium> set rangecnst_severity_level ERROR
+ERROR
+xcelium> set textio_severity_level ERROR
+ERROR
+xcelium> set vital_timing_checks_on 1
+1
+xcelium> set vlog_code_show_force 0
+0
+xcelium> set assert_count_attempts 1
+1
+xcelium> set tcl_all64 false
+false
+xcelium> set tcl_runerror_exit false
+false
+xcelium> set assert_report_incompletes 0
+0
+xcelium> set show_force 1
+1
+xcelium> set force_reset_by_reinvoke 0
+0
+xcelium> set tcl_relaxed_literal 0
+0
+xcelium> set probe_exclude_patterns {}
+xcelium> set probe_packed_limit 4k
+4k
+xcelium> set probe_unpacked_limit 16k
+16k
+xcelium> set assert_internal_msg no
+no
+xcelium> set svseed 1
+1
+xcelium> set assert_reporting_mode 0
+0
+xcelium> set vcd_compact_mode 0
+0
+xcelium> set vhdl_forgen_loopindex_enum_pos 0
+0
+xcelium> set xmreplay_dc_debug 0
+0
+xcelium> set tcl_runcmd_interrupt next_command
+next_command
+xcelium> set tcl_sigval_prefix {#}
+#
+xcelium> alias . run
+xcelium> alias indago verisium
+xcelium> alias quit exit
+xcelium> database -open -shm -into waves.shm waves -default
+Created default SHM database waves
+xcelium> probe -create -database waves rsync_flip_flop_tb.dut.atb0 rsync_flip_flop_tb.dut.vssana rsync_flip_flop_tb.dut.vddana_0p8 rsync_flip_flop_tb.dut.atb1 rsync_flip_flop_tb.dut.atb_ena rsync_flip_flop_tb.dut.clkin_binary_0 rsync_flip_flop_tb.dut.clkin_binary_0_red rsync_flip_flop_tb.dut.clkin_binary_1 rsync_flip_flop_tb.dut.clkin_binary_2 rsync_flip_flop_tb.dut.clkin_binary_3 rsync_flip_flop_tb.dut.clkin_binary_4 rsync_flip_flop_tb.dut.clkin_binary_5 rsync_flip_flop_tb.dut.clkin_therm_0 rsync_flip_flop_tb.dut.clkin_therm_1 rsync_flip_flop_tb.dut.clkin_therm_2 rsync_flip_flop_tb.dut.clkin_therm_3 rsync_flip_flop_tb.dut.clkin_therm_4 rsync_flip_flop_tb.dut.clkin_therm_5 rsync_flip_flop_tb.dut.clkin_therm_6 rsync_flip_flop_tb.dut.clkin_therm_7 rsync_flip_flop_tb.dut.clkin_therm_8 rsync_flip_flop_tb.dut.clkin_therm_9 rsync_flip_flop_tb.dut.clkin_therm_10 rsync_flip_flop_tb.dut.clkin_therm_11 rsync_flip_flop_tb.dut.clkin_therm_12 rsync_flip_flop_tb.dut.clkin_therm_13 rsync_flip_flop_tb.dut.clkin_therm_14 rsync_flip_flop_tb.dut.clkin_therm_15 rsync_flip_flop_tb.dut.clkin_therm_16 rsync_flip_flop_tb.dut.clkinb_binary_0 rsync_flip_flop_tb.dut.clkinb_binary_0_red rsync_flip_flop_tb.dut.clkinb_binary_1 rsync_flip_flop_tb.dut.clkinb_binary_2 rsync_flip_flop_tb.dut.clkinb_binary_3 rsync_flip_flop_tb.dut.clkinb_binary_4 rsync_flip_flop_tb.dut.clkinb_binary_5 rsync_flip_flop_tb.dut.clkinb_therm_0 rsync_flip_flop_tb.dut.clkinb_therm_1 rsync_flip_flop_tb.dut.clkinb_therm_2 rsync_flip_flop_tb.dut.clkinb_therm_3 rsync_flip_flop_tb.dut.clkinb_therm_4 rsync_flip_flop_tb.dut.clkinb_therm_5 rsync_flip_flop_tb.dut.clkinb_therm_6 rsync_flip_flop_tb.dut.clkinb_therm_7 rsync_flip_flop_tb.dut.clkinb_therm_8 rsync_flip_flop_tb.dut.clkinb_therm_9 rsync_flip_flop_tb.dut.clkinb_therm_10 rsync_flip_flop_tb.dut.clkinb_therm_11 rsync_flip_flop_tb.dut.clkinb_therm_12 rsync_flip_flop_tb.dut.clkinb_therm_13 rsync_flip_flop_tb.dut.clkinb_therm_14 rsync_flip_flop_tb.dut.clkinb_therm_15 rsync_flip_flop_tb.dut.clkinb_therm_16 rsync_flip_flop_tb.dut.datainbin rsync_flip_flop_tb.dut.datainbinb rsync_flip_flop_tb.dut.dataintherm rsync_flip_flop_tb.dut.datainthermb rsync_flip_flop_tb.dut.dataoutbin rsync_flip_flop_tb.dut.dataoutbinb rsync_flip_flop_tb.dut.dataouttherm rsync_flip_flop_tb.dut.dataoutthermb rsync_flip_flop_tb.dut.iref_25ua rsync_flip_flop_tb.dut.pdb
+Created probe 1
+xcelium> 
+xcelium> simvision -input restore.tcl.svcf
+xcelium> run
+mismatch temporal databinout =           5 seed = -783522419 media =0 sigma = 10
+mismatch temporal datathermout =         -10 seed = 1236715467 media =0 sigma = 10
+Test 1: Verificar estado de apagado (Power-Down)
+jitter temporal databinout =          -1 seed = 1467074161 media =0 sigma = 1
+jitter temporal datathermout =           0 seed = 560044101 media =0 sigma = 1
+Test 2: Verificar funcionamiento normal
+jitter temporal databinout =           2 seed = 1866880582 media =0 sigma = 1
+jitter temporal datathermout =           0 seed = -101767568 media =0 sigma = 1
+jitter temporal databinout =          -1 seed = -1560564181 media =0 sigma = 1
+jitter temporal datathermout =          -2 seed = 1875354076 media =0 sigma = 1
+xmsim: *W,TRNEGDEL: negative delay encountered, using delay of zero.
+            File: ./models/rsync_flip_flop_all_non_linearities.sv, line = 378, pos = 40
+           Scope: rsync_flip_flop_tb.dut
+            Time: 500 PS + 2
+
+Test 3: Verificar comportamiento de atb_ena
+Test 3.1: atb_ena = 2'b00 -> atb0 = 0.00, atb1 = 0.00
+Test 3.2: atb_ena = 2'b01 -> atb0 = 0.00, atb1 = 1.00
+Test 3.3: atb_ena = 2'b10 -> atb0 = 0.00, atb1 = 1.00
+Test 3.4: atb_ena = 2'b11 -> atb0 = 0.00, atb1 = 0.00
+Simulación completada.
+Simulation complete via $finish(1) at time 1400 PS + 0
+./tb/rsync_flip_flop_tb.sv:219         $finish;
+xcelium> ^C
+xcelium> exit
+...Regained control from SimVision
+-------------------------------------
+TOOL:	xrun(64)	24.03-s004: Exiting on Feb 12, 2026 at 13:10:55 CET  (total: 19:12:52)

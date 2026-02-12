@@ -1,10 +1,10 @@
-# SimVision Command Script (Tue Sep 09 14:48:41 CEST 2025)
+# SimVision Command Script (Wed Feb 04 12:38:39 CET 2026)
 #
 # Version 24.03.s004
 #
 # You can restore this configuration with:
 #
-#      xrun -f xrun.f -input restore.tcl
+#      xrun -f xrun.f -s -input restore.tcl
 #
 
 
@@ -12,6 +12,10 @@
 # Preferences
 #
 preferences set plugin-enable-svdatabrowser-new 1
+preferences set toolbar-Standard-WaveWindow {
+  usual
+  position -pos 1
+}
 preferences set plugin-enable-groupscope 0
 preferences set plugin-enable-interleaveandcompare 0
 preferences set plugin-enable-waveformfrequencyplot 0
@@ -20,12 +24,25 @@ preferences set plugin-enable-waveformfrequencyplot 0
 # Simulator
 #
 database require simulator -hints {
-	simulator "xrun -f xrun.f -input restore.tcl"
+	simulator "xrun -f xrun.f -s -input restore.tcl"
+}
+
+#
+# Conditions
+#
+set expression {(resistor_load_tb.dut.Iin + resistor_load_tb.dut.Iinb)}
+if {[catch {condition new -name  Iin_sumado -expr $expression}] != ""} {
+    condition set -using Iin_sumado -expr $expression
+}
+set expression {(resistor_load_tb.dut.vout + resistor_load_tb.dut.voutb)}
+if {[catch {condition new -name  Vout_sumado -expr $expression}] != ""} {
+    condition set -using Vout_sumado -expr $expression
 }
 #
 # Groups
 #
 catch {group new -name {Group 1} -overlay 1}
+catch {group new -name {Group 2} -overlay 1}
 group using {Group 1}
 group set -overlay 1
 group set -comment {}
@@ -34,6 +51,11 @@ group clear 0 end
 group insert \
     [subst  {simulator::[format {resistor_load_tb.dut.Iin}]} ] \
     [subst  {simulator::[format {resistor_load_tb.dut.vout}]} ]
+group using {Group 2}
+group set -overlay 1
+group set -comment {}
+group clear 0 end
+
 
 #
 # Mnemonic Maps
@@ -80,32 +102,42 @@ set id [waveform add -signals [subst  {
 	{simulator::[format {resistor_load_tb.dut.Iin}]}
 	} ]]
 waveform format $id -trace analogSampleAndHold -color #ff0000
-waveform axis range $id -for default -min -0.001 -max 0.0010000000000000005 -scale linear
+waveform axis range $id -for default -min 0 -max 0.0031968750000000001 -scale linear
 set id [waveform add -signals [subst  {
 	{simulator::[format {resistor_load_tb.dut.Iinb}]}
 	} ]]
-waveform format $id -trace analogLinear -color #00ff4a
-waveform axis range $id -for default -min -0.001 -max 0.0010000000000000005 -scale linear
+waveform format $id -trace analogSampleAndHold -color #00ff4a
+waveform axis range $id -for default -min 0 -max 0.0031968750000000001 -scale linear
 set id [waveform add -signals [subst  {
 	{simulator::[format {resistor_load_tb.dut.vout}]}
 	} ]]
 waveform format $id -trace analogSampleAndHold -color #ff00a6
-waveform axis range $id -for default -min -0.10000000000000001 -max 0.10000000000000005 -scale linear
+waveform axis range $id -for default -min 0 -max 0.31968750000000001 -scale linear
 set id [waveform add -signals [subst  {
 	{simulator::[format {resistor_load_tb.dut.voutb}]}
 	} ]]
-waveform format $id -trace analogLinear -color #ffc300
-waveform axis range $id -for default -min -0.10000000000000001 -max 0.10000000000000005 -scale linear
+waveform format $id -trace analogSampleAndHold -color #ffc300
+waveform axis range $id -for default -min 0 -max 0.31968750000000001 -scale linear
 set id [waveform add -signals [subst  {
 	{simulator::[format {resistor_load_tb.dut.vssana}]}
 	} ]]
-waveform format $id -trace analogLinear -color #ff0000
+waveform format $id -trace analogSampleAndHold -color #ff0000
 waveform axis range $id -for default -min -0.050000000000000003 -max 0.040000000000000008 -scale linear
 set id [waveform add -signals [subst  {
 	{simulator::[format {resistor_load_tb.dut.vssana_check}]}
 	} ]]
+set id [waveform add -signals [subst  {
+	{[format {Vout_sumado}]}
+	} ]]
+waveform format $id -trace analogSampleAndHold -color #ff00a6
+waveform axis range $id -for default -min 0.31968749999999996 -max 0.31968750000000007 -scale linear
+set id [waveform add -signals [subst  {
+	{[format {Iin_sumado}]}
+	} ]]
+waveform format $id -trace analogSampleAndHold -color #ff0000
+waveform axis range $id -for default -min 0.0028771875 -max 0.0035165625000000002 -scale linear
 
-waveform xview limits 0 4100ps
+waveform xview limits 0 10360ps
 
 #
 # Waveform Window Links
@@ -115,7 +147,7 @@ waveform xview limits 0 4100ps
 # Console windows
 #
 console set -windowname Console
-window geometry Console 730x250+261+564
+window geometry Console 1920x1016+-1+26
 
 #
 # Layout selection

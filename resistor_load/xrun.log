@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Sep 10, 2025 at 11:00:02 CEST
+TOOL:	xrun(64)	24.03-s004: Started on Feb 05, 2026 at 16:15:43 CET
 xrun
 	-f xrun.f
 		-clean
@@ -9,6 +9,7 @@ xrun
 		-gui
 		-s
 		-input /home/msegper/Documents/TFM/resistor_load/restore.tcl
+	-s
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
 file: ./models/resistor_load.sv
 	module worklib.resistor_load:sv
@@ -24,9 +25,9 @@ file: ./tb/resistor_load_tb.sv
 	Building instance overlay tables: .................... Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.resistor_load:sv <0x19c9f1b8>
-			streams:   4, words:  2809
-		worklib.resistor_load_tb:sv <0x2dd6f419>
+		worklib.resistor_load:sv <0x3947af7a>
+			streams:   4, words:  3321
+		worklib.resistor_load_tb:sv <0x6e255b84>
 			streams:   6, words:  8201
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
@@ -34,7 +35,7 @@ file: ./tb/resistor_load_tb.sv
 		                 Instances  Unique
 		Modules:                 2       2
 		Verilog packages:        1       1
-		Registers:              12      12
+		Registers:              15      15
 		Scalar wires:            7       -
 		Always blocks:           1       1
 		Initial blocks:          2       2
@@ -44,9 +45,6 @@ file: ./tb/resistor_load_tb.sv
 		Simulation timescale:  1ps
 	Writing initial simulation snapshot: worklib.resistor_load_tb:sv
 xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
-
--------------------------------------
-Relinquished control to SimVision...
 xcelium> 
 xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
 xcelium> 
@@ -56,7 +54,7 @@ xcelium> #
 xcelium> #
 xcelium> # You can restore this configuration with:
 xcelium> #
-xcelium> #      xrun -f xrun.f -input restore.tcl
+xcelium> #      xrun -f xrun.f -s -input restore.tcl
 xcelium> #
 xcelium> 
 xcelium> set tcl_prompt1 {puts -nonewline "xcelium> "}
@@ -152,425 +150,1054 @@ xcelium> probe -create -database waves resistor_load_tb.dut.Iin resistor_load_tb
 Created probe 1
 xcelium> probe -create -database waves resistor_load_tb.dut.vssana_check
 Created probe 2
+xcelium> probe -create -database waves resistor_load_tb.dut.Iin resistor_load_tb.dut.Iinb resistor_load_tb.dut.vout resistor_load_tb.dut.voutb resistor_load_tb.dut.vssana
+Created probe 3
+xcelium> probe -create -database waves resistor_load_tb.dut.vssana_check
+Created probe 4
 xcelium> 
 xcelium> simvision -input restore.tcl.svcf
+xmsim: *E,TCLERR: SimVision initialization failed.
+xcelium> 
+-------------------------------------
+Relinquished control to SimVision...
+# Restoring simulation environment...
+xcelium> input -quiet .reinvoke.sim
+xcelium> file delete .reinvoke.sim
 xcelium> run
-Iniciando barrido de señales...
-Barrido de Iin e Iinb:
-Iin = -0.001000 A, Iinb = -0.001000 A, vout = -0.100000 V, voutb = -0.100000 V
-Iin = -0.001000 A, Iinb = -0.000900 A, vout = -0.100000 V, voutb = -0.090000 V
-Iin = -0.001000 A, Iinb = -0.000800 A, vout = -0.100000 V, voutb = -0.080000 V
-Iin = -0.001000 A, Iinb = -0.000700 A, vout = -0.100000 V, voutb = -0.070000 V
-Iin = -0.001000 A, Iinb = -0.000600 A, vout = -0.100000 V, voutb = -0.060000 V
-Iin = -0.001000 A, Iinb = -0.000500 A, vout = -0.100000 V, voutb = -0.050000 V
-Iin = -0.001000 A, Iinb = -0.000400 A, vout = -0.100000 V, voutb = -0.040000 V
-Iin = -0.001000 A, Iinb = -0.000300 A, vout = -0.100000 V, voutb = -0.030000 V
-Iin = -0.001000 A, Iinb = -0.000200 A, vout = -0.100000 V, voutb = -0.020000 V
-Iin = -0.001000 A, Iinb = -0.000100 A, vout = -0.100000 V, voutb = -0.010000 V
-Iin = -0.001000 A, Iinb = 0.000000 A, vout = -0.100000 V, voutb = 0.000000 V
-Iin = -0.001000 A, Iinb = 0.000100 A, vout = -0.100000 V, voutb = 0.010000 V
-Iin = -0.001000 A, Iinb = 0.000200 A, vout = -0.100000 V, voutb = 0.020000 V
-Iin = -0.001000 A, Iinb = 0.000300 A, vout = -0.100000 V, voutb = 0.030000 V
-Iin = -0.001000 A, Iinb = 0.000400 A, vout = -0.100000 V, voutb = 0.040000 V
-Iin = -0.001000 A, Iinb = 0.000500 A, vout = -0.100000 V, voutb = 0.050000 V
-Iin = -0.001000 A, Iinb = 0.000600 A, vout = -0.100000 V, voutb = 0.060000 V
-Iin = -0.001000 A, Iinb = 0.000700 A, vout = -0.100000 V, voutb = 0.070000 V
-Iin = -0.001000 A, Iinb = 0.000800 A, vout = -0.100000 V, voutb = 0.080000 V
-Iin = -0.001000 A, Iinb = 0.000900 A, vout = -0.100000 V, voutb = 0.090000 V
-Iin = -0.000900 A, Iinb = -0.001000 A, vout = -0.090000 V, voutb = -0.100000 V
-Iin = -0.000900 A, Iinb = -0.000900 A, vout = -0.090000 V, voutb = -0.090000 V
-Iin = -0.000900 A, Iinb = -0.000800 A, vout = -0.090000 V, voutb = -0.080000 V
-Iin = -0.000900 A, Iinb = -0.000700 A, vout = -0.090000 V, voutb = -0.070000 V
-Iin = -0.000900 A, Iinb = -0.000600 A, vout = -0.090000 V, voutb = -0.060000 V
-Iin = -0.000900 A, Iinb = -0.000500 A, vout = -0.090000 V, voutb = -0.050000 V
-Iin = -0.000900 A, Iinb = -0.000400 A, vout = -0.090000 V, voutb = -0.040000 V
-Iin = -0.000900 A, Iinb = -0.000300 A, vout = -0.090000 V, voutb = -0.030000 V
-Iin = -0.000900 A, Iinb = -0.000200 A, vout = -0.090000 V, voutb = -0.020000 V
-Iin = -0.000900 A, Iinb = -0.000100 A, vout = -0.090000 V, voutb = -0.010000 V
-Iin = -0.000900 A, Iinb = 0.000000 A, vout = -0.090000 V, voutb = 0.000000 V
-Iin = -0.000900 A, Iinb = 0.000100 A, vout = -0.090000 V, voutb = 0.010000 V
-Iin = -0.000900 A, Iinb = 0.000200 A, vout = -0.090000 V, voutb = 0.020000 V
-Iin = -0.000900 A, Iinb = 0.000300 A, vout = -0.090000 V, voutb = 0.030000 V
-Iin = -0.000900 A, Iinb = 0.000400 A, vout = -0.090000 V, voutb = 0.040000 V
-Iin = -0.000900 A, Iinb = 0.000500 A, vout = -0.090000 V, voutb = 0.050000 V
-Iin = -0.000900 A, Iinb = 0.000600 A, vout = -0.090000 V, voutb = 0.060000 V
-Iin = -0.000900 A, Iinb = 0.000700 A, vout = -0.090000 V, voutb = 0.070000 V
-Iin = -0.000900 A, Iinb = 0.000800 A, vout = -0.090000 V, voutb = 0.080000 V
-Iin = -0.000900 A, Iinb = 0.000900 A, vout = -0.090000 V, voutb = 0.090000 V
-Iin = -0.000800 A, Iinb = -0.001000 A, vout = -0.080000 V, voutb = -0.100000 V
-Iin = -0.000800 A, Iinb = -0.000900 A, vout = -0.080000 V, voutb = -0.090000 V
-Iin = -0.000800 A, Iinb = -0.000800 A, vout = -0.080000 V, voutb = -0.080000 V
-Iin = -0.000800 A, Iinb = -0.000700 A, vout = -0.080000 V, voutb = -0.070000 V
-Iin = -0.000800 A, Iinb = -0.000600 A, vout = -0.080000 V, voutb = -0.060000 V
-Iin = -0.000800 A, Iinb = -0.000500 A, vout = -0.080000 V, voutb = -0.050000 V
-Iin = -0.000800 A, Iinb = -0.000400 A, vout = -0.080000 V, voutb = -0.040000 V
-Iin = -0.000800 A, Iinb = -0.000300 A, vout = -0.080000 V, voutb = -0.030000 V
-Iin = -0.000800 A, Iinb = -0.000200 A, vout = -0.080000 V, voutb = -0.020000 V
-Iin = -0.000800 A, Iinb = -0.000100 A, vout = -0.080000 V, voutb = -0.010000 V
-Iin = -0.000800 A, Iinb = 0.000000 A, vout = -0.080000 V, voutb = 0.000000 V
-Iin = -0.000800 A, Iinb = 0.000100 A, vout = -0.080000 V, voutb = 0.010000 V
-Iin = -0.000800 A, Iinb = 0.000200 A, vout = -0.080000 V, voutb = 0.020000 V
-Iin = -0.000800 A, Iinb = 0.000300 A, vout = -0.080000 V, voutb = 0.030000 V
-Iin = -0.000800 A, Iinb = 0.000400 A, vout = -0.080000 V, voutb = 0.040000 V
-Iin = -0.000800 A, Iinb = 0.000500 A, vout = -0.080000 V, voutb = 0.050000 V
-Iin = -0.000800 A, Iinb = 0.000600 A, vout = -0.080000 V, voutb = 0.060000 V
-Iin = -0.000800 A, Iinb = 0.000700 A, vout = -0.080000 V, voutb = 0.070000 V
-Iin = -0.000800 A, Iinb = 0.000800 A, vout = -0.080000 V, voutb = 0.080000 V
-Iin = -0.000800 A, Iinb = 0.000900 A, vout = -0.080000 V, voutb = 0.090000 V
-Iin = -0.000700 A, Iinb = -0.001000 A, vout = -0.070000 V, voutb = -0.100000 V
-Iin = -0.000700 A, Iinb = -0.000900 A, vout = -0.070000 V, voutb = -0.090000 V
-Iin = -0.000700 A, Iinb = -0.000800 A, vout = -0.070000 V, voutb = -0.080000 V
-Iin = -0.000700 A, Iinb = -0.000700 A, vout = -0.070000 V, voutb = -0.070000 V
-Iin = -0.000700 A, Iinb = -0.000600 A, vout = -0.070000 V, voutb = -0.060000 V
-Iin = -0.000700 A, Iinb = -0.000500 A, vout = -0.070000 V, voutb = -0.050000 V
-Iin = -0.000700 A, Iinb = -0.000400 A, vout = -0.070000 V, voutb = -0.040000 V
-Iin = -0.000700 A, Iinb = -0.000300 A, vout = -0.070000 V, voutb = -0.030000 V
-Iin = -0.000700 A, Iinb = -0.000200 A, vout = -0.070000 V, voutb = -0.020000 V
-Iin = -0.000700 A, Iinb = -0.000100 A, vout = -0.070000 V, voutb = -0.010000 V
-Iin = -0.000700 A, Iinb = 0.000000 A, vout = -0.070000 V, voutb = 0.000000 V
-Iin = -0.000700 A, Iinb = 0.000100 A, vout = -0.070000 V, voutb = 0.010000 V
-Iin = -0.000700 A, Iinb = 0.000200 A, vout = -0.070000 V, voutb = 0.020000 V
-Iin = -0.000700 A, Iinb = 0.000300 A, vout = -0.070000 V, voutb = 0.030000 V
-Iin = -0.000700 A, Iinb = 0.000400 A, vout = -0.070000 V, voutb = 0.040000 V
-Iin = -0.000700 A, Iinb = 0.000500 A, vout = -0.070000 V, voutb = 0.050000 V
-Iin = -0.000700 A, Iinb = 0.000600 A, vout = -0.070000 V, voutb = 0.060000 V
-Iin = -0.000700 A, Iinb = 0.000700 A, vout = -0.070000 V, voutb = 0.070000 V
-Iin = -0.000700 A, Iinb = 0.000800 A, vout = -0.070000 V, voutb = 0.080000 V
-Iin = -0.000700 A, Iinb = 0.000900 A, vout = -0.070000 V, voutb = 0.090000 V
-Iin = -0.000600 A, Iinb = -0.001000 A, vout = -0.060000 V, voutb = -0.100000 V
-Iin = -0.000600 A, Iinb = -0.000900 A, vout = -0.060000 V, voutb = -0.090000 V
-Iin = -0.000600 A, Iinb = -0.000800 A, vout = -0.060000 V, voutb = -0.080000 V
-Iin = -0.000600 A, Iinb = -0.000700 A, vout = -0.060000 V, voutb = -0.070000 V
-Iin = -0.000600 A, Iinb = -0.000600 A, vout = -0.060000 V, voutb = -0.060000 V
-Iin = -0.000600 A, Iinb = -0.000500 A, vout = -0.060000 V, voutb = -0.050000 V
-Iin = -0.000600 A, Iinb = -0.000400 A, vout = -0.060000 V, voutb = -0.040000 V
-Iin = -0.000600 A, Iinb = -0.000300 A, vout = -0.060000 V, voutb = -0.030000 V
-Iin = -0.000600 A, Iinb = -0.000200 A, vout = -0.060000 V, voutb = -0.020000 V
-Iin = -0.000600 A, Iinb = -0.000100 A, vout = -0.060000 V, voutb = -0.010000 V
-Iin = -0.000600 A, Iinb = 0.000000 A, vout = -0.060000 V, voutb = 0.000000 V
-Iin = -0.000600 A, Iinb = 0.000100 A, vout = -0.060000 V, voutb = 0.010000 V
-Iin = -0.000600 A, Iinb = 0.000200 A, vout = -0.060000 V, voutb = 0.020000 V
-Iin = -0.000600 A, Iinb = 0.000300 A, vout = -0.060000 V, voutb = 0.030000 V
-Iin = -0.000600 A, Iinb = 0.000400 A, vout = -0.060000 V, voutb = 0.040000 V
-Iin = -0.000600 A, Iinb = 0.000500 A, vout = -0.060000 V, voutb = 0.050000 V
-Iin = -0.000600 A, Iinb = 0.000600 A, vout = -0.060000 V, voutb = 0.060000 V
-Iin = -0.000600 A, Iinb = 0.000700 A, vout = -0.060000 V, voutb = 0.070000 V
-Iin = -0.000600 A, Iinb = 0.000800 A, vout = -0.060000 V, voutb = 0.080000 V
-Iin = -0.000600 A, Iinb = 0.000900 A, vout = -0.060000 V, voutb = 0.090000 V
-Iin = -0.000500 A, Iinb = -0.001000 A, vout = -0.050000 V, voutb = -0.100000 V
-Iin = -0.000500 A, Iinb = -0.000900 A, vout = -0.050000 V, voutb = -0.090000 V
-Iin = -0.000500 A, Iinb = -0.000800 A, vout = -0.050000 V, voutb = -0.080000 V
-Iin = -0.000500 A, Iinb = -0.000700 A, vout = -0.050000 V, voutb = -0.070000 V
-Iin = -0.000500 A, Iinb = -0.000600 A, vout = -0.050000 V, voutb = -0.060000 V
-Iin = -0.000500 A, Iinb = -0.000500 A, vout = -0.050000 V, voutb = -0.050000 V
-Iin = -0.000500 A, Iinb = -0.000400 A, vout = -0.050000 V, voutb = -0.040000 V
-Iin = -0.000500 A, Iinb = -0.000300 A, vout = -0.050000 V, voutb = -0.030000 V
-Iin = -0.000500 A, Iinb = -0.000200 A, vout = -0.050000 V, voutb = -0.020000 V
-Iin = -0.000500 A, Iinb = -0.000100 A, vout = -0.050000 V, voutb = -0.010000 V
-Iin = -0.000500 A, Iinb = 0.000000 A, vout = -0.050000 V, voutb = 0.000000 V
-Iin = -0.000500 A, Iinb = 0.000100 A, vout = -0.050000 V, voutb = 0.010000 V
-Iin = -0.000500 A, Iinb = 0.000200 A, vout = -0.050000 V, voutb = 0.020000 V
-Iin = -0.000500 A, Iinb = 0.000300 A, vout = -0.050000 V, voutb = 0.030000 V
-Iin = -0.000500 A, Iinb = 0.000400 A, vout = -0.050000 V, voutb = 0.040000 V
-Iin = -0.000500 A, Iinb = 0.000500 A, vout = -0.050000 V, voutb = 0.050000 V
-Iin = -0.000500 A, Iinb = 0.000600 A, vout = -0.050000 V, voutb = 0.060000 V
-Iin = -0.000500 A, Iinb = 0.000700 A, vout = -0.050000 V, voutb = 0.070000 V
-Iin = -0.000500 A, Iinb = 0.000800 A, vout = -0.050000 V, voutb = 0.080000 V
-Iin = -0.000500 A, Iinb = 0.000900 A, vout = -0.050000 V, voutb = 0.090000 V
-Iin = -0.000400 A, Iinb = -0.001000 A, vout = -0.040000 V, voutb = -0.100000 V
-Iin = -0.000400 A, Iinb = -0.000900 A, vout = -0.040000 V, voutb = -0.090000 V
-Iin = -0.000400 A, Iinb = -0.000800 A, vout = -0.040000 V, voutb = -0.080000 V
-Iin = -0.000400 A, Iinb = -0.000700 A, vout = -0.040000 V, voutb = -0.070000 V
-Iin = -0.000400 A, Iinb = -0.000600 A, vout = -0.040000 V, voutb = -0.060000 V
-Iin = -0.000400 A, Iinb = -0.000500 A, vout = -0.040000 V, voutb = -0.050000 V
-Iin = -0.000400 A, Iinb = -0.000400 A, vout = -0.040000 V, voutb = -0.040000 V
-Iin = -0.000400 A, Iinb = -0.000300 A, vout = -0.040000 V, voutb = -0.030000 V
-Iin = -0.000400 A, Iinb = -0.000200 A, vout = -0.040000 V, voutb = -0.020000 V
-Iin = -0.000400 A, Iinb = -0.000100 A, vout = -0.040000 V, voutb = -0.010000 V
-Iin = -0.000400 A, Iinb = 0.000000 A, vout = -0.040000 V, voutb = 0.000000 V
-Iin = -0.000400 A, Iinb = 0.000100 A, vout = -0.040000 V, voutb = 0.010000 V
-Iin = -0.000400 A, Iinb = 0.000200 A, vout = -0.040000 V, voutb = 0.020000 V
-Iin = -0.000400 A, Iinb = 0.000300 A, vout = -0.040000 V, voutb = 0.030000 V
-Iin = -0.000400 A, Iinb = 0.000400 A, vout = -0.040000 V, voutb = 0.040000 V
-Iin = -0.000400 A, Iinb = 0.000500 A, vout = -0.040000 V, voutb = 0.050000 V
-Iin = -0.000400 A, Iinb = 0.000600 A, vout = -0.040000 V, voutb = 0.060000 V
-Iin = -0.000400 A, Iinb = 0.000700 A, vout = -0.040000 V, voutb = 0.070000 V
-Iin = -0.000400 A, Iinb = 0.000800 A, vout = -0.040000 V, voutb = 0.080000 V
-Iin = -0.000400 A, Iinb = 0.000900 A, vout = -0.040000 V, voutb = 0.090000 V
-Iin = -0.000300 A, Iinb = -0.001000 A, vout = -0.030000 V, voutb = -0.100000 V
-Iin = -0.000300 A, Iinb = -0.000900 A, vout = -0.030000 V, voutb = -0.090000 V
-Iin = -0.000300 A, Iinb = -0.000800 A, vout = -0.030000 V, voutb = -0.080000 V
-Iin = -0.000300 A, Iinb = -0.000700 A, vout = -0.030000 V, voutb = -0.070000 V
-Iin = -0.000300 A, Iinb = -0.000600 A, vout = -0.030000 V, voutb = -0.060000 V
-Iin = -0.000300 A, Iinb = -0.000500 A, vout = -0.030000 V, voutb = -0.050000 V
-Iin = -0.000300 A, Iinb = -0.000400 A, vout = -0.030000 V, voutb = -0.040000 V
-Iin = -0.000300 A, Iinb = -0.000300 A, vout = -0.030000 V, voutb = -0.030000 V
-Iin = -0.000300 A, Iinb = -0.000200 A, vout = -0.030000 V, voutb = -0.020000 V
-Iin = -0.000300 A, Iinb = -0.000100 A, vout = -0.030000 V, voutb = -0.010000 V
-Iin = -0.000300 A, Iinb = 0.000000 A, vout = -0.030000 V, voutb = 0.000000 V
-Iin = -0.000300 A, Iinb = 0.000100 A, vout = -0.030000 V, voutb = 0.010000 V
-Iin = -0.000300 A, Iinb = 0.000200 A, vout = -0.030000 V, voutb = 0.020000 V
-Iin = -0.000300 A, Iinb = 0.000300 A, vout = -0.030000 V, voutb = 0.030000 V
-Iin = -0.000300 A, Iinb = 0.000400 A, vout = -0.030000 V, voutb = 0.040000 V
-Iin = -0.000300 A, Iinb = 0.000500 A, vout = -0.030000 V, voutb = 0.050000 V
-Iin = -0.000300 A, Iinb = 0.000600 A, vout = -0.030000 V, voutb = 0.060000 V
-Iin = -0.000300 A, Iinb = 0.000700 A, vout = -0.030000 V, voutb = 0.070000 V
-Iin = -0.000300 A, Iinb = 0.000800 A, vout = -0.030000 V, voutb = 0.080000 V
-Iin = -0.000300 A, Iinb = 0.000900 A, vout = -0.030000 V, voutb = 0.090000 V
-Iin = -0.000200 A, Iinb = -0.001000 A, vout = -0.020000 V, voutb = -0.100000 V
-Iin = -0.000200 A, Iinb = -0.000900 A, vout = -0.020000 V, voutb = -0.090000 V
-Iin = -0.000200 A, Iinb = -0.000800 A, vout = -0.020000 V, voutb = -0.080000 V
-Iin = -0.000200 A, Iinb = -0.000700 A, vout = -0.020000 V, voutb = -0.070000 V
-Iin = -0.000200 A, Iinb = -0.000600 A, vout = -0.020000 V, voutb = -0.060000 V
-Iin = -0.000200 A, Iinb = -0.000500 A, vout = -0.020000 V, voutb = -0.050000 V
-Iin = -0.000200 A, Iinb = -0.000400 A, vout = -0.020000 V, voutb = -0.040000 V
-Iin = -0.000200 A, Iinb = -0.000300 A, vout = -0.020000 V, voutb = -0.030000 V
-Iin = -0.000200 A, Iinb = -0.000200 A, vout = -0.020000 V, voutb = -0.020000 V
-Iin = -0.000200 A, Iinb = -0.000100 A, vout = -0.020000 V, voutb = -0.010000 V
-Iin = -0.000200 A, Iinb = 0.000000 A, vout = -0.020000 V, voutb = 0.000000 V
-Iin = -0.000200 A, Iinb = 0.000100 A, vout = -0.020000 V, voutb = 0.010000 V
-Iin = -0.000200 A, Iinb = 0.000200 A, vout = -0.020000 V, voutb = 0.020000 V
-Iin = -0.000200 A, Iinb = 0.000300 A, vout = -0.020000 V, voutb = 0.030000 V
-Iin = -0.000200 A, Iinb = 0.000400 A, vout = -0.020000 V, voutb = 0.040000 V
-Iin = -0.000200 A, Iinb = 0.000500 A, vout = -0.020000 V, voutb = 0.050000 V
-Iin = -0.000200 A, Iinb = 0.000600 A, vout = -0.020000 V, voutb = 0.060000 V
-Iin = -0.000200 A, Iinb = 0.000700 A, vout = -0.020000 V, voutb = 0.070000 V
-Iin = -0.000200 A, Iinb = 0.000800 A, vout = -0.020000 V, voutb = 0.080000 V
-Iin = -0.000200 A, Iinb = 0.000900 A, vout = -0.020000 V, voutb = 0.090000 V
-Iin = -0.000100 A, Iinb = -0.001000 A, vout = -0.010000 V, voutb = -0.100000 V
-Iin = -0.000100 A, Iinb = -0.000900 A, vout = -0.010000 V, voutb = -0.090000 V
-Iin = -0.000100 A, Iinb = -0.000800 A, vout = -0.010000 V, voutb = -0.080000 V
-Iin = -0.000100 A, Iinb = -0.000700 A, vout = -0.010000 V, voutb = -0.070000 V
-Iin = -0.000100 A, Iinb = -0.000600 A, vout = -0.010000 V, voutb = -0.060000 V
-Iin = -0.000100 A, Iinb = -0.000500 A, vout = -0.010000 V, voutb = -0.050000 V
-Iin = -0.000100 A, Iinb = -0.000400 A, vout = -0.010000 V, voutb = -0.040000 V
-Iin = -0.000100 A, Iinb = -0.000300 A, vout = -0.010000 V, voutb = -0.030000 V
-Iin = -0.000100 A, Iinb = -0.000200 A, vout = -0.010000 V, voutb = -0.020000 V
-Iin = -0.000100 A, Iinb = -0.000100 A, vout = -0.010000 V, voutb = -0.010000 V
-Iin = -0.000100 A, Iinb = 0.000000 A, vout = -0.010000 V, voutb = 0.000000 V
-Iin = -0.000100 A, Iinb = 0.000100 A, vout = -0.010000 V, voutb = 0.010000 V
-Iin = -0.000100 A, Iinb = 0.000200 A, vout = -0.010000 V, voutb = 0.020000 V
-Iin = -0.000100 A, Iinb = 0.000300 A, vout = -0.010000 V, voutb = 0.030000 V
-Iin = -0.000100 A, Iinb = 0.000400 A, vout = -0.010000 V, voutb = 0.040000 V
-Iin = -0.000100 A, Iinb = 0.000500 A, vout = -0.010000 V, voutb = 0.050000 V
-Iin = -0.000100 A, Iinb = 0.000600 A, vout = -0.010000 V, voutb = 0.060000 V
-Iin = -0.000100 A, Iinb = 0.000700 A, vout = -0.010000 V, voutb = 0.070000 V
-Iin = -0.000100 A, Iinb = 0.000800 A, vout = -0.010000 V, voutb = 0.080000 V
-Iin = -0.000100 A, Iinb = 0.000900 A, vout = -0.010000 V, voutb = 0.090000 V
-Iin = 0.000000 A, Iinb = -0.001000 A, vout = 0.000000 V, voutb = -0.100000 V
-Iin = 0.000000 A, Iinb = -0.000900 A, vout = 0.000000 V, voutb = -0.090000 V
-Iin = 0.000000 A, Iinb = -0.000800 A, vout = 0.000000 V, voutb = -0.080000 V
-Iin = 0.000000 A, Iinb = -0.000700 A, vout = 0.000000 V, voutb = -0.070000 V
-Iin = 0.000000 A, Iinb = -0.000600 A, vout = 0.000000 V, voutb = -0.060000 V
-Iin = 0.000000 A, Iinb = -0.000500 A, vout = 0.000000 V, voutb = -0.050000 V
-Iin = 0.000000 A, Iinb = -0.000400 A, vout = 0.000000 V, voutb = -0.040000 V
-Iin = 0.000000 A, Iinb = -0.000300 A, vout = 0.000000 V, voutb = -0.030000 V
-Iin = 0.000000 A, Iinb = -0.000200 A, vout = 0.000000 V, voutb = -0.020000 V
-Iin = 0.000000 A, Iinb = -0.000100 A, vout = 0.000000 V, voutb = -0.010000 V
-Iin = 0.000000 A, Iinb = 0.000000 A, vout = 0.000000 V, voutb = 0.000000 V
-Iin = 0.000000 A, Iinb = 0.000100 A, vout = 0.000000 V, voutb = 0.010000 V
-Iin = 0.000000 A, Iinb = 0.000200 A, vout = 0.000000 V, voutb = 0.020000 V
-Iin = 0.000000 A, Iinb = 0.000300 A, vout = 0.000000 V, voutb = 0.030000 V
-Iin = 0.000000 A, Iinb = 0.000400 A, vout = 0.000000 V, voutb = 0.040000 V
-Iin = 0.000000 A, Iinb = 0.000500 A, vout = 0.000000 V, voutb = 0.050000 V
-Iin = 0.000000 A, Iinb = 0.000600 A, vout = 0.000000 V, voutb = 0.060000 V
-Iin = 0.000000 A, Iinb = 0.000700 A, vout = 0.000000 V, voutb = 0.070000 V
-Iin = 0.000000 A, Iinb = 0.000800 A, vout = 0.000000 V, voutb = 0.080000 V
-Iin = 0.000000 A, Iinb = 0.000900 A, vout = 0.000000 V, voutb = 0.090000 V
-Iin = 0.000100 A, Iinb = -0.001000 A, vout = 0.010000 V, voutb = -0.100000 V
-Iin = 0.000100 A, Iinb = -0.000900 A, vout = 0.010000 V, voutb = -0.090000 V
-Iin = 0.000100 A, Iinb = -0.000800 A, vout = 0.010000 V, voutb = -0.080000 V
-Iin = 0.000100 A, Iinb = -0.000700 A, vout = 0.010000 V, voutb = -0.070000 V
-Iin = 0.000100 A, Iinb = -0.000600 A, vout = 0.010000 V, voutb = -0.060000 V
-Iin = 0.000100 A, Iinb = -0.000500 A, vout = 0.010000 V, voutb = -0.050000 V
-Iin = 0.000100 A, Iinb = -0.000400 A, vout = 0.010000 V, voutb = -0.040000 V
-Iin = 0.000100 A, Iinb = -0.000300 A, vout = 0.010000 V, voutb = -0.030000 V
-Iin = 0.000100 A, Iinb = -0.000200 A, vout = 0.010000 V, voutb = -0.020000 V
-Iin = 0.000100 A, Iinb = -0.000100 A, vout = 0.010000 V, voutb = -0.010000 V
-Iin = 0.000100 A, Iinb = 0.000000 A, vout = 0.010000 V, voutb = 0.000000 V
-Iin = 0.000100 A, Iinb = 0.000100 A, vout = 0.010000 V, voutb = 0.010000 V
-Iin = 0.000100 A, Iinb = 0.000200 A, vout = 0.010000 V, voutb = 0.020000 V
-Iin = 0.000100 A, Iinb = 0.000300 A, vout = 0.010000 V, voutb = 0.030000 V
-Iin = 0.000100 A, Iinb = 0.000400 A, vout = 0.010000 V, voutb = 0.040000 V
-Iin = 0.000100 A, Iinb = 0.000500 A, vout = 0.010000 V, voutb = 0.050000 V
-Iin = 0.000100 A, Iinb = 0.000600 A, vout = 0.010000 V, voutb = 0.060000 V
-Iin = 0.000100 A, Iinb = 0.000700 A, vout = 0.010000 V, voutb = 0.070000 V
-Iin = 0.000100 A, Iinb = 0.000800 A, vout = 0.010000 V, voutb = 0.080000 V
-Iin = 0.000100 A, Iinb = 0.000900 A, vout = 0.010000 V, voutb = 0.090000 V
-Iin = 0.000200 A, Iinb = -0.001000 A, vout = 0.020000 V, voutb = -0.100000 V
-Iin = 0.000200 A, Iinb = -0.000900 A, vout = 0.020000 V, voutb = -0.090000 V
-Iin = 0.000200 A, Iinb = -0.000800 A, vout = 0.020000 V, voutb = -0.080000 V
-Iin = 0.000200 A, Iinb = -0.000700 A, vout = 0.020000 V, voutb = -0.070000 V
-Iin = 0.000200 A, Iinb = -0.000600 A, vout = 0.020000 V, voutb = -0.060000 V
-Iin = 0.000200 A, Iinb = -0.000500 A, vout = 0.020000 V, voutb = -0.050000 V
-Iin = 0.000200 A, Iinb = -0.000400 A, vout = 0.020000 V, voutb = -0.040000 V
-Iin = 0.000200 A, Iinb = -0.000300 A, vout = 0.020000 V, voutb = -0.030000 V
-Iin = 0.000200 A, Iinb = -0.000200 A, vout = 0.020000 V, voutb = -0.020000 V
-Iin = 0.000200 A, Iinb = -0.000100 A, vout = 0.020000 V, voutb = -0.010000 V
-Iin = 0.000200 A, Iinb = 0.000000 A, vout = 0.020000 V, voutb = 0.000000 V
-Iin = 0.000200 A, Iinb = 0.000100 A, vout = 0.020000 V, voutb = 0.010000 V
-Iin = 0.000200 A, Iinb = 0.000200 A, vout = 0.020000 V, voutb = 0.020000 V
-Iin = 0.000200 A, Iinb = 0.000300 A, vout = 0.020000 V, voutb = 0.030000 V
-Iin = 0.000200 A, Iinb = 0.000400 A, vout = 0.020000 V, voutb = 0.040000 V
-Iin = 0.000200 A, Iinb = 0.000500 A, vout = 0.020000 V, voutb = 0.050000 V
-Iin = 0.000200 A, Iinb = 0.000600 A, vout = 0.020000 V, voutb = 0.060000 V
-Iin = 0.000200 A, Iinb = 0.000700 A, vout = 0.020000 V, voutb = 0.070000 V
-Iin = 0.000200 A, Iinb = 0.000800 A, vout = 0.020000 V, voutb = 0.080000 V
-Iin = 0.000200 A, Iinb = 0.000900 A, vout = 0.020000 V, voutb = 0.090000 V
-Iin = 0.000300 A, Iinb = -0.001000 A, vout = 0.030000 V, voutb = -0.100000 V
-Iin = 0.000300 A, Iinb = -0.000900 A, vout = 0.030000 V, voutb = -0.090000 V
-Iin = 0.000300 A, Iinb = -0.000800 A, vout = 0.030000 V, voutb = -0.080000 V
-Iin = 0.000300 A, Iinb = -0.000700 A, vout = 0.030000 V, voutb = -0.070000 V
-Iin = 0.000300 A, Iinb = -0.000600 A, vout = 0.030000 V, voutb = -0.060000 V
-Iin = 0.000300 A, Iinb = -0.000500 A, vout = 0.030000 V, voutb = -0.050000 V
-Iin = 0.000300 A, Iinb = -0.000400 A, vout = 0.030000 V, voutb = -0.040000 V
-Iin = 0.000300 A, Iinb = -0.000300 A, vout = 0.030000 V, voutb = -0.030000 V
-Iin = 0.000300 A, Iinb = -0.000200 A, vout = 0.030000 V, voutb = -0.020000 V
-Iin = 0.000300 A, Iinb = -0.000100 A, vout = 0.030000 V, voutb = -0.010000 V
-Iin = 0.000300 A, Iinb = 0.000000 A, vout = 0.030000 V, voutb = 0.000000 V
-Iin = 0.000300 A, Iinb = 0.000100 A, vout = 0.030000 V, voutb = 0.010000 V
-Iin = 0.000300 A, Iinb = 0.000200 A, vout = 0.030000 V, voutb = 0.020000 V
-Iin = 0.000300 A, Iinb = 0.000300 A, vout = 0.030000 V, voutb = 0.030000 V
-Iin = 0.000300 A, Iinb = 0.000400 A, vout = 0.030000 V, voutb = 0.040000 V
-Iin = 0.000300 A, Iinb = 0.000500 A, vout = 0.030000 V, voutb = 0.050000 V
-Iin = 0.000300 A, Iinb = 0.000600 A, vout = 0.030000 V, voutb = 0.060000 V
-Iin = 0.000300 A, Iinb = 0.000700 A, vout = 0.030000 V, voutb = 0.070000 V
-Iin = 0.000300 A, Iinb = 0.000800 A, vout = 0.030000 V, voutb = 0.080000 V
-Iin = 0.000300 A, Iinb = 0.000900 A, vout = 0.030000 V, voutb = 0.090000 V
-Iin = 0.000400 A, Iinb = -0.001000 A, vout = 0.040000 V, voutb = -0.100000 V
-Iin = 0.000400 A, Iinb = -0.000900 A, vout = 0.040000 V, voutb = -0.090000 V
-Iin = 0.000400 A, Iinb = -0.000800 A, vout = 0.040000 V, voutb = -0.080000 V
-Iin = 0.000400 A, Iinb = -0.000700 A, vout = 0.040000 V, voutb = -0.070000 V
-Iin = 0.000400 A, Iinb = -0.000600 A, vout = 0.040000 V, voutb = -0.060000 V
-Iin = 0.000400 A, Iinb = -0.000500 A, vout = 0.040000 V, voutb = -0.050000 V
-Iin = 0.000400 A, Iinb = -0.000400 A, vout = 0.040000 V, voutb = -0.040000 V
-Iin = 0.000400 A, Iinb = -0.000300 A, vout = 0.040000 V, voutb = -0.030000 V
-Iin = 0.000400 A, Iinb = -0.000200 A, vout = 0.040000 V, voutb = -0.020000 V
-Iin = 0.000400 A, Iinb = -0.000100 A, vout = 0.040000 V, voutb = -0.010000 V
-Iin = 0.000400 A, Iinb = 0.000000 A, vout = 0.040000 V, voutb = 0.000000 V
-Iin = 0.000400 A, Iinb = 0.000100 A, vout = 0.040000 V, voutb = 0.010000 V
-Iin = 0.000400 A, Iinb = 0.000200 A, vout = 0.040000 V, voutb = 0.020000 V
-Iin = 0.000400 A, Iinb = 0.000300 A, vout = 0.040000 V, voutb = 0.030000 V
-Iin = 0.000400 A, Iinb = 0.000400 A, vout = 0.040000 V, voutb = 0.040000 V
-Iin = 0.000400 A, Iinb = 0.000500 A, vout = 0.040000 V, voutb = 0.050000 V
-Iin = 0.000400 A, Iinb = 0.000600 A, vout = 0.040000 V, voutb = 0.060000 V
-Iin = 0.000400 A, Iinb = 0.000700 A, vout = 0.040000 V, voutb = 0.070000 V
-Iin = 0.000400 A, Iinb = 0.000800 A, vout = 0.040000 V, voutb = 0.080000 V
-Iin = 0.000400 A, Iinb = 0.000900 A, vout = 0.040000 V, voutb = 0.090000 V
-Iin = 0.000500 A, Iinb = -0.001000 A, vout = 0.050000 V, voutb = -0.100000 V
-Iin = 0.000500 A, Iinb = -0.000900 A, vout = 0.050000 V, voutb = -0.090000 V
-Iin = 0.000500 A, Iinb = -0.000800 A, vout = 0.050000 V, voutb = -0.080000 V
-Iin = 0.000500 A, Iinb = -0.000700 A, vout = 0.050000 V, voutb = -0.070000 V
-Iin = 0.000500 A, Iinb = -0.000600 A, vout = 0.050000 V, voutb = -0.060000 V
-Iin = 0.000500 A, Iinb = -0.000500 A, vout = 0.050000 V, voutb = -0.050000 V
-Iin = 0.000500 A, Iinb = -0.000400 A, vout = 0.050000 V, voutb = -0.040000 V
-Iin = 0.000500 A, Iinb = -0.000300 A, vout = 0.050000 V, voutb = -0.030000 V
-Iin = 0.000500 A, Iinb = -0.000200 A, vout = 0.050000 V, voutb = -0.020000 V
-Iin = 0.000500 A, Iinb = -0.000100 A, vout = 0.050000 V, voutb = -0.010000 V
-Iin = 0.000500 A, Iinb = 0.000000 A, vout = 0.050000 V, voutb = 0.000000 V
-Iin = 0.000500 A, Iinb = 0.000100 A, vout = 0.050000 V, voutb = 0.010000 V
-Iin = 0.000500 A, Iinb = 0.000200 A, vout = 0.050000 V, voutb = 0.020000 V
-Iin = 0.000500 A, Iinb = 0.000300 A, vout = 0.050000 V, voutb = 0.030000 V
-Iin = 0.000500 A, Iinb = 0.000400 A, vout = 0.050000 V, voutb = 0.040000 V
-Iin = 0.000500 A, Iinb = 0.000500 A, vout = 0.050000 V, voutb = 0.050000 V
-Iin = 0.000500 A, Iinb = 0.000600 A, vout = 0.050000 V, voutb = 0.060000 V
-Iin = 0.000500 A, Iinb = 0.000700 A, vout = 0.050000 V, voutb = 0.070000 V
-Iin = 0.000500 A, Iinb = 0.000800 A, vout = 0.050000 V, voutb = 0.080000 V
-Iin = 0.000500 A, Iinb = 0.000900 A, vout = 0.050000 V, voutb = 0.090000 V
-Iin = 0.000600 A, Iinb = -0.001000 A, vout = 0.060000 V, voutb = -0.100000 V
-Iin = 0.000600 A, Iinb = -0.000900 A, vout = 0.060000 V, voutb = -0.090000 V
-Iin = 0.000600 A, Iinb = -0.000800 A, vout = 0.060000 V, voutb = -0.080000 V
-Iin = 0.000600 A, Iinb = -0.000700 A, vout = 0.060000 V, voutb = -0.070000 V
-Iin = 0.000600 A, Iinb = -0.000600 A, vout = 0.060000 V, voutb = -0.060000 V
-Iin = 0.000600 A, Iinb = -0.000500 A, vout = 0.060000 V, voutb = -0.050000 V
-Iin = 0.000600 A, Iinb = -0.000400 A, vout = 0.060000 V, voutb = -0.040000 V
-Iin = 0.000600 A, Iinb = -0.000300 A, vout = 0.060000 V, voutb = -0.030000 V
-Iin = 0.000600 A, Iinb = -0.000200 A, vout = 0.060000 V, voutb = -0.020000 V
-Iin = 0.000600 A, Iinb = -0.000100 A, vout = 0.060000 V, voutb = -0.010000 V
-Iin = 0.000600 A, Iinb = 0.000000 A, vout = 0.060000 V, voutb = 0.000000 V
-Iin = 0.000600 A, Iinb = 0.000100 A, vout = 0.060000 V, voutb = 0.010000 V
-Iin = 0.000600 A, Iinb = 0.000200 A, vout = 0.060000 V, voutb = 0.020000 V
-Iin = 0.000600 A, Iinb = 0.000300 A, vout = 0.060000 V, voutb = 0.030000 V
-Iin = 0.000600 A, Iinb = 0.000400 A, vout = 0.060000 V, voutb = 0.040000 V
-Iin = 0.000600 A, Iinb = 0.000500 A, vout = 0.060000 V, voutb = 0.050000 V
-Iin = 0.000600 A, Iinb = 0.000600 A, vout = 0.060000 V, voutb = 0.060000 V
-Iin = 0.000600 A, Iinb = 0.000700 A, vout = 0.060000 V, voutb = 0.070000 V
-Iin = 0.000600 A, Iinb = 0.000800 A, vout = 0.060000 V, voutb = 0.080000 V
-Iin = 0.000600 A, Iinb = 0.000900 A, vout = 0.060000 V, voutb = 0.090000 V
-Iin = 0.000700 A, Iinb = -0.001000 A, vout = 0.070000 V, voutb = -0.100000 V
-Iin = 0.000700 A, Iinb = -0.000900 A, vout = 0.070000 V, voutb = -0.090000 V
-Iin = 0.000700 A, Iinb = -0.000800 A, vout = 0.070000 V, voutb = -0.080000 V
-Iin = 0.000700 A, Iinb = -0.000700 A, vout = 0.070000 V, voutb = -0.070000 V
-Iin = 0.000700 A, Iinb = -0.000600 A, vout = 0.070000 V, voutb = -0.060000 V
-Iin = 0.000700 A, Iinb = -0.000500 A, vout = 0.070000 V, voutb = -0.050000 V
-Iin = 0.000700 A, Iinb = -0.000400 A, vout = 0.070000 V, voutb = -0.040000 V
-Iin = 0.000700 A, Iinb = -0.000300 A, vout = 0.070000 V, voutb = -0.030000 V
-Iin = 0.000700 A, Iinb = -0.000200 A, vout = 0.070000 V, voutb = -0.020000 V
-Iin = 0.000700 A, Iinb = -0.000100 A, vout = 0.070000 V, voutb = -0.010000 V
-Iin = 0.000700 A, Iinb = 0.000000 A, vout = 0.070000 V, voutb = 0.000000 V
-Iin = 0.000700 A, Iinb = 0.000100 A, vout = 0.070000 V, voutb = 0.010000 V
-Iin = 0.000700 A, Iinb = 0.000200 A, vout = 0.070000 V, voutb = 0.020000 V
-Iin = 0.000700 A, Iinb = 0.000300 A, vout = 0.070000 V, voutb = 0.030000 V
-Iin = 0.000700 A, Iinb = 0.000400 A, vout = 0.070000 V, voutb = 0.040000 V
-Iin = 0.000700 A, Iinb = 0.000500 A, vout = 0.070000 V, voutb = 0.050000 V
-Iin = 0.000700 A, Iinb = 0.000600 A, vout = 0.070000 V, voutb = 0.060000 V
-Iin = 0.000700 A, Iinb = 0.000700 A, vout = 0.070000 V, voutb = 0.070000 V
-Iin = 0.000700 A, Iinb = 0.000800 A, vout = 0.070000 V, voutb = 0.080000 V
-Iin = 0.000700 A, Iinb = 0.000900 A, vout = 0.070000 V, voutb = 0.090000 V
-Iin = 0.000800 A, Iinb = -0.001000 A, vout = 0.080000 V, voutb = -0.100000 V
-Iin = 0.000800 A, Iinb = -0.000900 A, vout = 0.080000 V, voutb = -0.090000 V
-Iin = 0.000800 A, Iinb = -0.000800 A, vout = 0.080000 V, voutb = -0.080000 V
-Iin = 0.000800 A, Iinb = -0.000700 A, vout = 0.080000 V, voutb = -0.070000 V
-Iin = 0.000800 A, Iinb = -0.000600 A, vout = 0.080000 V, voutb = -0.060000 V
-Iin = 0.000800 A, Iinb = -0.000500 A, vout = 0.080000 V, voutb = -0.050000 V
-Iin = 0.000800 A, Iinb = -0.000400 A, vout = 0.080000 V, voutb = -0.040000 V
-Iin = 0.000800 A, Iinb = -0.000300 A, vout = 0.080000 V, voutb = -0.030000 V
-Iin = 0.000800 A, Iinb = -0.000200 A, vout = 0.080000 V, voutb = -0.020000 V
-Iin = 0.000800 A, Iinb = -0.000100 A, vout = 0.080000 V, voutb = -0.010000 V
-Iin = 0.000800 A, Iinb = 0.000000 A, vout = 0.080000 V, voutb = 0.000000 V
-Iin = 0.000800 A, Iinb = 0.000100 A, vout = 0.080000 V, voutb = 0.010000 V
-Iin = 0.000800 A, Iinb = 0.000200 A, vout = 0.080000 V, voutb = 0.020000 V
-Iin = 0.000800 A, Iinb = 0.000300 A, vout = 0.080000 V, voutb = 0.030000 V
-Iin = 0.000800 A, Iinb = 0.000400 A, vout = 0.080000 V, voutb = 0.040000 V
-Iin = 0.000800 A, Iinb = 0.000500 A, vout = 0.080000 V, voutb = 0.050000 V
-Iin = 0.000800 A, Iinb = 0.000600 A, vout = 0.080000 V, voutb = 0.060000 V
-Iin = 0.000800 A, Iinb = 0.000700 A, vout = 0.080000 V, voutb = 0.070000 V
-Iin = 0.000800 A, Iinb = 0.000800 A, vout = 0.080000 V, voutb = 0.080000 V
-Iin = 0.000800 A, Iinb = 0.000900 A, vout = 0.080000 V, voutb = 0.090000 V
-Iin = 0.000900 A, Iinb = -0.001000 A, vout = 0.090000 V, voutb = -0.100000 V
-Iin = 0.000900 A, Iinb = -0.000900 A, vout = 0.090000 V, voutb = -0.090000 V
-Iin = 0.000900 A, Iinb = -0.000800 A, vout = 0.090000 V, voutb = -0.080000 V
-Iin = 0.000900 A, Iinb = -0.000700 A, vout = 0.090000 V, voutb = -0.070000 V
-Iin = 0.000900 A, Iinb = -0.000600 A, vout = 0.090000 V, voutb = -0.060000 V
-Iin = 0.000900 A, Iinb = -0.000500 A, vout = 0.090000 V, voutb = -0.050000 V
-Iin = 0.000900 A, Iinb = -0.000400 A, vout = 0.090000 V, voutb = -0.040000 V
-Iin = 0.000900 A, Iinb = -0.000300 A, vout = 0.090000 V, voutb = -0.030000 V
-Iin = 0.000900 A, Iinb = -0.000200 A, vout = 0.090000 V, voutb = -0.020000 V
-Iin = 0.000900 A, Iinb = -0.000100 A, vout = 0.090000 V, voutb = -0.010000 V
-Iin = 0.000900 A, Iinb = 0.000000 A, vout = 0.090000 V, voutb = 0.000000 V
-Iin = 0.000900 A, Iinb = 0.000100 A, vout = 0.090000 V, voutb = 0.010000 V
-Iin = 0.000900 A, Iinb = 0.000200 A, vout = 0.090000 V, voutb = 0.020000 V
-Iin = 0.000900 A, Iinb = 0.000300 A, vout = 0.090000 V, voutb = 0.030000 V
-Iin = 0.000900 A, Iinb = 0.000400 A, vout = 0.090000 V, voutb = 0.040000 V
-Iin = 0.000900 A, Iinb = 0.000500 A, vout = 0.090000 V, voutb = 0.050000 V
-Iin = 0.000900 A, Iinb = 0.000600 A, vout = 0.090000 V, voutb = 0.060000 V
-Iin = 0.000900 A, Iinb = 0.000700 A, vout = 0.090000 V, voutb = 0.070000 V
-Iin = 0.000900 A, Iinb = 0.000800 A, vout = 0.090000 V, voutb = 0.080000 V
-Iin = 0.000900 A, Iinb = 0.000900 A, vout = 0.090000 V, voutb = 0.090000 V
-Barrido de vssana:
-vssana = -0.05 V, vout = 0.100000 V, voutb = 0.100000 V
-vssana = -0.04 V, vout = 0.100000 V, voutb = 0.100000 V
-vssana = -0.03 V, vout = 0.100000 V, voutb = 0.100000 V
-vssana = -0.02 V, vout = 0.100000 V, voutb = 0.100000 V
-vssana = -0.01 V, vout = 0.100000 V, voutb = 0.100000 V
-vssana = 0.00 V, vout = 0.100000 V, voutb = 0.100000 V
-vssana = 0.01 V, vout = 0.100000 V, voutb = 0.100000 V
-vssana = 0.02 V, vout = 0.100000 V, voutb = 0.100000 V
-vssana = 0.03 V, vout = 0.100000 V, voutb = 0.100000 V
-vssana = 0.04 V, vout = 0.100000 V, voutb = 0.100000 V
-Barrido completado.
-Simulation complete via $finish(1) at time 4100 PS + 0
-./tb/resistor_load_tb.sv:48         $finish; // Finalizar la simulaci�n
+=== Testbench resistor_load: modo diferencial steering ===
+IFS = 0.003196875 A, DI = 0.000003125 A
+
+TEST 1: Barrido steering (Iin + Iinb = IFS)
+Iin=0.000000000 A, Iinb=0.003196875 A, vout=0.000000 V, voutb=0.319688 V, vdiff=-0.319688 V, Vsumado=0.319688 V
+Iin=0.000003125 A, Iinb=0.003193750 A, vout=0.000313 V, voutb=0.319375 V, vdiff=-0.319688 V, Vsumado=0.319688 V
+Iin=0.000006250 A, Iinb=0.003190625 A, vout=0.000625 V, voutb=0.319062 V, vdiff=-0.319063 V, Vsumado=0.319688 V
+Iin=0.000009375 A, Iinb=0.003187500 A, vout=0.000938 V, voutb=0.318750 V, vdiff=-0.318437 V, Vsumado=0.319687 V
+Iin=0.000012500 A, Iinb=0.003184375 A, vout=0.001250 V, voutb=0.318438 V, vdiff=-0.317813 V, Vsumado=0.319688 V
+Iin=0.000015625 A, Iinb=0.003181250 A, vout=0.001563 V, voutb=0.318125 V, vdiff=-0.317188 V, Vsumado=0.319688 V
+Iin=0.000018750 A, Iinb=0.003178125 A, vout=0.001875 V, voutb=0.317812 V, vdiff=-0.316562 V, Vsumado=0.319688 V
+Iin=0.000021875 A, Iinb=0.003175000 A, vout=0.002188 V, voutb=0.317500 V, vdiff=-0.315937 V, Vsumado=0.319688 V
+Iin=0.000025000 A, Iinb=0.003171875 A, vout=0.002500 V, voutb=0.317188 V, vdiff=-0.315312 V, Vsumado=0.319688 V
+Iin=0.000028125 A, Iinb=0.003168750 A, vout=0.002813 V, voutb=0.316875 V, vdiff=-0.314688 V, Vsumado=0.319688 V
+Iin=0.000031250 A, Iinb=0.003165625 A, vout=0.003125 V, voutb=0.316563 V, vdiff=-0.314063 V, Vsumado=0.319688 V
+Iin=0.000034375 A, Iinb=0.003162500 A, vout=0.003438 V, voutb=0.316250 V, vdiff=-0.313438 V, Vsumado=0.319688 V
+Iin=0.000037500 A, Iinb=0.003159375 A, vout=0.003750 V, voutb=0.315937 V, vdiff=-0.312812 V, Vsumado=0.319687 V
+Iin=0.000040625 A, Iinb=0.003156250 A, vout=0.004063 V, voutb=0.315625 V, vdiff=-0.312188 V, Vsumado=0.319687 V
+Iin=0.000043750 A, Iinb=0.003153125 A, vout=0.004375 V, voutb=0.315312 V, vdiff=-0.311563 V, Vsumado=0.319688 V
+Iin=0.000046875 A, Iinb=0.003150000 A, vout=0.004688 V, voutb=0.315000 V, vdiff=-0.310937 V, Vsumado=0.319688 V
+Iin=0.000050000 A, Iinb=0.003146875 A, vout=0.005000 V, voutb=0.314688 V, vdiff=-0.310312 V, Vsumado=0.319688 V
+Iin=0.000053125 A, Iinb=0.003143750 A, vout=0.005313 V, voutb=0.314375 V, vdiff=-0.309688 V, Vsumado=0.319688 V
+Iin=0.000056250 A, Iinb=0.003140625 A, vout=0.005625 V, voutb=0.314063 V, vdiff=-0.309062 V, Vsumado=0.319687 V
+Iin=0.000059375 A, Iinb=0.003137500 A, vout=0.005938 V, voutb=0.313750 V, vdiff=-0.308438 V, Vsumado=0.319688 V
+Iin=0.000062500 A, Iinb=0.003134375 A, vout=0.006250 V, voutb=0.313437 V, vdiff=-0.307813 V, Vsumado=0.319688 V
+Iin=0.000065625 A, Iinb=0.003131250 A, vout=0.006563 V, voutb=0.313125 V, vdiff=-0.307188 V, Vsumado=0.319687 V
+Iin=0.000068750 A, Iinb=0.003128125 A, vout=0.006875 V, voutb=0.312813 V, vdiff=-0.306562 V, Vsumado=0.319688 V
+Iin=0.000071875 A, Iinb=0.003125000 A, vout=0.007187 V, voutb=0.312500 V, vdiff=-0.305938 V, Vsumado=0.319688 V
+Iin=0.000075000 A, Iinb=0.003121875 A, vout=0.007500 V, voutb=0.312188 V, vdiff=-0.305312 V, Vsumado=0.319688 V
+Iin=0.000078125 A, Iinb=0.003118750 A, vout=0.007812 V, voutb=0.311875 V, vdiff=-0.304688 V, Vsumado=0.319688 V
+Iin=0.000081250 A, Iinb=0.003115625 A, vout=0.008125 V, voutb=0.311562 V, vdiff=-0.304063 V, Vsumado=0.319688 V
+Iin=0.000084375 A, Iinb=0.003112500 A, vout=0.008437 V, voutb=0.311250 V, vdiff=-0.303437 V, Vsumado=0.319687 V
+Iin=0.000087500 A, Iinb=0.003109375 A, vout=0.008750 V, voutb=0.310938 V, vdiff=-0.302813 V, Vsumado=0.319688 V
+Iin=0.000090625 A, Iinb=0.003106250 A, vout=0.009062 V, voutb=0.310625 V, vdiff=-0.302188 V, Vsumado=0.319688 V
+Iin=0.000093750 A, Iinb=0.003103125 A, vout=0.009375 V, voutb=0.310312 V, vdiff=-0.301563 V, Vsumado=0.319687 V
+Iin=0.000096875 A, Iinb=0.003100000 A, vout=0.009687 V, voutb=0.310000 V, vdiff=-0.300937 V, Vsumado=0.319688 V
+Iin=0.000100000 A, Iinb=0.003096875 A, vout=0.010000 V, voutb=0.309688 V, vdiff=-0.300313 V, Vsumado=0.319688 V
+Iin=0.000103125 A, Iinb=0.003093750 A, vout=0.010312 V, voutb=0.309375 V, vdiff=-0.299687 V, Vsumado=0.319688 V
+Iin=0.000106250 A, Iinb=0.003090625 A, vout=0.010625 V, voutb=0.309063 V, vdiff=-0.299063 V, Vsumado=0.319688 V
+Iin=0.000109375 A, Iinb=0.003087500 A, vout=0.010937 V, voutb=0.308750 V, vdiff=-0.298438 V, Vsumado=0.319688 V
+Iin=0.000112500 A, Iinb=0.003084375 A, vout=0.011250 V, voutb=0.308438 V, vdiff=-0.297812 V, Vsumado=0.319687 V
+Iin=0.000115625 A, Iinb=0.003081250 A, vout=0.011562 V, voutb=0.308125 V, vdiff=-0.297188 V, Vsumado=0.319688 V
+Iin=0.000118750 A, Iinb=0.003078125 A, vout=0.011875 V, voutb=0.307812 V, vdiff=-0.296563 V, Vsumado=0.319688 V
+Iin=0.000121875 A, Iinb=0.003075000 A, vout=0.012187 V, voutb=0.307500 V, vdiff=-0.295938 V, Vsumado=0.319687 V
+Iin=0.000125000 A, Iinb=0.003071875 A, vout=0.012500 V, voutb=0.307188 V, vdiff=-0.295312 V, Vsumado=0.319688 V
+Iin=0.000128125 A, Iinb=0.003068750 A, vout=0.012812 V, voutb=0.306875 V, vdiff=-0.294687 V, Vsumado=0.319688 V
+Iin=0.000131250 A, Iinb=0.003065625 A, vout=0.013125 V, voutb=0.306563 V, vdiff=-0.294063 V, Vsumado=0.319688 V
+Iin=0.000134375 A, Iinb=0.003062500 A, vout=0.013437 V, voutb=0.306250 V, vdiff=-0.293438 V, Vsumado=0.319688 V
+Iin=0.000137500 A, Iinb=0.003059375 A, vout=0.013750 V, voutb=0.305938 V, vdiff=-0.292813 V, Vsumado=0.319688 V
+Iin=0.000140625 A, Iinb=0.003056250 A, vout=0.014062 V, voutb=0.305625 V, vdiff=-0.292188 V, Vsumado=0.319688 V
+Iin=0.000143750 A, Iinb=0.003053125 A, vout=0.014375 V, voutb=0.305313 V, vdiff=-0.291563 V, Vsumado=0.319687 V
+Iin=0.000146875 A, Iinb=0.003050000 A, vout=0.014687 V, voutb=0.305000 V, vdiff=-0.290938 V, Vsumado=0.319688 V
+Iin=0.000150000 A, Iinb=0.003046875 A, vout=0.015000 V, voutb=0.304688 V, vdiff=-0.290312 V, Vsumado=0.319688 V
+Iin=0.000153125 A, Iinb=0.003043750 A, vout=0.015312 V, voutb=0.304375 V, vdiff=-0.289687 V, Vsumado=0.319688 V
+Iin=0.000156250 A, Iinb=0.003040625 A, vout=0.015625 V, voutb=0.304063 V, vdiff=-0.289062 V, Vsumado=0.319688 V
+Iin=0.000159375 A, Iinb=0.003037500 A, vout=0.015938 V, voutb=0.303750 V, vdiff=-0.288438 V, Vsumado=0.319688 V
+Iin=0.000162500 A, Iinb=0.003034375 A, vout=0.016250 V, voutb=0.303438 V, vdiff=-0.287813 V, Vsumado=0.319688 V
+Iin=0.000165625 A, Iinb=0.003031250 A, vout=0.016563 V, voutb=0.303125 V, vdiff=-0.287188 V, Vsumado=0.319688 V
+Iin=0.000168750 A, Iinb=0.003028125 A, vout=0.016875 V, voutb=0.302812 V, vdiff=-0.286563 V, Vsumado=0.319688 V
+Iin=0.000171875 A, Iinb=0.003025000 A, vout=0.017188 V, voutb=0.302500 V, vdiff=-0.285937 V, Vsumado=0.319688 V
+Iin=0.000175000 A, Iinb=0.003021875 A, vout=0.017500 V, voutb=0.302187 V, vdiff=-0.285312 V, Vsumado=0.319688 V
+Iin=0.000178125 A, Iinb=0.003018750 A, vout=0.017813 V, voutb=0.301875 V, vdiff=-0.284687 V, Vsumado=0.319688 V
+Iin=0.000181250 A, Iinb=0.003015625 A, vout=0.018125 V, voutb=0.301563 V, vdiff=-0.284062 V, Vsumado=0.319688 V
+Iin=0.000184375 A, Iinb=0.003012500 A, vout=0.018438 V, voutb=0.301250 V, vdiff=-0.283438 V, Vsumado=0.319688 V
+Iin=0.000187500 A, Iinb=0.003009375 A, vout=0.018750 V, voutb=0.300937 V, vdiff=-0.282813 V, Vsumado=0.319688 V
+Iin=0.000190625 A, Iinb=0.003006250 A, vout=0.019063 V, voutb=0.300625 V, vdiff=-0.282187 V, Vsumado=0.319687 V
+Iin=0.000193750 A, Iinb=0.003003125 A, vout=0.019375 V, voutb=0.300313 V, vdiff=-0.281562 V, Vsumado=0.319688 V
+Iin=0.000196875 A, Iinb=0.003000000 A, vout=0.019688 V, voutb=0.300000 V, vdiff=-0.280938 V, Vsumado=0.319688 V
+Iin=0.000200000 A, Iinb=0.002996875 A, vout=0.020000 V, voutb=0.299687 V, vdiff=-0.280312 V, Vsumado=0.319688 V
+Iin=0.000203125 A, Iinb=0.002993750 A, vout=0.020313 V, voutb=0.299375 V, vdiff=-0.279687 V, Vsumado=0.319688 V
+Iin=0.000206250 A, Iinb=0.002990625 A, vout=0.020625 V, voutb=0.299062 V, vdiff=-0.279062 V, Vsumado=0.319688 V
+Iin=0.000209375 A, Iinb=0.002987500 A, vout=0.020938 V, voutb=0.298750 V, vdiff=-0.278437 V, Vsumado=0.319687 V
+Iin=0.000212500 A, Iinb=0.002984375 A, vout=0.021250 V, voutb=0.298438 V, vdiff=-0.277812 V, Vsumado=0.319687 V
+Iin=0.000215625 A, Iinb=0.002981250 A, vout=0.021563 V, voutb=0.298125 V, vdiff=-0.277188 V, Vsumado=0.319688 V
+Iin=0.000218750 A, Iinb=0.002978125 A, vout=0.021875 V, voutb=0.297812 V, vdiff=-0.276562 V, Vsumado=0.319688 V
+Iin=0.000221875 A, Iinb=0.002975000 A, vout=0.022188 V, voutb=0.297500 V, vdiff=-0.275937 V, Vsumado=0.319688 V
+Iin=0.000225000 A, Iinb=0.002971875 A, vout=0.022500 V, voutb=0.297187 V, vdiff=-0.275312 V, Vsumado=0.319688 V
+Iin=0.000228125 A, Iinb=0.002968750 A, vout=0.022813 V, voutb=0.296875 V, vdiff=-0.274687 V, Vsumado=0.319688 V
+Iin=0.000231250 A, Iinb=0.002965625 A, vout=0.023125 V, voutb=0.296563 V, vdiff=-0.274062 V, Vsumado=0.319688 V
+Iin=0.000234375 A, Iinb=0.002962500 A, vout=0.023438 V, voutb=0.296250 V, vdiff=-0.273438 V, Vsumado=0.319688 V
+Iin=0.000237500 A, Iinb=0.002959375 A, vout=0.023750 V, voutb=0.295937 V, vdiff=-0.272813 V, Vsumado=0.319688 V
+Iin=0.000240625 A, Iinb=0.002956250 A, vout=0.024063 V, voutb=0.295625 V, vdiff=-0.272187 V, Vsumado=0.319688 V
+Iin=0.000243750 A, Iinb=0.002953125 A, vout=0.024375 V, voutb=0.295312 V, vdiff=-0.271562 V, Vsumado=0.319688 V
+Iin=0.000246875 A, Iinb=0.002950000 A, vout=0.024688 V, voutb=0.295000 V, vdiff=-0.270937 V, Vsumado=0.319688 V
+Iin=0.000250000 A, Iinb=0.002946875 A, vout=0.025000 V, voutb=0.294687 V, vdiff=-0.270312 V, Vsumado=0.319688 V
+Iin=0.000253125 A, Iinb=0.002943750 A, vout=0.025313 V, voutb=0.294375 V, vdiff=-0.269687 V, Vsumado=0.319688 V
+Iin=0.000256250 A, Iinb=0.002940625 A, vout=0.025625 V, voutb=0.294062 V, vdiff=-0.269062 V, Vsumado=0.319688 V
+Iin=0.000259375 A, Iinb=0.002937500 A, vout=0.025938 V, voutb=0.293750 V, vdiff=-0.268437 V, Vsumado=0.319687 V
+Iin=0.000262500 A, Iinb=0.002934375 A, vout=0.026250 V, voutb=0.293438 V, vdiff=-0.267813 V, Vsumado=0.319688 V
+Iin=0.000265625 A, Iinb=0.002931250 A, vout=0.026563 V, voutb=0.293125 V, vdiff=-0.267188 V, Vsumado=0.319688 V
+Iin=0.000268750 A, Iinb=0.002928125 A, vout=0.026875 V, voutb=0.292813 V, vdiff=-0.266562 V, Vsumado=0.319687 V
+Iin=0.000271875 A, Iinb=0.002925000 A, vout=0.027188 V, voutb=0.292500 V, vdiff=-0.265938 V, Vsumado=0.319688 V
+Iin=0.000275000 A, Iinb=0.002921875 A, vout=0.027500 V, voutb=0.292187 V, vdiff=-0.265312 V, Vsumado=0.319688 V
+Iin=0.000278125 A, Iinb=0.002918750 A, vout=0.027813 V, voutb=0.291875 V, vdiff=-0.264687 V, Vsumado=0.319688 V
+Iin=0.000281250 A, Iinb=0.002915625 A, vout=0.028125 V, voutb=0.291563 V, vdiff=-0.264062 V, Vsumado=0.319688 V
+Iin=0.000284375 A, Iinb=0.002912500 A, vout=0.028438 V, voutb=0.291250 V, vdiff=-0.263437 V, Vsumado=0.319688 V
+Iin=0.000287500 A, Iinb=0.002909375 A, vout=0.028750 V, voutb=0.290938 V, vdiff=-0.262813 V, Vsumado=0.319688 V
+Iin=0.000290625 A, Iinb=0.002906250 A, vout=0.029062 V, voutb=0.290625 V, vdiff=-0.262188 V, Vsumado=0.319688 V
+Iin=0.000293750 A, Iinb=0.002903125 A, vout=0.029375 V, voutb=0.290313 V, vdiff=-0.261563 V, Vsumado=0.319688 V
+Iin=0.000296875 A, Iinb=0.002900000 A, vout=0.029687 V, voutb=0.290000 V, vdiff=-0.260938 V, Vsumado=0.319688 V
+Iin=0.000300000 A, Iinb=0.002896875 A, vout=0.030000 V, voutb=0.289687 V, vdiff=-0.260313 V, Vsumado=0.319688 V
+Iin=0.000303125 A, Iinb=0.002893750 A, vout=0.030312 V, voutb=0.289375 V, vdiff=-0.259688 V, Vsumado=0.319687 V
+Iin=0.000306250 A, Iinb=0.002890625 A, vout=0.030625 V, voutb=0.289062 V, vdiff=-0.259063 V, Vsumado=0.319687 V
+Iin=0.000309375 A, Iinb=0.002887500 A, vout=0.030937 V, voutb=0.288750 V, vdiff=-0.258437 V, Vsumado=0.319688 V
+Iin=0.000312500 A, Iinb=0.002884375 A, vout=0.031250 V, voutb=0.288438 V, vdiff=-0.257812 V, Vsumado=0.319688 V
+Iin=0.000315625 A, Iinb=0.002881250 A, vout=0.031562 V, voutb=0.288125 V, vdiff=-0.257188 V, Vsumado=0.319688 V
+Iin=0.000318750 A, Iinb=0.002878125 A, vout=0.031875 V, voutb=0.287813 V, vdiff=-0.256563 V, Vsumado=0.319688 V
+Iin=0.000321875 A, Iinb=0.002875000 A, vout=0.032187 V, voutb=0.287500 V, vdiff=-0.255938 V, Vsumado=0.319688 V
+Iin=0.000325000 A, Iinb=0.002871875 A, vout=0.032500 V, voutb=0.287188 V, vdiff=-0.255313 V, Vsumado=0.319688 V
+Iin=0.000328125 A, Iinb=0.002868750 A, vout=0.032812 V, voutb=0.286875 V, vdiff=-0.254688 V, Vsumado=0.319688 V
+Iin=0.000331250 A, Iinb=0.002865625 A, vout=0.033125 V, voutb=0.286562 V, vdiff=-0.254063 V, Vsumado=0.319688 V
+Iin=0.000334375 A, Iinb=0.002862500 A, vout=0.033437 V, voutb=0.286250 V, vdiff=-0.253438 V, Vsumado=0.319687 V
+Iin=0.000337500 A, Iinb=0.002859375 A, vout=0.033750 V, voutb=0.285938 V, vdiff=-0.252813 V, Vsumado=0.319688 V
+Iin=0.000340625 A, Iinb=0.002856250 A, vout=0.034062 V, voutb=0.285625 V, vdiff=-0.252188 V, Vsumado=0.319687 V
+Iin=0.000343750 A, Iinb=0.002853125 A, vout=0.034375 V, voutb=0.285313 V, vdiff=-0.251563 V, Vsumado=0.319688 V
+Iin=0.000346875 A, Iinb=0.002850000 A, vout=0.034687 V, voutb=0.285000 V, vdiff=-0.250938 V, Vsumado=0.319688 V
+Iin=0.000350000 A, Iinb=0.002846875 A, vout=0.035000 V, voutb=0.284688 V, vdiff=-0.250313 V, Vsumado=0.319688 V
+Iin=0.000353125 A, Iinb=0.002843750 A, vout=0.035312 V, voutb=0.284375 V, vdiff=-0.249688 V, Vsumado=0.319688 V
+Iin=0.000356250 A, Iinb=0.002840625 A, vout=0.035625 V, voutb=0.284063 V, vdiff=-0.249063 V, Vsumado=0.319688 V
+Iin=0.000359375 A, Iinb=0.002837500 A, vout=0.035937 V, voutb=0.283750 V, vdiff=-0.248438 V, Vsumado=0.319688 V
+Iin=0.000362500 A, Iinb=0.002834375 A, vout=0.036250 V, voutb=0.283438 V, vdiff=-0.247813 V, Vsumado=0.319688 V
+Iin=0.000365625 A, Iinb=0.002831250 A, vout=0.036562 V, voutb=0.283125 V, vdiff=-0.247188 V, Vsumado=0.319688 V
+Iin=0.000368750 A, Iinb=0.002828125 A, vout=0.036875 V, voutb=0.282813 V, vdiff=-0.246563 V, Vsumado=0.319688 V
+Iin=0.000371875 A, Iinb=0.002825000 A, vout=0.037187 V, voutb=0.282500 V, vdiff=-0.245938 V, Vsumado=0.319688 V
+Iin=0.000375000 A, Iinb=0.002821875 A, vout=0.037500 V, voutb=0.282188 V, vdiff=-0.245313 V, Vsumado=0.319688 V
+Iin=0.000378125 A, Iinb=0.002818750 A, vout=0.037812 V, voutb=0.281875 V, vdiff=-0.244688 V, Vsumado=0.319688 V
+Iin=0.000381250 A, Iinb=0.002815625 A, vout=0.038125 V, voutb=0.281563 V, vdiff=-0.244063 V, Vsumado=0.319688 V
+Iin=0.000384375 A, Iinb=0.002812500 A, vout=0.038437 V, voutb=0.281250 V, vdiff=-0.243438 V, Vsumado=0.319688 V
+Iin=0.000387500 A, Iinb=0.002809375 A, vout=0.038750 V, voutb=0.280938 V, vdiff=-0.242813 V, Vsumado=0.319688 V
+Iin=0.000390625 A, Iinb=0.002806250 A, vout=0.039062 V, voutb=0.280625 V, vdiff=-0.242188 V, Vsumado=0.319688 V
+Iin=0.000393750 A, Iinb=0.002803125 A, vout=0.039375 V, voutb=0.280313 V, vdiff=-0.241563 V, Vsumado=0.319688 V
+Iin=0.000396875 A, Iinb=0.002800000 A, vout=0.039687 V, voutb=0.280000 V, vdiff=-0.240938 V, Vsumado=0.319688 V
+Iin=0.000400000 A, Iinb=0.002796875 A, vout=0.040000 V, voutb=0.279688 V, vdiff=-0.240313 V, Vsumado=0.319688 V
+Iin=0.000403125 A, Iinb=0.002793750 A, vout=0.040312 V, voutb=0.279375 V, vdiff=-0.239688 V, Vsumado=0.319688 V
+Iin=0.000406250 A, Iinb=0.002790625 A, vout=0.040625 V, voutb=0.279063 V, vdiff=-0.239063 V, Vsumado=0.319687 V
+Iin=0.000409375 A, Iinb=0.002787500 A, vout=0.040937 V, voutb=0.278750 V, vdiff=-0.238438 V, Vsumado=0.319687 V
+Iin=0.000412500 A, Iinb=0.002784375 A, vout=0.041250 V, voutb=0.278438 V, vdiff=-0.237813 V, Vsumado=0.319688 V
+Iin=0.000415625 A, Iinb=0.002781250 A, vout=0.041562 V, voutb=0.278125 V, vdiff=-0.237188 V, Vsumado=0.319688 V
+Iin=0.000418750 A, Iinb=0.002778125 A, vout=0.041875 V, voutb=0.277813 V, vdiff=-0.236563 V, Vsumado=0.319688 V
+Iin=0.000421875 A, Iinb=0.002775000 A, vout=0.042187 V, voutb=0.277500 V, vdiff=-0.235938 V, Vsumado=0.319688 V
+Iin=0.000425000 A, Iinb=0.002771875 A, vout=0.042500 V, voutb=0.277188 V, vdiff=-0.235313 V, Vsumado=0.319688 V
+Iin=0.000428125 A, Iinb=0.002768750 A, vout=0.042812 V, voutb=0.276875 V, vdiff=-0.234688 V, Vsumado=0.319688 V
+Iin=0.000431250 A, Iinb=0.002765625 A, vout=0.043125 V, voutb=0.276563 V, vdiff=-0.234063 V, Vsumado=0.319688 V
+Iin=0.000434375 A, Iinb=0.002762500 A, vout=0.043437 V, voutb=0.276250 V, vdiff=-0.233438 V, Vsumado=0.319687 V
+Iin=0.000437500 A, Iinb=0.002759375 A, vout=0.043750 V, voutb=0.275938 V, vdiff=-0.232813 V, Vsumado=0.319688 V
+Iin=0.000440625 A, Iinb=0.002756250 A, vout=0.044062 V, voutb=0.275625 V, vdiff=-0.232188 V, Vsumado=0.319688 V
+Iin=0.000443750 A, Iinb=0.002753125 A, vout=0.044375 V, voutb=0.275313 V, vdiff=-0.231563 V, Vsumado=0.319687 V
+Iin=0.000446875 A, Iinb=0.002750000 A, vout=0.044687 V, voutb=0.275000 V, vdiff=-0.230938 V, Vsumado=0.319688 V
+Iin=0.000450000 A, Iinb=0.002746875 A, vout=0.045000 V, voutb=0.274688 V, vdiff=-0.230313 V, Vsumado=0.319688 V
+Iin=0.000453125 A, Iinb=0.002743750 A, vout=0.045312 V, voutb=0.274375 V, vdiff=-0.229688 V, Vsumado=0.319688 V
+Iin=0.000456250 A, Iinb=0.002740625 A, vout=0.045625 V, voutb=0.274063 V, vdiff=-0.229063 V, Vsumado=0.319688 V
+Iin=0.000459375 A, Iinb=0.002737500 A, vout=0.045937 V, voutb=0.273750 V, vdiff=-0.228438 V, Vsumado=0.319688 V
+Iin=0.000462500 A, Iinb=0.002734375 A, vout=0.046250 V, voutb=0.273438 V, vdiff=-0.227813 V, Vsumado=0.319688 V
+Iin=0.000465625 A, Iinb=0.002731250 A, vout=0.046562 V, voutb=0.273125 V, vdiff=-0.227188 V, Vsumado=0.319688 V
+Iin=0.000468750 A, Iinb=0.002728125 A, vout=0.046875 V, voutb=0.272813 V, vdiff=-0.226563 V, Vsumado=0.319688 V
+Iin=0.000471875 A, Iinb=0.002725000 A, vout=0.047187 V, voutb=0.272500 V, vdiff=-0.225938 V, Vsumado=0.319688 V
+Iin=0.000475000 A, Iinb=0.002721875 A, vout=0.047500 V, voutb=0.272188 V, vdiff=-0.225313 V, Vsumado=0.319688 V
+Iin=0.000478125 A, Iinb=0.002718750 A, vout=0.047812 V, voutb=0.271875 V, vdiff=-0.224688 V, Vsumado=0.319688 V
+Iin=0.000481250 A, Iinb=0.002715625 A, vout=0.048125 V, voutb=0.271563 V, vdiff=-0.224063 V, Vsumado=0.319687 V
+Iin=0.000484375 A, Iinb=0.002712500 A, vout=0.048437 V, voutb=0.271250 V, vdiff=-0.223438 V, Vsumado=0.319687 V
+Iin=0.000487500 A, Iinb=0.002709375 A, vout=0.048750 V, voutb=0.270938 V, vdiff=-0.222813 V, Vsumado=0.319688 V
+Iin=0.000490625 A, Iinb=0.002706250 A, vout=0.049062 V, voutb=0.270625 V, vdiff=-0.222188 V, Vsumado=0.319688 V
+Iin=0.000493750 A, Iinb=0.002703125 A, vout=0.049375 V, voutb=0.270313 V, vdiff=-0.221563 V, Vsumado=0.319688 V
+Iin=0.000496875 A, Iinb=0.002700000 A, vout=0.049687 V, voutb=0.270000 V, vdiff=-0.220938 V, Vsumado=0.319688 V
+Iin=0.000500000 A, Iinb=0.002696875 A, vout=0.050000 V, voutb=0.269688 V, vdiff=-0.220313 V, Vsumado=0.319688 V
+Iin=0.000503125 A, Iinb=0.002693750 A, vout=0.050312 V, voutb=0.269375 V, vdiff=-0.219688 V, Vsumado=0.319688 V
+Iin=0.000506250 A, Iinb=0.002690625 A, vout=0.050625 V, voutb=0.269063 V, vdiff=-0.219063 V, Vsumado=0.319688 V
+Iin=0.000509375 A, Iinb=0.002687500 A, vout=0.050937 V, voutb=0.268750 V, vdiff=-0.218438 V, Vsumado=0.319687 V
+Iin=0.000512500 A, Iinb=0.002684375 A, vout=0.051250 V, voutb=0.268438 V, vdiff=-0.217813 V, Vsumado=0.319688 V
+Iin=0.000515625 A, Iinb=0.002681250 A, vout=0.051562 V, voutb=0.268125 V, vdiff=-0.217188 V, Vsumado=0.319688 V
+Iin=0.000518750 A, Iinb=0.002678125 A, vout=0.051875 V, voutb=0.267813 V, vdiff=-0.216563 V, Vsumado=0.319687 V
+Iin=0.000521875 A, Iinb=0.002675000 A, vout=0.052187 V, voutb=0.267500 V, vdiff=-0.215938 V, Vsumado=0.319688 V
+Iin=0.000525000 A, Iinb=0.002671875 A, vout=0.052500 V, voutb=0.267188 V, vdiff=-0.215313 V, Vsumado=0.319688 V
+Iin=0.000528125 A, Iinb=0.002668750 A, vout=0.052812 V, voutb=0.266875 V, vdiff=-0.214688 V, Vsumado=0.319688 V
+Iin=0.000531250 A, Iinb=0.002665625 A, vout=0.053125 V, voutb=0.266563 V, vdiff=-0.214063 V, Vsumado=0.319688 V
+Iin=0.000534375 A, Iinb=0.002662500 A, vout=0.053437 V, voutb=0.266250 V, vdiff=-0.213438 V, Vsumado=0.319688 V
+Iin=0.000537500 A, Iinb=0.002659375 A, vout=0.053750 V, voutb=0.265938 V, vdiff=-0.212813 V, Vsumado=0.319688 V
+Iin=0.000540625 A, Iinb=0.002656250 A, vout=0.054062 V, voutb=0.265625 V, vdiff=-0.212188 V, Vsumado=0.319688 V
+Iin=0.000543750 A, Iinb=0.002653125 A, vout=0.054375 V, voutb=0.265313 V, vdiff=-0.211563 V, Vsumado=0.319688 V
+Iin=0.000546875 A, Iinb=0.002650000 A, vout=0.054687 V, voutb=0.265000 V, vdiff=-0.210938 V, Vsumado=0.319688 V
+Iin=0.000550000 A, Iinb=0.002646875 A, vout=0.055000 V, voutb=0.264688 V, vdiff=-0.210313 V, Vsumado=0.319688 V
+Iin=0.000553125 A, Iinb=0.002643750 A, vout=0.055312 V, voutb=0.264375 V, vdiff=-0.209688 V, Vsumado=0.319688 V
+Iin=0.000556250 A, Iinb=0.002640625 A, vout=0.055625 V, voutb=0.264063 V, vdiff=-0.209063 V, Vsumado=0.319687 V
+Iin=0.000559375 A, Iinb=0.002637500 A, vout=0.055937 V, voutb=0.263750 V, vdiff=-0.208438 V, Vsumado=0.319687 V
+Iin=0.000562500 A, Iinb=0.002634375 A, vout=0.056250 V, voutb=0.263438 V, vdiff=-0.207813 V, Vsumado=0.319688 V
+Iin=0.000565625 A, Iinb=0.002631250 A, vout=0.056562 V, voutb=0.263125 V, vdiff=-0.207188 V, Vsumado=0.319688 V
+Iin=0.000568750 A, Iinb=0.002628125 A, vout=0.056875 V, voutb=0.262813 V, vdiff=-0.206563 V, Vsumado=0.319688 V
+Iin=0.000571875 A, Iinb=0.002625000 A, vout=0.057187 V, voutb=0.262500 V, vdiff=-0.205938 V, Vsumado=0.319688 V
+Iin=0.000575000 A, Iinb=0.002621875 A, vout=0.057500 V, voutb=0.262188 V, vdiff=-0.205313 V, Vsumado=0.319688 V
+Iin=0.000578125 A, Iinb=0.002618750 A, vout=0.057812 V, voutb=0.261875 V, vdiff=-0.204688 V, Vsumado=0.319688 V
+Iin=0.000581250 A, Iinb=0.002615625 A, vout=0.058125 V, voutb=0.261563 V, vdiff=-0.204063 V, Vsumado=0.319688 V
+Iin=0.000584375 A, Iinb=0.002612500 A, vout=0.058437 V, voutb=0.261250 V, vdiff=-0.203438 V, Vsumado=0.319687 V
+Iin=0.000587500 A, Iinb=0.002609375 A, vout=0.058750 V, voutb=0.260938 V, vdiff=-0.202813 V, Vsumado=0.319688 V
+Iin=0.000590625 A, Iinb=0.002606250 A, vout=0.059062 V, voutb=0.260625 V, vdiff=-0.202188 V, Vsumado=0.319688 V
+Iin=0.000593750 A, Iinb=0.002603125 A, vout=0.059375 V, voutb=0.260313 V, vdiff=-0.201563 V, Vsumado=0.319687 V
+Iin=0.000596875 A, Iinb=0.002600000 A, vout=0.059687 V, voutb=0.260000 V, vdiff=-0.200938 V, Vsumado=0.319688 V
+Iin=0.000600000 A, Iinb=0.002596875 A, vout=0.060000 V, voutb=0.259688 V, vdiff=-0.200313 V, Vsumado=0.319688 V
+Iin=0.000603125 A, Iinb=0.002593750 A, vout=0.060312 V, voutb=0.259375 V, vdiff=-0.199688 V, Vsumado=0.319688 V
+Iin=0.000606250 A, Iinb=0.002590625 A, vout=0.060625 V, voutb=0.259063 V, vdiff=-0.199063 V, Vsumado=0.319688 V
+Iin=0.000609375 A, Iinb=0.002587500 A, vout=0.060937 V, voutb=0.258750 V, vdiff=-0.198438 V, Vsumado=0.319688 V
+Iin=0.000612500 A, Iinb=0.002584375 A, vout=0.061250 V, voutb=0.258438 V, vdiff=-0.197813 V, Vsumado=0.319688 V
+Iin=0.000615625 A, Iinb=0.002581250 A, vout=0.061562 V, voutb=0.258125 V, vdiff=-0.197188 V, Vsumado=0.319688 V
+Iin=0.000618750 A, Iinb=0.002578125 A, vout=0.061875 V, voutb=0.257813 V, vdiff=-0.196563 V, Vsumado=0.319688 V
+Iin=0.000621875 A, Iinb=0.002575000 A, vout=0.062187 V, voutb=0.257500 V, vdiff=-0.195938 V, Vsumado=0.319688 V
+Iin=0.000625000 A, Iinb=0.002571875 A, vout=0.062500 V, voutb=0.257188 V, vdiff=-0.195313 V, Vsumado=0.319688 V
+Iin=0.000628125 A, Iinb=0.002568750 A, vout=0.062812 V, voutb=0.256875 V, vdiff=-0.194688 V, Vsumado=0.319688 V
+Iin=0.000631250 A, Iinb=0.002565625 A, vout=0.063125 V, voutb=0.256563 V, vdiff=-0.194063 V, Vsumado=0.319688 V
+Iin=0.000634375 A, Iinb=0.002562500 A, vout=0.063437 V, voutb=0.256250 V, vdiff=-0.193438 V, Vsumado=0.319688 V
+Iin=0.000637500 A, Iinb=0.002559375 A, vout=0.063750 V, voutb=0.255938 V, vdiff=-0.192813 V, Vsumado=0.319688 V
+Iin=0.000640625 A, Iinb=0.002556250 A, vout=0.064062 V, voutb=0.255625 V, vdiff=-0.192188 V, Vsumado=0.319688 V
+Iin=0.000643750 A, Iinb=0.002553125 A, vout=0.064375 V, voutb=0.255313 V, vdiff=-0.191563 V, Vsumado=0.319688 V
+Iin=0.000646875 A, Iinb=0.002550000 A, vout=0.064687 V, voutb=0.255000 V, vdiff=-0.190938 V, Vsumado=0.319688 V
+Iin=0.000650000 A, Iinb=0.002546875 A, vout=0.065000 V, voutb=0.254688 V, vdiff=-0.190313 V, Vsumado=0.319688 V
+Iin=0.000653125 A, Iinb=0.002543750 A, vout=0.065312 V, voutb=0.254375 V, vdiff=-0.189688 V, Vsumado=0.319688 V
+Iin=0.000656250 A, Iinb=0.002540625 A, vout=0.065625 V, voutb=0.254063 V, vdiff=-0.189063 V, Vsumado=0.319688 V
+Iin=0.000659375 A, Iinb=0.002537500 A, vout=0.065937 V, voutb=0.253750 V, vdiff=-0.188438 V, Vsumado=0.319687 V
+Iin=0.000662500 A, Iinb=0.002534375 A, vout=0.066250 V, voutb=0.253438 V, vdiff=-0.187813 V, Vsumado=0.319688 V
+Iin=0.000665625 A, Iinb=0.002531250 A, vout=0.066562 V, voutb=0.253125 V, vdiff=-0.187188 V, Vsumado=0.319688 V
+Iin=0.000668750 A, Iinb=0.002528125 A, vout=0.066875 V, voutb=0.252813 V, vdiff=-0.186563 V, Vsumado=0.319688 V
+Iin=0.000671875 A, Iinb=0.002525000 A, vout=0.067187 V, voutb=0.252500 V, vdiff=-0.185938 V, Vsumado=0.319688 V
+Iin=0.000675000 A, Iinb=0.002521875 A, vout=0.067500 V, voutb=0.252188 V, vdiff=-0.185313 V, Vsumado=0.319688 V
+Iin=0.000678125 A, Iinb=0.002518750 A, vout=0.067812 V, voutb=0.251875 V, vdiff=-0.184688 V, Vsumado=0.319688 V
+Iin=0.000681250 A, Iinb=0.002515625 A, vout=0.068125 V, voutb=0.251563 V, vdiff=-0.184063 V, Vsumado=0.319688 V
+Iin=0.000684375 A, Iinb=0.002512500 A, vout=0.068437 V, voutb=0.251250 V, vdiff=-0.183438 V, Vsumado=0.319688 V
+Iin=0.000687500 A, Iinb=0.002509375 A, vout=0.068750 V, voutb=0.250938 V, vdiff=-0.182813 V, Vsumado=0.319688 V
+Iin=0.000690625 A, Iinb=0.002506250 A, vout=0.069062 V, voutb=0.250625 V, vdiff=-0.182188 V, Vsumado=0.319688 V
+Iin=0.000693750 A, Iinb=0.002503125 A, vout=0.069375 V, voutb=0.250313 V, vdiff=-0.181563 V, Vsumado=0.319688 V
+Iin=0.000696875 A, Iinb=0.002500000 A, vout=0.069687 V, voutb=0.250000 V, vdiff=-0.180938 V, Vsumado=0.319688 V
+Iin=0.000700000 A, Iinb=0.002496875 A, vout=0.070000 V, voutb=0.249688 V, vdiff=-0.180313 V, Vsumado=0.319688 V
+Iin=0.000703125 A, Iinb=0.002493750 A, vout=0.070312 V, voutb=0.249375 V, vdiff=-0.179688 V, Vsumado=0.319688 V
+Iin=0.000706250 A, Iinb=0.002490625 A, vout=0.070625 V, voutb=0.249063 V, vdiff=-0.179063 V, Vsumado=0.319688 V
+Iin=0.000709375 A, Iinb=0.002487500 A, vout=0.070937 V, voutb=0.248750 V, vdiff=-0.178438 V, Vsumado=0.319688 V
+Iin=0.000712500 A, Iinb=0.002484375 A, vout=0.071250 V, voutb=0.248438 V, vdiff=-0.177813 V, Vsumado=0.319688 V
+Iin=0.000715625 A, Iinb=0.002481250 A, vout=0.071562 V, voutb=0.248125 V, vdiff=-0.177188 V, Vsumado=0.319688 V
+Iin=0.000718750 A, Iinb=0.002478125 A, vout=0.071875 V, voutb=0.247813 V, vdiff=-0.176563 V, Vsumado=0.319688 V
+Iin=0.000721875 A, Iinb=0.002475000 A, vout=0.072187 V, voutb=0.247500 V, vdiff=-0.175938 V, Vsumado=0.319688 V
+Iin=0.000725000 A, Iinb=0.002471875 A, vout=0.072500 V, voutb=0.247188 V, vdiff=-0.175313 V, Vsumado=0.319688 V
+Iin=0.000728125 A, Iinb=0.002468750 A, vout=0.072812 V, voutb=0.246875 V, vdiff=-0.174688 V, Vsumado=0.319688 V
+Iin=0.000731250 A, Iinb=0.002465625 A, vout=0.073125 V, voutb=0.246563 V, vdiff=-0.174063 V, Vsumado=0.319688 V
+Iin=0.000734375 A, Iinb=0.002462500 A, vout=0.073437 V, voutb=0.246250 V, vdiff=-0.173438 V, Vsumado=0.319687 V
+Iin=0.000737500 A, Iinb=0.002459375 A, vout=0.073750 V, voutb=0.245938 V, vdiff=-0.172813 V, Vsumado=0.319688 V
+Iin=0.000740625 A, Iinb=0.002456250 A, vout=0.074062 V, voutb=0.245625 V, vdiff=-0.172188 V, Vsumado=0.319688 V
+Iin=0.000743750 A, Iinb=0.002453125 A, vout=0.074375 V, voutb=0.245313 V, vdiff=-0.171563 V, Vsumado=0.319688 V
+Iin=0.000746875 A, Iinb=0.002450000 A, vout=0.074687 V, voutb=0.245000 V, vdiff=-0.170938 V, Vsumado=0.319688 V
+Iin=0.000750000 A, Iinb=0.002446875 A, vout=0.075000 V, voutb=0.244688 V, vdiff=-0.170313 V, Vsumado=0.319688 V
+Iin=0.000753125 A, Iinb=0.002443750 A, vout=0.075312 V, voutb=0.244375 V, vdiff=-0.169688 V, Vsumado=0.319688 V
+Iin=0.000756250 A, Iinb=0.002440625 A, vout=0.075625 V, voutb=0.244063 V, vdiff=-0.169063 V, Vsumado=0.319688 V
+Iin=0.000759375 A, Iinb=0.002437500 A, vout=0.075937 V, voutb=0.243750 V, vdiff=-0.168438 V, Vsumado=0.319688 V
+Iin=0.000762500 A, Iinb=0.002434375 A, vout=0.076250 V, voutb=0.243438 V, vdiff=-0.167813 V, Vsumado=0.319688 V
+Iin=0.000765625 A, Iinb=0.002431250 A, vout=0.076562 V, voutb=0.243125 V, vdiff=-0.167188 V, Vsumado=0.319688 V
+Iin=0.000768750 A, Iinb=0.002428125 A, vout=0.076875 V, voutb=0.242813 V, vdiff=-0.166563 V, Vsumado=0.319688 V
+Iin=0.000771875 A, Iinb=0.002425000 A, vout=0.077187 V, voutb=0.242500 V, vdiff=-0.165938 V, Vsumado=0.319688 V
+Iin=0.000775000 A, Iinb=0.002421875 A, vout=0.077500 V, voutb=0.242188 V, vdiff=-0.165313 V, Vsumado=0.319688 V
+Iin=0.000778125 A, Iinb=0.002418750 A, vout=0.077812 V, voutb=0.241875 V, vdiff=-0.164688 V, Vsumado=0.319688 V
+Iin=0.000781250 A, Iinb=0.002415625 A, vout=0.078125 V, voutb=0.241563 V, vdiff=-0.164063 V, Vsumado=0.319688 V
+Iin=0.000784375 A, Iinb=0.002412500 A, vout=0.078437 V, voutb=0.241250 V, vdiff=-0.163438 V, Vsumado=0.319688 V
+Iin=0.000787500 A, Iinb=0.002409375 A, vout=0.078750 V, voutb=0.240938 V, vdiff=-0.162813 V, Vsumado=0.319688 V
+Iin=0.000790625 A, Iinb=0.002406250 A, vout=0.079062 V, voutb=0.240625 V, vdiff=-0.162188 V, Vsumado=0.319688 V
+Iin=0.000793750 A, Iinb=0.002403125 A, vout=0.079375 V, voutb=0.240313 V, vdiff=-0.161563 V, Vsumado=0.319688 V
+Iin=0.000796875 A, Iinb=0.002400000 A, vout=0.079687 V, voutb=0.240000 V, vdiff=-0.160938 V, Vsumado=0.319688 V
+Iin=0.000800000 A, Iinb=0.002396875 A, vout=0.080000 V, voutb=0.239688 V, vdiff=-0.160313 V, Vsumado=0.319688 V
+Iin=0.000803125 A, Iinb=0.002393750 A, vout=0.080312 V, voutb=0.239375 V, vdiff=-0.159688 V, Vsumado=0.319688 V
+Iin=0.000806250 A, Iinb=0.002390625 A, vout=0.080625 V, voutb=0.239063 V, vdiff=-0.159063 V, Vsumado=0.319688 V
+Iin=0.000809375 A, Iinb=0.002387500 A, vout=0.080937 V, voutb=0.238750 V, vdiff=-0.158438 V, Vsumado=0.319687 V
+Iin=0.000812500 A, Iinb=0.002384375 A, vout=0.081250 V, voutb=0.238438 V, vdiff=-0.157813 V, Vsumado=0.319688 V
+Iin=0.000815625 A, Iinb=0.002381250 A, vout=0.081562 V, voutb=0.238125 V, vdiff=-0.157188 V, Vsumado=0.319688 V
+Iin=0.000818750 A, Iinb=0.002378125 A, vout=0.081875 V, voutb=0.237813 V, vdiff=-0.156563 V, Vsumado=0.319688 V
+Iin=0.000821875 A, Iinb=0.002375000 A, vout=0.082187 V, voutb=0.237500 V, vdiff=-0.155938 V, Vsumado=0.319688 V
+Iin=0.000825000 A, Iinb=0.002371875 A, vout=0.082500 V, voutb=0.237188 V, vdiff=-0.155313 V, Vsumado=0.319688 V
+Iin=0.000828125 A, Iinb=0.002368750 A, vout=0.082812 V, voutb=0.236875 V, vdiff=-0.154688 V, Vsumado=0.319688 V
+Iin=0.000831250 A, Iinb=0.002365625 A, vout=0.083125 V, voutb=0.236563 V, vdiff=-0.154063 V, Vsumado=0.319688 V
+Iin=0.000834375 A, Iinb=0.002362500 A, vout=0.083437 V, voutb=0.236250 V, vdiff=-0.153438 V, Vsumado=0.319688 V
+Iin=0.000837500 A, Iinb=0.002359375 A, vout=0.083750 V, voutb=0.235938 V, vdiff=-0.152813 V, Vsumado=0.319688 V
+Iin=0.000840625 A, Iinb=0.002356250 A, vout=0.084062 V, voutb=0.235625 V, vdiff=-0.152188 V, Vsumado=0.319688 V
+Iin=0.000843750 A, Iinb=0.002353125 A, vout=0.084375 V, voutb=0.235313 V, vdiff=-0.151563 V, Vsumado=0.319688 V
+Iin=0.000846875 A, Iinb=0.002350000 A, vout=0.084687 V, voutb=0.235000 V, vdiff=-0.150938 V, Vsumado=0.319688 V
+Iin=0.000850000 A, Iinb=0.002346875 A, vout=0.085000 V, voutb=0.234688 V, vdiff=-0.150313 V, Vsumado=0.319688 V
+Iin=0.000853125 A, Iinb=0.002343750 A, vout=0.085312 V, voutb=0.234375 V, vdiff=-0.149688 V, Vsumado=0.319688 V
+Iin=0.000856250 A, Iinb=0.002340625 A, vout=0.085625 V, voutb=0.234063 V, vdiff=-0.149063 V, Vsumado=0.319688 V
+Iin=0.000859375 A, Iinb=0.002337500 A, vout=0.085937 V, voutb=0.233750 V, vdiff=-0.148438 V, Vsumado=0.319688 V
+Iin=0.000862500 A, Iinb=0.002334375 A, vout=0.086250 V, voutb=0.233438 V, vdiff=-0.147813 V, Vsumado=0.319688 V
+Iin=0.000865625 A, Iinb=0.002331250 A, vout=0.086562 V, voutb=0.233125 V, vdiff=-0.147188 V, Vsumado=0.319688 V
+Iin=0.000868750 A, Iinb=0.002328125 A, vout=0.086875 V, voutb=0.232813 V, vdiff=-0.146563 V, Vsumado=0.319688 V
+Iin=0.000871875 A, Iinb=0.002325000 A, vout=0.087187 V, voutb=0.232500 V, vdiff=-0.145938 V, Vsumado=0.319688 V
+Iin=0.000875000 A, Iinb=0.002321875 A, vout=0.087500 V, voutb=0.232188 V, vdiff=-0.145313 V, Vsumado=0.319688 V
+Iin=0.000878125 A, Iinb=0.002318750 A, vout=0.087812 V, voutb=0.231875 V, vdiff=-0.144688 V, Vsumado=0.319688 V
+Iin=0.000881250 A, Iinb=0.002315625 A, vout=0.088125 V, voutb=0.231563 V, vdiff=-0.144063 V, Vsumado=0.319688 V
+Iin=0.000884375 A, Iinb=0.002312500 A, vout=0.088437 V, voutb=0.231250 V, vdiff=-0.143438 V, Vsumado=0.319687 V
+Iin=0.000887500 A, Iinb=0.002309375 A, vout=0.088750 V, voutb=0.230938 V, vdiff=-0.142813 V, Vsumado=0.319688 V
+Iin=0.000890625 A, Iinb=0.002306250 A, vout=0.089062 V, voutb=0.230625 V, vdiff=-0.142188 V, Vsumado=0.319688 V
+Iin=0.000893750 A, Iinb=0.002303125 A, vout=0.089375 V, voutb=0.230313 V, vdiff=-0.141563 V, Vsumado=0.319688 V
+Iin=0.000896875 A, Iinb=0.002300000 A, vout=0.089687 V, voutb=0.230000 V, vdiff=-0.140938 V, Vsumado=0.319688 V
+Iin=0.000900000 A, Iinb=0.002296875 A, vout=0.090000 V, voutb=0.229688 V, vdiff=-0.140313 V, Vsumado=0.319688 V
+Iin=0.000903125 A, Iinb=0.002293750 A, vout=0.090312 V, voutb=0.229375 V, vdiff=-0.139688 V, Vsumado=0.319688 V
+Iin=0.000906250 A, Iinb=0.002290625 A, vout=0.090625 V, voutb=0.229063 V, vdiff=-0.139063 V, Vsumado=0.319688 V
+Iin=0.000909375 A, Iinb=0.002287500 A, vout=0.090937 V, voutb=0.228750 V, vdiff=-0.138438 V, Vsumado=0.319688 V
+Iin=0.000912500 A, Iinb=0.002284375 A, vout=0.091250 V, voutb=0.228438 V, vdiff=-0.137813 V, Vsumado=0.319688 V
+Iin=0.000915625 A, Iinb=0.002281250 A, vout=0.091562 V, voutb=0.228125 V, vdiff=-0.137188 V, Vsumado=0.319688 V
+Iin=0.000918750 A, Iinb=0.002278125 A, vout=0.091875 V, voutb=0.227813 V, vdiff=-0.136563 V, Vsumado=0.319688 V
+Iin=0.000921875 A, Iinb=0.002275000 A, vout=0.092187 V, voutb=0.227500 V, vdiff=-0.135938 V, Vsumado=0.319688 V
+Iin=0.000925000 A, Iinb=0.002271875 A, vout=0.092500 V, voutb=0.227188 V, vdiff=-0.135313 V, Vsumado=0.319688 V
+Iin=0.000928125 A, Iinb=0.002268750 A, vout=0.092812 V, voutb=0.226875 V, vdiff=-0.134688 V, Vsumado=0.319688 V
+Iin=0.000931250 A, Iinb=0.002265625 A, vout=0.093125 V, voutb=0.226563 V, vdiff=-0.134063 V, Vsumado=0.319688 V
+Iin=0.000934375 A, Iinb=0.002262500 A, vout=0.093437 V, voutb=0.226250 V, vdiff=-0.133438 V, Vsumado=0.319688 V
+Iin=0.000937500 A, Iinb=0.002259375 A, vout=0.093750 V, voutb=0.225938 V, vdiff=-0.132813 V, Vsumado=0.319688 V
+Iin=0.000940625 A, Iinb=0.002256250 A, vout=0.094062 V, voutb=0.225625 V, vdiff=-0.132188 V, Vsumado=0.319688 V
+Iin=0.000943750 A, Iinb=0.002253125 A, vout=0.094375 V, voutb=0.225313 V, vdiff=-0.131563 V, Vsumado=0.319688 V
+Iin=0.000946875 A, Iinb=0.002250000 A, vout=0.094687 V, voutb=0.225000 V, vdiff=-0.130938 V, Vsumado=0.319688 V
+Iin=0.000950000 A, Iinb=0.002246875 A, vout=0.095000 V, voutb=0.224688 V, vdiff=-0.130313 V, Vsumado=0.319688 V
+Iin=0.000953125 A, Iinb=0.002243750 A, vout=0.095312 V, voutb=0.224375 V, vdiff=-0.129688 V, Vsumado=0.319688 V
+Iin=0.000956250 A, Iinb=0.002240625 A, vout=0.095625 V, voutb=0.224063 V, vdiff=-0.129063 V, Vsumado=0.319688 V
+Iin=0.000959375 A, Iinb=0.002237500 A, vout=0.095937 V, voutb=0.223750 V, vdiff=-0.128438 V, Vsumado=0.319688 V
+Iin=0.000962500 A, Iinb=0.002234375 A, vout=0.096250 V, voutb=0.223438 V, vdiff=-0.127813 V, Vsumado=0.319688 V
+Iin=0.000965625 A, Iinb=0.002231250 A, vout=0.096562 V, voutb=0.223125 V, vdiff=-0.127188 V, Vsumado=0.319688 V
+Iin=0.000968750 A, Iinb=0.002228125 A, vout=0.096875 V, voutb=0.222813 V, vdiff=-0.126563 V, Vsumado=0.319688 V
+Iin=0.000971875 A, Iinb=0.002225000 A, vout=0.097187 V, voutb=0.222500 V, vdiff=-0.125938 V, Vsumado=0.319688 V
+Iin=0.000975000 A, Iinb=0.002221875 A, vout=0.097500 V, voutb=0.222188 V, vdiff=-0.125313 V, Vsumado=0.319688 V
+Iin=0.000978125 A, Iinb=0.002218750 A, vout=0.097812 V, voutb=0.221875 V, vdiff=-0.124688 V, Vsumado=0.319688 V
+Iin=0.000981250 A, Iinb=0.002215625 A, vout=0.098125 V, voutb=0.221563 V, vdiff=-0.124063 V, Vsumado=0.319688 V
+Iin=0.000984375 A, Iinb=0.002212500 A, vout=0.098437 V, voutb=0.221250 V, vdiff=-0.123438 V, Vsumado=0.319688 V
+Iin=0.000987500 A, Iinb=0.002209375 A, vout=0.098750 V, voutb=0.220938 V, vdiff=-0.122813 V, Vsumado=0.319688 V
+Iin=0.000990625 A, Iinb=0.002206250 A, vout=0.099062 V, voutb=0.220625 V, vdiff=-0.122188 V, Vsumado=0.319688 V
+Iin=0.000993750 A, Iinb=0.002203125 A, vout=0.099375 V, voutb=0.220313 V, vdiff=-0.121563 V, Vsumado=0.319688 V
+Iin=0.000996875 A, Iinb=0.002200000 A, vout=0.099687 V, voutb=0.220000 V, vdiff=-0.120938 V, Vsumado=0.319688 V
+Iin=0.001000000 A, Iinb=0.002196875 A, vout=0.100000 V, voutb=0.219688 V, vdiff=-0.120313 V, Vsumado=0.319688 V
+Iin=0.001003125 A, Iinb=0.002193750 A, vout=0.100312 V, voutb=0.219375 V, vdiff=-0.119688 V, Vsumado=0.319688 V
+Iin=0.001006250 A, Iinb=0.002190625 A, vout=0.100625 V, voutb=0.219063 V, vdiff=-0.119063 V, Vsumado=0.319688 V
+Iin=0.001009375 A, Iinb=0.002187500 A, vout=0.100937 V, voutb=0.218750 V, vdiff=-0.118438 V, Vsumado=0.319688 V
+Iin=0.001012500 A, Iinb=0.002184375 A, vout=0.101250 V, voutb=0.218438 V, vdiff=-0.117813 V, Vsumado=0.319688 V
+Iin=0.001015625 A, Iinb=0.002181250 A, vout=0.101562 V, voutb=0.218125 V, vdiff=-0.117188 V, Vsumado=0.319688 V
+Iin=0.001018750 A, Iinb=0.002178125 A, vout=0.101875 V, voutb=0.217813 V, vdiff=-0.116563 V, Vsumado=0.319688 V
+Iin=0.001021875 A, Iinb=0.002175000 A, vout=0.102187 V, voutb=0.217500 V, vdiff=-0.115938 V, Vsumado=0.319688 V
+Iin=0.001025000 A, Iinb=0.002171875 A, vout=0.102500 V, voutb=0.217188 V, vdiff=-0.115313 V, Vsumado=0.319688 V
+Iin=0.001028125 A, Iinb=0.002168750 A, vout=0.102812 V, voutb=0.216875 V, vdiff=-0.114688 V, Vsumado=0.319688 V
+Iin=0.001031250 A, Iinb=0.002165625 A, vout=0.103125 V, voutb=0.216563 V, vdiff=-0.114063 V, Vsumado=0.319688 V
+Iin=0.001034375 A, Iinb=0.002162500 A, vout=0.103437 V, voutb=0.216250 V, vdiff=-0.113438 V, Vsumado=0.319688 V
+Iin=0.001037500 A, Iinb=0.002159375 A, vout=0.103750 V, voutb=0.215938 V, vdiff=-0.112813 V, Vsumado=0.319688 V
+Iin=0.001040625 A, Iinb=0.002156250 A, vout=0.104062 V, voutb=0.215625 V, vdiff=-0.112188 V, Vsumado=0.319688 V
+Iin=0.001043750 A, Iinb=0.002153125 A, vout=0.104375 V, voutb=0.215313 V, vdiff=-0.111563 V, Vsumado=0.319688 V
+Iin=0.001046875 A, Iinb=0.002150000 A, vout=0.104687 V, voutb=0.215000 V, vdiff=-0.110938 V, Vsumado=0.319688 V
+Iin=0.001050000 A, Iinb=0.002146875 A, vout=0.105000 V, voutb=0.214688 V, vdiff=-0.110313 V, Vsumado=0.319688 V
+Iin=0.001053125 A, Iinb=0.002143750 A, vout=0.105312 V, voutb=0.214375 V, vdiff=-0.109688 V, Vsumado=0.319688 V
+Iin=0.001056250 A, Iinb=0.002140625 A, vout=0.105625 V, voutb=0.214063 V, vdiff=-0.109063 V, Vsumado=0.319688 V
+Iin=0.001059375 A, Iinb=0.002137500 A, vout=0.105937 V, voutb=0.213750 V, vdiff=-0.108438 V, Vsumado=0.319688 V
+Iin=0.001062500 A, Iinb=0.002134375 A, vout=0.106250 V, voutb=0.213438 V, vdiff=-0.107813 V, Vsumado=0.319688 V
+Iin=0.001065625 A, Iinb=0.002131250 A, vout=0.106562 V, voutb=0.213125 V, vdiff=-0.107188 V, Vsumado=0.319688 V
+Iin=0.001068750 A, Iinb=0.002128125 A, vout=0.106875 V, voutb=0.212813 V, vdiff=-0.106563 V, Vsumado=0.319688 V
+Iin=0.001071875 A, Iinb=0.002125000 A, vout=0.107187 V, voutb=0.212500 V, vdiff=-0.105938 V, Vsumado=0.319688 V
+Iin=0.001075000 A, Iinb=0.002121875 A, vout=0.107500 V, voutb=0.212188 V, vdiff=-0.105313 V, Vsumado=0.319688 V
+Iin=0.001078125 A, Iinb=0.002118750 A, vout=0.107812 V, voutb=0.211875 V, vdiff=-0.104688 V, Vsumado=0.319688 V
+Iin=0.001081250 A, Iinb=0.002115625 A, vout=0.108125 V, voutb=0.211563 V, vdiff=-0.104063 V, Vsumado=0.319688 V
+Iin=0.001084375 A, Iinb=0.002112500 A, vout=0.108437 V, voutb=0.211250 V, vdiff=-0.103438 V, Vsumado=0.319688 V
+Iin=0.001087500 A, Iinb=0.002109375 A, vout=0.108750 V, voutb=0.210938 V, vdiff=-0.102813 V, Vsumado=0.319688 V
+Iin=0.001090625 A, Iinb=0.002106250 A, vout=0.109062 V, voutb=0.210625 V, vdiff=-0.102188 V, Vsumado=0.319688 V
+Iin=0.001093750 A, Iinb=0.002103125 A, vout=0.109375 V, voutb=0.210313 V, vdiff=-0.101563 V, Vsumado=0.319688 V
+Iin=0.001096875 A, Iinb=0.002100000 A, vout=0.109687 V, voutb=0.210000 V, vdiff=-0.100938 V, Vsumado=0.319688 V
+Iin=0.001100000 A, Iinb=0.002096875 A, vout=0.110000 V, voutb=0.209688 V, vdiff=-0.100313 V, Vsumado=0.319688 V
+Iin=0.001103125 A, Iinb=0.002093750 A, vout=0.110312 V, voutb=0.209375 V, vdiff=-0.099688 V, Vsumado=0.319688 V
+Iin=0.001106250 A, Iinb=0.002090625 A, vout=0.110625 V, voutb=0.209063 V, vdiff=-0.099063 V, Vsumado=0.319688 V
+Iin=0.001109375 A, Iinb=0.002087500 A, vout=0.110937 V, voutb=0.208750 V, vdiff=-0.098438 V, Vsumado=0.319688 V
+Iin=0.001112500 A, Iinb=0.002084375 A, vout=0.111250 V, voutb=0.208438 V, vdiff=-0.097813 V, Vsumado=0.319688 V
+Iin=0.001115625 A, Iinb=0.002081250 A, vout=0.111562 V, voutb=0.208125 V, vdiff=-0.097188 V, Vsumado=0.319688 V
+Iin=0.001118750 A, Iinb=0.002078125 A, vout=0.111875 V, voutb=0.207813 V, vdiff=-0.096563 V, Vsumado=0.319688 V
+Iin=0.001121875 A, Iinb=0.002075000 A, vout=0.112188 V, voutb=0.207500 V, vdiff=-0.095938 V, Vsumado=0.319688 V
+Iin=0.001125000 A, Iinb=0.002071875 A, vout=0.112500 V, voutb=0.207187 V, vdiff=-0.095312 V, Vsumado=0.319688 V
+Iin=0.001128125 A, Iinb=0.002068750 A, vout=0.112813 V, voutb=0.206875 V, vdiff=-0.094687 V, Vsumado=0.319688 V
+Iin=0.001131250 A, Iinb=0.002065625 A, vout=0.113125 V, voutb=0.206562 V, vdiff=-0.094062 V, Vsumado=0.319688 V
+Iin=0.001134375 A, Iinb=0.002062500 A, vout=0.113438 V, voutb=0.206250 V, vdiff=-0.093437 V, Vsumado=0.319688 V
+Iin=0.001137500 A, Iinb=0.002059375 A, vout=0.113750 V, voutb=0.205937 V, vdiff=-0.092812 V, Vsumado=0.319688 V
+Iin=0.001140625 A, Iinb=0.002056250 A, vout=0.114063 V, voutb=0.205625 V, vdiff=-0.092187 V, Vsumado=0.319688 V
+Iin=0.001143750 A, Iinb=0.002053125 A, vout=0.114375 V, voutb=0.205312 V, vdiff=-0.091562 V, Vsumado=0.319688 V
+Iin=0.001146875 A, Iinb=0.002050000 A, vout=0.114688 V, voutb=0.205000 V, vdiff=-0.090937 V, Vsumado=0.319688 V
+Iin=0.001150000 A, Iinb=0.002046875 A, vout=0.115000 V, voutb=0.204687 V, vdiff=-0.090312 V, Vsumado=0.319688 V
+Iin=0.001153125 A, Iinb=0.002043750 A, vout=0.115313 V, voutb=0.204375 V, vdiff=-0.089687 V, Vsumado=0.319688 V
+Iin=0.001156250 A, Iinb=0.002040625 A, vout=0.115625 V, voutb=0.204062 V, vdiff=-0.089062 V, Vsumado=0.319688 V
+Iin=0.001159375 A, Iinb=0.002037500 A, vout=0.115938 V, voutb=0.203750 V, vdiff=-0.088437 V, Vsumado=0.319688 V
+Iin=0.001162500 A, Iinb=0.002034375 A, vout=0.116250 V, voutb=0.203437 V, vdiff=-0.087812 V, Vsumado=0.319688 V
+Iin=0.001165625 A, Iinb=0.002031250 A, vout=0.116563 V, voutb=0.203125 V, vdiff=-0.087187 V, Vsumado=0.319688 V
+Iin=0.001168750 A, Iinb=0.002028125 A, vout=0.116875 V, voutb=0.202812 V, vdiff=-0.086562 V, Vsumado=0.319688 V
+Iin=0.001171875 A, Iinb=0.002025000 A, vout=0.117188 V, voutb=0.202500 V, vdiff=-0.085937 V, Vsumado=0.319688 V
+Iin=0.001175000 A, Iinb=0.002021875 A, vout=0.117500 V, voutb=0.202187 V, vdiff=-0.085312 V, Vsumado=0.319688 V
+Iin=0.001178125 A, Iinb=0.002018750 A, vout=0.117813 V, voutb=0.201875 V, vdiff=-0.084687 V, Vsumado=0.319688 V
+Iin=0.001181250 A, Iinb=0.002015625 A, vout=0.118125 V, voutb=0.201562 V, vdiff=-0.084062 V, Vsumado=0.319688 V
+Iin=0.001184375 A, Iinb=0.002012500 A, vout=0.118438 V, voutb=0.201250 V, vdiff=-0.083437 V, Vsumado=0.319688 V
+Iin=0.001187500 A, Iinb=0.002009375 A, vout=0.118750 V, voutb=0.200937 V, vdiff=-0.082812 V, Vsumado=0.319688 V
+Iin=0.001190625 A, Iinb=0.002006250 A, vout=0.119063 V, voutb=0.200625 V, vdiff=-0.082187 V, Vsumado=0.319688 V
+Iin=0.001193750 A, Iinb=0.002003125 A, vout=0.119375 V, voutb=0.200312 V, vdiff=-0.081562 V, Vsumado=0.319688 V
+Iin=0.001196875 A, Iinb=0.002000000 A, vout=0.119688 V, voutb=0.200000 V, vdiff=-0.080937 V, Vsumado=0.319688 V
+Iin=0.001200000 A, Iinb=0.001996875 A, vout=0.120000 V, voutb=0.199687 V, vdiff=-0.080312 V, Vsumado=0.319688 V
+Iin=0.001203125 A, Iinb=0.001993750 A, vout=0.120313 V, voutb=0.199375 V, vdiff=-0.079687 V, Vsumado=0.319688 V
+Iin=0.001206250 A, Iinb=0.001990625 A, vout=0.120625 V, voutb=0.199062 V, vdiff=-0.079062 V, Vsumado=0.319688 V
+Iin=0.001209375 A, Iinb=0.001987500 A, vout=0.120938 V, voutb=0.198750 V, vdiff=-0.078437 V, Vsumado=0.319688 V
+Iin=0.001212500 A, Iinb=0.001984375 A, vout=0.121250 V, voutb=0.198437 V, vdiff=-0.077812 V, Vsumado=0.319688 V
+Iin=0.001215625 A, Iinb=0.001981250 A, vout=0.121563 V, voutb=0.198125 V, vdiff=-0.077187 V, Vsumado=0.319688 V
+Iin=0.001218750 A, Iinb=0.001978125 A, vout=0.121875 V, voutb=0.197812 V, vdiff=-0.076562 V, Vsumado=0.319688 V
+Iin=0.001221875 A, Iinb=0.001975000 A, vout=0.122188 V, voutb=0.197500 V, vdiff=-0.075937 V, Vsumado=0.319688 V
+Iin=0.001225000 A, Iinb=0.001971875 A, vout=0.122500 V, voutb=0.197187 V, vdiff=-0.075312 V, Vsumado=0.319688 V
+Iin=0.001228125 A, Iinb=0.001968750 A, vout=0.122813 V, voutb=0.196875 V, vdiff=-0.074687 V, Vsumado=0.319688 V
+Iin=0.001231250 A, Iinb=0.001965625 A, vout=0.123125 V, voutb=0.196562 V, vdiff=-0.074062 V, Vsumado=0.319688 V
+Iin=0.001234375 A, Iinb=0.001962500 A, vout=0.123438 V, voutb=0.196250 V, vdiff=-0.073437 V, Vsumado=0.319688 V
+Iin=0.001237500 A, Iinb=0.001959375 A, vout=0.123750 V, voutb=0.195937 V, vdiff=-0.072812 V, Vsumado=0.319688 V
+Iin=0.001240625 A, Iinb=0.001956250 A, vout=0.124063 V, voutb=0.195625 V, vdiff=-0.072187 V, Vsumado=0.319688 V
+Iin=0.001243750 A, Iinb=0.001953125 A, vout=0.124375 V, voutb=0.195312 V, vdiff=-0.071562 V, Vsumado=0.319688 V
+Iin=0.001246875 A, Iinb=0.001950000 A, vout=0.124688 V, voutb=0.195000 V, vdiff=-0.070937 V, Vsumado=0.319688 V
+Iin=0.001250000 A, Iinb=0.001946875 A, vout=0.125000 V, voutb=0.194687 V, vdiff=-0.070312 V, Vsumado=0.319688 V
+Iin=0.001253125 A, Iinb=0.001943750 A, vout=0.125313 V, voutb=0.194375 V, vdiff=-0.069687 V, Vsumado=0.319688 V
+Iin=0.001256250 A, Iinb=0.001940625 A, vout=0.125625 V, voutb=0.194062 V, vdiff=-0.069062 V, Vsumado=0.319688 V
+Iin=0.001259375 A, Iinb=0.001937500 A, vout=0.125938 V, voutb=0.193750 V, vdiff=-0.068437 V, Vsumado=0.319688 V
+Iin=0.001262500 A, Iinb=0.001934375 A, vout=0.126250 V, voutb=0.193437 V, vdiff=-0.067812 V, Vsumado=0.319688 V
+Iin=0.001265625 A, Iinb=0.001931250 A, vout=0.126563 V, voutb=0.193125 V, vdiff=-0.067187 V, Vsumado=0.319688 V
+Iin=0.001268750 A, Iinb=0.001928125 A, vout=0.126875 V, voutb=0.192812 V, vdiff=-0.066562 V, Vsumado=0.319688 V
+Iin=0.001271875 A, Iinb=0.001925000 A, vout=0.127188 V, voutb=0.192500 V, vdiff=-0.065937 V, Vsumado=0.319688 V
+Iin=0.001275000 A, Iinb=0.001921875 A, vout=0.127500 V, voutb=0.192187 V, vdiff=-0.065312 V, Vsumado=0.319688 V
+Iin=0.001278125 A, Iinb=0.001918750 A, vout=0.127813 V, voutb=0.191875 V, vdiff=-0.064687 V, Vsumado=0.319688 V
+Iin=0.001281250 A, Iinb=0.001915625 A, vout=0.128125 V, voutb=0.191562 V, vdiff=-0.064062 V, Vsumado=0.319688 V
+Iin=0.001284375 A, Iinb=0.001912500 A, vout=0.128438 V, voutb=0.191250 V, vdiff=-0.063437 V, Vsumado=0.319688 V
+Iin=0.001287500 A, Iinb=0.001909375 A, vout=0.128750 V, voutb=0.190937 V, vdiff=-0.062812 V, Vsumado=0.319688 V
+Iin=0.001290625 A, Iinb=0.001906250 A, vout=0.129063 V, voutb=0.190625 V, vdiff=-0.062187 V, Vsumado=0.319688 V
+Iin=0.001293750 A, Iinb=0.001903125 A, vout=0.129375 V, voutb=0.190312 V, vdiff=-0.061562 V, Vsumado=0.319688 V
+Iin=0.001296875 A, Iinb=0.001900000 A, vout=0.129688 V, voutb=0.190000 V, vdiff=-0.060937 V, Vsumado=0.319688 V
+Iin=0.001300000 A, Iinb=0.001896875 A, vout=0.130000 V, voutb=0.189687 V, vdiff=-0.060312 V, Vsumado=0.319688 V
+Iin=0.001303125 A, Iinb=0.001893750 A, vout=0.130313 V, voutb=0.189375 V, vdiff=-0.059687 V, Vsumado=0.319688 V
+Iin=0.001306250 A, Iinb=0.001890625 A, vout=0.130625 V, voutb=0.189062 V, vdiff=-0.059062 V, Vsumado=0.319688 V
+Iin=0.001309375 A, Iinb=0.001887500 A, vout=0.130938 V, voutb=0.188750 V, vdiff=-0.058437 V, Vsumado=0.319688 V
+Iin=0.001312500 A, Iinb=0.001884375 A, vout=0.131250 V, voutb=0.188437 V, vdiff=-0.057812 V, Vsumado=0.319688 V
+Iin=0.001315625 A, Iinb=0.001881250 A, vout=0.131563 V, voutb=0.188125 V, vdiff=-0.057187 V, Vsumado=0.319688 V
+Iin=0.001318750 A, Iinb=0.001878125 A, vout=0.131875 V, voutb=0.187812 V, vdiff=-0.056562 V, Vsumado=0.319688 V
+Iin=0.001321875 A, Iinb=0.001875000 A, vout=0.132188 V, voutb=0.187500 V, vdiff=-0.055937 V, Vsumado=0.319688 V
+Iin=0.001325000 A, Iinb=0.001871875 A, vout=0.132500 V, voutb=0.187187 V, vdiff=-0.055312 V, Vsumado=0.319688 V
+Iin=0.001328125 A, Iinb=0.001868750 A, vout=0.132813 V, voutb=0.186875 V, vdiff=-0.054687 V, Vsumado=0.319688 V
+Iin=0.001331250 A, Iinb=0.001865625 A, vout=0.133125 V, voutb=0.186562 V, vdiff=-0.054062 V, Vsumado=0.319688 V
+Iin=0.001334375 A, Iinb=0.001862500 A, vout=0.133438 V, voutb=0.186250 V, vdiff=-0.053437 V, Vsumado=0.319688 V
+Iin=0.001337500 A, Iinb=0.001859375 A, vout=0.133750 V, voutb=0.185937 V, vdiff=-0.052812 V, Vsumado=0.319688 V
+Iin=0.001340625 A, Iinb=0.001856250 A, vout=0.134063 V, voutb=0.185625 V, vdiff=-0.052187 V, Vsumado=0.319688 V
+Iin=0.001343750 A, Iinb=0.001853125 A, vout=0.134375 V, voutb=0.185312 V, vdiff=-0.051562 V, Vsumado=0.319688 V
+Iin=0.001346875 A, Iinb=0.001850000 A, vout=0.134688 V, voutb=0.185000 V, vdiff=-0.050937 V, Vsumado=0.319688 V
+Iin=0.001350000 A, Iinb=0.001846875 A, vout=0.135000 V, voutb=0.184687 V, vdiff=-0.050312 V, Vsumado=0.319688 V
+Iin=0.001353125 A, Iinb=0.001843750 A, vout=0.135313 V, voutb=0.184375 V, vdiff=-0.049687 V, Vsumado=0.319688 V
+Iin=0.001356250 A, Iinb=0.001840625 A, vout=0.135625 V, voutb=0.184062 V, vdiff=-0.049062 V, Vsumado=0.319688 V
+Iin=0.001359375 A, Iinb=0.001837500 A, vout=0.135938 V, voutb=0.183750 V, vdiff=-0.048437 V, Vsumado=0.319688 V
+Iin=0.001362500 A, Iinb=0.001834375 A, vout=0.136250 V, voutb=0.183437 V, vdiff=-0.047812 V, Vsumado=0.319688 V
+Iin=0.001365625 A, Iinb=0.001831250 A, vout=0.136563 V, voutb=0.183125 V, vdiff=-0.047187 V, Vsumado=0.319688 V
+Iin=0.001368750 A, Iinb=0.001828125 A, vout=0.136875 V, voutb=0.182812 V, vdiff=-0.046562 V, Vsumado=0.319688 V
+Iin=0.001371875 A, Iinb=0.001825000 A, vout=0.137188 V, voutb=0.182500 V, vdiff=-0.045937 V, Vsumado=0.319688 V
+Iin=0.001375000 A, Iinb=0.001821875 A, vout=0.137500 V, voutb=0.182187 V, vdiff=-0.045312 V, Vsumado=0.319688 V
+Iin=0.001378125 A, Iinb=0.001818750 A, vout=0.137813 V, voutb=0.181875 V, vdiff=-0.044687 V, Vsumado=0.319688 V
+Iin=0.001381250 A, Iinb=0.001815625 A, vout=0.138125 V, voutb=0.181562 V, vdiff=-0.044062 V, Vsumado=0.319688 V
+Iin=0.001384375 A, Iinb=0.001812500 A, vout=0.138438 V, voutb=0.181250 V, vdiff=-0.043437 V, Vsumado=0.319688 V
+Iin=0.001387500 A, Iinb=0.001809375 A, vout=0.138750 V, voutb=0.180937 V, vdiff=-0.042812 V, Vsumado=0.319688 V
+Iin=0.001390625 A, Iinb=0.001806250 A, vout=0.139063 V, voutb=0.180625 V, vdiff=-0.042187 V, Vsumado=0.319688 V
+Iin=0.001393750 A, Iinb=0.001803125 A, vout=0.139375 V, voutb=0.180312 V, vdiff=-0.041562 V, Vsumado=0.319688 V
+Iin=0.001396875 A, Iinb=0.001800000 A, vout=0.139688 V, voutb=0.180000 V, vdiff=-0.040937 V, Vsumado=0.319688 V
+Iin=0.001400000 A, Iinb=0.001796875 A, vout=0.140000 V, voutb=0.179687 V, vdiff=-0.040312 V, Vsumado=0.319688 V
+Iin=0.001403125 A, Iinb=0.001793750 A, vout=0.140313 V, voutb=0.179375 V, vdiff=-0.039687 V, Vsumado=0.319688 V
+Iin=0.001406250 A, Iinb=0.001790625 A, vout=0.140625 V, voutb=0.179062 V, vdiff=-0.039062 V, Vsumado=0.319688 V
+Iin=0.001409375 A, Iinb=0.001787500 A, vout=0.140938 V, voutb=0.178750 V, vdiff=-0.038437 V, Vsumado=0.319688 V
+Iin=0.001412500 A, Iinb=0.001784375 A, vout=0.141250 V, voutb=0.178437 V, vdiff=-0.037812 V, Vsumado=0.319688 V
+Iin=0.001415625 A, Iinb=0.001781250 A, vout=0.141563 V, voutb=0.178125 V, vdiff=-0.037187 V, Vsumado=0.319688 V
+Iin=0.001418750 A, Iinb=0.001778125 A, vout=0.141875 V, voutb=0.177812 V, vdiff=-0.036562 V, Vsumado=0.319688 V
+Iin=0.001421875 A, Iinb=0.001775000 A, vout=0.142188 V, voutb=0.177500 V, vdiff=-0.035937 V, Vsumado=0.319688 V
+Iin=0.001425000 A, Iinb=0.001771875 A, vout=0.142500 V, voutb=0.177187 V, vdiff=-0.035312 V, Vsumado=0.319688 V
+Iin=0.001428125 A, Iinb=0.001768750 A, vout=0.142813 V, voutb=0.176875 V, vdiff=-0.034687 V, Vsumado=0.319688 V
+Iin=0.001431250 A, Iinb=0.001765625 A, vout=0.143125 V, voutb=0.176562 V, vdiff=-0.034062 V, Vsumado=0.319688 V
+Iin=0.001434375 A, Iinb=0.001762500 A, vout=0.143438 V, voutb=0.176250 V, vdiff=-0.033437 V, Vsumado=0.319688 V
+Iin=0.001437500 A, Iinb=0.001759375 A, vout=0.143750 V, voutb=0.175937 V, vdiff=-0.032812 V, Vsumado=0.319688 V
+Iin=0.001440625 A, Iinb=0.001756250 A, vout=0.144063 V, voutb=0.175625 V, vdiff=-0.032187 V, Vsumado=0.319688 V
+Iin=0.001443750 A, Iinb=0.001753125 A, vout=0.144375 V, voutb=0.175312 V, vdiff=-0.031562 V, Vsumado=0.319688 V
+Iin=0.001446875 A, Iinb=0.001750000 A, vout=0.144688 V, voutb=0.175000 V, vdiff=-0.030937 V, Vsumado=0.319688 V
+Iin=0.001450000 A, Iinb=0.001746875 A, vout=0.145000 V, voutb=0.174687 V, vdiff=-0.030312 V, Vsumado=0.319688 V
+Iin=0.001453125 A, Iinb=0.001743750 A, vout=0.145313 V, voutb=0.174375 V, vdiff=-0.029687 V, Vsumado=0.319688 V
+Iin=0.001456250 A, Iinb=0.001740625 A, vout=0.145625 V, voutb=0.174062 V, vdiff=-0.029062 V, Vsumado=0.319688 V
+Iin=0.001459375 A, Iinb=0.001737500 A, vout=0.145938 V, voutb=0.173750 V, vdiff=-0.028437 V, Vsumado=0.319688 V
+Iin=0.001462500 A, Iinb=0.001734375 A, vout=0.146250 V, voutb=0.173437 V, vdiff=-0.027812 V, Vsumado=0.319688 V
+Iin=0.001465625 A, Iinb=0.001731250 A, vout=0.146563 V, voutb=0.173125 V, vdiff=-0.027187 V, Vsumado=0.319688 V
+Iin=0.001468750 A, Iinb=0.001728125 A, vout=0.146875 V, voutb=0.172812 V, vdiff=-0.026562 V, Vsumado=0.319688 V
+Iin=0.001471875 A, Iinb=0.001725000 A, vout=0.147188 V, voutb=0.172500 V, vdiff=-0.025937 V, Vsumado=0.319688 V
+Iin=0.001475000 A, Iinb=0.001721875 A, vout=0.147500 V, voutb=0.172187 V, vdiff=-0.025312 V, Vsumado=0.319688 V
+Iin=0.001478125 A, Iinb=0.001718750 A, vout=0.147813 V, voutb=0.171875 V, vdiff=-0.024687 V, Vsumado=0.319688 V
+Iin=0.001481250 A, Iinb=0.001715625 A, vout=0.148125 V, voutb=0.171562 V, vdiff=-0.024062 V, Vsumado=0.319688 V
+Iin=0.001484375 A, Iinb=0.001712500 A, vout=0.148438 V, voutb=0.171250 V, vdiff=-0.023437 V, Vsumado=0.319688 V
+Iin=0.001487500 A, Iinb=0.001709375 A, vout=0.148750 V, voutb=0.170937 V, vdiff=-0.022812 V, Vsumado=0.319688 V
+Iin=0.001490625 A, Iinb=0.001706250 A, vout=0.149063 V, voutb=0.170625 V, vdiff=-0.022187 V, Vsumado=0.319688 V
+Iin=0.001493750 A, Iinb=0.001703125 A, vout=0.149375 V, voutb=0.170312 V, vdiff=-0.021562 V, Vsumado=0.319688 V
+Iin=0.001496875 A, Iinb=0.001700000 A, vout=0.149688 V, voutb=0.170000 V, vdiff=-0.020937 V, Vsumado=0.319688 V
+Iin=0.001500000 A, Iinb=0.001696875 A, vout=0.150000 V, voutb=0.169687 V, vdiff=-0.020312 V, Vsumado=0.319688 V
+Iin=0.001503125 A, Iinb=0.001693750 A, vout=0.150313 V, voutb=0.169375 V, vdiff=-0.019687 V, Vsumado=0.319688 V
+Iin=0.001506250 A, Iinb=0.001690625 A, vout=0.150625 V, voutb=0.169062 V, vdiff=-0.019062 V, Vsumado=0.319688 V
+Iin=0.001509375 A, Iinb=0.001687500 A, vout=0.150938 V, voutb=0.168750 V, vdiff=-0.018437 V, Vsumado=0.319688 V
+Iin=0.001512500 A, Iinb=0.001684375 A, vout=0.151250 V, voutb=0.168437 V, vdiff=-0.017812 V, Vsumado=0.319688 V
+Iin=0.001515625 A, Iinb=0.001681250 A, vout=0.151563 V, voutb=0.168125 V, vdiff=-0.017187 V, Vsumado=0.319688 V
+Iin=0.001518750 A, Iinb=0.001678125 A, vout=0.151875 V, voutb=0.167812 V, vdiff=-0.016562 V, Vsumado=0.319688 V
+Iin=0.001521875 A, Iinb=0.001675000 A, vout=0.152188 V, voutb=0.167500 V, vdiff=-0.015937 V, Vsumado=0.319688 V
+Iin=0.001525000 A, Iinb=0.001671875 A, vout=0.152500 V, voutb=0.167187 V, vdiff=-0.015312 V, Vsumado=0.319688 V
+Iin=0.001528125 A, Iinb=0.001668750 A, vout=0.152813 V, voutb=0.166875 V, vdiff=-0.014687 V, Vsumado=0.319688 V
+Iin=0.001531250 A, Iinb=0.001665625 A, vout=0.153125 V, voutb=0.166562 V, vdiff=-0.014062 V, Vsumado=0.319688 V
+Iin=0.001534375 A, Iinb=0.001662500 A, vout=0.153438 V, voutb=0.166250 V, vdiff=-0.013437 V, Vsumado=0.319688 V
+Iin=0.001537500 A, Iinb=0.001659375 A, vout=0.153750 V, voutb=0.165937 V, vdiff=-0.012812 V, Vsumado=0.319688 V
+Iin=0.001540625 A, Iinb=0.001656250 A, vout=0.154063 V, voutb=0.165625 V, vdiff=-0.012187 V, Vsumado=0.319688 V
+Iin=0.001543750 A, Iinb=0.001653125 A, vout=0.154375 V, voutb=0.165312 V, vdiff=-0.011562 V, Vsumado=0.319688 V
+Iin=0.001546875 A, Iinb=0.001650000 A, vout=0.154688 V, voutb=0.165000 V, vdiff=-0.010937 V, Vsumado=0.319688 V
+Iin=0.001550000 A, Iinb=0.001646875 A, vout=0.155000 V, voutb=0.164687 V, vdiff=-0.010312 V, Vsumado=0.319688 V
+Iin=0.001553125 A, Iinb=0.001643750 A, vout=0.155313 V, voutb=0.164375 V, vdiff=-0.009687 V, Vsumado=0.319688 V
+Iin=0.001556250 A, Iinb=0.001640625 A, vout=0.155625 V, voutb=0.164062 V, vdiff=-0.009062 V, Vsumado=0.319688 V
+Iin=0.001559375 A, Iinb=0.001637500 A, vout=0.155938 V, voutb=0.163750 V, vdiff=-0.008437 V, Vsumado=0.319688 V
+Iin=0.001562500 A, Iinb=0.001634375 A, vout=0.156250 V, voutb=0.163437 V, vdiff=-0.007812 V, Vsumado=0.319688 V
+Iin=0.001565625 A, Iinb=0.001631250 A, vout=0.156563 V, voutb=0.163125 V, vdiff=-0.007187 V, Vsumado=0.319688 V
+Iin=0.001568750 A, Iinb=0.001628125 A, vout=0.156875 V, voutb=0.162812 V, vdiff=-0.006562 V, Vsumado=0.319688 V
+Iin=0.001571875 A, Iinb=0.001625000 A, vout=0.157188 V, voutb=0.162500 V, vdiff=-0.005937 V, Vsumado=0.319688 V
+Iin=0.001575000 A, Iinb=0.001621875 A, vout=0.157500 V, voutb=0.162187 V, vdiff=-0.005312 V, Vsumado=0.319688 V
+Iin=0.001578125 A, Iinb=0.001618750 A, vout=0.157813 V, voutb=0.161875 V, vdiff=-0.004687 V, Vsumado=0.319688 V
+Iin=0.001581250 A, Iinb=0.001615625 A, vout=0.158125 V, voutb=0.161562 V, vdiff=-0.004062 V, Vsumado=0.319688 V
+Iin=0.001584375 A, Iinb=0.001612500 A, vout=0.158438 V, voutb=0.161250 V, vdiff=-0.003437 V, Vsumado=0.319688 V
+Iin=0.001587500 A, Iinb=0.001609375 A, vout=0.158750 V, voutb=0.160937 V, vdiff=-0.002812 V, Vsumado=0.319688 V
+Iin=0.001590625 A, Iinb=0.001606250 A, vout=0.159063 V, voutb=0.160625 V, vdiff=-0.002187 V, Vsumado=0.319688 V
+Iin=0.001593750 A, Iinb=0.001603125 A, vout=0.159375 V, voutb=0.160312 V, vdiff=-0.001562 V, Vsumado=0.319688 V
+Iin=0.001596875 A, Iinb=0.001600000 A, vout=0.159688 V, voutb=0.160000 V, vdiff=-0.000937 V, Vsumado=0.319688 V
+Iin=0.001600000 A, Iinb=0.001596875 A, vout=0.160000 V, voutb=0.159687 V, vdiff=-0.000312 V, Vsumado=0.319688 V
+Iin=0.001603125 A, Iinb=0.001593750 A, vout=0.160313 V, voutb=0.159375 V, vdiff=0.000313 V, Vsumado=0.319688 V
+Iin=0.001606250 A, Iinb=0.001590625 A, vout=0.160625 V, voutb=0.159062 V, vdiff=0.000938 V, Vsumado=0.319688 V
+Iin=0.001609375 A, Iinb=0.001587500 A, vout=0.160938 V, voutb=0.158750 V, vdiff=0.001563 V, Vsumado=0.319688 V
+Iin=0.001612500 A, Iinb=0.001584375 A, vout=0.161250 V, voutb=0.158437 V, vdiff=0.002188 V, Vsumado=0.319688 V
+Iin=0.001615625 A, Iinb=0.001581250 A, vout=0.161563 V, voutb=0.158125 V, vdiff=0.002813 V, Vsumado=0.319688 V
+Iin=0.001618750 A, Iinb=0.001578125 A, vout=0.161875 V, voutb=0.157812 V, vdiff=0.003438 V, Vsumado=0.319688 V
+Iin=0.001621875 A, Iinb=0.001575000 A, vout=0.162188 V, voutb=0.157500 V, vdiff=0.004063 V, Vsumado=0.319688 V
+Iin=0.001625000 A, Iinb=0.001571875 A, vout=0.162500 V, voutb=0.157187 V, vdiff=0.004688 V, Vsumado=0.319688 V
+Iin=0.001628125 A, Iinb=0.001568750 A, vout=0.162813 V, voutb=0.156875 V, vdiff=0.005313 V, Vsumado=0.319688 V
+Iin=0.001631250 A, Iinb=0.001565625 A, vout=0.163125 V, voutb=0.156562 V, vdiff=0.005938 V, Vsumado=0.319688 V
+Iin=0.001634375 A, Iinb=0.001562500 A, vout=0.163438 V, voutb=0.156250 V, vdiff=0.006563 V, Vsumado=0.319688 V
+Iin=0.001637500 A, Iinb=0.001559375 A, vout=0.163750 V, voutb=0.155937 V, vdiff=0.007188 V, Vsumado=0.319688 V
+Iin=0.001640625 A, Iinb=0.001556250 A, vout=0.164063 V, voutb=0.155625 V, vdiff=0.007813 V, Vsumado=0.319688 V
+Iin=0.001643750 A, Iinb=0.001553125 A, vout=0.164375 V, voutb=0.155312 V, vdiff=0.008438 V, Vsumado=0.319688 V
+Iin=0.001646875 A, Iinb=0.001550000 A, vout=0.164688 V, voutb=0.155000 V, vdiff=0.009063 V, Vsumado=0.319688 V
+Iin=0.001650000 A, Iinb=0.001546875 A, vout=0.165000 V, voutb=0.154687 V, vdiff=0.009688 V, Vsumado=0.319688 V
+Iin=0.001653125 A, Iinb=0.001543750 A, vout=0.165313 V, voutb=0.154375 V, vdiff=0.010313 V, Vsumado=0.319688 V
+Iin=0.001656250 A, Iinb=0.001540625 A, vout=0.165625 V, voutb=0.154062 V, vdiff=0.010938 V, Vsumado=0.319688 V
+Iin=0.001659375 A, Iinb=0.001537500 A, vout=0.165938 V, voutb=0.153750 V, vdiff=0.011563 V, Vsumado=0.319688 V
+Iin=0.001662500 A, Iinb=0.001534375 A, vout=0.166250 V, voutb=0.153437 V, vdiff=0.012188 V, Vsumado=0.319688 V
+Iin=0.001665625 A, Iinb=0.001531250 A, vout=0.166563 V, voutb=0.153125 V, vdiff=0.012813 V, Vsumado=0.319688 V
+Iin=0.001668750 A, Iinb=0.001528125 A, vout=0.166875 V, voutb=0.152812 V, vdiff=0.013438 V, Vsumado=0.319688 V
+Iin=0.001671875 A, Iinb=0.001525000 A, vout=0.167188 V, voutb=0.152500 V, vdiff=0.014063 V, Vsumado=0.319688 V
+Iin=0.001675000 A, Iinb=0.001521875 A, vout=0.167500 V, voutb=0.152187 V, vdiff=0.014688 V, Vsumado=0.319688 V
+Iin=0.001678125 A, Iinb=0.001518750 A, vout=0.167813 V, voutb=0.151875 V, vdiff=0.015313 V, Vsumado=0.319688 V
+Iin=0.001681250 A, Iinb=0.001515625 A, vout=0.168125 V, voutb=0.151562 V, vdiff=0.015938 V, Vsumado=0.319688 V
+Iin=0.001684375 A, Iinb=0.001512500 A, vout=0.168438 V, voutb=0.151250 V, vdiff=0.016563 V, Vsumado=0.319688 V
+Iin=0.001687500 A, Iinb=0.001509375 A, vout=0.168750 V, voutb=0.150937 V, vdiff=0.017188 V, Vsumado=0.319688 V
+Iin=0.001690625 A, Iinb=0.001506250 A, vout=0.169063 V, voutb=0.150625 V, vdiff=0.017813 V, Vsumado=0.319688 V
+Iin=0.001693750 A, Iinb=0.001503125 A, vout=0.169375 V, voutb=0.150312 V, vdiff=0.018438 V, Vsumado=0.319688 V
+Iin=0.001696875 A, Iinb=0.001500000 A, vout=0.169688 V, voutb=0.150000 V, vdiff=0.019063 V, Vsumado=0.319688 V
+Iin=0.001700000 A, Iinb=0.001496875 A, vout=0.170000 V, voutb=0.149687 V, vdiff=0.019688 V, Vsumado=0.319688 V
+Iin=0.001703125 A, Iinb=0.001493750 A, vout=0.170313 V, voutb=0.149375 V, vdiff=0.020313 V, Vsumado=0.319688 V
+Iin=0.001706250 A, Iinb=0.001490625 A, vout=0.170625 V, voutb=0.149062 V, vdiff=0.020938 V, Vsumado=0.319688 V
+Iin=0.001709375 A, Iinb=0.001487500 A, vout=0.170938 V, voutb=0.148750 V, vdiff=0.021563 V, Vsumado=0.319688 V
+Iin=0.001712500 A, Iinb=0.001484375 A, vout=0.171250 V, voutb=0.148437 V, vdiff=0.022188 V, Vsumado=0.319688 V
+Iin=0.001715625 A, Iinb=0.001481250 A, vout=0.171563 V, voutb=0.148125 V, vdiff=0.022813 V, Vsumado=0.319688 V
+Iin=0.001718750 A, Iinb=0.001478125 A, vout=0.171875 V, voutb=0.147812 V, vdiff=0.023438 V, Vsumado=0.319688 V
+Iin=0.001721875 A, Iinb=0.001475000 A, vout=0.172188 V, voutb=0.147500 V, vdiff=0.024063 V, Vsumado=0.319688 V
+Iin=0.001725000 A, Iinb=0.001471875 A, vout=0.172500 V, voutb=0.147187 V, vdiff=0.024688 V, Vsumado=0.319688 V
+Iin=0.001728125 A, Iinb=0.001468750 A, vout=0.172813 V, voutb=0.146875 V, vdiff=0.025313 V, Vsumado=0.319688 V
+Iin=0.001731250 A, Iinb=0.001465625 A, vout=0.173125 V, voutb=0.146562 V, vdiff=0.025938 V, Vsumado=0.319688 V
+Iin=0.001734375 A, Iinb=0.001462500 A, vout=0.173438 V, voutb=0.146250 V, vdiff=0.026563 V, Vsumado=0.319688 V
+Iin=0.001737500 A, Iinb=0.001459375 A, vout=0.173750 V, voutb=0.145937 V, vdiff=0.027188 V, Vsumado=0.319688 V
+Iin=0.001740625 A, Iinb=0.001456250 A, vout=0.174063 V, voutb=0.145625 V, vdiff=0.027813 V, Vsumado=0.319688 V
+Iin=0.001743750 A, Iinb=0.001453125 A, vout=0.174375 V, voutb=0.145312 V, vdiff=0.028438 V, Vsumado=0.319688 V
+Iin=0.001746875 A, Iinb=0.001450000 A, vout=0.174688 V, voutb=0.145000 V, vdiff=0.029063 V, Vsumado=0.319688 V
+Iin=0.001750000 A, Iinb=0.001446875 A, vout=0.175000 V, voutb=0.144687 V, vdiff=0.029688 V, Vsumado=0.319688 V
+Iin=0.001753125 A, Iinb=0.001443750 A, vout=0.175313 V, voutb=0.144375 V, vdiff=0.030313 V, Vsumado=0.319688 V
+Iin=0.001756250 A, Iinb=0.001440625 A, vout=0.175625 V, voutb=0.144062 V, vdiff=0.030938 V, Vsumado=0.319688 V
+Iin=0.001759375 A, Iinb=0.001437500 A, vout=0.175938 V, voutb=0.143750 V, vdiff=0.031563 V, Vsumado=0.319688 V
+Iin=0.001762500 A, Iinb=0.001434375 A, vout=0.176250 V, voutb=0.143437 V, vdiff=0.032188 V, Vsumado=0.319688 V
+Iin=0.001765625 A, Iinb=0.001431250 A, vout=0.176563 V, voutb=0.143125 V, vdiff=0.032813 V, Vsumado=0.319688 V
+Iin=0.001768750 A, Iinb=0.001428125 A, vout=0.176875 V, voutb=0.142812 V, vdiff=0.033438 V, Vsumado=0.319688 V
+Iin=0.001771875 A, Iinb=0.001425000 A, vout=0.177188 V, voutb=0.142500 V, vdiff=0.034063 V, Vsumado=0.319688 V
+Iin=0.001775000 A, Iinb=0.001421875 A, vout=0.177500 V, voutb=0.142187 V, vdiff=0.034688 V, Vsumado=0.319688 V
+Iin=0.001778125 A, Iinb=0.001418750 A, vout=0.177813 V, voutb=0.141875 V, vdiff=0.035313 V, Vsumado=0.319688 V
+Iin=0.001781250 A, Iinb=0.001415625 A, vout=0.178125 V, voutb=0.141562 V, vdiff=0.035938 V, Vsumado=0.319688 V
+Iin=0.001784375 A, Iinb=0.001412500 A, vout=0.178438 V, voutb=0.141250 V, vdiff=0.036563 V, Vsumado=0.319688 V
+Iin=0.001787500 A, Iinb=0.001409375 A, vout=0.178750 V, voutb=0.140937 V, vdiff=0.037188 V, Vsumado=0.319688 V
+Iin=0.001790625 A, Iinb=0.001406250 A, vout=0.179063 V, voutb=0.140625 V, vdiff=0.037813 V, Vsumado=0.319688 V
+Iin=0.001793750 A, Iinb=0.001403125 A, vout=0.179375 V, voutb=0.140312 V, vdiff=0.038438 V, Vsumado=0.319688 V
+Iin=0.001796875 A, Iinb=0.001400000 A, vout=0.179688 V, voutb=0.140000 V, vdiff=0.039063 V, Vsumado=0.319688 V
+Iin=0.001800000 A, Iinb=0.001396875 A, vout=0.180000 V, voutb=0.139687 V, vdiff=0.039688 V, Vsumado=0.319688 V
+Iin=0.001803125 A, Iinb=0.001393750 A, vout=0.180313 V, voutb=0.139375 V, vdiff=0.040313 V, Vsumado=0.319688 V
+Iin=0.001806250 A, Iinb=0.001390625 A, vout=0.180625 V, voutb=0.139062 V, vdiff=0.040938 V, Vsumado=0.319688 V
+Iin=0.001809375 A, Iinb=0.001387500 A, vout=0.180938 V, voutb=0.138750 V, vdiff=0.041563 V, Vsumado=0.319688 V
+Iin=0.001812500 A, Iinb=0.001384375 A, vout=0.181250 V, voutb=0.138437 V, vdiff=0.042188 V, Vsumado=0.319688 V
+Iin=0.001815625 A, Iinb=0.001381250 A, vout=0.181563 V, voutb=0.138125 V, vdiff=0.042813 V, Vsumado=0.319688 V
+Iin=0.001818750 A, Iinb=0.001378125 A, vout=0.181875 V, voutb=0.137812 V, vdiff=0.043438 V, Vsumado=0.319688 V
+Iin=0.001821875 A, Iinb=0.001375000 A, vout=0.182188 V, voutb=0.137500 V, vdiff=0.044063 V, Vsumado=0.319688 V
+Iin=0.001825000 A, Iinb=0.001371875 A, vout=0.182500 V, voutb=0.137187 V, vdiff=0.044688 V, Vsumado=0.319688 V
+Iin=0.001828125 A, Iinb=0.001368750 A, vout=0.182813 V, voutb=0.136875 V, vdiff=0.045313 V, Vsumado=0.319688 V
+Iin=0.001831250 A, Iinb=0.001365625 A, vout=0.183125 V, voutb=0.136562 V, vdiff=0.045938 V, Vsumado=0.319688 V
+Iin=0.001834375 A, Iinb=0.001362500 A, vout=0.183438 V, voutb=0.136250 V, vdiff=0.046563 V, Vsumado=0.319688 V
+Iin=0.001837500 A, Iinb=0.001359375 A, vout=0.183750 V, voutb=0.135937 V, vdiff=0.047188 V, Vsumado=0.319688 V
+Iin=0.001840625 A, Iinb=0.001356250 A, vout=0.184063 V, voutb=0.135625 V, vdiff=0.047813 V, Vsumado=0.319688 V
+Iin=0.001843750 A, Iinb=0.001353125 A, vout=0.184375 V, voutb=0.135312 V, vdiff=0.048438 V, Vsumado=0.319688 V
+Iin=0.001846875 A, Iinb=0.001350000 A, vout=0.184688 V, voutb=0.135000 V, vdiff=0.049063 V, Vsumado=0.319688 V
+Iin=0.001850000 A, Iinb=0.001346875 A, vout=0.185000 V, voutb=0.134687 V, vdiff=0.049688 V, Vsumado=0.319688 V
+Iin=0.001853125 A, Iinb=0.001343750 A, vout=0.185313 V, voutb=0.134375 V, vdiff=0.050313 V, Vsumado=0.319688 V
+Iin=0.001856250 A, Iinb=0.001340625 A, vout=0.185625 V, voutb=0.134062 V, vdiff=0.050938 V, Vsumado=0.319688 V
+Iin=0.001859375 A, Iinb=0.001337500 A, vout=0.185938 V, voutb=0.133750 V, vdiff=0.051563 V, Vsumado=0.319688 V
+Iin=0.001862500 A, Iinb=0.001334375 A, vout=0.186250 V, voutb=0.133437 V, vdiff=0.052188 V, Vsumado=0.319688 V
+Iin=0.001865625 A, Iinb=0.001331250 A, vout=0.186563 V, voutb=0.133125 V, vdiff=0.052813 V, Vsumado=0.319688 V
+Iin=0.001868750 A, Iinb=0.001328125 A, vout=0.186875 V, voutb=0.132812 V, vdiff=0.053438 V, Vsumado=0.319688 V
+Iin=0.001871875 A, Iinb=0.001325000 A, vout=0.187188 V, voutb=0.132500 V, vdiff=0.054063 V, Vsumado=0.319688 V
+Iin=0.001875000 A, Iinb=0.001321875 A, vout=0.187500 V, voutb=0.132187 V, vdiff=0.054688 V, Vsumado=0.319688 V
+Iin=0.001878125 A, Iinb=0.001318750 A, vout=0.187813 V, voutb=0.131875 V, vdiff=0.055313 V, Vsumado=0.319688 V
+Iin=0.001881250 A, Iinb=0.001315625 A, vout=0.188125 V, voutb=0.131562 V, vdiff=0.055938 V, Vsumado=0.319688 V
+Iin=0.001884375 A, Iinb=0.001312500 A, vout=0.188438 V, voutb=0.131250 V, vdiff=0.056563 V, Vsumado=0.319688 V
+Iin=0.001887500 A, Iinb=0.001309375 A, vout=0.188750 V, voutb=0.130937 V, vdiff=0.057188 V, Vsumado=0.319688 V
+Iin=0.001890625 A, Iinb=0.001306250 A, vout=0.189063 V, voutb=0.130625 V, vdiff=0.057813 V, Vsumado=0.319688 V
+Iin=0.001893750 A, Iinb=0.001303125 A, vout=0.189375 V, voutb=0.130312 V, vdiff=0.058438 V, Vsumado=0.319688 V
+Iin=0.001896875 A, Iinb=0.001300000 A, vout=0.189688 V, voutb=0.130000 V, vdiff=0.059063 V, Vsumado=0.319688 V
+Iin=0.001900000 A, Iinb=0.001296875 A, vout=0.190000 V, voutb=0.129687 V, vdiff=0.059688 V, Vsumado=0.319688 V
+Iin=0.001903125 A, Iinb=0.001293750 A, vout=0.190313 V, voutb=0.129375 V, vdiff=0.060313 V, Vsumado=0.319688 V
+Iin=0.001906250 A, Iinb=0.001290625 A, vout=0.190625 V, voutb=0.129062 V, vdiff=0.060938 V, Vsumado=0.319688 V
+Iin=0.001909375 A, Iinb=0.001287500 A, vout=0.190938 V, voutb=0.128750 V, vdiff=0.061563 V, Vsumado=0.319688 V
+Iin=0.001912500 A, Iinb=0.001284375 A, vout=0.191250 V, voutb=0.128437 V, vdiff=0.062188 V, Vsumado=0.319688 V
+Iin=0.001915625 A, Iinb=0.001281250 A, vout=0.191563 V, voutb=0.128125 V, vdiff=0.062813 V, Vsumado=0.319688 V
+Iin=0.001918750 A, Iinb=0.001278125 A, vout=0.191875 V, voutb=0.127812 V, vdiff=0.063438 V, Vsumado=0.319688 V
+Iin=0.001921875 A, Iinb=0.001275000 A, vout=0.192188 V, voutb=0.127500 V, vdiff=0.064063 V, Vsumado=0.319688 V
+Iin=0.001925000 A, Iinb=0.001271875 A, vout=0.192500 V, voutb=0.127187 V, vdiff=0.064688 V, Vsumado=0.319688 V
+Iin=0.001928125 A, Iinb=0.001268750 A, vout=0.192813 V, voutb=0.126875 V, vdiff=0.065313 V, Vsumado=0.319688 V
+Iin=0.001931250 A, Iinb=0.001265625 A, vout=0.193125 V, voutb=0.126562 V, vdiff=0.065938 V, Vsumado=0.319688 V
+Iin=0.001934375 A, Iinb=0.001262500 A, vout=0.193438 V, voutb=0.126250 V, vdiff=0.066563 V, Vsumado=0.319688 V
+Iin=0.001937500 A, Iinb=0.001259375 A, vout=0.193750 V, voutb=0.125937 V, vdiff=0.067188 V, Vsumado=0.319688 V
+Iin=0.001940625 A, Iinb=0.001256250 A, vout=0.194063 V, voutb=0.125625 V, vdiff=0.067813 V, Vsumado=0.319688 V
+Iin=0.001943750 A, Iinb=0.001253125 A, vout=0.194375 V, voutb=0.125312 V, vdiff=0.068438 V, Vsumado=0.319688 V
+Iin=0.001946875 A, Iinb=0.001250000 A, vout=0.194688 V, voutb=0.125000 V, vdiff=0.069063 V, Vsumado=0.319688 V
+Iin=0.001950000 A, Iinb=0.001246875 A, vout=0.195000 V, voutb=0.124687 V, vdiff=0.069688 V, Vsumado=0.319688 V
+Iin=0.001953125 A, Iinb=0.001243750 A, vout=0.195313 V, voutb=0.124375 V, vdiff=0.070313 V, Vsumado=0.319688 V
+Iin=0.001956250 A, Iinb=0.001240625 A, vout=0.195625 V, voutb=0.124062 V, vdiff=0.070938 V, Vsumado=0.319688 V
+Iin=0.001959375 A, Iinb=0.001237500 A, vout=0.195938 V, voutb=0.123750 V, vdiff=0.071563 V, Vsumado=0.319688 V
+Iin=0.001962500 A, Iinb=0.001234375 A, vout=0.196250 V, voutb=0.123437 V, vdiff=0.072188 V, Vsumado=0.319688 V
+Iin=0.001965625 A, Iinb=0.001231250 A, vout=0.196563 V, voutb=0.123125 V, vdiff=0.072813 V, Vsumado=0.319688 V
+Iin=0.001968750 A, Iinb=0.001228125 A, vout=0.196875 V, voutb=0.122812 V, vdiff=0.073438 V, Vsumado=0.319688 V
+Iin=0.001971875 A, Iinb=0.001225000 A, vout=0.197188 V, voutb=0.122500 V, vdiff=0.074063 V, Vsumado=0.319688 V
+Iin=0.001975000 A, Iinb=0.001221875 A, vout=0.197500 V, voutb=0.122187 V, vdiff=0.074688 V, Vsumado=0.319688 V
+Iin=0.001978125 A, Iinb=0.001218750 A, vout=0.197813 V, voutb=0.121875 V, vdiff=0.075313 V, Vsumado=0.319688 V
+Iin=0.001981250 A, Iinb=0.001215625 A, vout=0.198125 V, voutb=0.121562 V, vdiff=0.075938 V, Vsumado=0.319688 V
+Iin=0.001984375 A, Iinb=0.001212500 A, vout=0.198438 V, voutb=0.121250 V, vdiff=0.076563 V, Vsumado=0.319688 V
+Iin=0.001987500 A, Iinb=0.001209375 A, vout=0.198750 V, voutb=0.120937 V, vdiff=0.077188 V, Vsumado=0.319688 V
+Iin=0.001990625 A, Iinb=0.001206250 A, vout=0.199063 V, voutb=0.120625 V, vdiff=0.077813 V, Vsumado=0.319688 V
+Iin=0.001993750 A, Iinb=0.001203125 A, vout=0.199375 V, voutb=0.120312 V, vdiff=0.078438 V, Vsumado=0.319688 V
+Iin=0.001996875 A, Iinb=0.001200000 A, vout=0.199688 V, voutb=0.120000 V, vdiff=0.079063 V, Vsumado=0.319688 V
+Iin=0.002000000 A, Iinb=0.001196875 A, vout=0.200000 V, voutb=0.119687 V, vdiff=0.079688 V, Vsumado=0.319688 V
+Iin=0.002003125 A, Iinb=0.001193750 A, vout=0.200313 V, voutb=0.119375 V, vdiff=0.080313 V, Vsumado=0.319688 V
+Iin=0.002006250 A, Iinb=0.001190625 A, vout=0.200625 V, voutb=0.119062 V, vdiff=0.080938 V, Vsumado=0.319688 V
+Iin=0.002009375 A, Iinb=0.001187500 A, vout=0.200938 V, voutb=0.118750 V, vdiff=0.081563 V, Vsumado=0.319688 V
+Iin=0.002012500 A, Iinb=0.001184375 A, vout=0.201250 V, voutb=0.118437 V, vdiff=0.082188 V, Vsumado=0.319688 V
+Iin=0.002015625 A, Iinb=0.001181250 A, vout=0.201563 V, voutb=0.118125 V, vdiff=0.082813 V, Vsumado=0.319688 V
+Iin=0.002018750 A, Iinb=0.001178125 A, vout=0.201875 V, voutb=0.117812 V, vdiff=0.083438 V, Vsumado=0.319688 V
+Iin=0.002021875 A, Iinb=0.001175000 A, vout=0.202188 V, voutb=0.117500 V, vdiff=0.084063 V, Vsumado=0.319688 V
+Iin=0.002025000 A, Iinb=0.001171875 A, vout=0.202500 V, voutb=0.117187 V, vdiff=0.084688 V, Vsumado=0.319688 V
+Iin=0.002028125 A, Iinb=0.001168750 A, vout=0.202813 V, voutb=0.116875 V, vdiff=0.085313 V, Vsumado=0.319688 V
+Iin=0.002031250 A, Iinb=0.001165625 A, vout=0.203125 V, voutb=0.116562 V, vdiff=0.085938 V, Vsumado=0.319688 V
+Iin=0.002034375 A, Iinb=0.001162500 A, vout=0.203438 V, voutb=0.116250 V, vdiff=0.086563 V, Vsumado=0.319688 V
+Iin=0.002037500 A, Iinb=0.001159375 A, vout=0.203750 V, voutb=0.115937 V, vdiff=0.087188 V, Vsumado=0.319688 V
+Iin=0.002040625 A, Iinb=0.001156250 A, vout=0.204063 V, voutb=0.115625 V, vdiff=0.087813 V, Vsumado=0.319688 V
+Iin=0.002043750 A, Iinb=0.001153125 A, vout=0.204375 V, voutb=0.115312 V, vdiff=0.088438 V, Vsumado=0.319688 V
+Iin=0.002046875 A, Iinb=0.001150000 A, vout=0.204688 V, voutb=0.115000 V, vdiff=0.089063 V, Vsumado=0.319688 V
+Iin=0.002050000 A, Iinb=0.001146875 A, vout=0.205000 V, voutb=0.114687 V, vdiff=0.089688 V, Vsumado=0.319688 V
+Iin=0.002053125 A, Iinb=0.001143750 A, vout=0.205313 V, voutb=0.114375 V, vdiff=0.090313 V, Vsumado=0.319688 V
+Iin=0.002056250 A, Iinb=0.001140625 A, vout=0.205625 V, voutb=0.114062 V, vdiff=0.090938 V, Vsumado=0.319688 V
+Iin=0.002059375 A, Iinb=0.001137500 A, vout=0.205938 V, voutb=0.113750 V, vdiff=0.091563 V, Vsumado=0.319688 V
+Iin=0.002062500 A, Iinb=0.001134375 A, vout=0.206250 V, voutb=0.113437 V, vdiff=0.092188 V, Vsumado=0.319688 V
+Iin=0.002065625 A, Iinb=0.001131250 A, vout=0.206563 V, voutb=0.113125 V, vdiff=0.092813 V, Vsumado=0.319688 V
+Iin=0.002068750 A, Iinb=0.001128125 A, vout=0.206875 V, voutb=0.112812 V, vdiff=0.093438 V, Vsumado=0.319688 V
+Iin=0.002071875 A, Iinb=0.001125000 A, vout=0.207188 V, voutb=0.112500 V, vdiff=0.094063 V, Vsumado=0.319688 V
+Iin=0.002075000 A, Iinb=0.001121875 A, vout=0.207500 V, voutb=0.112187 V, vdiff=0.094688 V, Vsumado=0.319688 V
+Iin=0.002078125 A, Iinb=0.001118750 A, vout=0.207813 V, voutb=0.111875 V, vdiff=0.095313 V, Vsumado=0.319688 V
+Iin=0.002081250 A, Iinb=0.001115625 A, vout=0.208125 V, voutb=0.111562 V, vdiff=0.095938 V, Vsumado=0.319688 V
+Iin=0.002084375 A, Iinb=0.001112500 A, vout=0.208438 V, voutb=0.111250 V, vdiff=0.096563 V, Vsumado=0.319688 V
+Iin=0.002087500 A, Iinb=0.001109375 A, vout=0.208750 V, voutb=0.110937 V, vdiff=0.097188 V, Vsumado=0.319688 V
+Iin=0.002090625 A, Iinb=0.001106250 A, vout=0.209063 V, voutb=0.110625 V, vdiff=0.097813 V, Vsumado=0.319688 V
+Iin=0.002093750 A, Iinb=0.001103125 A, vout=0.209375 V, voutb=0.110312 V, vdiff=0.098438 V, Vsumado=0.319688 V
+Iin=0.002096875 A, Iinb=0.001100000 A, vout=0.209688 V, voutb=0.110000 V, vdiff=0.099063 V, Vsumado=0.319688 V
+Iin=0.002100000 A, Iinb=0.001096875 A, vout=0.210000 V, voutb=0.109687 V, vdiff=0.099688 V, Vsumado=0.319688 V
+Iin=0.002103125 A, Iinb=0.001093750 A, vout=0.210313 V, voutb=0.109375 V, vdiff=0.100313 V, Vsumado=0.319688 V
+Iin=0.002106250 A, Iinb=0.001090625 A, vout=0.210625 V, voutb=0.109062 V, vdiff=0.100938 V, Vsumado=0.319688 V
+Iin=0.002109375 A, Iinb=0.001087500 A, vout=0.210938 V, voutb=0.108750 V, vdiff=0.101563 V, Vsumado=0.319688 V
+Iin=0.002112500 A, Iinb=0.001084375 A, vout=0.211250 V, voutb=0.108437 V, vdiff=0.102188 V, Vsumado=0.319688 V
+Iin=0.002115625 A, Iinb=0.001081250 A, vout=0.211563 V, voutb=0.108125 V, vdiff=0.102813 V, Vsumado=0.319688 V
+Iin=0.002118750 A, Iinb=0.001078125 A, vout=0.211875 V, voutb=0.107812 V, vdiff=0.103438 V, Vsumado=0.319688 V
+Iin=0.002121875 A, Iinb=0.001075000 A, vout=0.212188 V, voutb=0.107500 V, vdiff=0.104063 V, Vsumado=0.319688 V
+Iin=0.002125000 A, Iinb=0.001071875 A, vout=0.212500 V, voutb=0.107187 V, vdiff=0.104688 V, Vsumado=0.319688 V
+Iin=0.002128125 A, Iinb=0.001068750 A, vout=0.212813 V, voutb=0.106875 V, vdiff=0.105313 V, Vsumado=0.319688 V
+Iin=0.002131250 A, Iinb=0.001065625 A, vout=0.213125 V, voutb=0.106562 V, vdiff=0.105938 V, Vsumado=0.319688 V
+Iin=0.002134375 A, Iinb=0.001062500 A, vout=0.213438 V, voutb=0.106250 V, vdiff=0.106563 V, Vsumado=0.319688 V
+Iin=0.002137500 A, Iinb=0.001059375 A, vout=0.213750 V, voutb=0.105937 V, vdiff=0.107188 V, Vsumado=0.319688 V
+Iin=0.002140625 A, Iinb=0.001056250 A, vout=0.214063 V, voutb=0.105625 V, vdiff=0.107813 V, Vsumado=0.319688 V
+Iin=0.002143750 A, Iinb=0.001053125 A, vout=0.214375 V, voutb=0.105312 V, vdiff=0.108438 V, Vsumado=0.319688 V
+Iin=0.002146875 A, Iinb=0.001050000 A, vout=0.214688 V, voutb=0.105000 V, vdiff=0.109063 V, Vsumado=0.319688 V
+Iin=0.002150000 A, Iinb=0.001046875 A, vout=0.215000 V, voutb=0.104687 V, vdiff=0.109688 V, Vsumado=0.319688 V
+Iin=0.002153125 A, Iinb=0.001043750 A, vout=0.215313 V, voutb=0.104375 V, vdiff=0.110313 V, Vsumado=0.319688 V
+Iin=0.002156250 A, Iinb=0.001040625 A, vout=0.215625 V, voutb=0.104062 V, vdiff=0.110938 V, Vsumado=0.319688 V
+Iin=0.002159375 A, Iinb=0.001037500 A, vout=0.215938 V, voutb=0.103750 V, vdiff=0.111563 V, Vsumado=0.319688 V
+Iin=0.002162500 A, Iinb=0.001034375 A, vout=0.216250 V, voutb=0.103437 V, vdiff=0.112188 V, Vsumado=0.319688 V
+Iin=0.002165625 A, Iinb=0.001031250 A, vout=0.216563 V, voutb=0.103125 V, vdiff=0.112813 V, Vsumado=0.319688 V
+Iin=0.002168750 A, Iinb=0.001028125 A, vout=0.216875 V, voutb=0.102812 V, vdiff=0.113438 V, Vsumado=0.319688 V
+Iin=0.002171875 A, Iinb=0.001025000 A, vout=0.217188 V, voutb=0.102500 V, vdiff=0.114063 V, Vsumado=0.319688 V
+Iin=0.002175000 A, Iinb=0.001021875 A, vout=0.217500 V, voutb=0.102187 V, vdiff=0.114688 V, Vsumado=0.319688 V
+Iin=0.002178125 A, Iinb=0.001018750 A, vout=0.217813 V, voutb=0.101875 V, vdiff=0.115313 V, Vsumado=0.319688 V
+Iin=0.002181250 A, Iinb=0.001015625 A, vout=0.218125 V, voutb=0.101562 V, vdiff=0.115938 V, Vsumado=0.319688 V
+Iin=0.002184375 A, Iinb=0.001012500 A, vout=0.218438 V, voutb=0.101250 V, vdiff=0.116563 V, Vsumado=0.319688 V
+Iin=0.002187500 A, Iinb=0.001009375 A, vout=0.218750 V, voutb=0.100937 V, vdiff=0.117188 V, Vsumado=0.319688 V
+Iin=0.002190625 A, Iinb=0.001006250 A, vout=0.219063 V, voutb=0.100625 V, vdiff=0.117813 V, Vsumado=0.319688 V
+Iin=0.002193750 A, Iinb=0.001003125 A, vout=0.219375 V, voutb=0.100312 V, vdiff=0.118438 V, Vsumado=0.319688 V
+Iin=0.002196875 A, Iinb=0.001000000 A, vout=0.219688 V, voutb=0.100000 V, vdiff=0.119063 V, Vsumado=0.319688 V
+Iin=0.002200000 A, Iinb=0.000996875 A, vout=0.220000 V, voutb=0.099687 V, vdiff=0.119688 V, Vsumado=0.319688 V
+Iin=0.002203125 A, Iinb=0.000993750 A, vout=0.220313 V, voutb=0.099375 V, vdiff=0.120313 V, Vsumado=0.319688 V
+Iin=0.002206250 A, Iinb=0.000990625 A, vout=0.220625 V, voutb=0.099062 V, vdiff=0.120938 V, Vsumado=0.319688 V
+Iin=0.002209375 A, Iinb=0.000987500 A, vout=0.220938 V, voutb=0.098750 V, vdiff=0.121563 V, Vsumado=0.319688 V
+Iin=0.002212500 A, Iinb=0.000984375 A, vout=0.221250 V, voutb=0.098437 V, vdiff=0.122188 V, Vsumado=0.319688 V
+Iin=0.002215625 A, Iinb=0.000981250 A, vout=0.221563 V, voutb=0.098125 V, vdiff=0.122813 V, Vsumado=0.319688 V
+Iin=0.002218750 A, Iinb=0.000978125 A, vout=0.221875 V, voutb=0.097812 V, vdiff=0.123438 V, Vsumado=0.319688 V
+Iin=0.002221875 A, Iinb=0.000975000 A, vout=0.222188 V, voutb=0.097500 V, vdiff=0.124063 V, Vsumado=0.319688 V
+Iin=0.002225000 A, Iinb=0.000971875 A, vout=0.222500 V, voutb=0.097187 V, vdiff=0.124688 V, Vsumado=0.319688 V
+Iin=0.002228125 A, Iinb=0.000968750 A, vout=0.222813 V, voutb=0.096875 V, vdiff=0.125313 V, Vsumado=0.319688 V
+Iin=0.002231250 A, Iinb=0.000965625 A, vout=0.223125 V, voutb=0.096562 V, vdiff=0.125938 V, Vsumado=0.319688 V
+Iin=0.002234375 A, Iinb=0.000962500 A, vout=0.223438 V, voutb=0.096250 V, vdiff=0.126563 V, Vsumado=0.319688 V
+Iin=0.002237500 A, Iinb=0.000959375 A, vout=0.223750 V, voutb=0.095937 V, vdiff=0.127188 V, Vsumado=0.319688 V
+Iin=0.002240625 A, Iinb=0.000956250 A, vout=0.224063 V, voutb=0.095625 V, vdiff=0.127813 V, Vsumado=0.319688 V
+Iin=0.002243750 A, Iinb=0.000953125 A, vout=0.224375 V, voutb=0.095312 V, vdiff=0.128438 V, Vsumado=0.319688 V
+Iin=0.002246875 A, Iinb=0.000950000 A, vout=0.224688 V, voutb=0.095000 V, vdiff=0.129063 V, Vsumado=0.319688 V
+Iin=0.002250000 A, Iinb=0.000946875 A, vout=0.225000 V, voutb=0.094687 V, vdiff=0.129688 V, Vsumado=0.319688 V
+Iin=0.002253125 A, Iinb=0.000943750 A, vout=0.225313 V, voutb=0.094375 V, vdiff=0.130313 V, Vsumado=0.319688 V
+Iin=0.002256250 A, Iinb=0.000940625 A, vout=0.225625 V, voutb=0.094062 V, vdiff=0.130938 V, Vsumado=0.319688 V
+Iin=0.002259375 A, Iinb=0.000937500 A, vout=0.225938 V, voutb=0.093750 V, vdiff=0.131563 V, Vsumado=0.319688 V
+Iin=0.002262500 A, Iinb=0.000934375 A, vout=0.226250 V, voutb=0.093437 V, vdiff=0.132188 V, Vsumado=0.319688 V
+Iin=0.002265625 A, Iinb=0.000931250 A, vout=0.226563 V, voutb=0.093125 V, vdiff=0.132813 V, Vsumado=0.319688 V
+Iin=0.002268750 A, Iinb=0.000928125 A, vout=0.226875 V, voutb=0.092812 V, vdiff=0.133438 V, Vsumado=0.319688 V
+Iin=0.002271875 A, Iinb=0.000925000 A, vout=0.227188 V, voutb=0.092500 V, vdiff=0.134063 V, Vsumado=0.319688 V
+Iin=0.002275000 A, Iinb=0.000921875 A, vout=0.227500 V, voutb=0.092187 V, vdiff=0.134688 V, Vsumado=0.319688 V
+Iin=0.002278125 A, Iinb=0.000918750 A, vout=0.227813 V, voutb=0.091875 V, vdiff=0.135313 V, Vsumado=0.319688 V
+Iin=0.002281250 A, Iinb=0.000915625 A, vout=0.228125 V, voutb=0.091562 V, vdiff=0.135938 V, Vsumado=0.319688 V
+Iin=0.002284375 A, Iinb=0.000912500 A, vout=0.228438 V, voutb=0.091250 V, vdiff=0.136563 V, Vsumado=0.319688 V
+Iin=0.002287500 A, Iinb=0.000909375 A, vout=0.228750 V, voutb=0.090937 V, vdiff=0.137188 V, Vsumado=0.319688 V
+Iin=0.002290625 A, Iinb=0.000906250 A, vout=0.229063 V, voutb=0.090625 V, vdiff=0.137813 V, Vsumado=0.319688 V
+Iin=0.002293750 A, Iinb=0.000903125 A, vout=0.229375 V, voutb=0.090312 V, vdiff=0.138438 V, Vsumado=0.319688 V
+Iin=0.002296875 A, Iinb=0.000900000 A, vout=0.229688 V, voutb=0.090000 V, vdiff=0.139063 V, Vsumado=0.319688 V
+Iin=0.002300000 A, Iinb=0.000896875 A, vout=0.230000 V, voutb=0.089687 V, vdiff=0.139688 V, Vsumado=0.319688 V
+Iin=0.002303125 A, Iinb=0.000893750 A, vout=0.230313 V, voutb=0.089375 V, vdiff=0.140313 V, Vsumado=0.319688 V
+Iin=0.002306250 A, Iinb=0.000890625 A, vout=0.230625 V, voutb=0.089062 V, vdiff=0.140938 V, Vsumado=0.319688 V
+Iin=0.002309375 A, Iinb=0.000887500 A, vout=0.230938 V, voutb=0.088750 V, vdiff=0.141563 V, Vsumado=0.319688 V
+Iin=0.002312500 A, Iinb=0.000884375 A, vout=0.231250 V, voutb=0.088437 V, vdiff=0.142188 V, Vsumado=0.319688 V
+Iin=0.002315625 A, Iinb=0.000881250 A, vout=0.231563 V, voutb=0.088125 V, vdiff=0.142813 V, Vsumado=0.319688 V
+Iin=0.002318750 A, Iinb=0.000878125 A, vout=0.231875 V, voutb=0.087812 V, vdiff=0.143438 V, Vsumado=0.319688 V
+Iin=0.002321875 A, Iinb=0.000875000 A, vout=0.232188 V, voutb=0.087500 V, vdiff=0.144063 V, Vsumado=0.319688 V
+Iin=0.002325000 A, Iinb=0.000871875 A, vout=0.232500 V, voutb=0.087187 V, vdiff=0.144688 V, Vsumado=0.319688 V
+Iin=0.002328125 A, Iinb=0.000868750 A, vout=0.232813 V, voutb=0.086875 V, vdiff=0.145313 V, Vsumado=0.319688 V
+Iin=0.002331250 A, Iinb=0.000865625 A, vout=0.233125 V, voutb=0.086562 V, vdiff=0.145938 V, Vsumado=0.319688 V
+Iin=0.002334375 A, Iinb=0.000862500 A, vout=0.233438 V, voutb=0.086250 V, vdiff=0.146563 V, Vsumado=0.319688 V
+Iin=0.002337500 A, Iinb=0.000859375 A, vout=0.233750 V, voutb=0.085937 V, vdiff=0.147188 V, Vsumado=0.319688 V
+Iin=0.002340625 A, Iinb=0.000856250 A, vout=0.234063 V, voutb=0.085625 V, vdiff=0.147813 V, Vsumado=0.319688 V
+Iin=0.002343750 A, Iinb=0.000853125 A, vout=0.234375 V, voutb=0.085312 V, vdiff=0.148438 V, Vsumado=0.319688 V
+Iin=0.002346875 A, Iinb=0.000850000 A, vout=0.234688 V, voutb=0.085000 V, vdiff=0.149063 V, Vsumado=0.319688 V
+Iin=0.002350000 A, Iinb=0.000846875 A, vout=0.235000 V, voutb=0.084687 V, vdiff=0.149688 V, Vsumado=0.319688 V
+Iin=0.002353125 A, Iinb=0.000843750 A, vout=0.235313 V, voutb=0.084375 V, vdiff=0.150313 V, Vsumado=0.319688 V
+Iin=0.002356250 A, Iinb=0.000840625 A, vout=0.235625 V, voutb=0.084062 V, vdiff=0.150938 V, Vsumado=0.319688 V
+Iin=0.002359375 A, Iinb=0.000837500 A, vout=0.235938 V, voutb=0.083750 V, vdiff=0.151563 V, Vsumado=0.319688 V
+Iin=0.002362500 A, Iinb=0.000834375 A, vout=0.236250 V, voutb=0.083437 V, vdiff=0.152188 V, Vsumado=0.319688 V
+Iin=0.002365625 A, Iinb=0.000831250 A, vout=0.236563 V, voutb=0.083125 V, vdiff=0.152813 V, Vsumado=0.319688 V
+Iin=0.002368750 A, Iinb=0.000828125 A, vout=0.236875 V, voutb=0.082812 V, vdiff=0.153438 V, Vsumado=0.319688 V
+Iin=0.002371875 A, Iinb=0.000825000 A, vout=0.237188 V, voutb=0.082500 V, vdiff=0.154063 V, Vsumado=0.319688 V
+Iin=0.002375000 A, Iinb=0.000821875 A, vout=0.237500 V, voutb=0.082187 V, vdiff=0.154688 V, Vsumado=0.319688 V
+Iin=0.002378125 A, Iinb=0.000818750 A, vout=0.237813 V, voutb=0.081875 V, vdiff=0.155313 V, Vsumado=0.319688 V
+Iin=0.002381250 A, Iinb=0.000815625 A, vout=0.238125 V, voutb=0.081562 V, vdiff=0.155938 V, Vsumado=0.319688 V
+Iin=0.002384375 A, Iinb=0.000812500 A, vout=0.238438 V, voutb=0.081250 V, vdiff=0.156563 V, Vsumado=0.319688 V
+Iin=0.002387500 A, Iinb=0.000809375 A, vout=0.238750 V, voutb=0.080937 V, vdiff=0.157188 V, Vsumado=0.319688 V
+Iin=0.002390625 A, Iinb=0.000806250 A, vout=0.239063 V, voutb=0.080625 V, vdiff=0.157813 V, Vsumado=0.319688 V
+Iin=0.002393750 A, Iinb=0.000803125 A, vout=0.239375 V, voutb=0.080312 V, vdiff=0.158438 V, Vsumado=0.319688 V
+Iin=0.002396875 A, Iinb=0.000800000 A, vout=0.239688 V, voutb=0.080000 V, vdiff=0.159063 V, Vsumado=0.319688 V
+Iin=0.002400000 A, Iinb=0.000796875 A, vout=0.240000 V, voutb=0.079687 V, vdiff=0.159688 V, Vsumado=0.319688 V
+Iin=0.002403125 A, Iinb=0.000793750 A, vout=0.240313 V, voutb=0.079375 V, vdiff=0.160313 V, Vsumado=0.319688 V
+Iin=0.002406250 A, Iinb=0.000790625 A, vout=0.240625 V, voutb=0.079062 V, vdiff=0.160938 V, Vsumado=0.319688 V
+Iin=0.002409375 A, Iinb=0.000787500 A, vout=0.240938 V, voutb=0.078750 V, vdiff=0.161563 V, Vsumado=0.319688 V
+Iin=0.002412500 A, Iinb=0.000784375 A, vout=0.241250 V, voutb=0.078437 V, vdiff=0.162188 V, Vsumado=0.319688 V
+Iin=0.002415625 A, Iinb=0.000781250 A, vout=0.241563 V, voutb=0.078125 V, vdiff=0.162813 V, Vsumado=0.319688 V
+Iin=0.002418750 A, Iinb=0.000778125 A, vout=0.241875 V, voutb=0.077812 V, vdiff=0.163438 V, Vsumado=0.319688 V
+Iin=0.002421875 A, Iinb=0.000775000 A, vout=0.242188 V, voutb=0.077500 V, vdiff=0.164063 V, Vsumado=0.319688 V
+Iin=0.002425000 A, Iinb=0.000771875 A, vout=0.242500 V, voutb=0.077187 V, vdiff=0.164688 V, Vsumado=0.319688 V
+Iin=0.002428125 A, Iinb=0.000768750 A, vout=0.242813 V, voutb=0.076875 V, vdiff=0.165313 V, Vsumado=0.319688 V
+Iin=0.002431250 A, Iinb=0.000765625 A, vout=0.243125 V, voutb=0.076562 V, vdiff=0.165938 V, Vsumado=0.319688 V
+Iin=0.002434375 A, Iinb=0.000762500 A, vout=0.243438 V, voutb=0.076250 V, vdiff=0.166563 V, Vsumado=0.319688 V
+Iin=0.002437500 A, Iinb=0.000759375 A, vout=0.243750 V, voutb=0.075937 V, vdiff=0.167188 V, Vsumado=0.319688 V
+Iin=0.002440625 A, Iinb=0.000756250 A, vout=0.244063 V, voutb=0.075625 V, vdiff=0.167813 V, Vsumado=0.319688 V
+Iin=0.002443750 A, Iinb=0.000753125 A, vout=0.244375 V, voutb=0.075312 V, vdiff=0.168438 V, Vsumado=0.319688 V
+Iin=0.002446875 A, Iinb=0.000750000 A, vout=0.244688 V, voutb=0.075000 V, vdiff=0.169063 V, Vsumado=0.319688 V
+Iin=0.002450000 A, Iinb=0.000746875 A, vout=0.245000 V, voutb=0.074687 V, vdiff=0.169688 V, Vsumado=0.319688 V
+Iin=0.002453125 A, Iinb=0.000743750 A, vout=0.245313 V, voutb=0.074375 V, vdiff=0.170313 V, Vsumado=0.319688 V
+Iin=0.002456250 A, Iinb=0.000740625 A, vout=0.245625 V, voutb=0.074062 V, vdiff=0.170938 V, Vsumado=0.319688 V
+Iin=0.002459375 A, Iinb=0.000737500 A, vout=0.245938 V, voutb=0.073750 V, vdiff=0.171563 V, Vsumado=0.319688 V
+Iin=0.002462500 A, Iinb=0.000734375 A, vout=0.246250 V, voutb=0.073437 V, vdiff=0.172188 V, Vsumado=0.319688 V
+Iin=0.002465625 A, Iinb=0.000731250 A, vout=0.246563 V, voutb=0.073125 V, vdiff=0.172813 V, Vsumado=0.319688 V
+Iin=0.002468750 A, Iinb=0.000728125 A, vout=0.246875 V, voutb=0.072812 V, vdiff=0.173438 V, Vsumado=0.319688 V
+Iin=0.002471875 A, Iinb=0.000725000 A, vout=0.247188 V, voutb=0.072500 V, vdiff=0.174063 V, Vsumado=0.319688 V
+Iin=0.002475000 A, Iinb=0.000721875 A, vout=0.247500 V, voutb=0.072187 V, vdiff=0.174688 V, Vsumado=0.319688 V
+Iin=0.002478125 A, Iinb=0.000718750 A, vout=0.247813 V, voutb=0.071875 V, vdiff=0.175313 V, Vsumado=0.319688 V
+Iin=0.002481250 A, Iinb=0.000715625 A, vout=0.248125 V, voutb=0.071562 V, vdiff=0.175938 V, Vsumado=0.319688 V
+Iin=0.002484375 A, Iinb=0.000712500 A, vout=0.248438 V, voutb=0.071250 V, vdiff=0.176563 V, Vsumado=0.319688 V
+Iin=0.002487500 A, Iinb=0.000709375 A, vout=0.248750 V, voutb=0.070937 V, vdiff=0.177188 V, Vsumado=0.319688 V
+Iin=0.002490625 A, Iinb=0.000706250 A, vout=0.249063 V, voutb=0.070625 V, vdiff=0.177813 V, Vsumado=0.319688 V
+Iin=0.002493750 A, Iinb=0.000703125 A, vout=0.249375 V, voutb=0.070312 V, vdiff=0.178438 V, Vsumado=0.319688 V
+Iin=0.002496875 A, Iinb=0.000700000 A, vout=0.249688 V, voutb=0.070000 V, vdiff=0.179063 V, Vsumado=0.319688 V
+Iin=0.002500000 A, Iinb=0.000696875 A, vout=0.250000 V, voutb=0.069687 V, vdiff=0.179688 V, Vsumado=0.319688 V
+Iin=0.002503125 A, Iinb=0.000693750 A, vout=0.250313 V, voutb=0.069375 V, vdiff=0.180313 V, Vsumado=0.319688 V
+Iin=0.002506250 A, Iinb=0.000690625 A, vout=0.250625 V, voutb=0.069062 V, vdiff=0.180938 V, Vsumado=0.319688 V
+Iin=0.002509375 A, Iinb=0.000687500 A, vout=0.250938 V, voutb=0.068750 V, vdiff=0.181563 V, Vsumado=0.319688 V
+Iin=0.002512500 A, Iinb=0.000684375 A, vout=0.251250 V, voutb=0.068437 V, vdiff=0.182188 V, Vsumado=0.319688 V
+Iin=0.002515625 A, Iinb=0.000681250 A, vout=0.251563 V, voutb=0.068125 V, vdiff=0.182813 V, Vsumado=0.319688 V
+Iin=0.002518750 A, Iinb=0.000678125 A, vout=0.251875 V, voutb=0.067812 V, vdiff=0.183438 V, Vsumado=0.319688 V
+Iin=0.002521875 A, Iinb=0.000675000 A, vout=0.252188 V, voutb=0.067500 V, vdiff=0.184063 V, Vsumado=0.319688 V
+Iin=0.002525000 A, Iinb=0.000671875 A, vout=0.252500 V, voutb=0.067187 V, vdiff=0.184688 V, Vsumado=0.319688 V
+Iin=0.002528125 A, Iinb=0.000668750 A, vout=0.252813 V, voutb=0.066875 V, vdiff=0.185313 V, Vsumado=0.319688 V
+Iin=0.002531250 A, Iinb=0.000665625 A, vout=0.253125 V, voutb=0.066562 V, vdiff=0.185938 V, Vsumado=0.319688 V
+Iin=0.002534375 A, Iinb=0.000662500 A, vout=0.253438 V, voutb=0.066250 V, vdiff=0.186563 V, Vsumado=0.319688 V
+Iin=0.002537500 A, Iinb=0.000659375 A, vout=0.253750 V, voutb=0.065937 V, vdiff=0.187188 V, Vsumado=0.319688 V
+Iin=0.002540625 A, Iinb=0.000656250 A, vout=0.254063 V, voutb=0.065625 V, vdiff=0.187813 V, Vsumado=0.319688 V
+Iin=0.002543750 A, Iinb=0.000653125 A, vout=0.254375 V, voutb=0.065312 V, vdiff=0.188438 V, Vsumado=0.319688 V
+Iin=0.002546875 A, Iinb=0.000650000 A, vout=0.254688 V, voutb=0.065000 V, vdiff=0.189063 V, Vsumado=0.319688 V
+Iin=0.002550000 A, Iinb=0.000646875 A, vout=0.255000 V, voutb=0.064687 V, vdiff=0.189688 V, Vsumado=0.319688 V
+Iin=0.002553125 A, Iinb=0.000643750 A, vout=0.255313 V, voutb=0.064375 V, vdiff=0.190313 V, Vsumado=0.319688 V
+Iin=0.002556250 A, Iinb=0.000640625 A, vout=0.255625 V, voutb=0.064062 V, vdiff=0.190938 V, Vsumado=0.319688 V
+Iin=0.002559375 A, Iinb=0.000637500 A, vout=0.255938 V, voutb=0.063750 V, vdiff=0.191563 V, Vsumado=0.319688 V
+Iin=0.002562500 A, Iinb=0.000634375 A, vout=0.256250 V, voutb=0.063437 V, vdiff=0.192188 V, Vsumado=0.319688 V
+Iin=0.002565625 A, Iinb=0.000631250 A, vout=0.256563 V, voutb=0.063125 V, vdiff=0.192813 V, Vsumado=0.319688 V
+Iin=0.002568750 A, Iinb=0.000628125 A, vout=0.256875 V, voutb=0.062812 V, vdiff=0.193438 V, Vsumado=0.319688 V
+Iin=0.002571875 A, Iinb=0.000625000 A, vout=0.257188 V, voutb=0.062500 V, vdiff=0.194063 V, Vsumado=0.319688 V
+Iin=0.002575000 A, Iinb=0.000621875 A, vout=0.257500 V, voutb=0.062187 V, vdiff=0.194688 V, Vsumado=0.319688 V
+Iin=0.002578125 A, Iinb=0.000618750 A, vout=0.257813 V, voutb=0.061875 V, vdiff=0.195313 V, Vsumado=0.319688 V
+Iin=0.002581250 A, Iinb=0.000615625 A, vout=0.258125 V, voutb=0.061562 V, vdiff=0.195938 V, Vsumado=0.319688 V
+Iin=0.002584375 A, Iinb=0.000612500 A, vout=0.258438 V, voutb=0.061250 V, vdiff=0.196563 V, Vsumado=0.319687 V
+Iin=0.002587500 A, Iinb=0.000609375 A, vout=0.258750 V, voutb=0.060937 V, vdiff=0.197188 V, Vsumado=0.319688 V
+Iin=0.002590625 A, Iinb=0.000606250 A, vout=0.259063 V, voutb=0.060625 V, vdiff=0.197813 V, Vsumado=0.319688 V
+Iin=0.002593750 A, Iinb=0.000603125 A, vout=0.259375 V, voutb=0.060312 V, vdiff=0.198438 V, Vsumado=0.319688 V
+Iin=0.002596875 A, Iinb=0.000600000 A, vout=0.259688 V, voutb=0.060000 V, vdiff=0.199063 V, Vsumado=0.319688 V
+Iin=0.002600000 A, Iinb=0.000596875 A, vout=0.260000 V, voutb=0.059687 V, vdiff=0.199688 V, Vsumado=0.319688 V
+Iin=0.002603125 A, Iinb=0.000593750 A, vout=0.260313 V, voutb=0.059375 V, vdiff=0.200313 V, Vsumado=0.319688 V
+Iin=0.002606250 A, Iinb=0.000590625 A, vout=0.260625 V, voutb=0.059062 V, vdiff=0.200938 V, Vsumado=0.319687 V
+Iin=0.002609375 A, Iinb=0.000587500 A, vout=0.260938 V, voutb=0.058750 V, vdiff=0.201563 V, Vsumado=0.319688 V
+Iin=0.002612500 A, Iinb=0.000584375 A, vout=0.261250 V, voutb=0.058437 V, vdiff=0.202188 V, Vsumado=0.319688 V
+Iin=0.002615625 A, Iinb=0.000581250 A, vout=0.261563 V, voutb=0.058125 V, vdiff=0.202813 V, Vsumado=0.319688 V
+Iin=0.002618750 A, Iinb=0.000578125 A, vout=0.261875 V, voutb=0.057812 V, vdiff=0.203438 V, Vsumado=0.319688 V
+Iin=0.002621875 A, Iinb=0.000575000 A, vout=0.262188 V, voutb=0.057500 V, vdiff=0.204063 V, Vsumado=0.319688 V
+Iin=0.002625000 A, Iinb=0.000571875 A, vout=0.262500 V, voutb=0.057187 V, vdiff=0.204688 V, Vsumado=0.319688 V
+Iin=0.002628125 A, Iinb=0.000568750 A, vout=0.262813 V, voutb=0.056875 V, vdiff=0.205313 V, Vsumado=0.319688 V
+Iin=0.002631250 A, Iinb=0.000565625 A, vout=0.263125 V, voutb=0.056562 V, vdiff=0.205938 V, Vsumado=0.319688 V
+Iin=0.002634375 A, Iinb=0.000562500 A, vout=0.263438 V, voutb=0.056250 V, vdiff=0.206563 V, Vsumado=0.319688 V
+Iin=0.002637500 A, Iinb=0.000559375 A, vout=0.263750 V, voutb=0.055937 V, vdiff=0.207188 V, Vsumado=0.319688 V
+Iin=0.002640625 A, Iinb=0.000556250 A, vout=0.264063 V, voutb=0.055625 V, vdiff=0.207813 V, Vsumado=0.319688 V
+Iin=0.002643750 A, Iinb=0.000553125 A, vout=0.264375 V, voutb=0.055312 V, vdiff=0.208438 V, Vsumado=0.319688 V
+Iin=0.002646875 A, Iinb=0.000550000 A, vout=0.264688 V, voutb=0.055000 V, vdiff=0.209063 V, Vsumado=0.319688 V
+Iin=0.002650000 A, Iinb=0.000546875 A, vout=0.265000 V, voutb=0.054687 V, vdiff=0.209688 V, Vsumado=0.319688 V
+Iin=0.002653125 A, Iinb=0.000543750 A, vout=0.265313 V, voutb=0.054375 V, vdiff=0.210313 V, Vsumado=0.319688 V
+Iin=0.002656250 A, Iinb=0.000540625 A, vout=0.265625 V, voutb=0.054062 V, vdiff=0.210938 V, Vsumado=0.319688 V
+Iin=0.002659375 A, Iinb=0.000537500 A, vout=0.265938 V, voutb=0.053750 V, vdiff=0.211563 V, Vsumado=0.319688 V
+Iin=0.002662500 A, Iinb=0.000534375 A, vout=0.266250 V, voutb=0.053437 V, vdiff=0.212188 V, Vsumado=0.319688 V
+Iin=0.002665625 A, Iinb=0.000531250 A, vout=0.266563 V, voutb=0.053125 V, vdiff=0.212813 V, Vsumado=0.319688 V
+Iin=0.002668750 A, Iinb=0.000528125 A, vout=0.266875 V, voutb=0.052812 V, vdiff=0.213438 V, Vsumado=0.319688 V
+Iin=0.002671875 A, Iinb=0.000525000 A, vout=0.267188 V, voutb=0.052500 V, vdiff=0.214063 V, Vsumado=0.319688 V
+Iin=0.002675000 A, Iinb=0.000521875 A, vout=0.267500 V, voutb=0.052187 V, vdiff=0.214688 V, Vsumado=0.319688 V
+Iin=0.002678125 A, Iinb=0.000518750 A, vout=0.267813 V, voutb=0.051875 V, vdiff=0.215313 V, Vsumado=0.319688 V
+Iin=0.002681250 A, Iinb=0.000515625 A, vout=0.268125 V, voutb=0.051562 V, vdiff=0.215938 V, Vsumado=0.319688 V
+Iin=0.002684375 A, Iinb=0.000512500 A, vout=0.268438 V, voutb=0.051250 V, vdiff=0.216563 V, Vsumado=0.319688 V
+Iin=0.002687500 A, Iinb=0.000509375 A, vout=0.268750 V, voutb=0.050937 V, vdiff=0.217188 V, Vsumado=0.319688 V
+Iin=0.002690625 A, Iinb=0.000506250 A, vout=0.269063 V, voutb=0.050625 V, vdiff=0.217813 V, Vsumado=0.319688 V
+Iin=0.002693750 A, Iinb=0.000503125 A, vout=0.269375 V, voutb=0.050312 V, vdiff=0.218438 V, Vsumado=0.319688 V
+Iin=0.002696875 A, Iinb=0.000500000 A, vout=0.269688 V, voutb=0.050000 V, vdiff=0.219063 V, Vsumado=0.319688 V
+Iin=0.002700000 A, Iinb=0.000496875 A, vout=0.270000 V, voutb=0.049687 V, vdiff=0.219688 V, Vsumado=0.319688 V
+Iin=0.002703125 A, Iinb=0.000493750 A, vout=0.270313 V, voutb=0.049375 V, vdiff=0.220313 V, Vsumado=0.319688 V
+Iin=0.002706250 A, Iinb=0.000490625 A, vout=0.270625 V, voutb=0.049062 V, vdiff=0.220938 V, Vsumado=0.319687 V
+Iin=0.002709375 A, Iinb=0.000487500 A, vout=0.270938 V, voutb=0.048750 V, vdiff=0.221563 V, Vsumado=0.319688 V
+Iin=0.002712500 A, Iinb=0.000484375 A, vout=0.271250 V, voutb=0.048437 V, vdiff=0.222188 V, Vsumado=0.319688 V
+Iin=0.002715625 A, Iinb=0.000481250 A, vout=0.271563 V, voutb=0.048125 V, vdiff=0.222813 V, Vsumado=0.319688 V
+Iin=0.002718750 A, Iinb=0.000478125 A, vout=0.271875 V, voutb=0.047812 V, vdiff=0.223438 V, Vsumado=0.319688 V
+Iin=0.002721875 A, Iinb=0.000475000 A, vout=0.272188 V, voutb=0.047500 V, vdiff=0.224063 V, Vsumado=0.319688 V
+Iin=0.002725000 A, Iinb=0.000471875 A, vout=0.272500 V, voutb=0.047187 V, vdiff=0.224688 V, Vsumado=0.319688 V
+Iin=0.002728125 A, Iinb=0.000468750 A, vout=0.272813 V, voutb=0.046875 V, vdiff=0.225313 V, Vsumado=0.319688 V
+Iin=0.002731250 A, Iinb=0.000465625 A, vout=0.273125 V, voutb=0.046562 V, vdiff=0.225938 V, Vsumado=0.319688 V
+Iin=0.002734375 A, Iinb=0.000462500 A, vout=0.273438 V, voutb=0.046250 V, vdiff=0.226563 V, Vsumado=0.319688 V
+Iin=0.002737500 A, Iinb=0.000459375 A, vout=0.273750 V, voutb=0.045937 V, vdiff=0.227188 V, Vsumado=0.319688 V
+Iin=0.002740625 A, Iinb=0.000456250 A, vout=0.274063 V, voutb=0.045625 V, vdiff=0.227813 V, Vsumado=0.319688 V
+Iin=0.002743750 A, Iinb=0.000453125 A, vout=0.274375 V, voutb=0.045312 V, vdiff=0.228438 V, Vsumado=0.319688 V
+Iin=0.002746875 A, Iinb=0.000450000 A, vout=0.274688 V, voutb=0.045000 V, vdiff=0.229063 V, Vsumado=0.319688 V
+Iin=0.002750000 A, Iinb=0.000446875 A, vout=0.275000 V, voutb=0.044687 V, vdiff=0.229688 V, Vsumado=0.319688 V
+Iin=0.002753125 A, Iinb=0.000443750 A, vout=0.275313 V, voutb=0.044375 V, vdiff=0.230313 V, Vsumado=0.319688 V
+Iin=0.002756250 A, Iinb=0.000440625 A, vout=0.275625 V, voutb=0.044062 V, vdiff=0.230938 V, Vsumado=0.319688 V
+Iin=0.002759375 A, Iinb=0.000437500 A, vout=0.275938 V, voutb=0.043750 V, vdiff=0.231563 V, Vsumado=0.319688 V
+Iin=0.002762500 A, Iinb=0.000434375 A, vout=0.276250 V, voutb=0.043437 V, vdiff=0.232188 V, Vsumado=0.319688 V
+Iin=0.002765625 A, Iinb=0.000431250 A, vout=0.276563 V, voutb=0.043125 V, vdiff=0.232813 V, Vsumado=0.319688 V
+Iin=0.002768750 A, Iinb=0.000428125 A, vout=0.276875 V, voutb=0.042812 V, vdiff=0.233438 V, Vsumado=0.319688 V
+Iin=0.002771875 A, Iinb=0.000425000 A, vout=0.277188 V, voutb=0.042500 V, vdiff=0.234063 V, Vsumado=0.319688 V
+Iin=0.002775000 A, Iinb=0.000421875 A, vout=0.277500 V, voutb=0.042187 V, vdiff=0.234688 V, Vsumado=0.319688 V
+Iin=0.002778125 A, Iinb=0.000418750 A, vout=0.277813 V, voutb=0.041875 V, vdiff=0.235313 V, Vsumado=0.319688 V
+Iin=0.002781250 A, Iinb=0.000415625 A, vout=0.278125 V, voutb=0.041562 V, vdiff=0.235938 V, Vsumado=0.319688 V
+Iin=0.002784375 A, Iinb=0.000412500 A, vout=0.278438 V, voutb=0.041250 V, vdiff=0.236563 V, Vsumado=0.319687 V
+Iin=0.002787500 A, Iinb=0.000409375 A, vout=0.278750 V, voutb=0.040937 V, vdiff=0.237188 V, Vsumado=0.319688 V
+Iin=0.002790625 A, Iinb=0.000406250 A, vout=0.279063 V, voutb=0.040625 V, vdiff=0.237813 V, Vsumado=0.319688 V
+Iin=0.002793750 A, Iinb=0.000403125 A, vout=0.279375 V, voutb=0.040312 V, vdiff=0.238438 V, Vsumado=0.319688 V
+Iin=0.002796875 A, Iinb=0.000400000 A, vout=0.279688 V, voutb=0.040000 V, vdiff=0.239063 V, Vsumado=0.319688 V
+Iin=0.002800000 A, Iinb=0.000396875 A, vout=0.280000 V, voutb=0.039687 V, vdiff=0.239688 V, Vsumado=0.319688 V
+Iin=0.002803125 A, Iinb=0.000393750 A, vout=0.280313 V, voutb=0.039375 V, vdiff=0.240313 V, Vsumado=0.319688 V
+Iin=0.002806250 A, Iinb=0.000390625 A, vout=0.280625 V, voutb=0.039062 V, vdiff=0.240938 V, Vsumado=0.319687 V
+Iin=0.002809375 A, Iinb=0.000387500 A, vout=0.280938 V, voutb=0.038750 V, vdiff=0.241563 V, Vsumado=0.319688 V
+Iin=0.002812500 A, Iinb=0.000384375 A, vout=0.281250 V, voutb=0.038437 V, vdiff=0.242188 V, Vsumado=0.319688 V
+Iin=0.002815625 A, Iinb=0.000381250 A, vout=0.281563 V, voutb=0.038125 V, vdiff=0.242813 V, Vsumado=0.319688 V
+Iin=0.002818750 A, Iinb=0.000378125 A, vout=0.281875 V, voutb=0.037812 V, vdiff=0.243438 V, Vsumado=0.319688 V
+Iin=0.002821875 A, Iinb=0.000375000 A, vout=0.282188 V, voutb=0.037500 V, vdiff=0.244063 V, Vsumado=0.319688 V
+Iin=0.002825000 A, Iinb=0.000371875 A, vout=0.282500 V, voutb=0.037187 V, vdiff=0.244688 V, Vsumado=0.319688 V
+Iin=0.002828125 A, Iinb=0.000368750 A, vout=0.282813 V, voutb=0.036875 V, vdiff=0.245313 V, Vsumado=0.319688 V
+Iin=0.002831250 A, Iinb=0.000365625 A, vout=0.283125 V, voutb=0.036562 V, vdiff=0.245938 V, Vsumado=0.319688 V
+Iin=0.002834375 A, Iinb=0.000362500 A, vout=0.283438 V, voutb=0.036250 V, vdiff=0.246563 V, Vsumado=0.319688 V
+Iin=0.002837500 A, Iinb=0.000359375 A, vout=0.283750 V, voutb=0.035937 V, vdiff=0.247188 V, Vsumado=0.319688 V
+Iin=0.002840625 A, Iinb=0.000356250 A, vout=0.284063 V, voutb=0.035625 V, vdiff=0.247813 V, Vsumado=0.319688 V
+Iin=0.002843750 A, Iinb=0.000353125 A, vout=0.284375 V, voutb=0.035312 V, vdiff=0.248438 V, Vsumado=0.319688 V
+Iin=0.002846875 A, Iinb=0.000350000 A, vout=0.284688 V, voutb=0.035000 V, vdiff=0.249063 V, Vsumado=0.319688 V
+Iin=0.002850000 A, Iinb=0.000346875 A, vout=0.285000 V, voutb=0.034687 V, vdiff=0.249688 V, Vsumado=0.319688 V
+Iin=0.002853125 A, Iinb=0.000343750 A, vout=0.285313 V, voutb=0.034375 V, vdiff=0.250313 V, Vsumado=0.319688 V
+Iin=0.002856250 A, Iinb=0.000340625 A, vout=0.285625 V, voutb=0.034062 V, vdiff=0.250938 V, Vsumado=0.319688 V
+Iin=0.002859375 A, Iinb=0.000337500 A, vout=0.285938 V, voutb=0.033750 V, vdiff=0.251563 V, Vsumado=0.319688 V
+Iin=0.002862500 A, Iinb=0.000334375 A, vout=0.286250 V, voutb=0.033437 V, vdiff=0.252188 V, Vsumado=0.319688 V
+Iin=0.002865625 A, Iinb=0.000331250 A, vout=0.286563 V, voutb=0.033125 V, vdiff=0.252813 V, Vsumado=0.319688 V
+Iin=0.002868750 A, Iinb=0.000328125 A, vout=0.286875 V, voutb=0.032812 V, vdiff=0.253438 V, Vsumado=0.319688 V
+Iin=0.002871875 A, Iinb=0.000325000 A, vout=0.287188 V, voutb=0.032500 V, vdiff=0.254063 V, Vsumado=0.319688 V
+Iin=0.002875000 A, Iinb=0.000321875 A, vout=0.287500 V, voutb=0.032187 V, vdiff=0.254688 V, Vsumado=0.319688 V
+Iin=0.002878125 A, Iinb=0.000318750 A, vout=0.287813 V, voutb=0.031875 V, vdiff=0.255313 V, Vsumado=0.319688 V
+Iin=0.002881250 A, Iinb=0.000315625 A, vout=0.288125 V, voutb=0.031562 V, vdiff=0.255938 V, Vsumado=0.319688 V
+Iin=0.002884375 A, Iinb=0.000312500 A, vout=0.288438 V, voutb=0.031250 V, vdiff=0.256563 V, Vsumado=0.319688 V
+Iin=0.002887500 A, Iinb=0.000309375 A, vout=0.288750 V, voutb=0.030937 V, vdiff=0.257188 V, Vsumado=0.319688 V
+Iin=0.002890625 A, Iinb=0.000306250 A, vout=0.289063 V, voutb=0.030625 V, vdiff=0.257813 V, Vsumado=0.319688 V
+Iin=0.002893750 A, Iinb=0.000303125 A, vout=0.289375 V, voutb=0.030312 V, vdiff=0.258438 V, Vsumado=0.319688 V
+Iin=0.002896875 A, Iinb=0.000300000 A, vout=0.289688 V, voutb=0.030000 V, vdiff=0.259063 V, Vsumado=0.319688 V
+Iin=0.002900000 A, Iinb=0.000296875 A, vout=0.290000 V, voutb=0.029687 V, vdiff=0.259688 V, Vsumado=0.319688 V
+Iin=0.002903125 A, Iinb=0.000293750 A, vout=0.290313 V, voutb=0.029375 V, vdiff=0.260313 V, Vsumado=0.319688 V
+Iin=0.002906250 A, Iinb=0.000290625 A, vout=0.290625 V, voutb=0.029062 V, vdiff=0.260938 V, Vsumado=0.319687 V
+Iin=0.002909375 A, Iinb=0.000287500 A, vout=0.290938 V, voutb=0.028750 V, vdiff=0.261563 V, Vsumado=0.319688 V
+Iin=0.002912500 A, Iinb=0.000284375 A, vout=0.291250 V, voutb=0.028437 V, vdiff=0.262188 V, Vsumado=0.319688 V
+Iin=0.002915625 A, Iinb=0.000281250 A, vout=0.291563 V, voutb=0.028125 V, vdiff=0.262813 V, Vsumado=0.319688 V
+Iin=0.002918750 A, Iinb=0.000278125 A, vout=0.291875 V, voutb=0.027812 V, vdiff=0.263438 V, Vsumado=0.319688 V
+Iin=0.002921875 A, Iinb=0.000275000 A, vout=0.292188 V, voutb=0.027500 V, vdiff=0.264063 V, Vsumado=0.319688 V
+Iin=0.002925000 A, Iinb=0.000271875 A, vout=0.292500 V, voutb=0.027187 V, vdiff=0.264688 V, Vsumado=0.319688 V
+Iin=0.002928125 A, Iinb=0.000268750 A, vout=0.292813 V, voutb=0.026875 V, vdiff=0.265313 V, Vsumado=0.319687 V
+Iin=0.002931250 A, Iinb=0.000265625 A, vout=0.293125 V, voutb=0.026562 V, vdiff=0.265938 V, Vsumado=0.319688 V
+Iin=0.002934375 A, Iinb=0.000262500 A, vout=0.293438 V, voutb=0.026250 V, vdiff=0.266563 V, Vsumado=0.319688 V
+Iin=0.002937500 A, Iinb=0.000259375 A, vout=0.293750 V, voutb=0.025937 V, vdiff=0.267188 V, Vsumado=0.319688 V
+Iin=0.002940625 A, Iinb=0.000256250 A, vout=0.294063 V, voutb=0.025625 V, vdiff=0.267813 V, Vsumado=0.319688 V
+Iin=0.002943750 A, Iinb=0.000253125 A, vout=0.294375 V, voutb=0.025312 V, vdiff=0.268438 V, Vsumado=0.319688 V
+Iin=0.002946875 A, Iinb=0.000250000 A, vout=0.294688 V, voutb=0.025000 V, vdiff=0.269063 V, Vsumado=0.319688 V
+Iin=0.002950000 A, Iinb=0.000246875 A, vout=0.295000 V, voutb=0.024687 V, vdiff=0.269688 V, Vsumado=0.319688 V
+Iin=0.002953125 A, Iinb=0.000243750 A, vout=0.295313 V, voutb=0.024375 V, vdiff=0.270313 V, Vsumado=0.319688 V
+Iin=0.002956250 A, Iinb=0.000240625 A, vout=0.295625 V, voutb=0.024062 V, vdiff=0.270938 V, Vsumado=0.319688 V
+Iin=0.002959375 A, Iinb=0.000237500 A, vout=0.295938 V, voutb=0.023750 V, vdiff=0.271563 V, Vsumado=0.319688 V
+Iin=0.002962500 A, Iinb=0.000234375 A, vout=0.296250 V, voutb=0.023437 V, vdiff=0.272188 V, Vsumado=0.319688 V
+Iin=0.002965625 A, Iinb=0.000231250 A, vout=0.296563 V, voutb=0.023125 V, vdiff=0.272813 V, Vsumado=0.319688 V
+Iin=0.002968750 A, Iinb=0.000228125 A, vout=0.296875 V, voutb=0.022812 V, vdiff=0.273438 V, Vsumado=0.319688 V
+Iin=0.002971875 A, Iinb=0.000225000 A, vout=0.297188 V, voutb=0.022500 V, vdiff=0.274063 V, Vsumado=0.319688 V
+Iin=0.002975000 A, Iinb=0.000221875 A, vout=0.297500 V, voutb=0.022187 V, vdiff=0.274688 V, Vsumado=0.319688 V
+Iin=0.002978125 A, Iinb=0.000218750 A, vout=0.297813 V, voutb=0.021875 V, vdiff=0.275313 V, Vsumado=0.319688 V
+Iin=0.002981250 A, Iinb=0.000215625 A, vout=0.298125 V, voutb=0.021562 V, vdiff=0.275938 V, Vsumado=0.319688 V
+Iin=0.002984375 A, Iinb=0.000212500 A, vout=0.298438 V, voutb=0.021250 V, vdiff=0.276563 V, Vsumado=0.319687 V
+Iin=0.002987500 A, Iinb=0.000209375 A, vout=0.298750 V, voutb=0.020937 V, vdiff=0.277188 V, Vsumado=0.319688 V
+Iin=0.002990625 A, Iinb=0.000206250 A, vout=0.299063 V, voutb=0.020625 V, vdiff=0.277813 V, Vsumado=0.319688 V
+Iin=0.002993750 A, Iinb=0.000203125 A, vout=0.299375 V, voutb=0.020312 V, vdiff=0.278438 V, Vsumado=0.319688 V
+Iin=0.002996875 A, Iinb=0.000200000 A, vout=0.299688 V, voutb=0.020000 V, vdiff=0.279063 V, Vsumado=0.319688 V
+Iin=0.003000000 A, Iinb=0.000196875 A, vout=0.300000 V, voutb=0.019687 V, vdiff=0.279688 V, Vsumado=0.319688 V
+Iin=0.003003125 A, Iinb=0.000193750 A, vout=0.300313 V, voutb=0.019375 V, vdiff=0.280313 V, Vsumado=0.319688 V
+Iin=0.003006250 A, Iinb=0.000190625 A, vout=0.300625 V, voutb=0.019062 V, vdiff=0.280938 V, Vsumado=0.319687 V
+Iin=0.003009375 A, Iinb=0.000187500 A, vout=0.300938 V, voutb=0.018750 V, vdiff=0.281563 V, Vsumado=0.319688 V
+Iin=0.003012500 A, Iinb=0.000184375 A, vout=0.301250 V, voutb=0.018437 V, vdiff=0.282188 V, Vsumado=0.319688 V
+Iin=0.003015625 A, Iinb=0.000181250 A, vout=0.301563 V, voutb=0.018125 V, vdiff=0.282813 V, Vsumado=0.319688 V
+Iin=0.003018750 A, Iinb=0.000178125 A, vout=0.301875 V, voutb=0.017812 V, vdiff=0.283438 V, Vsumado=0.319688 V
+Iin=0.003021875 A, Iinb=0.000175000 A, vout=0.302188 V, voutb=0.017500 V, vdiff=0.284063 V, Vsumado=0.319688 V
+Iin=0.003025000 A, Iinb=0.000171875 A, vout=0.302500 V, voutb=0.017187 V, vdiff=0.284688 V, Vsumado=0.319688 V
+Iin=0.003028125 A, Iinb=0.000168750 A, vout=0.302813 V, voutb=0.016875 V, vdiff=0.285313 V, Vsumado=0.319687 V
+Iin=0.003031250 A, Iinb=0.000165625 A, vout=0.303125 V, voutb=0.016562 V, vdiff=0.285938 V, Vsumado=0.319688 V
+Iin=0.003034375 A, Iinb=0.000162500 A, vout=0.303438 V, voutb=0.016250 V, vdiff=0.286563 V, Vsumado=0.319688 V
+Iin=0.003037500 A, Iinb=0.000159375 A, vout=0.303750 V, voutb=0.015937 V, vdiff=0.287188 V, Vsumado=0.319688 V
+Iin=0.003040625 A, Iinb=0.000156250 A, vout=0.304063 V, voutb=0.015625 V, vdiff=0.287813 V, Vsumado=0.319688 V
+Iin=0.003043750 A, Iinb=0.000153125 A, vout=0.304375 V, voutb=0.015312 V, vdiff=0.288438 V, Vsumado=0.319688 V
+Iin=0.003046875 A, Iinb=0.000150000 A, vout=0.304688 V, voutb=0.015000 V, vdiff=0.289063 V, Vsumado=0.319688 V
+Iin=0.003050000 A, Iinb=0.000146875 A, vout=0.305000 V, voutb=0.014687 V, vdiff=0.289688 V, Vsumado=0.319687 V
+Iin=0.003053125 A, Iinb=0.000143750 A, vout=0.305313 V, voutb=0.014375 V, vdiff=0.290313 V, Vsumado=0.319688 V
+Iin=0.003056250 A, Iinb=0.000140625 A, vout=0.305625 V, voutb=0.014062 V, vdiff=0.290938 V, Vsumado=0.319688 V
+Iin=0.003059375 A, Iinb=0.000137500 A, vout=0.305938 V, voutb=0.013750 V, vdiff=0.291563 V, Vsumado=0.319688 V
+Iin=0.003062500 A, Iinb=0.000134375 A, vout=0.306250 V, voutb=0.013437 V, vdiff=0.292188 V, Vsumado=0.319688 V
+Iin=0.003065625 A, Iinb=0.000131250 A, vout=0.306563 V, voutb=0.013125 V, vdiff=0.292813 V, Vsumado=0.319688 V
+Iin=0.003068750 A, Iinb=0.000128125 A, vout=0.306875 V, voutb=0.012812 V, vdiff=0.293438 V, Vsumado=0.319688 V
+Iin=0.003071875 A, Iinb=0.000125000 A, vout=0.307188 V, voutb=0.012500 V, vdiff=0.294063 V, Vsumado=0.319688 V
+Iin=0.003075000 A, Iinb=0.000121875 A, vout=0.307500 V, voutb=0.012187 V, vdiff=0.294688 V, Vsumado=0.319688 V
+Iin=0.003078125 A, Iinb=0.000118750 A, vout=0.307813 V, voutb=0.011875 V, vdiff=0.295313 V, Vsumado=0.319688 V
+Iin=0.003081250 A, Iinb=0.000115625 A, vout=0.308125 V, voutb=0.011562 V, vdiff=0.295938 V, Vsumado=0.319688 V
+Iin=0.003084375 A, Iinb=0.000112500 A, vout=0.308438 V, voutb=0.011250 V, vdiff=0.296563 V, Vsumado=0.319688 V
+Iin=0.003087500 A, Iinb=0.000109375 A, vout=0.308750 V, voutb=0.010937 V, vdiff=0.297188 V, Vsumado=0.319688 V
+Iin=0.003090625 A, Iinb=0.000106250 A, vout=0.309063 V, voutb=0.010625 V, vdiff=0.297813 V, Vsumado=0.319688 V
+Iin=0.003093750 A, Iinb=0.000103125 A, vout=0.309375 V, voutb=0.010312 V, vdiff=0.298438 V, Vsumado=0.319688 V
+Iin=0.003096875 A, Iinb=0.000100000 A, vout=0.309688 V, voutb=0.010000 V, vdiff=0.299063 V, Vsumado=0.319688 V
+Iin=0.003100000 A, Iinb=0.000096875 A, vout=0.310000 V, voutb=0.009687 V, vdiff=0.299688 V, Vsumado=0.319688 V
+Iin=0.003103125 A, Iinb=0.000093750 A, vout=0.310313 V, voutb=0.009375 V, vdiff=0.300313 V, Vsumado=0.319688 V
+Iin=0.003106250 A, Iinb=0.000090625 A, vout=0.310625 V, voutb=0.009062 V, vdiff=0.300938 V, Vsumado=0.319687 V
+Iin=0.003109375 A, Iinb=0.000087500 A, vout=0.310938 V, voutb=0.008750 V, vdiff=0.301563 V, Vsumado=0.319688 V
+Iin=0.003112500 A, Iinb=0.000084375 A, vout=0.311250 V, voutb=0.008437 V, vdiff=0.302188 V, Vsumado=0.319688 V
+Iin=0.003115625 A, Iinb=0.000081250 A, vout=0.311563 V, voutb=0.008125 V, vdiff=0.302813 V, Vsumado=0.319688 V
+Iin=0.003118750 A, Iinb=0.000078125 A, vout=0.311875 V, voutb=0.007812 V, vdiff=0.303438 V, Vsumado=0.319688 V
+Iin=0.003121875 A, Iinb=0.000075000 A, vout=0.312188 V, voutb=0.007500 V, vdiff=0.304063 V, Vsumado=0.319688 V
+Iin=0.003125000 A, Iinb=0.000071875 A, vout=0.312500 V, voutb=0.007187 V, vdiff=0.304688 V, Vsumado=0.319688 V
+Iin=0.003128125 A, Iinb=0.000068750 A, vout=0.312813 V, voutb=0.006875 V, vdiff=0.305313 V, Vsumado=0.319687 V
+Iin=0.003131250 A, Iinb=0.000065625 A, vout=0.313125 V, voutb=0.006562 V, vdiff=0.305938 V, Vsumado=0.319688 V
+Iin=0.003134375 A, Iinb=0.000062500 A, vout=0.313438 V, voutb=0.006250 V, vdiff=0.306563 V, Vsumado=0.319688 V
+Iin=0.003137500 A, Iinb=0.000059375 A, vout=0.313750 V, voutb=0.005937 V, vdiff=0.307188 V, Vsumado=0.319688 V
+Iin=0.003140625 A, Iinb=0.000056250 A, vout=0.314063 V, voutb=0.005625 V, vdiff=0.307813 V, Vsumado=0.319688 V
+Iin=0.003143750 A, Iinb=0.000053125 A, vout=0.314375 V, voutb=0.005312 V, vdiff=0.308438 V, Vsumado=0.319688 V
+Iin=0.003146875 A, Iinb=0.000050000 A, vout=0.314688 V, voutb=0.005000 V, vdiff=0.309063 V, Vsumado=0.319688 V
+Iin=0.003150000 A, Iinb=0.000046875 A, vout=0.315000 V, voutb=0.004687 V, vdiff=0.309688 V, Vsumado=0.319687 V
+Iin=0.003153125 A, Iinb=0.000043750 A, vout=0.315313 V, voutb=0.004375 V, vdiff=0.310313 V, Vsumado=0.319688 V
+Iin=0.003156250 A, Iinb=0.000040625 A, vout=0.315625 V, voutb=0.004062 V, vdiff=0.310938 V, Vsumado=0.319688 V
+Iin=0.003159375 A, Iinb=0.000037500 A, vout=0.315938 V, voutb=0.003750 V, vdiff=0.311563 V, Vsumado=0.319688 V
+Iin=0.003162500 A, Iinb=0.000034375 A, vout=0.316250 V, voutb=0.003437 V, vdiff=0.312188 V, Vsumado=0.319688 V
+Iin=0.003165625 A, Iinb=0.000031250 A, vout=0.316563 V, voutb=0.003125 V, vdiff=0.312813 V, Vsumado=0.319688 V
+Iin=0.003168750 A, Iinb=0.000028125 A, vout=0.316875 V, voutb=0.002812 V, vdiff=0.313438 V, Vsumado=0.319688 V
+Iin=0.003171875 A, Iinb=0.000025000 A, vout=0.317188 V, voutb=0.002500 V, vdiff=0.314063 V, Vsumado=0.319688 V
+Iin=0.003175000 A, Iinb=0.000021875 A, vout=0.317500 V, voutb=0.002187 V, vdiff=0.314688 V, Vsumado=0.319688 V
+Iin=0.003178125 A, Iinb=0.000018750 A, vout=0.317813 V, voutb=0.001875 V, vdiff=0.315313 V, Vsumado=0.319688 V
+Iin=0.003181250 A, Iinb=0.000015625 A, vout=0.318125 V, voutb=0.001562 V, vdiff=0.315938 V, Vsumado=0.319688 V
+Iin=0.003184375 A, Iinb=0.000012500 A, vout=0.318438 V, voutb=0.001250 V, vdiff=0.316563 V, Vsumado=0.319687 V
+Iin=0.003187500 A, Iinb=0.000009375 A, vout=0.318750 V, voutb=0.000937 V, vdiff=0.317188 V, Vsumado=0.319688 V
+Iin=0.003190625 A, Iinb=0.000006250 A, vout=0.319063 V, voutb=0.000625 V, vdiff=0.317813 V, Vsumado=0.319688 V
+Iin=0.003193750 A, Iinb=0.000003125 A, vout=0.319375 V, voutb=0.000312 V, vdiff=0.318438 V, Vsumado=0.319688 V
+Iin=0.003196875 A, Iinb=-0.000000000 A, vout=0.319688 V, voutb=-0.000000 V, vdiff=0.319063 V, Vsumado=0.319688 V
+
+=== Fin de simulación ===
+Simulation complete via $finish(1) at time 10250 PS + 0
+./tb/resistor_load_tb.sv:99         $finish;
 xcelium> ^C
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Sep 10, 2025 at 11:38:41 CEST  (total: 00:38:39)
+...Regained control from SimVision
+-------------------------------------
+TOOL:	xrun(64)	24.03-s004: Exiting on Feb 06, 2026 at 13:22:43 CET  (total: 21:07:00)

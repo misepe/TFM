@@ -22,7 +22,7 @@ DEBUG_DISPLAY
 -INCDIR
 ../resistor_load
 -INCDIR
-../rsync_latch
+../rsync_flip_flop
 ../clock_distribution/models/clock_distribution_all_non_linearities.sv
 ../current_source_units/models/currentSourceUnits_all_non_linearities.sv
 ../current_sterring/models/current_sterring_noise.sv
@@ -30,7 +30,7 @@ DEBUG_DISPLAY
 ../level_shifter/models/level_shifter.sv
 ../local_bias/models/local_bias.sv
 ../resistor_load/models/resistor_load.sv
-../rsync_latch/models/rsync_latch_all_non_linearities.sv
+../rsync_flip_flop/models/rsync_flip_flop_all_non_linearities.sv
 ./top_level_schematic.sv
 ./tb_dac_top.sv
 -CDSLIB

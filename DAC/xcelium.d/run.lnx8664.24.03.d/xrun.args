@@ -4,4 +4,3 @@
 //
 -f
 xrun_tb_dac_all_non_linearities.f
-+SVSEED=32

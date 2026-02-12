@@ -1,2 +1,4 @@
-#e1(27Jan2026:16:24:02): source ./xcelium.d/env.d/env.history.27Jan2026_16_24_02
-s1(27Jan2026:16:24:02):  xrun -f xrun_tb_dac_all_non_linearities.f +SVSEED=32 
+#e1(12Feb2026:15:33:28): source ./xcelium.d/env.d/env.history.12Feb2026_15_33_28
+s1(12Feb2026:15:33:28):  xrun thermometer_decoder.sv 
+#e2(12Feb2026:15:33:34): source ./xcelium.d/env.d/env.history.12Feb2026_15_33_34
+s2(12Feb2026:15:33:34):  xrun -f xrun_tb_dac_all_non_linearities.f 

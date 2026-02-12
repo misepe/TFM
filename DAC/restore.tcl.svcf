@@ -1,10 +1,10 @@
-# SimVision Command Script (Thu Dec 11 16:40:07 CET 2025)
+# SimVision Command Script (Mon Feb 09 16:27:09 CET 2026)
 #
 # Version 24.03.s004
 #
 # You can restore this configuration with:
 #
-#      xrun -f xrun_tb_dac.f -input restore.tcl
+#      xrun -f xrun_tb_dac_all_non_linearities.f -input restore.tcl
 #
 
 
@@ -12,6 +12,10 @@
 # Preferences
 #
 preferences set plugin-enable-svdatabrowser-new 1
+preferences set toolbar-Standard-WaveWindow {
+  usual
+  position -pos 1
+}
 preferences set plugin-enable-groupscope 0
 preferences set plugin-enable-interleaveandcompare 0
 preferences set plugin-enable-waveformfrequencyplot 0
@@ -20,7 +24,7 @@ preferences set plugin-enable-waveformfrequencyplot 0
 # Simulator
 #
 database require simulator -hints {
-	simulator "xrun -f xrun_tb_dac.f -input restore.tcl"
+	simulator "xrun -f xrun_tb_dac_all_non_linearities.f -input restore.tcl"
 }
 #
 # Groups
@@ -96,6 +100,7 @@ group clear 0 end
 group insert \
     [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Ical}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout}]} ] \
+    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Ioutb}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_0}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_0_red}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_1}]} ] \
@@ -120,7 +125,6 @@ group insert \
     [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_14}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_15}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_16}]} ] \
-    [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Ioutb}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Vcas}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.atb0}]} ] \
     [subst  {simulator::[format {tb_dac_top.DUT.currentSterring_inst.atb1}]} ] \
@@ -315,14 +319,13 @@ if {[catch {window new WatchList -name "Design Browser 1" -geometry 730x500+261+
 }
 window target "Design Browser 1" on
 browser using {Design Browser 1}
-browser set -scope [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst}]} ]
+browser set -scope [subst  {simulator::[format {tb_dac_top}]} ]
 browser set \
     -showassertions 0 \
     -showfibers 0 \
     -showinouts 0 \
-    -showinternals 0 \
     -signalsort name
-browser yview see [subst  {simulator::[format {tb_dac_top.DUT.driver_cell_inst}]} ]
+browser yview see [subst  {simulator::[format {tb_dac_top}]} ]
 browser timecontrol set -lock 0
 
 #
@@ -348,15 +351,20 @@ set id [waveform add -signals [subst  {
 waveform format $id -trace analogSampleAndHold -color #ff0000
 waveform axis range $id -for default -min -1 -max 1 -scale linear
 set id [waveform add -signals [subst  {
+	{simulator::[format {tb_dac_top.Vout_total}]}
+	} ]]
+waveform format $id -trace analogLinear -color #00f1ff
+waveform axis range $id -for default -min -0.319848772670772 -max 0.31984530973411412 -scale linear
+set id [waveform add -signals [subst  {
 	{simulator::[format {tb_dac_top.DUT.Vout}]}
 	} ]]
 waveform format $id -trace analogSampleAndHold -color #ffc300
-waveform axis range $id -for default -min 0 -max 0.20000000000000004 -scale linear
+waveform axis range $id -for default -min 0 -max 0.31984530973411412 -scale linear
 set id [waveform add -signals [subst  {
 	{simulator::[format {tb_dac_top.DUT.Voutb}]}
 	} ]]
 waveform format $id -trace analogSampleAndHold -color #78ff00
-waveform axis range $id -for default -min 0 -max 0.31937500000000008 -scale linear
+waveform axis range $id -for default -min 0 -max 0.319848772670772 -scale linear
 set id [waveform add -signals [subst  {
 	{simulator::[format {tb_dac_top.DUT.atb[0:9]}]}
 	} ]]
@@ -565,6 +573,7 @@ set gpID0 [lindex $gpGlist0 0]
 foreach {name attrs} [subst  {
     {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Ical}]} {-trace analogLinear -color #ffc300}
     {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout}]} {-trace analogLinear -color #ff0000}
+    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Ioutb}]} {-trace analogLinear -color #ff00a6}
     {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_0}]} {-trace analogLinear -color #ff00a6}
     {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_0_red}]} {-trace analogLinear -color #9500ff}
     {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_binary_1}]} {-trace analogLinear -color #002eff}
@@ -589,7 +598,6 @@ foreach {name attrs} [subst  {
     {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_14}]} {-trace analogLinear -color #78ff00}
     {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_15}]} {-trace analogLinear -color #ffc300}
     {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Iout_them_16}]} {-trace analogLinear -color #ff0000}
-    {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Ioutb}]} {-trace analogLinear -color #ff00a6}
     {simulator::[format {tb_dac_top.DUT.currentSterring_inst.Vcas}]} {-trace analogLinear -color #9500ff}
     {simulator::[format {tb_dac_top.DUT.currentSterring_inst.atb0}]} {-trace analogLinear -color #002eff}
     {simulator::[format {tb_dac_top.DUT.currentSterring_inst.atb1}]} {-trace analogLinear -color #00f1ff}
@@ -659,6 +667,7 @@ foreach {name attrs} [subst  {
     set gpGlist0 [lrange $gpGlist0 1 end]
     set gpID0 [lindex $gpGlist0 0]
 }
+waveform hierarchy collapse $groupId0
 
 
 set groupId0 [waveform add -groups Resistor_load]
@@ -1019,7 +1028,7 @@ foreach {name attrs} [subst  {
 waveform hierarchy collapse $groupId0
 
 
-waveform xview limits 0 211600000ps
+waveform xview limits 0 124999680ps
 
 #
 # Waveform Window Links

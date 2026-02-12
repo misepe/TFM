@@ -1,2 +1,2 @@
-#e1(10Sep2025:11:00:02): source ./xcelium.d/env.d/env.history.10Sep2025_11_00_02
-s1(10Sep2025:11:00:02):  xrun -f xrun.f 
+#e1(05Feb2026:16:15:43): source ./xcelium.d/env.d/env.history.05Feb2026_16_15_43
+s1(05Feb2026:16:15:43):  xrun -f xrun.f "-s " 

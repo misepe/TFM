@@ -4,7 +4,6 @@
 //
 +define+DEBUG_DISPLAY
 +SVSEED=0
-+SVSEED=32
 -ACCESS
 +rw
 -no_analogsolver

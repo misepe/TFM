@@ -6,11 +6,12 @@
 -TCL
 -INPUT
 /home/msegper/Documents/TFM/resistor_load/restore.tcl
+-TCL
 -MESSAGES
 +EMGRLOG
 xrun.log
 -XLSTIME
-1757494802
+1770304543
 -XLKEEP
 -XLMODE
 ./xcelium.d/run.lnx8664.24.03.d

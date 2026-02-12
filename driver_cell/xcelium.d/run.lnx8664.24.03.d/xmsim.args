@@ -6,11 +6,12 @@
 -TCL
 -INPUT
 /home/msegper/Documents/TFM/driver_cell/restore.tcl
+-TCL
 -MESSAGES
 +EMGRLOG
 xrun.log
 -XLSTIME
-1768224660
+1770677059
 -XLKEEP
 -XLMODE
 ./xcelium.d/run.lnx8664.24.03.d

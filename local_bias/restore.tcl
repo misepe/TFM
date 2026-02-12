@@ -5,7 +5,7 @@
 #
 # You can restore this configuration with:
 #
-#      xrun -f xrun.f -input /home/msegper/Documents/TFM/local_bias/restore.tcl
+#      xrun -f xrun.f -input restore.tcl
 #
 
 set tcl_prompt1 {puts -nonewline "xcelium> "}
@@ -55,6 +55,7 @@ alias . run
 alias indago verisium
 alias quit exit
 database -open -shm -into waves.shm waves -default
-probe -create -database waves local_bias_tb.dut.atb0 local_bias_tb.dut.atb1 local_bias_tb.dut.atb_ena local_bias_tb.dut.iclkdist_25ua local_bias_tb.dut.icurrentsource_500ua local_bias_tb.dut.icurrentsterring_500ua local_bias_tb.dut.isynclatch_25ua local_bias_tb.dut.pdb local_bias_tb.dut.vddana_0p8 local_bias_tb.dut.vddana_1p8 local_bias_tb.dut.vssana
+probe -create -database waves local_bias_tb.dut.atb0 local_bias_tb.dut.atb1 local_bias_tb.dut.atb_ena local_bias_tb.dut.iclkdist_25ua local_bias_tb.dut.icurrentsource_500ua local_bias_tb.dut.icurrentsterring_500ua local_bias_tb.dut.pdb local_bias_tb.dut.vddana_0p8 local_bias_tb.dut.vddana_1p8 local_bias_tb.dut.vssana
+probe -create -database waves local_bias_tb.dut.isyncflip_flop_25ua
 
 simvision -input restore.tcl.svcf

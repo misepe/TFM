@@ -24,6 +24,6 @@ module resistor_load import cds_rnm_pkg::*;(
         vssana_boundaries: assert (vssana >= VSSANA_MIN && vssana <= VSSANA_MAX) else $error("Input voltge vssana is out of bounds: %0.2f V", vssana);
     end
 
-    assign vout = (Iin * Rload);
-    assign voutb = (Iinb * Rload);
+    assign vout = vssana_check ? (Iin * Rload) : 0.0;
+    assign voutb = vssana_check ? (Iinb * Rload) : 0.0;
 endmodule

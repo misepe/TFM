@@ -42,12 +42,13 @@ module driver_cell_tb;
         $display("Test 1: Verificación de límites de alimentación");
         vddana_1p8 = 1.8; vddana_0p8 = 0.8; vssana = 0.0; // Dentro de los límites
         #200;
-        //vddana_1p8 = 1.9;  // Fuera de los límites
+        vddana_1p8 = 1.9;  // Fuera de los límites
         #200;
-        //vddana_0p8 = 0.7;vddana_1p8 = 1.8; // Fuera de los límites
+        vddana_0p8 = 0.7;vddana_1p8 = 1.8; // Fuera de los límites
         #200;
-        //vssana = -0.1; vddana_0p8 = 0.8; // Fuera de los límites
+        vssana = -0.1; vddana_0p8 = 0.8; // Fuera de los límites
         #200;
+        vddana_1p8 = 1.8; vddana_0p8 = 0.8; vssana = 0.0; // Restaurar valores válidos
 
         // Test 2: Estado apagado (pdb = 0)
         $display("Test 2: Estado apagado (pdb = 0)");
@@ -67,18 +68,23 @@ module driver_cell_tb;
         #200;
         $display("databinout = %b, databinoutb = %b, datathermout = %b, datathermoutb = %b",
                  databinout, databinoutb, datathermout, datathermoutb);
-
-        // Test 4: Propagación de datos binarios
-        $display("Test 5: Propagación de datos binarios");
         datain = 8'b10101010; datainb = ~datain;
-        #200;
-        $display("databinout = %b, databinoutb = %b", databinout, databinoutb);
-
-        // Test 5: Propagación de datos termométricos
-        $display("Test 6: Propagación de datos termométricos");
         datatherm = 17'b10101010101010101; datathermb = ~datatherm;
         #200;
-        $display("datathermout = %b, datathermoutb = %b", datathermout, datathermoutb);
+        $display("databinout = %b, databinoutb = %b, datathermout = %b, datathermoutb = %b",
+                 databinout, databinoutb, datathermout, datathermoutb);
+
+        // Test 4: Propagación de datos binarios
+        //$display("Test 4: Propagación de datos binarios");
+        //datain = 8'b10101010; datainb = ~datain;
+        //#200;
+        //$display("databinout = %b, databinoutb = %b", databinout, databinoutb);
+
+        // Test 5: Propagación de datos termométricos
+        //$display("Test 5: Propagación de datos termométricos");
+        //datatherm = 17'b10101010101010101; datathermb = ~datatherm;
+        //#200;
+        //$display("datathermout = %b, datathermoutb = %b", datathermout, datathermoutb);
 
 
         $display("Tests completados.");

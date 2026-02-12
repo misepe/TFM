@@ -2,7 +2,7 @@
 -access +rw                 // Turn on read/write object access 
 //-gui                        // Performs simulation in graphical mode
 //-input restore.tcl
-//`define gui_on   // <-- descomenta para GUI (delay=0)
+//+define+gui_on   // <-- descomenta para GUI (delay=0)
 
 +define+DEBUG_DISPLAY
 
@@ -13,7 +13,7 @@
 -incdir ../level_shifter
 -incdir ../local_bias
 -incdir ../resistor_load
--incdir ../rsync_latch
+-incdir ../rsync_flip_flop
 
 ../clock_distribution/models/clock_distribution_all_non_linearities.sv
 ../current_source_units/models/currentSourceUnits_all_non_linearities.sv
@@ -22,7 +22,7 @@
 ../level_shifter/models/level_shifter.sv
 ../local_bias/models/local_bias.sv
 ../resistor_load/models/resistor_load.sv
-../rsync_latch/models/rsync_latch_all_non_linearities.sv
+../rsync_flip_flop/models/rsync_flip_flop_all_non_linearities.sv
 
 //./thermometer_decoder.sv
 ./top_level_schematic.sv 

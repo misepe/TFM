@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 27, 2026 at 16:24:02 CET
+TOOL:	xrun(64)	24.03-s004: Started on Feb 12, 2026 at 15:33:33 CET
 xrun
 	-f xrun_tb_dac_all_non_linearities.f
 		-clean
@@ -12,7 +12,7 @@ xrun
 		-incdir ../level_shifter
 		-incdir ../local_bias
 		-incdir ../resistor_load
-		-incdir ../rsync_latch
+		-incdir ../rsync_flip_flop
 		../clock_distribution/models/clock_distribution_all_non_linearities.sv
 		../current_source_units/models/currentSourceUnits_all_non_linearities.sv
 		../current_sterring/models/current_sterring_noise.sv
@@ -20,11 +20,10 @@ xrun
 		../level_shifter/models/level_shifter.sv
 		../local_bias/models/local_bias.sv
 		../resistor_load/models/resistor_load.sv
-		../rsync_latch/models/rsync_latch_all_non_linearities.sv
+		../rsync_flip_flop/models/rsync_flip_flop_all_non_linearities.sv
 		./top_level_schematic.sv
 		./tb_dac_top.sv
 		+SVSEED=0
-	+SVSEED=32
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
 file: ../clock_distribution/models/clock_distribution_all_non_linearities.sv
         int mean = 0;         // Promedio de la distribución
@@ -98,20 +97,20 @@ file: ../local_bias/models/local_bias.sv
 file: ../resistor_load/models/resistor_load.sv
 	module worklib.resistor_load:sv
 		errors: 0, warnings: 0
-file: ../rsync_latch/models/rsync_latch_all_non_linearities.sv
+file: ../rsync_flip_flop/models/rsync_flip_flop_all_non_linearities.sv
         int mean = 0;         // Promedio de la distribución
                  |
-xmvlog: *W,VARIST (../rsync_latch/models/rsync_latch_all_non_linearities.sv,125|17): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (../rsync_flip_flop/models/rsync_flip_flop_all_non_linearities.sv,125|17): Local static variable with initializer requires 'static' keyword.
         int std_dev = 1;     // Desviación estándar, sigma
                     |
-xmvlog: *W,VARIST (../rsync_latch/models/rsync_latch_all_non_linearities.sv,126|20): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (../rsync_flip_flop/models/rsync_flip_flop_all_non_linearities.sv,126|20): Local static variable with initializer requires 'static' keyword.
         int mean = 0;         // Promedio de la distribución
                  |
-xmvlog: *W,VARIST (../rsync_latch/models/rsync_latch_all_non_linearities.sv,141|17): Local static variable with initializer requires 'static' keyword.
+xmvlog: *W,VARIST (../rsync_flip_flop/models/rsync_flip_flop_all_non_linearities.sv,141|17): Local static variable with initializer requires 'static' keyword.
         int std_dev = 1;     // Desviación estándar, sigma
                     |
-xmvlog: *W,VARIST (../rsync_latch/models/rsync_latch_all_non_linearities.sv,142|20): Local static variable with initializer requires 'static' keyword.
-	module worklib.rsync_latch:sv
+xmvlog: *W,VARIST (../rsync_flip_flop/models/rsync_flip_flop_all_non_linearities.sv,142|20): Local static variable with initializer requires 'static' keyword.
+	module worklib.rsync_flip_flop:sv
 		errors: 0, warnings: 4
 file: ./top_level_schematic.sv
 	module worklib.top_level_schematic:sv
@@ -126,7 +125,7 @@ xmvlog: *W,SPDUSD: Include directory ../driver_cell given but not used.
 xmvlog: *W,SPDUSD: Include directory ../level_shifter given but not used.
 xmvlog: *W,SPDUSD: Include directory ../local_bias given but not used.
 xmvlog: *W,SPDUSD: Include directory ../resistor_load given but not used.
-xmvlog: *W,SPDUSD: Include directory ../rsync_latch given but not used.
+xmvlog: *W,SPDUSD: Include directory ../rsync_flip_flop given but not used.
 	Total errors/warnings found outside modules and primitives:
 		errors: 0, warnings: 8
 		Caching library 'worklib' ....... Done
@@ -134,31 +133,31 @@ xmvlog: *W,SPDUSD: Include directory ../rsync_latch given but not used.
 xmelab: *N,MSFLON: Xcelium will initiate mixed signal elaboration, Reason: RNM module.
 	Top level design units:
 		cds_rnm_pkg
-		$unit_0x67f53119
+		$unit_0x44adc159
 		level_shifter
 		tb_dac_top
 	Building instance overlay tables: .................... Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.clock_distribution:sv <0x110ebd51>
-			streams:  85, words: 124175
-		worklib.resistor_load:sv <0x6b53b94f>
-			streams:   4, words:  2809
-		worklib.rsync_latch:sv <0x4c83aa1e>
+		worklib.clock_distribution:sv <0x7f1814a2>
+			streams:  60, words: 77579
+		worklib.resistor_load:sv <0x0898189b>
+			streams:   4, words:  3321
+		worklib.rsync_flip_flop:sv <0x70db54eb>
 			streams:  87, words: 53591
-		worklib.driver_cell:sv <0x2bd6e0dd>
+		worklib.driver_cell:sv <0x6acc089a>
 			streams:  15, words: 18690
-		worklib.local_bias:sv <0x51256669>
+		worklib.local_bias:sv <0x1026da78>
 			streams:   7, words: 14879
-		worklib.top_level_schematic:sv <0x0e71fc47>
+		worklib.top_level_schematic:sv <0x1c23bf61>
 			streams:  93, words: 34983
-		worklib.tb_dac_top:sv <0x349fea9e>
+		worklib.tb_dac_top:sv <0x02ecdb37>
 			streams:  25, words: 22986
-		worklib.level_shifter:sv <0x3b37b98a>
+		worklib.level_shifter:sv <0x0fc28a4d>
 			streams:   1, words:   331
-		worklib.currentSourceUnits:sv <0x6e397f6e>
+		worklib.currentSourceUnits:sv <0x1514ed9c>
 			streams:  14, words: 41509
-		worklib.currentSterring:sv <0x5bc0ca3d>
+		worklib.currentSterring:sv <0x439bdcb1>
 			streams:  31, words: 106602
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
@@ -171,7 +170,6 @@ xmelab: *N,MSFLON: Xcelium will initiate mixed signal elaboration, Reason: RNM m
 		Vectored wires:         22       -
 		Always blocks:          68      68
 		Initial blocks:         55      55
-		Parallel blocks:         1       1
 		Cont. assignments:       2       2
 		Pseudo assignments:    109       -
 		Assertions:             30      30
@@ -186,7 +184,7 @@ xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/fil
 xcelium> run
 GUI OFF: less delay_ps = 500 ps
 Señal generada
-Simulation complete via $finish(1) at time 4096 NS + 0
-./tb_dac_top.sv:142         $finish;
+Simulation complete via $finish(1) at time 512 NS + 0
+./tb_dac_top.sv:148         $finish;
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 27, 2026 at 16:24:04 CET  (total: 00:00:02)
+TOOL:	xrun(64)	24.03-s004: Exiting on Feb 12, 2026 at 15:33:35 CET  (total: 00:00:02)

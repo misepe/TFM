@@ -19,4 +19,4 @@ DEBUG_DISPLAY
 -INCDIR
 ../resistor_load
 -INCDIR
-../rsync_latch
+../rsync_flip_flop

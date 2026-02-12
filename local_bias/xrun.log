@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Nov 17, 2025 at 13:16:44 CET
+TOOL:	xrun(64)	24.03-s004: Started on Feb 11, 2026 at 12:31:53 CET
 xrun
 	-f xrun.f
 		-clean
@@ -9,7 +9,6 @@ xrun
 		-gui
 		-s
 		-input /home/msegper/Documents/TFM/local_bias/restore.tcl
-	-s
 xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
 file: ./models/local_bias.sv
 	module worklib.local_bias:sv
@@ -25,27 +24,30 @@ file: ./tb/local_bias_tb.sv
 	Building instance overlay tables: .................... Done
 	Using implicit TMP libraries; associated with library worklib
 	Generating native compiled code:
-		worklib.local_bias:sv <0x733b3367>
-			streams:   7, words: 14291
-		worklib.local_bias_tb:sv <0x49221a5d>
-			streams:  13, words: 20734
+		worklib.local_bias:sv <0x7b8214a7>
+			streams:   7, words: 14879
+		worklib.local_bias_tb:sv <0x0377a1c0>
+			streams:  14, words: 21089
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                 Instances  Unique
 		Modules:                 2       2
 		Verilog packages:        1       1
-		Registers:              27      27
-		Scalar wires:           10       -
+		Registers:              29      29
+		Scalar wires:           11       -
 		Vectored wires:          1       -
 		Always blocks:           4       4
 		Initial blocks:          5       5
-		Pseudo assignments:     11       -
+		Pseudo assignments:     12       -
 		Assertions:              3       3
 		Simulation timescale:  1ps
 	Writing initial simulation snapshot: worklib.local_bias_tb:sv
 xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
 [DMSINFO] Simulating with Xcelium Mixed-Signal App...
+
+-------------------------------------
+Relinquished control to SimVision...
 xcelium> 
 xcelium> source /eda/cadence/2024-25/RHELx86/XCELIUM_24.03.004/tools/xcelium/files/xmsimrc
 xcelium> 
@@ -55,7 +57,7 @@ xcelium> #
 xcelium> #
 xcelium> # You can restore this configuration with:
 xcelium> #
-xcelium> #      xrun -f xrun.f -input /home/msegper/Documents/TFM/local_bias/restore.tcl
+xcelium> #      xrun -f xrun.f -input restore.tcl
 xcelium> #
 xcelium> 
 xcelium> set tcl_prompt1 {puts -nonewline "xcelium> "}
@@ -147,72 +149,66 @@ xcelium> alias indago verisium
 xcelium> alias quit exit
 xcelium> database -open -shm -into waves.shm waves -default
 Created default SHM database waves
-xcelium> probe -create -database waves local_bias_tb.dut.atb0 local_bias_tb.dut.atb1 local_bias_tb.dut.atb_ena local_bias_tb.dut.iclkdist_25ua local_bias_tb.dut.icurrentsource_500ua local_bias_tb.dut.icurrentsterring_500ua local_bias_tb.dut.isynclatch_25ua local_bias_tb.dut.pdb local_bias_tb.dut.vddana_0p8 local_bias_tb.dut.vddana_1p8 local_bias_tb.dut.vssana
+xcelium> probe -create -database waves local_bias_tb.dut.atb0 local_bias_tb.dut.atb1 local_bias_tb.dut.atb_ena local_bias_tb.dut.iclkdist_25ua local_bias_tb.dut.icurrentsource_500ua local_bias_tb.dut.icurrentsterring_500ua local_bias_tb.dut.pdb local_bias_tb.dut.vddana_0p8 local_bias_tb.dut.vddana_1p8 local_bias_tb.dut.vssana
 Created probe 1
+xcelium> probe -create -database waves local_bias_tb.dut.isyncflip_flop_25ua
+Created probe 2
 xcelium> 
 xcelium> simvision -input restore.tcl.svcf
-xmsim: *E,TCLERR: SimVision initialization failed.
-xcelium> 
--------------------------------------
-Relinquished control to SimVision...
-# Restoring simulation environment...
-xcelium> input -quiet .reinvoke.sim
-xcelium> file delete .reinvoke.sim
 xcelium> run
 Test 1: Barrido de entradas con checkers
 Barrido de vddana_1p8:
-xmsim: *W,ASRTST (./models/local_bias.sv,40): (time 0 FS) Assertion local_bias_tb.dut.vddana_1p8_boundaries has failed
+xmsim: *W,ASRTST (./models/local_bias.sv,41): (time 0 FS) Assertion local_bias_tb.dut.vddana_1p8_boundaries has failed
 Input voltge vddana_1p8 is out of bounds: 1.70 V
-xmsim: *W,WARSEV (./models/local_bias.sv,62): (time 0 FS).
+xmsim: *W,WARSEV (./models/local_bias.sv,63): (time 0 FS).
 local_bias_tb.dut
 Input signals boundaries are not correct: vddana_1p8_check=0, vddana_0p8_check=1, vssana_check=1,
-xmsim: *W,WARSEV (./models/local_bias.sv,62): (time 0 FS).
+xmsim: *W,WARSEV (./models/local_bias.sv,63): (time 0 FS).
 local_bias_tb.dut
 Input signals boundaries are not correct: vddana_1p8_check=0, vddana_0p8_check=1, vssana_check=1,
-xmsim: *W,ASRTST (./models/local_bias.sv,40): (time 20 NS) Assertion local_bias_tb.dut.vddana_1p8_boundaries has failed
+xmsim: *W,ASRTST (./models/local_bias.sv,41): (time 20 NS) Assertion local_bias_tb.dut.vddana_1p8_boundaries has failed
 Input voltge vddana_1p8 is out of bounds: 1.90 V
-xmsim: *W,WARSEV (./models/local_bias.sv,62): (time 20 NS).
+xmsim: *W,WARSEV (./models/local_bias.sv,63): (time 20 NS).
 local_bias_tb.dut
 Input signals boundaries are not correct: vddana_1p8_check=0, vddana_0p8_check=1, vssana_check=1,
 Barrido de vddana_0p8:
-xmsim: *W,ASRTST (./models/local_bias.sv,29): (time 30 NS) Assertion local_bias_tb.dut.vddana_0p8_boundaries has failed
+xmsim: *W,ASRTST (./models/local_bias.sv,30): (time 30 NS) Assertion local_bias_tb.dut.vddana_0p8_boundaries has failed
 Input voltge vddana_0p8 is out of bounds: 0.75 V
-xmsim: *W,WARSEV (./models/local_bias.sv,62): (time 30 NS).
+xmsim: *W,WARSEV (./models/local_bias.sv,63): (time 30 NS).
 local_bias_tb.dut
 Input signals boundaries are not correct: vddana_1p8_check=1, vddana_0p8_check=0, vssana_check=1,
-xmsim: *W,ASRTST (./models/local_bias.sv,29): (time 50 NS) Assertion local_bias_tb.dut.vddana_0p8_boundaries has failed
+xmsim: *W,ASRTST (./models/local_bias.sv,30): (time 50 NS) Assertion local_bias_tb.dut.vddana_0p8_boundaries has failed
 Input voltge vddana_0p8 is out of bounds: 0.85 V
-xmsim: *W,WARSEV (./models/local_bias.sv,62): (time 50 NS).
+xmsim: *W,WARSEV (./models/local_bias.sv,63): (time 50 NS).
 local_bias_tb.dut
 Input signals boundaries are not correct: vddana_1p8_check=1, vddana_0p8_check=0, vssana_check=1,
 Barrido de vssana:
-xmsim: *W,ASRTST (./models/local_bias.sv,53): (time 60 NS) Assertion local_bias_tb.dut.vssana_boundaries has failed
+xmsim: *W,ASRTST (./models/local_bias.sv,54): (time 60 NS) Assertion local_bias_tb.dut.vssana_boundaries has failed
 Input voltge vssana is out of bounds: -0.10 V
-xmsim: *W,WARSEV (./models/local_bias.sv,62): (time 60 NS).
+xmsim: *W,WARSEV (./models/local_bias.sv,63): (time 60 NS).
 local_bias_tb.dut
 Input signals boundaries are not correct: vddana_1p8_check=1, vddana_0p8_check=0, vssana_check=0,
-xmsim: *W,WARSEV (./models/local_bias.sv,62): (time 70 NS).
+xmsim: *W,WARSEV (./models/local_bias.sv,63): (time 70 NS).
 local_bias_tb.dut
 Input signals boundaries are not correct: vddana_1p8_check=1, vddana_0p8_check=0, vssana_check=1,
-xmsim: *W,ASRTST (./models/local_bias.sv,53): (time 80 NS) Assertion local_bias_tb.dut.vssana_boundaries has failed
+xmsim: *W,ASRTST (./models/local_bias.sv,54): (time 80 NS) Assertion local_bias_tb.dut.vssana_boundaries has failed
 Input voltge vssana is out of bounds: 0.10 V
-xmsim: *W,WARSEV (./models/local_bias.sv,62): (time 80 NS).
+xmsim: *W,WARSEV (./models/local_bias.sv,63): (time 80 NS).
 local_bias_tb.dut
 Input signals boundaries are not correct: vddana_1p8_check=1, vddana_0p8_check=0, vssana_check=0,
 Test 2: Verificar salidas de los testbus (atb_ena)
-xmsim: *W,WARSEV (./models/local_bias.sv,62): (time 90 NS).
+xmsim: *W,WARSEV (./models/local_bias.sv,63): (time 90 NS).
 local_bias_tb.dut
 Input signals boundaries are not correct: vddana_1p8_check=1, vddana_0p8_check=1, vssana_check=0,
 atb_ena = 2'b00 -> atb1 = `wrealZState, atb0 = `wrealZState
-atb_ena = 2'b01 -> atb1 = 1.80, atb0 = 1.80
-atb_ena = 2'b10 -> atb1 = 0.80, atb0 = 0.80
+atb_ena = 2'b01 -> atb1 = 1.80, atb0 = 0.00
+atb_ena = 2'b10 -> atb1 = 0.80, atb0 = 0.00
 atb_ena = 2'b11 -> atb1 = 0.00, atb0 = 0.00
 Test 3: Verificar funcionamiento de pdb
 pdb = 0 -> atb1 = `wrealZState, atb0 = `wrealZState, iclkdist_25ua = `wrealZState
 pdb = 1 -> atb1 = `wrealZState, atb0 = `wrealZState, iclkdist_25ua = 0.00
 Simulación completada.
 Simulation complete via $finish(1) at time 200 NS + 0
-./tb/local_bias_tb.sv:106         $finish;
-xcelium> ^C
-xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Nov 17, 2025 at 13:17:55 CET  (total: 00:01:11)
+./tb/local_bias_tb.sv:108         $finish;
+xcelium> xmsim: *W,NCTERM: Simulation received SIGTERM signal from process 4138104, user id 0 (<unknown>).
+TOOL:	xrun(64)	24.03-s004: Exiting on Feb 11, 2026 at 14:39:04 CET  (total: 02:07:11)

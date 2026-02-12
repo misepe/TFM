@@ -87,6 +87,7 @@ module currentSterring_tb;
         vssana = 0.0;
         Vcas = 0.8;
         iref_500ua = 500e-6;
+        atb_ena = 0;
 
         // Inicializar valores de Iout_binary y Iout_them
        
@@ -111,33 +112,14 @@ module currentSterring_tb;
         #10;
         $display("Iout = %0.6f A, Ioutb = %0.6f A, Ical = %0.6f A, atb0 = %0.6f V, atb1 = %0.6f V", Iout, Ioutb, Ical, atb0, atb1);
 
-        // Test 2: Encendido y salida mínima
-        $display("Test 2: Encendido y salida mínima");
         pdb = 1;
         datain = 7'b0000000;
         datainb = ~datain;
         datatherm = 17'b00000000000000000;
         datathermb = ~datatherm;
-        #10;
-        $display("Iout = %0.6f A, Ioutb = %0.6f A, Ical = %0.6f A, atb0 = %0.6f V, atb1 = %0.6f V", Iout, Ioutb, Ical, atb0, atb1);
 
-        // Test 3: Código medio y máximo
-        $display("Test 3: Código medio y máximo");
-        datain = 7'b0111111; // Código medio
-        datainb = ~datain;
-        datatherm = 17'b01111111111111111;
-        datathermb = ~datatherm;
-        #10;
-        $display("Código medio: Iout = %0.6f A, Ioutb = %0.6f A", Iout, Ioutb);
-        datain = 7'b1111111; // Código máximo
-        datainb = ~datain;
-        datatherm = 17'b11111111111111111;
-        datathermb = ~datatherm;
-        #10;
-        $display("Código máximo: Iout = %0.6f A, Ioutb = %0.6f A", Iout, Ioutb);
-
-        // Test 4: Complementariedad (iout vs ioutb)
-        $display("Test 4: Complementariedad (iout vs ioutb)");
+        // Test 2: Complementariedad (iout vs ioutb)
+        $display("Test 2: Complementariedad (iout vs ioutb)");
         for (int i = 0; i < 128; i++) begin
             datain = i;
             datainb = ~i;
@@ -145,41 +127,33 @@ module currentSterring_tb;
             $display("datain = %b, Iout = %0.6f A, Ioutb = %0.6f A, Iout + Ioutb = %0.6f A", datain, Iout, Ioutb, Iout + Ioutb);
         end
 
-        // Test 5: Modo térmico (thermometer code)
-        $display("Test 5: Modo térmico (thermometer code)");
-        for (int i = 0; i < 17; i++) begin
+        // Test 3: Modo térmico (thermometer code)
+        $display("Test 3: Modo térmico (thermometer code)");
+        for (int i = 0; i <= 17; i++) begin
             datatherm = (1 << i) - 1; // Patrón térmico
             datathermb = ~datatherm;
             #10;
             $display("datatherm = %b, Iout = %0.6f A", datatherm, Iout);
         end
 
-        // Test 6: Modo binario (Iout_binary_*)
-        $display("Test 6: Modo binario (Iout_binary_*)");
-        for (int i = 0; i < 6; i++) begin
-            datain = (1 << i); // Activar un bit a la vez
-            datainb = ~datain;
-            #10;
-            $display("datain = %b, Iout = %0.6f A", datain, Iout);
-        end
-
-        // Test 7: Calibrador (Ical y dataical)
-        $display("Test 7: Calibrador (Ical y dataical)");
-        for (int i = 0; i < 23; i++) begin
+        // Test 4: Calibrador (Ical y dataical)
+        $display("Test 4: Calibrador (Ical y dataical)");
+        for (int i = 0; i <= 23; i++) begin
             dataical = i;
             #10;
             $display("dataical = %b, Ical = %0.6f A", dataical, Ical);
         end
+        dataical =0;
 
-        // Test 8: Señales de test (atb_ena, atb0, atb1)
-        $display("Test 8: Señales de test (atb_ena, atb0, atb1)");
+        // Test 5: Señales de test (atb_ena, atb0, atb1)
+        $display("Test 5: Señales de test (atb_ena, atb0, atb1)");
         for (int i = 0; i < 4; i++) begin
             atb_ena = i;
             #10;
             $display("atb_ena = %b, atb0 = %0.6f V, atb1 = %0.6f V", atb_ena, atb0, atb1);
         end
 
-        // Test 9: Condiciones de alimentación
+        // Test 6: Condiciones de alimentación
         // Barrido de vddana_1p8
         $display("Barrido de vddana_1p8:");
         for (vddana_1p8 = VDDANA_1P8_MIN; vddana_1p8 <= VDDANA_1P8_MAX; vddana_1p8 = vddana_1p8 + 0.01) begin

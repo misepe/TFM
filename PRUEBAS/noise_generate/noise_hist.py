@@ -14,7 +14,7 @@ print("Media:", mu)
 print("Std:", sigma)
 
 plt.figure(figsize=(10, 5))
-plt.hist(samples, bins=50, density=True, edgecolor="black", alpha=0.6, label="Muestras")
+plt.hist(samples, bins=50, density =True, edgecolor="black", alpha=0.6, label="Muestras")
 plt.plot(x, gauss, linewidth=2, label="Gaussiana (fit)")
 plt.title("Histograma + ajuste gaussiano")
 plt.xlabel("Valor de ruido")

@@ -1,5 +1,5 @@
 xrun(64): 24.03-s004: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s004: Started on Jan 30, 2026 at 15:01:38 CET
+TOOL:	xrun(64)	24.03-s004: Started on Jan 30, 2026 at 15:25:23 CET
 xrun
 	-f xrun.f
 		-clean
@@ -28,7 +28,7 @@ xmvlog: *W,VARIST (./tb_noise_generate.sv,11|20): Local static variable with ini
 xmelab: *W,REALCV (./tb_noise_generate.sv,18|77): Real argument converted to integer for (%d).
  Done
 	Generating native compiled code:
-		worklib.tb:sv <0x33d2d868>
+		worklib.tb:sv <0x58126eec>
 			streams:   7, words: 12855
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
@@ -20045,108 +20045,58 @@ noise =           0 seed = 1176719119 media =0 sigma = 1000
 Resultados (N=10000):
   mean_est = -5.343300e-12
   std_est  = 9.995498e-10
-Histograma (100 bins) en rango [-5.000000e-09, 5.000000e-09]:
-  bin 0 center=-4.950000e-09 count=0
-  bin 1 center=-4.850000e-09 count=0
-  bin 2 center=-4.750000e-09 count=0
-  bin 3 center=-4.650000e-09 count=0
-  bin 4 center=-4.550000e-09 count=0
-  bin 5 center=-4.450000e-09 count=0
-  bin 6 center=-4.350000e-09 count=0
-  bin 7 center=-4.250000e-09 count=0
-  bin 8 center=-4.150000e-09 count=0
-  bin 9 center=-4.050000e-09 count=0
-  bin 10 center=-3.950000e-09 count=0
-  bin 11 center=-3.850000e-09 count=1
-  bin 12 center=-3.750000e-09 count=0
-  bin 13 center=-3.650000e-09 count=0
-  bin 14 center=-3.550000e-09 count=2
-  bin 15 center=-3.450000e-09 count=1
-  bin 16 center=-3.350000e-09 count=0
-  bin 17 center=-3.250000e-09 count=1
-  bin 18 center=-3.150000e-09 count=0
-  bin 19 center=-3.050000e-09 count=3
-  bin 20 center=-2.950000e-09 count=3
-  bin 21 center=-2.850000e-09 count=8
-  bin 22 center=-2.750000e-09 count=13
-  bin 23 center=-2.650000e-09 count=9
-  bin 24 center=-2.550000e-09 count=10
-  bin 25 center=-2.450000e-09 count=19
-  bin 26 center=-2.350000e-09 count=26
-  bin 27 center=-2.250000e-09 count=23
-  bin 28 center=-2.150000e-09 count=36
-  bin 29 center=-2.050000e-09 count=42
-  bin 30 center=-1.950000e-09 count=48
-  bin 31 center=-1.850000e-09 count=56
-  bin 32 center=-1.750000e-09 count=76
-  bin 33 center=-1.650000e-09 count=121
-  bin 34 center=-1.550000e-09 count=113
-  bin 35 center=-1.450000e-09 count=130
-  bin 36 center=-1.350000e-09 count=141
-  bin 37 center=-1.250000e-09 count=163
-  bin 38 center=-1.150000e-09 count=210
-  bin 39 center=-1.050000e-09 count=230
-  bin 40 center=-9.500000e-10 count=238
-  bin 41 center=-8.500000e-10 count=302
-  bin 42 center=-7.500000e-10 count=294
-  bin 43 center=-6.500000e-10 count=312
-  bin 44 center=-5.500000e-10 count=329
-  bin 45 center=-4.500000e-10 count=338
-  bin 46 center=-3.500000e-10 count=364
-  bin 47 center=-2.500000e-10 count=376
-  bin 48 center=-1.500000e-10 count=402
-  bin 49 center=-5.000000e-11 count=383
-  bin 50 center=5.000000e-11 count=402
-  bin 51 center=1.500000e-10 count=383
-  bin 52 center=2.500000e-10 count=399
-  bin 53 center=3.500000e-10 count=380
-  bin 54 center=4.500000e-10 count=360
-  bin 55 center=5.500000e-10 count=350
-  bin 56 center=6.500000e-10 count=327
-  bin 57 center=7.500000e-10 count=281
-  bin 58 center=8.500000e-10 count=285
-  bin 59 center=9.500000e-10 count=274
-  bin 60 center=1.050000e-09 count=270
-  bin 61 center=1.150000e-09 count=230
-  bin 62 center=1.250000e-09 count=206
-  bin 63 center=1.350000e-09 count=169
-  bin 64 center=1.450000e-09 count=134
-  bin 65 center=1.550000e-09 count=127
-  bin 66 center=1.650000e-09 count=120
-  bin 67 center=1.750000e-09 count=94
-  bin 68 center=1.850000e-09 count=85
-  bin 69 center=1.950000e-09 count=61
-  bin 70 center=2.050000e-09 count=48
-  bin 71 center=2.150000e-09 count=33
-  bin 72 center=2.250000e-09 count=32
-  bin 73 center=2.350000e-09 count=31
-  bin 74 center=2.450000e-09 count=26
-  bin 75 center=2.550000e-09 count=18
-  bin 76 center=2.650000e-09 count=11
-  bin 77 center=2.750000e-09 count=8
-  bin 78 center=2.850000e-09 count=9
-  bin 79 center=2.950000e-09 count=6
-  bin 80 center=3.050000e-09 count=3
-  bin 81 center=3.150000e-09 count=3
-  bin 82 center=3.250000e-09 count=0
-  bin 83 center=3.350000e-09 count=3
-  bin 84 center=3.450000e-09 count=7
-  bin 85 center=3.550000e-09 count=1
-  bin 86 center=3.650000e-09 count=0
-  bin 87 center=3.750000e-09 count=0
-  bin 88 center=3.850000e-09 count=1
-  bin 89 center=3.950000e-09 count=0
-  bin 90 center=4.050000e-09 count=0
-  bin 91 center=4.150000e-09 count=0
-  bin 92 center=4.250000e-09 count=0
-  bin 93 center=4.350000e-09 count=0
-  bin 94 center=4.450000e-09 count=0
-  bin 95 center=4.550000e-09 count=0
-  bin 96 center=4.650000e-09 count=0
-  bin 97 center=4.750000e-09 count=0
-  bin 98 center=4.850000e-09 count=0
-  bin 99 center=4.950000e-09 count=0
+Histograma (50 bins) en rango [-5.000000e-09, 5.000000e-09]:
+  bin 0 center=-4.900000e-09 count=0
+  bin 1 center=-4.700000e-09 count=0
+  bin 2 center=-4.500000e-09 count=0
+  bin 3 center=-4.300000e-09 count=0
+  bin 4 center=-4.100000e-09 count=0
+  bin 5 center=-3.900000e-09 count=1
+  bin 6 center=-3.700000e-09 count=0
+  bin 7 center=-3.500000e-09 count=3
+  bin 8 center=-3.300000e-09 count=0
+  bin 9 center=-3.100000e-09 count=2
+  bin 10 center=-2.900000e-09 count=9
+  bin 11 center=-2.700000e-09 count=20
+  bin 12 center=-2.500000e-09 count=26
+  bin 13 center=-2.300000e-09 count=49
+  bin 14 center=-2.100000e-09 count=65
+  bin 15 center=-1.900000e-09 count=92
+  bin 16 center=-1.700000e-09 count=174
+  bin 17 center=-1.500000e-09 count=225
+  bin 18 center=-1.300000e-09 count=306
+  bin 19 center=-1.100000e-09 count=404
+  bin 20 center=-9.000000e-10 count=489
+  bin 21 center=-7.000000e-10 count=615
+  bin 22 center=-5.000000e-10 count=661
+  bin 23 center=-3.000000e-10 count=707
+  bin 24 center=-1.000000e-10 count=784
+  bin 25 center=1.000000e-10 count=793
+  bin 26 center=3.000000e-10 count=781
+  bin 27 center=5.000000e-10 count=717
+  bin 28 center=7.000000e-10 count=631
+  bin 29 center=9.000000e-10 count=581
+  bin 30 center=1.100000e-09 count=526
+  bin 31 center=1.300000e-09 count=393
+  bin 32 center=1.500000e-09 count=293
+  bin 33 center=1.700000e-09 count=220
+  bin 34 center=1.900000e-09 count=169
+  bin 35 center=2.100000e-09 count=89
+  bin 36 center=2.300000e-09 count=61
+  bin 37 center=2.500000e-09 count=55
+  bin 38 center=2.700000e-09 count=22
+  bin 39 center=2.900000e-09 count=17
+  bin 40 center=3.100000e-09 count=7
+  bin 41 center=3.300000e-09 count=4
+  bin 42 center=3.500000e-09 count=8
+  bin 43 center=3.700000e-09 count=0
+  bin 44 center=3.900000e-09 count=1
+  bin 45 center=4.100000e-09 count=0
+  bin 46 center=4.300000e-09 count=0
+  bin 47 center=4.500000e-09 count=0
+  bin 48 center=4.700000e-09 count=0
+  bin 49 center=4.900000e-09 count=0
 Simulation complete via $finish(1) at time 0 FS + 0
 ./tb_noise_generate.sv:99     $finish;
 xcelium> exit
-TOOL:	xrun(64)	24.03-s004: Exiting on Jan 30, 2026 at 15:01:39 CET  (total: 00:00:01)
+TOOL:	xrun(64)	24.03-s004: Exiting on Jan 30, 2026 at 15:25:23 CET  (total: 00:00:00)

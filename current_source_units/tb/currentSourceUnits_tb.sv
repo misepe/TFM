@@ -52,14 +52,14 @@ module currentSourceUnits_tb;
     );
 
     // Parámetros de los límites
-    parameter real IREF_MIN = 500e-6 * 0.9; // Límite inferior de iref_500ua
-    parameter real IREF_MAX = 500e-6 * 1.1; // Límite superior de iref_500ua
-    parameter real VDDANA_1P8_MIN = 1.8 * 0.95; // Límite inferior de vddana_1p8
-    parameter real VDDANA_1P8_MAX = 1.8 * 1.05; // Límite superior de vddana_1p8
-    parameter real VDDANA_0P8_MIN = 0.8 * 0.95; // Límite inferior de vddana_0p8
-    parameter real VDDANA_0P8_MAX = 0.8 * 1.05; // Límite superior de vddana_0p8
-    parameter real VSSANA_MIN = 0.0 * 0.95; // Límite inferior de vssana
-    parameter real VSSANA_MAX = 0.0 * 1.05; // Límite superior de vssana (siempre 0.0)
+    parameter real IREF_MIN = 500e-6 * 0.85; // Límite inferior de iref_500ua (sobrepasando para ver que sale warning)
+    parameter real IREF_MAX = 500e-6 * 1.15; // Límite superior de iref_500ua (sobrepasando para ver que sale warning)
+    parameter real VDDANA_1P8_MIN = 1.8 * 0.9; // Límite inferior de vddana_1p8 (sobrepasando para ver que sale warning)
+    parameter real VDDANA_1P8_MAX = 1.8 * 1.1; // Límite superior de vddana_1p8 (sobrepasando para ver que sale warning)
+    parameter real VDDANA_0P8_MIN = 0.8 * 0.9; // Límite inferior de vddana_0p8 (sobrepasando para ver que sale warning)
+    parameter real VDDANA_0P8_MAX = 0.8 * 1.1; // Límite superior de vddana_0p8 (sobrepasando para ver que sale warning)
+    parameter real VSSANA_MIN = 0.0 - 0.1; // Límite inferior de vssana (sobrepasando para ver que sale warning)
+    parameter real VSSANA_MAX = 0.0 + 0.1; // Límite superior de vssana (sobrepasando para ver que sale warning)
 
 
     // Bloque inicial para asignar valores iniciales
@@ -86,7 +86,7 @@ module currentSourceUnits_tb;
 
         // Barrido de vddana_1p8
         $display("Barrido de vddana_1p8:");
-        for (vddana_1p8 = VDDANA_1P8_MIN; vddana_1p8 <= VDDANA_1P8_MAX; vddana_1p8 = vddana_1p8 + 0.01) begin
+        for (vddana_1p8 = VDDANA_1P8_MIN; vddana_1p8 <= VDDANA_1P8_MAX; vddana_1p8 = vddana_1p8 + 0.05) begin
             #10; // Esperar 10 unidades de tiempo
             $display("vddana_1p8 = %0.2f V", vddana_1p8);
         end
@@ -95,11 +95,20 @@ module currentSourceUnits_tb;
 
         // Barrido de vddana_0p8
         $display("Barrido de vddana_0p8:");
-        for (vddana_0p8 = VDDANA_0P8_MIN; vddana_0p8 <= VDDANA_0P8_MAX; vddana_0p8 = vddana_0p8 + 0.01) begin
+        for (vddana_0p8 = VDDANA_0P8_MIN; vddana_0p8 <= VDDANA_0P8_MAX; vddana_0p8 = vddana_0p8 + 0.05) begin
             #10; // Esperar 10 unidades de tiempo
             $display("vddana_0p8 = %0.2f V", vddana_0p8);
         end
         vddana_0p8 = 0.8;  
+        #10;
+
+        // Barrido de vssana
+        $display("Barrido de vssana:");
+        for (vssana = VSSANA_MIN; vssana <= VSSANA_MAX; vssana = vssana + 0.05) begin
+            #10; // Esperar 10 unidades de tiempo
+            $display("vssana = %0.2f V", vssana);
+        end
+        vssana = 0.0;  
         #10;
 
         // Barrido de atb_ena

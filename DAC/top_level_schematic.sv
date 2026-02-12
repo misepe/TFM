@@ -44,7 +44,7 @@ real net9, net10, net11, net12, net13, net14, net15, net16,
      net17, net18, net19, net20, net21, net22, net23, net24,
      net25, net26, net27, net28, net29, net30, net31, net32; //Iout_*
 real net37;//iclkdist_25ua
-real net39;//isynclatch_25ua
+real net39;//isyncflip_flop_25ua
 real net6;//icurrentsource_500ua
 real net7;//icurrentsterring_500ua
 real net40;//Iout
@@ -90,7 +90,7 @@ currentSterring currentSterring_inst ( .Ical(Ical), .Iout(net40),
 local_bias local_bias_inst ( .vcas(net33), .atb_ena(atb_ena[2:3]),
      .atb0(atb[2]), .atb1(atb[3]), .iclkdist_25ua(net37),
      .icurrentsource_500ua(net6), .icurrentsterring_500ua(net7),
-     .isynclatch_25ua(net39), .pdb(pdb), .vddana_0p8(vddana_0p8),
+     .isyncflip_flop_25ua(net39), .pdb(pdb), .vddana_0p8(vddana_0p8),
      .vddana_1p8(vddana_1p8), .vssana(vssana));
 driver_cell driver_cell_inst ( .datain(net3[0:6]), .datainb(net4[0:6]),
      .databinout(net34[0:6]), .datathermout(net35[0:16]),
@@ -98,7 +98,7 @@ driver_cell driver_cell_inst ( .datain(net3[0:6]), .datainb(net4[0:6]),
      .datatherm(net2[0:16]), .datathermb(net1[0:16]), .pdb(pdb),
      .vddana_0p8(vddana_0p8), .vddana_1p8(vddana_1p8),
      .vssana(vssana));
-rsync_latch rsync_latch_inst ( .atb0(atb[6]), .atb1(atb[7]),
+rsync_flip_flop rsync_flip_flop_inst ( .atb0(atb[6]), .atb1(atb[7]),
      .dataoutbin(net3[0:6]), .dataoutbinb(net4[0:6]),
      .dataouttherm(net2[0:16]), .dataoutthermb(net1[0:16]),
      .atb_ena(atb_ena[6:7]), .clkin_binary_0(net102),
